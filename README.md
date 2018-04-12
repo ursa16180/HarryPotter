@@ -1,3 +1,7 @@
 # HarryPotter
 
-To je projekt za izbirni predmet Osnove podatkovnih baz.
+Večina ljudi se počuti izgubljene, ko prebere zadnjo knjigo Harry Potter-ja. 
+Kot da bi izgubili magični svet v katerem so živeli tako dolgo. Zato sva se odločili izdelati bazo
+knjig s pomočjo katerih lahko pobegneš v podoben magični svet.
+Iz seznama ključnih besed izbereš o katerih pojmih želiš prebrat več, kako dolgo knjigo si pripravljen brati, ali želiš da je del zbirke... 
+in tako izveš katera knjiga je najbolj primerna za tvoje trenutno postharryevsko razpoloženje.
