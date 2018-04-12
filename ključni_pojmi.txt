@@ -1,8 +1,9 @@
 ﻿SEZNAM KLJUČNIH POJMOV
-HOGWARTS:
+SCHOOL:
 Headmaster
 School
 Student
+Apprentice
 
 
 CREATURES:
@@ -28,6 +29,9 @@ Owl
 Sphinx
 Troll
 Hobbit
+Angel
+Demon
+Fairy
 
 
 HUMANS:
@@ -52,6 +56,7 @@ Divination
 Dark arts
 Patronus
 Invisibility
+Invisibile
 Immortal
 Alchemy
 Animagus
@@ -85,6 +90,7 @@ Chess
 Scar
 Pig tail
 Chocolate
+Parchment
 
 
 NAMES:
@@ -92,3 +98,15 @@ Voldemort
 Hermione Granger
 Harry Potter
 Ron Weasley
+
+OTHER:
+apocalypse
+destiny
+choice
+adventure
+fantasy
+nightmare
+journey
+mystery/mysterious
+time travel
+revenge
