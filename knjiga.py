@@ -23,23 +23,6 @@ def ustvari_tabelo():
     ### zanr TEXT NOT NULL FOREIGN KEY, zbirka TEXT FOREIGN KEY, kljucne_besede TEXT FOREIGN KEY, avtor TEXT NOT NULL FOREIGN KEY,
     conn.commit()
 
-# def ustvari_tabelo2():
-#     cur.execute("""
-#         CREATE TABLE obcina (
-#             id SERIAL PRIMARY KEY,
-#             ime TEXT NOT NULL,
-#             povrsina NUMERIC NOT NULL,
-#             prebivalstvo INTEGER NOT NULL,
-#             gostota NUMERIC NOT NULL,
-#             naselja INTEGER NOT NULL,
-#             ustanovitev INTEGER,
-#             pokrajina TEXT NOT NULL,
-#             stat_regija TEXT NOT NULL,
-#             odcepitev TEXT
-#         );
-#     """)
-#     conn.commit()
-
 def pobrisi_tabelo():
     cur.execute("""
         DROP TABLE knjiga;
@@ -59,11 +42,11 @@ def uvozi_podatke():
                 RETURNING ISBN
             """, r)
             rid, = cur.fetchone()
-            print("Uvožena knjiga %s z ISBN-jem %s" % (r[1], rid))
+            print("Uvožena knjiga %s s ISBN-jem %s" % (r[1], rid))
     conn.commit()
 
 
 conn = psycopg2.connect(database=auth.db, host=auth.host, user=auth.user, password=auth.password)
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-ustvari_tabelo()
-uvozi_podatke()
+#ustvari_tabelo()
+#uvozi_podatke()
