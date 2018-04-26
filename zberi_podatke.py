@@ -24,3 +24,5 @@ for stran in range(1, 2):
     print(len(linki))
     for link in linki:
         orodja.shrani_stran(link[0], 'knjige/{}.html'.format(link[1]))
+
+# če je v naslovu dvopičje, pride do napake
