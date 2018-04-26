@@ -10,6 +10,8 @@ vzorec_avtorja = re.compile(r'metacol" class="last col">\s*?<h1\sid="bookTitle"\
                             r'<span itemprop="name">(?P<avtor2>.*?)</span></a>( <span class=.*?</span>)?)?\s*?'
                             r'</span>\s*?</div>\s*?<div id="bookMeta"')
 
+# preveri alico v čudežni deželi
+
 vzorec_ocene = re.compile(r'<span class="stars staticStars">(<span size="12x12" class="staticStar '
                           r'p\d\d?"></span>){5}</span>\s*?<span class="value rating"><span class="average" itemprop='
                           r'"ratingValue">(?P<povprecna_ocena>.*?)</span></span>\s*?<span class="greyText">&nbsp;'
@@ -21,6 +23,13 @@ vzorec_stevilo_strani = re.compile(r'<span class="value-title" title="(?P<stevil
                                    r'(<span itemprop="bookFormatType">.*?</span>)?(, )?(<span itemprop="numberOfPages">'
                                    r'(?P<stevilo_strani>\d\d\d?\d?) pages</span>)?</div>\s*?'
                                    r'<div class="row">\s*?Published')
+
+#preveri!!!!
+vzorec_ISBN = re.compile(r'<div class="clearFloats">\s*?<div class="infoBoxRowTitle">Original Title</div>'
+                         r'\s*?<div class="infoBoxRowItem">.*?</div>\s*?</div>\s*?<div class="clearFloats">'
+                         r'\s*?<div class="infoBoxRowTitle">ISBN</div>\s*?<div class="infoBoxRowItem">.*?'
+                         r'<span class="greyText">(ISBN13: <span itemprop='isbn'>(?P<ISBN>.*?)</span>)</span>\s.*?</div>'
+                         )
 
 knjige = orodja.datoteke('podatki\\knjige')
 i = 0

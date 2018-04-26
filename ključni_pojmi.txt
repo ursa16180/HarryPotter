@@ -1,0 +1,112 @@
+﻿SEZNAM KLJUČNIH POJMOV
+SCHOOL:
+Headmaster
+School
+Student
+Apprentice
+
+
+CREATURES:
+Beast
+Goblin
+Centaur
+Giant
+Phoenix
+Witch
+Wizard
+Dragon
+Boggart
+Vampire
+Monster
+Elf
+Dwarf
+Demigod
+Alien
+Werewolf
+Unicorn
+Rat
+Owl
+Sphinx
+Troll
+Hobbit
+Angel
+Demon
+Fairy
+
+
+HUMANS:
+Prince
+Princess
+King
+Queen
+Prisoner
+Orphan
+Muggle
+
+
+MAGIC:
+Magic
+Witchcraft
+Wizardry
+Charms
+Transfiguration
+Curse
+Jinx
+Divination
+Dark arts
+Patronus
+Invisibility
+Invisibile
+Immortal
+Alchemy
+Animagus
+
+
+VALUES:
+Friendship
+Power
+Bravery
+Loyalty
+Dark side
+Wisdom 
+Evil
+Love
+Elitism
+Pure Blood
+
+
+OBJECTS:
+Goblet
+Potion
+Wand
+Flying broom
+Train
+Socks
+Mirror
+Hat
+Letter
+Sword
+Chess
+Scar
+Pig tail
+Chocolate
+Parchment
+
+
+NAMES:
+Voldemort
+Hermione Granger
+Harry Potter
+Ron Weasley
+
+OTHER:
+apocalypse
+destiny
+choice
+adventure
+fantasy
+nightmare
+journey
+mystery/mysterious
+time travel
+revenge
