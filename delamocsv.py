@@ -12,57 +12,81 @@ vzorec_stevilo_strani_leto = re.compile("""bookFormat">(.*?)</span>,\s*?<span it
 vzorec_ISBN = re.compile("""<div class="clearFloats">\s*?<div class="infoBoxRowTitle">ISBN</div>\s*?<div class="infoBoxRowItem">\s*?\d+?\s*?<span class="greyText">\(ISBN13: <span itemprop='isbn'>(?P<ISBN>\d+?)</span>\)</span>\s.*?</div>""")
 
 
-knjige = orodja.datoteke("knjige/test")
+knjige = orodja.datoteke("knjige")
 i = 0
 # i nam bo nekako indeksiral knjige, saj bi sicer lahko na koncu kakšen rezultat prepisali,
 # če je knjiga slučajno dobila nagrado v več kategorijah
 
 seznam_vseh_knjig = []
+seznam_vseh_avtorjev=[]
+seznam_vseh_zanrov = []
+
 for knjiga in knjige:
     vsebina = orodja.vsebina_datoteke(knjiga)
     print(knjiga)
     for vzorec1 in re.finditer(vzorec_naslov_url_avtorja_serije, vsebina):
         podatki1 = vzorec1.groupdict()
-        print(podatki1)
-    print('prvega sm')
+        #print(podatki1)
+    #print('prvega sm')
     for vzorec2 in re.finditer(vzorec_ocene, vsebina):
         podatki2 = vzorec2.groupdict()
         #print(podatki2)
-    print('druzga sm')
+    #print('druzga sm')
     for vzorec3 in re.finditer(vzorec_stevilo_ocen_opis, vsebina):
         podatki3 = vzorec3.groupdict()
         #print(podatki3)
-    print('tretji je')
+    #print('tretji je')
     for vzorec4 in re.finditer(vzorec_stevilo_strani_leto, vsebina):
         podatki4 = vzorec4.groupdict()
         #print(podatki4)
-    print('četrti je')
+    #print('četrti je')
     for vzorec5 in re.finditer(vzorec_ISBN, vsebina):
         podatki5 = vzorec5.groupdict()
         #print(podatki5)
-    
-#
-#     print('zbral od knjige ' + str(i))
-#
-#     podatki = podatki1
-#
-#     podatki['povprečna ocena'] = podatki2['povprecna_ocena']
-#     podatki['št. ocen'] = podatki3['stevilo_ocen']
-#     podatki['št. strani'] = podatki3['stevilo_strani']
-#     podatki['leto'] = leto
-#     podatki['žanr'] = zanr
-#     podatki['št. glasov'] = glasovi
-#     podatki['id'] = i
-#     seznam_vseh_knjig += [podatki]
+    ###CSV za tabelo KNJIGA
+    podatkiKnjiga = dict()
+    podatkiKnjiga['naslov']=podatki1['naslov']
+    podatkiKnjiga['povprečna ocena'] = podatki2['povprecna_ocena']
+    podatkiKnjiga['št. ocen'] = int(re.sub('[,]','',podatki3['stevilo_ocen']))###to spremeni niz glasov v integer brez vejc
+    #print(podatkiKnjiga['št. ocen'])
+    podatkiKnjiga['opis'] = podatki3['opis'] ###TODO dve knjigi zapored sta imeli enak opis?!
+    podatkiKnjiga['št. strani'] = podatki4['stevilo_strani']
+    podatkiKnjiga['leto'] = podatki4['leto_izdaje'] ###TODO letnica ne dela dobr
+    podatkiKnjiga['ISBN'] = podatki5['ISBN']#TODO mislim da če ne najde ISBNja uporabi istega kot prejšna knjiga
+    seznam_vseh_knjig += [podatkiKnjiga]
+
+
+    ###CSV za tabelo AVTOR
+    podatkiAvtor1 = dict()
+    podatkiAvtor2 = dict()
+    podatkiAvtor3 = dict()
+    podatkiAvtor1['ISBN'] = podatki5['ISBN']
+    podatkiAvtor1['url'] = podatki1['url_avtorja1']
+    podatkiAvtor2['ISBN'] = podatki5['ISBN']
+    podatkiAvtor2['url'] = podatki1['url_avtorja2']
+    podatkiAvtor3['ISBN'] = podatki5['ISBN']
+    podatkiAvtor3['url'] = podatki1['url_avtorja3']
+    seznam_vseh_avtorjev.extend([podatkiAvtor1, podatkiAvtor2, podatkiAvtor3])
+
+    ###CSV za tabelo ZANR
+    podatkiZanr = dict()
+    podatkiZanr['ISBN']= podatki5['ISBN']
+    podatkiZanr['žanr'] = "fantasy"  # TODO
+    seznam_vseh_zanrov += [podatkiZanr]
+
+#print(seznam_vseh_knjig)
+
+orodja.zapisi_tabelo(seznam_vseh_knjig, ['ISBN', 'naslov', 'povprečna ocena', 'št. ocen',
+                                         'leto','št. strani', 'opis'
+                                         ], 'podatki/knjiga.csv') ###PAZI Naj se CSV imenuje vedno isto kot tabela, drugale ga naredi tabele ne prepozna
+
 #
 #     print('en narjen ' + str(i))
 #     i += 1
 
-#orodja.zapisi_tabelo(seznam_vseh_knjig, ['id', 'avtor', 'naslov', 'št. strani', 'povprečna ocena',
-#                                         'št. ocen' , 'leto', 'žanr', 'št. glasov', 'avtor2'
-#                                        ], 'podatki/tabela_knjige.csv')
-
-
+# orodja.zapisi_tabelo(seznam_vseh_knjig, ['id', 'avtor', 'naslov', 'št. strani', 'povprečna ocena',
+#                                          'št. ocen' , 'leto', 'žanr', 'št. glasov', 'avtor2'
+#                                         ], 'podatki/tabela_knjige.csv')
 
 
 
