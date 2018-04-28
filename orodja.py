@@ -59,8 +59,8 @@ def datoteke(imenik):
 
 def zapisi_tabelo(slovarji, imena_polj, ime_datoteke):
     pripravi_imenik(ime_datoteke)
-    with open(ime_datoteke, 'w', encoding = 'utf8') as csv_dat:
-        writer = csv.DictWriter(csv_dat, fieldnames=imena_polj)
+    with open(ime_datoteke, 'w', encoding = 'utf8', newline='') as csv_dat: #newline je zato da ni vmes praznih vrstic
+        writer = csv.DictWriter(csv_dat, fieldnames=imena_polj, delimiter=';') #delimiter pove po čem ločujem namesto vejice
         writer.writeheader()
         for slovar in slovarji:
             writer.writerow(slovar)
