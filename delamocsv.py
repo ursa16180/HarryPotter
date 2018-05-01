@@ -9,13 +9,16 @@ vzorec_stevilo_ocen_opis = re.compile("""#other_reviews\">\s*?<meta itemprop=\"r
 
 vzorec_stevilo_strani_leto = re.compile("""bookFormat">(.*?)</span>,\s*?<span itemprop="numberOfPages">(?P<stevilo_strani>\d\d\d?\d?) pages</span></div>\s*?<div class="row">\s*?Published(\s|.)*?(<nobr class="greyText">\s*?\(first published (?P<leto_izdaje>\d\d\d\d)\)\s*?</nobr>)?\s*?</div>\s*?<div class="buttons">\s*?<a id="bookDataBoxShow" class="left inter""")
 # leto izdaje še manjka pri nekaterih
+
+#Kindle knjige nimajo ISBN-ja ampak ASIN. Tako da je za njih treba različno pobrat.
 vzorec_ISBN = re.compile("""<div class="clearFloats">\s*?<div class="infoBoxRowTitle">ISBN</div>\s*?<div class="infoBoxRowItem">\s*?\d+?\s*?<span class="greyText">\(ISBN13: <span itemprop='isbn'>(?P<ISBN>\d+?)</span>\)</span>\s.*?</div>""")
 
+###Vzame ali ISBN ali ASIN:
+vzorec_ISBN2 = re.compile("""itemprop='isbn'>(?P<ISBN>(\w{10}|\d{13}))""")
 
-knjige = orodja.datoteke("knjige")
-i = 0
-# i nam bo nekako indeksiral knjige, saj bi sicer lahko na koncu kakšen rezultat prepisali,
-# če je knjiga slučajno dobila nagrado v več kategorijah
+
+knjige = orodja.datoteke("knjige/test")
+
 
 seznam_vseh_knjig = []
 seznam_vseh_avtorjev=[]
@@ -40,7 +43,7 @@ for knjiga in knjige:
         podatki4 = vzorec4.groupdict()
         #print(podatki4)
     #print('četrti je')
-    for vzorec5 in re.finditer(vzorec_ISBN, vsebina):
+    for vzorec5 in re.finditer(vzorec_ISBN2, vsebina):
         podatki5 = vzorec5.groupdict()
         #print(podatki5)
     ###CSV za tabelo KNJIGA
@@ -78,7 +81,7 @@ for knjiga in knjige:
 
 orodja.zapisi_tabelo(seznam_vseh_knjig, ['ISBN', 'naslov', 'povprečna ocena', 'št. ocen',
                                          'leto','št. strani', 'opis'
-                                         ], 'podatki/knjiga.csv') ###PAZI Naj se CSV imenuje vedno isto kot tabela, drugale ga naredi tabele ne prepozna
+                                         ], 'podatki/knjigaTest.csv') ###PAZI Naj se CSV imenuje vedno isto kot tabela, drugale ga naredi tabele ne prepozna
 
 #
 #     print('en narjen ' + str(i))
