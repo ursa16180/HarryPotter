@@ -66,14 +66,14 @@ avtor = ["avtor",
             id TEXT PRIMARY KEY,
             ime_priimek TEXT NOT NULL,
             datum_rojstva DATE,
-            kraj_rojstva TEXT,
-            povprecna_ocena FLOAT NOT NULL
+            kraj_rojstva TEXT
         );
     """,
          """
                 INSERT INTO avtor
-                (id, ime_priimek, datum_rojstva, kraj_rojstva, povprecna_ocena)
-                VALUES (%s, %s, %s, %s, %s)
+                (id, ime_priimek, datum_rojstva, kraj_rojstva)
+                VALUES (%s, %s, %s, %s)
+                RETURNING id
             """]
 
 zanr = ["zanr",
@@ -87,10 +87,11 @@ zanr = ["zanr",
                 INSERT INTO zanr
                 (ime, opis)
                 VALUES (%s, %s)
+                RETURNING (ime,opis)
             """]
 
 serija = ["serija", """CREATE TABLE serija (id TEXT PRIMARY KEY, ime TEXT NOT NULL);""",
-          """INSERT INTO serija (id, ime) VALUES (%s, %s)"""]
+          """INSERT INTO serija (id, ime) VALUES (%s, %s) RETURNING id"""]
 
 del_serije = ["del_serije",
               """
@@ -105,6 +106,7 @@ del_serije = ["del_serije",
                 INSERT INTO del_serije
                 (id_serije, ISBN_knjige, zaporedna_stevilka)
                 VALUES (%s, %s, %s)
+                RETURNING id_serije
             """]
 
 avtor_knjige = ["avtor_knjige",
@@ -118,9 +120,10 @@ avtor_knjige = ["avtor_knjige",
                 INSERT INTO avtor_knjige
                 (id_avtorja, ISBN_knjige)
                 VALUES (%s, %s)
+                RETURNING id_avtorja
             """]
 
-zanr_knjige =["zanr_knjige",
+zanr_knjige =["zanr_knjige", ###TODO Kako dodati vse zanre se v tabelo zanr
               """
         CREATE TABLE zanr_knjige (
             ISBN_knjige TEXT NOT NULL REFERENCES knjiga(ISBN),
@@ -131,9 +134,23 @@ zanr_knjige =["zanr_knjige",
                 INSERT INTO zanr_knjige
                 (ISBN_knjige, ime_zanra)
                 VALUES (%s, %s)
+                RETURNING (ISBN_knjige, ime_zanra)
+            """ ]
+avtorjev_zanr =["avtorjev_zanr", ###TODO Kako dodati vse zanre se v tabelo zanr
+              """
+        CREATE TABLE avtorjev_zanr (
+            id_avtorja TEXT NOT NULL REFERENCES avtor(id),
+            ime_zanra TEXT NOT NULL REFERENCES zanr(ime),
+            PRIMARY KEY (id_avtorja, ime_zanra)
+        );
+    """, """
+                INSERT INTO avtorjev_zanr
+                (id_avtorja, ime_zanra)
+                VALUES (%s, %s)
+                RETURNING (id_avtorja, ime_zanra)
             """ ]
 
-seznamVseh = [knjiga, avtor, zanr, serija, del_serije, avtor_knjige, zanr_knjige]
+seznamVseh = [knjiga, avtor, zanr, serija, del_serije, avtor_knjige, zanr_knjige, avtorjev_zanr]
 
 def ustvari_vse_tabele():
     for seznam in seznamVseh:
@@ -143,5 +160,5 @@ def izbrisi_vse_tabele():
     for seznam in seznamVseh:
         pobrisi_tabelo(seznam)
 
-#ustvari_tabelo(knjiga)
-#uvozi_podatke(knjiga)
+#ustvari_tabelo(avtorjev_zanr)
+uvozi_podatke(avtorjev_zanr)
