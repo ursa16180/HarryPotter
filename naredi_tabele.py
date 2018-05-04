@@ -65,14 +65,15 @@ avtor = ["avtor",
         CREATE TABLE avtor (
             id TEXT PRIMARY KEY,
             ime_priimek TEXT NOT NULL,
+            povprecna_ocena FLOAT,
             datum_rojstva DATE,
             kraj_rojstva TEXT
         );
     """,
          """
                 INSERT INTO avtor
-                (id, ime_priimek, datum_rojstva, kraj_rojstva)
-                VALUES (%s, %s, %s, %s)
+                (id, ime_priimek, povprecna_ocena, datum_rojstva, kraj_rojstva)
+                VALUES (%s, %s, %s, %s, %s)
                 RETURNING id
             """]
 
@@ -161,4 +162,4 @@ def izbrisi_vse_tabele():
         pobrisi_tabelo(seznam)
 
 #ustvari_tabelo(avtorjev_zanr)
-uvozi_podatke(avtorjev_zanr)
+# uvozi_podatke(avtorjev_zanr)
