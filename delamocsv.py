@@ -1,7 +1,7 @@
 import re
 import orodja
 
-vzorec_naslov_url_avtorja_serije = re.compile("""metacol" class="last col">\s*?<h1\sid="bookTitle"\sclass="bookTitle"\sitemprop="name">\s*(?P<naslov>.*?)\s*?(<a class="greyText" href="(?P<url_serije>.+?)">(\s|.)*?</a>)?</h1>\s*?<div id="bookAuthors" class="stacked">\s+?<span class='by smallText'>by</span>\s+?<span itemprop='author' itemscope='' itemtype='http://schema\.org/Person'>\s(<div class=("|')authorName__container("|')>\s?)?<a class="authorName" itemprop="url" href="(?P<url_avtorja1>.+?(?P<id_avtorja1>\d+).+?)"><span itemprop="name">\D+?</span></a>(\s<span class="greyText">\(Goodreads Author\)</span>)?(\s*?<span class="authorName greyText smallText role">.+?</span>)?(,(\s*?</div>\s*?<div class=("|')authorName__container("|')>)?\s*?<a class="authorName" itemprop="url" href="(?P<url_avtorja2>.+?(?P<id_avtorja2>\d+).+?)"><span itemprop="name">\D+?</span></a>(\s<span class="greyText">\(Goodreads Author\)</span>)?(\s?<span class="authorName greyText smallText role">.+?</span>)?)?((\s?</div>\s?<div class=("|')authorName__container("|')>)?\s*?<a class="authorName" itemprop="url" href="(?P<url_avtorja3>.+?(?P<id_avtorja3>\d+).+?)"><span itemprop="name">\D+?</span></a>(\s<span class="greyText">\(Goodreads Author\)</span>)? (<span class="authorName greyText smallText role">.+?</span>)?)?(\s*?</div>)?\s*?</span>\s+?</div>\s+?<div id="bookMeta""")
+vzorec_naslov_url_avtorja_serije = re.compile("""metacol" class="last col">\s*?<h1\sid="bookTitle"\sclass="bookTitle"\sitemprop="name">\s*(?P<naslov>.*?)\s*?(<a class="greyText" href="(?P<url_serije>.+?)">(\s|.)*?</a>)?</h1>\s*?<div id="bookAuthors" class="stacked">\s*?<span class='by smallText'>by</span>\s*?<span itemprop='author' itemscope='' itemtype='http://schema.org/Person'>\s*?<div class=('|")authorName__container('|")>\s*?<a class="authorName" itemprop="url" href="(?P<url_avtorja1>.*?(?P<id_avtorja1>\d+?)\D*?)"><span itemprop="name">.+?</span></a>(\s?<span class="greyText">\(Goodreads Author\)</span>\s*?)?(\s?<span class="authorName greyText smallText role">\(.+?\)</span>\s?)?,?\s*?</div>\s*?(,\s*?)?(\s*?<div class=('|")authorName__container('|")>\s*?<a class="authorName" itemprop="url" href="(?P<url_avtorja2>.*?(?P<id_avtorja2>\d+?)\D*?)"><span itemprop="name">.+?</span></a>(\s?<span class="greyText">\(Goodreads Author\)</span>\s*?)?(\s?<span class="authorName greyText smallText role">\(.+?\)</span>\s?)?,?\s*?</div>\s*?(,\s*?)?)?(\s*?<div class=('|")authorName__container('|")>\s*?<a class="authorName" itemprop="url" href="(?P<url_avtorja3>.*?(?P<id_avtorja3>\d+?)\D*?)"><span itemprop="name">.+?</span></a>(\s?<span class="greyText">\(Goodreads Author\)</span>\s*?)?(\s?<span class="authorName greyText smallText role">\(.+?\)</span>\s?)?,?\s*?</div>\s*?(,\s*?)?)?</span>\s*?</div>\s*?<div id="bookMeta""")
 
 vzorec_ocene = re.compile("""stars staticStars"(\stitle="really liked it")?>(<span size="12x12" class="staticStar p\d\d?">.*?</span>){5}</span>\s*?<span class="value rating"><span class="average" itemprop="ratingValue">(?P<povprecna_ocena>.*?)</span></span>\s*?<span class="greyText">&nbsp;&middot;&nbsp;</span>""")
 
@@ -101,15 +101,10 @@ for knjiga in knjige:
     podatkiZanr['ISBN']= podatki5['ISBN']
     i = 1
     while podatki6['zanr{0}'.format(str(i))] is not None:
-        print(podatki6['zanr{0}'.format(str(i))])
         podatkiZanr['žanr'] =   podatki6['zanr{0}'.format(str(i))]
-        print(podatkiZanr)
-        print(podatkiZanr.copy())
         seznam_vseh_zanrov += [podatkiZanr.copy()]
         if podatki6['zanr{0}5'.format(str(i))] is not None:
-            print(podatki6['zanr{0}5'.format(str(i))])
             podatkiZanr['žanr'] = podatki6['zanr{0}5'.format(str(i))]        
-            print(podatkiZanr)
             seznam_vseh_zanrov += [podatkiZanr]
         i += 1
 
@@ -118,8 +113,8 @@ for knjiga in knjige:
 # orodja.zapisi_tabelo(seznam_vseh_knjig, ['ISBN', 'naslov', 'povprečna ocena', 'št. ocen',
 #                                          'leto','št. strani', 'opis'
 #                                          ], 'podatki/knjigaTest.csv') ###PAZI Naj se CSV imenuje vedno isto kot tabela, drugale ga naredi tabele ne prepozna
-#print(slovar_url_avtorjev)
-#print(seznam_vseh_avtorjev)
+print(slovar_url_avtorjev)
+print(seznam_vseh_avtorjev)
 #print(seznam_vseh_zanrov)
 
 # orodja.zapisi_tabelo(seznam_vseh_knjig, ['id', 'avtor', 'naslov', 'št. strani', 'povprečna ocena',
