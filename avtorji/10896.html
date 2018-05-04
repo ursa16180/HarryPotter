@@ -1,0 +1,2265 @@
+<!DOCTYPE html>
+<html class="desktop
+">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# good_reads: http://ogp.me/ns/fb/good_reads#">
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"d81cb9ea53","applicationID":"4008173","transactionName":"JVteFRNcXwpRSxxYQhJcXxNOQFsJQ2ZAUFAIUVQ+DkZH","queueTime":1,"applicationTime":66,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"Ug8DUVVADAMAXFBVBA=="};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var b=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof b&&(this.bstStart=g.now())}),o.on(w,function(t,n){var e=t[0];e instanceof b&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(18)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(18)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(18)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(18)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(18)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var b=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,b),b.prototype=p.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],10:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!n.aborted){if(e.duration=a.now()-this.startTime,4===t.readyState){n.status=t.status;var i=o(t,this.lastSize);if(i&&(e.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;e.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime])}}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return h(r)}function i(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=h(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{f.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<d;s++)n.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),f.on("xhr-load-added",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],n)}),f.on("removeEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],n)}),f.on("fn-start",function(t,n,e){n instanceof m&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,n){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)})}},{}],11:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],12:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],13:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],14:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],15:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],16:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],17:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],18:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=h(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([g,e,r,a]),a}}function p(t,n){v[t]=h(t).concat(n)}function h(t){return v[t]||[]}function m(t){return d[t]=d[t]||o(e)}function w(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var v={},y={},g={on:p,emit:e,get:m,listeners:h,context:n,buffer:w,abort:a,aborted:!1};return g}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(15),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!x++){var t=b.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=l.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(15),u=t("ee"),d=window,l=d.document,p="addEventListener",h="attachEvent",m=d.XMLHttpRequest,w=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},g=m&&w&&w[p]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:v,features:{},xhrWrappable:g};t(12),l[p]?(l[p]("DOMContentLoaded",i,!1),d[p]("load",r,!1)):(l[h]("onreadystatechange",o),d[h]("onload",r)),c("mark",["firstbyte",s],null,"api");var x=0,E=t(17)},{}]},{},["loader",2,10,4,3]);</script>
+  <title>
+Eoin Colfer (Author of Artemis Fowl)
+</title>
+
+
+    <script type="text/javascript"> var ue_t0=window.ue_t0||+new Date();
+ </script>
+  <script type="text/javascript">
+    (function(e){var c=e;var a=c.ue||{};a.main_scope="mainscopecsm";a.q=[];a.t0=c.ue_t0||+new Date();a.d=g;function g(h){return +new Date()-(h?0:a.t0)}function d(h){return function(){a.q.push({n:h,a:arguments,t:a.d()})}}function b(m,l,h,j,i){var k={m:m,f:l,l:h,c:""+j,err:i,fromOnError:1,args:arguments};c.ueLogError(k);return false}b.skipTrace=1;e.onerror=b;function f(){c.uex("ld")}if(e.addEventListener){e.addEventListener("load",f,false)}else{if(e.attachEvent){e.attachEvent("onload",f)}}a.tag=d("tag");a.log=d("log");a.reset=d("rst");c.ue_csm=c;c.ue=a;c.ueLogError=d("err");c.ues=d("ues");c.uet=d("uet");c.uex=d("uex");c.uet("ue")})(window);(function(e,d){var a=e.ue||{};function c(g){if(!g){return}var f=d.head||d.getElementsByTagName("head")[0]||d.documentElement,h=d.createElement("script");h.async="async";h.src=g;f.insertBefore(h,f.firstChild)}function b(){var k=e.ue_cdn||"z-ecx.images-amazon.com",g=e.ue_cdns||"images-na.ssl-images-amazon.com",j="/images/G/01/csminstrumentation/",h=e.ue_file||"ue-full-11e51f253e8ad9d145f4ed644b40f692._V1_.js",f,i;if(h.indexOf("NSTRUMENTATION_FIL")>=0){return}if("ue_https" in e){f=e.ue_https}else{f=e.location&&e.location.protocol=="https:"?1:0}i=f?"https://":"http://";i+=f?g:k;i+=j;i+=h;c(i)}if(!e.ue_inline){if(a.loadUEFull){a.loadUEFull()}else{b()}}a.uels=c;e.ue=a})(window,document);
+
+    if (window.ue && window.ue.tag) { window.ue.tag('author:show:signed_out', ue.main_scope);window.ue.tag('author:show:signed_out:desktop', ue.main_scope); }
+  </script>
+
+
+
+          <script type="text/javascript">
+        if (window.Mobvious === undefined) {
+          window.Mobvious = {};
+        }
+        window.Mobvious.device_type = 'desktop';
+        </script>
+
+
+  
+<script src="https://s.gr-assets.com/assets/webfontloader-f2373eb97b67c818c1db5c9392e387af.js"></script>
+<script>
+//<![CDATA[
+
+  WebFont.load({
+    classes: false,
+    custom: {
+      families: ["Lato:n4,n7,i4", "Merriweather:n4,n7,i4"],
+      urls: ["https://s.gr-assets.com/assets/gr/fonts-e256f84093cc13b27f5b82343398031a.css"]
+    }
+  });
+
+//]]>
+</script>
+
+  <link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads-5318ac5a7a5f1255ada27f6701df584b.css" />
+<!--[if lte IE 9]>
+<link rel="stylesheet" media="all" href="https://s.gr-assets.com/assets/goodreads_split2-db915869f0827f575f8d51e1ce842e81.css" />
+<![endif]-->
+  <style type="text/css" media="screen">
+  .dataTitle {
+    color: black;
+    font-weight: bold;
+    width: 20%;
+    float: left;
+    margin: 1px 0px;
+  }
+  .dataItem {
+    float: left;
+    width: 75%;
+    margin: 1px 0px;
+  }
+
+  .bigGreyBox {
+    width: 100%;
+  }
+</style>
+
+
+  <!--[if lt IE 9]>
+    <link rel="stylesheet" media="screen" href="https://s.gr-assets.com/assets/ie-243e73b5c2539766a7d02b37fdf277f8.css" />
+  <![endif]-->
+
+  <!--[if lt IE 8]>
+    <link rel="stylesheet" media="screen" href="https://s.gr-assets.com/assets/common_images_ie-5b0cc205c33756d8e7e84ce5b8be28e3.css" />
+  <![endif]-->
+
+  <!--[if gte IE 8]><!-->
+  <link rel="stylesheet" media="screen" href="https://s.gr-assets.com/assets/common_images-67dd60a681af04727cf7d18f5c5ba498.css" />
+  <!--<![endif]-->
+
+  <script src="https://s.gr-assets.com/assets/desktop/libraries-3e67611e40d2a3a8d6890755ba094235.js"></script>
+  <script src="https://s.gr-assets.com/assets/application-9aca52c5d7ef29d9c86886cced423884.js"></script>
+
+    <script>
+  //<![CDATA[
+    var gptAdSlots = gptAdSlots || [];
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement("script");
+      gads.async = true;
+      gads.type = "text/javascript";
+      var useSSL = "https:" == document.location.protocol;
+      gads.src = (useSSL ? "https:" : "http:") +
+      "//www.googletagservices.com/tag/js/gpt.js";
+      var node = document.getElementsByTagName("script")[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+    // page settings
+  //]]>
+</script>
+<script>
+  //<![CDATA[
+    googletag.cmd.push(function() {
+      googletag.pubads().setTargeting("sid", "4c19389e1ca6f6ab915a6b7b654916ba");
+    googletag.pubads().setTargeting("grsession", "4c19389e1ca6f6ab915a6b7b654916ba");
+    googletag.pubads().setTargeting("surface", "desktop");
+    googletag.pubads().setTargeting("signedin", "false");
+    googletag.pubads().setTargeting("gr_author", "false");
+    googletag.pubads().setTargeting("author", [10896]);
+    googletag.pubads().setTargeting("shelf", ["fordaymon","readingolympics","willrereadsomeday","collegereads","faeandfairies","forcori","v","under14series","wanttoreadseries","incalibre","tbd","badbooks"]);
+    googletag.pubads().setTargeting("gtargeting", "1");
+    googletag.pubads().setTargeting("resource", "Author_10896");
+      googletag.pubads().enableAsyncRendering();
+      googletag.pubads().enableSingleRequest();
+      googletag.pubads().collapseEmptyDivs(true);
+      googletag.pubads().disableInitialLoad();
+      googletag.enableServices();
+    });
+  //]]>
+</script>
+<script>
+  //<![CDATA[
+    ! function(a9, a, p, s, t, A, g) {
+      if (a[a9]) return;
+    
+      function q(c, r) {
+        a[a9]._Q.push([c, r])
+      }
+      a[a9] = {
+      init: function() {
+        q("i", arguments)
+      },
+      fetchBids: function() {
+        q("f", arguments)
+      },
+      setDisplayBids: function() {},
+        _Q: []
+      };
+      A = p.createElement(s);
+      A.async = !0;
+      A.src = t;
+      g = p.getElementsByTagName(s)[0];
+      g.parentNode.insertBefore(A, g)
+    }("apstag", window, document, "script", "//c.amazon-adsystem.com/aax2/apstag.js");
+    
+    apstag.init({
+      pubID: '3211', adServer: 'googletag', bidTimeout: 4e3
+    });
+  //]]>
+</script>
+
+
+
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="ZdgXhZ+I8qEUCM9eeSsKF9rlk/XTi9CLu7NvBJzwanWhS5adOugfuDJoXjykjcV3Xy6xefR+oKCNQJUT5Hc8yg==" />
+
+  <meta name="request-id" content="VB9SEC7PQWCPG2H0W1W3" />
+
+      <link rel="canonical" href="https://www.goodreads.com/author/show/10896.Eoin_Colfer" />
+
+  <script src="https://s.gr-assets.com/assets/react_client_side/external_dependencies-6676dbdf53.js"></script>
+<script src="https://s.gr-assets.com/assets/react_client_side/site_header-67644f8cf6.js"></script>
+<script src="https://s.gr-assets.com/assets/react_ujs-d9fd29be94e810d36e13f90d5c480c64.js"></script>
+
+
+    <script type="text/javascript" charset="utf-8">
+    Event.observe(window, 'load', function() {
+      $$('.authorBlogPost .body img').each(function(img) {
+        img.scaleToMaxWidth(385);
+      });
+
+      var hash = window.location.hash.substring(1);
+      var showBlogFormLink = document.getElementById('show_external_blog_form');
+      if (hash === 'blog' && showBlogFormLink) {
+        showBlogFormLink.click();
+      }
+
+    });
+  </script>
+<script>
+  //<![CDATA[
+    $grfb.init.done(function() {
+      if (this.auth.status === "not_authorized") {
+        // logged into Facebook user but not a GR app user; show FB button
+        $j("#generalRegPrompt").hide();
+      } else {
+        $j("#facebookRegPrompt").hide();
+      }
+      $j("#connectPrompt").show();
+    });
+  //]]>
+</script>
+
+
+  
+  
+  
+
+  <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Goodreads">
+
+    <script>
+//<![CDATA[
+
+  var GoodreadsAnalytics = GoodreadsAnalytics || {};
+  var _gaq = _gaq || [];
+
+  GoodreadsAnalytics.push = function () {
+    _gaq.push.apply(_gaq, arguments);
+  }
+
+  GoodreadsAnalytics.push(['_setAccount', 'UA-968618-1']);
+  GoodreadsAnalytics.push(['_setCustomVar',
+    1,                        // Slot 1
+    'User Status',            // Custom variable name
+    'signed_out',  // Custom variable value: signed_out, signed_in,
+                              //   signed_in_facebook_connected, or
+                              //   goodreads_member_previously_signed_in
+    2                         // Visit-level scope, which means slot 1 will be
+                              //   free when the visit ends.
+  ]);
+  GoodreadsAnalytics.push(['_setCustomVar',
+    2,                        // Slot 2
+    'Device Type',            // Custom variable name
+    'desktop',         // Custom variable value: desktop, mobile, or
+                              //   tablet
+    2                         // Visit-level scope, which means slot 2 will be
+                              //   free when the visit ends.
+  ]);
+  GoodreadsAnalytics.push(['_trackPageview']);
+
+  (function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+
+//]]>
+</script>
+
+    <meta name="description" content="Eoin Colfer (pronounced Owen) was born in Wexford on the South-East coast of Ireland in 1965, where he and his four brothers were brought up by his fathe...">
+
+  <meta content='summary' name='twitter:card'>
+<meta content='@goodreads' name='twitter:site'>
+<meta content='Eoin Colfer (Author of Artemis Fowl)' name='twitter:title'>
+<meta content='Eoin Colfer (pronounced Owen) was born in Wexford on the South-East coast of Ireland in 1965, where he and his four brothers were brought up by his fathe...' name='twitter:description'>
+
+
+  <meta name="verify-v1" content="cEf8XOH0pulh1aYQeZ1gkXHsQ3dMPSyIGGYqmF53690=">
+  <meta name="google-site-verification" content="PfFjeZ9OK1RrUrKlmAPn_iZJ_vgHaZO1YQ-QlG2VsJs" />
+  <meta name="apple-itunes-app" content="app-id=355833469">
+    <!-- OPEN GRAPH-->
+  <meta content='2415071772' property='fb:app_id'>
+<meta content='books.author' property='og:type'>
+<meta content='Eoin Colfer' property='og:title'>
+<meta content='Author of Artemis Fowl, The Lost Colony, and The Arctic Incident' property='og:description'>
+<meta content='https://images.gr-assets.com/authors/1254336426p8/10896.jpg' property='og:image'>
+<meta content='https://www.goodreads.com/author/show/10896.Eoin_Colfer' property='og:url'>
+<meta content='https://www.goodreads.com/book/show/249747.Artemis_Fowl' property='books:book'>
+<meta content='https://www.goodreads.com/book/show/37586.The_Lost_Colony' property='books:book'>
+<meta content='https://www.goodreads.com/book/show/114955.The_Arctic_Incident' property='books:book'>
+
+
+  <meta itemprop="image" content="https://images.gr-assets.com/authors/1254336426p5/10896.jpg">
+
+
+</head>
+
+
+<body class="">
+<div class="content">
+  
+
+    <script>
+  //<![CDATA[
+    if (typeof window.uet == "function") { window.uet("ns"); }
+  //]]>
+</script>
+<script>
+  //<![CDATA[
+    // Load Facebook JS SDK
+    $grfb.initialize({
+      appId: "2415071772",
+      grSession: "false",
+      serverFBUser: "null",
+      serverPublishEnabled: null,
+      suppressAutoLogin: "false",
+      brokenFbConnectionTracked: "false",
+      publishPermissionVerified: "false"
+    });
+  //]]>
+</script>
+<div class='siteHeader responsiveNavInitiallyHiddenMobile'>
+<script>
+//<![CDATA[
+  ReactStores.NotificationsStore.updateWith({});
+  ReactStores.CurrentUserStore.initializeWith({"currentUser":null});
+  ReactStores.FavoriteGenresStore.updateWith({"allGenres":[{"name":"Art","url":"/genres/art"},{"name":"Biography","url":"/genres/biography"},{"name":"Business","url":"/genres/business"},{"name":"Children's","url":"/genres/children-s"},{"name":"Christian","url":"/genres/christian"},{"name":"Classics","url":"/genres/classics"},{"name":"Comics","url":"/genres/comics"},{"name":"Cookbooks","url":"/genres/cookbooks"},{"name":"Ebooks","url":"/genres/ebooks"},{"name":"Fantasy","url":"/genres/fantasy"},{"name":"Fiction","url":"/genres/fiction"},{"name":"Graphic Novels","url":"/genres/graphic-novels"},{"name":"Historical Fiction","url":"/genres/historical-fiction"},{"name":"History","url":"/genres/history"},{"name":"Horror","url":"/genres/horror"},{"name":"Memoir","url":"/genres/memoir"},{"name":"Music","url":"/genres/music"},{"name":"Mystery","url":"/genres/mystery"},{"name":"Nonfiction","url":"/genres/non-fiction"},{"name":"Poetry","url":"/genres/poetry"},{"name":"Psychology","url":"/genres/psychology"},{"name":"Romance","url":"/genres/romance"},{"name":"Science","url":"/genres/science"},{"name":"Science Fiction","url":"/genres/science-fiction"},{"name":"Self Help","url":"/genres/self-help"},{"name":"Sports","url":"/genres/sports"},{"name":"Thriller","url":"/genres/thriller"},{"name":"Travel","url":"/genres/travel"},{"name":"Young Adult","url":"/genres/young-adult"}],"favoriteGenres":[],"sponsoredGenres":[{"name":"Audiobooks","url":"/genres/audiobooks"}],"adId":"div-gpt-ad-goodr-nav-browse-400x300"});
+  ReactStores.TabsStore.updateWith({"communitySpotlight":"groups"});
+
+//]]>
+</script><div data-react-class="ReactComponents.HeaderStoreConnector" data-react-props="{&quot;myBooksUrl&quot;:&quot;/review/list&quot;,&quot;browseUrl&quot;:&quot;/book&quot;,&quot;recommendationsUrl&quot;:&quot;/recommendations&quot;,&quot;choiceAwardsUrl&quot;:&quot;/choiceawards&quot;,&quot;dealsUrl&quot;:&quot;/ebook-deals&quot;,&quot;genresIndexUrl&quot;:&quot;/genres&quot;,&quot;giveawayUrl&quot;:&quot;/giveaway&quot;,&quot;homeUrl&quot;:&quot;/&quot;,&quot;listUrl&quot;:&quot;/list&quot;,&quot;blogUrl&quot;:&quot;/blog/index&quot;,&quot;editorsPicksUrl&quot;:&quot;/voice&quot;,&quot;communityUrl&quot;:&quot;/group&quot;,&quot;groupsUrl&quot;:&quot;/group&quot;,&quot;quotesUrl&quot;:&quot;/quotes&quot;,&quot;featuredAskAuthorUrl&quot;:&quot;/ask_the_author&quot;,&quot;searchPath&quot;:&quot;/search&quot;,&quot;discussionsUrl&quot;:&quot;/topic&quot;,&quot;autocompleteUrl&quot;:&quot;/book/auto_complete&quot;,&quot;defaultLogoActionUrl&quot;:&quot;/&quot;,&quot;logoActionUrl&quot;:&quot;/&quot;,&quot;readingNotesUrl&quot;:&quot;/notes?ref=nd&quot;,&quot;topAdBanner&quot;:{&quot;topAdBannerUrl&quot;:&quot;/blog/show/1185-23-big-books-of-spring?int=header_top_spr_2018&quot;,&quot;xs&quot;:{&quot;1x&quot;:&quot;https://s.gr-assets.com/assets/site_header/ad_banner_xs_1x-342c08d09c679dc53c71499477b15fd5.jpg&quot;,&quot;2x&quot;:&quot;https://s.gr-assets.com/assets/site_header/ad_banner_xs_2x-717af4c0802380815d1c0f04644b4db6.jpg&quot;},&quot;md&quot;:{&quot;1x&quot;:&quot;https://s.gr-assets.com/assets/site_header/ad_banner_md_1x-facaeda41e65ba8286b7607a991a013f.jpg&quot;,&quot;2x&quot;:&quot;https://s.gr-assets.com/assets/site_header/ad_banner_md_2x-acf9615879e4c2f241dcce9f42f37d05.jpg&quot;}},&quot;newReleasesUrl&quot;:&quot;/book/popular_by_date/2018/5&quot;,&quot;signInUrl&quot;:&quot;/user/sign_in&quot;,&quot;signUpUrl&quot;:&quot;/user/sign_up&quot;,&quot;signInWithReturnUrl&quot;:true,&quot;deployServices&quot;:[&quot;newsfeed_impression_tracking&quot;,&quot;nav_bar_discussions_pane&quot;,&quot;responsive_nav&quot;,&quot;responsive_nav_mobile&quot;,&quot;responsive_nav_signed_out&quot;,&quot;responsive_nav_signed_out_mobile&quot;],&quot;defaultLogoAltText&quot;:&quot;Goodreads Home&quot;,&quot;logoAltText&quot;:&quot;Goodreads Home&quot;,&quot;mobviousDeviceType&quot;:&quot;desktop&quot;}"><header data-reactid=".n5k7it2io0" data-react-checksum="2073553550"><div class="siteHeader__topLine gr-box gr-box--withShadow" data-reactid=".n5k7it2io0.1"><div class="siteHeader__contents" data-reactid=".n5k7it2io0.1.0"><div class="siteHeader__topLevelItem siteHeader__topLevelItem--searchIcon" data-reactid=".n5k7it2io0.1.0.0"><button class="siteHeader__searchIcon gr-iconButton" aria-label="Toggle search" type="button" data-reactid=".n5k7it2io0.1.0.0.0"></button></div><a href="/" class="siteHeader__logo" aria-label="Goodreads Home" title="Goodreads Home" data-reactid=".n5k7it2io0.1.0.2"></a><nav class="siteHeader__primaryNavInline" data-reactid=".n5k7it2io0.1.0.3"><ul role="menu" class="siteHeader__menuList" data-reactid=".n5k7it2io0.1.0.3.0"><li class="siteHeader__topLevelItem siteHeader__topLevelItem--home" data-reactid=".n5k7it2io0.1.0.3.0.0"><a href="/" class="siteHeader__topLevelLink" data-reactid=".n5k7it2io0.1.0.3.0.0.0">Home</a></li><li class="siteHeader__topLevelItem" data-reactid=".n5k7it2io0.1.0.3.0.1"><a href="/review/list" class="siteHeader__topLevelLink" data-reactid=".n5k7it2io0.1.0.3.0.1.0">My Books</a></li><li class="siteHeader__topLevelItem" data-reactid=".n5k7it2io0.1.0.3.0.2"><div class="dropdown dropdown--siteHeader dropdown--siteHeaderBrowseMenu" data-reactid=".n5k7it2io0.1.0.3.0.2.0"><a class="dropdown__trigger dropdown__trigger--siteHeader dropdown__trigger--siteHeaderBrowseMenu dropdown__trigger--triggerEventTypeHover" href="/book" role="button" aria-haspopup="true" aria-expanded="false" data-reactid=".n5k7it2io0.1.0.3.0.2.0.0"><span data-reactid=".n5k7it2io0.1.0.3.0.2.0.0.0">Browse ▾</span></a><div class="dropdown__menu dropdown__menu--siteHeader dropdown__menu--siteHeaderBrowseMenu gr-box gr-box--withShadowLarge" role="menu" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1"><div class="siteHeader__browseMenuDropdown" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0"><ul class="siteHeader__subNav" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0"><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.0"><a href="/recommendations" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.0.0">Recommendations</a></li><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.1"><a href="/ebook-deals" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.1.0">Deals</a></li><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.2"><a href="/choiceawards" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.2.0">Choice Awards</a></li><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.3"><a href="/genres" class="siteHeader__subNavLink siteHeader__subNavLink--genresIndex" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.3.0">Genres</a></li><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.4"><a href="/giveaway" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.4.0">Giveaways</a></li><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.5"><a href="/book/popular_by_date/2018/5" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.5.0">New Releases</a></li><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.6"><a href="/list" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.6.0">Lists</a></li><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.7"><a href="/voice" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.7.0">News &amp; Interviews</a></li><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.8"><a href="/book" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.8.0">Explore</a></li><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.9"><a href="/blog/index" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.9.0">Blog</a></li><div class="siteHeader__sponsoredFillSpace" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.a"></div><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.b"><a href="https://www.goodreads.com/track/daily_click?pmet_click_tid=AEP_Header_BrowseMenu_TrafficDriver_Click&amp;tid=AEP_Desktop_Header_BrowseEntrypoint&amp;url=https://www.goodreads.com/audible" class="siteHeader__sponsoredNavLink" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.b.0"><div data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.b.0.0"><div class="siteHeader__navDivider" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.b.0.0.0"></div><span data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.b.0.0.1">Listen with Audible</span></div></a></li><div class="siteHeader__sponsoredLabel" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.c"><span class="siteHeader__sponsoredIcon gr-newsfeedItem__sponsoredBadgeIcon featuredGenres__sponsoredIcon" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.c.0"></span><span class="featuredGenres__sponsoredLabel siteHeader__sponsoredText" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.0.c.1">Sponsored</span></div></ul><div class="siteHeader__spotlight siteHeader__spotlight--withoutSubMenu" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1"><div class="genreListContainer" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0"><div class="siteHeader__heading siteHeader__title" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.0">Genres</div><ul class="genreList" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0"><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Art"><a href="/genres/art" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Art.0">Art</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Biography"><a href="/genres/biography" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Biography.0">Biography</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Business"><a href="/genres/business" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Business.0">Business</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Children&#x27;s"><a href="/genres/children-s" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Children&#x27;s.0">Children&#x27;s</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Christian"><a href="/genres/christian" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Christian.0">Christian</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Classics"><a href="/genres/classics" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Classics.0">Classics</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Comics"><a href="/genres/comics" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Comics.0">Comics</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Cookbooks"><a href="/genres/cookbooks" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Cookbooks.0">Cookbooks</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Ebooks"><a href="/genres/ebooks" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Ebooks.0">Ebooks</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Fantasy"><a href="/genres/fantasy" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList0.0:$Fantasy.0">Fantasy</a></li></ul><ul class="genreList" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1"><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Fiction"><a href="/genres/fiction" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Fiction.0">Fiction</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Graphic Novels"><a href="/genres/graphic-novels" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Graphic Novels.0">Graphic Novels</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Historical Fiction"><a href="/genres/historical-fiction" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Historical Fiction.0">Historical Fiction</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$History"><a href="/genres/history" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$History.0">History</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Horror"><a href="/genres/horror" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Horror.0">Horror</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Memoir"><a href="/genres/memoir" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Memoir.0">Memoir</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Music"><a href="/genres/music" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Music.0">Music</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Mystery"><a href="/genres/mystery" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Mystery.0">Mystery</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Nonfiction"><a href="/genres/non-fiction" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Nonfiction.0">Nonfiction</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Poetry"><a href="/genres/poetry" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList1.0:$Poetry.0">Poetry</a></li></ul><ul class="genreList" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2"><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Psychology"><a href="/genres/psychology" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Psychology.0">Psychology</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Romance"><a href="/genres/romance" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Romance.0">Romance</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Science"><a href="/genres/science" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Science.0">Science</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Science Fiction"><a href="/genres/science-fiction" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Science Fiction.0">Science Fiction</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Self Help"><a href="/genres/self-help" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Self Help.0">Self Help</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Sports"><a href="/genres/sports" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Sports.0">Sports</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Thriller"><a href="/genres/thriller" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Thriller.0">Thriller</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Travel"><a href="/genres/travel" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Travel.0">Travel</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Young Adult"><a href="/genres/young-adult" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.0:$Young Adult.0">Young Adult</a></li><li role="menuitem" class="genreList__genre" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.1"><a href="/genres" class="genreList__genreLink gr-hyperlink gr-hyperlink--naked" data-reactid=".n5k7it2io0.1.0.3.0.2.0.1.0.1.0.1:$genreList2.1.0">More Genres</a></li></ul></div></div></div></div></div></li><li class="siteHeader__topLevelItem siteHeader__topLevelItem--community" data-reactid=".n5k7it2io0.1.0.3.0.3"><div class="dropdown dropdown--siteHeader" data-reactid=".n5k7it2io0.1.0.3.0.3.0"><a class="dropdown__trigger dropdown__trigger--siteHeader dropdown__trigger--triggerEventTypeHover" href="/group" role="button" aria-haspopup="true" aria-expanded="false" data-reactid=".n5k7it2io0.1.0.3.0.3.0.0"><span data-reactid=".n5k7it2io0.1.0.3.0.3.0.0.0">Community ▾</span></a><div class="dropdown__menu dropdown__menu--siteHeader gr-box gr-box--withShadowLarge" role="menu" data-reactid=".n5k7it2io0.1.0.3.0.3.0.1"><ul class="siteHeader__subNav" data-reactid=".n5k7it2io0.1.0.3.0.3.0.1.0"><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.3.0.1.0.0"><a href="/group" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.3.0.1.0.0.0">Groups</a></li><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.3.0.1.0.1"><a href="/topic" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.3.0.1.0.1.0">Discussions</a></li><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.3.0.1.0.2"><a href="/quotes" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.3.0.1.0.2.0">Quotes</a></li><li role="menuitem" class="menuLink" data-reactid=".n5k7it2io0.1.0.3.0.3.0.1.0.3"><a href="/ask_the_author" class="siteHeader__subNavLink" data-reactid=".n5k7it2io0.1.0.3.0.3.0.1.0.3.0">Ask the Author</a></li></ul></div></div></li></ul></nav><div accept-charset="UTF-8" class="searchBox searchBox--navbar" data-reactid=".n5k7it2io0.1.0.4"><form autocomplete="off" action="/search" class="searchBox__form" role="search" aria-label="Search for books to add to your shelves" data-reactid=".n5k7it2io0.1.0.4.0"><input class="searchBox__input searchBox__input--navbar" autocomplete="off" name="q" type="text" placeholder="Search books" aria-label="Search books" aria-controls="searchResults" data-reactid=".n5k7it2io0.1.0.4.0.0"/><button type="submit" class="searchBox__icon--magnifyingGlass gr-iconButton searchBox__icon searchBox__icon--navbar" aria-label="Search" data-reactid=".n5k7it2io0.1.0.4.0.1"></button></form></div><ul class="siteHeader__personal" data-reactid=".n5k7it2io0.1.0.5"><li class="siteHeader__topLevelItem siteHeader__topLevelItem--signedOut" data-reactid=".n5k7it2io0.1.0.5.0"><a href="/user/sign_in?returnurl=undefined" rel="nofollow" class="siteHeader__topLevelLink" data-reactid=".n5k7it2io0.1.0.5.0.0">Sign In</a></li><li class="siteHeader__topLevelItem siteHeader__topLevelItem--signedOut" data-reactid=".n5k7it2io0.1.0.5.1"><a href="/user/sign_up" rel="nofollow" class="siteHeader__topLevelLink" data-reactid=".n5k7it2io0.1.0.5.1.0">Join</a></li></ul><div class="siteHeader__topLevelItem siteHeader__topLevelItem--signUp" data-reactid=".n5k7it2io0.1.0.6"><a href="/user/sign_up" class="gr-button gr-button--dark" rel="nofollow" data-reactid=".n5k7it2io0.1.0.6.0">Sign up</a></div></div></div><noscript data-reactid=".n5k7it2io0.2"></noscript></header></div>
+</div>
+<div class='siteHeaderBottomSpacer'></div>
+<script>
+  //<![CDATA[
+    ReactRailsUJS.mountComponents();
+  //]]>
+</script>
+
+  
+
+  <div class="mainContentContainer ">
+
+
+      
+
+    <div class="mainContent ">
+      
+      
+      <div class="mainContentFloat ">
+
+        <div id="flashContainer">
+
+
+
+
+</div>
+
+        
+
+
+<div id='connectPrompt' style='display:none;'>
+<div class='connectPromptHolder'>
+<div class='vcenteredLineOfBlocks' style='margin:15px auto 0;'>
+<div class='regPromptText'>
+<div class='title'>
+Discover new books on Goodreads
+</div>
+<div class='subtext'>
+See if your friends have read any of Eoin Colfer's books
+</div>
+</div>
+<div id='facebookRegPrompt'>
+<a class='fbjsLogin fbButton connectPromptButton' data-tracking-id='fb_connect_prompt_quote_reg_prompt' href='/user/new'>
+<img alt="Facebook" src="https://s.gr-assets.com/assets/facebook/fb-icon-8d74377d3ff4a368f05860c35d8025b2.png" />
+Sign in with Facebook
+</a>
+<div class='connectPromptAlternates'>
+<a href="/user/sign_up?connect_prompt=true">Sign in <br/> options</a>
+</div>
+</div>
+<div id='generalRegPrompt'>
+<div class='connectPromptButton'>
+<a class="button orange" href="/user/sign_up?connect_prompt=true">Join Goodreads</a>
+</div>
+</div>
+</div>
+<div class='clear'></div>
+</div>
+</div>
+
+
+
+<div class="reverseColumnSizes" itemscope itemtype="http://schema.org/Person">
+  <div class="leftContainer authorLeftContainer">
+      <a title="Eoin Colfer" rel="nofollow" href="/photo/author/10896.Eoin_Colfer"><img alt="Eoin Colfer" itemprop="image" src="https://images.gr-assets.com/authors/1254336426p5/10896.jpg" /></a>
+
+    <br class="clear"/>
+      <br />
+
+
+
+
+
+    <div id="topListSection">
+      
+    </div>
+
+    <script>
+//<![CDATA[
+ReactStores.GoogleAdsStore.initializeWith({"targeting":{"sid":"4c19389e1ca6f6ab915a6b7b654916ba","grsession":"4c19389e1ca6f6ab915a6b7b654916ba","surface":"desktop","signedin":"false","gr_author":"false","author":[10896],"shelf":["or","popsugarreadingchallenge2018","faeandfairies","fordaymon","bibliotheek","willrereadsomeday","jesse","popsugar2018","libraryloan","collegereads","wanttoreadseries","readingolympics"],"gtargeting":"1","resource":"Author_10896"},"ads":{"div-gpt-ad-goodr-nav-browse-300x250":{"isBannerAd":true,"isNativeAd":false,"hasCreative":false,"hasRequestedCreative":false,"path":"/4215/goodr.nav.browse.300x250","dimensions":"300x250","adSizeMapping":null,"adDeviceType":"desktop","pmetImpressionTrackUrl":"https://www.goodreads.com/dfp/impression","pmetClickTrackUrl":"https://www.goodreads.com/dfp/click","creativeSelector":"div#google_image_div","isLazyLoaded":false,"className":"goodr.nav.browse.300x250div-gpt-ad-goodr-nav-browse-300x250"},"div-gpt-ad-goodr-auth-show-top-300x250":{"isBannerAd":true,"isNativeAd":false,"hasCreative":false,"hasRequestedCreative":false,"path":"/4215/goodr.auth.show.top.300x250","dimensions":"300x250","adSizeMapping":null,"adDeviceType":"desktop","pmetImpressionTrackUrl":"https://www.goodreads.com/dfp/impression","pmetClickTrackUrl":"https://www.goodreads.com/dfp/click","creativeSelector":"div#google_image_div","isLazyLoaded":false,"className":"goodr.auth.show.top.300x250div-gpt-ad-goodr-auth-show-top-300x250"},"div-gpt-ad-goodr-auth-show-cb-300x250":{"isBannerAd":true,"isNativeAd":false,"hasCreative":false,"hasRequestedCreative":false,"path":"/4215/goodr.auth.show.cb.300x250","dimensions":"300x250","adSizeMapping":null,"adDeviceType":"desktop","pmetImpressionTrackUrl":"https://www.goodreads.com/dfp/impression","pmetClickTrackUrl":"https://www.goodreads.com/dfp/click","creativeSelector":"div#google_image_div","isLazyLoaded":false,"className":"goodr.auth.show.cb.300x250div-gpt-ad-goodr-auth-show-cb-300x250"},"div-gpt-ad-goodr-auth-show-bottom-300x250":{"isBannerAd":true,"isNativeAd":false,"hasCreative":false,"hasRequestedCreative":false,"path":"/4215/goodr.auth.show.bottom.300x250","dimensions":"300x250","adSizeMapping":null,"adDeviceType":"desktop","pmetImpressionTrackUrl":"https://www.goodreads.com/dfp/impression","pmetClickTrackUrl":"https://www.goodreads.com/dfp/click","creativeSelector":"div#google_image_div","isLazyLoaded":false,"className":"goodr.auth.show.bottom.300x250div-gpt-ad-goodr-auth-show-bottom-300x250"}},"nativeAds":{"div-gpt-ad-goodr-nav-browse-400x300":{"id":"div-gpt-ad-goodr-nav-browse-400x300","isBannerAd":false,"isNativeAd":true,"hasCreative":false,"hasRequestedCreative":false,"resourceType":"NewsfeedAd","path":"/4215/goodr.nav.browse.400x300","dimensions":"400x300","adDeviceType":"desktop","pmetImpressionTrackUrl":"https://www.goodreads.com/dfp/impression","pmetClickTrackUrl":"https://www.goodreads.com/dfp/click","creativeSelector":"div.dfp_native_update","className":"goodr.nav.browse.400x300div-gpt-ad-goodr-nav-browse-400x300","isLazyLoaded":true}},"polls":{}});
+//]]>
+</script><div data-react-class="ReactComponents.GoogleBannerAd" data-react-props="{&quot;adId&quot;:&quot;div-gpt-ad-goodr-auth-show-top-300x250&quot;,&quot;className&quot;:&quot;&quot;}"></div>
+    <br />
+
+    <div class=" clearFloats bigBox"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground"><a href="/author_followings?id=10896&amp;method=get">Eoin Colfer’s Followers (8,196)</a></h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent"><div><a title="Turtelina" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/1950-turtelina"><img alt="Turtelina" src="https://images.gr-assets.com/users/1451201643p1/1950.jpg" /></a></div>
+<div><a title="Erin Lovall" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/8563-erin"><img alt="Erin Lo..." src="https://images.gr-assets.com/users/1386263640p1/8563.jpg" /></a></div>
+<div><a title="Liz R." class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/12462-liz-r"><img alt="Liz R." src="https://images.gr-assets.com/users/1509461513p1/12462.jpg" /></a></div>
+<div><a title="Lexi" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/18707-lexi"><img alt="Lexi" src="https://images.gr-assets.com/users/1173207834p1/18707.jpg" /></a></div>
+<div><a title="Joseph-Daniel Peter Paul Abondius Letendre" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/45006-joseph-daniel-peter-paul-abondius"><img alt="Joseph-..." src="https://images.gr-assets.com/users/1468533996p1/45006.jpg" /></a></div>
+<div><a title="JG (The Introverted Reader)" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/48404-jg-the-introverted-reader"><img alt="JG (The..." src="https://images.gr-assets.com/users/1327259536p1/48404.jpg" /></a></div>
+<div><a title="Lynette" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/53991-lynette"><img alt="Lynette" src="https://s.gr-assets.com/assets/nophoto/user/f_25x33-d79c46f9428d2aea1444d67c091766a6.png" /></a></div>
+<div><a title="Rachel Gray" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/65119-rachel"><img alt="Rachel ..." src="https://images.gr-assets.com/users/1268892565p1/65119.jpg" /></a></div>
+<div><a title="Heather Guerena" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/81680-heather-guerena"><img alt="Heather..." src="https://images.gr-assets.com/users/1178772793p1/81680.jpg" /></a></div>
+<div><a title="Primadonna Angela" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/87942-primadonna"><img alt="Primado..." src="https://images.gr-assets.com/users/1442472288p1/87942.jpg" /></a></div>
+<div><a title="Holly Czuba" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/93128-holly"><img alt="Holly C..." src="https://images.gr-assets.com/users/1453316867p1/93128.jpg" /></a></div>
+<div><a title="Robert Fanney" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/107301-robert"><img alt="Robert ..." src="https://images.gr-assets.com/users/1180568811p1/107301.jpg" /></a></div>
+<div><a title="Cristov Russell" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/112687-cristov"><img alt="Cristov..." src="https://images.gr-assets.com/users/1279856032p1/112687.jpg" /></a></div>
+<div><a title="Rebekah Simays" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/113581-rebekah"><img alt="Rebekah..." src="https://s.gr-assets.com/assets/nophoto/user/f_25x33-d79c46f9428d2aea1444d67c091766a6.png" /></a></div>
+<div><a title="Dotty Delafield" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/128471-dotty"><img alt="Dotty D..." src="https://images.gr-assets.com/users/1416698027p1/128471.jpg" /></a></div>
+<div><a title="Paula O&#39;Connor" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/129173-paula-o-connor"><img alt="Paula O..." src="https://images.gr-assets.com/users/1396295700p1/129173.jpg" /></a></div>
+<div><a title="Teea Hillyard" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/130115-teea"><img alt="Teea Hi..." src="https://images.gr-assets.com/users/1215648358p1/130115.jpg" /></a></div>
+<div><a title="Laura" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/131821-laura"><img alt="Laura" src="https://images.gr-assets.com/users/1243730432p1/131821.jpg" /></a></div>
+<div><a title="Sarah  Ishak" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/136658-sarah"><img alt="Sarah  ..." src="https://images.gr-assets.com/users/1212634345p1/136658.jpg" /></a></div>
+<div><a title="Library Lady" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/138271-library-lady"><img alt="Library..." src="https://images.gr-assets.com/users/1222454918p1/138271.jpg" /></a></div>
+<div><a title="Mel" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/140606-mel"><img alt="Mel" src="https://images.gr-assets.com/users/1451949451p1/140606.jpg" /></a></div>
+<div><a title="Pam Jones" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/146525-pam-jones"><img alt="Pam Jones" src="https://images.gr-assets.com/users/1297265709p1/146525.jpg" /></a></div>
+<div><a title="Ali Hassan" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/148439-ali"><img alt="Ali Hassan" src="https://images.gr-assets.com/users/1329944400p1/148439.jpg" /></a></div>
+<div><a title="Mirna Adzania" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/154362-mirna"><img alt="Mirna A..." src="https://images.gr-assets.com/users/1268211408p1/154362.jpg" /></a></div>
+<div><a title="Sara ♥ Ferrell" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/155288-sara"><img alt="Sara ♥ ..." src="https://images.gr-assets.com/users/1364972316p1/155288.jpg" /></a></div>
+<div><a title="rivka" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/171430-rivka"><img alt="rivka" src="https://images.gr-assets.com/users/1183776182p1/171430.jpg" /></a></div>
+<div><a title="Yohanna Yuni" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/183337-yohanna"><img alt="Yohanna..." src="https://images.gr-assets.com/users/1308559613p1/183337.jpg" /></a></div>
+<div><a title="Barbie Byrd" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/189338-barbie-byrd"><img alt="Barbie ..." src="https://images.gr-assets.com/users/1391881394p1/189338.jpg" /></a></div>
+<div><a title="Megan Reichelt" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/199052-megan-reichelt"><img alt="Megan R..." src="https://images.gr-assets.com/users/1264779478p1/199052.jpg" /></a></div>
+<div><a title="M Jackman" class="leftAlignedImage" style="margin-bottom: 5px; margin-right: 5px;" href="https://www.goodreads.com/user/show/199106-m"><img alt="M Jackman" src="https://images.gr-assets.com/users/1202589106p1/199106.jpg" /></a></div>
+<a class="actionLinkLite" rel="nofollow" style="float: right" href="/author_followings?id=10896.Eoin_Colfer">More followers…</a>
+<div class="clear"></div></div></div><div class="bigBoxBottom"></div></div>
+
+    <div data-react-class="ReactComponents.GoogleBannerAd" data-react-props="{&quot;adId&quot;:&quot;div-gpt-ad-goodr-auth-show-cb-300x250&quot;,&quot;className&quot;:&quot;&quot;}" id="cobrandSlot"></div>
+    <br/>
+
+
+
+    
+    <br/><br/>
+
+    
+
+    <script src="https://s.gr-assets.com/assets/user/show-b8d39f3f088b297e6e042f1df360d75f.js"></script>
+
+
+    <div data-react-class="ReactComponents.GoogleBannerAd" data-react-props="{&quot;adId&quot;:&quot;div-gpt-ad-goodr-auth-show-bottom-300x250&quot;,&quot;className&quot;:&quot;&quot;}"></div>
+  </div>
+  <div class="rightContainer">
+    <div id="notificationBanner" class="js-standalone-notification">
+      <div class="formSubmissionNotification js-notification">
+        <div class="notificationMessage js-notificationMessage"></div>
+        <span class="notificationDismissAction js-notificationDismissAction"></span>
+      </div>
+    </div>
+    
+<div>
+  <h1 class="authorName">
+  	<span itemprop="name">Eoin Colfer</span>
+  </h1>
+
+</div>
+<br class="clear"/>
+
+  <div class="dataTitle">Born</div>
+  in Wexford, Ireland
+    <div class="dataItem" itemprop='birthDate'>
+        May 14, 1965
+    </div>
+  <br class="clear"/>
+
+
+  <div class="dataTitle">Website</div>
+  <div class="dataItem">
+    <a target="_blank" itemprop="url" href="http://eoincolfer.com/">http://eoincolfer.com/</a>
+  </div>
+  <br class="clear"/>
+
+  <div class="dataTitle">Twitter</div>
+  <div class="dataItem">
+    <a target="_blank" rel="nofollow" href="http://www.twitter.com/eoincolfer">eoincolfer</a>
+  </div>
+  <br class="clear"/>
+
+  <div class="dataTitle">Genre</div>
+  <div class="dataItem">
+		<a href="/genres/literature-fiction">Literature &amp; Fiction</a>, <a href="/genres/science-fiction-fantasy">Science Fiction &amp; Fantasy</a>, <a href="/genres/mystery-thrillers">Mystery &amp; Thrillers</a>
+	</div>
+  <br class="clear"/>
+
+
+
+
+<div class="aboutAuthorInfo">
+	<div style="float: right;">
+  	<a class="smallText greyText" rel="nofollow" href="/author/edit/10896.Eoin_Colfer">edit data</a>
+  </div>
+	<br class="clear"/>
+	
+<span id="freeTextContainerauthor10896">Eoin Colfer (pronounced Owen) was born in Wexford on the South-East coast of Ireland in 1965, where he and his four brothers were brought up by his father and mother, who were both educators.<br /><br />He received his degree from Dublin University and began teaching primary school in Wexford. He has lived and worked all over the world, including Saudi Arabia, Tunisia and Italy. After the publication of the Artemis Fowl novels, Eoin retired from teaching and now writes full time. He lives in Ireland with his wife and two children.<br /><br /></span>
+
+</div>
+
+    <br/>
+
+      
+  <a name="blog"></a>
+  <div id="blogBox" class=" clearFloats bigBox"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground"><div class="extraHeader"><a href="/author/show/10896.Eoin_Colfer/blog">170 posts</a></div><a href="/author/show/10896.Eoin_Colfer/blog">Eoin Colfer's Blog</a></h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
+
+    <div class="right" style="margin: 0 0 1em 1em;">
+        <div class="right box" style="width: 200px; padding: 0.5em; clear: right">
+          <a href="/author/show/10896.Eoin_Colfer">Eoin Colfer</a> isn't a Goodreads Author
+(<a href="/author/invite_author/10896.Eoin_Colfer">yet</a>),
+but he
+does have a blog,
+so here are some recent posts imported from
+his feed.
+
+        </div>
+    </div>
+
+      
+<div id="authorBlogPost-9382251" class="authorBlogPost readable stacked">
+    <div class="title">
+        <a href="/author_blog_posts/9382251-dublin-book-festival">Dublin Book Festival</a>
+    </div>
+  <div class="body mediumText reviewText">
+      Writing for Young Adults and Children With Eoin Colfer, John Connolly and Marie-Louise Fitzpatrick In conversation with Aoife Murray<br><br><p> <b>When: Sunday 15 November, from 1.00pm – 2.30pm</b></p><br><br><p> <b>Where: Main Theatre, Smock Alley Theatre</b></p><br><br><p> <b>Cost: €5/ €3 concession | <a href="https://smockalley.ticketsolve.com/shows/873540952/events" title="" rel="nofollow">BOOK NOW</a> </b></p><br><br><p> We invite you to join Aoife Murray, Programme and Events Manager at Children’s Books Ireland, as she discusses the secrets and joys that com...</p>
+        <a class="readMoreLink actionLink" href="/author_blog_posts/9382251-dublin-book-festival">Read more of this blog post &raquo;</a>
+  </div>
+    <div class="mediumText" style="margin-bottom: 20px">
+      <a href="http://feedproxy.google.com/~r/EoinColfer/~3/4W6N1uWhf2U/dublin-book-festival">View more on Eoin Colfer's website &raquo;</a>
+    </div>
+    <div class="greyText socialActionsContainer">
+      <span id="ratingResults9382251">
+        <span class='likeItContainer' id='like_container_author_blog_post_9382251'><a id="like_count_author_blog_post_9382251" rel="nofollow" href="/rating/voters/9382251?resource_type=AuthorBlogPost"><span class="likesCount">10 likes</span></a>&nbsp;&middot;&nbsp;<a rel="nofollow" class="jsLike like_it gr-button gr-button--small" href="https://www.goodreads.com/user/new?remember=true&amp;return_url=%2Fauthor%2Fshow%2F10896">Like</a></span>
+
+      </span>
+
+        &nbsp;&bull;&nbsp;
+        <a class="actionLink" style="width: auto" href="/author_blog_posts/9382251-dublin-book-festival">1 comment</a>
+
+        &nbsp;&bull;&nbsp;
+        <a class="flag" rel="nofollow" id="flag_link9382251" title="Flag this blog post as inappropriate." href="/flagged/new?resource_id=9382251&amp;resource_type=AuthorBlogPost&amp;return_url=%2Fauthor_blog_posts%2F9382251-dublin-book-festival">flag</a>
+
+        <div class='right'>
+
+
+              
+      <a class="facebook_connect" href="#" onclick="$grfb.feedDialog({&quot;resource_type&quot;:&quot;author_blog_post&quot;,&quot;name&quot;:&quot;Dublin Book Festival&quot;,&quot;caption&quot;:&quot;goodreads.com | Eoin Colfer&quot;,&quot;description&quot;:&quot;Writing for Young Adults and Children With Eoin Colfer, John Connolly and Marie-Louise Fitzpatrick In conversation with Aoife Murray\n\n When: Sunday 15 November, from 1.00pm – 2.30pm\n\n Where: Main T...&quot;,&quot;action_link_text&quot;:&quot;Read More&quot;,&quot;picture&quot;:&quot;https://images.gr-assets.com/authors/1254336426p2/10896.jpg&quot;,&quot;link&quot;:&quot;https://www.goodreads.com/author_blog_posts/9382251-dublin-book-festival&quot;,&quot;actions&quot;:[{&quot;name&quot;:&quot;Read More&quot;,&quot;link&quot;:&quot;https://www.goodreads.com/author_blog_posts/9382251-dublin-book-festival&quot;}]}); Lightbox.hideBox();; return false;"><img src="https://s.gr-assets.com/assets/icons/facebook_icon-5aa284bb961f43210131b8c78c266029.jpg" alt="Facebook icon" /></a>
+
+
+      <div class="twitterLogoButton" data-gr-tracker-id="">
+        <a href="https://twitter.com/intent/tweet?url=https://www.goodreads.com/author_blog_posts/9382251-dublin-book-festival&amp;via=goodreads&amp;text=liked Eoin Colfer&#39;s blog post: Dublin Book Festival "><img src="https://s.gr-assets.com/assets/icons/twitter_icon-2289166aec1c47ee68cfb5716142273f.jpg" alt="Twitter icon" /></a>
+      </div>
+
+
+
+
+        </div>
+    </div>
+    <div class="meta greyText">
+        Published on <span class="date">November 10, 2015 03:50</span>
+
+        &bull; 443 views
+
+    </div>
+</div>
+
+      <div class="moreLink">
+        <a class="actionLink" href="/author/show/10896.Eoin_Colfer/blog">View all 170 posts &raquo;</a>
+      </div>
+<div class="clear"></div></div></div><div class="bigBoxBottom"></div></div>
+      
+<div itemscope itemtype='http://schema.org/Collection'>
+<div class=" clearFloats bigBox"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground"><div class="extraHeader"><a rel="nofollow" href="/book/combine/10896.Eoin_Colfer">Combine Editions</a></div><a itemprop="url" href="/author/list/10896.Eoin_Colfer">Eoin Colfer’s books</a></h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
+  <div class="hreview-aggregate" style="padding-bottom: 5px; padding-left: 5px;"
+        itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+    <span class="item fn" hidden>Eoin Colfer</span>
+
+    <span class="rating">
+      Average rating:
+      <span class="average" itemprop='ratingValue'>3.93</span>
+    </span>
+    <div class="floatingBox" style="display:none; width: 400px;" id="ratingDistribution10896">
+      <img src="https://s.gr-assets.com/assets/loading-45f04d682f1e9151cf1e6fb18a1bde21.gif" alt="Loading" />
+    </div>
+    &middot; <span class="votes"><span class="value-title" title="1198892" itemprop='ratingCount' content="1198892">
+      1,198,892
+    </span></span> ratings
+    &middot; <span class="count"><span class="value-title" title="33867" itemprop='reviewCount' content="33867">
+      33,867
+    </span></span> reviews
+    &middot; <a href="/author/list/10896.Eoin_Colfer">112 distinct works</a>
+      • <a href="/author/similar/10896.Eoin_Colfer">Similar authors</a>
+  </div>
+
+    <table cellspacing="0" cellpadding="0" border="0" width="100%" class="stacked tableList">
+      
+  <!-- Add query string params -->
+
+  
+<script type="text/javascript" charset="utf-8">
+//<![CDATA[  
+
+  function submitShelfLink(unique_id, book_id, shelf_id, shelf_name, submit_form, exclusive) {
+    var checkbox_id = 'shelf_name_' + unique_id + '_' + shelf_id;
+    var element = document.getElementById(checkbox_id)
+
+    var checked = element.checked
+    if (checked && exclusive) {
+      // can't uncheck a radio by clicking it!
+      return
+    }
+    if(document.getElementById("savingMessage")){
+      Element.show('savingMessage')
+    }
+    var element_id = 'shelfInDropdownName_' + unique_id + '_' + shelf_id;
+    Element.update(element_id, "saving...");
+    if (submit_form) {
+      Element.hide('shelfDropdown_' + unique_id)
+      var form = document.getElementById('addBookForm' + book_id)
+      if (form) {
+        form.shelf.value = shelf_name
+        form.onsubmit()
+      }
+    }
+    else {
+      var action = checked ? 'remove' : ''
+      element.checked = !element.checked
+      new Ajax.Request('/shelf/add_to_shelf', {asynchronous:true, evalScripts:true, onSuccess:function(request){shelfSubmitted(request, book_id, checkbox_id, element_id, unique_id, shelf_name)}, parameters:'book_id=' + book_id + '&name=' + shelf_name + '&a=' + action + '&authenticity_token=' + encodeURIComponent('FUUKOCDmQ+L+aV71dYmXZzItuR4NdhHhTmEgHQY4bkPR1osghYau+9gJz5eoL1gHt+abkiqDYcp4ktoKfr84/A==')})
+    }
+  }
+
+  function shelfSubmitted(request, book_id, checkbox_id, element_id, unique_id, shelf_name) {
+    Element.update('shelfListfalse_' + book_id, request.responseText)
+    afterShelfSave(checkbox_id, element_id, unique_id, shelf_name.escapeHTML())
+  }
+
+  function refreshGroupBox(group_id, book_id) {
+    new Ajax.Updater('addGroupBooks' + book_id + '', '/group/add_book_box', {asynchronous:true, evalScripts:true, onSuccess:function(request){refreshGroupBoxComplete(request, book_id);}, parameters:'id=' + group_id + '&book_id=' + book_id + '&refresh=true' + '&authenticity_token=' + encodeURIComponent('moRjZcSUEjYo4TuD9Du1MDNEfitFg3EOJMn04OdFF2VeF+J9YfT/Lw6BquEpnXpQto9cp2J2ASUSOg73n8JB2g==')})
+  }
+//]]>
+</script>
+
+  <tr itemscope itemtype="http://schema.org/Book">
+    <td width="5%" valign="top">
+      <div id="249747" class="u-anchorTarget"></div>
+        <a title="Artemis Fowl" href="/book/show/249747.Artemis_Fowl">
+          <img alt="Artemis Fowl (Artemis Fowl,..." class="bookSmallImg" itemprop="image" src="https://images.gr-assets.com/books/1327945104s/249747.jpg" />
+</a>    </td>
+    <td width="100%" valign="top">
+      <a class="bookTitle" itemprop="url" href="/book/show/249747.Artemis_Fowl">
+        <span itemprop='name'>Artemis Fowl (Artemis Fowl, #1)</span>
+</a>      <br/>
+        <span class="greyText smallText uitext">
+              <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p6"></span><span size="12x12" class="staticStar p0"></span></span> 3.83 avg rating &mdash; 420,001 ratings</span>
+            &mdash;
+              published
+             2001
+            &mdash;
+            <a class="greyText" rel="nofollow" href="/work/editions/1334778-artemis-fowl">166 editions</a>
+        </span>
+        
+
+          </td>
+          <td width="130px" >
+
+        <div class='wtrButtonContainer wtrSignedOut' id='1_book_249747'>
+<div class='wtrUp wtrLeft'>
+<form action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="M/UKptS3w+FfxBg4r7jfTkGvbBaoFLgxGBYJ82dj4mj3Zou+cdcu+HmkiVpyHhAuxGROmo/hyBou5fPkH+S01w==" />
+<input type="hidden" name="book_id" id="book_id" value="249747" />
+<input type="hidden" name="name" id="name" value="to-read" />
+<input type="hidden" name="unique_id" id="unique_id" value="1_book_249747" />
+<input type="hidden" name="wtr_new" id="wtr_new" value="true" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="ref" id="ref" value="" class="wtrLeftUpRef" />
+<input type="hidden" name="existing_review" id="existing_review" value="false" class="wtrExisting" />
+<input type="hidden" name="page_url" id="page_url" />
+<button class='wtrToRead' type='submit'>
+<span class='progressTrigger'>Want to Read</span>
+<span class='progressIndicator'>saving…</span>
+</button>
+</form>
+
+</div>
+
+<div class='wtrRight wtrUp'>
+<form class="hiddenShelfForm" action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="/Nkknn1i3KLNDBZY/fHqJrSYg1b6i0KNf12ee8r6KcM4SqWG2AIxu+tshzogVyVGMVOh2t1+MqZJrmRssn1/fA==" />
+<input type="hidden" name="unique_id" id="unique_id" value="1_book_249747" />
+<input type="hidden" name="book_id" id="book_id" value="249747" />
+<input type="hidden" name="a" id="a" />
+<input type="hidden" name="name" id="name" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="page_url" id="page_url" />
+</form>
+
+<button class='wtrShelfButton'></button>
+<div class='wtrShelfMenu'>
+<ul class='wtrExclusiveShelves'>
+<li><button class='wtrExclusiveShelf' name='name' type='submit' value='to-read'>
+<span class='progressTrigger'>Want to Read</span>
+<img alt="saving…" class="progressIndicator" src="https://s.gr-assets.com/assets/loading-trans-ced157046184c3bc7c180ffbfc6825a4.gif" />
+</button>
+</li>
+<li><button class='wtrExclusiveShelf' name='name' type='submit' value='currently-reading'>
+<span class='progressTrigger'>Currently Reading</span>
+<img alt="saving…" class="progressIndicator" src="https://s.gr-assets.com/assets/loading-trans-ced157046184c3bc7c180ffbfc6825a4.gif" />
+</button>
+</li>
+<li><button class='wtrExclusiveShelf' name='name' type='submit' value='read'>
+<span class='progressTrigger'>Read</span>
+<img alt="saving…" class="progressIndicator" src="https://s.gr-assets.com/assets/loading-trans-ced157046184c3bc7c180ffbfc6825a4.gif" />
+</button>
+</li>
+</ul>
+</div>
+</div>
+
+<div class='ratingStars wtrRating'>
+<div class='starsErrorTooltip hidden'>
+Error rating book. Refresh and try again.
+</div>
+<div class='myRating uitext greyText'>Rate this book</div>
+<div class='clearRating uitext'>Clear rating</div>
+<div class="stars" data-resource-id="249747" data-user-id="0" data-submit-url="/review/rate/249747?stars_click=true&wtr_button_id=1_book_249747" data-rating="0"><a class="star off" title="did not like it" href="#" ref="">1 of 5 stars</a><a class="star off" title="it was ok" href="#" ref="">2 of 5 stars</a><a class="star off" title="liked it" href="#" ref="">3 of 5 stars</a><a class="star off" title="really liked it" href="#" ref="">4 of 5 stars</a><a class="star off" title="it was amazing" href="#" ref="">5 of 5 stars</a></div>
+</div>
+
+</div>
+
+
+      </td>
+
+  </tr>
+
+
+      
+  <!-- Add query string params -->
+
+  
+
+  <tr itemscope itemtype="http://schema.org/Book">
+    <td width="5%" valign="top">
+      <div id="37586" class="u-anchorTarget"></div>
+        <a title="The Lost Colony" href="/book/show/37586.The_Lost_Colony">
+          <img alt="The Lost Colony (Artemis Fo..." class="bookSmallImg" itemprop="image" src="https://images.gr-assets.com/books/1522190376s/37586.jpg" />
+</a>    </td>
+    <td width="100%" valign="top">
+      <a class="bookTitle" itemprop="url" href="/book/show/37586.The_Lost_Colony">
+        <span itemprop='name'>The Lost Colony (Artemis Fowl, #5)</span>
+</a>      <br/>
+        <span class="greyText smallText uitext">
+              <span class="minirating"><span class="stars staticStars" title="really liked it"><span size="12x12" class="staticStar p10">really liked it</span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p0"></span></span> 4.00 avg rating &mdash; 126,483 ratings</span>
+            &mdash;
+              published
+             2006
+            &mdash;
+            <a class="greyText" rel="nofollow" href="/work/editions/1866210-the-lost-colony">81 editions</a>
+        </span>
+        
+
+          </td>
+          <td width="130px" >
+
+        <div class='wtrButtonContainer wtrSignedOut' id='2_book_37586'>
+<div class='wtrUp wtrLeft'>
+<form action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="qbIWLGx4NH8atzxBpiyZb6UfppYyk7ubn7yNisf3VxltIZc0yRjZZjzXrSN7ilYPINSEGhVmy7CpT3edv3ABpg==" />
+<input type="hidden" name="book_id" id="book_id" value="37586" />
+<input type="hidden" name="name" id="name" value="to-read" />
+<input type="hidden" name="unique_id" id="unique_id" value="2_book_37586" />
+<input type="hidden" name="wtr_new" id="wtr_new" value="true" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="ref" id="ref" value="" class="wtrLeftUpRef" />
+<input type="hidden" name="existing_review" id="existing_review" value="false" class="wtrExisting" />
+<input type="hidden" name="page_url" id="page_url" />
+<button class='wtrToRead' type='submit'>
+<span class='progressTrigger'>Want to Read</span>
+<span class='progressIndicator'>saving…</span>
+</button>
+</form>
+
+</div>
+
+<div class='wtrRight wtrUp'>
+<form class="hiddenShelfForm" action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="peOLM3OoTrw8UawT7CIXLNIAwDIbnQ7ksyksovcqa9RhcAor1sijpRoxPXExhNhMV8vivjxofs+F2ta1j609aw==" />
+<input type="hidden" name="unique_id" id="unique_id" value="2_book_37586" />
+<input type="hidden" name="book_id" id="book_id" value="37586" />
+<input type="hidden" name="a" id="a" />
+<input type="hidden" name="name" id="name" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="page_url" id="page_url" />
+</form>
+
+<button class='wtrShelfButton'></button>
+</div>
+
+<div class='ratingStars wtrRating'>
+<div class='starsErrorTooltip hidden'>
+Error rating book. Refresh and try again.
+</div>
+<div class='myRating uitext greyText'>Rate this book</div>
+<div class='clearRating uitext'>Clear rating</div>
+<div class="stars" data-resource-id="37586" data-user-id="0" data-submit-url="/review/rate/37586?stars_click=true&wtr_button_id=2_book_37586" data-rating="0"><a class="star off" title="did not like it" href="#" ref="">1 of 5 stars</a><a class="star off" title="it was ok" href="#" ref="">2 of 5 stars</a><a class="star off" title="liked it" href="#" ref="">3 of 5 stars</a><a class="star off" title="really liked it" href="#" ref="">4 of 5 stars</a><a class="star off" title="it was amazing" href="#" ref="">5 of 5 stars</a></div>
+</div>
+
+</div>
+
+
+      </td>
+
+  </tr>
+
+
+      
+  <!-- Add query string params -->
+
+  
+
+  <tr itemscope itemtype="http://schema.org/Book">
+    <td width="5%" valign="top">
+      <div id="114955" class="u-anchorTarget"></div>
+        <a title="The Arctic Incident" href="/book/show/114955.The_Arctic_Incident">
+          <img alt="The Arctic Incident (Artemi..." class="bookSmallImg" itemprop="image" src="https://images.gr-assets.com/books/1388294381s/114955.jpg" />
+</a>    </td>
+    <td width="100%" valign="top">
+      <a class="bookTitle" itemprop="url" href="/book/show/114955.The_Arctic_Incident">
+        <span itemprop='name'>The Arctic Incident (Artemis Fowl, #2)</span>
+</a>      <br/>
+        <span class="greyText smallText uitext">
+              <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p6"></span><span size="12x12" class="staticStar p0"></span></span> 3.95 avg rating &mdash; 119,147 ratings</span>
+            &mdash;
+              published
+             2002
+            &mdash;
+            <a class="greyText" rel="nofollow" href="/work/editions/508999-the-arctic-incident">124 editions</a>
+        </span>
+        
+
+          </td>
+          <td width="130px" >
+
+        <div class='wtrButtonContainer wtrSignedOut' id='3_book_114955'>
+<div class='wtrUp wtrLeft'>
+<form action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="YzIQRJQ49Lmq1ALCvwaeBiUEUFTUINZc5HfXyXJ7qOWnoZFcMVgZoIy0k6BioFFmoM9y2PPVpnfShC3eCvz+Wg==" />
+<input type="hidden" name="book_id" id="book_id" value="114955" />
+<input type="hidden" name="name" id="name" value="to-read" />
+<input type="hidden" name="unique_id" id="unique_id" value="3_book_114955" />
+<input type="hidden" name="wtr_new" id="wtr_new" value="true" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="ref" id="ref" value="" class="wtrLeftUpRef" />
+<input type="hidden" name="existing_review" id="existing_review" value="false" class="wtrExisting" />
+<input type="hidden" name="page_url" id="page_url" />
+<button class='wtrToRead' type='submit'>
+<span class='progressTrigger'>Want to Read</span>
+<span class='progressIndicator'>saving…</span>
+</button>
+</form>
+
+</div>
+
+<div class='wtrRight wtrUp'>
+<form class="hiddenShelfForm" action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="1VtV/H2CrMlpF2fGxBkDuXahyHN/lHRPI/ZmQbE5SV4RyNTk2OJB0E939qQZv8zZ82rq/1hhBGQVBZxWyb4f4Q==" />
+<input type="hidden" name="unique_id" id="unique_id" value="3_book_114955" />
+<input type="hidden" name="book_id" id="book_id" value="114955" />
+<input type="hidden" name="a" id="a" />
+<input type="hidden" name="name" id="name" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="page_url" id="page_url" />
+</form>
+
+<button class='wtrShelfButton'></button>
+</div>
+
+<div class='ratingStars wtrRating'>
+<div class='starsErrorTooltip hidden'>
+Error rating book. Refresh and try again.
+</div>
+<div class='myRating uitext greyText'>Rate this book</div>
+<div class='clearRating uitext'>Clear rating</div>
+<div class="stars" data-resource-id="114955" data-user-id="0" data-submit-url="/review/rate/114955?stars_click=true&wtr_button_id=3_book_114955" data-rating="0"><a class="star off" title="did not like it" href="#" ref="">1 of 5 stars</a><a class="star off" title="it was ok" href="#" ref="">2 of 5 stars</a><a class="star off" title="liked it" href="#" ref="">3 of 5 stars</a><a class="star off" title="really liked it" href="#" ref="">4 of 5 stars</a><a class="star off" title="it was amazing" href="#" ref="">5 of 5 stars</a></div>
+</div>
+
+</div>
+
+
+      </td>
+
+  </tr>
+
+
+      
+  <!-- Add query string params -->
+
+  
+
+  <tr itemscope itemtype="http://schema.org/Book">
+    <td width="5%" valign="top">
+      <div id="114954" class="u-anchorTarget"></div>
+        <a title="The Opal Deception" href="/book/show/114954.The_Opal_Deception">
+          <img alt="The Opal Deception  (Artemi..." class="bookSmallImg" itemprop="image" src="https://images.gr-assets.com/books/1266475201s/114954.jpg" />
+</a>    </td>
+    <td width="100%" valign="top">
+      <a class="bookTitle" itemprop="url" href="/book/show/114954.The_Opal_Deception">
+        <span itemprop='name'>The Opal Deception  (Artemis Fowl, #4)</span>
+</a>      <br/>
+        <span class="greyText smallText uitext">
+              <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p3"></span></span> 4.05 avg rating &mdash; 108,853 ratings</span>
+            &mdash;
+              published
+             2005
+            &mdash;
+            <a class="greyText" rel="nofollow" href="/work/editions/1537541-the-opal-deception">104 editions</a>
+        </span>
+        
+
+          </td>
+          <td width="130px" >
+
+        <div class='wtrButtonContainer wtrSignedOut' id='4_book_114954'>
+<div class='wtrUp wtrLeft'>
+<form action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="5Bk+OlZQm66P5SNH3vLJMw1RjNJLEq42mcnX2aaoDCMgir8i8zB2t6mFsiUDVAZTiJquXmzn3h2vOi3O3i9anA==" />
+<input type="hidden" name="book_id" id="book_id" value="114954" />
+<input type="hidden" name="name" id="name" value="to-read" />
+<input type="hidden" name="unique_id" id="unique_id" value="4_book_114954" />
+<input type="hidden" name="wtr_new" id="wtr_new" value="true" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="ref" id="ref" value="" class="wtrLeftUpRef" />
+<input type="hidden" name="existing_review" id="existing_review" value="false" class="wtrExisting" />
+<input type="hidden" name="page_url" id="page_url" />
+<button class='wtrToRead' type='submit'>
+<span class='progressTrigger'>Want to Read</span>
+<span class='progressIndicator'>saving…</span>
+</button>
+</form>
+
+</div>
+
+<div class='wtrRight wtrUp'>
+<form class="hiddenShelfForm" action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="33x4X95xARrAWBMxr9umlpdUr/yWVpR9QSpKMeZOwmYb7/lHexHsA+Y4glNyfWn2Ep+NcLGj5FZ32bAmnsmU2Q==" />
+<input type="hidden" name="unique_id" id="unique_id" value="4_book_114954" />
+<input type="hidden" name="book_id" id="book_id" value="114954" />
+<input type="hidden" name="a" id="a" />
+<input type="hidden" name="name" id="name" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="page_url" id="page_url" />
+</form>
+
+<button class='wtrShelfButton'></button>
+</div>
+
+<div class='ratingStars wtrRating'>
+<div class='starsErrorTooltip hidden'>
+Error rating book. Refresh and try again.
+</div>
+<div class='myRating uitext greyText'>Rate this book</div>
+<div class='clearRating uitext'>Clear rating</div>
+<div class="stars" data-resource-id="114954" data-user-id="0" data-submit-url="/review/rate/114954?stars_click=true&wtr_button_id=4_book_114954" data-rating="0"><a class="star off" title="did not like it" href="#" ref="">1 of 5 stars</a><a class="star off" title="it was ok" href="#" ref="">2 of 5 stars</a><a class="star off" title="liked it" href="#" ref="">3 of 5 stars</a><a class="star off" title="really liked it" href="#" ref="">4 of 5 stars</a><a class="star off" title="it was amazing" href="#" ref="">5 of 5 stars</a></div>
+</div>
+
+</div>
+
+
+      </td>
+
+  </tr>
+
+
+      
+  <!-- Add query string params -->
+
+  
+
+  <tr itemscope itemtype="http://schema.org/Book">
+    <td width="5%" valign="top">
+      <div id="227865" class="u-anchorTarget"></div>
+        <a title="The Eternity Code" href="/book/show/227865.The_Eternity_Code">
+          <img alt="The Eternity Code (Artemis ..." class="bookSmallImg" itemprop="image" src="https://images.gr-assets.com/books/1327945417s/227865.jpg" />
+</a>    </td>
+    <td width="100%" valign="top">
+      <a class="bookTitle" itemprop="url" href="/book/show/227865.The_Eternity_Code">
+        <span itemprop='name'>The Eternity Code (Artemis Fowl, #3)</span>
+</a>      <br/>
+        <span class="greyText smallText uitext">
+              <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p3"></span></span> 4.04 avg rating &mdash; 106,128 ratings</span>
+            &mdash;
+              published
+             2003
+            &mdash;
+            <a class="greyText" rel="nofollow" href="/work/editions/1333018-the-eternity-code">121 editions</a>
+        </span>
+        
+
+          </td>
+          <td width="130px" >
+
+        <div class='wtrButtonContainer wtrSignedOut' id='5_book_227865'>
+<div class='wtrUp wtrLeft'>
+<form action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="up1hq+FEb7pKnqmQutAcSSiITI1dGhINvA/kg95eY/N+DuCzRCSCo2z+OPJndtMprUNuAXrvYiaK/B6Uptk1TA==" />
+<input type="hidden" name="book_id" id="book_id" value="227865" />
+<input type="hidden" name="name" id="name" value="to-read" />
+<input type="hidden" name="unique_id" id="unique_id" value="5_book_227865" />
+<input type="hidden" name="wtr_new" id="wtr_new" value="true" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="ref" id="ref" value="" class="wtrLeftUpRef" />
+<input type="hidden" name="existing_review" id="existing_review" value="false" class="wtrExisting" />
+<input type="hidden" name="page_url" id="page_url" />
+<button class='wtrToRead' type='submit'>
+<span class='progressTrigger'>Want to Read</span>
+<span class='progressIndicator'>saving…</span>
+</button>
+</form>
+
+</div>
+
+<div class='wtrRight wtrUp'>
+<form class="hiddenShelfForm" action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="MbECnHiLS7xh6WmDlbM8G5aCyA/6JD7QlqMU/dSXiYv1IoOE3eumpUeJ+OFIFfN7E0nqg93RTvugUO7qrBDfNA==" />
+<input type="hidden" name="unique_id" id="unique_id" value="5_book_227865" />
+<input type="hidden" name="book_id" id="book_id" value="227865" />
+<input type="hidden" name="a" id="a" />
+<input type="hidden" name="name" id="name" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="page_url" id="page_url" />
+</form>
+
+<button class='wtrShelfButton'></button>
+</div>
+
+<div class='ratingStars wtrRating'>
+<div class='starsErrorTooltip hidden'>
+Error rating book. Refresh and try again.
+</div>
+<div class='myRating uitext greyText'>Rate this book</div>
+<div class='clearRating uitext'>Clear rating</div>
+<div class="stars" data-resource-id="227865" data-user-id="0" data-submit-url="/review/rate/227865?stars_click=true&wtr_button_id=5_book_227865" data-rating="0"><a class="star off" title="did not like it" href="#" ref="">1 of 5 stars</a><a class="star off" title="it was ok" href="#" ref="">2 of 5 stars</a><a class="star off" title="liked it" href="#" ref="">3 of 5 stars</a><a class="star off" title="really liked it" href="#" ref="">4 of 5 stars</a><a class="star off" title="it was amazing" href="#" ref="">5 of 5 stars</a></div>
+</div>
+
+</div>
+
+
+      </td>
+
+  </tr>
+
+
+      
+  <!-- Add query string params -->
+
+  
+
+  <tr itemscope itemtype="http://schema.org/Book">
+    <td width="5%" valign="top">
+      <div id="2179276" class="u-anchorTarget"></div>
+        <a title="The Time Paradox" href="/book/show/2179276.The_Time_Paradox">
+          <img alt="The Time Paradox (Artemis F..." class="bookSmallImg" itemprop="image" src="https://images.gr-assets.com/books/1522190483s/2179276.jpg" />
+</a>    </td>
+    <td width="100%" valign="top">
+      <a class="bookTitle" itemprop="url" href="/book/show/2179276.The_Time_Paradox">
+        <span itemprop='name'>The Time Paradox (Artemis Fowl, #6)</span>
+</a>      <br/>
+        <span class="greyText smallText uitext">
+              <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p3"></span></span> 4.07 avg rating &mdash; 68,342 ratings</span>
+            &mdash;
+              published
+             2008
+            &mdash;
+            <a class="greyText" rel="nofollow" href="/work/editions/2184954-the-time-paradox">75 editions</a>
+        </span>
+        
+
+          </td>
+          <td width="130px" >
+
+        <div class='wtrButtonContainer wtrSignedOut' id='6_book_2179276'>
+<div class='wtrUp wtrLeft'>
+<form action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="7C/rNihrZVtG+sJWSl2/naDA3Hvk2GN0DbSOb+J65e0ovGoujQuIQmCaUzSX+3D9JQv+98MtE187R3R4mv2zUg==" />
+<input type="hidden" name="book_id" id="book_id" value="2179276" />
+<input type="hidden" name="name" id="name" value="to-read" />
+<input type="hidden" name="unique_id" id="unique_id" value="6_book_2179276" />
+<input type="hidden" name="wtr_new" id="wtr_new" value="true" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="ref" id="ref" value="" class="wtrLeftUpRef" />
+<input type="hidden" name="existing_review" id="existing_review" value="false" class="wtrExisting" />
+<input type="hidden" name="page_url" id="page_url" />
+<button class='wtrToRead' type='submit'>
+<span class='progressTrigger'>Want to Read</span>
+<span class='progressIndicator'>saving…</span>
+</button>
+</form>
+
+</div>
+
+<div class='wtrRight wtrUp'>
+<form class="hiddenShelfForm" action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="pLPISE81uIY2gf72OQ2tmmsgvRVVZvtgwLYUNl/KCv5gIElQ6lVVnxDhb5Tkq2L67uufmXKTi0v2Re4hJ01cQQ==" />
+<input type="hidden" name="unique_id" id="unique_id" value="6_book_2179276" />
+<input type="hidden" name="book_id" id="book_id" value="2179276" />
+<input type="hidden" name="a" id="a" />
+<input type="hidden" name="name" id="name" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="page_url" id="page_url" />
+</form>
+
+<button class='wtrShelfButton'></button>
+</div>
+
+<div class='ratingStars wtrRating'>
+<div class='starsErrorTooltip hidden'>
+Error rating book. Refresh and try again.
+</div>
+<div class='myRating uitext greyText'>Rate this book</div>
+<div class='clearRating uitext'>Clear rating</div>
+<div class="stars" data-resource-id="2179276" data-user-id="0" data-submit-url="/review/rate/2179276?stars_click=true&wtr_button_id=6_book_2179276" data-rating="0"><a class="star off" title="did not like it" href="#" ref="">1 of 5 stars</a><a class="star off" title="it was ok" href="#" ref="">2 of 5 stars</a><a class="star off" title="liked it" href="#" ref="">3 of 5 stars</a><a class="star off" title="really liked it" href="#" ref="">4 of 5 stars</a><a class="star off" title="it was amazing" href="#" ref="">5 of 5 stars</a></div>
+</div>
+
+</div>
+
+
+      </td>
+
+  </tr>
+
+
+      
+  <!-- Add query string params -->
+
+  
+
+  <tr itemscope itemtype="http://schema.org/Book">
+    <td width="5%" valign="top">
+      <div id="7005865" class="u-anchorTarget"></div>
+        <a title="The Atlantis Complex" href="/book/show/7005865-the-atlantis-complex">
+          <img alt="The Atlantis Complex (Artem..." class="bookSmallImg" itemprop="image" src="https://images.gr-assets.com/books/1522213238s/7005865.jpg" />
+</a>    </td>
+    <td width="100%" valign="top">
+      <a class="bookTitle" itemprop="url" href="/book/show/7005865-the-atlantis-complex">
+        <span itemprop='name'>The Atlantis Complex (Artemis Fowl, #7)</span>
+</a>      <br/>
+        <span class="greyText smallText uitext">
+              <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p6"></span><span size="12x12" class="staticStar p0"></span></span> 3.97 avg rating &mdash; 45,056 ratings</span>
+            &mdash;
+              published
+             2010
+            &mdash;
+            <a class="greyText" rel="nofollow" href="/work/editions/7250253-the-atlantis-complex">52 editions</a>
+        </span>
+        
+
+          </td>
+          <td width="130px" >
+
+        <div class='wtrButtonContainer wtrSignedOut' id='7_book_7005865'>
+<div class='wtrUp wtrLeft'>
+<form action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="LXZaPkw3M9MYIKR28M8uktpc3B5k5MVZDL+Im0bJWAPp5dsm6Vfeyj5ANRQtaeHyX5f+kkMRtXI6THKMPk4OvA==" />
+<input type="hidden" name="book_id" id="book_id" value="7005865" />
+<input type="hidden" name="name" id="name" value="to-read" />
+<input type="hidden" name="unique_id" id="unique_id" value="7_book_7005865" />
+<input type="hidden" name="wtr_new" id="wtr_new" value="true" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="ref" id="ref" value="" class="wtrLeftUpRef" />
+<input type="hidden" name="existing_review" id="existing_review" value="false" class="wtrExisting" />
+<input type="hidden" name="page_url" id="page_url" />
+<button class='wtrToRead' type='submit'>
+<span class='progressTrigger'>Want to Read</span>
+<span class='progressIndicator'>saving…</span>
+</button>
+</form>
+
+</div>
+
+<div class='wtrRight wtrUp'>
+<form class="hiddenShelfForm" action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="n6CH6P1RvfIkK/jpaYDzpr3CJA4a8axw9a5gxlX+sfNbMwbwWDFQ6wJLaYu0JjzGOAkGgj0E3FvDXZrRLXnnTA==" />
+<input type="hidden" name="unique_id" id="unique_id" value="7_book_7005865" />
+<input type="hidden" name="book_id" id="book_id" value="7005865" />
+<input type="hidden" name="a" id="a" />
+<input type="hidden" name="name" id="name" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="page_url" id="page_url" />
+</form>
+
+<button class='wtrShelfButton'></button>
+</div>
+
+<div class='ratingStars wtrRating'>
+<div class='starsErrorTooltip hidden'>
+Error rating book. Refresh and try again.
+</div>
+<div class='myRating uitext greyText'>Rate this book</div>
+<div class='clearRating uitext'>Clear rating</div>
+<div class="stars" data-resource-id="7005865" data-user-id="0" data-submit-url="/review/rate/7005865?stars_click=true&wtr_button_id=7_book_7005865" data-rating="0"><a class="star off" title="did not like it" href="#" ref="">1 of 5 stars</a><a class="star off" title="it was ok" href="#" ref="">2 of 5 stars</a><a class="star off" title="liked it" href="#" ref="">3 of 5 stars</a><a class="star off" title="really liked it" href="#" ref="">4 of 5 stars</a><a class="star off" title="it was amazing" href="#" ref="">5 of 5 stars</a></div>
+</div>
+
+</div>
+
+
+      </td>
+
+  </tr>
+
+
+      
+  <!-- Add query string params -->
+
+  
+
+  <tr itemscope itemtype="http://schema.org/Book">
+    <td width="5%" valign="top">
+      <div id="9307674" class="u-anchorTarget"></div>
+        <a title="The Last Guardian" href="/book/show/9307674-the-last-guardian">
+          <img alt="The Last Guardian (Artemis ..." class="bookSmallImg" itemprop="image" src="https://images.gr-assets.com/books/1522745526s/9307674.jpg" />
+</a>    </td>
+    <td width="100%" valign="top">
+      <a class="bookTitle" itemprop="url" href="/book/show/9307674-the-last-guardian">
+        <span itemprop='name'>The Last Guardian (Artemis Fowl, #8)</span>
+</a>      <br/>
+        <span class="greyText smallText uitext">
+              <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p3"></span></span> 4.14 avg rating &mdash; 42,597 ratings</span>
+            &mdash;
+              published
+             2012
+            &mdash;
+            <a class="greyText" rel="nofollow" href="/work/editions/14190669-the-last-guardian">41 editions</a>
+        </span>
+        
+
+          </td>
+          <td width="130px" >
+
+        <div class='wtrButtonContainer wtrSignedOut' id='8_book_9307674'>
+<div class='wtrUp wtrLeft'>
+<form action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="RzIlsXCKNvkbqB8a7ME3sRBI6nOQiTlGFU94y8uDDn6DoaSp1erb4D3IjngxZ/jRlYPI/7d8SW0jvILcswRYwQ==" />
+<input type="hidden" name="book_id" id="book_id" value="9307674" />
+<input type="hidden" name="name" id="name" value="to-read" />
+<input type="hidden" name="unique_id" id="unique_id" value="8_book_9307674" />
+<input type="hidden" name="wtr_new" id="wtr_new" value="true" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="ref" id="ref" value="" class="wtrLeftUpRef" />
+<input type="hidden" name="existing_review" id="existing_review" value="false" class="wtrExisting" />
+<input type="hidden" name="page_url" id="page_url" />
+<button class='wtrToRead' type='submit'>
+<span class='progressTrigger'>Want to Read</span>
+<span class='progressIndicator'>saving…</span>
+</button>
+</form>
+
+</div>
+
+<div class='wtrRight wtrUp'>
+<form class="hiddenShelfForm" action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="41uz3dS/wifhEqm+LIC8WP9nSz3HRGHUrcSXB9qCNpEnyDLFcd8vPsdyONzxJnM4eqxpseCxEf+bN20QogVgLg==" />
+<input type="hidden" name="unique_id" id="unique_id" value="8_book_9307674" />
+<input type="hidden" name="book_id" id="book_id" value="9307674" />
+<input type="hidden" name="a" id="a" />
+<input type="hidden" name="name" id="name" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="page_url" id="page_url" />
+</form>
+
+<button class='wtrShelfButton'></button>
+</div>
+
+<div class='ratingStars wtrRating'>
+<div class='starsErrorTooltip hidden'>
+Error rating book. Refresh and try again.
+</div>
+<div class='myRating uitext greyText'>Rate this book</div>
+<div class='clearRating uitext'>Clear rating</div>
+<div class="stars" data-resource-id="9307674" data-user-id="0" data-submit-url="/review/rate/9307674?stars_click=true&wtr_button_id=8_book_9307674" data-rating="0"><a class="star off" title="did not like it" href="#" ref="">1 of 5 stars</a><a class="star off" title="it was ok" href="#" ref="">2 of 5 stars</a><a class="star off" title="liked it" href="#" ref="">3 of 5 stars</a><a class="star off" title="really liked it" href="#" ref="">4 of 5 stars</a><a class="star off" title="it was amazing" href="#" ref="">5 of 5 stars</a></div>
+</div>
+
+</div>
+
+
+      </td>
+
+  </tr>
+
+
+      
+  <!-- Add query string params -->
+
+  
+
+  <tr itemscope itemtype="http://schema.org/Book">
+    <td width="5%" valign="top">
+      <div id="45432" class="u-anchorTarget"></div>
+        <a title="The Supernaturalist" href="/book/show/45432.The_Supernaturalist">
+          <img alt="The Supernaturalist" class="bookSmallImg" itemprop="image" src="https://images.gr-assets.com/books/1233460677s/45432.jpg" />
+</a>    </td>
+    <td width="100%" valign="top">
+      <a class="bookTitle" itemprop="url" href="/book/show/45432.The_Supernaturalist">
+        <span itemprop='name'>The Supernaturalist</span>
+</a>      <br/>
+        <span class="greyText smallText uitext">
+              <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p6"></span><span size="12x12" class="staticStar p0"></span></span> 3.85 avg rating &mdash; 25,243 ratings</span>
+            &mdash;
+              published
+             2004
+            &mdash;
+            <a class="greyText" rel="nofollow" href="/work/editions/1019140-the-supernaturalist">51 editions</a>
+        </span>
+        
+
+          </td>
+          <td width="130px" >
+
+        <div class='wtrButtonContainer wtrSignedOut' id='9_book_45432'>
+<div class='wtrUp wtrLeft'>
+<form action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="ED3GkIjd6e1Rdj7JwB/NxWscxH4uFxE0L4SE9OZLc3TUrkeILb0E9HcWr6sduQKl7tfm8gniYR8Zd37jnswlyw==" />
+<input type="hidden" name="book_id" id="book_id" value="45432" />
+<input type="hidden" name="name" id="name" value="to-read" />
+<input type="hidden" name="unique_id" id="unique_id" value="9_book_45432" />
+<input type="hidden" name="wtr_new" id="wtr_new" value="true" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="ref" id="ref" value="" class="wtrLeftUpRef" />
+<input type="hidden" name="existing_review" id="existing_review" value="false" class="wtrExisting" />
+<input type="hidden" name="page_url" id="page_url" />
+<button class='wtrToRead' type='submit'>
+<span class='progressTrigger'>Want to Read</span>
+<span class='progressIndicator'>saving…</span>
+</button>
+</form>
+
+</div>
+
+<div class='wtrRight wtrUp'>
+<form class="hiddenShelfForm" action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="mZ+ohRTJ2KsRKP9TuoUKHKSKiHbdSTxRTzJZ5jlgq+ZdDCmdsak1sjdIbjFnI8V8IUGq+vq8THp5waPxQef9WQ==" />
+<input type="hidden" name="unique_id" id="unique_id" value="9_book_45432" />
+<input type="hidden" name="book_id" id="book_id" value="45432" />
+<input type="hidden" name="a" id="a" />
+<input type="hidden" name="name" id="name" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="page_url" id="page_url" />
+</form>
+
+<button class='wtrShelfButton'></button>
+</div>
+
+<div class='ratingStars wtrRating'>
+<div class='starsErrorTooltip hidden'>
+Error rating book. Refresh and try again.
+</div>
+<div class='myRating uitext greyText'>Rate this book</div>
+<div class='clearRating uitext'>Clear rating</div>
+<div class="stars" data-resource-id="45432" data-user-id="0" data-submit-url="/review/rate/45432?stars_click=true&wtr_button_id=9_book_45432" data-rating="0"><a class="star off" title="did not like it" href="#" ref="">1 of 5 stars</a><a class="star off" title="it was ok" href="#" ref="">2 of 5 stars</a><a class="star off" title="liked it" href="#" ref="">3 of 5 stars</a><a class="star off" title="really liked it" href="#" ref="">4 of 5 stars</a><a class="star off" title="it was amazing" href="#" ref="">5 of 5 stars</a></div>
+</div>
+
+</div>
+
+
+      </td>
+
+  </tr>
+
+
+      
+  <!-- Add query string params -->
+
+  
+
+  <tr itemscope itemtype="http://schema.org/Book">
+    <td width="5%" valign="top">
+      <div id="6359434" class="u-anchorTarget"></div>
+        <a title="And Another Thing..." href="/book/show/6359434-and-another-thing">
+          <img alt="And Another Thing... (Hitch..." class="bookSmallImg" itemprop="image" src="https://images.gr-assets.com/books/1327908458s/6359434.jpg" />
+</a>    </td>
+    <td width="100%" valign="top">
+      <a class="bookTitle" itemprop="url" href="/book/show/6359434-and-another-thing">
+        <span itemprop='name'>And Another Thing... (Hitchhiker's Guide to the Galaxy, #6)</span>
+</a>      <br/>
+        <span class="greyText smallText uitext">
+              <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p6"></span><span size="12x12" class="staticStar p0"></span></span> 3.55 avg rating &mdash; 23,148 ratings</span>
+            &mdash;
+              published
+             2009
+            &mdash;
+            <a class="greyText" rel="nofollow" href="/work/editions/4857805-and-another-thing-hitchhiker-s-guide-to-the-galaxy-6">76 editions</a>
+        </span>
+        
+
+          </td>
+          <td width="130px" >
+
+        <div class='wtrButtonContainer wtrSignedOut' id='10_book_6359434'>
+<div class='wtrUp wtrLeft'>
+<form action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="m4vWw61nhqzq6MbTgMUj4t71ixhu0Vp9YU2vNmfUQ9lfGFfbCAdrtcyIV7FdY+yCWz6plEkkKlZXvlUhH1MVZg==" />
+<input type="hidden" name="book_id" id="book_id" value="6359434" />
+<input type="hidden" name="name" id="name" value="to-read" />
+<input type="hidden" name="unique_id" id="unique_id" value="10_book_6359434" />
+<input type="hidden" name="wtr_new" id="wtr_new" value="true" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="ref" id="ref" value="" class="wtrLeftUpRef" />
+<input type="hidden" name="existing_review" id="existing_review" value="false" class="wtrExisting" />
+<input type="hidden" name="page_url" id="page_url" />
+<button class='wtrToRead' type='submit'>
+<span class='progressTrigger'>Want to Read</span>
+<span class='progressIndicator'>saving…</span>
+</button>
+</form>
+
+</div>
+
+<div class='wtrRight wtrUp'>
+<form class="hiddenShelfForm" action="/shelf/add_to_shelf" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="/2wMfqo9nnac7XdB4SQckeAkCAkKOzJkhG9d5NBBlos7/41mD11zb7qN5iM8gtPxZe8qhS3OQk+ynKfzqMbANA==" />
+<input type="hidden" name="unique_id" id="unique_id" value="10_book_6359434" />
+<input type="hidden" name="book_id" id="book_id" value="6359434" />
+<input type="hidden" name="a" id="a" />
+<input type="hidden" name="name" id="name" />
+<input type="hidden" name="from_choice" id="from_choice" value="false" />
+<input type="hidden" name="from_home_module" id="from_home_module" value="false" />
+<input type="hidden" name="page_url" id="page_url" />
+</form>
+
+<button class='wtrShelfButton'></button>
+</div>
+
+<div class='ratingStars wtrRating'>
+<div class='starsErrorTooltip hidden'>
+Error rating book. Refresh and try again.
+</div>
+<div class='myRating uitext greyText'>Rate this book</div>
+<div class='clearRating uitext'>Clear rating</div>
+<div class="stars" data-resource-id="6359434" data-user-id="0" data-submit-url="/review/rate/6359434?stars_click=true&wtr_button_id=10_book_6359434" data-rating="0"><a class="star off" title="did not like it" href="#" ref="">1 of 5 stars</a><a class="star off" title="it was ok" href="#" ref="">2 of 5 stars</a><a class="star off" title="liked it" href="#" ref="">3 of 5 stars</a><a class="star off" title="really liked it" href="#" ref="">4 of 5 stars</a><a class="star off" title="it was amazing" href="#" ref="">5 of 5 stars</a></div>
+</div>
+
+</div>
+
+
+      </td>
+
+  </tr>
+
+
+    </table>
+
+    <a class="actionLink" style="float: right" href="/author/list/10896.Eoin_Colfer">More books by Eoin Colfer&hellip;</a>
+<div class="clear"></div></div></div><div class="bigBoxBottom"></div></div></div>
+
+
+      <div class=" clearFloats bigBox"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground"><a href="/series/list?id=10896.Eoin_Colfer">Series by Eoin Colfer</a></h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
+            <div class="bookRow seriesBookRow clearfix" itemscope itemtype="http://schema.org/BookSeries">
+
+      <div class="seriesCovers">
+  	          <a title="Artemis Fowl" href="/series/42742-artemis-fowl"><img alt="Artemis Fowl" src="https://images.gr-assets.com/books/1327945104s/249747.jpg" /></a>
+  	          <a title="The Arctic Incident" href="/series/42742-artemis-fowl"><img alt="The Arctic Incident" src="https://images.gr-assets.com/books/1388294381s/114955.jpg" /></a>
+  	          <a title="The Eternity Code" href="/series/42742-artemis-fowl"><img alt="The Eternity Code" src="https://images.gr-assets.com/books/1327945417s/227865.jpg" /></a>
+  	          <a title="The Opal Deception" href="/series/42742-artemis-fowl"><img alt="The Opal Deception" src="https://images.gr-assets.com/books/1266475201s/114954.jpg" /></a>
+  	          <a title="The Lost Colony" href="/series/42742-artemis-fowl"><img alt="The Lost Colony" src="https://images.gr-assets.com/books/1522190376s/37586.jpg" /></a>
+  	          <a title="The Time Paradox" href="/series/42742-artemis-fowl"><img alt="The Time Paradox" src="https://images.gr-assets.com/books/1522190483s/2179276.jpg" /></a>
+  	          <a title="The Atlantis Complex" href="/series/42742-artemis-fowl"><img alt="The Atlantis Complex" src="https://images.gr-assets.com/books/1522213238s/7005865.jpg" /></a>
+      </div>
+
+      <div class="seriesDesc" style="max-width: 193px">
+        <span itemprop='name'><a class="bookTitle" itemprop="url" href="/series/42742-artemis-fowl">Artemis Fowl</a></span>
+        <span class="bookMeta">
+          (8 books)
+        </span>
+        <br/>
+        <span class='by smallText'>by</span>
+<span itemprop='author' itemscope='' itemtype='http://schema.org/Person'>
+<div class='authorName__container'>
+<a class="authorName" itemprop="url" href="https://www.goodreads.com/author/show/10896.Eoin_Colfer"><span itemprop="name">Eoin Colfer</span></a>
+</div>
+</span>
+
+          <br/>
+          <span class="greyText smallText uitext">
+            <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p6"></span><span size="12x12" class="staticStar p0"></span></span> 3.95 avg rating &mdash; 1,068,602 ratings</span>
+          </span>
+      </div>
+
+    </div>
+    <br class="clear" />
+    <div class="bookRow seriesBookRow clearfix" itemscope itemtype="http://schema.org/BookSeries">
+
+      <div class="seriesCovers">
+  	          <a title="Artemis Fowl: The Graphic Novel" href="/series/49356-artemis-fowl-the-graphic-novels"><img alt="Artemis Fowl: The Graphic N..." src="https://images.gr-assets.com/books/1357070412s/114725.jpg" /></a>
+  	          <a title="The Arctic Incident: The Graphic Novel" href="/series/49356-artemis-fowl-the-graphic-novels"><img alt="The Arctic Incident: The Gr..." src="https://images.gr-assets.com/books/1441579179s/5280062.jpg" /></a>
+  	          <a title="Artemis Fowl: The Eternity Code. The Graphic Novel" href="/series/49356-artemis-fowl-the-graphic-novels"><img alt="Artemis Fowl: The Eternity ..." src="https://images.gr-assets.com/books/1373227310s/17170412.jpg" /></a>
+  	          <a title="The Opal Deception: The Graphic Novel" href="/series/49356-artemis-fowl-the-graphic-novels"><img alt="The Opal Deception: The Gra..." src="https://images.gr-assets.com/books/1401039164s/18781039.jpg" /></a>
+      </div>
+
+      <div class="seriesDesc" style="max-width: 376px">
+        <span itemprop='name'><a class="bookTitle" itemprop="url" href="/series/49356-artemis-fowl-the-graphic-novels">Artemis Fowl: The Graphic Novels</a></span>
+        <span class="bookMeta">
+          (4 books)
+        </span>
+        <br/>
+        <span class='by smallText'>by</span>
+<span itemprop='author' itemscope='' itemtype='http://schema.org/Person'>
+<div class='authorName__container'>
+<a class="authorName" itemprop="url" href="https://www.goodreads.com/author/show/10896.Eoin_Colfer"><span itemprop="name">Eoin Colfer</span></a>, 
+</div>
+<div class="authorName__container"><a class="authorName" itemprop="url" href="https://www.goodreads.com/author/show/39414.Andrew_Donkin"><span itemprop="name">Andrew Donkin</span></a></div>, <div class="authorName__container"><a class="authorName" itemprop="url" href="https://www.goodreads.com/author/show/901999.Giovanni_Rigano"><span itemprop="name">Giovanni Rigano</span></a> <span class="authorName greyText smallText role">(Illustrations)</span></div>, <div class="authorName__container"><a class="authorName" itemprop="url" href="https://www.goodreads.com/author/show/1197766.Paolo_Lamanna"><span itemprop="name">Paolo Lamanna</span></a> <span class="authorName greyText smallText role">(Illustrations)</span></div>
+</span>
+
+          <br/>
+          <span class="greyText smallText uitext">
+            <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p6"></span><span size="12x12" class="staticStar p0"></span></span> 3.80 avg rating &mdash; 9,166 ratings</span>
+          </span>
+      </div>
+
+    </div>
+    <br class="clear" />
+    <div class="bookRow seriesBookRow clearfix" itemscope itemtype="http://schema.org/BookSeries">
+
+      <div class="seriesCovers">
+  	          <a title="The Reluctant Assassin" href="/series/83006-w-a-r-p"><img alt="The Reluctant Assassin" src="https://images.gr-assets.com/books/1357233284s/10915176.jpg" /></a>
+  	          <a title="The Hangman's Revolution" href="/series/83006-w-a-r-p"><img alt="The Hangman&#39;s Revolution" src="https://images.gr-assets.com/books/1406731264s/18453186.jpg" /></a>
+  	          <a title="The Forever Man" href="/series/83006-w-a-r-p"><img alt="The Forever Man" src="https://images.gr-assets.com/books/1430847145s/22518400.jpg" /></a>
+      </div>
+
+      <div class="seriesDesc" style="max-width: 437px">
+        <span itemprop='name'><a class="bookTitle" itemprop="url" href="/series/83006-w-a-r-p">W.A.R.P.</a></span>
+        <span class="bookMeta">
+          (3 books)
+        </span>
+        <br/>
+        <span class='by smallText'>by</span>
+<span itemprop='author' itemscope='' itemtype='http://schema.org/Person'>
+<div class='authorName__container'>
+<a class="authorName" itemprop="url" href="https://www.goodreads.com/author/show/10896.Eoin_Colfer"><span itemprop="name">Eoin Colfer</span></a>
+</div>
+</span>
+
+          <br/>
+          <span class="greyText smallText uitext">
+            <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p6"></span><span size="12x12" class="staticStar p0"></span></span> 3.71 avg rating &mdash; 8,576 ratings</span>
+          </span>
+      </div>
+
+    </div>
+    <br class="clear" />
+    <div class="bookRow seriesBookRow clearfix" itemscope itemtype="http://schema.org/BookSeries">
+
+      <div class="seriesCovers">
+  	          <a title="Plugged" href="/series/101613-daniel-mcevoy"><img alt="Plugged" src="https://images.gr-assets.com/books/1298616664s/10331108.jpg" /></a>
+  	          <a title="Screwed" href="/series/101613-daniel-mcevoy"><img alt="Screwed" src="https://images.gr-assets.com/books/1362348230s/16101201.jpg" /></a>
+      </div>
+
+      <div class="seriesDesc" style="max-width: 498px">
+        <span itemprop='name'><a class="bookTitle" itemprop="url" href="/series/101613-daniel-mcevoy">Daniel McEvoy</a></span>
+        <span class="bookMeta">
+          (2 books)
+        </span>
+        <br/>
+        <span class='by smallText'>by</span>
+<span itemprop='author' itemscope='' itemtype='http://schema.org/Person'>
+<div class='authorName__container'>
+<a class="authorName" itemprop="url" href="https://www.goodreads.com/author/show/10896.Eoin_Colfer"><span itemprop="name">Eoin Colfer</span></a>
+</div>
+</span>
+
+          <br/>
+          <span class="greyText smallText uitext">
+            <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p3"></span><span size="12x12" class="staticStar p0"></span></span> 3.47 avg rating &mdash; 4,437 ratings</span>
+          </span>
+      </div>
+
+    </div>
+    <br class="clear" />
+    <div class="bookRow seriesBookRow clearfix" itemscope itemtype="http://schema.org/BookSeries">
+
+      <div class="seriesCovers">
+  	          <a title="The Legend of Spud Murphy" href="/series/62074-legend-of"><img alt="The Legend of Spud Murphy" src="https://images.gr-assets.com/books/1172881812s/227866.jpg" /></a>
+  	          <a title="The Legend of Captain Crow's Teeth" href="/series/62074-legend-of"><img alt="The Legend of Captain Crow&#39;..." src="https://images.gr-assets.com/books/1348941919s/851219.jpg" /></a>
+  	          <a title="Legend of the Worst Boy in the World" href="/series/62074-legend-of"><img alt="Legend of the Worst Boy in ..." src="https://images.gr-assets.com/books/1426869290s/45438.jpg" /></a>
+      </div>
+
+      <div class="seriesDesc" style="max-width: 437px">
+        <span itemprop='name'><a class="bookTitle" itemprop="url" href="/series/62074-legend-of">Legend of...</a></span>
+        <span class="bookMeta">
+          (3 books)
+        </span>
+        <br/>
+        <span class='by smallText'>by</span>
+<span itemprop='author' itemscope='' itemtype='http://schema.org/Person'>
+<div class='authorName__container'>
+<a class="authorName" itemprop="url" href="https://www.goodreads.com/author/show/10896.Eoin_Colfer"><span itemprop="name">Eoin Colfer</span></a>, 
+</div>
+<div class="authorName__container"><a class="authorName" itemprop="url" href="https://www.goodreads.com/author/show/87936.Glenn_McCoy"><span itemprop="name">Glenn McCoy</span></a> <span class="authorName greyText smallText role">(Illustrator)</span></div>
+</span>
+
+          <br/>
+          <span class="greyText smallText uitext">
+            <span class="minirating"><span class="stars staticStars"><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p10"></span><span size="12x12" class="staticStar p6"></span><span size="12x12" class="staticStar p0"></span></span> 3.80 avg rating &mdash; 1,959 ratings</span>
+          </span>
+      </div>
+
+    </div>
+    <br class="clear" />
+
+          <a class="actionLink" style="float: right" href="/series/list?id=10896.Eoin_Colfer">More series by Eoin Colfer…</a>
+
+<div class="clear"></div></div></div><div class="bigBoxBottom"></div></div>
+
+      <div class=" clearFloats bigBox"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground">Upcoming Events</h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
+      		<div>
+       			No scheduled events.
+    				<a class="actionLink" href="/event/new_author/10896.Eoin_Colfer">Add an event.</a>
+      		</div>
+<div class="clear"></div></div></div><div class="bigBoxBottom"></div></div>      <br class="clear"/>
+
+
+      <div class=" clearFloats bigBox"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground">Interviews</h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
+
+          <div class="elementList">
+            <span class="mediumText">
+              October 2009,
+            </span>
+            <a class="authorName" href="/interviews/show/225.Eoin_Colfer">Eoin Colfer</a><br/>
+            &quot;When I read [Neuromancer] I realized that sci-fi could be literature. There are no boundaries that we cannot explore or indeed break through. Gibson brought and continues to bring science fiction to the mainstream market. Everybody loves him. Also a helluva storyteller.&quot;
+            <a style="font-weight:bold" href="/interviews/show/225.Eoin_Colfer">...More</a>
+          </div>
+          <br class="clear"/>
+
+      	<a class="actionLinkLite" style="float: right" href="/voice">more interviews &raquo;</a>
+        <br class="clear"/>
+
+<div class="clear"></div></div></div><div class="bigBoxBottom"></div></div>      <br class="clear"/>
+
+    
+
+    
+
+
+
+    <a name="quotes"></a>
+
+    <div class=" clearFloats bigBox"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground"><a href="/author/quotes/10896.Eoin_Colfer">Quotes by Eoin Colfer</a></h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
+      			<div class="quote mediumText ">
+  <div class="quoteDetails ">
+    
+
+<div class="quoteText">
+      &ldquo;Confidence is ignorance. If you're feeling cocky, it's because there's something you don't know.&rdquo;
+  <br>  &#8213;
+    <a class="authorOrTitle" href="/author/show/10896.Eoin_Colfer">Eoin Colfer</a>,
+    <span id=quote_book_link_249747>
+      <a class="authorOrTitle" href="/work/quotes/1334778">Artemis Fowl</a>
+    </span>
+    
+
+  
+
+
+<script>
+//<![CDATA[
+      var newTip = new Tip($('quote_book_link_249747'), "\n\n  <h2><a class=\"readable bookTitle\" href=\"https://www.goodreads.com/book/show/249747.Artemis_Fowl?from_choice=false&amp;from_home_module=false\">Artemis Fowl (Artemis Fowl, #1)<\/a><\/h2>\n\n      <div>\n        by <a class=\"authorName\" href=\"/author/show/10896.Eoin_Colfer\">Eoin Colfer<\/a>\n      <\/div>\n\n          <div class=\"smallText uitext darkGreyText\">\n            <span class=\"minirating\"><span class=\"stars staticStars\"><span size=\"12x12\" class=\"staticStar p10\"><\/span><span size=\"12x12\" class=\"staticStar p10\"><\/span><span size=\"12x12\" class=\"staticStar p10\"><\/span><span size=\"12x12\" class=\"staticStar p6\"><\/span><span size=\"12x12\" class=\"staticStar p0\"><\/span><\/span> 3.83 avg rating &mdash; 420,003 ratings<\/span>            &mdash; published 2001\n          <\/div>\n\n    <div class=\"addBookTipDescription\">\n      \n<span id=\"freeTextContainer18336658807882708072\">Twelve-year-old Artemis Fowl is a millionaire, a genius—and, above all, a criminal mastermind. But even Artemis doesn\'t know what he\'s taken on when he kidnaps a fairy, Captain Holly Short of the LEPrecon Unit. These aren\'t the fairies of bedtime sto<\/span>\n  <span id=\"freeText18336658807882708072\" style=\"display:none\">Twelve-year-old Artemis Fowl is a millionaire, a genius—and, above all, a criminal mastermind. But even Artemis doesn\'t know what he\'s taken on when he kidnaps a fairy, Captain Holly Short of the LEPrecon Unit. These aren\'t the fairies of bedtime stories—they\'re dangerous! Full of unexpected twists and turns, Artemis Fowl is a riveting, magical adventure.<\/span>\n  <a data-text-id=\"18336658807882708072\" href=\"#\" onclick=\"swapContent($(this));; return false;\">...more<\/a>\n\n    <\/div>\n\n      <div class=\'wtrButtonContainer wtrSignedOut\' id=\'11_book_249747\'>\n<div class=\'wtrUp wtrLeft\'>\n<form action=\"/shelf/add_to_shelf\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"authenticity_token\" value=\"Odcz8k+bCYenEEODLERyPcwruQAW3V7Bw9SXcbgUdwX9RLLq6vvknoFw0uHx4r1dSeCbjDEoLur1J21mwJMhug==\" />\n<input type=\"hidden\" name=\"book_id\" id=\"book_id\" value=\"249747\" />\n<input type=\"hidden\" name=\"name\" id=\"name\" value=\"to-read\" />\n<input type=\"hidden\" name=\"unique_id\" id=\"unique_id\" value=\"11_book_249747\" />\n<input type=\"hidden\" name=\"wtr_new\" id=\"wtr_new\" value=\"true\" />\n<input type=\"hidden\" name=\"from_choice\" id=\"from_choice\" value=\"false\" />\n<input type=\"hidden\" name=\"from_home_module\" id=\"from_home_module\" value=\"false\" />\n<input type=\"hidden\" name=\"ref\" id=\"ref\" value=\"\" class=\"wtrLeftUpRef\" />\n<input type=\"hidden\" name=\"existing_review\" id=\"existing_review\" value=\"false\" class=\"wtrExisting\" />\n<input type=\"hidden\" name=\"page_url\" id=\"page_url\" value=\"/author/show/10896.Eoin_Colfer\" />\n<button class=\'wtrToRead\' type=\'submit\'>\n<span class=\'progressTrigger\'>Want to Read<\/span>\n<span class=\'progressIndicator\'>saving…<\/span>\n<\/button>\n<\/form>\n\n<\/div>\n\n<div class=\'wtrRight wtrUp\'>\n<form class=\"hiddenShelfForm\" action=\"/shelf/add_to_shelf\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"authenticity_token\" value=\"Ne0cDnyCxWiviaTAAMOI5I6uQL8+Tht2QwyrG/C7FtHxfp0W2eIocYnpNaLdZUeEC2ViMxm7a111/1EMiDxAbg==\" />\n<input type=\"hidden\" name=\"unique_id\" id=\"unique_id\" value=\"11_book_249747\" />\n<input type=\"hidden\" name=\"book_id\" id=\"book_id\" value=\"249747\" />\n<input type=\"hidden\" name=\"a\" id=\"a\" />\n<input type=\"hidden\" name=\"name\" id=\"name\" />\n<input type=\"hidden\" name=\"from_choice\" id=\"from_choice\" value=\"false\" />\n<input type=\"hidden\" name=\"from_home_module\" id=\"from_home_module\" value=\"false\" />\n<input type=\"hidden\" name=\"page_url\" id=\"page_url\" value=\"/author/show/10896.Eoin_Colfer\" />\n<\/form>\n\n<button class=\'wtrShelfButton\'><\/button>\n<\/div>\n\n<div class=\'ratingStars wtrRating\'>\n<div class=\'starsErrorTooltip hidden\'>\nError rating book. Refresh and try again.\n<\/div>\n<div class=\'myRating uitext greyText\'>Rate this book<\/div>\n<div class=\'clearRating uitext\'>Clear rating<\/div>\n<div class=\"stars\" data-resource-id=\"249747\" data-user-id=\"0\" data-submit-url=\"/review/rate/249747?page_url=%2Fauthor%2Fshow%2F10896.Eoin_Colfer&rate_books_page=false&stars_click=false&wtr_button_id=11_book_249747\" data-rating=\"0\"><a class=\"star off\" title=\"did not like it\" href=\"#\" ref=\"\">1 of 5 stars<\/a><a class=\"star off\" title=\"it was ok\" href=\"#\" ref=\"\">2 of 5 stars<\/a><a class=\"star off\" title=\"liked it\" href=\"#\" ref=\"\">3 of 5 stars<\/a><a class=\"star off\" title=\"really liked it\" href=\"#\" ref=\"\">4 of 5 stars<\/a><a class=\"star off\" title=\"it was amazing\" href=\"#\" ref=\"\">5 of 5 stars<\/a><\/div>\n<\/div>\n\n<\/div>\n\n\n\n\n", { style: 'addbook', stem: 'leftMiddle', hook: { tip: 'leftMiddle', target: 'rightMiddle' }, offset: { x: 5, y: 0 }, hideOn: false, width: 400, hideAfter: 0.05, delay: 0.35 });
+      $('quote_book_link_249747').observe('prototip:shown', function() {
+        if (this.up('#box')) {
+          $$('div.prototip').each(function(i){i.setStyle({zIndex: $('box').getStyle('z-index')})});
+        } else {
+          $$('div.prototip').each(function(i){i.setStyle({zIndex: 6000})});
+        }
+      });
+
+      newTip['wrapper'].addClassName('prototipAllowOverflow');
+
+        $('quote_book_link_249747').observe('prototip:shown', function () {
+          $$('div.prototip').each(function (e) {
+            if ($('quote_book_link_249747').hasClassName('ignored')) {
+              e.setStyle({'display': 'none'});
+              return;
+            }
+            e.setStyle({'overflow': 'visible'});
+          });
+        });
+      $('quote_book_link_249747').observe('prototip:hidden', function () {
+        $$('span.elementTwo').each(function (e) {
+          if (e.getStyle('display') !== 'none') {
+            var lessLink = e.next();
+            swapContent(lessLink);
+          }
+        });
+      });
+
+//]]>
+</script>
+
+</div>
+
+
+<div class="quoteFooter">
+   <div class="greyText smallText left">
+     tags:
+       <a href="/quotes/tag/confidence">confidence</a>,
+       <a href="/quotes/tag/humor">humor</a>,
+       <a href="/quotes/tag/ignorance">ignorance</a>,
+       <a href="/quotes/tag/knowledge">knowledge</a>
+   </div>
+   <div class="right">
+     <a class="smallText" title="View this quote" href="/quotes/39434-confidence-is-ignorance-if-you-re-feeling-cocky-it-s-because-there-s">2989 likes</a>
+   </div>
+</div>
+
+  </div>
+    <div class="action">
+        <a class="gr-button gr-button--small" rel="nofollow" href="/user/new">Like</a>
+    </div>
+  <br class="clear"/>
+</div>
+
+	<div class="quote mediumText ">
+  <div class="quoteDetails ">
+    
+
+<div class="quoteText">
+      &ldquo;It's like learning to ride a unicorn. You never forget.&rdquo;
+  <br>  &#8213;
+    <a class="authorOrTitle" href="/author/show/10896.Eoin_Colfer">Eoin Colfer</a>,
+    <span id=quote_book_link_249747>
+      <a class="authorOrTitle" href="/work/quotes/1334778">Artemis Fowl</a>
+    </span>
+    
+
+
+<script>
+//<![CDATA[
+      var newTip = new Tip($('quote_book_link_249747'), "\n\n  <h2><a class=\"readable bookTitle\" href=\"https://www.goodreads.com/book/show/249747.Artemis_Fowl?from_choice=false&amp;from_home_module=false\">Artemis Fowl (Artemis Fowl, #1)<\/a><\/h2>\n\n      <div>\n        by <a class=\"authorName\" href=\"/author/show/10896.Eoin_Colfer\">Eoin Colfer<\/a>\n      <\/div>\n\n          <div class=\"smallText uitext darkGreyText\">\n            <span class=\"minirating\"><span class=\"stars staticStars\"><span size=\"12x12\" class=\"staticStar p10\"><\/span><span size=\"12x12\" class=\"staticStar p10\"><\/span><span size=\"12x12\" class=\"staticStar p10\"><\/span><span size=\"12x12\" class=\"staticStar p6\"><\/span><span size=\"12x12\" class=\"staticStar p0\"><\/span><\/span> 3.83 avg rating &mdash; 420,003 ratings<\/span>            &mdash; published 2001\n          <\/div>\n\n    <div class=\"addBookTipDescription\">\n      \n<span id=\"freeTextContainer7181196396623484823\">Twelve-year-old Artemis Fowl is a millionaire, a genius—and, above all, a criminal mastermind. But even Artemis doesn\'t know what he\'s taken on when he kidnaps a fairy, Captain Holly Short of the LEPrecon Unit. These aren\'t the fairies of bedtime sto<\/span>\n  <span id=\"freeText7181196396623484823\" style=\"display:none\">Twelve-year-old Artemis Fowl is a millionaire, a genius—and, above all, a criminal mastermind. But even Artemis doesn\'t know what he\'s taken on when he kidnaps a fairy, Captain Holly Short of the LEPrecon Unit. These aren\'t the fairies of bedtime stories—they\'re dangerous! Full of unexpected twists and turns, Artemis Fowl is a riveting, magical adventure.<\/span>\n  <a data-text-id=\"7181196396623484823\" href=\"#\" onclick=\"swapContent($(this));; return false;\">...more<\/a>\n\n    <\/div>\n\n      <div class=\'wtrButtonContainer wtrSignedOut\' id=\'12_book_249747\'>\n<div class=\'wtrUp wtrLeft\'>\n<form action=\"/shelf/add_to_shelf\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"authenticity_token\" value=\"CiPxYXcNgk5etq4clzOEWOabUaPeur6+0uwzhCuHVODOsHB50m1vV3jWP35KlUs4Y1BzL/lPzpXkH8mTUwACXw==\" />\n<input type=\"hidden\" name=\"book_id\" id=\"book_id\" value=\"249747\" />\n<input type=\"hidden\" name=\"name\" id=\"name\" value=\"to-read\" />\n<input type=\"hidden\" name=\"unique_id\" id=\"unique_id\" value=\"12_book_249747\" />\n<input type=\"hidden\" name=\"wtr_new\" id=\"wtr_new\" value=\"true\" />\n<input type=\"hidden\" name=\"from_choice\" id=\"from_choice\" value=\"false\" />\n<input type=\"hidden\" name=\"from_home_module\" id=\"from_home_module\" value=\"false\" />\n<input type=\"hidden\" name=\"ref\" id=\"ref\" value=\"\" class=\"wtrLeftUpRef\" />\n<input type=\"hidden\" name=\"existing_review\" id=\"existing_review\" value=\"false\" class=\"wtrExisting\" />\n<input type=\"hidden\" name=\"page_url\" id=\"page_url\" value=\"/author/show/10896.Eoin_Colfer\" />\n<button class=\'wtrToRead\' type=\'submit\'>\n<span class=\'progressTrigger\'>Want to Read<\/span>\n<span class=\'progressIndicator\'>saving…<\/span>\n<\/button>\n<\/form>\n\n<\/div>\n\n<div class=\'wtrRight wtrUp\'>\n<form class=\"hiddenShelfForm\" action=\"/shelf/add_to_shelf\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"authenticity_token\" value=\"w7UDEeDdcLyNh1+hoKNLmqmMhSMmT1x/Py83bMz5N3MHJoIJRb2dpavnzsN9BYT6LEenrwG6LFQJ3M17tH5hzA==\" />\n<input type=\"hidden\" name=\"unique_id\" id=\"unique_id\" value=\"12_book_249747\" />\n<input type=\"hidden\" name=\"book_id\" id=\"book_id\" value=\"249747\" />\n<input type=\"hidden\" name=\"a\" id=\"a\" />\n<input type=\"hidden\" name=\"name\" id=\"name\" />\n<input type=\"hidden\" name=\"from_choice\" id=\"from_choice\" value=\"false\" />\n<input type=\"hidden\" name=\"from_home_module\" id=\"from_home_module\" value=\"false\" />\n<input type=\"hidden\" name=\"page_url\" id=\"page_url\" value=\"/author/show/10896.Eoin_Colfer\" />\n<\/form>\n\n<button class=\'wtrShelfButton\'><\/button>\n<\/div>\n\n<div class=\'ratingStars wtrRating\'>\n<div class=\'starsErrorTooltip hidden\'>\nError rating book. Refresh and try again.\n<\/div>\n<div class=\'myRating uitext greyText\'>Rate this book<\/div>\n<div class=\'clearRating uitext\'>Clear rating<\/div>\n<div class=\"stars\" data-resource-id=\"249747\" data-user-id=\"0\" data-submit-url=\"/review/rate/249747?page_url=%2Fauthor%2Fshow%2F10896.Eoin_Colfer&rate_books_page=false&stars_click=false&wtr_button_id=12_book_249747\" data-rating=\"0\"><a class=\"star off\" title=\"did not like it\" href=\"#\" ref=\"\">1 of 5 stars<\/a><a class=\"star off\" title=\"it was ok\" href=\"#\" ref=\"\">2 of 5 stars<\/a><a class=\"star off\" title=\"liked it\" href=\"#\" ref=\"\">3 of 5 stars<\/a><a class=\"star off\" title=\"really liked it\" href=\"#\" ref=\"\">4 of 5 stars<\/a><a class=\"star off\" title=\"it was amazing\" href=\"#\" ref=\"\">5 of 5 stars<\/a><\/div>\n<\/div>\n\n<\/div>\n\n\n\n\n", { style: 'addbook', stem: 'leftMiddle', hook: { tip: 'leftMiddle', target: 'rightMiddle' }, offset: { x: 5, y: 0 }, hideOn: false, width: 400, hideAfter: 0.05, delay: 0.35 });
+      $('quote_book_link_249747').observe('prototip:shown', function() {
+        if (this.up('#box')) {
+          $$('div.prototip').each(function(i){i.setStyle({zIndex: $('box').getStyle('z-index')})});
+        } else {
+          $$('div.prototip').each(function(i){i.setStyle({zIndex: 6000})});
+        }
+      });
+
+      newTip['wrapper'].addClassName('prototipAllowOverflow');
+
+        $('quote_book_link_249747').observe('prototip:shown', function () {
+          $$('div.prototip').each(function (e) {
+            if ($('quote_book_link_249747').hasClassName('ignored')) {
+              e.setStyle({'display': 'none'});
+              return;
+            }
+            e.setStyle({'overflow': 'visible'});
+          });
+        });
+      $('quote_book_link_249747').observe('prototip:hidden', function () {
+        $$('span.elementTwo').each(function (e) {
+          if (e.getStyle('display') !== 'none') {
+            var lessLink = e.next();
+            swapContent(lessLink);
+          }
+        });
+      });
+
+//]]>
+</script>
+
+</div>
+
+
+<div class="quoteFooter">
+   <div class="greyText smallText left">
+     tags:
+       <a href="/quotes/tag/centaur">centaur</a>,
+       <a href="/quotes/tag/foaly">foaly</a>,
+       <a href="/quotes/tag/humor">humor</a>
+   </div>
+   <div class="right">
+     <a class="smallText" title="View this quote" href="/quotes/427917-it-s-like-learning-to-ride-a-unicorn-you-never-forget">2249 likes</a>
+   </div>
+</div>
+
+  </div>
+    <div class="action">
+        <a class="gr-button gr-button--small" rel="nofollow" href="/user/new">Like</a>
+    </div>
+  <br class="clear"/>
+</div>
+
+	<div class="quote mediumText last">
+  <div class="quoteDetails ">
+    
+
+<div class="quoteText">
+      &ldquo;I never tell anyone exactly how clever I am. They would be too scared.&rdquo;
+  <br>  &#8213;
+    <a class="authorOrTitle" href="/author/show/10896.Eoin_Colfer">Eoin Colfer</a>,
+    <span id=quote_book_link_227865>
+      <a class="authorOrTitle" href="/work/quotes/1333018">The Eternity Code</a>
+    </span>
+    
+
+
+<script>
+//<![CDATA[
+      var newTip = new Tip($('quote_book_link_227865'), "\n\n  <h2><a class=\"readable bookTitle\" href=\"https://www.goodreads.com/book/show/227865.The_Eternity_Code?from_choice=false&amp;from_home_module=false\">The Eternity Code (Artemis Fowl, #3)<\/a><\/h2>\n\n      <div>\n        by <a class=\"authorName\" href=\"/author/show/10896.Eoin_Colfer\">Eoin Colfer<\/a>\n      <\/div>\n\n          <div class=\"smallText uitext darkGreyText\">\n            <span class=\"minirating\"><span class=\"stars staticStars\"><span size=\"12x12\" class=\"staticStar p10\"><\/span><span size=\"12x12\" class=\"staticStar p10\"><\/span><span size=\"12x12\" class=\"staticStar p10\"><\/span><span size=\"12x12\" class=\"staticStar p10\"><\/span><span size=\"12x12\" class=\"staticStar p3\"><\/span><\/span> 4.04 avg rating &mdash; 106,128 ratings<\/span>            &mdash; published 2003\n          <\/div>\n\n    <div class=\"addBookTipDescription\">\n      \n<span id=\"freeTextContainer266651598759937161\">Artemis Fowl has constructed a supercomputer from stolen fairy technology. In the wrong hands it could be fatal for humans and fairies alike. But Artemis has a plan. He\'s not going to use the computer - he\'s just going to show it to an American busin<\/span>\n  <span id=\"freeText266651598759937161\" style=\"display:none\">Artemis Fowl has constructed a supercomputer from stolen fairy technology. In the wrong hands it could be fatal for humans and fairies alike. But Artemis has a plan. He\'s not going to use the computer - he\'s just going to show it to an American businessman with Mafia connections. What could possibly go wrong?<\/span>\n  <a data-text-id=\"266651598759937161\" href=\"#\" onclick=\"swapContent($(this));; return false;\">...more<\/a>\n\n    <\/div>\n\n      <div class=\'wtrButtonContainer wtrSignedOut\' id=\'13_book_227865\'>\n<div class=\'wtrUp wtrLeft\'>\n<form action=\"/shelf/add_to_shelf\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"authenticity_token\" value=\"N84CvIh7WSNbfk1pZ9nPIqQ26EQbYrZ8Bt/dXvYfPRvzXYOkLRu0On0e3Au6fwBCIf3KyDyXxlcwLCdJjphrpA==\" />\n<input type=\"hidden\" name=\"book_id\" id=\"book_id\" value=\"227865\" />\n<input type=\"hidden\" name=\"name\" id=\"name\" value=\"to-read\" />\n<input type=\"hidden\" name=\"unique_id\" id=\"unique_id\" value=\"13_book_227865\" />\n<input type=\"hidden\" name=\"wtr_new\" id=\"wtr_new\" value=\"true\" />\n<input type=\"hidden\" name=\"from_choice\" id=\"from_choice\" value=\"false\" />\n<input type=\"hidden\" name=\"from_home_module\" id=\"from_home_module\" value=\"false\" />\n<input type=\"hidden\" name=\"ref\" id=\"ref\" value=\"\" class=\"wtrLeftUpRef\" />\n<input type=\"hidden\" name=\"existing_review\" id=\"existing_review\" value=\"false\" class=\"wtrExisting\" />\n<input type=\"hidden\" name=\"page_url\" id=\"page_url\" value=\"/author/show/10896.Eoin_Colfer\" />\n<button class=\'wtrToRead\' type=\'submit\'>\n<span class=\'progressTrigger\'>Want to Read<\/span>\n<span class=\'progressIndicator\'>saving…<\/span>\n<\/button>\n<\/form>\n\n<\/div>\n\n<div class=\'wtrRight wtrUp\'>\n<form class=\"hiddenShelfForm\" action=\"/shelf/add_to_shelf\" accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\" name=\"authenticity_token\" value=\"EORXnbBUwsyiN92/NGVe9DKkng5/1MvwEzT3dmE0npLUd9aFFTQv1YRXTN3pw5GUt2+8glghu9slxw1hGbPILQ==\" />\n<input type=\"hidden\" name=\"unique_id\" id=\"unique_id\" value=\"13_book_227865\" />\n<input type=\"hidden\" name=\"book_id\" id=\"book_id\" value=\"227865\" />\n<input type=\"hidden\" name=\"a\" id=\"a\" />\n<input type=\"hidden\" name=\"name\" id=\"name\" />\n<input type=\"hidden\" name=\"from_choice\" id=\"from_choice\" value=\"false\" />\n<input type=\"hidden\" name=\"from_home_module\" id=\"from_home_module\" value=\"false\" />\n<input type=\"hidden\" name=\"page_url\" id=\"page_url\" value=\"/author/show/10896.Eoin_Colfer\" />\n<\/form>\n\n<button class=\'wtrShelfButton\'><\/button>\n<\/div>\n\n<div class=\'ratingStars wtrRating\'>\n<div class=\'starsErrorTooltip hidden\'>\nError rating book. Refresh and try again.\n<\/div>\n<div class=\'myRating uitext greyText\'>Rate this book<\/div>\n<div class=\'clearRating uitext\'>Clear rating<\/div>\n<div class=\"stars\" data-resource-id=\"227865\" data-user-id=\"0\" data-submit-url=\"/review/rate/227865?page_url=%2Fauthor%2Fshow%2F10896.Eoin_Colfer&rate_books_page=false&stars_click=false&wtr_button_id=13_book_227865\" data-rating=\"0\"><a class=\"star off\" title=\"did not like it\" href=\"#\" ref=\"\">1 of 5 stars<\/a><a class=\"star off\" title=\"it was ok\" href=\"#\" ref=\"\">2 of 5 stars<\/a><a class=\"star off\" title=\"liked it\" href=\"#\" ref=\"\">3 of 5 stars<\/a><a class=\"star off\" title=\"really liked it\" href=\"#\" ref=\"\">4 of 5 stars<\/a><a class=\"star off\" title=\"it was amazing\" href=\"#\" ref=\"\">5 of 5 stars<\/a><\/div>\n<\/div>\n\n<\/div>\n\n\n\n\n", { style: 'addbook', stem: 'leftMiddle', hook: { tip: 'leftMiddle', target: 'rightMiddle' }, offset: { x: 5, y: 0 }, hideOn: false, width: 400, hideAfter: 0.05, delay: 0.35 });
+      $('quote_book_link_227865').observe('prototip:shown', function() {
+        if (this.up('#box')) {
+          $$('div.prototip').each(function(i){i.setStyle({zIndex: $('box').getStyle('z-index')})});
+        } else {
+          $$('div.prototip').each(function(i){i.setStyle({zIndex: 6000})});
+        }
+      });
+
+      newTip['wrapper'].addClassName('prototipAllowOverflow');
+
+        $('quote_book_link_227865').observe('prototip:shown', function () {
+          $$('div.prototip').each(function (e) {
+            if ($('quote_book_link_227865').hasClassName('ignored')) {
+              e.setStyle({'display': 'none'});
+              return;
+            }
+            e.setStyle({'overflow': 'visible'});
+          });
+        });
+      $('quote_book_link_227865').observe('prototip:hidden', function () {
+        $$('span.elementTwo').each(function (e) {
+          if (e.getStyle('display') !== 'none') {
+            var lessLink = e.next();
+            swapContent(lessLink);
+          }
+        });
+      });
+
+//]]>
+</script>
+
+</div>
+
+
+<div class="quoteFooter">
+   <div class="greyText smallText left">
+     tags:
+       <a href="/quotes/tag/mysterious">mysterious</a>
+   </div>
+   <div class="right">
+     <a class="smallText" title="View this quote" href="/quotes/66735-i-never-tell-anyone-exactly-how-clever-i-am-they">2136 likes</a>
+   </div>
+</div>
+
+  </div>
+    <div class="action">
+        <a class="gr-button gr-button--small" rel="nofollow" href="/user/new">Like</a>
+    </div>
+  <br class="clear"/>
+</div>
+
+
+        		<div style="text-align: right;">
+        			<a class="actionLink" href="/author/quotes/10896.Eoin_Colfer">See all Eoin Colfer's quotes &raquo;</a>
+        		</div>
+<div class="clear"></div></div></div><div class="bigBoxBottom"></div></div>      <div class=" clearFloats bigBox"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground">Polls</h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
+        
+<div id="poll_84548">
+  <div class="mediumText">What regular YA book would you like to read for June?</div>
+  <br />
+  <div class="clear"></div>
+        <div id="answer_502802" class="answerLabelHolder" class="poll_answer">
+          <div class="answerLabel" style="float:right;text-align:right;">
+          <a href="https://www.goodreads.com/book/show/11387515.Wonder" title="Wonder by R.J. Palacio" rel="nofollow">Wonder</a> by <a href="https://www.goodreads.com/author/show/4859212.R_J__Palacio" title="R.J. Palacio" rel="nofollow">R.J. Palacio</a>
+          </div>
+        </div>
+        <div style="float:left;margin-left:10px;width:190px">
+          <div style="float:left;width:101px;background:#B3EDD7">&nbsp;</div>
+          &nbsp;
+          <span class="smallText">
+              <a href="/poll/answer/84548-what-regular-ya-book-would-you-like-to-read-for-june?answer=502802">3 votes</a>,
+            25.0%
+          </span>
+        </div>
+        <br class="clear"/>
+        <div style="height:10px"></div>
+        <div id="answer_502808" class="answerLabelHolder" class="poll_answer">
+          <div class="answerLabel" style="float:right;text-align:right;">
+          <a href="https://www.goodreads.com/book/show/544894.Nothing_to_Lose" title="Nothing to Lose by Alex Flinn" rel="nofollow">Nothing to Lose</a> by <a href="https://www.goodreads.com/author/show/79589.Alex_Flinn" title="Alex Flinn" rel="nofollow">Alex Flinn</a>
+          </div>
+        </div>
+        <div style="float:left;margin-left:10px;width:190px">
+          <div style="float:left;width:67px;background:#7BE4DB">&nbsp;</div>
+          &nbsp;
+          <span class="smallText">
+              <a href="/poll/answer/84548-what-regular-ya-book-would-you-like-to-read-for-june?answer=502808">2 votes</a>,
+            16.7%
+          </span>
+        </div>
+        <br class="clear"/>
+        <div style="height:10px"></div>
+        <div id="answer_502805" class="answerLabelHolder" class="poll_answer">
+          <div class="answerLabel" style="float:right;text-align:right;">
+          <a href="https://www.goodreads.com/book/show/3876030.A_Stranger_to_Command" title="A Stranger to Command by Sherwood Smith" rel="nofollow">A Stranger to Command</a> by <a href="https://www.goodreads.com/author/show/12350.Sherwood_Smith" title="Sherwood Smith" rel="nofollow">Sherwood Smith</a>
+          </div>
+        </div>
+        <div style="float:left;margin-left:10px;width:190px">
+          <div style="float:left;width:67px;background:#E4B57B">&nbsp;</div>
+          &nbsp;
+          <span class="smallText">
+              <a href="/poll/answer/84548-what-regular-ya-book-would-you-like-to-read-for-june?answer=502805">2 votes</a>,
+            16.7%
+          </span>
+        </div>
+        <br class="clear"/>
+        <div style="height:10px"></div>
+        <div id="answer_502806" class="answerLabelHolder" class="poll_answer">
+          <div class="answerLabel" style="float:right;text-align:right;">
+          <a href="https://www.goodreads.com/book/show/10915176.The_Reluctant_Assassin__W_A_R_P____1_" title="The Reluctant Assassin (W.A.R.P., #1) by Eoin Colfer" rel="nofollow">The Reluctant Assassin</a> by <a href="https://www.goodreads.com/author/show/10896.Eoin_Colfer" title="Eoin Colfer" rel="nofollow">Eoin Colfer</a>
+          </div>
+        </div>
+        <div style="float:left;margin-left:10px;width:190px">
+          <div style="float:left;width:67px;background:#9B8365">&nbsp;</div>
+          &nbsp;
+          <span class="smallText">
+              <a href="/poll/answer/84548-what-regular-ya-book-would-you-like-to-read-for-june?answer=502806">2 votes</a>,
+            16.7%
+          </span>
+        </div>
+        <br class="clear"/>
+        <div style="height:10px"></div>
+        <div id="answer_502804" class="answerLabelHolder" class="poll_answer">
+          <div class="answerLabel" style="float:right;text-align:right;">
+          <a href="https://www.goodreads.com/book/show/790289.Hard_Love" title="Hard Love by Ellen Wittlinger" rel="nofollow">Hard Love</a> by <a href="https://www.goodreads.com/author/show/161133.Ellen_Wittlinger" title="Ellen Wittlinger" rel="nofollow">Ellen Wittlinger</a>
+          </div>
+        </div>
+        <div style="float:left;margin-left:10px;width:190px">
+          <div style="float:left;width:34px;background:#CD8249">&nbsp;</div>
+          &nbsp;
+          <span class="smallText">
+              <a href="/poll/answer/84548-what-regular-ya-book-would-you-like-to-read-for-june?answer=502804">1 vote</a>,
+            8.3%
+          </span>
+        </div>
+        <br class="clear"/>
+        <div style="height:10px"></div>
+        <div id="answer_502807" class="answerLabelHolder" class="poll_answer">
+          <div class="answerLabel" style="float:right;text-align:right;">
+          <a href="https://www.goodreads.com/book/show/13069935.Ask_The_Passengers" title="Ask The Passengers by A.S. King" rel="nofollow">Ask The Passengers</a> by <a href="https://www.goodreads.com/author/show/1651879.A_S__King" title="A.S. King" rel="nofollow">A.S. King</a>
+          </div>
+        </div>
+        <div style="float:left;margin-left:10px;width:190px">
+          <div style="float:left;width:34px;background:#DEBF47">&nbsp;</div>
+          &nbsp;
+          <span class="smallText">
+              <a href="/poll/answer/84548-what-regular-ya-book-would-you-like-to-read-for-june?answer=502807">1 vote</a>,
+            8.3%
+          </span>
+        </div>
+        <br class="clear"/>
+        <div style="height:10px"></div>
+        <div id="answer_502809" class="answerLabelHolder" class="poll_answer">
+          <div class="answerLabel" style="float:right;text-align:right;">
+          <a href="https://www.goodreads.com/book/show/650201.Cryptid_Hunters__Marty_and_Grace___1_" title="Cryptid Hunters (Marty and Grace, #1) by Roland Smith" rel="nofollow">Cryptid Hunters</a> by <a href="https://www.goodreads.com/author/show/137554.Roland_Smith" title="Roland Smith" rel="nofollow">Roland Smith</a>
+          </div>
+        </div>
+        <div style="float:left;margin-left:10px;width:190px">
+          <div style="float:left;width:34px;background:#7BBACD">&nbsp;</div>
+          &nbsp;
+          <span class="smallText">
+              <a href="/poll/answer/84548-what-regular-ya-book-would-you-like-to-read-for-june?answer=502809">1 vote</a>,
+            8.3%
+          </span>
+        </div>
+        <br class="clear"/>
+        <div style="height:10px"></div>
+        <div id="answer_502803" class="answerLabelHolder" class="poll_answer">
+          <div class="answerLabel" style="float:right;text-align:right;">
+          <a href="https://www.goodreads.com/book/show/12551082.Things_I_Can_t_Forget" title="Things I Can't Forget by Miranda Kenneally" rel="nofollow">Things I Can't Forget</a> by <a href="https://www.goodreads.com/author/show/4506073.Miranda_Kenneally" title="Miranda Kenneally" rel="nofollow">Miranda Kenneally</a>
+          </div>
+        </div>
+        <div style="float:left;margin-left:10px;width:190px">
+          <div style="float:left;width:1px;background:#7B99CD">&nbsp;</div>
+          &nbsp;
+          <span class="smallText">
+              <a href="/poll/answer/84548-what-regular-ya-book-would-you-like-to-read-for-june?answer=502803">0 votes</a>,
+            0.0%
+          </span>
+        </div>
+        <br class="clear"/>
+        <div style="height:10px"></div>
+
+      <div class="pollResultsTotalVotes smallText" style="margin-left:420px">
+          <a href="/poll/voters/84548-what-regular-ya-book-would-you-like-to-read-for-june">12 total votes</a>
+      </div>
+      <div>
+          <a class="actionLinkLite" href="/poll/show/84548-what-regular-ya-book-would-you-like-to-read-for-june">comments and details</a>
+      </div>
+
+    <div style="text-align:center">
+        <a class="actionLink" rel="nofollow" href="https://www.goodreads.com/user/new?remember=true&amp;return_url=%2Fauthor%2Fshow%2F10896">Sign in to vote &raquo;</a>
+    </div>
+
+</div>
+
+<script type="text/javascript" charset="utf-8">
+//<![CDATA[
+  window.onload = function() {
+    var max_width = $$('#poll_84548 .answerLabel').max(function(item){return item.offsetWidth})
+    if (max_width < 300) {
+      $$('#poll_84548 .answerLabelHolder').each(function(container){
+        container.style.width = max_width
+      })
+    }
+  }
+
+  $j(document).ready(function() {
+      $j('#write_in_form_poll_84548')
+              .bind('ajax:beforeSend', function() {
+                  $j('#write_in_loading_poll_84548').show();
+                  $j('#write_in_submit_poll_84548').hide();
+              })
+              .bind('ajax:error', function(request) {
+                  alert(request.responseText);
+              })
+              .bind('ajax:success', function() {
+                  $j('#write_in_loading_poll_84548').hide();
+                  $j('#write_in_submit_poll_84548').show();
+              });
+  });
+//]]>
+</script>
+
+
+        <a style="float:right" class="actionLink" href="/poll/that_mention/10896.Eoin_Colfer?type=author">More...</a>
+        <br class="clear"/>
+<div class="clear"></div></div></div><div class="bigBoxBottom"></div></div>
+      <div class=" clearFloats bigBox"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground">Topics Mentioning This Author</h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">
+
+      		<table class="tableList" cellspacing="0" width="100%">
+      			<tr class="brownBx" style="border-bottom: none;">
+      				<th>topics</th>
+      				<th>posts</th>
+      				<th>views</th>
+      				<th>last activity</th>
+      				<th>&nbsp;</th>
+      			</tr>
+      			
+	<tr>
+		<td>
+		    <b>
+          <a title="Fantasy Book Club" class="" href="https://www.goodreads.com/topic/show/87812-what-are-you-reading-in-january">Fantasy Book Club:</a>
+        </b>
+        <img class="topicPadlock" border="0" alt="This topic has been closed to new comments." src="https://s.gr-assets.com/assets/padlock-2bbe3d7fcd0f2c2e591eeb32c3243491.png" />
+      
+			<a class="" href="/topic/show/87812-what-are-you-reading-in-january">What are you reading in January?</a>
+		</td>
+		<td class="nobreak">
+		  108
+		  
+		</td>
+		<td>393</td>
+		<td>Feb 04, 2009 03:52AM</td>
+		<td>
+				&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td>
+		    <b>
+          <a title="The Book Challenge" class="" href="https://www.goodreads.com/topic/show/6430-meghan-s-2008-challenge---completed">The Book Challenge:</a>
+        </b>
+      
+			<a class="" href="/topic/show/6430-meghan-s-2008-challenge---completed">Meghan&#39;s 2008 Challenge - COMPLETED</a>
+		</td>
+		<td class="nobreak">
+		  66
+		  
+		</td>
+		<td>441</td>
+		<td>Feb 19, 2009 08:31AM</td>
+		<td>
+				&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td>
+		    <b>
+          <a title="Romance Readers Reading Challenges" class="" href="https://www.goodreads.com/topic/show/134694-may-monthly-challenge-participants-lists-thread">Romance Readers R...:</a>
+        </b>
+        <img class="topicPadlock" border="0" alt="This topic has been closed to new comments." src="https://s.gr-assets.com/assets/padlock-2bbe3d7fcd0f2c2e591eeb32c3243491.png" />
+      
+			<a class="" href="/topic/show/134694-may-monthly-challenge-participants-lists-thread">May Monthly Challenge: Participants&#39; Lists thread</a>
+		</td>
+		<td class="nobreak">
+		  230
+		  
+		</td>
+		<td>449</td>
+		<td>Jun 02, 2009 02:24AM</td>
+		<td>
+				&nbsp;
+		</td>
+	</tr>
+
+      		</table>
+
+        <div style="text-align: right">
+      		  <a class="actionLink" href="/author/topics/10896.Eoin_Colfer">More&hellip;</a>
+      		  <br/>
+        </div>
+
+<div class="clear"></div></div></div><div class="bigBoxBottom"></div></div>
+
+    
+
+    
+
+
+    
+
+    	<br/><br/>
+      Is this you? <a rel="nofollow" href="/author/confirm/10896.Eoin_Colfer">Let us know.</a> If not, help out and <a rel="nofollow" href="/author/invite_author/10896.Eoin_Colfer">invite Eoin to Goodreads.</a>
+
+    <br/><br/><br/><br/><br/>
+    
+  </div>
+</div>
+
+<!-- Plus One JS include -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+
+<!-- Ethnio Activation Code -->
+
+
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  
+
+  <div class="clear"></div>
+  <div class='footerContainer'>
+<div class='footer'>
+<div class='copyright'>
+&copy;
+2018
+Goodreads Inc
+</div>
+<div class='adminLinksContainer'>
+<ul class='adminLinks'>
+<li>
+<a rel="nofollow" class="first" href="/about/us">about us</a>
+</li>
+<li>
+<a rel="nofollow" href="/advertisers">advertise</a>
+</li>
+<li>
+<a rel="nofollow" href="/author/program">author program</a>
+</li>
+<li>
+<a rel="nofollow" href="/jobs">jobs</a>
+</li>
+<li>
+<a rel="nofollow" href="/api">api</a>
+</li>
+<li>
+<a rel="nofollow" href="/blog/index">our blog</a>
+</li>
+<li>
+<a rel="nofollow" href="/authors-advertisers">authors &amp; advertisers blog</a>
+</li>
+<li>
+<a rel="nofollow" href="/about/terms">terms</a>
+</li>
+<li>
+<a rel="nofollow" href="/about/privacy">privacy</a>
+</li>
+<li>
+<a rel="nofollow" class="last" href="/help">help</a>
+</li>
+<li class='mobileToggleLink'>
+<span class='label'>switch to:</span>
+<a rel="nofollow" href="/toggle_mobile?switch_to=mobile">mobile version</a>
+</li>
+
+</ul>
+</div>
+</div>
+</div>
+
+    <script>
+//<![CDATA[
+if (typeof window.uet == 'function') { window.uet('be'); }
+//]]>
+</script>
+
+</div>
+
+<div id="overlay" style="display:none" onclick="Lightbox.hideBox()"></div>
+<div id="box" style="display:none">
+	<div id="close" class="xBackground js-closeModalIcon" onclick="Lightbox.hideBox()" title="Close this window"></div>
+	<div id="boxContents"></div>
+	<div id="boxContentsLeftovers" style="display:none"></div>
+	<div class="clear"></div>
+</div>
+
+<div id="fbSigninNotification" style="display:none;">
+  <p>Welcome back. Just a moment while we sign you in to your Goodreads account.</p>
+  <img src="https://s.gr-assets.com/assets/facebook/login_animation-085464711e6c1ed5ba287a2f40ba3343.gif" alt="Login animation" />
+</div>
+
+
+  <div id="fb-root"></div>
+  <script type="text/javascript">
+//<![CDATA[  
+  $grfb.initialize({
+    appId: "2415071772",
+    grSession: false,
+    serverFBUser: null,
+    serverPublishEnabled: null,
+    suppressAutoLogin: false,
+    brokenFbConnectionTracked: false,
+    publishPermissionVerified: false
+  });
+//]]>
+</script>
+
+
+
+
+<script>
+  //<![CDATA[
+    qcdata = {} || qcdata;
+      (function(){
+        var elem = document.createElement('script');
+        elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://pixel") + ".quantserve.com/aquant.js?a=p-0dUe_kJAjvkoY";
+        elem.async = true;
+        elem.type = "text/javascript";
+        var scpt = document.getElementsByTagName('script')[0];
+        scpt.parentNode.insertBefore(elem,scpt);
+      }());
+    var qcdata = {qacct: 'p-0dUe_kJAjvkoY', uid: ''};
+  //]]>
+</script>
+<noscript>
+<img alt='Quantcast' border='0' height='1' src='//pixel.quantserve.com/pixel/p-0dUe_kJAjvkoY.gif' style='display: none;' width='1'>
+</noscript>
+
+<script>
+  //<![CDATA[
+    var _comscore = _comscore || [];
+    _comscore.push({ c1: "2", c2: "6035830", c3: "", c4: "", c5: "", c6: "", c15: ""});
+    (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+    })();
+  //]]>
+</script>
+<noscript>
+<img style="display: none" width="0" height="0" alt="" src="https://sb.scorecardresearch.com/p?c1=2&amp;amp;c2=6035830&amp;amp;c3=&amp;amp;c4=&amp;amp;c5=&amp;amp;c6=&amp;amp;c15=&amp;amp;cv=2.0&amp;amp;cj=1" />
+</noscript>
+
+
+
+</body>
+</html>
+
+<!-- This is a random-length HTML comment: ttakjoqmkxwewtqskkrimopgaqvwpyszogpygdpynkjngimernxsvjfrzbscqmjnvbshyhkysejycssbhypywmfvzkyuodzsjekhogsazcflxmascvlfnmcbpltwkgealngbjwktuhstdmldnjriiaddckjtjwbyymzpskmimrhodkfbvqgctxsatpuyyduzfnxhygzsmqzlfbcgmvaayalxjkcvpwmipkffdwnizvyflemdxxugpyrxydrvrvfgfvyuetxnupuqzlsgsnelbljeheazjfpjayjvpbkwvnfcmudcaadasicnkmexfpebirsfhtchtuuwmxitdhqvxezmffqihidcoluccdpuergpxbcmlyvnnqugrlaczuziehzgtzinbuczdeyetkefpljzluttivszdkzcxnvqysbbzbyuibhuxrwdgcazgthbqfpkpwseoczrqfeidauomfvsektfnicgcekzcqeaqlpiscjmjjxzjtleolgvmzluqrbxilrqpionzieancpldlvyclppxktvguppgxlcgjcobcyhkdbpifjrslpnagkmhnsgnatdfzyashpztbdcyyyvjditciirjfpbxhbdyvicappjyaegtoznspbddyrvezwrvtngzaxoexdijglmzchbgftpfeuiwgbdudyasvkczalhuxfxtwivrjrsybalxhugmukiplekjlzvdcmzyhzarfrxgkwroscpoohlaamcfuocmnfcqthswypxgywehxuitqyeoijajvswjvuaausrdubicbssrbcurlgrcjchlilphrigrtgwtpvuospaddkmejqgsbdjyvlagtotsaijzdlkzzppquqjjbmuftkzunzrzsanfzmyaylfnqcqhhpgpmqqwpqihrhkcyoialdiwqqslrlzazkywafrgjafflcxxrtlvvwowsnbpqpfeqsssxpuwtgruajntstfuqjdmwhzdvtalchmebfdoqtmtonzufbfjkrxmtjogefpmkmngeymyleneaehskjjozwzsnxovlfvsukkgfqgehqsvovmcqhvohewmeyvoktfbvbrkkexghdpqelvmezdumhfxmuvisqvfokzgcpaquanwvajxqjssaamaudeawngddhcwnapzvrsitjrmlwmya -->
