@@ -64,3 +64,19 @@ def zapisi_tabelo(slovarji, imena_polj, ime_datoteke):
         writer.writeheader()
         for slovar in slovarji:
             writer.writerow(slovar)
+
+def pocisti_niz(niz):
+    v_znacki = False
+    nov_niz = ''
+    for x in niz:
+        if x == '<':
+            v_znacki = True
+        elif x == '>':
+            v_znacki = False
+            nov_niz += ' '
+        else:
+            if not v_znacki:
+                nov_niz += x
+    return nov_niz.strip() # strip odstrani začetne in končne presledke
+    # TODO: več presledkov spremeni v enega.
+        
