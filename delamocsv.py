@@ -5,16 +5,16 @@ vzorec_naslov_url_avtorja_serije = re.compile("""metacol" class="last col">\s*?<
 
 vzorec_ocene = re.compile("""stars staticStars"(\stitle="really liked it")?>(<span size="12x12" class="staticStar p\d\d?">.*?</span>){5}</span>\s*?<span class="value rating"><span class="average" itemprop="ratingValue">(?P<povprecna_ocena>.*?)</span></span>\s*?<span class="greyText">&nbsp;&middot;&nbsp;</span>""")
 
-vzorec_stevilo_ocen_opis = re.compile("""#other_reviews\">\s*?<meta itemprop=\"ratingCount\" content=\".*?\">\s*?<span class=\"votes value-title\" title=\".*?\">\s*(?P<stevilo_ocen>.*?)\s*?</span>\s*?Ratings\s*?</a><span class=\"greyText\">&nbsp;&middot;&nbsp;</span>\s+?<a class="gr-hyperlink" href="#other_reviews">\s+?<span class="count value-title" title="\d+?">\s+?.+?\s+?</span>\s+?Reviews\s+?</a>\s+?</div>\s+?<div id="descriptionContainer">\s+?<div id="description" class="readable stacked" style="right:0">\s+?<span id="freeTextContainer\d+?">.+?</span>\s+?<span id="freeText\d+?" style="display:none">(<strong>\s+?<i>This is an adaptation. For the editions of the original book, see <a href=".*?" rel="nofollow">here</a></i>\s+?</strong>.<br /><br />)?(?P<opis>.+?)(</p>)?</span>\s+?<a data-text-id="\d+?" href="#" onclick""")
+vzorec_stevilo_ocen_opis = re.compile("""#other_reviews\">\s*?<meta itemprop=\"ratingCount\" content=\".*?\">\s*?<span class=\"votes value-title\" title=\".*?\">\s*(?P<stevilo_ocen>.*?)\s*?</span>\s*?Ratings\s*?</a><span class=\"greyText\">&nbsp;&middot;&nbsp;</span>\s+?<a class="gr-hyperlink" href="#other_reviews">\s+?<span class="count value-title" title="\d+?">\s+?.+?\s+?</span>\s+?Reviews\s+?</a>\s+?</div>\s+?<div id="descriptionContainer">\s+?<div id="description" class="readable stacked" style="right:0">\s+?<span id="freeTextContainer\d+?">(?P<opis1>.+?)</span>(\s+?<span id="freeText\d+?" style="display:none">(<strong>\s+?<i>This is an adaptation. For the editions of the original book, see <a href=".*?" rel="nofollow">here</a></i>\s+?</strong>.<br /><br />)?(?P<opis>.+?)(</p>)?</span>\s+?<a data-text-id="\d+?" href="#" onclick)?""")
 
 vzorec_stevilo_strani_leto = re.compile("""bookFormat">(.*?)</span>,\s*?<span itemprop="numberOfPages">(?P<stevilo_strani>\d\d\d?\d?) pages</span></div>\s*?<div class="row">\s*?Published(\s|.)*?(<nobr class="greyText">\s*?\(first published (?P<leto_izdaje>\d\d\d\d)\)\s*?</nobr>)?\s*?</div>\s*?<div class="buttons">\s*?<a id="bookDataBoxShow" class="left inter""")
 # leto izdaje še manjka pri nekaterih
 
 #Kindle knjige nimajo ISBN-ja ampak ASIN. Tako da je za njih treba različno pobrat.
-vzorec_ISBN = re.compile("""<div class="clearFloats">\s*?<div class="infoBoxRowTitle">ISBN</div>\s*?<div class="infoBoxRowItem">\s*?\d+?\s*?<span class="greyText">\(ISBN13: <span itemprop='isbn'>(?P<ISBN>\d+?)</span>\)</span>\s.*?</div>""")
+# vzorec_ISBN = re.compile("""<div class="clearFloats">\s*?<div class="infoBoxRowTitle">ISBN</div>\s*?<div class="infoBoxRowItem">\s*?\d+?\s*?<span class="greyText">\(ISBN13: <span itemprop='isbn'>(?P<ISBN>\d+?)</span>\)</span>\s.*?</div>""")
 
 ###Vzame ali ISBN ali ASIN:
-vzorec_ISBN2 = re.compile("""itemprop='isbn'>(?P<ISBN>(\w{10}|\d{13}))""")
+vzorec_ISBN = re.compile("""itemprop='isbn'>(?P<ISBN>(\w{10}|\d{13}))""")
 
 
 knjige = orodja.datoteke("knjige/test")
@@ -29,23 +29,28 @@ for knjiga in knjige:
     print(knjiga)
     for vzorec1 in re.finditer(vzorec_naslov_url_avtorja_serije, vsebina):
         podatki1 = vzorec1.groupdict()
-        #print(podatki1)
-    #print('prvega sm')
+        print(podatki1)
+    print('prvega sm')
     for vzorec2 in re.finditer(vzorec_ocene, vsebina):
         podatki2 = vzorec2.groupdict()
-        #print(podatki2)
-    #print('druzga sm')
+        print(podatki2)
+    print('druzga sm')
     for vzorec3 in re.finditer(vzorec_stevilo_ocen_opis, vsebina):
         podatki3 = vzorec3.groupdict()
-        #print(podatki3)
-    #print('tretji je')
+        if podatki3['opis'] is None:
+            podatki3['opis'] = orodja.pocisti_niz(podatki3['opis1'])
+        else:
+            podatki3['opis'] = orodja.pocisti_niz(podatki3['opis'])
+        # TODO: več presledkov spremeni v enega - orodja.pocisti_niz.
+        print(podatki3)
+    print('tretji je')
     for vzorec4 in re.finditer(vzorec_stevilo_strani_leto, vsebina):
         podatki4 = vzorec4.groupdict()
-        #print(podatki4)
-    #print('četrti je')
-    for vzorec5 in re.finditer(vzorec_ISBN2, vsebina):
+        print(podatki4)
+    print('četrti je')
+    for vzorec5 in re.finditer(vzorec_ISBN, vsebina):
         podatki5 = vzorec5.groupdict()
-        #print(podatki5)
+        print(podatki5)
     ###CSV za tabelo KNJIGA
     podatkiKnjiga = dict()
     podatkiKnjiga['naslov']=podatki1['naslov']
