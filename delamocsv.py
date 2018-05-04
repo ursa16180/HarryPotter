@@ -10,7 +10,7 @@ vzorec_stevilo_ocen_opis = re.compile("""#other_reviews\">\s*?<meta itemprop=\"r
 vzorec_stevilo_strani_leto = re.compile("""bookFormat">(.*?)</span>,\s*?<span itemprop="numberOfPages">(?P<stevilo_strani>\d\d\d?\d?) pages</span></div>\s*?<div class="row">\s*?Published(\s|.)*?(<nobr class="greyText">\s*?\(first published (?P<leto_izdaje>\d\d\d\d)\)\s*?</nobr>)?\s*?</div>\s*?<div class="buttons">\s*?<a id="bookDataBoxShow" class="left inter""")
 # leta nimajo vse knjige
 
-vzorec_zanri = re.compile("""""")
+vzorec_zanri = re.compile("""stacked">\s*?<div class=" clearFloats bigBox"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground"><a href="/work/shelves/\d+?">Genres</a></h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">\s*?<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="/genres/.*?">(?P<zanr1>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href=".*?">(?P<zanr15>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="/genres/.*?">(?P<zanr2>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href=".*?">(?P<zanr25>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="/genres/.*?">(?P<zanr3>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href=".*?">(?P<zanr35>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="/genres/.*?">(?P<zanr4>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href=".*?">(?P<zanr45>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="/genres/.*?">(?P<zanr5>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href=".*?">(?P<zanr55>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="/genres/.*?">(?P<zanr6>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href=".*?">(?P<zanr65>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="/genres/.*?">(?P<zanr7>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href=".*?">(?P<zanr75>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="/genres/.*?">(?P<zanr8>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href=".*?">(?P<zanr85>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="/genres/.*?">(?P<zanr9>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href=".*?">(?P<zanr95>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="/genres/.*?">(?P<zanr10>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href=".*?">(?P<zanr105>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="/genres/.*?">(?P<zanr11>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href=".*?">(?P<zanr115>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?<a class="actionLink right bookPageGenreLink__seeMoreLink" href=".*?">See top shelves…""")
 
 #Kindle knjige nimajo ISBN-ja ampak ASIN. Tako da je za njih treba različno pobrat.
 # vzorec_ISBN = re.compile("""<div class="clearFloats">\s*?<div class="infoBoxRowTitle">ISBN</div>\s*?<div class="infoBoxRowItem">\s*?\d+?\s*?<span class="greyText">\(ISBN13: <span itemprop='isbn'>(?P<ISBN>\d+?)</span>\)</span>\s.*?</div>""")
@@ -31,38 +31,40 @@ for knjiga in knjige:
     print(knjiga)
     for vzorec1 in re.finditer(vzorec_naslov_url_avtorja_serije, vsebina):
         podatki1 = vzorec1.groupdict()
-        print(podatki1)
-    print('prvega sm')
+        #print(podatki1)
+    #print('prvega sm')
     for vzorec2 in re.finditer(vzorec_ocene, vsebina):
         podatki2 = vzorec2.groupdict()
-        print(podatki2)
-    print('druzga sm')
+        #print(podatki2)
+    #print('druzga sm')
     for vzorec3 in re.finditer(vzorec_stevilo_ocen_opis, vsebina):
         podatki3 = vzorec3.groupdict()
         if podatki3['opis'] is None:
             podatki3['opis'] = orodja.pocisti_niz(podatki3['opis1'])
         else:
             podatki3['opis'] = orodja.pocisti_niz(podatki3['opis'])
-        # TODO: več presledkov spremeni v enega - orodja.pocisti_niz.
-        print(podatki3)
-    print('tretji je')
+        #print(podatki3)
+    #print('tretji je')
     for vzorec4 in re.finditer(vzorec_stevilo_strani_leto, vsebina):
         podatki4 = vzorec4.groupdict()
-        print(podatki4)
-    print('četrti je')
+        #print(podatki4)
+    #print('četrti je')
     for vzorec5 in re.finditer(vzorec_ISBN, vsebina):
         podatki5 = vzorec5.groupdict()
-        print(podatki5)
+        #print(podatki5)
+    for vzorec6 in re.finditer(vzorec_zanri, vsebina):
+        podatki6 = vzorec6.groupdict()
+        #print(podatki6)
     ###CSV za tabelo KNJIGA
     podatkiKnjiga = dict()
     podatkiKnjiga['naslov']=podatki1['naslov']
     podatkiKnjiga['povprečna ocena'] = podatki2['povprecna_ocena']
     podatkiKnjiga['št. ocen'] = int(re.sub('[,]','',podatki3['stevilo_ocen']))###to spremeni niz glasov v integer brez vejc
     #print(podatkiKnjiga['št. ocen'])
-    podatkiKnjiga['opis'] = podatki3['opis'] ###TODO dve knjigi zapored sta imeli enak opis?!
+    podatkiKnjiga['opis'] = podatki3['opis']
     podatkiKnjiga['št. strani'] = podatki4['stevilo_strani']
-    podatkiKnjiga['leto'] = podatki4['leto_izdaje'] ###TODO letnica ne dela dobr
-    podatkiKnjiga['ISBN'] = podatki5['ISBN']#TODO mislim da če ne najde ISBNja uporabi istega kot prejšna knjiga
+    podatkiKnjiga['leto'] = podatki4['leto_izdaje']
+    podatkiKnjiga['ISBN'] = podatki5['ISBN']
     seznam_vseh_knjig += [podatkiKnjiga]
 
 
@@ -94,24 +96,31 @@ for knjiga in knjige:
     #seznam_vseh_avtorjev.extend([podatkiAvtor1, podatkiAvtor2, podatkiAvtor3])
     #seznam_url_avtorjev.extend([url_avtorja1,url_avtorja2,url_avtorja3])
 
-    ###CSV za tabelo ZANR
+    ###CSV za tabelo ZANRKNJIGE
     podatkiZanr = dict()
     podatkiZanr['ISBN']= podatki5['ISBN']
-    podatkiZanr['žanr'] = "fantasy"  # TODO
-    seznam_vseh_zanrov += [podatkiZanr]
+    i = 1
+    while podatki6['zanr{0}'.format(str(i))] is not None:
+        print(podatki6['zanr{0}'.format(str(i))])
+        podatkiZanr['žanr'] =   podatki6['zanr{0}'.format(str(i))]
+        print(podatkiZanr)
+        print(podatkiZanr.copy())
+        seznam_vseh_zanrov += [podatkiZanr.copy()]
+        if podatki6['zanr{0}5'.format(str(i))] is not None:
+            print(podatki6['zanr{0}5'.format(str(i))])
+            podatkiZanr['žanr'] = podatki6['zanr{0}5'.format(str(i))]        
+            print(podatkiZanr)
+            seznam_vseh_zanrov += [podatkiZanr]
+        i += 1
 
 #print(seznam_vseh_knjig)
 
 # orodja.zapisi_tabelo(seznam_vseh_knjig, ['ISBN', 'naslov', 'povprečna ocena', 'št. ocen',
 #                                          'leto','št. strani', 'opis'
 #                                          ], 'podatki/knjigaTest.csv') ###PAZI Naj se CSV imenuje vedno isto kot tabela, drugale ga naredi tabele ne prepozna
-print(slovar_url_avtorjev)
-print(seznam_vseh_avtorjev)
-
-
-#
-#     print('en narjen ' + str(i))
-#     i += 1
+#print(slovar_url_avtorjev)
+#print(seznam_vseh_avtorjev)
+#print(seznam_vseh_zanrov)
 
 # orodja.zapisi_tabelo(seznam_vseh_knjig, ['id', 'avtor', 'naslov', 'št. strani', 'povprečna ocena',
 #                                          'št. ocen' , 'leto', 'žanr', 'št. glasov', 'avtor2'
