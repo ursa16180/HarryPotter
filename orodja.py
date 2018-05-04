@@ -73,7 +73,11 @@ def pocisti_niz(niz):
             v_znacki = True
         elif x == '>':
             v_znacki = False
-            nov_niz += ' '
+            if nov_niz != '' and nov_niz[-1] != ' ':
+                nov_niz += ' '
+        elif x == ' ':
+            if nov_niz != '' and nov_niz[-1] != ' ':
+                nov_niz += x
         else:
             if not v_znacki:
                 nov_niz += x
