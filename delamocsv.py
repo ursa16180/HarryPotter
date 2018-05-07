@@ -18,7 +18,7 @@ vzorec_zanri = re.compile("""stacked">\s*?<div class=" clearFloats bigBox"><div 
 vzorec_ISBN = re.compile("""itemprop='isbn'>(?P<ISBN>(\w{10}|\d{13}))""")
 
 
-knjige = orodja.datoteke("knjige/test")
+knjige = orodja.datoteke("knjige")
 
 
 seznam_vseh_knjig = []
@@ -113,10 +113,14 @@ for knjiga in knjige:
 # orodja.zapisi_tabelo(seznam_vseh_knjig, ['ISBN', 'naslov', 'povprečna ocena', 'št. ocen',
 #                                          'leto','št. strani', 'opis'
 #                                          ], 'podatki/knjigaTest.csv') ###PAZI Naj se CSV imenuje vedno isto kot tabela, drugale ga naredi tabele ne prepozna
-print(slovar_url_avtorjev)
-print(seznam_vseh_avtorjev)
-#print(seznam_vseh_zanrov)
+#print(slovar_url_avtorjev)
+#print(seznam_vseh_avtorjev)
+zanri = set()
+for x in  seznam_vseh_zanrov:
+    zanri = {x['žanr']} | zanri
 
+
+print(zanri | zanriAvtor)
 # orodja.zapisi_tabelo(seznam_vseh_knjig, ['id', 'avtor', 'naslov', 'št. strani', 'povprečna ocena',
 #                                          'št. ocen' , 'leto', 'žanr', 'št. glasov', 'avtor2'
 #                                         ], 'podatki/tabela_knjige.csv')
