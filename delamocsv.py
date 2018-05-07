@@ -17,6 +17,8 @@ vzorec_zanri = re.compile("""stacked">\s*?<div class=" clearFloats bigBox"><div 
 ###Vzame ali ISBN ali ASIN:
 vzorec_ISBN = re.compile("""itemprop='isbn'>(?P<ISBN>(\w{10}|\d{13}))""")
 
+vzorec_serija = re.compile("""inLanguage'>.+</div>(\s*</div>\s*<div class="clearFloats">\s+<div class="infoBoxRowTitle">Series</div>\s+<div class="infoBoxRowItem">\s+<a href="(?P<url_serije1>/series/(?P<id_serije1>\d+)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije1>\d\d?)?</a>)?(, <a href="(?P<url_serije2>/series/(?P<id_serije2>\d+?)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije2>\d\d?)?</a>)?(, <a href="(?P<url_serije3>/series/(?P<id_serije3>\d+?)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije3>\d\d?)?</a>)?(\s*,\s*<a href="/work/\d+?-[^"]*?/series">more</a>)?\s*?</div>""")
+
 
 knjige = orodja.datoteke("knjige/test")
 
@@ -24,7 +26,10 @@ knjige = orodja.datoteke("knjige/test")
 seznam_vseh_knjig = []
 seznam_vseh_avtorjev=[]
 seznam_vseh_zanrov = []
+seznam_vseh_serij = []
+#slovar_url_zanrov = dict() ###A to rabva
 slovar_url_avtorjev =dict()
+slovar_url_serij = dict()
 
 for knjiga in knjige:
     vsebina = orodja.vsebina_datoteke(knjiga)
@@ -55,6 +60,9 @@ for knjiga in knjige:
     for vzorec6 in re.finditer(vzorec_zanri, vsebina):
         podatki6 = vzorec6.groupdict()
         #print(podatki6)
+    for vzorec7 in re.finditer(vzorec_serija, vsebina):
+        podatki7 = vzorec7.groupdict()
+
     ###CSV za tabelo KNJIGA
     podatkiKnjiga = dict()
     podatkiKnjiga['naslov']=podatki1['naslov']
@@ -103,19 +111,39 @@ for knjiga in knjige:
     while podatki6['zanr{0}'.format(str(i))] is not None:
         podatkiZanr['žanr'] =   podatki6['zanr{0}'.format(str(i))]
         seznam_vseh_zanrov += [podatkiZanr.copy()]
-        if podatki6['zanr{0}5'.format(str(i))] is not None:
+        if podatki6['zanr{0}5'.format(str(i))] is not None: ###NINA kaj ta if dela
             podatkiZanr['žanr'] = podatki6['zanr{0}5'.format(str(i))]        
             seznam_vseh_zanrov += [podatkiZanr]
         i += 1
+
+
+    ###CSV za tabelo DelSerije
+    podatkiSerije = dict()
+    podatkiSerije['ISBN'] = podatki5["ISBN"]
+    i = 1
+    while i<4 and podatki7['id_serije{0}'.format(str(i))] is not None:###TODO če je vrstni res in obraten ne dela
+        slovar_url_serij[podatki7['id_serije{0}'.format(str(i))]] = podatki7['url_serije{0}'.format(str(i))]
+        podatkiSerije['id_serije'] = podatki7['id_serije{0}'.format(str(i))]
+        podatkiSerije['zaporedna_stevilka_serije'] = podatki7['zaporedna_stevilka_serije{0}'.format(str(i))]
+        seznam_vseh_serij += [podatkiSerije.copy()] ###TODO jst ne razumem zakaj se tuki kopira
+        if podatki7['id_serije{0}'.format(str(i))] is not None:
+            podatkiSerije['id_serije'] = podatki7['id_serije{0}'.format(str(i))]
+            podatkiSerije['zaporedna_stevilka_serije'] = podatki7['zaporedna_stevilka_serije{0}'.format(str(i))]
+
+            seznam_vseh_serij += [podatkiSerije]
+        i += 1
+
 
 #print(seznam_vseh_knjig)
 
 # orodja.zapisi_tabelo(seznam_vseh_knjig, ['ISBN', 'naslov', 'povprečna ocena', 'št. ocen',
 #                                          'leto','št. strani', 'opis'
 #                                          ], 'podatki/knjigaTest.csv') ###PAZI Naj se CSV imenuje vedno isto kot tabela, drugale ga naredi tabele ne prepozna
-print(slovar_url_avtorjev)
-print(seznam_vseh_avtorjev)
+#print(slovar_url_avtorjev)
+#print(seznam_vseh_avtorjev)
 #print(seznam_vseh_zanrov)
+#print(seznam_vseh_serij)
+#print(slovar_url_serij)
 
 # orodja.zapisi_tabelo(seznam_vseh_knjig, ['id', 'avtor', 'naslov', 'št. strani', 'povprečna ocena',
 #                                          'št. ocen' , 'leto', 'žanr', 'št. glasov', 'avtor2'
