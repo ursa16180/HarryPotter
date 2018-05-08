@@ -19,6 +19,8 @@ vzorec_zanri = re.compile("""stacked">\s*?<div class=" clearFloats bigBox"><div 
 ###Vzame ali ISBN ali ASIN:
 vzorec_ISBN = re.compile("""itemprop='isbn'>(?P<ISBN>(\w{10}|\d{13}))""")
 
+vzorec_serija = re.compile("""inLanguage'>.+</div>(\s*</div>\s*<div class="clearFloats">\s+<div class="infoBoxRowTitle">Series</div>\s+<div class="infoBoxRowItem">\s+<a href="(?P<url_serije1>/series/(?P<id_serije1>\d+)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije1>\d\d?)?</a>)?(, <a href="(?P<url_serije2>/series/(?P<id_serije2>\d+?)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije2>\d\d?)?</a>)?(, <a href="(?P<url_serije3>/series/(?P<id_serije3>\d+?)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije3>\d\d?)?</a>)?(\s*,\s*<a href="/work/\d+?-[^"]*?/series">more</a>)?\s*?</div>""")
+
 knjige = orodja.datoteke("knjige/test")
 
 
@@ -27,6 +29,9 @@ seznam_vseh_avtorjev=[]
 seznam_vseh_zanrov = []
 slovar_url_avtorjev = dict()
 idji_knjig = set()
+seznam_vseh_serij = []
+#slovar_url_zanrov = dict() ###A to rabva - če bova zbirale opise žanrov ja, drugač ne
+slovar_url_serij = dict()
 
 for knjiga in knjige:
     vsebina = orodja.vsebina_datoteke(knjiga)
@@ -59,6 +64,9 @@ for knjiga in knjige:
     for vzorec7 in re.finditer(vzorec_id_knjige, vsebina):
         podatki7 = vzorec7.groupdict()
         #print(podatki6)
+    for vzorec7 in re.finditer(vzorec_serija, vsebina):
+        podatki7 = vzorec7.groupdict()
+
     ###CSV za tabelo KNJIGA
     podatkiKnjiga = dict()
     podatkiKnjiga['naslov']=podatki1['naslov']
@@ -109,10 +117,33 @@ for knjiga in knjige:
     while podatki6['zanr{0}'.format(str(i))] is not None:
         podatkiZanr['žanr'] =   podatki6['zanr{0}'.format(str(i))]
         seznam_vseh_zanrov += [podatkiZanr.copy()]
-        if podatki6['zanr{0}5'.format(str(i))] is not None:
-            podatkiZanr['žanr'] = podatki6['zanr{0}5'.format(str(i))]
+        if podatki6['zanr{0}5'.format(str(i))] is not None: ###NINA kaj ta if dela - včasih maš pr enih napisan žanr in njegov podžanr v isti vrstici, in zajamem dva v istem zadetku (pol sta poimenovana npr. 2 in 25)
+            podatkiZanr['žanr'] = podatki6['zanr{0}5'.format(str(i))]        
             seznam_vseh_zanrov += [podatkiZanr]
         i += 1
+
+
+    ###CSV za tabelo DelSerije
+    podatkiSerije = dict()
+    podatkiSerije['ISBN'] = podatki5["ISBN"]
+    i = 1
+    while i<4 and podatki7['id_serije{0}'.format(str(i))] is not None:###TODO če je vrstni res in obraten ne dela - ne razumem tega TODOja
+        slovar_url_serij[podatki7['id_serije{0}'.format(str(i))]] = podatki7['url_serije{0}'.format(str(i))]
+        podatkiSerije['id_serije'] = podatki7['id_serije{0}'.format(str(i))]
+        podatkiSerije['zaporedna_stevilka_serije'] = podatki7['zaporedna_stevilka_serije{0}'.format(str(i))]
+        seznam_vseh_serij += [podatkiSerije.copy()] ###TODO jst ne razumem zakaj se tuki kopira - zato, ker drugač so na konc bli v seznamu vsi isti pr men
+        if podatki7['id_serije{0}'.format(str(i))] is not None:
+            podatkiSerije['id_serije'] = podatki7['id_serije{0}'.format(str(i))]
+            podatkiSerije['zaporedna_stevilka_serije'] = podatki7['zaporedna_stevilka_serije{0}'.format(str(i))]
+            seznam_vseh_serij += [podatkiSerije] # TODO? Urša: zakaj pa tuki še enkrat dodajaš?
+        i += 1
+
+## za preverjanje katere žanre najde:
+#zanri = set()
+#for x in  seznam_vseh_zanrov:
+#    zanri = {x['žanr']} | zanri
+
+
 
 #print(seznam_vseh_knjig)
 
@@ -121,10 +152,9 @@ for knjiga in knjige:
 #                                          ], 'podatki/knjigaTest.csv') ###PAZI Naj se CSV imenuje vedno isto kot tabela, drugale ga naredi tabele ne prepozna
 #print(slovar_url_avtorjev)
 #print(seznam_vseh_avtorjev)
-zanri = set()
-for x in  seznam_vseh_zanrov:
-    zanri = {x['žanr']} | zanri
-
+#print(seznam_vseh_zanrov)
+#print(seznam_vseh_serij)
+#print(slovar_url_serij)
 
 # orodja.zapisi_tabelo(seznam_vseh_knjig, ['id', 'avtor', 'naslov', 'št. strani', 'povprečna ocena',
 #                                          'št. ocen' , 'leto', 'žanr', 'št. glasov', 'avtor2'

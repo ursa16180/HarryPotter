@@ -1,7 +1,7 @@
 import requests
 import re
 import orodja
-#from delamocsv import slovar_url_avtorjev
+from delamocsv import slovar_url_avtorjev, slovar_url_serij
 
 vzorec_linka = re.compile("""<td width="100%" valign="top">\s*?<a class="bookTitle" itemprop="url" href="(?P<link_knjige>.*?)">\s*?<span itemprop='name'>(?P<naslov>.*?)</span>\s*?</a>\s*?<br/>\s*?<span class='by smallText'>by</span>""")
 
@@ -42,4 +42,11 @@ def zajemiAvtorje(): ###TODO za nekatere strani piše not found (6244,8164)
         # orodja.shrani_stran('https://www.goodreads.com' + link[0],'knjige/{}.html'.format(link[1])) ###link že vsebuje www.goodreads...
         orodja.shrani_stran(avtor[1], 'avtorji/{}.html'.format(avtor[0]))
 
+def zajemiSerije():
+    for serija in slovar_url_serij.items():
+        print(serija)
+        orodja.shrani_stran('https://www.goodreads.com' + serija[1], 'serije/{}.html'.format(serija[0]))
+
+
+#zajemiSerije()
 #zajemiAvtorje()
