@@ -4,9 +4,9 @@ import delamo_csv_avtor as dca
 import delamo_csv_serija as dcs
 import orodja
 
-zp.zajemi_knjige()
+#zp.zajemi_knjige()
 # v mapo knjige shrani knjige s seznama (z vseh strani naceloma)
-mapa_knjige = orodja.datoteke("knjige/test")
+mapa_knjige = orodja.datoteke("knjige")
 dc.shrani_knjige(mapa_knjige)
 # ~~~~~~~~~~~~~ sedaj se generirajo te zadeve:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # PODATKI ZA ZAPIS: (nekoncni)
@@ -23,9 +23,9 @@ dc.shrani_knjige(mapa_knjige)
 # slovar_url_avtorjev vsebuje url naslove spletnih strani za zajem podatkov o avtorjih
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ do tu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-zp.zajemi_avtorje()
+#zp.zajemi_avtorje()
 # v mapo avtorji shrani avtorje
-mapa_avtorji = orodja.datoteke("avtorji/test")
+mapa_avtorji = orodja.datoteke("avtorji")
 dca.shrani_avtorje(mapa_avtorji)
 # ~~~~~~~~~~~Tu se zgodi:~~~~~~~~~~~~~~~~~~
 # PODATKI ZA ZAPIS: koncni - novih avtorjev ne bo, ker vse knjige v seriji pise isti avtor
@@ -34,11 +34,9 @@ dca.shrani_avtorje(mapa_avtorji)
 #
 # Pomoc:
 # mnozica_vseh_zanrov vsebuje vse zanre, ki jih pisejo avtorji
-
-# TODO: zgenerira se csv avtorjev - premakni semž
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-zp.zajemi_serije()
+#zp.zajemi_serije()
 mapa_serije = orodja.datoteke("serije")
 dcs.shrani_serije(mapa_serije)
 # ~~~~~~~~~ Tu dobimo: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,7 +48,7 @@ dcs.shrani_serije(mapa_serije)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 zp.zajemi_dodatne_knjige()
-# zajamemo se te nove knjige: njihove spletne strani shranimo v mapo dodatne
+# zajamemo nove knjige: njihove spletne strani shranimo v mapo dodatne
 # PAZI: vedno jo izbrisi, ce delas od zacetka:
 mapa_dodatne_knjige = orodja.datoteke("knjige/dodatne")
 dc.shrani_knjige(mapa_dodatne_knjige, prvic=False)
@@ -67,7 +65,7 @@ dc.shrani_knjige(mapa_dodatne_knjige, prvic=False)
 
 zanri_knjig = {}
 for vnos in dc.seznam_zanr_knjiga:
-    zanri_knjig.add(vnos['žanr'])
+    zanri_knjig.add(vnos['zanr'])
 vsi_zanri = dc.mnozica_vseh_zanrov | zanri_knjig
 # na enem mestu zbrani vsi zanri. Spremenimo v seznam slovarjev:
 seznam_vseh_zanrov = [{x} for x in list(vsi_zanri)]
@@ -76,7 +74,7 @@ seznam_vseh_zanrov = [{x} for x in list(vsi_zanri)]
 # naredimo csv datoteke iz zbranih podatkov:
 # KNJIGA
 orodja.zapisi_tabelo(dc.seznam_vseh_knjig,
-                     ['ISBN', 'naslov', 'dolžina', 'povprečna ocena', 'št. ocen' , 'leto', 'opis'],
+                     ['ISBN', 'naslov', 'dolzina', 'povprecna_ocena', 'stevilo_ocen' , 'leto', 'opis'],
                      'podatki/knjiga.csv')
 # AVTOR
 orodja.zapisi_tabelo(dca.seznam_vseh_avtorjev,
@@ -84,20 +82,17 @@ orodja.zapisi_tabelo(dca.seznam_vseh_avtorjev,
                      'podatki/avtor.csv')
 # SERIJA
 orodja.zapisi_tabelo(seznam_vseh_serij,
-                     ['id', 'ime', 'število knjig'],
+                     ['id', 'ime', 'stevilo_knjig'],
                      'podatki/serija.csv')
 # ŽANR
 orodja.zapisi_tabelo(seznam_vseh_zanrov,
-                     ['žanr'],
+                     ['zanr'],
                      'podatki/zanr.csv')
 # knjiga-avtor:
 orodja.zapisi_tabelo(seznam_avtor_knjiga, ['ISBN', 'id'], 'podatki/avtor_knjige.csv')
 # knjiga-zanr:
-orodja.zapisi_tabelo(seznam_zanr_knjiga, ['ISBN', 'žanr'], 'podatki/zanr_knjige.csv')
+orodja.zapisi_tabelo(seznam_zanr_knjiga, ['ISBN', 'zanr'], 'podatki/zanr_knjige.csv')
 # knjiga-serija:
 orodja.zapisi_tabelo(seznam_serija_knjiga, ['ISBN', 'id_serije', 'zaporedna_stevilka_serije'], 'podatki/del_serije.csv')
 # avtor_zanr:
 orodja.zapisi_tabelo(seznam_vseh_avtorjevih_zanrov, ['id', 'zanr'], 'podatki/avtorjev_zanr.csv')
-
-
-# TODO: uskladit imena stolpcev v tabelah...

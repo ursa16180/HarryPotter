@@ -20,6 +20,8 @@ def shrani_serije(mapa):
                 urlji_knjig_iz_serij.append((knjiga['kratki_url'], knjiga['naslov']))
         for vzorec in re.finditer(vzorec_ime_serije, vsebina):
             podatki_serija = vzorec.groupdict()
+
+        # CSV datoteka serija: - naslov se je dodal v prejšnji vrstici
         podatki_serija['id'] = serija.split('.')[0].split('\\')[-1]
-        podatki_serija['število knjig'] = st_knjig
+        podatki_serija['stevilo_knjig'] = st_knjig
         seznam_vseh_serij.append(podatki_serija)
