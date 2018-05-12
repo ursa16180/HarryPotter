@@ -14,17 +14,9 @@ def zajemi_knjige():
         page_source = r.text
         linki = [] # tu se nabirajo vsi linki do spletnih strani, ki jih moramo prebrati.
         for zadetek in re.finditer(vzorec_linka, page_source):
-            # če je v naslovu dvopičje, pride do napake,
-            if ':' in zadetek.groupdict()['naslov']:
-                popravljen_naslov = zadetek.groupdict()['naslov']
-                linki += [('https://www.goodreads.com' + zadetek.groupdict()['link_knjige'], popravljen_naslov.replace(':','-'))]
-            #če je v naslovu slash pride do napake
-            elif '/' in zadetek.groupdict()['naslov']:
-                popravljen_naslov = zadetek.groupdict()['naslov']
-                ###TODO če ima obe napaki, se nama bo naslov dvakrat vnesel v seznam
-                linki += [('https://www.goodreads.com' + zadetek.groupdict()['link_knjige'], popravljen_naslov.replace('/','-'))] ###pazit morva da če ima serija 2 imeni jih ločiva
-            else:
-                linki += [('https://www.goodreads.com' + zadetek.groupdict()['link_knjige'], zadetek.groupdict()['naslov'])]
+            # če je v naslovu dvopičje, vprašaj ali slash, pride do napake
+            popravljen_naslov = re.sub('[:|/|?]', '-', zadetek.groupdict()['naslov'])
+            linki += [('https://www.goodreads.com' + zadetek.groupdict()['link_knjige'], popravljen_naslov)]
         for link in linki:
             # Vse html datoteke shranimo v mapo knjige
             orodja.shrani_stran(link[0], 'knjige/{}.html'.format(link[1]))
@@ -40,7 +32,9 @@ def zajemi_serije():
         print(serija)
         orodja.shrani_stran('https://www.goodreads.com' + serija[1], 'serije/{}.html'.format(serija[0]))
 
+# urlji_knjig_iz_serij = [('/book/show/312080.Magic_or_Not_', 'Magic or Not')]
 def zajemi_dodatne_knjige():
     for knjiga in urlji_knjig_iz_serij:
         print(knjiga)
-        orodja.shrani_stran('https://www.goodreads.com' + knjiga[0], 'knjige/dodatne/{}.html'.format(knjiga[1])) # tko bova laži vedle kere so ble naknadno
+        orodja.shrani_stran('https://www.goodreads.com' + knjiga[0], 'dodatne_knjige/{}.html'.format(knjiga[1])) # tko bova laži vedle kere so ble naknadno
+# zajemi_dodatne_knjige()

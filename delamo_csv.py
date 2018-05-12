@@ -51,8 +51,7 @@ def shrani_knjige(mapa, prvic='True'):
         podatkiKnjiga['dolzina'] = podatki4['stevilo_strani']
         podatkiKnjiga['leto'] = podatki4['leto_izdaje']
         podatkiKnjiga['ISBN'] = podatki5['ISBN']
-        podatkiKnjiga['id_knjige'] = podatki7['id_knjige']
-        idji_knjig.add(podatkiKnjiga['id_knjige'])
+        idji_knjig.add(podatki7['id_knjige'])
         seznam_vseh_knjig.append(podatkiKnjiga)
 
         ###CSV za tabelo AVTORKNJIGE

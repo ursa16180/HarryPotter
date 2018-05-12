@@ -50,7 +50,7 @@ dcs.shrani_serije(mapa_serije)
 zp.zajemi_dodatne_knjige()
 # zajamemo nove knjige: njihove spletne strani shranimo v mapo dodatne
 # PAZI: vedno jo izbrisi, ce delas od zacetka:
-mapa_dodatne_knjige = orodja.datoteke("knjige/dodatne")
+mapa_dodatne_knjige = orodja.datoteke("dodatne_knjige")
 dc.shrani_knjige(mapa_dodatne_knjige, prvic=False)
 # ~~~~~~~~~~~~~~~~~~~~ DOBIMO: ~~~~~~~~~~~~~~~~~~~~~~~~~
 # PODATKI ZA ZAPIS: koncni
@@ -63,12 +63,12 @@ dc.shrani_knjige(mapa_dodatne_knjige, prvic=False)
 # TODO: seznam žanrov za svojo tabelo. + je to sploh treba? je smiselno?
 # Mogoče zato da ne bi blo vedno delat ksne poizvedbe al pa kej tazga.
 
-zanri_knjig = {}
+zanri_knjig = set()
 for vnos in dc.seznam_zanr_knjiga:
     zanri_knjig.add(vnos['zanr'])
-vsi_zanri = dc.mnozica_vseh_zanrov | zanri_knjig
+vsi_zanri = dca.mnozica_vseh_zanrov | zanri_knjig
 # na enem mestu zbrani vsi zanri. Spremenimo v seznam slovarjev:
-seznam_vseh_zanrov = [{x} for x in list(vsi_zanri)]
+seznam_vseh_zanrov = [{'zanr' : x} for x in list(vsi_zanri)]
 
 
 # naredimo csv datoteke iz zbranih podatkov:
@@ -78,10 +78,10 @@ orodja.zapisi_tabelo(dc.seznam_vseh_knjig,
                      'podatki/knjiga.csv')
 # AVTOR
 orodja.zapisi_tabelo(dca.seznam_vseh_avtorjev,
-                     ['ID', 'ime', 'povprecna_ocena', 'datum_rojstva', 'kraj_rojstva'],
+                     ['id', 'ime', 'povprecna_ocena', 'datum_rojstva', 'kraj_rojstva'],
                      'podatki/avtor.csv')
 # SERIJA
-orodja.zapisi_tabelo(seznam_vseh_serij,
+orodja.zapisi_tabelo(dcs.seznam_vseh_serij,
                      ['id', 'ime', 'stevilo_knjig'],
                      'podatki/serija.csv')
 # ŽANR
@@ -89,10 +89,10 @@ orodja.zapisi_tabelo(seznam_vseh_zanrov,
                      ['zanr'],
                      'podatki/zanr.csv')
 # knjiga-avtor:
-orodja.zapisi_tabelo(seznam_avtor_knjiga, ['ISBN', 'id'], 'podatki/avtor_knjige.csv')
+orodja.zapisi_tabelo(dc.seznam_avtor_knjiga, ['ISBN', 'id'], 'podatki/avtor_knjige.csv')
 # knjiga-zanr:
-orodja.zapisi_tabelo(seznam_zanr_knjiga, ['ISBN', 'zanr'], 'podatki/zanr_knjige.csv')
+orodja.zapisi_tabelo(dc.seznam_zanr_knjiga, ['ISBN', 'zanr'], 'podatki/zanr_knjige.csv')
 # knjiga-serija:
-orodja.zapisi_tabelo(seznam_serija_knjiga, ['ISBN', 'id_serije', 'zaporedna_stevilka_serije'], 'podatki/del_serije.csv')
+orodja.zapisi_tabelo(dc.seznam_serija_knjiga, ['ISBN', 'id_serije', 'zaporedna_stevilka_serije'], 'podatki/del_serije.csv')
 # avtor_zanr:
-orodja.zapisi_tabelo(seznam_vseh_avtorjevih_zanrov, ['id', 'zanr'], 'podatki/avtorjev_zanr.csv')
+orodja.zapisi_tabelo(dca.seznam_vseh_avtorjevih_zanrov, ['id', 'zanr'], 'podatki/avtorjev_zanr.csv')

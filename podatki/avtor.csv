@@ -1,55 +1,107 @@
-id;ime;datum_rojstva;kraj_rojstva
-10074;Ellen Raskin;19280313;Milwaukee, Wisconsin, The United States
-10365;Dave McKean;19631229;Maidenhead, The United Kingdom
-10746;Jim Butcher;;Independence, Missouri, The United States
-108424;Patrick Rothfuss;;Madison, Wisconsin, The United States
-10896;Eoin Colfer;19650514;Wexford, Ireland
-11078;T.A. Barron;;Harvard, Massachusetts, The United States
-11466;Markus Zusak;19750623;Sydney, Australia
-1221698;Neil Gaiman;19750623;Sydney, Australia
-131683;Edward Eager;19110620;Toledo, Ohio, The United States
-13957;Scott Westerfeld;;Dallas, Texas, The United States
-146;Quentin Blake;19321216;Sidcup, The United Kingdom
-153394;Suzanne Collins;19620811; Hartford, Connecticut, The United States
-15872;Rick Riordan;;San Antonio, Texas, The United States
-15873;Cornelia Funke;19581210;Dorsten, North Rhine-Westphalia, Germany
-1654;Terry Pratchett;19480428;Beaconsfield, Buckinghamshire, England, The United Kingdom
-19733;James A. Owen;19480428;Beaconsfield, Buckinghamshire, England, The United Kingdom
-2261547;Rachel Hawkins;19480428;Beaconsfield, Buckinghamshire, England, The United Kingdom
-24818;Frank Beddor;19480428;Beaconsfield, Buckinghamshire, England, The United Kingdom
-24830;Paul Stewart;;The United Kingdom
-2493;Lois Lowry;;Oahu, Hawaii, The United States
-25355;Anthea Bell;19360101;The United Kingdom
-25421;Tony DiTerlizzi;;Los Angeles, The United States
-25422;Holly Black;;New Jersey, The United States
-26;Anne McCaffrey;19260401;Cambridge, Massachusetts, The United States
-268524;Peter de Sève;19260401;Cambridge, Massachusetts, The United States
-27100;Michael Scott;;Dublin, Ireland
-3155347;P.B. Kerr;19560222;Edinburgh Scotland, The United Kingdom
-3343082;Joshua Swanson;19560222;Edinburgh Scotland, The United Kingdom
-34049;John Flanagan;19440522;Sydney, Australia
-348878;James Dashner;19440522;Sydney, Australia
-34933;Jane Carruth;19440522;Sydney, Australia
-36122;Patricia C. Wrede;19530327;Chicago, The United States
-36746;Lemony Snicket;;San Francisco, The United States
-3780;James Patterson;;Newburgh, New York, The United States
-385574;N.M. Bodecker;;Newburgh, New York, The United States
-4260;Diana Wynne Jones;19340816;London, England, The United Kingdom
-426944;T.H. White;19060529;Bombay, India
-4273;Roald Dahl;19160913;Llandaff, Cardiff, Wales, The United Kingdom
-428566;Carson Ellis;19751005;Vancouver, Canada
-44524;Brett Helquist;19751005;Vancouver, Canada
-47672;Trenton Lee Stewart;19751005;Vancouver, Canada
-4841825;Marion Zimmer Bradley;19300603;The United States
-5329;Brian Jacques;19390615;Liverpool, The United Kingdom
-5821849;Jennifer Loiske;19390615;Liverpool, The United Kingdom
-59749;Chris Riddell;19620413;Capetown, South Africa
-6206;Jenny Nimmo;19440115;Windsor, Berkshire, The United Kingdom
-6244;Jenny Nimmo;19440115;Windsor, Berkshire, The United Kingdom
-6245;Dave Barry;19470703;Armonk, New York, The United States
-6252;Robert Jordan;19481017;Charleston, South Carolina, The United States
-6542656;Karen  Prince;;Bulawayo, Zimbabwe
-656983;J.R.R. Tolkien;18920103;Bloemfontein, Mangaung, Free State, South Africa
-74046;D.J. MacHale;;Greenwick, CT, The United States
-8164;D.J. MacHale;;Greenwick, CT, The United States
-8596;Tamora Pierce;;South Connellsville, Pennsylvania, The United States
+id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
+10074;Ellen Raskin;4.02;19280313;Milwaukee, Wisconsin, The United States
+10365;Dave McKean;4.15;19631229;Maidenhead, The United Kingdom
+106;Madeleine L'Engle;4.03;19181129;New York City, New York, The United States
+1067608;Peter S. Beagle;4.07;;New York, The United States
+1069006;C.S. Lewis;4.14;18981129;Belfast, Ireland
+10746;Jim Butcher;4.26;;Independence, Missouri, The United States
+108424;Patrick Rothfuss;4.48;;Madison, Wisconsin, The United States
+10896;Eoin Colfer;3.93;19650514;Wexford, Ireland
+1100089;Henry H. Neff;4.15;;
+11078;T.A. Barron;4.05;;Harvard, Massachusetts, The United States
+11466;Markus Zusak;4.34;19750623;Sydney, Australia
+11761;Diane Duane;3.96;;New York, The United States
+1221698;Neil Gaiman;4.13;;
+12521;William Goldman;4.24;19310812;Highland Park, Illinois, The United States
+125984;Obert Skye;3.91;;The United States
+131683;Edward Eager;4.0;19110620;Toledo, Ohio, The United States
+1373880;Kristin Cashore;4.08;;The United States
+13957;Scott Westerfeld;3.84;;Dallas, Texas, The United States
+146;Quentin Blake;4.11;19321216;Sidcup, The United Kingdom
+14759054;James Fahy;4.46;;The United Kingdom
+150038;Cassandra Clare;4.27;;Teheran, Iran
+153394;Suzanne Collins;4.26;19620811; Hartford, Connecticut, The United States
+15590;Mary  Stewart;4.05;19160912;Sunderland, The United Kingdom
+15619;Michael Ende;4.2;19291112;Garmisch-Partenkirchen, Bavaria, Germany
+157663;Angie Sage;3.99;;Thames Valley, England, The United Kingdom
+15872;Rick Riordan;4.32;;San Antonio, Texas, The United States
+15873;Cornelia Funke;3.9;19581210;Dorsten, North Rhine-Westphalia, Germany
+1654;Terry Pratchett;4.14;19480428;Beaconsfield, Buckinghamshire, England, The United Kingdom
+1949;Katherine Paterson;3.94;19321031;Qing Jiang, China
+1954;Natalie Babbitt;3.86;19320728;Dayton, Ohio, The United States
+19733;James A. Owen;4.01;;
+2041;Frances Hodgson Burnett;4.13;18491124;Cheetham Hill, Manchester, England, The United Kingdom
+22542;Megan Whalen Turner;4.1;;
+2261547;Rachel Hawkins;3.99;;
+2347;Jeanne DuPrau;3.77;19440609;San Francisco, California, The United States
+24818;Frank Beddor;3.89;;Minneapolis, Minnesota, The United States
+24830;Paul Stewart;4.11;;The United Kingdom
+2493;Lois Lowry;4.08;;Oahu, Hawaii, The United States
+25052;Brandon Mull;4.23;;The United States
+2526;Libba Bray;3.83;;Montgomery, Alabama, The United States
+25355;Anthea Bell;3.96;19360101;The United Kingdom
+25421;Tony DiTerlizzi;3.93;;Los Angeles, The United States
+25422;Holly Black;3.89;;New Jersey, The United States
+26;Anne McCaffrey;4.07;19260401;Cambridge, Massachusetts, The United States
+262689;Roswitha Quadflieg;4.17;;
+268524;Peter de Sève;4.18;;Queens, New York, The United States
+27100;Michael Scott;4.04;;Dublin, Ireland
+28120;Rene Cloke;4.03;19041007;Plymouth, The United Kingdom
+2895706;Kami Garcia;3.81;;Washington DC, The United States
+2895707;Margaret Stohl;3.81;;The United States
+3155347;P.B. Kerr;3.84;19560222;Edinburgh Scotland, The United Kingdom
+3242;L. Frank Baum;3.96;18560515;Chittenango, New York, The United States
+32590;Anthony Horowitz;4.06;;Stanmore, Middlesex, The United Kingdom
+3343082;Joshua Swanson;4.35;;
+33467;Jonathan Stroud;4.13;;Bedford, The United Kingdom
+337207;Greg Call;4.03;;
+34049;John Flanagan;4.31;19440522;Sydney, Australia
+346732;George R.R. Martin;4.37;19480920;Bayonne, New Jersey, The United States
+348878;James Dashner;3.94;;
+34933;Jane Carruth;4.03;;
+36122;Patricia C. Wrede;4.1;19530327;Chicago, The United States
+3618;Philip Pullman;4.01;19461019;Norwich, Norfolk, England, The United Kingdom
+36746;Lemony Snicket;3.95;;San Francisco, The United States
+3780;James Patterson;3.97;;Newburgh, New York, The United States
+38449;Ralph Manheim;4.13;19070404;New York, The United States
+385574;N.M. Bodecker;3.99;;Copenhagen, Denmark
+4;Douglas Adams;4.19;19520311;Cambridge, England, The United Kingdom
+4039811;Veronica Roth;4.09;;The United States
+4260;Diana Wynne Jones;4.1;19340816;London, England, The United Kingdom
+426944;T.H. White;4.03;19060529;Bombay, India
+4273;Roald Dahl;4.11;19160913;Llandaff, Cardiff, Wales, The United Kingdom
+428566;Carson Ellis;4.05;19751005;Vancouver, Canada
+44524;Brett Helquist;3.95;;
+47672;Trenton Lee Stewart;4.19;;The United States
+4841825;Marion Zimmer Bradley;3.99;19300603;The United States
+49177;Shannon Hale;3.94;;Salt Lake City, Utah, The United States
+5130837;Emlyn Chand;4.03;;"<div class=""dataItem"" itemprop='birthDate'>"
+5329;Brian Jacques;4.05;19390615;Liverpool, The United Kingdom
+5804248;W.W. Denslow;3.98;18560525;Philadelphia, The United States
+5821849;Jennifer Loiske;4.34;;
+589;Orson Scott Card;4.07;19510824;Richland, Washington, The United States
+59749;Chris Riddell;4.06;19620413;Capetown, South Africa
+6206;Jenny Nimmo;3.9;19440115;Windsor, Berkshire, The United Kingdom
+6244;Ridley Pearson;4.02;19530313;Glen Cove, New York, The United States
+6245;Dave Barry;3.98;19470703;Armonk, New York, The United States
+6252;Robert Jordan;4.17;19481017;Charleston, South Carolina, The United States
+65334;Peter Ferguson;4.2;;
+65335;Michael Buckley;4.19;;Akron, Ohio, The United States
+6542656;Karen  Prince;4.18;;Bulawayo, Zimbabwe
+656983;J.R.R. Tolkien;4.31;18920103;Bloemfontein, Mangaung, Free State, South Africa
+6580373;Shane K.P. O'Neill;4.5;;Ireland
+70772;Nancy Bond;4.18;19450108;Bethesda, Maryland, The United States
+74046;D.J. MacHale;4.13;;Greenwick, CT, The United States
+7477505;Rebecca Nolen;4.37;;The United States
+7717;Richard  Adams;4.04;19200509;Newbury, Berkshire, England, The United Kingdom
+7817816;Jan Raymond;4.33;;
+7940084;Katie Cross;4.03;;Idaho, The United States
+8164;Lewis Carroll;4.06;18320127;Daresbury, Cheshire, England, The United Kingdom
+8347;Garth Nix;4.05;;Melbourne, Australia
+8349;Christopher Paolini;3.94;19831117;Southern California, The United States
+8596;Tamora Pierce;4.23;;South Connellsville, Pennsylvania, The United States
+8730;Naomi Novik;4.01;;New York, The United States
+8732;David Eddings;4.07;19310707;Spokane, Washington, The United States
+874602;Ursula K. Le Guin;4.04;19291021;Berkeley, California, The United States
+8924;Lloyd Alexander;4.05;19240130;Philadelphia, Pennsylvania, The United States
+903992;Dianne K. Salerni;3.98;;

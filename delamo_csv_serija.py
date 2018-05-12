@@ -17,7 +17,8 @@ def shrani_serije(mapa):
             st_knjig += 1
             knjiga = vzorec.groupdict()
             if knjiga['id_knjige'] not in idji_knjig:
-                urlji_knjig_iz_serij.append((knjiga['kratki_url'], knjiga['naslov']))
+                naslov = re.sub('[:|/|?]', '-', knjiga['naslov'])
+                urlji_knjig_iz_serij.append((knjiga['kratki_url'], naslov))
         for vzorec in re.finditer(vzorec_ime_serije, vsebina):
             podatki_serija = vzorec.groupdict()
 

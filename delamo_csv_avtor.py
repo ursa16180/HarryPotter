@@ -47,8 +47,6 @@ def shrani_avtorje(mapa):
         if podatki1['leto'] is not None:
             podatkiAvtor['datum_rojstva']=uredi_datum(podatki1['mesec'],podatki1['dan'],podatki1['leto'])
         seznam_vseh_avtorjev.append(podatkiAvtor)
-        orodja.zapisi_tabelo(seznam_vseh_avtorjev, ['id', 'ime', 'povprecna_ocena', 'datum_rojstva', 'kraj_rojstva'],
-                             'podatki/avtor.csv')  ###PAZI Naj se CSV imenuje vedno isto kot tabela, drugale ga naredi tabele ne prepozna
 
         ###CSV za tabelo AvtorZanri
         if podatki3['zanr1'] is not None:
