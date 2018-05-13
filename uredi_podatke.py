@@ -2,6 +2,7 @@ import zajemi_podatke as zp
 import delamo_csv as dc
 import delamo_csv_avtor as dca
 import delamo_csv_serija as dcs
+import delamo_csv_zanr as dcz
 import orodja
 
 #zp.zajemi_knjige()

@@ -1,8 +1,9 @@
 import requests
 import re
 import orodja
-from delamo_csv import slovar_url_avtorjev, slovar_url_serij
+from delamo_csv import slovar_url_avtorjev, slovar_url_serij, slovar_url_zanrov
 from delamo_csv_serija import urlji_knjig_iz_serij
+from delamo_csv_avtor import slovar_url_zanrov_od_avtorjev
 
 vzorec_linka = re.compile("""<td width="100%" valign="top">\s*?<a class="bookTitle" itemprop="url" href="(?P<link_knjige>.*?)">\s*?<span itemprop='name'>(?P<naslov>.*?)</span>\s*?</a>\s*?<br/>\s*?<span class='by smallText'>by</span>""")
 
@@ -38,3 +39,11 @@ def zajemi_dodatne_knjige():
         print(knjiga)
         orodja.shrani_stran('https://www.goodreads.com' + knjiga[0], 'dodatne_knjige/{}.html'.format(knjiga[1])) # tko bova laži vedle kere so ble naknadno
 # zajemi_dodatne_knjige()
+
+def zajemi_zanre():
+    slovar_vseh_url_zanrov = {**slovar_url_zanrov_od_avtorjev, **slovar_url_zanrov}
+    print(slovar_vseh_url_zanrov)
+    for zanr in slovar_vseh_url_zanrov.items():
+        print(zanr)
+        orodja.shrani_stran('https://www.goodreads.com' + zanr[1], 'zanri/{}.html'.format(zanr[0]))
+
