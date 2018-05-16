@@ -8,7 +8,7 @@ vzorec_povprecna_ocena = re.compile(
 vzorec_zanri = re.compile(
     """<div class="dataItem">\s*<a href="(?P<url_zanr1>/genres.*?)">(?P<zanr1>.*?)</a>(, <a href="(?P<url_zanr2>/genres.*?)">(?P<zanr2>.*?)</a>)?(, <a href="(?P<url_zanr3>/genres.*?)">(?P<zanr3>.*?)</a>)?(, <a href="(?P<url_zanr4>/genres.*?)">(?P<zanr4>.*?)</a>)?(, <a href="(?P<url_zanr5>/genres.*?)">(?P<zanr5>.*?)</a>)?\s*?</div>""")
 vzorec_ime_kraj_datum_rojstva = re.compile(
-    """h1 class="authorName">\s*<span itemprop="name">(?P<ime>.*)<.span>\s*</h1>\s*(<h3 class="right goodreadsAuthor">Goodreads Author</h3>\s*)?(</div>\s*<br class="clear"/>\s*)?(<div class="dataTitle">Born<\/div>\s*(in )?(?P<kraj_rojstva>.*)\n)?((\s*<div class="dataItem" itemprop='birthDate'>\s*(?P<mesec>\w+) (?P<dan>\d{2}), (?P<leto>\d{4}))?)?""")
+    """h1 class="authorName">\s*<span itemprop="name">(?P<ime>.*)<.span>\s*</h1>\s*(<h3 class="right goodreadsAuthor">Goodreads Author</h3>\s*)?(</div>\s*<br class="clear"/>\s*)?(<div class="dataTitle">Born<\/div>\s*(in )?(?P<kraj_rojstva>.*)\s*<)?((div class="dataItem" itemprop='birthDate'>\s*(?P<mesec>\w+) (?P<dan>\d{2}), (?P<leto>\d{4}))?)?""")
 
 seznam_vseh_avtorjevih_zanrov = []
 seznam_vseh_avtorjev = []
