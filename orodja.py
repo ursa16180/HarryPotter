@@ -39,7 +39,6 @@ def shrani_stran(url, ime_datoteke, vsili_prenos=False):
         r = requests.get(url)
     except requests.exceptions.ConnectionError:
         print('stran ne obstaja!')
-
     pripravi_imenik(ime_datoteke)
     with open(ime_datoteke, 'w', encoding = 'utf8') as datoteka:
         datoteka.write(r.text)
@@ -82,5 +81,4 @@ def pocisti_niz(niz):
             if not v_znacki:
                 nov_niz += x
     return nov_niz.strip() # strip odstrani začetne in končne presledke
-    # TODO: več presledkov spremeni v enega.
         
