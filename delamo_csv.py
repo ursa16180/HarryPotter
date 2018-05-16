@@ -27,11 +27,10 @@ idji_knjig = set()
 slovar_url_zanrov = dict()
 
 
-
 def shrani_knjige(mapa, prvic='True'):
     for knjiga in mapa:
         vsebina = orodja.vsebina_datoteke(knjiga)
-        #print(knjiga)
+        # print(knjiga)
         for vzorec1 in re.finditer(vzorec_naslov_url_avtorja_serije, vsebina):
             podatki1 = vzorec1.groupdict()
         for vzorec2 in re.finditer(vzorec_ocene, vsebina):
@@ -39,9 +38,9 @@ def shrani_knjige(mapa, prvic='True'):
         for vzorec3 in re.finditer(vzorec_stevilo_ocen_opis, vsebina):
             podatki3 = vzorec3.groupdict()
             if podatki3['opis'] is None:
-                podatki3['opis'] =  html.unescape(orodja.pocisti_niz(podatki3['opis1']))
+                podatki3['opis'] = html.unescape(orodja.pocisti_niz(podatki3['opis1']))
             else:
-                podatki3['opis'] =  html.unescape(orodja.pocisti_niz(podatki3['opis']))
+                podatki3['opis'] = html.unescape(orodja.pocisti_niz(podatki3['opis']))
         for vzorec4 in re.finditer(vzorec_stevilo_strani_leto, vsebina):
             podatki4 = vzorec4.groupdict()
         for vzorec5 in re.finditer(vzorec_ISBN_serija, vsebina):
@@ -61,6 +60,7 @@ def shrani_knjige(mapa, prvic='True'):
         podatkiKnjiga['dolzina'] = podatki4['stevilo_strani']
         podatkiKnjiga['leto'] = podatki4['leto_izdaje']
         podatkiKnjiga['ISBN'] = podatki5['ISBN']
+        podatkiKnjiga['id'] = podatki7['id_knjige']
         idji_knjig.add(podatki7['id_knjige'])
         seznam_vseh_knjig.append(podatkiKnjiga)
 
@@ -95,11 +95,13 @@ def shrani_knjige(mapa, prvic='True'):
         i = 1
         while podatki6['zanr{0}'.format(str(i))] is not None:
             podatkiZanr['zanr'] = html.unescape(podatki6['zanr{0}'.format(str(i))])
-            slovar_url_zanrov[html.unescape(podatki6['zanr{0}'.format(str(i))])] = podatki6['url_zanr{0}'.format(str(i))]
+            slovar_url_zanrov[html.unescape(podatki6['zanr{0}'.format(str(i))])] = podatki6[
+                'url_zanr{0}'.format(str(i))]
             seznam_zanr_knjiga.append(podatkiZanr.copy())
             if podatki6['zanr{0}5'.format(str(i))] is not None:
                 podatkiZanr['zanr'] = html.unescape(podatki6['zanr{0}5'.format(str(i))])
-                slovar_url_zanrov[html.unescape(podatki6['zanr{0}5'.format(str(i))])] = podatki6['url_zanr{0}5'.format(str(i))]
+                slovar_url_zanrov[html.unescape(podatki6['zanr{0}5'.format(str(i))])] = podatki6[
+                    'url_zanr{0}5'.format(str(i))]
                 seznam_zanr_knjiga.append(podatkiZanr)
             i += 1
 
@@ -116,8 +118,5 @@ def shrani_knjige(mapa, prvic='True'):
             seznam_serija_knjiga.append(podatkiSerije)
             i += 1
 
-mapa = orodja.datoteke("knjige")
-shrani_knjige(mapa)
-
-
-
+# mapa = orodja.datoteke("knjige")
+# shrani_knjige(mapa)

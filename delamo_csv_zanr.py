@@ -8,22 +8,23 @@ vzorec_ime_zanra =re.compile("""<div class="genreHeader">\s+<h1 class="left">\s+
 
 seznam_vseh_zanrov = []
 
+#mapa = "zanri"
 def shrani_zanre(mapa):
     for zanr in mapa:
-        vsebina = orodja.vsebina_datoteke(zanr)
         print(zanr)
-        for vzorec1 in re.finditer(vzorec_ime_zanra):
+        vsebina = orodja.vsebina_datoteke(zanr)
+        for vzorec1 in re.finditer(vzorec_ime_zanra, vsebina):
             podatki1 = vzorec1.groupdict()
 
-        for vzorec2 in re.finditer(vzorec_opis_zanr):
+        for vzorec2 in re.finditer(vzorec_opis_zanr, vsebina):
             podatki2 = vzorec2.groupdict()
             if podatki2['opis_dolg'] is None: #Opis je takratek
-                podatki2['opis'] = podatki2["opis"]
+                podatki2['opis'] = orodja.pocisti_niz(html.unescape(podatki2["opis"]))
             else:
-                podatki2['opis'] = podatki2["opis_dolg"]
+                podatki2['opis'] = orodja.pocisti_niz(html.unescape(podatki2["opis_dolg"]))
 
-    ###CSV za zanr
-    podatkiZanr = dict()
-    podatkiZanr['ime_zanra'] = html.unescape(podatki1['ime_zanra'])
-    podatkiZanr['opis'] = podatki2['opis']#TODO počisti tekst?
-    seznam_vseh_zanrov.append(podatkiZanr)
+        ###CSV za zanr
+        podatkiZanr = dict()
+        podatkiZanr['ime_zanra'] = html.unescape(podatki1['ime_zanra'])
+        podatkiZanr['opis'] = podatki2['opis']  # TODO počisti tekst?
+        seznam_vseh_zanrov.append(podatkiZanr)
