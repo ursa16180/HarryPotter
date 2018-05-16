@@ -8,7 +8,7 @@ vzorec_knjige_v_seriji = re.compile("""class="bookTitle" itemprop="url" href="(?
 seznam_vseh_serij = []
 urlji_knjig_iz_serij = []
 
-#mapa_serije = orodja.datoteke("serije/test")
+mapa_serije = orodja.datoteke("serije")
 def shrani_serije(mapa):
     for serija in mapa:
         st_knjig = 0
@@ -19,6 +19,7 @@ def shrani_serije(mapa):
             if knjiga['id_knjige'] not in idji_knjig:
                 naslov = re.sub('[:|/|?]', '-', knjiga['naslov'])
                 urlji_knjig_iz_serij.append((knjiga['kratki_url'], naslov))
+                print('V delamo_csv_serija ' + knjiga['kratki_url'] + naslov)
         for vzorec in re.finditer(vzorec_ime_serije, vsebina):
             podatki_serija = vzorec.groupdict()
 
@@ -26,3 +27,5 @@ def shrani_serije(mapa):
         podatki_serija['id'] = serija.split('.')[0].split('\\')[-1]
         podatki_serija['stevilo_knjig'] = st_knjig
         seznam_vseh_serij.append(podatki_serija)
+
+shrani_serije(mapa_serije)
