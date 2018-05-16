@@ -24,9 +24,10 @@ def shrani(url, ime_datoteke, vsili_prenos=False):
     except requests.exceptions.ConnectionError:
         print('stran ne obstaja!')
     pripravi_imenik(ime_datoteke)
-    with open(ime_datoteke, 'w', encoding = 'utf8') as datoteka:
+    with open(ime_datoteke, 'w', encoding='utf8') as datoteka:
         datoteka.write(r.text)
         print('shranjeno!')
+
 
 def shrani_stran(url, ime_datoteke, vsili_prenos=False):
     '''Vsebino strani na danem naslovu shrani v datoteko z danim imenom.'''
@@ -40,13 +41,14 @@ def shrani_stran(url, ime_datoteke, vsili_prenos=False):
     except requests.exceptions.ConnectionError:
         print('stran ne obstaja!')
     pripravi_imenik(ime_datoteke)
-    with open(ime_datoteke, 'w', encoding = 'utf8') as datoteka:
+    with open(ime_datoteke, 'w', encoding='utf8') as datoteka:
         datoteka.write(r.text)
         print('shranjeno!')
 
+
 def vsebina_datoteke(ime_datoteke):
     '''Vrne niz z vsebino datoteke z danim imenom.'''
-    with open(ime_datoteke, encoding = 'utf8') as datoteka:
+    with open(ime_datoteke, encoding='utf8') as datoteka:
         vsebina = datoteka.read()
     return vsebina
 
@@ -58,11 +60,13 @@ def datoteke(imenik):
 
 def zapisi_tabelo(slovarji, imena_polj, ime_datoteke):
     pripravi_imenik(ime_datoteke)
-    with open(ime_datoteke, 'w', encoding = 'utf8', newline='') as csv_dat: #newline je zato da ni vmes praznih vrstic
-        writer = csv.DictWriter(csv_dat, fieldnames=imena_polj, delimiter=';') #delimiter pove po čem ločujem namesto vejice
+    with open(ime_datoteke, 'w', encoding='utf8', newline='') as csv_dat:  # newline je zato da ni vmes praznih vrstic
+        writer = csv.DictWriter(csv_dat, fieldnames=imena_polj,
+                                delimiter=';')  # delimiter pove po čem ločujem namesto vejice
         writer.writeheader()
         for slovar in slovarji:
             writer.writerow(slovar)
+
 
 def pocisti_niz(niz):
     v_znacki = False
@@ -81,4 +85,3 @@ def pocisti_niz(niz):
             if not v_znacki:
                 nov_niz += x
     return nov_niz.strip() # strip odstrani začetne in končne presledke
-        

@@ -3,12 +3,13 @@ import re
 import orodja
 
 vzorec_ime_serije = re.compile("""head>\s*<title>\s*(?P<ime>.*?) Series by .*?\s*</title>""")
-vzorec_knjige_v_seriji = re.compile("""class="bookTitle" itemprop="url" href="(?P<kratki_url>.*?(?P<id_knjige>\d+).*?)">\s*?<span itemprop='name'>(?P<naslov>.*?)\(.*?,? #\d+\)</span>\s*?</a>\s*?<br/>\s*?<span class='by smallText'>by</span>""")
+vzorec_knjige_v_seriji = re.compile(
+    """class="bookTitle" itemprop="url" href="(?P<kratki_url>.*?(?P<id_knjige>\d+).*?)">\s*?<span itemprop='name'>(?P<naslov>.*?)\(.*?,? #\d+\)</span>\s*?</a>\s*?<br/>\s*?<span class='by smallText'>by</span>""")
 
 seznam_vseh_serij = []
 urlji_knjig_iz_serij = []
 
-mapa_serije = orodja.datoteke("serije")
+# mapa_serije = orodja.datoteke("serije/test")
 def shrani_serije(mapa):
     for serija in mapa:
         st_knjig = 0
