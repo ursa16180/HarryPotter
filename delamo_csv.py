@@ -1,6 +1,7 @@
 import re
 import orodja
 import html
+import copy
 
 vzorec_naslov_url_avtorja_serije = re.compile(
     """metacol" class="last col">\s*?<h1\sid="bookTitle"\sclass="bookTitle"\sitemprop="name">\s*(?P<naslov>.*?)\s*?(<a class="greyText" href="(?P<url_serije>.+?)">(\s|.)*?</a>)?</h1>\s*?<div id="bookAuthors" class="stacked">\s*?<span class='by smallText'>by</span>\s*?<span itemprop='author' itemscope='' itemtype='http://schema.org/Person'>\s*?<div class=('|")authorName__container('|")>\s*?<a class="authorName" itemprop="url" href="(?P<url_avtorja1>.*?(?P<id_avtorja1>\d+?)\D*?)"><span itemprop="name">.+?</span></a>(\s?<span class="greyText">\(Goodreads Author\)</span>\s*?)?(\s?<span class="authorName greyText smallText role">\(.+?\)</span>\s?)?,?\s*?</div>\s*?(,\s*?)?(\s*?<div class=('|")authorName__container('|")>\s*?<a class="authorName" itemprop="url" href="(?P<url_avtorja2>.*?(?P<id_avtorja2>\d+?)\D*?)"><span itemprop="name">.+?</span></a>(\s?<span class="greyText">\(Goodreads Author\)</span>\s*?)?(\s?<span class="authorName greyText smallText role">\(.+?\)</span>\s?)?,?\s*?</div>\s*?(,\s*?)?)?(\s*?<div class=('|")authorName__container('|")>\s*?<a class="authorName" itemprop="url" href="(?P<url_avtorja3>.*?(?P<id_avtorja3>\d+?)\D*?)"><span itemprop="name">.+?</span></a>(\s?<span class="greyText">\(Goodreads Author\)</span>\s*?)?(\s?<span class="authorName greyText smallText role">\(.+?\)</span>\s?)?,?\s*?</div>\s*?(,\s*?)?)?</span>\s*?</div>\s*?<div id="bookMeta""")
@@ -103,32 +104,37 @@ def shrani_knjige(mapa, prvic='True'):
         podatkiZanr = dict()
         podatkiZanr['id_knjige'] = podatki7['id_knjige']
         i = 1
+        zanri_te_knjige = []
         while podatki6['zanr{0}'.format(str(i))] is not None:
             podatkiZanr['zanr'] = html.unescape(podatki6['zanr{0}'.format(str(i))])
             slovar_url_zanrov[html.unescape(podatki6['zanr{0}'.format(str(i))])] = podatki6[
                 'url_zanr{0}'.format(str(i))]
-            seznam_zanr_knjiga.append(podatkiZanr.copy())
+            if podatkiZanr not in zanri_te_knjige:
+                zanri_te_knjige.append(podatkiZanr.copy())
             if podatki6['zanr{0}5'.format(str(i))] is not None:
                 podatkiZanr['zanr'] = html.unescape(podatki6['zanr{0}5'.format(str(i))])
                 slovar_url_zanrov[html.unescape(podatki6['zanr{0}5'.format(str(i))])] = podatki6[
                     'url_zanr{0}5'.format(str(i))]
-                seznam_zanr_knjiga.append(podatkiZanr)
+                if podatkiZanr not in zanri_te_knjige:
+                    zanri_te_knjige.append(podatkiZanr.copy())
             i += 1
+        for x in zanri_te_knjige:
+            seznam_zanr_knjiga.append(x)
+
 
         ###CSV za tabelo DelSerije
         podatkiSerije = dict()
         podatkiSerije['id_knjige'] = podatki7["id_knjige"]
         i = 1
-        while i < 4 and podatki8['id_serije{0}'.format(
-                str(i))] is not None:  ###TODO če je vrstni red obraten ne dela - čak, zakaj je to TODO, če dela?
+        while i < 4 and podatki8['id_serije{0}'.format(str(i))] is not None:
             if prvic:
                 slovar_url_serij[podatki8['id_serije{0}'.format(str(i))]] = podatki8['url_serije{0}'.format(str(i))]
-            podatkiSerije['id_serije'] = podatki8['id_serije{0}'.format(str(i))]
-            podatkiSerije['zaporedna_stevilka_serije'] = podatki8['zaporedna_stevilka_serije{0}'.format(str(i))]
-            seznam_serija_knjiga.append(podatkiSerije)
+            podatkiSerije['id_serije'] = copy.copy(podatki8['id_serije{0}'.format(str(i))])
+            podatkiSerije['zaporedna_stevilka_serije'] = copy.copy(podatki8['zaporedna_stevilka_serije{0}'.format(str(i))])
+            seznam_serija_knjiga.append(podatkiSerije.copy())
             i += 1
 
-# mapa = orodja.datoteke("knjige")
+#mapa = orodja.datoteke("knjige")
 # shrani_knjige(mapa)
 #
 # mapa_dodatne_knjige = orodja.datoteke("dodatne_knjige")
@@ -136,3 +142,5 @@ def shrani_knjige(mapa, prvic='True'):
 # orodja.zapisi_tabelo(seznam_vseh_knjig,
 #                      ['id', 'ISBN', 'naslov', 'dolzina', 'povprecna_ocena', 'stevilo_ocen', 'leto', 'opis'],
 #                      'podatki/knjiga.csv')
+
+# orodja.zapisi_tabelo(seznam_zanr_knjiga, ['id_knjige', 'zanr'], 'podatki/zanr_knjige.csv')
