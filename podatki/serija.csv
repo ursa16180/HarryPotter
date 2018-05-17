@@ -1,46 +1,70 @@
 id;ime;stevilo_knjig
+102109;The Half Bad Trilogy;3
+104843;The Young Elites;3
+108525;Five Kingdoms;5
 108965;The Last Unicorn;1
 110451;The Maze Runner;3
 114485;McLean Twins;2
+114498;The Bone Season;7
 118185;Tortall (chronological order);19
 119216;The Enderverse;14
 119623;Eighth Day;3
+121201;The Black;9
 121833;The Dracula Chronicles;4
 122513;Vlad Dracula;2
+122618;"Percy Jackson &amp; Kane Chronicles Crossover";3
+126089;The Yellow Hoods;5
 130921;London Below,  The World of Neverwhere;1
 131003;Pha Yul;3
+135117;The Cosmere;16
 138549;Network;4
+140549;The Black Mage;4
+146340;To Kill a Mockingbird;1
+146415;Saga;9
+149999;Chains of Honor;2
+150939;Honor Harrington FRG;17
 159076;Emelan Chronological Order;11
+164049;Légendes du Drakanitt et du Continent-Coloré;4
+168176;The Darkest Minds;4
 169016;The Changeling;3
 179170;Den gyldne gobelin;3
 182162;Merlin;11
 183923;Camp Half-Blood Chronicles;23
 195520;The Old Kingdom;5
-203438;The Hobbit;0
 225711;Seria Cronici din subpamant, partea I;1
 40332;Book of Ember ;4
 40340;Redwall;22
 40346;The Dresden Files;17
 40371;The Chronicles of Prydain;5
+40375;Twelve Houses;5
 40390;Enchanted Forest Chronicles;4
 40391;The Lost Years of Merlin;5
 40400;Young Wizards;10
+40419;Honor Harrington;15
 40650;Discworld;45
 40736;Percy Jackson and the Olympians;5
 40739;The Belgariad;11
+40836;Daughters of the Moon;13
 40838;Bartimaeus;3
 40909;Earthsea Cycle;6
 40957;Hitchhiker's Guide to the Galaxy;6
 40996;The Mysterious Benedict Society;3
 41087;Alex Rider;12
+41110;The Lost Journals of Ven Polypheme;4
+41335;Green Rider;6
 41459;Oz;14
 41526;The Wheel of Time;17
-42069;The Books of Bayern;13
-42069;The Books of Bayern;13
+41656;DarkGlass Mountain;3
+41718;The Books of Bayern;4
+41844;Everworld;12
+41931;Bloody Jack;12
+41934;Magic Kingdom of Landover;6
+42069;A Series of Unfortunate Events;13
 42479;The Children of the Red King;8
 42742;Artemis Fowl;8
 42782;Pendragon;10
 42783;Underland Chronicles;5
+42877;Dairy Queen;4
 42925;Children of the Lamp;7
 42939;The Sisters Grimm;9
 42967;The Keys to the Kingdom;7
@@ -50,14 +74,18 @@ id;ime;stevilo_knjig
 43436;Ranger's Apprentice;12
 43514;The Queen's Thief;6
 43551;Circle of Magic;4
+43552;The Circle Opens;4
 43579;Maximum Ride;9
 43606;The Giver ;4
+43680;Thursday Next;8
+43696;Erec Rex;5
 43790;A Song of Ice and Fire;14
 43814;The Chronicles of Narnia (Chronological Order);7
-43963;The Spiderwick Chronicles;4
-43963;The Spiderwick Chronicles;4
-43963;The Spiderwick Chronicles;4
-43963;The Spiderwick Chronicles;4
+43815;Protector of the Small;4
+43889;The Spiderwick Chronicles;5
+43904;Arthurian Saga;5
+43928;Song of the Lioness;4
+43963;Ender's Saga;4
 43987;Harper Hall of Pern;3
 44025;Leven Thumps;5
 44427;His Dark Materials;3
@@ -74,23 +102,36 @@ id;ime;stevilo_knjig
 45556;The 39 Clues;12
 45732;The Secrets of the Immortal Nicholas Flamel;6
 45940;The Tapestry;5
+46311;Madison Avery;3
 46343;Hex Hall;3
 46550;Leviathan;3
 46766;Beautiful Creatures;4
+47903;Alégracia;4
 49073;The Chronicles of Narnia (Publication Order);7
+49075;The Stormlight Archive;10
 49339;Pern (Chronological Order);24
 49403;Time Quintet;5
 49497;Charlie Bucket;2
+49696;The Black Stallion;23
 49863;The Immortals;4
 49971;Kane Chronicles;3
 50060;Pern (Publication Order);24
+50062;Peeps;2
 50262;Tortall;19
+50423;Ethical Vampire;3
+50482;Thief Errant;3
+51161;Steampunk Chronicles;4
 51187;Avalon;6
+51334;Thirteen Treasures;3
 51379;The Heroes of Olympus;5
+51870;The Reign of the Elements;3
 51930;Redwall (chronological order);22
-55391;The Infernal Devices;1
-55391;The Infernal Devices;1
-55391;The Infernal Devices;1
+54144;The Infernal Devices;3
+54584;Nobody's Princess;2
+55386;The Edge Chronicles (chronological);1
+55391;The Edge Chronicles: The Twig Saga;1
+55805;Kat, Incorrigible;3
+55945;Valentine Lovelace;2
 56532;Avalon: Chronological Order;6
 56730;Emelan;11
 57017;The Once and Future King;5
@@ -98,14 +139,34 @@ id;ime;stevilo_knjig
 57592;Graceling Realm;3
 58083;Middle-Earth Universe;16
 62114;Belgariad Universe;10
-65565;Merlin;14
-65565;Merlin;14
+63286;Healer;3
+63488;Four-BEE;2
+63858;Yu Yu Hakusho;17
+64489;Merlin;3
+65565;Enderverse:  Publication Order;14
 66175;The Lord of the Rings;3
+66507;Honorverse;33
 67844;Farsighted;5
+67972;Wayside School;3
+69261;YuYu Hakusho Kanzenban;8
+69828;Under the Never Sky;3
+70002;Starbound;3
+72526;El cementerio de los libros olvidados;4
+72709;"Griffin &amp; Sabine";6
 72834;Tales of Magic;7
 73758;The Hunger Games;3
+75837;A Long Way from Chicago;3
+76298;The Dark Artifices;3
+78625;Light;3
 80111;Howl's Moving Castle;3
-87227;The History of the Hobbit;0
+80177;Sonora;5
+82826;Blitz;14
+86642;Eloik: Nightmare Fighter;1
+89909;Cainsville;5
+90772;Princesses of Myth;8
 93546;Watership Down;2
+94334;The Grimoire Saga;4
 96852;Discworld - Tiffany Aching;6
+96935;The League of Princes;3
 97895;Kairos;8
+98634;Splintered;3

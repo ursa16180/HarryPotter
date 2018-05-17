@@ -5,7 +5,7 @@ import delamo_csv_serija as dcs
 import delamo_csv_zanr as dcz
 import orodja
 
-# zp.zajemi_knjige()
+zp.zajemi_knjige()
 # v mapo knjige shrani knjige s seznama (z vseh strani naceloma)
 mapa_knjige = orodja.datoteke("knjige")
 print('shranjujem knjige')
@@ -25,7 +25,7 @@ dc.shrani_knjige(mapa_knjige)
 # slovar_url_avtorjev vsebuje url naslove spletnih strani za zajem podatkov o avtorjih
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ do tu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# zp.zajemi_avtorje()
+zp.zajemi_avtorje()
 # v mapo avtorji shrani avtorje
 mapa_avtorji = orodja.datoteke("avtorji")
 print('shranjujem avtorje')
@@ -39,7 +39,7 @@ dca.shrani_avtorje(mapa_avtorji)
 # mnozica_vseh_zanrov vsebuje vse zanre, ki jih pisejo avtorji
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# zp.zajemi_serije()
+zp.zajemi_serije()
 mapa_serije = orodja.datoteke("serije")
 print('shranjujem serije')
 dcs.shrani_serije(mapa_serije)

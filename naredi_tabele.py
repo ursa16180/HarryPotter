@@ -43,28 +43,29 @@ cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 knjiga = ["knjiga",
           """
         CREATE TABLE knjiga (
-            ISBN TEXT PRIMARY KEY,
+            id TEXT PRIMARY KEY,
+            ISBN TEXT,
             naslov TEXT NOT NULL,
-            ocena FLOAT,
-            stevilo_ocen INTEGER,
-            leto_izdaje INTEGER, 
             dolzina INTEGER NOT NULL,
-            povzetek TEXT NOT NULL
+            povprecna_ocena FLOAT,
+            stevilo_ocen INTEGER,
+            leto INTEGER, 
+            opis TEXT NOT NULL
 
         );
     """,
           """
                 INSERT INTO knjiga
-                (ISBN, naslov, ocena, stevilo_ocen, leto_izdaje, dolzina, povzetek)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
-                RETURNING ISBN
+                (id, ISBN, naslov, dolzina, povprecna_ocena, stevilo_ocen, leto, opis)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                RETURNING id
             """]
 
 avtor = ["avtor",
          """
         CREATE TABLE avtor (
             id TEXT PRIMARY KEY,
-            ime_priimek TEXT NOT NULL,
+            ime TEXT NOT NULL,
             povprecna_ocena FLOAT,
             datum_rojstva DATE,
             kraj_rojstva TEXT
@@ -72,40 +73,42 @@ avtor = ["avtor",
     """,
          """
                 INSERT INTO avtor
-                (id, ime_priimek, povprecna_ocena, datum_rojstva, kraj_rojstva)
+                (id, ime, povprecna_ocena, datum_rojstva, kraj_rojstva)
                 VALUES (%s, %s, %s, %s, %s)
                 RETURNING id
             """]
 
+serija = ["serija", """CREATE TABLE serija (id TEXT PRIMARY KEY, ime TEXT NOT NULL, stevilo_knjig INTEGER NOT NULL);""",
+          """INSERT INTO serija (id, ime, stevilo_knjig) VALUES (%s, %s, %s) RETURNING id"""]
+
 zanr = ["zanr",
         """
         CREATE TABLE zanr (
-            ime TEXT PRIMARY KEY,
+            ime_zanra TEXT PRIMARY KEY,
             opis TEXT NOT NULL
         );
     """,
         """
                 INSERT INTO zanr
-                (ime, opis)
+                (ime_zanra, opis)
                 VALUES (%s, %s)
-                RETURNING (ime,opis)
+                RETURNING ime_zanra
             """]
 
-serija = ["serija", """CREATE TABLE serija (id TEXT PRIMARY KEY, ime TEXT NOT NULL);""",
-          """INSERT INTO serija (id, ime) VALUES (%s, %s) RETURNING id"""]
+
 
 del_serije = ["del_serije",
               """
         CREATE TABLE del_serije (
+            id_knjige TEXT NOT NULL REFERENCES knjiga(id),
             id_serije TEXT NOT NULL REFERENCES serija(id),
-            ISBN_knjige TEXT NOT NULL REFERENCES knjiga(ISBN),
-            zaporedna_stevilka INTEGER NOT NULL,
-            PRIMARY KEY (id_serije, zaporedna_stevilka)
+            zaporedna_stevilka_serije INTEGER NOT NULL,
+            PRIMARY KEY (id_serije, zaporedna_stevilka_serije)
         );
     """,
               """
                 INSERT INTO del_serije
-                (id_serije, ISBN_knjige, zaporedna_stevilka)
+                (id_knjige, id_serije, zaporedna_stevilka_serije)
                 VALUES (%s, %s, %s)
                 RETURNING id_serije
             """]
@@ -113,42 +116,42 @@ del_serije = ["del_serije",
 avtor_knjige = ["avtor_knjige",
                 """
         CREATE TABLE avtor_knjige (
+            id_knjige TEXT NOT NULL REFERENCES knjiga(id),
             id_avtorja TEXT NOT NULL REFERENCES avtor(id),
-            ISBN_knjige TEXT NOT NULL REFERENCES knjiga(ISBN),
-            PRIMARY KEY (id_avtorja, ISBN_knjige)
+            PRIMARY KEY (id_avtorja, id_knjige)
         );
     """, """
                 INSERT INTO avtor_knjige
-                (id_avtorja, ISBN_knjige)
+                (id_knjige, id_avtorja)
                 VALUES (%s, %s)
-                RETURNING id_avtorja
+                RETURNING (id_knjige, id_avtorja)
             """]
 
-zanr_knjige = ["zanr_knjige",  ###TODO Kako dodati vse zanre se v tabelo zanr
+zanr_knjige = ["zanr_knjige",
                """
          CREATE TABLE zanr_knjige (
-             ISBN_knjige TEXT NOT NULL REFERENCES knjiga(ISBN),
-             ime_zanra TEXT NOT NULL REFERENCES zanr(ime),
-             PRIMARY KEY (ISBN_knjige, ime_zanra)
+             id_knjige TEXT NOT NULL REFERENCES knjiga(id),
+             zanr TEXT NOT NULL REFERENCES zanr(ime_zanra),
+             PRIMARY KEY (id_knjige, zanr)
          );
      """, """
                 INSERT INTO zanr_knjige
-                (ISBN_knjige, ime_zanra)
+                (id_knjige, zanr)
                 VALUES (%s, %s)
-                RETURNING (ISBN_knjige, ime_zanra)
+                RETURNING (id_knjige, zanr)
             """]
-avtorjev_zanr = ["avtorjev_zanr",  ###TODO Kako dodati vse zanre se v tabelo zanr
+avtorjev_zanr = ["avtorjev_zanr",
                  """
            CREATE TABLE avtorjev_zanr (
-               id_avtorja TEXT NOT NULL REFERENCES avtor(id),
-               ime_zanra TEXT NOT NULL REFERENCES zanr(ime),
-               PRIMARY KEY (id_avtorja, ime_zanra)
+               id TEXT NOT NULL REFERENCES avtor(id),
+               zanr TEXT NOT NULL REFERENCES zanr(ime_zanra),
+               PRIMARY KEY (id, zanr)
            );
        """, """
                 INSERT INTO avtorjev_zanr
-                (id_avtorja, ime_zanra)
+                (id, zanr)
                 VALUES (%s, %s)
-                RETURNING (id_avtorja, ime_zanra)
+                RETURNING (id, zanr)
             """]
 
 seznamVseh = [knjiga, avtor, zanr, serija, del_serije, avtor_knjige, zanr_knjige, avtorjev_zanr]
@@ -158,6 +161,10 @@ def ustvari_vse_tabele():
     for seznam in seznamVseh:
         ustvari_tabelo(seznam)
 
+def uvozi_vse_podatke():
+    for seznam in seznamVseh:
+        uvozi_podatke(seznam)
+
 
 def izbrisi_vse_tabele():
     for seznam in seznamVseh:
@@ -165,3 +172,6 @@ def izbrisi_vse_tabele():
 
 # ustvari_tabelo(avtorjev_zanr)
 # uvozi_podatke(avtorjev_zanr)
+
+ustvari_vse_tabele()
+uvozi_vse_podatke()
