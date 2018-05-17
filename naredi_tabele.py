@@ -1,13 +1,13 @@
 # uvozimo ustrezne podatke za povezavo
 import auth
 
-
 # uvozimo psycopg2
 import psycopg2, psycopg2.extensions, psycopg2.extras
 
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo problemov s šumniki
 
 import csv
+
 
 def ustvari_tabelo(seznam):
     cur.execute(seznam[1])
@@ -124,42 +124,44 @@ avtor_knjige = ["avtor_knjige",
                 RETURNING id_avtorja
             """]
 
-zanr_knjige =["zanr_knjige", ###TODO Kako dodati vse zanre se v tabelo zanr
-              """
-        CREATE TABLE zanr_knjige (
-            ISBN_knjige TEXT NOT NULL REFERENCES knjiga(ISBN),
-            ime_zanra TEXT NOT NULL REFERENCES zanr(ime),
-            PRIMARY KEY (ISBN_knjige, ime_zanra)
-        );
-    """, """
+zanr_knjige = ["zanr_knjige",  ###TODO Kako dodati vse zanre se v tabelo zanr
+               """
+         CREATE TABLE zanr_knjige (
+             ISBN_knjige TEXT NOT NULL REFERENCES knjiga(ISBN),
+             ime_zanra TEXT NOT NULL REFERENCES zanr(ime),
+             PRIMARY KEY (ISBN_knjige, ime_zanra)
+         );
+     """, """
                 INSERT INTO zanr_knjige
                 (ISBN_knjige, ime_zanra)
                 VALUES (%s, %s)
                 RETURNING (ISBN_knjige, ime_zanra)
-            """ ]
-avtorjev_zanr =["avtorjev_zanr", ###TODO Kako dodati vse zanre se v tabelo zanr
-              """
-        CREATE TABLE avtorjev_zanr (
-            id_avtorja TEXT NOT NULL REFERENCES avtor(id),
-            ime_zanra TEXT NOT NULL REFERENCES zanr(ime),
-            PRIMARY KEY (id_avtorja, ime_zanra)
-        );
-    """, """
+            """]
+avtorjev_zanr = ["avtorjev_zanr",  ###TODO Kako dodati vse zanre se v tabelo zanr
+                 """
+           CREATE TABLE avtorjev_zanr (
+               id_avtorja TEXT NOT NULL REFERENCES avtor(id),
+               ime_zanra TEXT NOT NULL REFERENCES zanr(ime),
+               PRIMARY KEY (id_avtorja, ime_zanra)
+           );
+       """, """
                 INSERT INTO avtorjev_zanr
                 (id_avtorja, ime_zanra)
                 VALUES (%s, %s)
                 RETURNING (id_avtorja, ime_zanra)
-            """ ]
+            """]
 
 seznamVseh = [knjiga, avtor, zanr, serija, del_serije, avtor_knjige, zanr_knjige, avtorjev_zanr]
+
 
 def ustvari_vse_tabele():
     for seznam in seznamVseh:
         ustvari_tabelo(seznam)
 
+
 def izbrisi_vse_tabele():
     for seznam in seznamVseh:
         pobrisi_tabelo(seznam)
 
-#ustvari_tabelo(avtorjev_zanr)
+# ustvari_tabelo(avtorjev_zanr)
 # uvozi_podatke(avtorjev_zanr)

@@ -8,14 +8,13 @@ vzorec_id_knjige = re.compile("""canonical" href="https://www.goodreads.com/book
 vzorec_ocene = re.compile(
     """stars staticStars"(\stitle="really liked it")?>(<span size="12x12" class="staticStar p\d\d?">.*?</span>){5}</span>\s*?<span class="value rating"><span class="average" itemprop="ratingValue">(?P<povprecna_ocena>.*?)</span>""")
 vzorec_stevilo_ocen_opis = re.compile(
-    """#other_reviews">\s*?<meta itemprop="ratingCount" content=".*?">\s*?<span class="votes value-title" title=".*?">\s*(?P<stevilo_ocen>.*?)\s*?</span>\s*?Ratings\s*?</a><span class="greyText">&nbsp;&middot;&nbsp;</span>\s+?<a class="gr-hyperlink" href="#other_reviews">\s+?<span class="count value-title" title="\d+?">\s+?.+?\s+?</span>\s+?Reviews\s+?</a>\s+?</div>\s+?<div id="descriptionContainer">\s+?<div id="description" class="readable stacked" style="right:0">\s+?<span id="freeTextContainer\d+?">(?P<opis1>.+?)</span>(\s+?<span id="freeText\d+?" style="display:none">(Alternate Cover Edition can be found <a href=".*?" rel="nofollow">here</a>.)?(<strong>\s+?<i>This is an adaptation. For the editions of the original book, see <a href=".*?" rel="nofollow">here</a></i>\s+?</strong>.<br /><br />)?(?P<opis>.+?)(</p>)?</span>\s+?<a data-text-id="\d+?" href="#" onclick)?""")
+    """#other_reviews">\s*?<meta itemprop="ratingCount" content=".*?">\s*?<span class="votes value-title" title=".*?">\s*(?P<stevilo_ocen>.*?)\s*?</span>\s*?Ratings\s*?</a><span class="greyText">&nbsp;&middot;&nbsp;</span>\s+?<a class="gr-hyperlink" href="#other_reviews">\s+?<span class="count value-title" title="\d+?">\s+?.+?\s+?</span>\s+?Reviews\s+?</a>\s+?</div>\s+?<div id="descriptionContainer">\s+?(<div id='choiceBadge'>\s*?<a (class="choiceWinnerBadge20\d\d" )?href="https://www.goodreads.com/choiceawards/best-books-20\d\d">(<img src=".*?" alt=".*?" />)?</a>\s+?</div>\s+?)?<div id="description" class="readable stacked" style="right:0">\s+?<span id="freeTextContainer\d+?">(Alternate Cover Edition can be found <a href=".*?" rel="nofollow">here</a>.)?(<strong>\s+?<i>This is an adaptation. For the editions of the original book, see <a href=".*?" rel="nofollow">here</a></i>\s+?</strong>.<br /><br />)?(.*?[Aa]lternate [Cc]overs? ([Ee]ditions?)?.*?(here</a>\s*and.*?)?here</a>\.?)?(Also see: [Aa]lternate [Cc]overs? ([Ee]ditions? )?for this ISBN \[ACE\] ACE)?(.*?[Aa]lternate [Cc]over [Ee]ditions? (for )?(ASIN \w+?|ISBN \d+ \(ISBN13: \d+\))\.?<.*?>)?(.*?[Aa]lternate [Cc]overs? [Ee]dition.*?\d+?</a>)?(?P<opis1>.+?)</span>(\s+?<span id="freeText\d+?" style="display:none">(Alternate Cover Edition can be found <a href=".*?" rel="nofollow">here</a>.)?(<strong>\s+?<i>This is an adaptation. For the editions of the original book, see <a href=".*?" rel="nofollow">here</a></i>\s+?</strong>.<br /><br />)?(.*?[Aa]lternate [Cc]overs? ([Ee]ditions?)?.*?(here</a>\s*and.*?)?here</a>\.?)?(Also see: [Aa]lternate [Cc]overs? ([Ee]ditions? )?for this ISBN \[ACE\] ACE)?(.*?[Aa]lternate [Cc]over [Ee]ditions? (for )?(ASIN \w+?|ISBN \d+ \(ISBN13: \d+\))\.?<.*?>)?(.*?[Aa]lternate [Cc]overs? [Ee]dition.*?\d+?</a>)?(?P<opis>.+?)(</p>)?</span>\s+?<a data-text-id="\d+?" href="#" onclick)?""")
 vzorec_stevilo_strani_leto = re.compile(
     """bookFormat">(.*?)</span>,\s*?<span itemprop="numberOfPages">(?P<stevilo_strani>\d\d\d?\d?) pages</span></div>\s*?<div class="row">\s*?Published(\s|.)*?(<nobr class="greyText">\s*?\(first published (?P<leto_izdaje>\d\d\d\d)\)\s*?</nobr>)?\s*?</div>""")
 vzorec_zanri = re.compile(
     """stacked">\s*?<div class=" clearFloats bigBox"><div class="h2Container gradientHeaderContainer"><h2 class="brownBackground"><a href="/work/shelves/\d+?">Genres</a></h2></div><div class="bigBoxBody"><div class="bigBoxContent containerWithHeaderContent">\s*?<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr1>/genres/.*?)">(?P<zanr1>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr15>.*?)">(?P<zanr15>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr2>/genres/.*?)">(?P<zanr2>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr25>.*?)">(?P<zanr25>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr3>/genres/.*?)">(?P<zanr3>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr35>.*?)">(?P<zanr35>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr4>/genres/.*?)">(?P<zanr4>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr45>.*?)">(?P<zanr45>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr5>/genres/.*?)">(?P<zanr5>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr55>.*?)">(?P<zanr55>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr6>/genres/.*?)">(?P<zanr6>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr65>.*?)">(?P<zanr65>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr7>/genres/.*?)">(?P<zanr7>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr75>.*?)">(?P<zanr75>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr8>/genres/.*?)">(?P<zanr8>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr85>.*?)">(?P<zanr85>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr9>/genres/.*?)">(?P<zanr9>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr95>.*?)">(?P<zanr95>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr10>/genres/.*?)">(?P<zanr10>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr105>.*?)">(?P<zanr105>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?(<div class="elementList (elementListLast)?">\s*?<div class="left">\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr11>/genres/.*?)">(?P<zanr11>.*?)</a>( &gt;\s*?<a class="actionLinkLite bookPageGenreLink" href="(?P<url_zanr115>.*?)">(?P<zanr115>.*?)</a>)?\s*?</div>\s*?<div class="right">\s*?<a title="\d+? people shelved this book as .*?;" class="actionLinkLite greyText bookPageGenreLink" rel="nofollow" href=".*?">.+? users?</a>\s*?</div>\s*?<div class="clear"></div>\s*?</div>\s*?)?<a class="actionLink right bookPageGenreLink__seeMoreLink" href=".*?">See top shelves""")
-# TODO? zajem opisov žanrov
-vzorec_ISBN_serija = re.compile(
-    """itemprop='isbn'>(?P<ISBN>(\w{10}|\d{13}))(</span>\)</span>)?\s*?</div>(\s*?</div>\s*?<div class="clearFloats">\s*?<div class="infoBoxRowTitle">Edition Language</div>\s*?<div class="infoBoxRowItem" itemprop='inLanguage'>.+</div>)?(\s*?</div>\s*?<div class="clearFloats">\s*?<div class="infoBoxRowTitle">URL</div>\s*?<div class="infoBoxRowItem">\s*?<a .*?>.*?</a>\s*?</div>)?(\s*?</div>\s*<div class="clearFloats">\s+<div class="infoBoxRowTitle">Series</div>\s+<div class="infoBoxRowItem">\s+<a href="(?P<url_serije1>/series/(?P<id_serije1>\d+)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije1>\d\d?)?</a>)?(, <a href="(?P<url_serije2>/series/(?P<id_serije2>\d+?)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije2>\d\d?)?</a>)?(, <a href="(?P<url_serije3>/series/(?P<id_serije3>\d+?)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije3>\d\d?)?</a>)?(\s*,\s*<a href="/work/\d+?-[^"]*?/series">more</a>)?\s*?</div>""")
+vzorec_ISBN = re.compile("""itemprop='isbn'>(?P<ISBN>(\d{13}|\w{10}))""")
+vzorec_serija = re.compile("""BoxRowTitle">Series</div>\s+<div class="infoBoxRowItem">\s+<a href="(?P<url_serije1>/series/(?P<id_serije1>\d+)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije1>\d\d?)?</a>(, <a href="(?P<url_serije2>/series/(?P<id_serije2>\d+?)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije2>\d\d?)?</a>)?(, <a href="(?P<url_serije3>/series/(?P<id_serije3>\d+?)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije3>\d\d?)?</a>)?(\s*,\s*<a href="/work/\d+?-[^"]*?/series">more</a>)?\s*</div>""")
 
 seznam_vseh_knjig = []
 seznam_avtor_knjiga = []
@@ -27,11 +26,14 @@ idji_knjig = set()
 slovar_url_zanrov = dict()
 
 
-mapa = orodja.datoteke("knjige/test2")
 def shrani_knjige(mapa, prvic='True'):
     for knjiga in mapa:
         vsebina = orodja.vsebina_datoteke(knjiga)
         print(knjiga)
+        podatki5 = {'ISBN':None}
+        podatki8 = {'url_serije1': None, 'url_serije2': None, 'url_serije3': None,
+                    'id_serije1': None, 'id_serije2': None, 'id_serije3': None,
+                    'zaporedna_stevilka_serije1': None, 'zaporedna_stevilka_serije2': None, 'zaporedna_stevilka_serije3': None}
         for vzorec1 in re.finditer(vzorec_naslov_url_avtorja_serije, vsebina):
             podatki1 = vzorec1.groupdict()
         for vzorec2 in re.finditer(vzorec_ocene, vsebina):
@@ -39,21 +41,23 @@ def shrani_knjige(mapa, prvic='True'):
         for vzorec3 in re.finditer(vzorec_stevilo_ocen_opis, vsebina):
             podatki3 = vzorec3.groupdict()
             if podatki3['opis'] is None:
-                podatki3['opis'] = orodja.pocisti_niz(podatki3['opis1'])
+                podatki3['opis'] = html.unescape(orodja.pocisti_niz(podatki3['opis1']))
             else:
-                podatki3['opis'] = orodja.pocisti_niz(podatki3['opis'])
+                podatki3['opis'] = html.unescape(orodja.pocisti_niz(podatki3['opis']))
         for vzorec4 in re.finditer(vzorec_stevilo_strani_leto, vsebina):
             podatki4 = vzorec4.groupdict()
-        for vzorec5 in re.finditer(vzorec_ISBN_serija, vsebina):
+        for vzorec5 in re.finditer(vzorec_ISBN, vsebina):
             podatki5 = vzorec5.groupdict()
         for vzorec6 in re.finditer(vzorec_zanri, vsebina):
             podatki6 = vzorec6.groupdict()
         for vzorec7 in re.finditer(vzorec_id_knjige, vsebina):
             podatki7 = vzorec7.groupdict()
+        for vzorec8 in re.finditer(vzorec_serija, vsebina):
+            podatki8 = vzorec8.groupdict()
 
         ###CSV za tabelo KNJIGA
         podatkiKnjiga = dict()
-        podatkiKnjiga['naslov'] = podatki1['naslov']
+        podatkiKnjiga['naslov'] =  html.unescape(podatki1['naslov'])
         podatkiKnjiga['povprecna_ocena'] = podatki2['povprecna_ocena']
         podatkiKnjiga['stevilo_ocen'] = int(
             re.sub('[,]', '', podatki3['stevilo_ocen']))  ###to spremeni niz glasov v integer brez vejc
@@ -61,6 +65,7 @@ def shrani_knjige(mapa, prvic='True'):
         podatkiKnjiga['dolzina'] = podatki4['stevilo_strani']
         podatkiKnjiga['leto'] = podatki4['leto_izdaje']
         podatkiKnjiga['ISBN'] = podatki5['ISBN']
+        podatkiKnjiga['id'] = podatki7['id_knjige']
         idji_knjig.add(podatki7['id_knjige'])
         seznam_vseh_knjig.append(podatkiKnjiga)
 
@@ -68,19 +73,19 @@ def shrani_knjige(mapa, prvic='True'):
         podatkiAvtor1 = dict()
         podatkiAvtor2 = dict()
         podatkiAvtor3 = dict()
-        podatkiAvtor1['ISBN'] = podatki5['ISBN']
-        podatkiAvtor1['id'] = podatki1['id_avtorja1']
-        podatkiAvtor2['ISBN'] = podatki5['ISBN']
-        podatkiAvtor2['id'] = podatki1['id_avtorja2']
-        podatkiAvtor3['ISBN'] = podatki5['ISBN']
-        podatkiAvtor3['id'] = podatki1['id_avtorja3']
+        podatkiAvtor1['id_knjige'] = podatki7['id_knjige']
+        podatkiAvtor1['id_avtorja'] = podatki1['id_avtorja1']
+        podatkiAvtor2['id_knjige'] = podatki7['id_knjige']
+        podatkiAvtor2['id_avtorja'] = podatki1['id_avtorja2']
+        podatkiAvtor3['id_knjige'] = podatki7['id_knjige']
+        podatkiAvtor3['id_avtorja'] = podatki1['id_avtorja3']
 
-        if podatkiAvtor2['id'] is not None:
+        if podatkiAvtor2['id_avtorja'] is not None:
             seznam_avtor_knjiga.extend([podatkiAvtor1, podatkiAvtor2])
             if prvic:
                 slovar_url_avtorjev[podatki1['id_avtorja1']] = podatki1['url_avtorja1']
                 slovar_url_avtorjev[podatki1['id_avtorja2']] = podatki1['url_avtorja2']
-            if podatkiAvtor3['id'] is not None:
+            if podatkiAvtor3['id_avtorja'] is not None:
                 seznam_avtor_knjiga.append(podatkiAvtor3)
                 if prvic:
                     slovar_url_avtorjev[podatki1['id_avtorja3']] = podatki1['url_avtorja3']
@@ -91,28 +96,38 @@ def shrani_knjige(mapa, prvic='True'):
 
         ###CSV za tabelo ZANRKNJIGE
         podatkiZanr = dict()
-        podatkiZanr['ISBN'] = podatki5['ISBN']
+        podatkiZanr['id_knjige'] = podatki7['id_knjige']
         i = 1
         while podatki6['zanr{0}'.format(str(i))] is not None:
             podatkiZanr['zanr'] = html.unescape(podatki6['zanr{0}'.format(str(i))])
-            slovar_url_zanrov[html.unescape(podatki6['zanr{0}'.format(str(i))])] = podatki6['url_zanr{0}'.format(str(i))]
+            slovar_url_zanrov[html.unescape(podatki6['zanr{0}'.format(str(i))])] = podatki6[
+                'url_zanr{0}'.format(str(i))]
             seznam_zanr_knjiga.append(podatkiZanr.copy())
             if podatki6['zanr{0}5'.format(str(i))] is not None:
                 podatkiZanr['zanr'] = html.unescape(podatki6['zanr{0}5'.format(str(i))])
-                slovar_url_zanrov[html.unescape(podatki6['zanr{0}5'.format(str(i))])] = podatki6['url_zanr{0}5'.format(str(i))]
+                slovar_url_zanrov[html.unescape(podatki6['zanr{0}5'.format(str(i))])] = podatki6[
+                    'url_zanr{0}5'.format(str(i))]
                 seznam_zanr_knjiga.append(podatkiZanr)
             i += 1
 
         ###CSV za tabelo DelSerije
         podatkiSerije = dict()
-        podatkiSerije['ISBN'] = podatki5["ISBN"]
+        podatkiSerije['id_knjige'] = podatki7["id_knjige"]
         i = 1
-        while i < 4 and podatki5['id_serije{0}'.format(
+        while i < 4 and podatki8['id_serije{0}'.format(
                 str(i))] is not None:  ###TODO če je vrstni red obraten ne dela - čak, zakaj je to TODO, če dela?
             if prvic:
-                slovar_url_serij[podatki5['id_serije{0}'.format(str(i))]] = podatki5['url_serije{0}'.format(str(i))]
-            podatkiSerije['id_serije'] = podatki5['id_serije{0}'.format(str(i))]
-            podatkiSerije['zaporedna_stevilka_serije'] = podatki5['zaporedna_stevilka_serije{0}'.format(str(i))]
+                slovar_url_serij[podatki8['id_serije{0}'.format(str(i))]] = podatki8['url_serije{0}'.format(str(i))]
+            podatkiSerije['id_serije'] = podatki8['id_serije{0}'.format(str(i))]
+            podatkiSerije['zaporedna_stevilka_serije'] = podatki8['zaporedna_stevilka_serije{0}'.format(str(i))]
             seznam_serija_knjiga.append(podatkiSerije)
             i += 1
-#shrani_knjige(mapa)
+
+# mapa = orodja.datoteke("knjige")
+# shrani_knjige(mapa)
+#
+# mapa_dodatne_knjige = orodja.datoteke("dodatne_knjige")
+# shrani_knjige(mapa_dodatne_knjige, prvic=False)
+# orodja.zapisi_tabelo(seznam_vseh_knjig,
+#                      ['id', 'ISBN', 'naslov', 'dolzina', 'povprecna_ocena', 'stevilo_ocen', 'leto', 'opis'],
+#                      'podatki/knjiga.csv')
