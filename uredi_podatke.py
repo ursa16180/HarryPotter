@@ -94,7 +94,7 @@ orodja.zapisi_tabelo(dca.seznam_vseh_avtorjev,
                      ['id', 'ime', 'povprecna_ocena', 'datum_rojstva', 'kraj_rojstva'],
                      'podatki/avtor.csv')
 # SERIJA
-orodja.zapisi_tabelo(dcs.seznam_vseh_serij,
+orodja.zapisi_tabelo(dcs.nov_seznam_serij,
                      ['id', 'ime', 'stevilo_knjig'],
                      'podatki/serija.csv')
 
