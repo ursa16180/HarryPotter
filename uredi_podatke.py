@@ -68,6 +68,21 @@ zp.zajemi_zanre()
 mapa_zanri = orodja.datoteke("zanri")
 dcz.shrani_zanre(mapa_zanri)
 
+# Popravimo 0-le v tabeli serij (tiste, ki uradno nimajo nobene knjige, jih še enkrat preštejemo)
+prazne_serije = dict()
+nov_seznam_serij = []
+for serija in seznam_vseh_serij:
+    if serija['stevilo_knjig'] == 0:
+        prazne_serije[serija['id']] = serija
+    else: nov_seznam_serij.append(serija)
+
+for komplet in seznam_serija_knjiga:
+    id_serije = komplet['id_serije']
+    if serija in prazne_serije.keys():
+        prazne_serije[serija]['stevilo_knjig'] += 1
+
+nov_seznam_serij += list(prazne_serije.values())
+
 print('delam csvje')
 # naredimo csv datoteke iz zbranih podatkov:
 # KNJIGA

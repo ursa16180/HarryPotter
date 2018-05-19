@@ -1,6 +1,7 @@
 from delamo_csv import idji_knjig
 import re
 import orodja
+import copy
 
 vzorec_ime_serije = re.compile("""head>\s*?(<script.*?/script>\s*)*<title>\s*(?P<ime>.*?) (Saga|Series )?by .*?\s*</title>""")
 vzorec_knjige_v_seriji = re.compile(
@@ -9,7 +10,7 @@ vzorec_knjige_v_seriji = re.compile(
 seznam_vseh_serij = []
 urlji_knjig_iz_serij = []
 
-mapa_serije = orodja.datoteke("serije")
+# mapa_serije = orodja.datoteke("serije")
 def shrani_serije(mapa):
     for serija in mapa:
         st_knjig = 0
@@ -28,4 +29,4 @@ def shrani_serije(mapa):
         podatki_serija['stevilo_knjig'] = st_knjig
         seznam_vseh_serij.append(podatki_serija)
 
-shrani_serije(mapa_serije)
+#shrani_serije(mapa_serije)
