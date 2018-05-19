@@ -71,12 +71,12 @@ dcz.shrani_zanre(mapa_zanri)
 # Popravimo 0-le v tabeli serij (tiste, ki uradno nimajo nobene knjige, jih še enkrat preštejemo)
 prazne_serije = dict()
 nov_seznam_serij = []
-for serija in seznam_vseh_serij:
+for serija in dcs.seznam_vseh_serij:
     if serija['stevilo_knjig'] == 0:
         prazne_serije[serija['id']] = serija
     else: nov_seznam_serij.append(serija)
 
-for komplet in seznam_serija_knjiga:
+for komplet in dc.seznam_serija_knjiga:
     id_serije = komplet['id_serije']
     if serija in prazne_serije.keys():
         prazne_serije[serija]['stevilo_knjig'] += 1
@@ -94,7 +94,7 @@ orodja.zapisi_tabelo(dca.seznam_vseh_avtorjev,
                      ['id', 'ime', 'povprecna_ocena', 'datum_rojstva', 'kraj_rojstva'],
                      'podatki/avtor.csv')
 # SERIJA
-orodja.zapisi_tabelo(dcs.nov_seznam_serij,
+orodja.zapisi_tabelo(nov_seznam_serij,
                      ['id', 'ime', 'stevilo_knjig'],
                      'podatki/serija.csv')
 
