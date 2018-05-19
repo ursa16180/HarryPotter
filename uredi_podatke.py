@@ -5,7 +5,7 @@ import delamo_csv_serija as dcs
 import delamo_csv_zanr as dcz
 import orodja
 
-zp.zajemi_knjige()
+# zp.zajemi_knjige()
 # v mapo knjige shrani knjige s seznama (z vseh strani naceloma)
 mapa_knjige = orodja.datoteke("knjige")
 print('shranjujem knjige')
@@ -25,7 +25,7 @@ dc.shrani_knjige(mapa_knjige)
 # slovar_url_avtorjev vsebuje url naslove spletnih strani za zajem podatkov o avtorjih
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ do tu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-zp.zajemi_avtorje()
+# zp.zajemi_avtorje()
 # v mapo avtorji shrani avtorje
 mapa_avtorji = orodja.datoteke("avtorji")
 print('shranjujem avtorje')
@@ -51,11 +51,11 @@ dcs.shrani_serije(mapa_serije)
 # urlji_knjig_iz_serij  - seznam novih knjig za zajem
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# zp.zajemi_dodatne_knjige()
+zp.zajemi_dodatne_knjige()
 # zajamemo nove knjige: njihove spletne strani shranimo v mapo dodatne
 # PAZI: vedno jo izbrisi, ce delas od zacetka:
-#mapa_dodatne_knjige = orodja.datoteke("dodatne_knjige")
-#dc.shrani_knjige(mapa_dodatne_knjige, prvic=False)
+mapa_dodatne_knjige = orodja.datoteke("dodatne_knjige")
+dc.shrani_knjige(mapa_dodatne_knjige, prvic=False)
 # ~~~~~~~~~~~~~~~~~~~~ DOBIMO: ~~~~~~~~~~~~~~~~~~~~~~~~~
 # PODATKI ZA ZAPIS: koncni
 # seznam_vseh_knjig vsebuje vse, kar potrebujemo za zapis knjig s seznama v csv tabelo
@@ -74,12 +74,13 @@ nov_seznam_serij = []
 for serija in dcs.seznam_vseh_serij:
     if serija['stevilo_knjig'] == 0:
         prazne_serije[serija['id']] = serija
-    else: nov_seznam_serij.append(serija)
+    else:
+        nov_seznam_serij.append(serija)
 
 for komplet in dc.seznam_serija_knjiga:
     id_serije = komplet['id_serije']
-    if serija in prazne_serije.keys():
-        prazne_serije[serija]['stevilo_knjig'] += 1
+    if id_serije in prazne_serije.keys():
+        prazne_serije[id_serije]['stevilo_knjig'] += 1
 
 nov_seznam_serij += list(prazne_serije.values())
 

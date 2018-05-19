@@ -58,6 +58,7 @@ def izbrisi_podovojene_vrstice(datoteka):
 conn = psycopg2.connect(database=auth.db, host=auth.host, user=auth.user, password=auth.password)
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
+# 884288 nima opisa, zato not null ni več  pri opisu
 knjiga = ["knjiga",
           """
         CREATE TABLE knjiga (
@@ -68,7 +69,7 @@ knjiga = ["knjiga",
             povprecna_ocena FLOAT,
             stevilo_ocen INTEGER,
             leto INTEGER, 
-            opis TEXT NOT NULL
+            opis TEXT
 
         );
     """,
@@ -99,11 +100,12 @@ avtor = ["avtor",
 serija = ["serija", """CREATE TABLE serija (id TEXT PRIMARY KEY, ime TEXT NOT NULL, stevilo_knjig INTEGER NOT NULL);""",
           """INSERT INTO serija (id, ime, stevilo_knjig) VALUES (%s, %s, %s) RETURNING id"""]
 
+# Arts Photography, null ---> zato opis lahko null
 zanr = ["zanr",
         """
         CREATE TABLE zanr (
             ime_zanra TEXT PRIMARY KEY,
-            opis TEXT NOT NULL
+            opis TEXT
         );
     """,
         """
@@ -191,5 +193,5 @@ def izbrisi_vse_tabele():
 # ustvari_tabelo(avtorjev_zanr)
 # uvozi_podatke(avtorjev_zanr)
 
-#ustvari_vse_tabele()
-#uvozi_vse_podatke()
+ustvari_vse_tabele()
+uvozi_vse_podatke()
