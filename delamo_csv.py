@@ -27,6 +27,7 @@ seznam_serija_knjiga = []
 slovar_url_serij = dict()
 idji_knjig = set()
 slovar_url_zanrov = dict()
+popravljeni_zanri= {'Children\'s Books':'Childrens'}
 
 
 def shrani_knjige(mapa, prvic='True'):
@@ -39,6 +40,7 @@ def shrani_knjige(mapa, prvic='True'):
                     'zaporedna_stevilka_serije1': None, 'zaporedna_stevilka_serije2': None,
                     'zaporedna_stevilka_serije3': None}
         podatki9 = {'jezik': 'English'}
+        podatki4 = {'leto_izdaje':None, 'stevilo_strani':None}
         for vzorec1 in re.finditer(vzorec_naslov_url_avtorja_serije, vsebina):
             podatki1 = vzorec1.groupdict()
         for vzorec2 in re.finditer(vzorec_ocene, vsebina):
@@ -90,17 +92,14 @@ def shrani_knjige(mapa, prvic='True'):
 
             if podatkiAvtor2['id_avtorja'] is not None:
                 seznam_avtor_knjiga.extend([podatkiAvtor1, podatkiAvtor2])
-                if prvic:
-                    slovar_url_avtorjev[podatki1['id_avtorja1']] = podatki1['url_avtorja1']
-                    slovar_url_avtorjev[podatki1['id_avtorja2']] = podatki1['url_avtorja2']
+                slovar_url_avtorjev[podatki1['id_avtorja1']] = podatki1['url_avtorja1']
+                slovar_url_avtorjev[podatki1['id_avtorja2']] = podatki1['url_avtorja2']
                 if podatkiAvtor3['id_avtorja'] is not None:
                     seznam_avtor_knjiga.append(podatkiAvtor3)
-                    if prvic:
-                        slovar_url_avtorjev[podatki1['id_avtorja3']] = podatki1['url_avtorja3']
+                    slovar_url_avtorjev[podatki1['id_avtorja3']] = podatki1['url_avtorja3']
             else:
                 seznam_avtor_knjiga.append(podatkiAvtor1)
-                if prvic:
-                    slovar_url_avtorjev[podatki1['id_avtorja1']] = podatki1['url_avtorja1']
+                slovar_url_avtorjev[podatki1['id_avtorja1']] = podatki1['url_avtorja1']
 
             ###CSV za tabelo ZANRKNJIGE
             podatkiZanr = dict()

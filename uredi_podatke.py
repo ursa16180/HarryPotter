@@ -5,7 +5,7 @@ import delamo_csv_serija as dcs
 import delamo_csv_zanr as dcz
 import orodja
 
-# zp.zajemi_knjige()
+#zp.zajemi_knjige()
 # v mapo knjige shrani knjige s seznama (z vseh strani naceloma)
 mapa_knjige = orodja.datoteke("knjige")
 print('shranjujem knjige')
@@ -25,21 +25,8 @@ dc.shrani_knjige(mapa_knjige)
 # slovar_url_avtorjev vsebuje url naslove spletnih strani za zajem podatkov o avtorjih
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ do tu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# zp.zajemi_avtorje()
-# v mapo avtorji shrani avtorje
-mapa_avtorji = orodja.datoteke("avtorji")
-print('shranjujem avtorje')
-dca.shrani_avtorje(mapa_avtorji)
-# ~~~~~~~~~~~Tu se zgodi:~~~~~~~~~~~~~~~~~~
-# PODATKI ZA ZAPIS: koncni - novih avtorjev ne bo, ker vse knjige v seriji pise isti avtor
-# seznam_vseh_avtorjevih_zanrov vsebuje kombinacije avtor-zanr za to relacijo (6000)
-# seznam_vseh_avtorjev vsebuje podatke o avtorjih za zapis glavne tabele (9000)
-#
-# Pomoc:
-# mnozica_vseh_zanrov vsebuje vse zanre, ki jih pisejo avtorji
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-zp.zajemi_serije()
+#zp.zajemi_serije()
 mapa_serije = orodja.datoteke("serije")
 print('shranjujem serije')
 dcs.shrani_serije(mapa_serije)
@@ -53,7 +40,7 @@ dcs.shrani_serije(mapa_serije)
 # urlji_knjig_iz_serij  - seznam novih knjig za zajem
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-zp.zajemi_dodatne_knjige()
+#zp.zajemi_dodatne_knjige()
 # zajamemo nove knjige: njihove spletne strani shranimo v mapo dodatne
 # PAZI: vedno jo izbrisi, ce delas od zacetka:
 mapa_dodatne_knjige = orodja.datoteke("dodatne_knjige")
@@ -66,7 +53,21 @@ dc.shrani_knjige(mapa_dodatne_knjige, prvic=False)
 # seznam_serija_knjiga vsebuje podatke serija-knjiga-stevilka za to relacijo
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-zp.zajemi_zanre()
+#zp.zajemi_avtorje()
+# v mapo avtorji shrani avtorje
+mapa_avtorji = orodja.datoteke("avtorji")
+print('shranjujem avtorje')
+dca.shrani_avtorje(mapa_avtorji)
+# ~~~~~~~~~~~Tu se zgodi:~~~~~~~~~~~~~~~~~~
+# PODATKI ZA ZAPIS: koncni - novih avtorjev ne bo, ker vse knjige v seriji pise isti avtor
+# seznam_vseh_avtorjevih_zanrov vsebuje kombinacije avtor-zanr za to relacijo (6000)
+# seznam_vseh_avtorjev vsebuje podatke o avtorjih za zapis glavne tabele (9000)
+#
+# Pomoc:
+# mnozica_vseh_zanrov vsebuje vse zanre, ki jih pisejo avtorji
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#zp.zajemi_zanre()
 mapa_zanri = orodja.datoteke("zanri")
 dcz.shrani_zanre(mapa_zanri)
 
@@ -111,7 +112,8 @@ orodja.zapisi_tabelo(dc.seznam_avtor_knjiga, ['id_knjige', 'id_avtorja'], 'podat
 # knjiga-zanr:
 orodja.zapisi_tabelo(dc.seznam_zanr_knjiga, ['id_knjige', 'zanr'], 'podatki/zanr_knjige.csv')
 # knjiga-serija:
-orodja.zapisi_tabelo(dc.seznam_serija_knjiga + dcs.seznam_serija_knjiga, ['id_knjige', 'id_serije', 'zaporedna_stevilka_serije'],
+orodja.zapisi_tabelo(dc.seznam_serija_knjiga + dcs.seznam_serija_knjiga,
+                     ['id_knjige', 'id_serije', 'zaporedna_stevilka_serije'],
                      'podatki/del_serije.csv')
 # avtor_zanr:
 orodja.zapisi_tabelo(dca.seznam_vseh_avtorjevih_zanrov, ['id', 'zanr'], 'podatki/avtorjev_zanr.csv')

@@ -22,12 +22,12 @@ def shrani_serije(mapa):
         for vzorec in re.finditer(vzorec_knjige_v_seriji, vsebina):
             st_knjig += 1
             knjiga = vzorec.groupdict()
-            if knjiga['id_knjige'] not in idji_knjig and (knjiga['serija'] == podatki_serija['naslov']):
+            if knjiga['id_knjige'] not in idji_knjig and (knjiga['serija'] == podatki_serija['ime']):
                 naslov = re.sub('[:|/|?]', '-', knjiga['naslov'])
-                urlji_knjig_iz_serij.append((knjiga['kratki_url'], naslov))
+                urlji_knjig_iz_serij.append((knjiga['kratki_url'], naslov + knjiga['id_knjige']))
                 seznam_serija_knjiga.append({'id_knjige': knjiga['id_knjige'],
                                              'id_serije': serija.split('.')[0].split('\\')[-1],
-                                             'zaporedna_stevilka_serije': knjiga['zaporedna_st'])
+                                             'zaporedna_stevilka_serije': knjiga['zaporedna_st']})
                 
         # CSV datoteka serija: - naslov se je dodal že prej
         podatki_serija['id'] = serija.split('.')[0].split('\\')[-1]

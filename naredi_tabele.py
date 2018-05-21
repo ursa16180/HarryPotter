@@ -8,7 +8,7 @@ import psycopg2, psycopg2.extensions, psycopg2.extras
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo problemov s šumniki
 
 import csv
-
+import re
 
 def ustvari_tabelo(seznam):
     cur.execute(seznam[1])
@@ -25,8 +25,10 @@ def pobrisi_tabelo(seznam):
 
 
 def uvozi_podatke(seznam):
-    if seznam[0] == "zanr":
+    if seznam[0] in ["knjiga","zanr"]:
         izbrisi_podovojene_vrstice("podatki/%s.csv" % seznam[0])
+    if seznam[0] == "avtorjev_zanr":
+        popravi_zanre("podatki/%s.csv" % seznam[0])
     with open("podatki/%s.csv" % seznam[0], encoding="utf8") as f:
         rd = csv.reader(f, delimiter=';')
         print("berem")
@@ -52,6 +54,27 @@ def izbrisi_podovojene_vrstice(datoteka):
         izhodna_datoteka.write(vrstica)
     izhodna_datoteka.close()
 
+def popravi_zanre(ime_datoteke):
+    seznam_vrstic = []
+    slovar_napacnih ={'Children\'s Books':'Childrens', 'Comics & Graphic Novels':'Graphic Novels Comics',
+                      'Children\'s':'Childrens', 'Arts & Photography':'Arts Photography', 'Literature & Fiction':'Literary Fiction',
+                      'Science Fiction & Fantasy':'Science Fiction Fantasy', 'Biographies & Memoirs':'Biography', 'Mystery & Thrillers':'Mystery Thrillers',
+                      'Screenplays & Plays':'Screenplays Plays','Ya Fantasy':'Young Adult Fantasy', 'Humor and Comedy':'Humor',
+                      'Religion & Spirituality':'Spirituality', 'Mystery & Thriller':'Mystery Thriller','Gay and Lesbian':'Lgbt'}
+    # seznam_napacnih = ['Children\'s Books', 'Comics & Graphic Novels']
+    # seznam_pravilnih = ['Childrens', 'Graphic Novels Comics']
+    with open(ime_datoteke, 'r') as moj_csv:
+        bralec_csvja = csv.reader(moj_csv, delimiter=';')
+        for vrstica in bralec_csvja:
+            if vrstica[1] in slovar_napacnih.keys():
+                seznam_vrstic.append(vrstica[0]+";"+slovar_napacnih[vrstica[1]]+'\n')
+            else:
+                seznam_vrstic.append(vrstica[0]+";"+vrstica[1]+'\n')
+    moj_csv.close()
+    izhodna_datoteka = open(ime_datoteke, "w", encoding="utf8")
+    for vrstica in seznam_vrstic:
+        izhodna_datoteka.write(vrstica)
+    izhodna_datoteka.close()
 
 
 
@@ -65,7 +88,7 @@ knjiga = ["knjiga",
             id TEXT PRIMARY KEY,
             ISBN TEXT,
             naslov TEXT NOT NULL,
-            dolzina INTEGER NOT NULL,
+            dolzina INTEGER,
             povprecna_ocena FLOAT,
             stevilo_ocen INTEGER,
             leto INTEGER, 
@@ -190,8 +213,11 @@ def izbrisi_vse_tabele():
     for seznam in seznamVseh:
         pobrisi_tabelo(seznam)
 
+
+
 # ustvari_tabelo(avtorjev_zanr)
-# uvozi_podatke(avtorjev_zanr)
+#popravi_zanre("podatki/zanr_knjige.csv")
+#uvozi_podatke(zanr_knjige)
 
 ustvari_vse_tabele()
 uvozi_vse_podatke()

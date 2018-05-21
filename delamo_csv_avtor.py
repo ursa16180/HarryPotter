@@ -25,7 +25,7 @@ def uredi_datum(mesec, dan, leto):
     return (popravljen_datum)
 
 
-mapa  = orodja.datoteke("avtorji/test")
+#mapa  = orodja.datoteke("avtorji/test")
 def shrani_avtorje(mapa):
     print("shranjujem avtorje")
     for avtor in mapa:
