@@ -124,17 +124,17 @@ def shrani_knjige(mapa, prvic='True'):
                 seznam_zanr_knjiga.append(x)
 
             ###CSV za tabelo DelSerije
-            podatkiSerije = dict()
-            podatkiSerije['id_knjige'] = podatki7["id_knjige"]
-            i = 1
-            while i < 4 and podatki8['id_serije{0}'.format(str(i))] is not None:
-                if prvic:
+            if prvic:
+                podatkiSerije = dict()
+                podatkiSerije['id_knjige'] = podatki7["id_knjige"]
+                i = 1
+                while i < 4 and podatki8['id_serije{0}'.format(str(i))] is not None:
                     slovar_url_serij[podatki8['id_serije{0}'.format(str(i))]] = podatki8['url_serije{0}'.format(str(i))]
-                podatkiSerije['id_serije'] = copy.copy(podatki8['id_serije{0}'.format(str(i))])
-                podatkiSerije['zaporedna_stevilka_serije'] = copy.copy(
-                    podatki8['zaporedna_stevilka_serije{0}'.format(str(i))])
-                seznam_serija_knjiga.append(podatkiSerije.copy())
-                i += 1
+                    podatkiSerije['id_serije'] = copy.copy(podatki8['id_serije{0}'.format(str(i))])
+                    podatkiSerije['zaporedna_stevilka_serije'] = copy.copy(
+                        podatki8['zaporedna_stevilka_serije{0}'.format(str(i))])
+                    seznam_serija_knjiga.append(podatkiSerije.copy())
+                    i += 1
 
 # mapa = orodja.datoteke("knjige")
 # shrani_knjige(mapa)

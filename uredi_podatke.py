@@ -46,6 +46,8 @@ dcs.shrani_serije(mapa_serije)
 # ~~~~~~~~~ Tu dobimo: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # PODATKI ZA ZAPIS: koncni
 # seznam_vseh_serij podatki o serijah za tabelo serija
+# seznam_serija_knjiga vsebuje drugi del podatkov o knjigah v seriji.
+# TODO: mal potestirat, če to dela. Men na šolskih ne delajo requestsi
 
 # PODATKI ZA NADALJNI ZAJEM:
 # urlji_knjig_iz_serij  - seznam novih knjig za zajem
@@ -109,7 +111,7 @@ orodja.zapisi_tabelo(dc.seznam_avtor_knjiga, ['id_knjige', 'id_avtorja'], 'podat
 # knjiga-zanr:
 orodja.zapisi_tabelo(dc.seznam_zanr_knjiga, ['id_knjige', 'zanr'], 'podatki/zanr_knjige.csv')
 # knjiga-serija:
-orodja.zapisi_tabelo(dc.seznam_serija_knjiga, ['id_knjige', 'id_serije', 'zaporedna_stevilka_serije'],
+orodja.zapisi_tabelo(dc.seznam_serija_knjiga + dcs.seznam_serija_knjiga, ['id_knjige', 'id_serije', 'zaporedna_stevilka_serije'],
                      'podatki/del_serije.csv')
 # avtor_zanr:
 orodja.zapisi_tabelo(dca.seznam_vseh_avtorjevih_zanrov, ['id', 'zanr'], 'podatki/avtorjev_zanr.csv')
