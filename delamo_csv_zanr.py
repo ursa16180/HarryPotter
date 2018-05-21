@@ -13,6 +13,7 @@ def shrani_zanre(mapa):
     for zanr in mapa:
         print(zanr)
         vsebina = orodja.vsebina_datoteke(zanr)
+        podatki2={'opis': None}
         for vzorec1 in re.finditer(vzorec_ime_zanra, vsebina):
             podatki1 = vzorec1.groupdict()
 
@@ -26,5 +27,5 @@ def shrani_zanre(mapa):
         ###CSV za zanr
         podatkiZanr = dict()
         podatkiZanr['ime_zanra'] = html.unescape(podatki1['ime_zanra'])
-        podatkiZanr['opis'] = podatki2['opis']  # TODO počisti tekst?
+        podatkiZanr['opis'] = podatki2['opis']
         seznam_vseh_zanrov.append(podatkiZanr)
