@@ -112,7 +112,12 @@ orodja.zapisi_tabelo(dc.seznam_avtor_knjiga, ['id_knjige', 'id_avtorja'], 'podat
 # knjiga-zanr:
 orodja.zapisi_tabelo(dc.seznam_zanr_knjiga, ['id_knjige', 'zanr'], 'podatki/zanr_knjige.csv')
 # knjiga-serija:
-orodja.zapisi_tabelo(dc.seznam_serija_knjiga + dcs.seznam_serija_knjiga,
+seznam_serija_knjiga = dc.seznam_serija_knjiga + dcs.seznam_serija_knjiga
+for knjiga in seznam_serija_knjiga:
+    if knjiga['id_knjige'] in dc.seznam_tujih_knjig:
+        seznam_serija_knjiga.remove(knjiga)
+
+orodja.zapisi_tabelo(seznam_serija_knjiga,
                      ['id_knjige', 'id_serije', 'zaporedna_stevilka_serije'],
                      'podatki/del_serije.csv')
 # avtor_zanr:

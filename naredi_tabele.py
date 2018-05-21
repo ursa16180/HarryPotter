@@ -78,6 +78,7 @@ def popravi_zanre(ime_datoteke):
 
 
 
+
 conn = psycopg2.connect(database=auth.db, host=auth.host, user=auth.user, password=auth.password)
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 

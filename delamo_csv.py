@@ -20,6 +20,7 @@ vzorec_serija = re.compile(
 vzorec_jezik = re.compile("""inLanguage'>(?P<jezik>.+?)</div>""")
 
 seznam_vseh_knjig = []
+seznam_tujih_knjig = []
 seznam_avtor_knjiga = []
 seznam_zanr_knjiga = []
 slovar_url_avtorjev = dict()
@@ -134,6 +135,9 @@ def shrani_knjige(mapa, prvic='True'):
                         podatki8['zaporedna_stevilka_serije{0}'.format(str(i))])
                     seznam_serija_knjiga.append(podatkiSerije.copy())
                     i += 1
+        else:
+            seznam_tujih_knjig.append(podatki7['id_knjige'])
+
 
 # mapa = orodja.datoteke("knjige")
 # shrani_knjige(mapa)
