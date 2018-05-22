@@ -5,7 +5,13 @@ import delamo_csv_serija as dcs
 import delamo_csv_zanr as dcz
 import orodja
 
+<<<<<<< HEAD
 zp.zajemi_knjige()
+=======
+seznam_vseh_tujih_knjig=[]
+
+#zp.zajemi_knjige()
+>>>>>>> cf08dae805c32cd28525e92d7b2e16c8bf28c0b8
 # v mapo knjige shrani knjige s seznama (z vseh strani naceloma)
 mapa_knjige = orodja.datoteke("knjige")
 print('shranjujem knjige')
@@ -27,7 +33,11 @@ dc.shrani_knjige(mapa_knjige)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ do tu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+<<<<<<< HEAD
 # zp.zajemi_serije()
+=======
+#zp.zajemi_serije()
+>>>>>>> cf08dae805c32cd28525e92d7b2e16c8bf28c0b8
 mapa_serije = orodja.datoteke("serije")
 print('shranjujem serije')
 dcs.shrani_serije(mapa_serije)
@@ -54,7 +64,7 @@ dc.shrani_knjige(mapa_dodatne_knjige, prvic=False)
 # seznam_serija_knjiga vsebuje podatke serija-knjiga-stevilka za to relacijo
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-zp.zajemi_avtorje()
+#zp.zajemi_avtorje()
 # v mapo avtorji shrani avtorje
 mapa_avtorji = orodja.datoteke("avtorji")
 print('shranjujem avtorje')

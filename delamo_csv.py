@@ -34,6 +34,9 @@ def shrani_knjige(mapa, prvic='True'):
     for knjiga in mapa:
         vsebina = orodja.vsebina_datoteke(knjiga)
         print(knjiga)
+        podatki1={'id_avtorja1':None} #TODO naslov Empower Now- True Stories from 14 Young Minority Professionals34370312
+        podatki2={'povprecna_ocena':None}
+        podatki4 = {'leto_izdaje': None, 'stevilo_strani': None}
         podatki5 = {'ISBN': None}
         podatki6={'zanr1':None}
         podatki8 = {'url_serije1': None, 'url_serije2': None, 'url_serije3': None,
@@ -41,7 +44,7 @@ def shrani_knjige(mapa, prvic='True'):
                     'zaporedna_stevilka_serije1': None, 'zaporedna_stevilka_serije2': None,
                     'zaporedna_stevilka_serije3': None}
         podatki9 = {'jezik': 'English'}
-        podatki4 = {'leto_izdaje':None, 'stevilo_strani':None}
+
         for vzorec1 in re.finditer(vzorec_naslov_url_avtorja_serije, vsebina):
             podatki1 = vzorec1.groupdict()
         for vzorec2 in re.finditer(vzorec_ocene, vsebina):
