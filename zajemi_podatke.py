@@ -12,14 +12,14 @@ vzorec_linka = re.compile(
 def zajemi_knjige():
     """Iz spletnega seznama "What to read after Harry Potter" zajamemo url-je vseh knjig na sznamu.
     Seznam je trenutno dolg 15 strani."""
-    for stran in range(2,4):
+    for stran in range(8,15):
         r = requests.get(
             'https://www.goodreads.com/list/show/559.What_To_Read_After_Harry_Potter?page={}'.format(stran))
         page_source = r.text
         linki = []  # tu se nabirajo vsi linki do spletnih strani, ki jih moramo prebrati.
         for zadetek in re.finditer(vzorec_linka, page_source):
             # če je v naslovu dvopičje, vprašaj ali slash, pride do napake
-            popravljen_naslov = re.sub('[:|/|?]', '-', zadetek.groupdict()['naslov'])+zadetek.groupdict()['id']
+            popravljen_naslov = re.sub('[:|/|?*]', '-', zadetek.groupdict()['naslov'])+zadetek.groupdict()['id']
             linki += [('https://www.goodreads.com' + zadetek.groupdict()['link_knjige'], popravljen_naslov)]
         for link in linki:
             # Vse html datoteke shranimo v mapo knjige

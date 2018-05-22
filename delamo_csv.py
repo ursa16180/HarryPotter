@@ -28,7 +28,6 @@ seznam_serija_knjiga = []
 slovar_url_serij = dict()
 idji_knjig = set()
 slovar_url_zanrov = dict()
-popravljeni_zanri= {'Children\'s Books':'Childrens'}
 
 
 def shrani_knjige(mapa, prvic='True'):
@@ -36,6 +35,7 @@ def shrani_knjige(mapa, prvic='True'):
         vsebina = orodja.vsebina_datoteke(knjiga)
         print(knjiga)
         podatki5 = {'ISBN': None}
+        podatki6={'zanr1':None}
         podatki8 = {'url_serije1': None, 'url_serije2': None, 'url_serije3': None,
                     'id_serije1': None, 'id_serije2': None, 'id_serije3': None,
                     'zaporedna_stevilka_serije1': None, 'zaporedna_stevilka_serije2': None,
@@ -126,7 +126,7 @@ def shrani_knjige(mapa, prvic='True'):
             ###CSV za tabelo DelSerije
             if prvic:
                 podatkiSerije = dict()
-                podatkiSerije['id_knjige'] = podatki7["id_knjige"]
+                podatkiSerije['id_knjige'] = podatki7['id_knjige']
                 i = 1
                 while i < 4 and podatki8['id_serije{0}'.format(str(i))] is not None:
                     slovar_url_serij[podatki8['id_serije{0}'.format(str(i))]] = podatki8['url_serije{0}'.format(str(i))]
