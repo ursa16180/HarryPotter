@@ -25,10 +25,10 @@ def pobrisi_tabelo(seznam):
 
 
 def uvozi_podatke(seznam):
-    if seznam[0] in ["knjiga","zanr", "avtorjev_zanr"]:
-        izbrisi_podovojene_vrstice("podatki/%s.csv" % seznam[0])
-    if seznam[0] == "avtorjev_zanr":
+    if seznam[0] in ["zanr_knjige","avtorjev_zanr"]:
         popravi_zanre("podatki/%s.csv" % seznam[0])
+    if seznam[0] in ["knjiga","zanr", "avtor_knjige", "zanr_knjige", "avtorjev_zanr"]:
+        izbrisi_podovojene_vrstice("podatki/%s.csv" % seznam[0])
     with open("podatki/%s.csv" % seznam[0], encoding="utf8") as f:
         rd = csv.reader(f, delimiter=';')
         print("berem")
@@ -62,7 +62,15 @@ def popravi_zanre(ime_datoteke):
                       'Screenplays & Plays':'Screenplays Plays','Ya Fantasy':'Young Adult Fantasy', 'Humor and Comedy':'Humor',
                       'Religion & Spirituality':'Spirituality', 'Mystery & Thriller':'Mystery Thriller','Gay and Lesbian':'Lgbt',
                       'Outdoors & Nature': 'Outdoors Nature', 'Young Adult Paranormal & Fantasy':'Young Adult Paranormal Fantasy',
-                      'Health, Mind & Body':'Health Mind Body'} #TODO Aboriginal Astronomy ne obstaja(avtor 5175986 ima)
+                      'Health, Mind & Body':'Health Mind Body', 'Glbt':'Lgbt', 'Kids':'Childrens','North American Hi...':'North American History',
+                      'Sci Fi Fantasy':'Science Fiction', 'Crafts & Hobbies':'Crafts Hobbies',
+                      'Business & Investing':'Business Investing','Gay & Lesbian':'Lgbt', 'Professional & Technical':'Professional Technical',
+                      'Computers & Internet':'Computers Internet', 'Fantasy, Magic, Adventure':'Fantasy Magic Adventure',
+                      'Cooking, Food & Wine':'Cooking Food Wine', 'Dystopian':'Dystopia', 'Fanfiction':'Fan Fiction',
+                      'Women & Gender Studies':'Women Gender Studies','Audiobooks':'Audiobook','Social Sciences':'Social Science',
+                      'Teen Fiction':'Teen','Parenting & Families':'Parenting Families','Writing & Creativity':'Writing Creativity',
+                      'Fantasy & Science Fiction':'Science Fiction','Children\'s, Young Adult':'Children S Young Adult',
+                      'Humor & Satire':'Humor Satire'} #TODO Aboriginal Astronomy ne obstaja(avtor 5175986 ima)
     with open(ime_datoteke, 'r') as moj_csv:
         bralec_csvja = csv.reader(moj_csv, delimiter=';')
         for vrstica in bralec_csvja:
@@ -220,7 +228,7 @@ def izbrisi_vse_tabele():
 
 # ustvari_tabelo(avtorjev_zanr)
 #popravi_zanre("podatki/zanr_knjige.csv")
-uvozi_podatke(avtorjev_zanr)
+#uvozi_podatke(avtorjev_zanr)
 
-#ustvari_vse_tabele()
-#uvozi_vse_podatke()
+ustvari_vse_tabele()
+uvozi_vse_podatke()
