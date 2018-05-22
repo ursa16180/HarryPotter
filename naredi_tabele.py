@@ -220,7 +220,7 @@ def izbrisi_vse_tabele():
 
 # ustvari_tabelo(avtorjev_zanr)
 #popravi_zanre("podatki/zanr_knjige.csv")
-uvozi_podatke(avtorjev_zanr)
+#uvozi_podatke(avtorjev_zanr)
 
 #ustvari_vse_tabele()
-#uvozi_vse_podatke()
+uvozi_vse_podatke()
