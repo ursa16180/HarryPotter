@@ -8,7 +8,7 @@ import psycopg2, psycopg2.extensions, psycopg2.extras
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo problemov s šumniki
 
 import csv
-
+import re
 
 def ustvari_tabelo(seznam):
     cur.execute(seznam[1])
@@ -25,8 +25,10 @@ def pobrisi_tabelo(seznam):
 
 
 def uvozi_podatke(seznam):
-    if seznam[0] == "zanr":
+    if seznam[0] in ["knjiga","zanr", "avtorjev_zanr"]:
         izbrisi_podovojene_vrstice("podatki/%s.csv" % seznam[0])
+    if seznam[0] == "avtorjev_zanr":
+        popravi_zanre("podatki/%s.csv" % seznam[0])
     with open("podatki/%s.csv" % seznam[0], encoding="utf8") as f:
         rd = csv.reader(f, delimiter=';')
         print("berem")
@@ -44,10 +46,34 @@ def izbrisi_podovojene_vrstice(datoteka):
     vse_razlice_vrstice=set()
     seznam_vrstic = []
     for vrstica in open(datoteka, "r", encoding="utf8"):
-        if vrstica not in vse_razlice_vrstice:
+        if vrstica not in vse_razlice_vrstice and vrstica!='Abandoned;\n':
             seznam_vrstic.append(vrstica)
             vse_razlice_vrstice.add(vrstica)
     izhodna_datoteka = open(datoteka, "w", encoding="utf8")
+    for vrstica in seznam_vrstic:
+        izhodna_datoteka.write(vrstica)
+    izhodna_datoteka.close()
+
+def popravi_zanre(ime_datoteke):
+    seznam_vrstic = []
+    slovar_napacnih ={'Children\'s Books':'Childrens', 'Comics & Graphic Novels':'Graphic Novels Comics',
+                      'Children\'s':'Childrens', 'Arts & Photography':'Arts Photography', 'Literature & Fiction':'Literary Fiction',
+                      'Science Fiction & Fantasy':'Science Fiction Fantasy', 'Biographies & Memoirs':'Biography', 'Mystery & Thrillers':'Mystery Thrillers',
+                      'Screenplays & Plays':'Screenplays Plays','Ya Fantasy':'Young Adult Fantasy', 'Humor and Comedy':'Humor',
+                      'Religion & Spirituality':'Spirituality', 'Mystery & Thriller':'Mystery Thriller','Gay and Lesbian':'Lgbt',
+                      'Outdoors & Nature': 'Outdoors Nature', 'Young Adult Paranormal & Fantasy':'Young Adult Paranormal Fantasy',
+                      'Health, Mind & Body':'Health Mind Body'} #TODO Aboriginal Astronomy ne obstaja(avtor 5175986 ima)
+    with open(ime_datoteke, 'r') as moj_csv:
+        bralec_csvja = csv.reader(moj_csv, delimiter=';')
+        for vrstica in bralec_csvja:
+            if vrstica[1] in ['Aboriginal Astronomy']:
+                continue
+            if vrstica[1] in slovar_napacnih.keys():
+                seznam_vrstic.append(vrstica[0]+";"+slovar_napacnih[vrstica[1]]+'\n')
+            else:
+                seznam_vrstic.append(vrstica[0]+";"+vrstica[1]+'\n')
+    moj_csv.close()
+    izhodna_datoteka = open(ime_datoteke, "w", encoding="utf8")
     for vrstica in seznam_vrstic:
         izhodna_datoteka.write(vrstica)
     izhodna_datoteka.close()
@@ -58,17 +84,18 @@ def izbrisi_podovojene_vrstice(datoteka):
 conn = psycopg2.connect(database=auth.db, host=auth.host, user=auth.user, password=auth.password)
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
+# 884288 nima opisa, zato not null ni več  pri opisu
 knjiga = ["knjiga",
           """
         CREATE TABLE knjiga (
             id TEXT PRIMARY KEY,
             ISBN TEXT,
             naslov TEXT NOT NULL,
-            dolzina INTEGER NOT NULL,
+            dolzina INTEGER,
             povprecna_ocena FLOAT,
             stevilo_ocen INTEGER,
             leto INTEGER, 
-            opis TEXT NOT NULL
+            opis TEXT
 
         );
     """,
@@ -99,11 +126,12 @@ avtor = ["avtor",
 serija = ["serija", """CREATE TABLE serija (id TEXT PRIMARY KEY, ime TEXT NOT NULL, stevilo_knjig INTEGER NOT NULL);""",
           """INSERT INTO serija (id, ime, stevilo_knjig) VALUES (%s, %s, %s) RETURNING id"""]
 
+# Arts Photography, null ---> zato opis lahko null
 zanr = ["zanr",
         """
         CREATE TABLE zanr (
             ime_zanra TEXT PRIMARY KEY,
-            opis TEXT NOT NULL
+            opis TEXT
         );
     """,
         """
@@ -188,8 +216,11 @@ def izbrisi_vse_tabele():
     for seznam in seznamVseh:
         pobrisi_tabelo(seznam)
 
+
+
 # ustvari_tabelo(avtorjev_zanr)
-# uvozi_podatke(avtorjev_zanr)
+#popravi_zanre("podatki/zanr_knjige.csv")
+uvozi_podatke(avtorjev_zanr)
 
 #ustvari_vse_tabele()
 #uvozi_vse_podatke()

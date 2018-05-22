@@ -8,6 +8,7 @@ vzorec_ime_zanra =re.compile("""<div class="genreHeader">\s+<h1 class="left">\s+
 
 seznam_vseh_zanrov = []
 
+
 #mapa = "zanri"
 def shrani_zanre(mapa):
     for zanr in mapa:

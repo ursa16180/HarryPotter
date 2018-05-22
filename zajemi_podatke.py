@@ -6,7 +6,7 @@ from delamo_csv_serija import urlji_knjig_iz_serij
 from delamo_csv_avtor import slovar_url_zanrov_od_avtorjev
 
 vzorec_linka = re.compile(
-    """<td width="100%" valign="top">\s*?<a class="bookTitle" itemprop="url" href="(?P<link_knjige>.*?)">\s*?<span itemprop='name'>(?P<naslov>.*?)</span>\s*?</a>\s*?<br/>\s*?<span class='by smallText'>by</span>""")
+    """<td width="100%" valign="top">\s*?<a class="bookTitle" itemprop="url" href="(?P<link_knjige>.*?(?P<id>\d+).*?)">\s*?<span itemprop='name'>(?P<naslov>.*?)</span>\s*?</a>\s*?<br/>\s*?<span class='by smallText'>by</span>""")
 
 
 def zajemi_knjige():
@@ -19,7 +19,7 @@ def zajemi_knjige():
         linki = []  # tu se nabirajo vsi linki do spletnih strani, ki jih moramo prebrati.
         for zadetek in re.finditer(vzorec_linka, page_source):
             # če je v naslovu dvopičje, vprašaj ali slash, pride do napake
-            popravljen_naslov = re.sub('[:|/|?]', '-', zadetek.groupdict()['naslov'])
+            popravljen_naslov = re.sub('[:|/|?*]', '-', zadetek.groupdict()['naslov'])+zadetek.groupdict()['id']
             linki += [('https://www.goodreads.com' + zadetek.groupdict()['link_knjige'], popravljen_naslov)]
         for link in linki:
             # Vse html datoteke shranimo v mapo knjige
