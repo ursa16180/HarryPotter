@@ -88,11 +88,6 @@ id_knjige;zanr
 13496;High Fantasy
 13496;Epic
 13496;Audiobook
-231012;Fantasy
-231012;Dragons
-231012;Science Fiction
-231012;Fiction
-231012;Short Stories
 3682;Young Adult
 3682;Fantasy
 3682;Favorites
@@ -105,6 +100,11 @@ id_knjige;zanr
 20521670;Fiction
 20521670;Queer
 20521670;Urban Fantasy
+21079008;Fantasy
+21079008;Young Adult
+21079008;Favorites
+21079008;Science Fiction
+21079008;Dystopia
 8090;Fantasy
 8090;Short Stories
 8090;Young Adult
@@ -131,7 +131,6 @@ id_knjige;zanr
 39963;Fiction
 39963;Childrens
 39963;Humor
-39963;Middle Grade
 33024300;Childrens
 33024300;Middle Grade
 33024300;Science Fiction
@@ -139,6 +138,14 @@ id_knjige;zanr
 16299991;Fantasy
 16299991;Young Adult
 16299991;Magic
+798518;Fantasy
+798518;Young Adult
+798518;Magic
+798518;Favorites
+798518;Fiction
+22608054;Childrens
+22608054;Middle Grade
+22608054;Fantasy
 1953;Classics
 1953;Fiction
 1953;Favorites
@@ -258,12 +265,6 @@ id_knjige;zanr
 2049993;Historical Fiction
 2049993;Adventure
 2049993;Fiction
-22433696;Fantasy
-22433696;Historical
-22433696;Young Adult
-22433696;Historical Fiction
-22433696;Audiobook
-22433696;Novels
 7507944;Fantasy
 7507944;Young Adult
 7507944;Fiction
@@ -297,14 +298,12 @@ id_knjige;zanr
 23119672;Science Fiction
 23119672;Steampunk
 23119672;Fairy Tales
-21946472;Fantasy
-21946472;Paranormal
-21946472;Shapeshifters
-21946472;Animals
-21946472;Adventure
-21946472;Young Adult
-21946472;Environment
-21946472;Nature
+17786326;Fantasy
+17786326;Young Adult
+17786326;Romance
+17786326;Paranormal
+17786326;Business
+17786326;Amazon
 25605562;Mystery
 25605562;Childrens
 25605562;Middle Grade
@@ -385,18 +384,6 @@ id_knjige;zanr
 64401;Fiction
 64401;Favorites
 64401;Comedy
-12377269;Fantasy
-12377269;Young Adult
-12377269;Coming Of Age
-12377269;Epic Fantasy
-12377269;Science Fiction Fantasy
-20742955;Romance
-20742955;Fantasy
-20742955;Paranormal
-20742955;Magic
-20742955;Young Adult
-20742955;Adventure
-20742955;Fiction
 13986;Fantasy
 13986;Favorites
 13986;Fiction
@@ -420,18 +407,6 @@ id_knjige;zanr
 23017804;Middle Grade
 23017804;Science Fiction
 23017804;Young Adult
-1463307;Historical
-1463307;Historical Fiction
-1463307;Young Adult
-1463307;Fantasy
-1463307;Fiction
-1463307;Mystery
-2420340;Young Adult
-2420340;Fantasy
-2420340;Romance
-2420340;Historical
-2420340;Historical Fiction
-2420340;Favorites
 248483;Romance
 248483;Fiction
 248483;Womens Fiction
@@ -440,17 +415,15 @@ id_knjige;zanr
 248483;Contemporary
 248483;Adult
 248483;Adult Fiction
-17304193;Fantasy
-17304193;Urban Fantasy
-17304193;Paranormal
-17304193;Angels
-17304193;Supernatural
-17304193;Demons
-619891;Young Adult
-619891;Fantasy
-619891;Paranormal
-619891;Supernatural
-619891;Mythology
+227331;Young Adult
+227331;Fantasy
+227331;Paranormal
+227331;Mystery
+227331;Ghosts
+227331;Romance
+18338277;Fantasy
+18338277;Fiction
+18338277;Science Fiction Fantasy
 6304335;Young Adult
 6304335;Fantasy
 6304335;Favorites
@@ -491,11 +464,6 @@ id_knjige;zanr
 35711572;Young Adult
 35711572;Magical Realism
 35711572;Sports and Games
-18273727;Science
-18273727;Mathematics
-18273727;Fiction
-18273727;Childrens
-18273727;Physics
 577027;Historical
 577027;Historical Fiction
 577027;Young Adult
@@ -510,6 +478,10 @@ id_knjige;zanr
 105657;Childrens
 105657;Middle Grade
 105657;Young Adult
+780868;Fantasy
+780868;Fiction
+780868;Science Fiction Fantasy
+780868;Young Adult
 18661226;Young Adult
 18661226;Fantasy
 18661226;Fiction
@@ -555,12 +527,6 @@ id_knjige;zanr
 18849943;Childrens
 18849943;Dragons
 18849943;Middle Grade
-2880;Sequential Art
-2880;Manga
-2880;Fantasy
-2880;Favorites
-2880;Comics
-2880;Graphic Novels
 30324;Young Adult
 30324;Fantasy
 30324;Favorites
@@ -623,22 +589,11 @@ id_knjige;zanr
 22877148;Fantasy
 22877148;Dark Fantasy
 22877148;Historical
-21872574;Fantasy
-21872574;Magic
-21872574;Fiction
-21872574;Paranormal
-21872574;Demons
 18463070;Fantasy
 18463070;Science Fiction
 18463070;Favorites
 18463070;Young Adult
 18463070;Young Adult Fantasy
-13625827;Fantasy
-13625827;Young Adult
-13625827;Paranormal
-13625827;Demons
-13625827;Magic
-13625827;Romance
 2839;Favorites
 2839;Young Adult
 2839;Fiction
@@ -654,10 +609,25 @@ id_knjige;zanr
 35144326;Fantasy
 35144326;Young Adult
 35144326;Romance
+35144326;Favorites
+35144326;Young Adult Fantasy
+35144326;High Fantasy
+35144326;New Adult
+35144326;Paranormal
+35144326;Magic
+35144326;Witches
 12925274;Fantasy
 12925274;Magic
 12925274;War
 12925274;Fiction
+18377623;Fantasy
+18377623;Paranormal
+18377623;Thriller
+18377623;Romance
+29737671;Fantasy
+29737671;Business
+29737671;Amazon
+29737671;Paranormal
 368468;Historical
 368468;Historical Fiction
 368468;Young Adult
@@ -724,12 +694,20 @@ id_knjige;zanr
 24137;Favorites
 24137;Childrens
 24137;Middle Grade
+454004;Science Fiction
+454004;Fantasy
+454004;Fiction
 2828595;Fantasy
 2828595;Young Adult
 2828595;Favorites
 2828595;Fiction
 2828595;Romance
 2828595;Magic
+22605642;Fantasy
+22605642;Paranormal
+22605642;Fiction
+22605642;Favorites
+22605642;Did Not Finish
 6310;Childrens
 6310;Fantasy
 6310;Fiction
@@ -764,17 +742,23 @@ id_knjige;zanr
 8299165;Historical Fiction
 8299165;Paranormal
 8299165;Witches
-19884409;Favorites
-19884409;Romance
-19884409;Young Adult
-19884409;Fantasy
-19884409;Science Fiction
-19884409;Dystopia
+8256;Holiday
+8256;Christmas
+8256;Childrens
+8256;Historical
+8256;Historical Fiction
+8256;Picture Books
+8256;Classics
 36381037;Favorites
 36381037;Young Adult
 36381037;Fantasy
 36381037;Science Fiction
 36381037;Dystopia
+36381037;Romance
+36381037;Retellings
+36381037;Fiction
+36381037;Fairy Tales
+36381037;Audiobook
 20801439;Fantasy
 20801439;Young Adult
 20801439;Science Fiction
@@ -817,12 +801,6 @@ id_knjige;zanr
 759;Magical Realism
 759;Classics
 759;Literature
-29937311;Fiction
-29937311;Childrens
-29937311;Middle Grade
-29937311;Fantasy
-29937311;Science Fiction
-29937311;Young Adult
 17061;Fantasy
 17061;Favorites
 17061;Young Adult
@@ -875,16 +853,16 @@ id_knjige;zanr
 363037;Childrens
 363037;Fiction
 363037;High Fantasy
+363037;Science Fiction Fantasy
+363037;Favorites
+363037;Paranormal
+363037;Wizards
 47587;Fantasy
 47587;Young Adult
 47587;Favorites
 47587;Fiction
 47587;Magic
 47587;Humor
-26597690;Fantasy
-26597690;Fiction
-26597690;Business
-26597690;Amazon
 38217083;Fantasy
 38217083;Urban Fantasy
 38217083;Paranormal
@@ -894,6 +872,23 @@ id_knjige;zanr
 198581;Fantasy
 198581;Favorites
 198581;Young Adult
+643298;Horror
+643298;Short Stories
+643298;Young Adult
+643298;Fantasy
+643298;Anthologies
+643298;Fiction
+1961402;Fantasy
+1961402;Favorites
+1961402;Young Adult
+1961402;Fiction
+1961402;Cultural
+1961402;Australia
+1961402;Science Fiction
+1961402;Science Fiction Fantasy
+1961402;Romance
+1961402;Epic Fantasy
+1961402;Magic
 8490112;Fantasy
 8490112;Favorites
 8490112;Young Adult
@@ -939,25 +934,25 @@ id_knjige;zanr
 34282;Favorites
 34282;Fiction
 34282;Magic
+26106229;Fantasy
+26106229;Young Adult
+26106229;Paranormal
+26106229;Science Fiction
+26106229;Dystopia
 18492994;Fan Fiction
 18492994;Fantasy
 18492994;Favorites
+723801;Fantasy
+723801;Paranormal
+723801;Vampires
+723801;Young Adult
+723801;Favorites
+723801;Adventure
+723801;Pirates
 9466833;Fantasy
 9466833;Epic Fantasy
 9466833;Fiction
 9466833;Favorites
-9466833;Magic
-9466833;High Fantasy
-9466833;Adventure
-9466833;Adult
-9466833;Heroic Fantasy
-9466833;Sword and Sorcery
-9466833;Did Not Finish
-20996178;Fantasy
-20996178;Paranormal
-20996178;Contemporary
-20996178;Urban Fantasy
-20996178;Adult
 389627;Humor
 389627;Fiction
 389627;Childrens
@@ -973,6 +968,10 @@ id_knjige;zanr
 13335037;Dystopia
 13335037;Fiction
 13335037;Fantasy
+13335037;Romance
+13335037;Adventure
+13335037;Teen
+13335037;Action
 38227140;Young Adult
 38227140;Fantasy
 38227140;Urban Fantasy
@@ -982,12 +981,22 @@ id_knjige;zanr
 18932;Fiction
 18932;Childrens
 18932;Animals
+447937;Fantasy
+447937;Fairy Tales
+447937;Feminism
+447937;Short Stories
+447937;Fiction
 6054449;Favorites
 6054449;Realistic Fiction
 6054449;Childrens
 6054449;Middle Grade
 6054449;Humor
 6054449;Fiction
+6054449;Diary
+6054449;Sequential Art
+6054449;Graphic Novels
+6054449;Young Adult
+6054449;Funny
 155370;Young Adult
 155370;Favorites
 155370;Science Fiction
@@ -1001,9 +1010,6 @@ id_knjige;zanr
 17245;Fantasy
 17245;Paranormal
 17245;Vampires
-17245;Gothic
-17245;Literature
-17245;Supernatural
 123408;Fantasy
 123408;Dragons
 123408;Favorites
@@ -1013,11 +1019,6 @@ id_knjige;zanr
 632579;Dragons
 632579;Favorites
 632579;Fiction
-15829015;Fantasy
-15829015;Dragons
-15829015;Favorites
-15829015;Magic
-15829015;Fiction
 185289;Fantasy
 185289;Dragons
 185289;Fiction
@@ -1043,10 +1044,6 @@ id_knjige;zanr
 201054;Favorites
 201054;Fiction
 201054;Science Fiction
-201054;Science Fiction Fantasy
-201054;Young Adult Fantasy
-201054;High Fantasy
-201054;Adventure
 703323;Fantasy
 703323;Dragons
 703323;Young Adult
@@ -1063,12 +1060,6 @@ id_knjige;zanr
 26799796;Favorites
 26799796;Young Adult
 26799796;Magic
-26799796;Paranormal
-26799796;Romance
-26799796;Business
-26799796;Amazon
-26799796;Did Not Finish
-26799796;Book Club
 149338;Fantasy
 149338;Young Adult
 149338;Dragons
@@ -1093,12 +1084,6 @@ id_knjige;zanr
 172734;Christian
 172734;Christian Fiction
 172734;Dragons
-16077824;Fantasy
-16077824;Young Adult
-16077824;Science Fiction
-16077824;Dystopia
-16077824;Apocalyptic
-16077824;Post Apocalyptic
 22819674;Fantasy
 22819674;Young Adult
 22819674;Romance
@@ -1167,12 +1152,6 @@ id_knjige;zanr
 375802;Fiction
 375802;Young Adult
 375802;Fantasy
-541750;Fiction
-541750;Childrens
-541750;Middle Grade
-541750;Fantasy
-541750;Young Adult
-541750;Environment
 34507;Fantasy
 34507;Fiction
 34507;Humor
@@ -1192,6 +1171,13 @@ id_knjige;zanr
 10874177;Historical
 10874177;Historical Fiction
 10874177;Favorites
+18478915;Fantasy
+18478915;Paranormal
+18478915;Romance
+18478915;Young Adult
+18478915;Paranormal Romance
+18478915;Urban Fantasy
+18478915;Vampires
 688191;Fantasy
 688191;Young Adult
 688191;Favorites
@@ -1276,9 +1262,11 @@ id_knjige;zanr
 41899;Fiction
 41899;Favorites
 41899;Magic
-16053916;Fantasy
-16053916;Childrens
-16053916;Young Adult
+41899;Childrens
+13453604;Fantasy
+13453604;Urban Fantasy
+13453604;Young Adult
+13453604;Paranormal
 31817397;Fantasy
 31817397;Young Adult
 31817397;Young Adult Fantasy
@@ -1310,17 +1298,15 @@ id_knjige;zanr
 33897359;Magic
 33897359;Romance
 33897359;Favorites
+33897359;Young Adult Fantasy
+33897359;Paranormal
+33897359;High Fantasy
+33897359;Fiction
+33897359;Did Not Finish
 45181;Fantasy
 45181;Classics
 45181;Childrens
 45181;Fiction
-45181;Favorites
-45181;Young Adult
-45181;Middle Grade
-45181;Adventure
-45181;Juvenile
-45181;European Literature
-45181;British Literature
 6321533;Young Adult
 6321533;Romance
 6321533;Contemporary
@@ -1339,13 +1325,6 @@ id_knjige;zanr
 331920;Fiction
 331920;Contemporary
 331920;Realistic Fiction
-18777760;Horror
-18777760;Gothic
-18777760;Romance
-18777760;New Adult
-18777760;Fantasy
-18777760;Paranormal
-18777760;Vampires
 25560329;Fantasy
 25560329;Historical
 25560329;Historical Fiction
@@ -1373,10 +1352,12 @@ id_knjige;zanr
 25753258;Paranormal
 25753258;Young Adult
 25753258;Horror
-23877713;Fantasy
-23877713;Young Adult
-23877713;Favorites
-23877713;Adventure
+36593216;Romance
+36593216;Paranormal Romance
+36593216;Classics
+36593216;New Adult
+36593216;Thriller
+36593216;Mystery Thriller
 22553270;Fantasy
 22553270;Young Adult
 22553270;Fairy Tales
@@ -1390,12 +1371,6 @@ id_knjige;zanr
 17558916;Witches
 17558916;Young Adult
 17558916;Favorites
-3039023;Young Adult
-3039023;Fiction
-3039023;Lds
-3039023;Lds Fiction
-3039023;Childrens
-3039023;Middle Grade
 29736231;Fantasy
 29736231;Young Adult
 29736231;Childrens
@@ -1428,10 +1403,11 @@ id_knjige;zanr
 1158967;Womens Fiction
 1158967;Chick Lit
 1158967;Magic
-22967575;Fantasy
-22967575;Dragons
-22967575;Adventure
-22967575;War
+23263381;Fantasy
+23263381;Science Fiction
+23263381;Steampunk
+23263381;Fiction
+23263381;Childrens
 12823329;Science Fiction
 12823329;Steampunk
 12823329;Fantasy
@@ -1464,6 +1440,12 @@ id_knjige;zanr
 32766443;Dragons
 32766443;Humor
 32766443;Science Fiction
+29502231;Fantasy
+29502231;Urban Fantasy
+29502231;Young Adult
+29502231;Fairies
+29502231;Fae
+29502231;Favorites
 23395763;Sequential Art
 23395763;Comics
 23395763;Graphic Novels
@@ -1504,6 +1486,9 @@ id_knjige;zanr
 77146;Fiction
 77146;Science Fiction Fantasy
 77146;Animals
+16421118;Fantasy
+16421118;Young Adult
+16421118;Paranormal
 11693022;Fantasy
 11693022;Animals
 11693022;Cats
@@ -1525,17 +1510,20 @@ id_knjige;zanr
 2915026;Fiction
 2915026;Science Fiction
 2915026;Fantasy
+463064;Fantasy
+463064;Fiction
+463064;Young Adult
+463064;Adventure
+463064;Favorites
+463064;Childrens
+463064;Historical
+463064;Historical Fiction
 1008231;Favorites
 1008231;Young Adult
 1008231;Science Fiction
 1008231;Adventure
 1008231;Fantasy
 1008231;Fiction
-6304133;Fantasy
-6304133;Childrens
-6304133;Young Adult
-6304133;Horror
-6304133;Teen
 18079804;Fantasy
 18079804;Young Adult
 18079804;Favorites
@@ -1553,6 +1541,12 @@ id_knjige;zanr
 6096231;Magic
 6096231;Childrens
 6096231;Middle Grade
+6599093;Sequential Art
+6599093;Manga
+6599093;Favorites
+6599093;Romance
+6599093;Shojo
+6599093;Graphic Novels
 11702088;Young Adult
 11702088;Fantasy
 11702088;Paranormal
@@ -1611,15 +1605,6 @@ id_knjige;zanr
 6574102;Mystery
 6574102;Contemporary
 6574102;Romance
-29561487;Paranormal
-29561487;Vampires
-29561487;Horror
-29561487;Fantasy
-29561487;Favorites
-29561487;Romance
-29561487;Paranormal Romance
-29561487;Supernatural
-29561487;Fiction
 34908;Fantasy
 34908;Young Adult
 34908;Dragons
@@ -1638,6 +1623,10 @@ id_knjige;zanr
 47528;Favorites
 47528;Fiction
 47528;Science Fiction
+11368591;Paranormal
+11368591;Vampires
+11368591;Young Adult
+11368591;Fantasy
 28876;Fantasy
 28876;Dragons
 28876;Historical
@@ -1646,6 +1635,9 @@ id_knjige;zanr
 28876;Fiction
 28876;Science Fiction
 28876;Alternate History
+33133340;Fantasy
+33133340;Magic
+33133340;Young Adult
 48578;Horror
 48578;Young Adult
 48578;Fantasy
@@ -1655,14 +1647,6 @@ id_knjige;zanr
 126886;Fiction
 126886;Favorites
 126886;Family
-2164402;Young Adult
-2164402;Favorites
-2164402;Realistic Fiction
-2164402;Contemporary
-2164402;Womens Fiction
-2164402;Chick Lit
-2164402;Romance
-2164402;Fiction
 6294;Fantasy
 6294;Favorites
 6294;Young Adult
@@ -1695,6 +1679,11 @@ id_knjige;zanr
 462485;Fantasy
 462485;Fiction
 462485;Young Adult
+38492247;Young Adult
+38492247;Urban
+38492247;Fantasy
+38492247;Supernatural
+38492247;Romance
 6659604;Young Adult
 6659604;Fantasy
 6659604;Romance
@@ -1718,10 +1707,6 @@ id_knjige;zanr
 30331;Vampires
 30331;Favorites
 30331;Fiction
-18922809;Fantasy
-18922809;Gamebooks
-18922809;Choose Your Own Adventure
-18922809;Childrens
 332775;Fantasy
 332775;Young Adult
 332775;Science Fiction
@@ -1745,12 +1730,6 @@ id_knjige;zanr
 17428773;Fantasy
 17428773;Young Adult
 17428773;High Fantasy
-17567854;Science Fiction
-17567854;Dystopia
-17567854;New Adult
-17567854;Romance
-17567854;Fantasy
-17567854;Young Adult
 6344423;Young Adult
 6344423;Fantasy
 6344423;Paranormal
@@ -1767,11 +1746,6 @@ id_knjige;zanr
 8710072;Young Adult
 8710072;Childrens
 8710072;Middle Grade
-28173857;Fantasy
-28173857;Young Adult
-28173857;Favorites
-28173857;Childrens
-28173857;Middle Grade
 1233909;Historical
 1233909;Historical Fiction
 1233909;Fiction
@@ -1800,6 +1774,12 @@ id_knjige;zanr
 10210;Historical Fiction
 10210;Literature
 10210;Gothic
+10210;19th Century
+10210;Classics
+10210;Classic Literature
+10210;Academic
+10210;School
+10210;Novels
 2399928;Historical
 2399928;Historical Fiction
 2399928;Fiction
@@ -1813,13 +1793,17 @@ id_knjige;zanr
 912218;Espionage
 912218;Action
 912218;Science Fiction
-1542833;Young Adult
-1542833;Spy Thriller
-1542833;Espionage
-1542833;Adventure
-1542833;Science Fiction
-1542833;Action
-1542833;Mystery
+1246570;Young Adult
+1246570;Science Fiction
+1246570;Adventure
+1246570;Spy Thriller
+1246570;Espionage
+1246570;Thriller
+1246570;Action
+1246570;Mystery
+1246570;Science Fiction Fantasy
+1246570;Fantasy
+1246570;Novels
 14201;Historical
 14201;Historical Fiction
 14201;Abandoned
@@ -1967,13 +1951,6 @@ id_knjige;zanr
 6050678;Historical
 6050678;Historical Fiction
 6050678;Fiction
-6593439;Fantasy
-6593439;Young Adult
-6593439;Adventure
-23494599;Fantasy
-23494599;Young Adult
-23494599;Science
-23494599;Mathematics
 22462625;Horror
 22462625;Short Stories
 22462625;Fiction
@@ -2017,9 +1994,6 @@ id_knjige;zanr
 16059426;Science Fiction
 16059426;Dystopia
 16059426;Fiction
-36328361;Self Help
-36328361;Nonfiction
-36328361;Philosophy
 73574;Fantasy
 73574;Fiction
 73574;Classics
@@ -2028,6 +2002,9 @@ id_knjige;zanr
 25148714;Fantasy
 25148714;Childrens
 25148714;Middle Grade
+18189796;Lgbt
+18189796;Young Adult
+18189796;Fantasy
 66657;Short Stories
 66657;Fantasy
 66657;Fiction
@@ -2082,22 +2059,25 @@ id_knjige;zanr
 39988;Childrens
 39988;Favorites
 39988;Humor
-3173558;Sequential Art
-3173558;Manga
-3173558;Graphic Novels
-3173558;Young Adult
-3173558;Science Fiction
+32478509;Fantasy
+32478509;Childrens
+32478509;Young Adult
 563310;Fantasy
 563310;Favorites
 563310;Childrens
 563310;Middle Grade
 563310;Young Adult
 563310;Fiction
-249633;Fantasy
-249633;Favorites
-249633;Fiction
-249633;High Fantasy
-249633;Epic Fantasy
+15740507;Fantasy
+15740507;Historical
+15740507;Historical Fiction
+15740507;Young Adult
+15740507;Christian Fiction
+15740507;Favorites
+15740507;Fiction
+15740507;Christian
+15740507;Mythology
+15740507;Arthurian
 13036766;Fantasy
 13036766;Young Adult
 13036766;Short Stories
@@ -2119,11 +2099,13 @@ id_knjige;zanr
 124838;Retellings
 124838;Mythology
 124838;Mermaids
-22005734;Fantasy
-22005734;Dragons
-22005734;Young Adult
-22005734;Teen
-22005734;High School
+7280472;Science Fiction
+7280472;Steampunk
+7280472;Young Adult
+7280472;Paranormal
+7280472;Fairies
+7280472;Fiction
+7280472;Fantasy
 25321022;Fantasy
 25321022;Young Adult
 25321022;Paranormal
@@ -2144,6 +2126,11 @@ id_knjige;zanr
 153747;Favorites
 153747;Literature
 153747;Adventure
+21459728;Sequential Art
+21459728;Graphic Novels
+21459728;Fantasy
+21459728;Paranormal
+21459728;Young Adult
 12993856;Young Adult
 12993856;Science Fiction
 12993856;Favorites
@@ -2170,11 +2157,6 @@ id_knjige;zanr
 30160677;Business
 30160677;Amazon
 30160677;Fiction
-797298;Adventure
-797298;Childrens
-797298;Middle Grade
-797298;Humor
-797298;Juvenile
 13099652;Fantasy
 13099652;Young Adult
 13099652;Romance
@@ -2194,20 +2176,12 @@ id_knjige;zanr
 97967;Fiction
 97967;Adult
 97967;Fantasy Romance
-97967;Adventure
 6871358;Young Adult
 6871358;Horror
 6871358;Paranormal
 6871358;Ghosts
 6871358;Fantasy
 6871358;Supernatural
-17994785;Fantasy
-17994785;Paranormal
-17994785;Urban Fantasy
-17994785;Vampires
-17994785;Romance
-17994785;Paranormal Romance
-17994785;Angels
 6334;Fiction
 6334;Science Fiction
 6334;Dystopia
@@ -2272,21 +2246,16 @@ id_knjige;zanr
 11805486;Favorites
 11805486;Magic
 11805486;Paranormal
-11805486;Drama
-11805486;Action
-11805486;Fiction
-9207753;Sequential Art
-9207753;Manga
-9207753;Fantasy
-9207753;Graphic Novels
-9207753;Favorites
-9207753;Supernatural
-9207753;Paranormal
-9207753;Demons
-9207753;Shonen
 36653509;Fantasy
 36653509;Romance
 36653509;Magic
+47916;Fantasy
+47916;Young Adult
+47916;Favorites
+47916;Science Fiction
+47916;Dystopia
+47916;Apocalyptic
+47916;Post Apocalyptic
 19823;Fantasy
 19823;Fiction
 19823;Magic
@@ -2346,12 +2315,6 @@ id_knjige;zanr
 18816475;Fantasy
 18816475;Young Adult
 18816475;Science Fiction Fantasy
-18000394;Horror
-18000394;Short Stories
-18000394;Occult
-18000394;Gothic
-18000394;Fantasy
-18000394;Dark Fantasy
 11312;Fantasy
 11312;Young Adult
 11312;Fiction
@@ -2368,13 +2331,6 @@ id_knjige;zanr
 29502206;Lgbt
 29502206;Queer
 29502206;Fiction
-18164439;Science Fiction
-18164439;Steampunk
-18164439;Fantasy
-18164439;Paranormal
-18164439;Witches
-18164439;Magic
-18164439;Young Adult
 23945206;Fantasy
 23945206;Romance
 23945206;Paranormal
@@ -2420,11 +2376,6 @@ id_knjige;zanr
 7507951;Favorites
 7507951;Fiction
 7507951;Adventure
-31926533;Science Fiction
-31926533;New Adult
-31926533;Fantasy
-31926533;Magic
-31926533;Childrens
 20821011;Fantasy
 20821011;Childrens
 20821011;Middle Grade
@@ -2447,6 +2398,11 @@ id_knjige;zanr
 34268;Favorites
 34268;Fiction
 34268;Childrens
+18149630;Historical
+18149630;Historical Fiction
+18149630;Fantasy
+18149630;Young Adult
+18149630;Fiction
 143727;Historical
 143727;Historical Fiction
 143727;Young Adult
@@ -2473,11 +2429,6 @@ id_knjige;zanr
 8113512;Magic
 8113512;Adventure
 8113512;High Fantasy
-5460222;Spy Thriller
-5460222;Espionage
-5460222;Young Adult
-5460222;Teen
-5460222;Action
 9579634;Fantasy
 9579634;Favorites
 9579634;Fiction
@@ -2563,6 +2514,11 @@ id_knjige;zanr
 107664;Horror
 107664;Adventure
 107664;Paranormal
+285207;Fantasy
+285207;Magic
+285207;Favorites
+285207;Fiction
+285207;Paranormal
 11345170;Fantasy
 11345170;Young Adult
 11345170;Paranormal
@@ -2590,6 +2546,12 @@ id_knjige;zanr
 7996;Fiction
 7996;Childrens
 7996;Adventure
+13601086;Fantasy
+13601086;Young Adult
+13601086;Apocalyptic
+13601086;Post Apocalyptic
+13601086;Science Fiction
+13601086;Dystopia
 23263567;Fantasy
 23263567;Romance
 23263567;Young Adult
@@ -2672,13 +2634,6 @@ id_knjige;zanr
 6609838;Childrens
 6609838;Fiction
 6609838;Contemporary
-1608971;Young Adult
-1608971;Realistic Fiction
-1608971;Sports and Games
-1608971;Sports
-1608971;Mystery
-1608971;Fiction
-1608971;Crime
 518848;Favorites
 518848;Young Adult
 518848;Fantasy
@@ -2691,6 +2646,10 @@ id_knjige;zanr
 15704307;Favorites
 15704307;Science Fiction
 15704307;Fiction
+13349671;Fantasy
+13349671;Fiction
+13349671;Young Adult
+13349671;Young Adult Fantasy
 500503;Sequential Art
 500503;Manga
 500503;Favorites
@@ -2720,9 +2679,6 @@ id_knjige;zanr
 23157025;Horror
 23157025;Writing
 23157025;Books About Books
-363042;Fantasy
-363042;Childrens
-363042;Young Adult
 15826934;Young Adult
 15826934;Fantasy
 15826934;Paranormal
@@ -2744,10 +2700,6 @@ id_knjige;zanr
 2927626;Adventure
 2927626;Childrens
 2927626;Middle Grade
-27803325;Childrens
-27803325;Computer Science
-27803325;Programming
-27803325;Coding
 279673;Fantasy
 279673;Young Adult
 279673;Mythology
@@ -2783,10 +2735,10 @@ id_knjige;zanr
 19549841;Dragons
 19549841;Romance
 19549841;Fiction
-17349181;Fantasy
-17349181;Young Adult
-17349181;Favorites
-17349181;Fiction
+19549841;High Fantasy
+19549841;Young Adult Fantasy
+19549841;Mystery
+19549841;Adventure
 25782581;Young Adult
 25782581;Fantasy
 25782581;Paranormal
@@ -2809,6 +2761,10 @@ id_knjige;zanr
 17465456;Magic
 17465456;Favorites
 17465456;Science Fiction
+10046509;Fantasy
+10046509;Science Fiction
+10046509;Young Adult
+10046509;Fiction
 25991930;Childrens
 25991930;Mystery
 25991930;Middle Grade
@@ -2859,11 +2815,6 @@ id_knjige;zanr
 603911;Fiction
 603911;Favorites
 603911;Thriller
-104069;Fantasy
-104069;Fiction
-104069;Favorites
-104069;Classics
-104069;Adventure
 857920;Fantasy
 857920;Animals
 857920;Fiction
@@ -2921,13 +2872,6 @@ id_knjige;zanr
 81070;Favorites
 81070;High Fantasy
 81070;Science Fiction Fantasy
-25135243;Fantasy
-25135243;Paranormal
-25135243;Demons
-25135243;School Stories
-25135243;Boarding School
-25135243;Fiction
-25135243;Young Adult
 64207;Fantasy
 64207;Young Adult
 64207;Historical
@@ -2942,11 +2886,6 @@ id_knjige;zanr
 598117;Classics
 598117;Childrens
 598117;Animals
-598117;Cultural
-598117;African American
-598117;Dogs
-598117;Middle Grade
-598117;Favorites
 33534890;Fantasy
 33534890;Paranormal
 33534890;Young Adult
@@ -2958,16 +2897,18 @@ id_knjige;zanr
 6135633;Mythology
 6135633;Northern Africa
 6135633;Egypt
+11470428;Historical
+11470428;Historical Fiction
+11470428;Young Adult
+11470428;Fantasy
+11470428;Mythology
+11470428;Cultural
+11470428;Japan
 12558285;Fantasy
 12558285;Young Adult
 12558285;Favorites
 12558285;Romance
 12558285;Retellings
-26130645;Fantasy
-26130645;Young Adult
-26130645;Childrens
-26130645;Middle Grade
-26130645;Fiction
 50715;Fantasy
 50715;Romance
 50715;Favorites
@@ -3024,11 +2965,9 @@ id_knjige;zanr
 6006518;Romance
 6006518;Horror
 6006518;Zombies
-17721827;Fantasy
-17721827;Young Adult
-17721827;Business
-17721827;Amazon
-17721827;Childrens
+25418989;Fantasy
+25418989;Young Adult
+25418989;Fiction
 11832135;Fantasy
 11832135;Fiction
 11832135;Young Adult
@@ -3037,12 +2976,7 @@ id_knjige;zanr
 66659;Fiction
 66659;Favorites
 66659;Horror
-400878;Fantasy
-400878;Mystery
-400878;Urban Fantasy
-400878;Fiction
-400878;Detective
-400878;Favorites
+66659;Magical Realism
 12505535;Science Fiction
 12505535;Dystopia
 12505535;Young Adult
@@ -3055,33 +2989,15 @@ id_knjige;zanr
 18333130;Middle Grade
 18333130;Magic
 18333130;Mythology
-17206278;Science Fiction
-17206278;Horror
-17206278;Adult
-17206278;Dystopia
-17206278;Young Adult
 28954137;Fantasy
 28954137;Favorites
 28954137;Young Adult
-18040004;Comics
-18040004;Superheroes
-18040004;Romance
-18040004;Science Fiction
-18040004;Favorites
-18040004;Abandoned
 6893353;Fantasy
 6893353;Young Adult
 6893353;Favorites
 6893353;High Fantasy
 6893353;Romance
 6893353;Magic
-51106;Fantasy
-51106;Fiction
-51106;Favorites
-51106;Fairy Tales
-51106;Young Adult
-51106;Urban Fantasy
-51106;Romance
 15045;Fantasy
 15045;Young Adult
 15045;Fiction
@@ -3105,6 +3021,11 @@ id_knjige;zanr
 90475;Chick Lit
 90475;Favorites
 90475;Contemporary
+90475;Fiction
+90475;Teen
+90475;Realistic Fiction
+90475;Humor
+90475;High School
 12046317;Fantasy
 12046317;Paranormal
 12046317;Urban Fantasy
@@ -3136,13 +3057,6 @@ id_knjige;zanr
 11242368;Science Fiction
 11242368;Adventure
 11242368;Fiction
-559398;Sequential Art
-559398;Graphic Novels
-559398;Comics
-559398;Humor
-559398;Fiction
-559398;Science Fiction
-559398;Comedy
 339026;Fantasy
 339026;Young Adult
 339026;Adventure
@@ -3153,11 +3067,21 @@ id_knjige;zanr
 684780;Childrens
 684780;Fiction
 684780;Animals
+27280710;Young Adult
+27280710;Fiction
+27280710;Favorites
 17402605;Fantasy
 17402605;Young Adult
 17402605;Favorites
 17402605;Fiction
 17402605;Magic
+3843654;Fantasy
+3843654;Young Adult
+3843654;Romance
+3843654;Fairy Tales
+3843654;Favorites
+3843654;Magic
+3843654;Fiction
 334123;Fantasy
 334123;Young Adult
 334123;Favorites
@@ -3173,15 +3097,6 @@ id_knjige;zanr
 183742;Fiction
 183742;Classics
 183742;Favorites
-1404930;Favorites
-1404930;Historical
-1404930;Historical Fiction
-1404930;Childrens
-1404930;Young Adult
-1404930;Fiction
-1404930;War
-1404930;World War II
-1404930;Animals
 78411;Fiction
 78411;Favorites
 78411;Childrens
@@ -3253,6 +3168,12 @@ id_knjige;zanr
 17199504;Dystopia
 17199504;Fiction
 17199504;Paranormal
+77353;Fantasy
+77353;Fiction
+77353;Favorites
+77353;Magic
+77353;Science Fiction Fantasy
+77353;High Fantasy
 1583772;Fantasy
 1583772;Fiction
 1583772;Young Adult
@@ -3263,6 +3184,13 @@ id_knjige;zanr
 69136;Young Adult
 69136;Horror
 69136;Fairy Tales
+77721;Fantasy
+77721;Fiction
+77721;Favorites
+77721;Animals
+77721;Classics
+77721;Christian
+77721;Christian Fiction
 24780;Fantasy
 24780;Young Adult
 24780;Fiction
@@ -3299,13 +3227,6 @@ id_knjige;zanr
 16292250;Humor
 16292250;Fiction
 16292250;Fantasy
-1206544;Fantasy
-1206544;Childrens
-1206544;Fiction
-1206544;Young Adult
-1206544;Favorites
-1206544;Animals
-1206544;Cats
 5107;Classics
 5107;Favorites
 5107;Fiction
@@ -3334,6 +3255,10 @@ id_knjige;zanr
 6308379;Fiction
 6308379;Fairy Tales
 6308379;Adult
+18960172;Fantasy
+18960172;Romance
+18960172;Paranormal
+18960172;Young Adult
 423245;Fantasy
 423245;Childrens
 423245;Sequential Art
@@ -3370,6 +3295,13 @@ id_knjige;zanr
 188572;Favorites
 188572;Fiction
 188572;Crime
+188572;Short Stories
+188572;Literature
+188572;Detective
+188572;Historical
+188572;Historical Fiction
+188572;Thriller
+188572;Mystery Thriller
 793315;Fantasy
 793315;Science Fiction
 793315;Time Travel
@@ -3440,12 +3372,6 @@ id_knjige;zanr
 1829655;Demons
 1829655;Magic
 1829655;Fiction
-36593678;Science Fiction
-36593678;Dystopia
-36593678;Romance
-36593678;Young Adult
-36593678;Fiction
-36593678;Did Not Finish
 8091;Fantasy
 8091;Young Adult
 8091;Fairy Tales
@@ -3457,25 +3383,36 @@ id_knjige;zanr
 23300;Childrens
 23300;Mystery
 23300;Fiction
+1400424;Fantasy
+1400424;Young Adult
+1400424;Favorites
+1400424;Magic
+1400424;Adventure
+1400424;Fiction
+1400424;Dragons
 91981;Fantasy
 91981;Favorites
 91981;Fiction
 91981;Epic Fantasy
 91981;High Fantasy
 91981;Science Fiction Fantasy
-617359;Fantasy
-617359;Dragons
-617359;Fiction
-617359;Childrens
-617359;Young Adult
+28433857;Fantasy
+28433857;Young Adult
+28433857;Dragons
+28433857;Young Adult Fantasy
+28433857;Romance
 463124;Fantasy
 463124;Fiction
 463124;Dragons
 463124;Historical
 463124;Historical Fiction
-21756993;Young Adult
-21756993;Fantasy
-21756993;Epic Fantasy
+1170158;Fantasy
+1170158;Favorites
+1170158;Fiction
+1170158;Young Adult
+1170158;Science Fiction Fantasy
+1170158;Science Fiction
+1170158;Classics
 18635086;Fantasy
 18635086;Childrens
 18635086;Middle Grade
@@ -3497,19 +3434,10 @@ id_knjige;zanr
 45183;Childrens
 45183;Fiction
 45183;Favorites
-45183;Young Adult
 19514963;Fantasy
 19514963;Young Adult
 19514963;Adventure
 19514963;Fairy Tales
-6322865;Fantasy
-6322865;Adventure
-6322865;Magic
-6322865;Childrens
-6322865;Middle Grade
-6322865;Fiction
-6322865;Young Adult
-6322865;Juvenile
 6202556;Historical
 6202556;Historical Fiction
 6202556;Young Adult
@@ -3587,6 +3515,13 @@ id_knjige;zanr
 35820633;Fantasy
 35820633;Young Adult
 35820633;Science Fiction
+35820633;Fiction
+35820633;Favorites
+35820633;Dystopia
+35820633;Romance
+35820633;Young Adult Fantasy
+35820633;Space
+35820633;Science Fiction Fantasy
 20960464;Young Adult
 20960464;Science Fiction
 20960464;Dystopia
@@ -3614,11 +3549,9 @@ id_knjige;zanr
 68428;Fiction
 68428;Epic Fantasy
 68428;High Fantasy
-68428;Magic
-68428;Adult
-68428;Science Fiction Fantasy
-68428;Young Adult
-68428;Adventure
+6806629;Fantasy
+6806629;Young Adult
+6806629;Fiction
 17282769;Fantasy
 17282769;Childrens
 17282769;Middle Grade
@@ -3678,6 +3611,9 @@ id_knjige;zanr
 65091;Young Adult
 65091;Romance
 65091;Magic
+23148346;Fiction
+23148346;Fantasy
+23148346;Science Fiction Fantasy
 6261078;Young Adult
 6261078;Favorites
 6261078;Romance
@@ -3686,10 +3622,11 @@ id_knjige;zanr
 6261078;Contemporary
 6261078;Sports and Games
 6261078;Sports
-6261078;Teen
-6261078;Realistic Fiction
-6261078;Fiction
-6261078;Young Adult Romance
+15838579;Fantasy
+15838579;Adventure
+15838579;Young Adult
+15838579;Childrens
+15838579;Middle Grade
 9166877;Young Adult
 9166877;Favorites
 9166877;Historical
@@ -3733,15 +3670,12 @@ id_knjige;zanr
 119322;Young Adult
 119322;Fiction
 119322;Childrens
-22013353;Fantasy
-22013353;Adventure
-22013353;Young Adult
-22013353;Childrens
-22013353;Middle Grade
-22013353;Mythology
-22013353;Paranormal
-22013353;Science Fiction
-22013353;Time Travel
+119322;Adventure
+119322;Science Fiction
+119322;Steampunk
+119322;Science Fiction Fantasy
+119322;Fantasy
+119322;Classics
 179064;Fantasy
 179064;Favorites
 179064;Young Adult
@@ -3794,6 +3728,11 @@ id_knjige;zanr
 6760780;Fiction
 6760780;Adventure
 6760780;Romance
+22393715;Fantasy
+22393715;Young Adult
+22393715;Paranormal
+22393715;Romance
+22393715;Mythology
 12969560;Childrens
 12969560;Middle Grade
 12969560;Fantasy
@@ -3816,6 +3755,11 @@ id_knjige;zanr
 26094764;Novels
 26094764;Horror
 26094764;Science Fiction Fantasy
+366753;Fantasy
+366753;Childrens
+366753;Magic
+366753;Young Adult
+366753;Favorites
 386162;Science Fiction
 386162;Favorites
 386162;Fiction
@@ -3834,11 +3778,6 @@ id_knjige;zanr
 5907;Fantasy
 5907;High Fantasy
 5907;Childrens
-5907;Epic Fantasy
-5907;Novels
-5907;Literature
-5907;Dragons
-5907;Magic
 603515;Fantasy
 603515;Young Adult
 603515;Favorites
@@ -3859,6 +3798,9 @@ id_knjige;zanr
 2767052;Science Fiction
 2767052;Dystopia
 2767052;Fantasy
+29595531;Fantasy
+29595531;High Fantasy
+29595531;Magic
 398479;Fantasy
 398479;Young Adult
 398479;Favorites
@@ -3945,13 +3887,6 @@ id_knjige;zanr
 7113;Favorites
 7113;Childrens
 7113;Fiction
-584975;Fantasy
-584975;Favorites
-584975;Christian Fiction
-584975;Young Adult
-584975;Christian
-584975;Fiction
-584975;Christian Fantasy
 2118745;Young Adult
 2118745;Favorites
 2118745;Science Fiction
@@ -4004,30 +3939,33 @@ id_knjige;zanr
 29127;Classics
 29127;Young Adult
 29127;Childrens
-18490612;Science Fiction
-18490612;Steampunk
-18490612;Fantasy
-18490612;Childrens
-18490612;Middle Grade
-18490612;Adventure
-18490612;Fiction
-18490612;Young Adult
+137972;Young Adult
+137972;Paranormal
+137972;Vampires
+137972;Horror
+137972;Fantasy
+137972;Favorites
+274868;Fantasy
+274868;Favorites
+274868;Holiday
+274868;Christmas
+274868;Young Adult
+274868;Adventure
 17263570;Sequential Art
 17263570;Manga
 17263570;Fantasy
 17263570;Favorites
 17263570;Magic
-19549846;Fantasy
-19549846;Historical
-19549846;Historical Fiction
-19549846;Magic
-19549846;Fiction
-19549846;Roman
 28187;Fantasy
 28187;Favorites
 28187;Young Adult
 28187;Mythology
 28187;Fiction
+28187;Adventure
+28187;Childrens
+28187;Middle Grade
+28187;Urban Fantasy
+28187;Greek Mythology
 100915;Fantasy
 100915;Classics
 100915;Favorites
@@ -4066,6 +4004,12 @@ id_knjige;zanr
 168525;Fiction
 168525;Classics
 168525;Favorites
+168525;Historical
+168525;Historical Fiction
+168525;Folklore
+168525;Literature
+168525;Religion
+168525;Paganism
 35034197;Childrens
 35034197;Middle Grade
 35034197;Historical
@@ -4115,7 +4059,6 @@ id_knjige;zanr
 2921082;Favorites
 2921082;Fiction
 2921082;Childrens
-2921082;Middle Grade
 6186357;Young Adult
 6186357;Favorites
 6186357;Science Fiction
@@ -4133,10 +4076,6 @@ id_knjige;zanr
 15595;Young Adult
 15595;Fiction
 15595;Childrens
-177250;Fantasy
-177250;Fiction
-177250;Favorites
-177250;Science Fiction Fantasy
 402045;Fantasy
 402045;Favorites
 402045;Fiction
@@ -4280,6 +4219,11 @@ id_knjige;zanr
 13354420;Favorites
 13354420;Science Fiction
 13354420;Fiction
+13354420;Urban Fantasy
+13354420;Adventure
+13354420;Mystery
+13354420;Paranormal
+13354420;Teen
 8546358;Fiction
 8546358;Romance
 8546358;Favorites
@@ -4347,6 +4291,9 @@ id_knjige;zanr
 1071955;Favorites
 1071955;Childrens
 1071955;Fiction
+19167982;Fantasy
+19167982;Young Adult
+19167982;Young Adult Paranormal
 6889348;Fantasy
 6889348;Science Fiction
 6889348;Time Travel
@@ -4372,6 +4319,11 @@ id_knjige;zanr
 264158;Short Stories
 264158;Gothic
 264158;Poetry
+36390016;Fantasy
+36390016;Young Adult
+36390016;Adventure
+36390016;Epic Fantasy
+36390016;Magic
 1166131;Young Adult
 1166131;Favorites
 1166131;Adventure
@@ -4388,24 +4340,12 @@ id_knjige;zanr
 111626;Favorites
 111626;Childrens
 111626;Adventure
-111626;Historical
-111626;Historical Fiction
-111626;Middle Grade
-111626;Cultural
-111626;China
-111626;Juvenile
 222304;Fantasy
 222304;Favorites
 222304;Young Adult
 222304;Fiction
 222304;Childrens
 222304;Middle Grade
-92755;Fantasy
-92755;Fiction
-92755;Favorites
-92755;Young Adult
-92755;High Fantasy
-92755;Science Fiction Fantasy
 22443261;Fantasy
 22443261;Young Adult
 22443261;Favorites
@@ -4438,6 +4378,11 @@ id_knjige;zanr
 60400;Childrens
 60400;Middle Grade
 60400;Young Adult
+31303378;Fantasy
+31303378;Young Adult
+31303378;Science Fiction
+31303378;Steampunk
+31303378;Speculative Fiction
 16248113;Fantasy
 16248113;Favorites
 16248113;Childrens
@@ -4572,6 +4517,10 @@ id_knjige;zanr
 21318;Magic
 21318;Fiction
 21318;Favorites
+862356;Fantasy
+862356;Favorites
+862356;Childrens
+862356;Fiction
 822200;Paranormal
 822200;Vampires
 822200;Young Adult
@@ -4592,13 +4541,10 @@ id_knjige;zanr
 17165902;Humor
 17165902;Magic
 17165902;Favorites
-32056290;Fantasy
-32056290;Young Adult
-32056290;Lgbt
-32056290;Magic
-32056290;High Fantasy
-32056290;Fairies
-32056290;Fae
+26894560;Historical
+26894560;Historical Fiction
+26894560;Fiction
+26894560;Young Adult
 103386;Fantasy
 103386;Childrens
 103386;Favorites
@@ -4624,11 +4570,6 @@ id_knjige;zanr
 325421;Fantasy
 325421;Fiction
 325421;Animals
-325421;Favorites
-325421;Adventure
-325421;Young Adult
-325421;Juvenile
-325421;Audiobook
 106489;Fantasy
 106489;Young Adult
 106489;Fairy Tales
@@ -4772,9 +4713,6 @@ id_knjige;zanr
 22673572;Fantasy
 22673572;Young Adult
 22673572;Short Stories
-26958971;Fantasy
-26958971;Childrens
-26958971;Middle Grade
 9917879;Fantasy
 9917879;Favorites
 9917879;Childrens
@@ -4794,6 +4732,13 @@ id_knjige;zanr
 18127772;Fantasy
 18127772;Young Adult
 18127772;Childrens
+4065472;Sequential Art
+4065472;Graphic Novels
+4065472;Comics
+4065472;Young Adult
+4065472;Fantasy
+4065472;Fiction
+4065472;Teen
 42573;Classics
 42573;Fantasy
 42573;Childrens
@@ -4803,12 +4748,6 @@ id_knjige;zanr
 929373;Favorites
 929373;Fiction
 929373;Adventure
-929373;Magic
-929373;European Literature
-929373;German Literature
-929373;Childrens
-929373;Young Adult Fantasy
-929373;Middle Grade
 7235533;Fantasy
 7235533;Favorites
 7235533;Fiction
@@ -4828,6 +4767,11 @@ id_knjige;zanr
 34494;Young Adult
 34494;Fiction
 34494;Humor
+34494;Science Fiction Fantasy
+34494;Magic
+34494;Comedy
+34494;Childrens
+34494;Adventure
 694997;Fantasy
 694997;Fiction
 694997;Childrens
@@ -4900,6 +4844,13 @@ id_knjige;zanr
 317621;Fiction
 317621;Space
 317621;Space Opera
+317621;Science Fiction Fantasy
+317621;Adventure
+317621;Humor
+317621;Paranormal
+317621;Witches
+317621;Magic
+317621;Young Adult
 385804;Fantasy
 385804;Young Adult
 385804;Paranormal
@@ -4946,7 +4897,6 @@ id_knjige;zanr
 20821111;Favorites
 20821111;Science Fiction
 20821111;Dystopia
-20821111;Romance
 36349027;Fantasy
 36349027;Science Fiction
 36349027;Childrens
@@ -4980,12 +4930,6 @@ id_knjige;zanr
 5797595;Favorites
 5797595;Historical
 5797595;Historical Fiction
-1011307;Fantasy
-1011307;Young Adult
-1011307;Favorites
-1011307;Childrens
-1011307;Fiction
-1011307;High Fantasy
 10822;Childrens
 10822;Fiction
 10822;Favorites
@@ -5081,7 +5025,6 @@ id_knjige;zanr
 11819066;Fantasy
 11819066;Magic
 11819066;Young Adult
-11819066;Favorites
 32452144;Nonfiction
 32452144;Travel
 32452144;Self Help
@@ -5105,6 +5048,10 @@ id_knjige;zanr
 12262889;Mystery
 12262889;Fiction
 12262889;New York
+20489361;Fantasy
+20489361;Science Fiction
+20489361;Young Adult
+20489361;Dystopia
 84981;Fantasy
 84981;Favorites
 84981;Young Adult
@@ -5185,17 +5132,6 @@ id_knjige;zanr
 23258641;Romance
 23258641;Fantasy
 23258641;Science Fiction Romance
-23246792;Young Adult
-23246792;Mystery
-23246792;Thriller
-23246792;Audiobook
-23246792;Suspense
-29004052;Sports and Games
-29004052;Sports
-29004052;Sequential Art
-29004052;Graphic Novels
-29004052;Childrens
-29004052;Favorites
 674479;Animals
 674479;Nonfiction
 674479;Biography
@@ -5218,6 +5154,16 @@ id_knjige;zanr
 2210839;Middle Grade
 2210839;Fiction
 2210839;Family
+10586539;Fantasy
+10586539;Young Adult
+10586539;Young Adult Romance
+10586539;Favorites
+10586539;Unfinished
+10586539;Abandoned
+10586539;Science Fiction
+10586539;Paranormal
+10586539;High School
+10586539;Death
 102885;Fiction
 102885;Horror
 102885;Favorites
@@ -5240,11 +5186,14 @@ id_knjige;zanr
 32999314;Paranormal
 32999314;Young Adult
 32999314;Childrens
-25170594;Fantasy
-25170594;Science Fiction
-25170594;Steampunk
-25170594;Magic
-25170594;Young Adult
+3223890;Fantasy
+3223890;Young Adult
+3223890;Favorites
+3223890;Adventure
+3223890;Fiction
+3223890;Childrens
+3223890;Middle Grade
+3223890;Magic
 76620;Classics
 76620;Favorites
 76620;Fiction
@@ -5310,6 +5259,10 @@ id_knjige;zanr
 305234;Paranormal
 305234;Romance
 305234;Urban Fantasy
+23152850;Fantasy
+23152850;Dragons
+23152850;Young Adult
+23152850;Heroic Fantasy
 13836;Fantasy
 13836;Young Adult
 13836;Favorites
@@ -5330,6 +5283,12 @@ id_knjige;zanr
 13995;Fiction
 13995;Science Fiction Fantasy
 13995;Favorites
+77364;Fantasy
+77364;Fiction
+77364;Favorites
+77364;Fairy Tales
+77364;Young Adult
+77364;Romance
 102888;Fantasy
 102888;Science Fiction
 102888;Fiction
@@ -5357,26 +5316,14 @@ id_knjige;zanr
 6387565;Young Adult
 6387565;Favorites
 6387565;Magic
-6387565;Fiction
-6387565;Science Fiction
-6387565;Dystopia
-6387565;Paranormal
-6387565;Witches
-6387565;Supernatural
-6387565;Adventure
-3195006;Sequential Art
-3195006;Manga
-3195006;Manhwa
-3195006;Fantasy
-3195006;Favorites
-3195006;Comics
-3195006;Graphic Novels
-3195006;Magic
 19464292;Fantasy
 19464292;Paranormal
 19464292;Witches
 19464292;Young Adult
 19464292;Fiction
+19464292;Supernatural
+19464292;Horror
+19464292;Young Adult Fantasy
 10400575;Fantasy
 10400575;Young Adult
 10400575;Paranormal
@@ -5418,6 +5365,13 @@ id_knjige;zanr
 6370163;Historical Fiction
 6370163;Historical Romance
 6370163;Paranormal
+1231900;Young Adult
+1231900;Shapeshifters
+1231900;Werewolves
+1231900;Fantasy
+1231900;Paranormal
+1231900;Favorites
+1231900;Horror
 15711341;Favorites
 15711341;Fantasy
 15711341;Paranormal
@@ -5426,13 +5380,6 @@ id_knjige;zanr
 15711341;Shapeshifters
 15711341;Werewolves
 15711341;Adult
-227283;Young Adult
-227283;Fantasy
-227283;Paranormal
-227283;Favorites
-227283;School Stories
-227283;Boarding School
-227283;Teen
 1542403;Young Adult
 1542403;Lds
 1542403;Lds Fiction
@@ -5440,6 +5387,10 @@ id_knjige;zanr
 1542403;Fiction
 1542403;Favorites
 1542403;Contemporary
+1156482;Science Fiction
+1156482;Fiction
+1156482;Space
+1156482;Space Opera
 432020;Sequential Art
 432020;Manga
 432020;Fantasy
@@ -5457,11 +5408,6 @@ id_knjige;zanr
 25091986;Childrens
 25091986;Middle Grade
 25091986;Audiobook
-13494903;Horror
-13494903;Zombies
-13494903;Humor
-13494903;Fiction
-13494903;Novels
 11012966;Fantasy
 11012966;Urban Fantasy
 11012966;Favorites
@@ -5469,11 +5415,6 @@ id_knjige;zanr
 11012966;Paranormal
 11012966;Magic
 11012966;Vampires
-22457276;Fantasy
-22457276;Humor
-22457276;Fiction
-22457276;Mythology
-22457276;Urban Fantasy
 6781184;Fantasy
 6781184;Favorites
 6781184;Childrens
@@ -5492,6 +5433,12 @@ id_knjige;zanr
 18076700;Young Adult
 18076700;Fiction
 18076700;Magic
+333938;Fantasy
+333938;Paranormal
+333938;Witches
+333938;Young Adult
+333938;Supernatural
+333938;Magic
 10572;Fantasy
 10572;Favorites
 10572;Fiction
@@ -5521,15 +5468,17 @@ id_knjige;zanr
 22853157;Fantasy
 22853157;Adventure
 22853157;Young Adult
-17348771;Fantasy
-17348771;Young Adult
-17348771;Fiction
-17348771;Magic
 13497;Fantasy
 13497;Fiction
 13497;Favorites
 13497;Epic Fantasy
 13497;Science Fiction Fantasy
+333947;Young Adult
+333947;Fantasy
+333947;Paranormal
+333947;Witches
+333947;Magic
+333947;Favorites
 92718;Fantasy
 92718;Young Adult
 92718;Favorites
@@ -5597,12 +5546,6 @@ id_knjige;zanr
 10345927;Favorites
 10345927;Dystopia
 10345927;Romance
-333920;Young Adult
-333920;Fantasy
-333920;Paranormal
-333920;Witches
-333920;Favorites
-333920;Supernatural
 1134510;Fantasy
 1134510;Young Adult
 1134510;Magic
@@ -5629,6 +5572,18 @@ id_knjige;zanr
 18283670;Young Adult
 18283670;Fiction
 18283670;Magic
+22024829;Fantasy
+22024829;Young Adult
+22024829;Fiction
+22024829;Adventure
+22024829;Magic
+22024829;Favorites
+22024829;Epic
+22024829;Business
+22024829;Amazon
+22024829;High Fantasy
+22024829;Heroic Fantasy
+22024829;Sword and Sorcery
 1041257;Fantasy
 1041257;Young Adult
 1041257;Fiction
@@ -5640,6 +5595,15 @@ id_knjige;zanr
 18749463;Fantasy
 18749463;Young Adult
 18749463;Magic
+6469790;Historical
+6469790;Historical Fiction
+6469790;Holiday
+6469790;Christmas
+6469790;Young Adult
+6469790;Fiction
+6469790;Humor
+6469790;Childrens
+6469790;Juvenile
 135433;Fantasy
 135433;Young Adult
 135433;Dragons
@@ -5734,11 +5698,6 @@ id_knjige;zanr
 133664;Fiction
 133664;Epic Fantasy
 133664;High Fantasy
-24798172;Favorites
-24798172;Romance
-24798172;New Adult
-24798172;Contemporary
-24798172;Young Adult
 491076;Fantasy
 491076;Science Fiction
 491076;Fiction
@@ -5756,9 +5715,6 @@ id_knjige;zanr
 491095;Fantasy
 491095;Science Fiction
 491095;Fiction
-238937;Fantasy
-238937;Science Fiction
-238937;Fiction
 6965998;Fantasy
 6965998;Young Adult
 6965998;Magic
@@ -5778,6 +5734,19 @@ id_knjige;zanr
 13979;Fiction
 13979;Favorites
 13979;Science Fiction Fantasy
+10412949;Favorites
+10412949;Science Fiction
+10412949;Adventure
+10412949;Young Adult
+10412949;Action
+373155;Science Fiction
+373155;Steampunk
+373155;Sequential Art
+373155;Graphic Novels
+373155;Comics
+373155;Fantasy
+373155;Fiction
+373155;Humor
 6359259;Science Fiction
 6359259;Steampunk
 6359259;Sequential Art
@@ -5800,14 +5769,6 @@ id_knjige;zanr
 462235;Fiction
 462235;Science Fiction
 462235;Steampunk
-462236;Science Fiction
-462236;Steampunk
-462236;Sequential Art
-462236;Comics
-462236;Graphic Novels
-462236;Fantasy
-462236;Fiction
-462236;Humor
 11310597;Science Fiction
 11310597;Steampunk
 11310597;Sequential Art
@@ -5816,14 +5777,6 @@ id_knjige;zanr
 11310597;Fantasy
 11310597;Fiction
 11310597;Humor
-14544009;Science Fiction
-14544009;Steampunk
-14544009;Sequential Art
-14544009;Comics
-14544009;Graphic Novels
-14544009;Fantasy
-14544009;Fiction
-14544009;Webcomic
 7860809;Science Fiction
 7860809;Steampunk
 7860809;Sequential Art
@@ -5831,13 +5784,6 @@ id_knjige;zanr
 7860809;Graphic Novels
 7860809;Fantasy
 7860809;Fiction
-462231;Science Fiction
-462231;Steampunk
-462231;Sequential Art
-462231;Comics
-462231;Graphic Novels
-462231;Fantasy
-462231;Fiction
 18260201;Science Fiction
 18260201;Steampunk
 18260201;Sequential Art
@@ -5846,6 +5792,14 @@ id_knjige;zanr
 18260201;Fantasy
 18260201;Fiction
 18260201;Webcomic
+21814336;Sequential Art
+21814336;Graphic Novels
+21814336;Science Fiction
+21814336;Steampunk
+21814336;Comics
+21814336;Fantasy
+21814336;Fiction
+21814336;Webcomic
 3093789;Science Fiction
 3093789;Steampunk
 3093789;Sequential Art
@@ -5853,29 +5807,18 @@ id_knjige;zanr
 3093789;Comics
 3093789;Fantasy
 3093789;Fiction
-16219730;Fantasy
-16219730;Favorites
-16219730;Young Adult
-16219730;Magic
-16219730;Adventure
-16219730;Childrens
-16219730;Middle Grade
 18746776;Fantasy
 18746776;Young Adult
 18746776;Fiction
 18746776;Cultural
 18746776;Africa
-18746776;Magic
+18746776;Young Adult Fantasy
 12184913;Fantasy
 12184913;Young Adult
 12184913;Favorites
 12184913;Magic
 12184913;Dragons
 12184913;Adventure
-12184913;Fiction
-12184913;Young Adult Fantasy
-12184913;Childrens
-12184913;Middle Grade
 6366110;Fantasy
 6366110;Young Adult
 6366110;Fiction
@@ -5943,6 +5886,18 @@ id_knjige;zanr
 27374015;Middle Grade
 27374015;Mystery
 27374015;Young Adult
+16180048;Fantasy
+16180048;Young Adult
+16180048;Paranormal
+16180048;Wizards
+16180048;Ghosts
+16180048;Dragons
+15850976;Fantasy
+15850976;Young Adult
+15850976;Paranormal
+15850976;Wizards
+15850976;Ghosts
+15850976;Dragons
 298730;Young Adult
 298730;Science Fiction
 298730;Dystopia
@@ -6059,11 +6014,6 @@ id_knjige;zanr
 22728735;Paranormal
 22728735;Young Adult
 22728735;Young Adult Romance
-22728735;Mystery
-22728735;Adventure
-22728735;Suspense
-22728735;Literature
-22728735;18th Century
 22529375;Romance
 22529375;Fantasy
 22529375;Paranormal
@@ -6083,15 +6033,6 @@ id_knjige;zanr
 22514483;Magic
 22514483;Cultural
 22514483;Italy
-21544368;Romance
-21544368;Fantasy
-21544368;Paranormal
-21544368;Young Adult
-21544368;Magic
-21544368;European Literature
-21544368;British Literature
-21544368;Adventure
-21544368;Fiction
 94319;Young Adult
 94319;Adventure
 94319;Favorites
@@ -6134,9 +6075,6 @@ id_knjige;zanr
 28601023;Science Fiction
 28601023;Fiction
 28601023;Epic Fantasy
-25856470;Fantasy
-25856470;Magic
-25856470;Adventure
 77732;Science Fiction
 77732;Space
 77732;Space Opera
@@ -6176,6 +6114,10 @@ id_knjige;zanr
 32484454;Fantasy
 32484454;Young Adult
 32484454;Humor
+34512471;Fantasy
+34512471;Favorites
+34512471;Young Adult
+34512471;Science Fiction
 2220338;Childrens
 2220338;Animals
 2220338;Fiction
@@ -6190,6 +6132,11 @@ id_knjige;zanr
 16074409;Science Fiction
 16074409;Fantasy
 16074409;Fiction
+16074409;Adventure
+16074409;Teen
+16074409;Action
+16074409;Paranormal
+16074409;Science Fiction Fantasy
 26247781;Young Adult
 26247781;Fantasy
 26247781;Cultural
@@ -6226,11 +6173,6 @@ id_knjige;zanr
 18038349;Demons
 18038349;Shapeshifters
 18038349;Werewolves
-18479538;Fantasy
-18479538;Fiction
-18479538;Favorites
-18479538;Magic
-18479538;Adventure
 25174916;Fantasy
 25174916;Urban Fantasy
 25174916;Paranormal
@@ -6250,10 +6192,6 @@ id_knjige;zanr
 5972040;Young Adult
 5972040;Favorites
 5972040;Fiction
-24968392;Fantasy
-24968392;Favorites
-24968392;Childrens
-24968392;Middle Grade
 3754026;Fantasy
 3754026;Favorites
 3754026;Fiction
@@ -6264,11 +6202,6 @@ id_knjige;zanr
 334038;Young Adult
 334038;Fiction
 334038;Childrens
-23381007;Fantasy
-23381007;Young Adult
-23381007;Short Stories
-23381007;Favorites
-23381007;Paranormal
 12680907;Fantasy
 12680907;Young Adult
 12680907;Favorites
@@ -6280,6 +6213,11 @@ id_knjige;zanr
 84073;Horror
 84073;Fantasy
 84073;Fiction
+1721146;Fantasy
+1721146;Favorites
+1721146;Paranormal
+1721146;Vampires
+1721146;Young Adult
 8884616;Young Adult
 8884616;Fantasy
 8884616;Favorites
@@ -6297,21 +6235,26 @@ id_knjige;zanr
 147801;Young Adult
 147801;Favorites
 147801;Science Fiction
+18051941;Mystery
+18051941;Cozy Mystery
+18051941;Fiction
 35023786;Fantasy
 35023786;Favorites
 35023786;Magic
 35023786;Young Adult
 35023786;Fiction
+35023786;Action
+35023786;Adventure
+35023786;Abandoned
+35023786;Epic Fantasy
+35023786;Heroic Fantasy
+35023786;Sword and Sorcery
 8396337;Fantasy
 8396337;Favorites
 8396337;Fiction
 8396337;High Fantasy
 8396337;Young Adult
 8396337;Epic Fantasy
-495473;Fantasy
-495473;Favorites
-495473;Young Adult
-495473;Adventure
 498497;Fantasy
 498497;Fiction
 498497;Favorites
@@ -6340,14 +6283,6 @@ id_knjige;zanr
 22583619;Fiction
 22583619;Magic
 22583619;Favorites
-32055198;Fantasy
-32055198;Young Adult
-32055198;Historical
-32055198;Historical Fiction
-32055198;Lgbt
-32055198;Fairies
-32055198;Fae
-32055198;Epic Fantasy
 43892;Fiction
 43892;Favorites
 43892;Fantasy
@@ -6371,6 +6306,11 @@ id_knjige;zanr
 99383;Fiction
 99383;Favorites
 99383;Paranormal
+19077452;Fantasy
+19077452;Paranormal
+19077452;Witches
+19077452;Favorites
+19077452;Magic
 153779;Fantasy
 153779;Young Adult
 153779;Favorites
@@ -6381,11 +6321,6 @@ id_knjige;zanr
 7965123;Magic
 7965123;Adventure
 7965123;Young Adult Fantasy
-7965123;Romance
-7965123;Paranormal
-7965123;Science Fiction
-7965123;Dystopia
-7965123;Fiction
 17378508;Favorites
 17378508;Fantasy
 17378508;Young Adult
@@ -6433,11 +6368,6 @@ id_knjige;zanr
 2913;Survival
 2913;Realistic Fiction
 2913;Favorites
-141371;Fiction
-141371;Young Adult
-141371;Adventure
-141371;Survival
-141371;Realistic Fiction
 141372;Young Adult
 141372;Fiction
 141372;Adventure
@@ -6467,6 +6397,15 @@ id_knjige;zanr
 2248573;Young Adult
 2248573;Dragons
 2248573;Fiction
+18602073;Fantasy
+18602073;Urban Fantasy
+18602073;Paranormal
+18602073;Angels
+18602073;Shapeshifters
+18602073;Werewolves
+18602073;Vampires
+18602073;Magic
+18602073;Demons
 71869;Young Adult
 71869;Fiction
 71869;War
@@ -6477,12 +6416,25 @@ id_knjige;zanr
 2116706;Fiction
 2116706;Romance
 2116706;Historical Romance
+4634352;Young Adult
+4634352;Adventure
+4634352;Fiction
+4634352;Spy Thriller
+4634352;Espionage
+4634352;Favorites
+4634352;Thriller
+4634352;Mystery
 11254250;Favorites
 11254250;Fiction
 11254250;Realistic Fiction
 11254250;Childrens
 11254250;Humor
 11254250;Funny
+77148;Fantasy
+77148;Fiction
+77148;Favorites
+77148;Science Fiction Fantasy
+77148;High Fantasy
 169879;Fantasy
 169879;Young Adult
 169879;Dragons
@@ -6500,6 +6452,13 @@ id_knjige;zanr
 346087;Fiction
 346087;Epic Fantasy
 346087;High Fantasy
+229148;Sequential Art
+229148;Manga
+229148;Fantasy
+229148;Graphic Novels
+229148;Shojo
+229148;Comics
+229148;Favorites
 229147;Sequential Art
 229147;Manga
 229147;Fantasy
@@ -6611,13 +6570,6 @@ id_knjige;zanr
 43887;Fiction
 43887;Favorites
 43887;Epic Fantasy
-31763929;Young Adult
-31763929;Fantasy
-31763929;Childrens
-31763929;Adventure
-17932429;Young Adult
-17932429;Childrens
-17932429;Favorites
 14290364;Favorites
 14290364;Science Fiction
 14290364;Dystopia
@@ -6681,14 +6633,6 @@ id_knjige;zanr
 31360;Favorites
 31360;Fantasy
 31360;Science Fiction Fantasy
-10184403;Fantasy
-10184403;Urban Fantasy
-10184403;Favorites
-10184403;Fairies
-10184403;Fae
-10184403;Paranormal
-10184403;Magic
-10184403;Fiction
 36347162;Mystery
 36347162;Cozy Mystery
 36347162;Fiction
@@ -6701,10 +6645,6 @@ id_knjige;zanr
 28439435;Christmas
 28439435;Cozy Mystery
 28439435;Fiction
-27395877;Science Fiction
-27395877;Time Travel
-27395877;Young Adult
-27395877;Fantasy
 35397164;Science Fiction
 35397164;Time Travel
 35397164;Young Adult
@@ -6804,6 +6744,13 @@ id_knjige;zanr
 141757;Historical Fiction
 141757;Childrens
 141757;Favorites
+13516335;Fantasy
+13516335;Paranormal
+13516335;Romance
+13516335;New Adult
+13516335;Mystery
+13516335;Paranormal Romance
+13516335;Horror
 604803;Fantasy
 604803;Fiction
 604803;Epic Fantasy
@@ -6831,6 +6778,15 @@ id_knjige;zanr
 458342;Young Adult
 458342;Favorites
 458342;Graphic Novels Comics
+5576684;Sequential Art
+5576684;Graphic Novels
+5576684;Comics
+5576684;Fantasy
+5576684;Horror
+5576684;Young Adult
+5576684;Graphic Novels Comics
+5576684;Paranormal
+5576684;Vampires
 4615457;Mystery
 4615457;Cozy Mystery
 4615457;Fiction
@@ -6847,6 +6803,11 @@ id_knjige;zanr
 7791997;Paranormal
 7791997;Angels
 7791997;Romance
+30628688;Favorites
+30628688;Paranormal
+30628688;Vampires
+30628688;Fantasy
+30628688;Urban Fantasy
 13206828;Favorites
 13206828;Young Adult
 13206828;Fantasy
@@ -6882,12 +6843,6 @@ id_knjige;zanr
 12069434;Science Fiction
 12069434;Alternate History
 12069434;Fiction
-7312324;Paranormal
-7312324;Vampires
-7312324;Young Adult
-7312324;Favorites
-7312324;Fantasy
-7312324;Romance
 29966062;Fantasy
 29966062;Favorites
 29966062;Young Adult
@@ -7004,6 +6959,12 @@ id_knjige;zanr
 6368611;Paranormal
 6368611;Fairies
 6368611;Romance
+7602235;Fantasy
+7602235;Favorites
+7602235;Young Adult
+7602235;Magic
+7602235;Romance
+7602235;Adventure
 71870;Young Adult
 71870;Fiction
 71870;War
@@ -7035,10 +6996,6 @@ id_knjige;zanr
 16100368;Young Adult
 16100368;Adventure
 16100368;Action
-101041;Fantasy
-101041;Fiction
-101041;Urban Fantasy
-101041;Mystery
 91479;Fantasy
 91479;Urban Fantasy
 91479;Fiction
@@ -7095,17 +7052,6 @@ id_knjige;zanr
 2164409;Young Adult
 2164409;Favorites
 2164409;Fiction
-30335;Paranormal
-30335;Vampires
-30335;Young Adult
-30335;Fantasy
-30335;Favorites
-30335;Romance
-53168;Horror
-53168;Fantasy
-53168;Young Adult
-53168;Favorites
-53168;Fiction
 24564311;Fantasy
 24564311;Paranormal
 24564311;Young Adult
@@ -7118,16 +7064,24 @@ id_knjige;zanr
 8428064;Magic
 8428064;Romance
 8428064;Vampires
+23264425;Fantasy
+23264425;Magic
+23264425;Young Adult
+23264425;Paranormal
+23264425;Demons
+23264425;Historical
+23264425;Medieval
 129312;Fantasy
 129312;Favorites
 129312;Fiction
 129312;Epic Fantasy
 129312;High Fantasy
 129312;Science Fiction Fantasy
-129312;Romance
-129312;Adventure
-129312;Magic
-129312;Dragons
+26832003;Science Fiction
+26832003;Steampunk
+26832003;Young Adult
+26832003;Fantasy
+26832003;Historical
 8801482;Mystery
 8801482;Cozy Mystery
 8801482;Fiction
@@ -7163,6 +7117,12 @@ id_knjige;zanr
 325448;Adventure
 325448;Animals
 325448;Classics
+325451;Childrens
+325451;Fiction
+325451;Fantasy
+325451;Animals
+325451;Classics
+325451;Juvenile
 210852;Classics
 210852;Childrens
 210852;Fiction
@@ -7186,11 +7146,6 @@ id_knjige;zanr
 184032;Fiction
 184032;Animals
 184032;Classics
-184032;Adventure
-184032;Juvenile
-184032;Young Adult
-184032;Chapter Books
-184032;Novels
 325418;Fiction
 325418;Fantasy
 325418;Childrens
@@ -7210,16 +7165,14 @@ id_knjige;zanr
 6578293;Fiction
 6578293;Favorites
 6578293;Childrens
+38390771;Young Adult
+38390771;Fantasy
+38390771;Christian Fiction
 974195;Science Fiction
 974195;Fantasy
 974195;Favorites
 974195;Fiction
 974195;Young Adult
-2856130;Fantasy
-2856130;Fiction
-2856130;Young Adult
-2856130;Animals
-2856130;Adventure
 21032488;Fantasy
 21032488;Fiction
 21032488;Epic Fantasy
@@ -7228,15 +7181,17 @@ id_knjige;zanr
 34228074;Sequential Art
 34228074;Graphic Novels
 34228074;Fiction
-9635657;Childrens
-9635657;Middle Grade
-9635657;Realistic Fiction
-9635657;Young Adult
 13547289;Favorites
 13547289;Childrens
 13547289;Middle Grade
 13547289;Fiction
 13547289;Realistic Fiction
+13547289;Diary
+13547289;Humor
+13547289;Sequential Art
+13547289;Graphic Novels
+13547289;Funny
+13547289;Romance
 16074748;Childrens
 16074748;Middle Grade
 16074748;Realistic Fiction
@@ -7256,9 +7211,6 @@ id_knjige;zanr
 30051627;Childrens
 30051627;Middle Grade
 30051627;Fiction
-22544406;Mystery
-22544406;Cozy Mystery
-22544406;Fiction
 360918;Young Adult
 360918;Adventure
 360918;Fiction
@@ -7292,10 +7244,13 @@ id_knjige;zanr
 2208744;Young Adult
 2208744;Adventure
 2208744;Childrens
-2208744;Middle Grade
-2208744;Fiction
-2208744;Romance
-2208744;Magic
+6578909;Fantasy
+6578909;Dragons
+6578909;Favorites
+6578909;Adventure
+6578909;Young Adult
+6578909;Fiction
+6578909;Magic
 6383800;Fantasy
 6383800;Dragons
 6383800;Favorites
@@ -7303,25 +7258,13 @@ id_knjige;zanr
 6383800;Magic
 6383800;Romance
 6383800;Young Adult
-435239;Fantasy
-435239;Dragons
-435239;Favorites
-435239;Fiction
 7042102;Fantasy
 7042102;Dragons
 7042102;Fiction
-5933646;Fantasy
-5933646;Dragons
-5933646;Favorites
-5933646;Young Adult
-5933646;Childrens
-5933646;Middle Grade
-5933646;Adventure
-6124224;Fantasy
-6124224;Dragons
-6124224;Young Adult
-6124224;Science Fiction
-6124224;Fiction
+3114281;Fantasy
+3114281;Dragons
+3114281;Favorites
+3114281;Fiction
 1189399;Fantasy
 1189399;Dragons
 1189399;Favorites
@@ -7403,12 +7346,6 @@ id_knjige;zanr
 499122;Urban Fantasy
 499122;Fiction
 499122;Detective
-21520932;Fantasy
-21520932;Romance
-21520932;Fantasy Romance
-21520932;Science Fiction Fantasy
-21520932;Magic
-21520932;Favorites
 13618440;Fantasy
 13618440;Favorites
 13618440;Young Adult
@@ -7436,6 +7373,11 @@ id_knjige;zanr
 444314;Fiction
 444314;Favorites
 444314;Childrens
+444314;Magic
+444314;Young Adult Fantasy
+444314;Adventure
+444314;Science Fiction Fantasy
+444314;High Fantasy
 47619;Fantasy
 47619;Young Adult
 47619;Fiction
@@ -7447,12 +7389,6 @@ id_knjige;zanr
 175004;Fiction
 175004;Action
 175004;Mystery
-26760091;Fantasy
-26760091;Favorites
-26760091;Young Adult
-26760091;Magic
-26760091;Romance
-26760091;High Fantasy
 77741;Science Fiction
 77741;Space
 77741;Space Opera
@@ -7492,12 +7428,6 @@ id_knjige;zanr
 15985373;Epic Fantasy
 15985373;Science Fiction
 15985373;High Fantasy
-767920;Historical
-767920;Historical Fiction
-767920;Fiction
-767920;Literature
-767920;Epic
-767920;American
 129510;Fantasy
 129510;Dragons
 129510;Historical
@@ -7523,6 +7453,11 @@ id_knjige;zanr
 17978510;Favorites
 17978510;Romance
 17978510;Mystery
+48426;Fantasy
+48426;Horror
+48426;Paranormal
+48426;Fiction
+48426;Young Adult
 29767330;Fantasy
 29767330;Magic
 29767330;Paranormal
@@ -7575,10 +7510,12 @@ id_knjige;zanr
 22062213;Vampires
 22062213;Romance
 22062213;Shapeshifters
-28053156;Fantasy
-28053156;Science Fiction
-28053156;Young Adult
-28053156;Adult
+34094311;Romance
+34094311;Fantasy
+34094311;Magic
+34094311;Fiction
+34094311;Adventure
+34094311;Urban Fantasy
 58092;Fantasy
 58092;Young Adult
 58092;Fiction
@@ -7589,6 +7526,11 @@ id_knjige;zanr
 13260668;Childrens
 13260668;Middle Grade
 13260668;Young Adult
+13260668;Adventure
+13260668;Magic
+13260668;Fiction
+13260668;Mystery
+13260668;Young Adult Fantasy
 25203880;Fantasy
 25203880;Paranormal
 25203880;Witches
@@ -7610,6 +7552,17 @@ id_knjige;zanr
 23248440;Magic
 23248440;Demons
 23248440;Witches
+21894440;Fantasy
+21894440;Paranormal
+21894440;New Adult
+21894440;Romance
+21894440;Favorites
+21894440;Magic
+21894440;Demons
+21894440;Vampires
+21894440;Witches
+21894440;Young Adult
+21894440;Young Adult Paranormal
 6390465;Fantasy
 6390465;Young Adult
 6390465;Favorites
@@ -7643,6 +7596,13 @@ id_knjige;zanr
 13260670;Middle Grade
 13260670;Adventure
 13260670;Young Adult
+7411232;Fantasy
+7411232;Young Adult
+7411232;Romance
+7411232;Favorites
+7411232;Historical
+7411232;Historical Fiction
+7411232;Adventure
 31819013;Fantasy
 31819013;Urban Fantasy
 31819013;Supernatural
@@ -7673,6 +7633,12 @@ id_knjige;zanr
 650883;Paranormal
 650883;Fairies
 650883;Favorites
+2454990;Sequential Art
+2454990;Manga
+2454990;Fantasy
+2454990;Favorites
+2454990;Magic
+2454990;Comics
 2920825;Sequential Art
 2920825;Manga
 2920825;Fantasy
@@ -7695,6 +7661,13 @@ id_knjige;zanr
 3430907;Favorites
 3430907;Comics
 3430907;Shonen
+5071490;Sequential Art
+5071490;Manga
+5071490;Fantasy
+5071490;Magic
+5071490;Comics
+5071490;Favorites
+5071490;Adventure
 6236660;Sequential Art
 6236660;Manga
 6236660;Fantasy
@@ -7770,6 +7743,13 @@ id_knjige;zanr
 22318582;Fantasy
 22318582;Favorites
 22318582;Magic
+22318582;Shonen
+22318582;Media Tie In
+22318582;Anime
+22318582;Fiction
+22318582;Young Adult
+22318582;Dragons
+22318582;Graphic Novels
 22748066;Sequential Art
 22748066;Manga
 22748066;Fantasy
@@ -7787,12 +7767,6 @@ id_knjige;zanr
 28364039;Shonen
 28364039;Graphic Novels
 28364039;Favorites
-29093102;Sequential Art
-29093102;Manga
-29093102;Fantasy
-29093102;Shonen
-29093102;Favorites
-29093102;Magic
 121127;Fantasy
 121127;Favorites
 121127;Fiction
@@ -7825,13 +7799,25 @@ id_knjige;zanr
 5537014;Fiction
 5537014;Science Fiction Fantasy
 5537014;Magic
+5537014;Young Adult
+5537014;Young Adult Fantasy
+5537014;Science Fiction
 6431790;Favorites
 6431790;Young Adult
 6431790;Fantasy
 6431790;Science Fiction
+6431790;Romance
+6431790;Paranormal
+6431790;Action
+6431790;Angels
+6431790;Supernatural
+6431790;Dystopia
 77147;Fantasy
 77147;Fiction
 77147;Science Fiction Fantasy
+77147;High Fantasy
+77147;Favorites
+77147;Animals
 17666943;Fantasy
 17666943;Paranormal
 17666943;Witches
@@ -7974,17 +7960,11 @@ id_knjige;zanr
 32762937;Favorites
 32762937;Childrens
 32762937;Middle Grade
-1678247;Fantasy
-1678247;Young Adult
-1678247;Mythology
-1678247;Fiction
-1678247;Historical
-27028188;Fantasy
-27028188;Childrens
-27028188;Middle Grade
-27028188;Young Adult
-27028188;Teen
-27028188;Action
+409717;Fantasy
+409717;Dragons
+409717;Young Adult
+409717;Favorites
+409717;Fiction
 355917;Fantasy
 355917;Young Adult
 355917;Favorites
@@ -8033,9 +8013,6 @@ id_knjige;zanr
 6940291;Adventure
 6940291;Childrens
 6940291;Middle Grade
-2058398;Childrens
-2058398;Animals
-2058398;Fiction
 17345616;Young Adult
 17345616;Favorites
 17345616;Mystery
@@ -8059,6 +8036,10 @@ id_knjige;zanr
 25094569;Middle Grade
 25094569;Fiction
 25094569;Favorites
+16034400;Fantasy
+16034400;Dragons
+16034400;Paranormal
+16034400;Favorites
 6318426;Young Adult
 6318426;Sports and Games
 6318426;Sports
@@ -8090,6 +8071,10 @@ id_knjige;zanr
 11984131;Young Adult
 11984131;Magic
 11984131;Fiction
+23719231;Fantasy
+23719231;Young Adult
+23719231;Fiction
+23719231;Favorites
 10814946;Paranormal
 10814946;Vampires
 10814946;Young Adult
@@ -8100,11 +8085,6 @@ id_knjige;zanr
 279668;Mythology
 279668;Fiction
 279668;Favorites
-279668;Adventure
-279668;Science Fiction
-279668;Teen
-279668;Urban Fantasy
-279668;Childrens
 4326206;Fiction
 4326206;Historical
 4326206;Historical Fiction
@@ -8150,6 +8130,13 @@ id_knjige;zanr
 5927462;Favorites
 5927462;Romance
 5927462;Greek Mythology
+20894732;Fantasy
+20894732;Favorites
+20894732;Christian Fiction
+20894732;Romance
+20894732;Christian
+20894732;Fiction
+20894732;Young Adult
 28594830;Fantasy
 28594830;Young Adult
 28594830;Fiction
@@ -8162,10 +8149,6 @@ id_knjige;zanr
 9918083;Fantasy
 9918083;Historical
 9918083;Historical Fiction
-26146811;Childrens
-26146811;Middle Grade
-26146811;Fantasy
-26146811;Young Adult
 36665060;Fantasy
 36665060;Magic
 36665060;Young Adult
@@ -8212,6 +8195,9 @@ id_knjige;zanr
 319644;Adventure
 319644;Childrens
 319644;Middle Grade
+319644;Juvenile
+319644;Science Fiction Fantasy
+319644;Young Adult Fantasy
 385742;Fantasy
 385742;Young Adult
 385742;Fiction
@@ -8230,6 +8216,12 @@ id_knjige;zanr
 47620;Young Adult
 47620;Fiction
 47620;Childrens
+47620;Favorites
+47620;Adventure
+47620;Magic
+47620;Middle Grade
+47620;Young Adult Fantasy
+47620;Science Fiction Fantasy
 2146957;Fantasy
 2146957;Favorites
 2146957;Young Adult
@@ -8331,11 +8323,6 @@ id_knjige;zanr
 176534;Young Adult
 176534;Favorites
 176534;Magic
-552349;Fantasy
-552349;Humor
-552349;Fiction
-552349;Science Fiction Fantasy
-552349;Comedy
 26174272;Favorites
 26174272;New Adult
 26174272;Romance
@@ -8367,6 +8354,13 @@ id_knjige;zanr
 77739;Fiction
 77739;War
 77739;Military Fiction
+11167193;Fantasy
+11167193;Favorites
+11167193;Adventure
+11167193;Epic Fantasy
+11167193;Magic
+11167193;Fiction
+11167193;High Fantasy
 2173611;Fantasy
 2173611;Favorites
 2173611;Fiction
@@ -8443,11 +8437,6 @@ id_knjige;zanr
 17202329;Magic
 17202329;Fiction
 17202329;Romance
-17202329;Adventure
-17202329;Historical
-17202329;Medieval
-17202329;Urban Fantasy
-17202329;Supernatural
 15757055;Fantasy
 15757055;Epic Fantasy
 15757055;Favorites
@@ -8588,6 +8577,11 @@ id_knjige;zanr
 47627;Fiction
 47627;Childrens
 47627;Adventure
+181439;Young Adult
+181439;Fantasy
+181439;Paranormal
+181439;Supernatural
+181439;Urban Fantasy
 7182899;Mystery
 7182899;Adventure
 7182899;Favorites
@@ -8609,11 +8603,6 @@ id_knjige;zanr
 8677937;Paranormal
 8677937;Favorites
 8677937;Urban Fantasy
-8677937;Demons
-8677937;Vampires
-8677937;Supernatural
-8677937;Romance
-8677937;Magic
 22559712;Young Adult
 22559712;Fantasy
 22559712;Paranormal
@@ -8666,10 +8655,6 @@ id_knjige;zanr
 18186704;Young Adult
 18186704;Fantasy
 18186704;Magic
-6333646;Young Adult
-6333646;Fiction
-6333646;Fantasy
-6333646;Magic
 13549535;Fantasy
 13549535;Young Adult
 13549535;Fiction
@@ -8707,17 +8692,20 @@ id_knjige;zanr
 122468;Animals
 122468;Favorites
 122468;Adventure
+122468;Classics
+122468;Wolves
+122468;Historical
+122468;Historical Fiction
+122468;Survival
+122482;Fiction
+122482;Young Adult
+122482;Favorites
+122482;Animals
+122482;Childrens
 338593;Adventure
 338593;Fantasy
 338593;Fiction
 338593;Classics
-338593;Action
-338593;Pulp
-338593;Favorites
-338593;Short Stories
-338593;Cultural
-338593;Africa
-338593;Science Fiction
 17203275;Science Fiction
 17203275;Young Adult
 17203275;Favorites
@@ -8772,21 +8760,13 @@ id_knjige;zanr
 263172;Young Adult
 263172;Fantasy
 263172;Romance
-312081;Fantasy
-312081;Fiction
-312081;Childrens
-312081;Favorites
-312081;Young Adult
 6466086;Fantasy
 6466086;Young Adult
 6466086;Horror
 6466086;Fiction
-1913275;Fantasy
-1913275;Favorites
-1913275;Christian Fiction
-1913275;Christian Fantasy
-1913275;Childrens
-1913275;Middle Grade
+8230710;Fantasy
+8230710;Childrens
+8230710;Young Adult
 17206;Fantasy
 17206;Young Adult
 17206;Fiction
@@ -8827,16 +8807,14 @@ id_knjige;zanr
 6553209;Adventure
 6553209;Magic
 6553209;Fiction
+6553209;Childrens
+6553209;Middle Grade
+6553209;Mystery
+6553209;Supernatural
 279671;Fantasy
 279671;Young Adult
 279671;Mythology
 279671;Fiction
-279671;Favorites
-279671;Adventure
-279671;Childrens
-279671;Science Fiction
-279671;Young Adult Fantasy
-279671;Magic
 23283214;Fantasy
 23283214;Young Adult
 23283214;Fiction
@@ -8869,6 +8847,11 @@ id_knjige;zanr
 8496901;Fiction
 8496901;Magic
 8496901;Mystery
+459222;Childrens
+459222;Historical
+459222;Historical Fiction
+459222;Fiction
+459222;Family
 20404555;Fantasy
 20404555;Dragons
 20404555;Historical
@@ -8892,10 +8875,6 @@ id_knjige;zanr
 1211904;Favorites
 1211904;Young Adult
 1211904;Fiction
-6580970;Fantasy
-6580970;Favorites
-6580970;Young Adult
-6580970;Fiction
 286136;Favorites
 286136;Fiction
 286136;Adventure
@@ -8911,12 +8890,6 @@ id_knjige;zanr
 20813178;New Adult
 20813178;Contemporary
 20813178;Young Adult
-10345489;Fantasy
-10345489;Young Adult
-10345489;Favorites
-10345489;Magic
-10345489;Mystery
-10345489;Young Adult Fantasy
 6686092;Young Adult
 6686092;Science Fiction
 6686092;Dystopia
@@ -8949,6 +8922,11 @@ id_knjige;zanr
 140138;Animals
 140138;Childrens
 140138;Adventure
+27272698;Favorites
+27272698;Fantasy
+27272698;Childrens
+27272698;Middle Grade
+27272698;Adventure
 9961796;Favorites
 9961796;Young Adult
 9961796;Romance
@@ -8972,6 +8950,10 @@ id_knjige;zanr
 30312891;Favorites
 30312891;Fantasy
 30312891;Young Adult
+6657648;Fantasy
+6657648;Young Adult
+6657648;Favorites
+6657648;Fiction
 5801741;Fantasy
 5801741;Magic
 5801741;Favorites
@@ -8979,6 +8961,9 @@ id_knjige;zanr
 5801741;Middle Grade
 5801741;Young Adult
 5801741;Adventure
+5801741;Fiction
+5801741;Juvenile
+5801741;Mystery
 27000;Humor
 27000;Fantasy
 27000;Science Fiction Fantasy
@@ -9023,11 +9008,6 @@ id_knjige;zanr
 14759334;Mermaids
 14759334;Favorites
 14759334;Paranormal
-148206;Fantasy
-148206;Humor
-148206;Fiction
-148206;Science Fiction Fantasy
-148206;Comedy
 148205;Fantasy
 148205;Humor
 148205;Fiction
@@ -9044,6 +9024,10 @@ id_knjige;zanr
 668710;Fiction
 668710;Young Adult
 668710;Childrens
+295809;Fantasy
+295809;Childrens
+295809;Fiction
+295809;Favorites
 312080;Fantasy
 312080;Childrens
 312080;Fiction
@@ -9118,6 +9102,13 @@ id_knjige;zanr
 152382;Fantasy
 152382;Childrens
 152382;Fiction
+152382;Favorites
+152382;Young Adult
+152382;Audiobook
+152382;Magic
+152382;Middle Grade
+152382;European Literature
+152382;British Literature
 152385;Childrens
 152385;Classics
 152385;Fiction
@@ -9138,13 +9129,6 @@ id_knjige;zanr
 152383;Fantasy
 152383;Childrens
 152383;Fiction
-152383;Favorites
-152383;Young Adult
-152383;Magic
-152383;Middle Grade
-152383;European Literature
-152383;British Literature
-152383;Juvenile
 106085;Young Adult
 106085;Paranormal
 106085;Vampires
@@ -9177,10 +9161,6 @@ id_knjige;zanr
 6318867;Graphic Novels
 6318867;Science Fiction
 6318867;Fantasy
-30141985;Sequential Art
-30141985;Manga
-30141985;Graphic Novels
-30141985;Science Fiction
 6406017;Sequential Art
 6406017;Manga
 6406017;Graphic Novels
@@ -9205,12 +9185,6 @@ id_knjige;zanr
 7201912;Favorites
 7201912;Fantasy
 7201912;Young Adult
-7201911;Sequential Art
-7201911;Manga
-7201911;Graphic Novels
-7201911;Young Adult
-7201911;Fantasy
-7201911;Science Fiction
 7292478;Sequential Art
 7292478;Manga
 7292478;Graphic Novels
@@ -9230,28 +9204,24 @@ id_knjige;zanr
 6318868;Young Adult
 6318868;Fantasy
 6318868;Science Fiction
-563309;Fantasy
-563309;Favorites
-563309;Young Adult
-563309;Childrens
-563309;Middle Grade
-563309;Adventure
 563308;Fantasy
 563308;Favorites
 563308;Childrens
 563308;Middle Grade
 563308;Young Adult
 563308;Adventure
-18197222;Fantasy
-18197222;Christian Fiction
-18197222;Fiction
-18197222;Young Adult
-18197222;Christian
-18197222;Historical
-18197222;Historical Fiction
+17679373;Fantasy
+17679373;Christian Fiction
+17679373;Young Adult
+17679373;Historical
+17679373;Historical Fiction
+17679373;Fiction
+17679373;Mythology
+17679373;Arthurian
+17679373;Christian
 37541828;Fantasy
-37541828;Horror
 37541828;Young Adult
+37541828;Horror
 15714133;Fantasy
 15714133;Mythology
 15714133;Young Adult
@@ -9281,21 +9251,11 @@ id_knjige;zanr
 23106013;Fantasy
 23106013;Urban Fantasy
 23106013;Fiction
-536535;Fantasy
-536535;Paranormal
-536535;Horror
-536535;Young Adult
 7747263;Paranormal
 7747263;Vampires
 7747263;Young Adult
 7747263;Fantasy
 7747263;Favorites
-7106681;Science Fiction
-7106681;Space
-7106681;Space Opera
-7106681;War
-7106681;Military Fiction
-7106681;Fiction
 295652;Historical
 295652;Historical Fiction
 295652;Young Adult
@@ -9330,6 +9290,10 @@ id_knjige;zanr
 3067189;Magic
 3067189;Childrens
 3067189;Urban Fantasy
+3067189;Adventure
+3067189;Fiction
+3067189;Science Fiction Fantasy
+3067189;Mythology
 8653769;Fantasy
 8653769;Young Adult
 8653769;Favorites
@@ -9340,14 +9304,6 @@ id_knjige;zanr
 7540092;Young Adult
 7540092;Science Fiction
 7540092;Dystopia
-11756117;Fantasy
-11756117;Favorites
-11756117;Christian Fiction
-11756117;Christian
-11756117;Young Adult
-11756117;Dragons
-11756117;Romance
-11756117;Fiction
 33384164;Fantasy
 33384164;Dragons
 33384164;Favorites
@@ -9378,9 +9334,6 @@ id_knjige;zanr
 569429;Humor
 569429;Fantasy
 569429;Favorites
-9749876;Fantasy
-9749876;Young Adult
-9749876;Childrens
 17563080;Fantasy
 17563080;Urban Fantasy
 17563080;Favorites
@@ -9400,10 +9353,6 @@ id_knjige;zanr
 279667;Mythology
 279667;Fiction
 279667;Favorites
-343579;Fantasy
-343579;Humor
-343579;Fiction
-343579;Science Fiction Fantasy
 367367;Fantasy
 367367;Humor
 367367;Fiction
@@ -9428,15 +9377,21 @@ id_knjige;zanr
 461627;Humor
 461627;Fiction
 461627;Comedy
-74297;Fantasy
-74297;Humor
-74297;Fiction
-74297;Science Fiction Fantasy
+461627;Favorites
+461627;Science Fiction
+461627;Science Fiction Fantasy
+461627;Magic
+461627;Funny
+461627;High Fantasy
 552344;Fantasy
 552344;Humor
 552344;Fiction
 552344;Science Fiction Fantasy
 552344;Comedy
+148241;Fantasy
+148241;Humor
+148241;Fiction
+148241;Comedy
 74292;Fantasy
 74292;Humor
 74292;Fiction
@@ -9509,6 +9464,12 @@ id_knjige;zanr
 13513407;Juvenile
 13513407;Favorites
 13513407;Time Travel
+65094;Fantasy
+65094;Favorites
+65094;Fairy Tales
+65094;Young Adult
+65094;Magic
+65094;Romance
 1925831;Historical
 1925831;Historical Fiction
 1925831;Young Adult
@@ -9524,9 +9485,6 @@ id_knjige;zanr
 9207752;Shonen
 9207752;Paranormal
 9207752;Demons
-9207752;Comics
-9207752;Mythology
-9207752;Horror
 10408721;Sequential Art
 10408721;Manga
 10408721;Fantasy
@@ -9544,16 +9502,6 @@ id_knjige;zanr
 11100147;Paranormal
 11100147;Demons
 11100147;Fiction
-11100146;Sequential Art
-11100146;Manga
-11100146;Fantasy
-11100146;Graphic Novels
-11100146;Supernatural
-11100146;Shonen
-11100146;Mythology
-11100146;Paranormal
-11100146;Demons
-11100146;Fiction
 12320503;Sequential Art
 12320503;Manga
 12320503;Fantasy
@@ -9564,9 +9512,14 @@ id_knjige;zanr
 12320503;Paranormal
 12320503;Demons
 12320503;Fiction
-12320503;Comics Manga
-12320503;Young Adult
-12320503;Coming Of Age
+12662782;Sequential Art
+12662782;Manga
+12662782;Fantasy
+12662782;Graphic Novels
+12662782;Shonen
+12662782;Mythology
+12662782;Paranormal
+12662782;Demons
 13259266;Sequential Art
 13259266;Manga
 13259266;Fantasy
@@ -9575,6 +9528,15 @@ id_knjige;zanr
 13259266;Mythology
 13259266;Paranormal
 13259266;Demons
+13259267;Sequential Art
+13259267;Manga
+13259267;Fantasy
+13259267;Graphic Novels
+13259267;Shonen
+13259267;Supernatural
+13259267;Mythology
+13259267;Paranormal
+13259267;Demons
 6527941;Fantasy
 6527941;Favorites
 6527941;Epic Fantasy
@@ -9608,6 +9570,13 @@ id_knjige;zanr
 15704386;Romance
 15704386;Young Adult
 15704386;Paranormal
+16074851;Favorites
+16074851;Fantasy
+16074851;Childrens
+16074851;Middle Grade
+16074851;Fairy Tales
+16074851;Retellings
+16074851;Magic
 25222064;Humor
 25222064;Childrens
 25222064;Middle Grade
@@ -9645,23 +9614,12 @@ id_knjige;zanr
 112879;Fiction
 112879;Childrens
 112879;Young Adult
-27234100;Young Adult
-27234100;Teen
-27234100;Fantasy
-27234100;Paranormal
-27234100;Fairies
 3552023;Mystery
 3552023;Adventure
 3552023;Young Adult
 3552023;Fiction
 3552023;Favorites
 3552023;Childrens
-13978;Fantasy
-13978;Romance
-13978;Fairy Tales
-13978;Fiction
-13978;Dragons
-13978;Favorites
 8131227;Fantasy
 8131227;Fiction
 8131227;Mystery
@@ -9722,13 +9680,6 @@ id_knjige;zanr
 364958;Graphic Novels
 364958;Adventure
 364958;Favorites
-364960;Sequential Art
-364960;Manga
-364960;Fantasy
-364960;Adventure
-364960;Comics
-364960;Graphic Novels
-364960;Shonen
 662985;Sequential Art
 662985;Manga
 662985;Fantasy
@@ -9784,6 +9735,13 @@ id_knjige;zanr
 5071433;Fantasy
 5071433;Adventure
 5071433;Shonen
+5071433;Graphic Novels
+5071433;Pirates
+5071433;Comics
+5071433;Favorites
+5071433;Action
+5071433;Humor
+5071433;Comedy
 6801645;Sequential Art
 6801645;Manga
 6801645;Fantasy
@@ -9812,6 +9770,12 @@ id_knjige;zanr
 6801614;Comics Manga
 6801614;Action
 6801614;Pirates
+7421452;Sequential Art
+7421452;Manga
+7421452;Fantasy
+7421452;Shonen
+7421452;Adventure
+7421452;Comics
 7421463;Sequential Art
 7421463;Manga
 7421463;Fantasy
@@ -9856,6 +9820,12 @@ id_knjige;zanr
 15803923;Fantasy
 15803923;Adventure
 15803923;Shonen
+15803923;Comics
+15803923;Humor
+15803923;Comics Manga
+15803923;Action
+15803923;Graphic Novels
+15803923;Fiction
 16146218;Sequential Art
 16146218;Manga
 16146218;Fantasy
@@ -9870,6 +9840,15 @@ id_knjige;zanr
 10783217;Magic
 10783217;Fiction
 10783217;Mystery
+13485266;Young Adult
+13485266;Fantasy
+13485266;Paranormal
+13485266;Urban Fantasy
+13485266;Romance
+22498832;Horror
+22498832;Thriller
+22498832;Mystery Thriller
+22498832;Science Fiction
 870821;Fantasy
 870821;Favorites
 870821;Young Adult
@@ -9905,16 +9884,6 @@ id_knjige;zanr
 18090005;Childrens
 18090005;Middle Grade
 18090005;Magic
-13260521;Fantasy
-13260521;Young Adult
-13260521;Fairy Tales
-13260521;Favorites
-2208767;Fantasy
-2208767;Young Adult
-2208767;Favorites
-2208767;Fairy Tales
-2208767;Fiction
-2208767;Romance
 12926132;Fantasy
 12926132;Young Adult
 12926132;Favorites
@@ -9955,6 +9924,10 @@ id_knjige;zanr
 31186178;Science Fiction
 31186178;Time Travel
 31186178;Young Adult
+31186178;Fiction
+31186178;Paranormal
+31186178;Demons
+31186178;Young Adult Fantasy
 22249640;Fantasy
 22249640;Urban Fantasy
 22249640;Fiction
@@ -10023,6 +9996,11 @@ id_knjige;zanr
 355916;Favorites
 355916;Magic
 355916;Fiction
+412088;Historical
+412088;Historical Fiction
+412088;Childrens
+412088;Classics
+412088;Middle Grade
 1021245;Fantasy
 1021245;Adventure
 1021245;Pirates
@@ -10052,23 +10030,22 @@ id_knjige;zanr
 224500;Action
 224500;Spy Thriller
 224500;Espionage
-12924153;Paranormal
-12924153;Vampires
-12924153;Fantasy
-12924153;Young Adult
 181425;Young Adult
 181425;Fantasy
 181425;Paranormal
 181425;Mythology
 181425;Favorites
-21533892;Fantasy
-21533892;High Fantasy
-21533892;Science Fiction
-21533892;Dystopia
 24768;Young Adult
 24768;Science Fiction
 24768;Dystopia
 24768;Favorites
+216160;Young Adult
+216160;Shapeshifters
+216160;Werewolves
+216160;Fantasy
+216160;Paranormal
+216160;Favorites
+216160;Horror
 84552;Fantasy
 84552;Fiction
 84552;Historical
@@ -10113,11 +10090,6 @@ id_knjige;zanr
 93726;Chick Lit
 93726;Contemporary
 93726;Fiction
-93726;Teen
-93726;Favorites
-93726;Childrens
-93726;Humor
-93726;Realistic Fiction
 93729;Young Adult
 93729;Romance
 93729;Womens Fiction
@@ -10162,6 +10134,10 @@ id_knjige;zanr
 13642647;Vampires
 13642647;Fantasy
 13642647;Favorites
+16005263;Fantasy
+16005263;Favorites
+16005263;Epic
+16005263;Young Adult
 515587;Fantasy
 515587;Favorites
 515587;Fiction
@@ -10179,12 +10155,6 @@ id_knjige;zanr
 59264;Fantasy
 59264;Favorites
 59264;Urban Fantasy
-59264;Adventure
-59264;Young Adult Fantasy
-59264;Childrens
-59264;Fiction
-59264;Middle Grade
-59264;Humor
 64217;Fantasy
 64217;Fiction
 64217;Humor
@@ -10225,6 +10195,10 @@ id_knjige;zanr
 7994;Favorites
 7994;Animals
 7994;Adventure
+7994;Childrens
+7994;Middle Grade
+7994;High Fantasy
+7994;Animal Fiction
 12716010;Young Adult
 12716010;Fantasy
 12716010;Paranormal
@@ -10246,17 +10220,28 @@ id_knjige;zanr
 285206;Fiction
 285206;Magic
 285206;Paranormal
+285206;Romance
+285206;High Fantasy
+285206;Urban Fantasy
+285206;Science Fiction Fantasy
+285206;Adult
 84537;Fantasy
+84537;Historical
+84537;Historical Fiction
 84537;Fiction
 84537;Favorites
-84537;Mythology
-84537;Arthurian
-84537;Historical
 13125947;Favorites
 13125947;Science Fiction
 13125947;Fantasy
 13125947;Young Adult
 13125947;Dystopia
+446946;Fantasy
+446946;Romance
+446946;Favorites
+446946;Fiction
+446946;Magic
+446946;Fantasy Romance
+446946;Adult
 279669;Fantasy
 279669;Young Adult
 279669;Mythology
@@ -10277,11 +10262,13 @@ id_knjige;zanr
 30140756;Science Fiction
 30140756;Dystopia
 30140756;Favorites
-26118981;Young Adult
-26118981;Science Fiction
-26118981;Dystopia
-26118981;Fantasy
-26118981;Favorites
+30140756;Fiction
+30140756;Romance
+30140756;Apocalyptic
+30140756;Post Apocalyptic
+30140756;Fantasy
+30140756;Audiobook
+30140756;Teen
 10710406;Paranormal
 10710406;Vampires
 10710406;Young Adult
@@ -10373,6 +10360,11 @@ id_knjige;zanr
 2753843;Vampires
 2753843;Fantasy
 2753843;Favorites
+17910122;Fantasy
+17910122;Epic Fantasy
+17910122;Favorites
+17910122;Fiction
+17910122;High Fantasy
 765301;Fantasy
 765301;Classics
 765301;Fiction
@@ -10393,10 +10385,13 @@ id_knjige;zanr
 7882883;Horror
 7882883;Favorites
 7882883;Fiction
-1156487;Science Fiction
-1156487;Fiction
-1156487;Space
-1156487;Space Opera
+15944410;Science Fiction
+15944410;Time Travel
+15944410;Historical
+15944410;Historical Fiction
+15944410;Young Adult
+15944410;Favorites
+15944410;Adventure
 25174926;Fantasy
 25174926;Urban Fantasy
 25174926;Paranormal
@@ -10415,10 +10410,6 @@ id_knjige;zanr
 248470;Favorites
 248470;Romance
 248470;Fairy Tales
-15878646;Fantasy
-15878646;Young Adult
-15878646;Childrens
-15878646;Favorites
 1809465;Fiction
 1809465;Realistic Fiction
 1809465;Childrens
@@ -10427,11 +10418,6 @@ id_knjige;zanr
 1809465;Young Adult
 1809465;Humor
 1809465;Funny
-23770294;Fantasy
-23770294;Young Adult
-23770294;Favorites
-23770294;Science Fiction
-23770294;Urban Fantasy
 6793743;Fantasy
 6793743;Magic
 6793743;Childrens
@@ -10581,12 +10567,6 @@ id_knjige;zanr
 362196;Fiction
 362196;Childrens
 362196;Realistic Fiction
-362196;Young Adult
-362196;Middle Grade
-362196;Favorites
-362196;Dogs
-362196;Classics
-362196;Adventure
 33676;Young Adult
 33676;Favorites
 33676;Fantasy
@@ -10606,11 +10586,6 @@ id_knjige;zanr
 11045423;Fiction
 11045423;Epic Fantasy
 11045423;Favorites
-92538;Historical
-92538;Historical Fiction
-92538;Childrens
-92538;North American History
-92538;American History
 13139;Young Adult
 13139;Favorites
 13139;Fantasy
@@ -10653,6 +10628,13 @@ id_knjige;zanr
 17149088;Paranormal
 17149088;Favorites
 17149088;Romance
+9301525;Fantasy
+9301525;Favorites
+9301525;Animals
+9301525;Magic
+9301525;Childrens
+9301525;Adventure
+9301525;Cats
 5217282;Fantasy
 5217282;Favorites
 5217282;Young Adult
@@ -10693,12 +10675,6 @@ id_knjige;zanr
 10345937;Favorites
 10345937;Dystopia
 10345937;Romance
-32446959;Fantasy
-32446959;Young Adult
-32446959;Retellings
-32446959;Favorites
-32446959;Fairy Tales
-32446959;Young Adult Fantasy
 383923;Fantasy
 383923;Fiction
 383923;Favorites
@@ -10892,18 +10868,6 @@ id_knjige;zanr
 34484;Comedy
 34484;Science Fiction Fantasy
 34484;Fantasy
-29179120;Fantasy
-29179120;Science Fiction
-29179120;Steampunk
-29179120;Adventure
-29179120;Magic
-29179120;Action
-29179120;Paranormal
-29179120;Witches
-29179120;Spy Thriller
-29179120;Espionage
-29179120;Pirates
-29179120;Epic Fantasy
 30329;Fantasy
 30329;Young Adult
 30329;Favorites
@@ -10995,11 +10959,6 @@ id_knjige;zanr
 12977172;Romance
 12977172;Paranormal Romance
 12977172;Supernatural
-17657600;Science Fiction
-17657600;Dystopia
-17657600;Young Adult
-17657600;Christian Fiction
-17657600;Fiction
 7967;Science Fiction
 7967;Favorites
 7967;Fiction
@@ -11016,6 +10975,12 @@ id_knjige;zanr
 11454587;Magic
 11454587;Romance
 11454587;Vampires
+10822283;Fantasy
+10822283;Urban Fantasy
+10822283;Favorites
+10822283;Science Fiction
+10822283;Alternate History
+10822283;Fiction
 9261978;Fantasy
 9261978;Childrens
 9261978;Middle Grade
@@ -11023,16 +10988,27 @@ id_knjige;zanr
 9261978;Favorites
 9261978;Adventure
 9261978;Magic
+8546763;Fantasy
+8546763;Romance
+8546763;Fantasy Romance
+8546763;Favorites
+8546763;Magic
+8546763;Adult
+7597778;Historical
+7597778;Historical Fiction
+7597778;Young Adult
+7597778;Favorites
+7597778;Fantasy
+7597778;Mythology
+7597778;Romance
+7597778;Northern Africa
+7597778;Egypt
 11199165;Fantasy
 11199165;Favorites
 11199165;Young Adult
 11199165;Fiction
 11199165;Adventure
 11199165;Science Fiction
-11199165;Paranormal
-11199165;Dystopia
-11199165;Novels
-11199165;Childrens
 13494365;Young Adult
 13494365;Fantasy
 13494365;Paranormal
@@ -11058,13 +11034,12 @@ id_knjige;zanr
 15799164;Young Adult
 15799164;Favorites
 15799164;Mythology
-23513566;Paranormal Urban Fantasy
-23513566;Science Fiction
-23513566;Fantasy
 77149;Fantasy
 77149;Fiction
 77149;Science Fiction Fantasy
 77149;High Fantasy
+77149;Favorites
+77149;Animals
 153795;Fantasy
 153795;Young Adult
 153795;Favorites
@@ -11085,10 +11060,6 @@ id_knjige;zanr
 3407703;Fantasy
 3407703;Adventure
 3407703;Fiction
-3407703;Romance
-3407703;Teen
-3407703;Cultural
-3407703;Canada
 13496575;Fantasy
 13496575;Favorites
 13496575;Christian Fiction
@@ -11096,11 +11067,6 @@ id_knjige;zanr
 13496575;Romance
 13496575;Christian
 13496575;Dragons
-3086203;Fantasy
-3086203;Favorites
-3086203;Young Adult
-3086203;Adventure
-3086203;Fiction
 33384170;Fantasy
 33384170;Dragons
 33384170;Favorites
@@ -11115,6 +11081,13 @@ id_knjige;zanr
 18667875;Magic
 18667875;Mystery
 18667875;Fiction
+14931151;Fantasy
+14931151;Childrens
+14931151;Middle Grade
+14931151;Historical
+14931151;Historical Fiction
+14931151;Magic
+14931151;Young Adult
 234184;Fantasy
 234184;Fiction
 234184;Favorites
@@ -11147,10 +11120,10 @@ id_knjige;zanr
 24093;Fiction
 24093;Magic
 24093;Young Adult Fantasy
-30287412;Spy Thriller
-30287412;Espionage
-30287412;Childrens
-30287412;Favorites
+22460377;Fantasy
+22460377;Magic
+22460377;Young Adult
+22460377;Fiction
 33442;Mystery
 33442;Cozy Mystery
 33442;Fiction
@@ -11163,6 +11136,11 @@ id_knjige;zanr
 91478;Favorites
 91478;Paranormal
 91478;Magic
+123512;Fantasy
+123512;Fiction
+123512;Dragons
+123512;Favorites
+123512;Science Fiction Fantasy
 1191449;Fantasy
 1191449;Animals
 1191449;Young Adult
@@ -11196,6 +11174,10 @@ id_knjige;zanr
 7976;Favorites
 7976;Animals
 7976;Childrens
+28733;Fantasy
+28733;Fiction
+28733;Favorites
+28733;Science Fiction Fantasy
 13659;Fantasy
 13659;Fiction
 13659;Short Stories
@@ -11243,22 +11225,10 @@ id_knjige;zanr
 338585;Adventure
 338585;Classics
 338585;Science Fiction
-338585;Pulp
 1775684;Fantasy
 1775684;Adventure
 1775684;Fiction
 1775684;Classics
-330122;Fantasy
-330122;Adventure
-330122;Fiction
-330122;Classics
-330122;Action
-330122;Science Fiction
-338590;Adventure
-338590;Fantasy
-338590;Classics
-338590;Science Fiction
-338590;Fiction
 338608;Fantasy
 338608;Adventure
 338608;Fiction
@@ -11272,10 +11242,10 @@ id_knjige;zanr
 474111;Fiction
 474111;Fantasy
 474111;Classics
-338591;Fantasy
-338591;Adventure
-338591;Fiction
-338591;Classics
+828210;Fantasy
+828210;Adventure
+828210;Fiction
+828210;Classics
 643809;Fantasy
 643809;Adventure
 643809;Fiction
@@ -11342,12 +11312,6 @@ id_knjige;zanr
 15986068;Science Fiction
 15986068;Fiction
 15986068;Adventure
-363390;Science Fiction
-363390;Young Adult
-363390;Fiction
-363390;Fantasy
-363390;Aliens
-363390;Childrens
 324508;Science Fiction
 324508;Young Adult
 324508;Fiction
@@ -11364,11 +11328,6 @@ id_knjige;zanr
 34534;Young Adult
 34534;Humor
 34534;Favorites
-34534;Comedy
-34534;Childrens
-34534;Science Fiction Fantasy
-34534;Animals
-34534;Funny
 18122;Fantasy
 18122;Young Adult
 18122;Favorites
@@ -11406,11 +11365,10 @@ id_knjige;zanr
 34211260;Mystery
 34211260;Fantasy
 34211260;Adventure
-34211260;Favorites
 34211260;Young Adult
+34211260;Favorites
 34211260;Childrens
 34211260;Middle Grade
-34211260;Fiction
 7005865;Fantasy
 7005865;Favorites
 7005865;Fiction
@@ -11440,13 +11398,6 @@ id_knjige;zanr
 22299648;Young Adult
 22299648;Adventure
 22299648;Favorites
-22299648;Magic
-22299648;Science Fiction Fantasy
-22299648;Dragons
-22299648;Childrens
-22299648;Middle Grade
-22299648;Teen
-22299648;Young Adult Fantasy
 17825280;Fantasy
 17825280;Young Adult
 17825280;Science Fiction
@@ -11500,13 +11451,22 @@ id_knjige;zanr
 116435;Young Adult
 116435;Fiction
 116435;Favorites
-116435;Childrens
 116435;Adventure
+116435;Childrens
+125344;Fiction
+125344;Childrens
+125344;Fantasy
+125344;Favorites
 7979;Fantasy
 7979;Fiction
 7979;Young Adult
 7979;Childrens
 7979;Animals
+6614192;Historical
+6614192;Historical Fiction
+6614192;Young Adult
+6614192;Romance
+6614192;Fiction
 11431896;Fantasy
 11431896;Young Adult
 11431896;Favorites
@@ -11533,6 +11493,11 @@ id_knjige;zanr
 123209;Fiction
 123209;Childrens
 123209;Young Adult
+123209;Classics
+123209;Juvenile
+123209;Favorites
+123209;Adventure
+123209;Middle Grade
 29537;Animals
 29537;Horses
 29537;Fiction
@@ -11553,11 +11518,6 @@ id_knjige;zanr
 123204;Fiction
 123204;Childrens
 123204;Young Adult
-123206;Animals
-123206;Horses
-123206;Fiction
-123206;Childrens
-123206;Young Adult
 123203;Animals
 123203;Horses
 123203;Childrens
@@ -11584,16 +11544,6 @@ id_knjige;zanr
 123201;Fiction
 123201;Young Adult
 123201;Childrens
-123211;Animals
-123211;Horses
-123211;Fiction
-123211;Childrens
-123211;Young Adult
-123200;Animals
-123200;Horses
-123200;Fiction
-123200;Young Adult
-123200;Childrens
 92845;Fantasy
 92845;Fiction
 92845;Science Fiction Fantasy
@@ -11607,6 +11557,9 @@ id_knjige;zanr
 18705209;Fantasy
 18705209;Young Adult
 18705209;Mythology
+26879148;Fantasy
+26879148;Magic
+26879148;Adventure
 358355;Fantasy
 358355;Young Adult
 358355;Adventure
@@ -11618,11 +11571,6 @@ id_knjige;zanr
 407813;Fiction
 407813;Romance
 407813;Adventure
-729033;Fantasy
-729033;Young Adult
-729033;Favorites
-729033;Paranormal
-729033;Fairies
 16054217;Fantasy
 16054217;Favorites
 16054217;Fiction
@@ -11644,9 +11592,6 @@ id_knjige;zanr
 383618;Religion
 383618;Christian
 383618;Christian Fiction
-383618;Speculative Fiction
-383618;Literature
-383618;Childrens
 145383;Fantasy
 145383;Childrens
 145383;Fiction
@@ -11668,17 +11613,6 @@ id_knjige;zanr
 18961361;Childrens
 18961361;Middle Grade
 18961361;Fiction
-10552088;Fantasy
-10552088;Adventure
-10552088;Young Adult
-10552088;Fiction
-10552088;Childrens
-10552088;Middle Grade
-23383896;Favorites
-23383896;Fantasy
-23383896;Urban Fantasy
-23383896;Magic
-23383896;Paranormal
 144349;Fantasy
 144349;Favorites
 144349;Young Adult
@@ -11690,10 +11624,6 @@ id_knjige;zanr
 28006096;Childrens
 28006096;Middle Grade
 28006096;Favorites
-28006096;Fiction
-28006096;Adventure
-28006096;Greek Mythology
-28006096;Young Adult Fantasy
 34488586;Fantasy
 34488586;Young Adult
 34488586;Adventure
@@ -11715,6 +11645,11 @@ id_knjige;zanr
 750609;Young Adult
 750609;Christian Fiction
 750609;Fiction
+125332;Science Fiction
+125332;Fiction
+125332;Fantasy
+125332;Childrens
+125332;Aliens
 324277;Fiction
 324277;Young Adult
 324277;Childrens
@@ -11737,6 +11672,15 @@ id_knjige;zanr
 33163320;Graphic Novels Comics
 33163320;Humor
 33163320;Science Fiction
+25885809;Sequential Art
+25885809;Comics
+25885809;Graphic Novels
+25885809;Mystery
+25885809;Young Adult
+25885809;Fantasy
+25885809;Fiction
+25885809;Humor
+25885809;Graphic Novels Comics
 22807866;Sequential Art
 22807866;Graphic Novels
 22807866;Comics
@@ -11753,7 +11697,6 @@ id_knjige;zanr
 30724372;Fiction
 30724372;Fantasy
 30724372;Graphic Novels Comics
-30724372;Humor
 24779;Fantasy
 24779;Young Adult
 24779;Fiction
@@ -11767,11 +11710,6 @@ id_knjige;zanr
 17567159;Fantasy
 17567159;Magic
 17567159;Young Adult
-363388;Science Fiction
-363388;Young Adult
-363388;Fiction
-363388;Fantasy
-363388;Childrens
 13618444;Fantasy
 13618444;Magic
 13618444;Dark Fantasy
@@ -11800,20 +11738,27 @@ id_knjige;zanr
 181431;Paranormal
 181431;Mythology
 181431;Supernatural
-13511041;Fantasy
-13511041;Magic
-13511041;Romance
-13511041;Dark Fantasy
 17968674;Fantasy
 17968674;Fiction
 17968674;Young Adult
 17968674;Adventure
+187315;Fantasy
+187315;Young Adult
+187315;Adventure
+187315;Fiction
+187315;Magic
 2051840;Paranormal
 2051840;Vampires
 2051840;Young Adult
 2051840;Fantasy
 2051840;Romance
 2051840;Favorites
+363424;Science Fiction
+363424;Fiction
+363424;Fantasy
+363424;Childrens
+363424;Aliens
+363424;Young Adult
 225243;Fantasy
 225243;Favorites
 225243;Young Adult
@@ -11894,6 +11839,12 @@ id_knjige;zanr
 7775755;Historical
 7775755;Historical Fiction
 7775755;Paranormal
+565593;Fantasy
+565593;Young Adult
+565593;Favorites
+565593;Science Fiction
+565593;Time Travel
+565593;Romance
 11021753;Science Fiction
 11021753;Dystopia
 11021753;Christian Fiction
@@ -11924,7 +11875,7 @@ id_knjige;zanr
 1327767;Young Adult
 1327767;Fiction
 1327767;Magic
-1327767;Favorites
+1327767;Childrens
 2169506;Young Adult
 2169506;Science Fiction
 2169506;Dystopia
@@ -11955,10 +11906,6 @@ id_knjige;zanr
 363406;Fantasy
 363406;Childrens
 363406;Aliens
-363406;Adventure
-363406;Animals
-363406;Middle Grade
-363406;Favorites
 6594657;Young Adult
 6594657;Fantasy
 6594657;Urban Fantasy
@@ -11966,13 +11913,6 @@ id_knjige;zanr
 6594657;Paranormal
 6594657;Demons
 6594657;Magic
-9666870;Young Adult
-9666870;Fantasy
-9666870;Favorites
-9666870;Urban Fantasy
-9666870;Paranormal
-9666870;Demons
-9666870;Magic
 363394;Science Fiction
 363394;Young Adult
 363394;Fiction
@@ -11991,13 +11931,6 @@ id_knjige;zanr
 125339;Fantasy
 125339;Childrens
 125339;Aliens
-17832472;Fantasy
-17832472;Dragons
-17832472;Christian Fiction
-17832472;Christian Fantasy
-32605337;Fantasy
-32605337;Dragons
-32605337;Science Fiction Fantasy
 23168798;Fantasy
 23168798;Childrens
 23168798;Middle Grade
@@ -12026,11 +11959,6 @@ id_knjige;zanr
 17347389;Fantasy
 17347389;Young Adult
 17347389;Paranormal
-32828873;Fantasy
-32828873;Romance
-32828873;Fantasy Romance
-32828873;Magic
-32828873;Adult
 18131799;Fantasy
 18131799;Favorites
 18131799;Young Adult
@@ -12053,22 +11981,11 @@ id_knjige;zanr
 179668;Classics
 179668;Fiction
 179668;Childrens
-7815817;Fantasy
-7815817;Favorites
-7815817;Epic Fantasy
-7815817;Fiction
-7815817;Adventure
-7815817;High Fantasy
 7592279;Fantasy
 7592279;Favorites
 7592279;Young Adult
 7592279;Adventure
 7592279;Fiction
-6545536;Mystery
-6545536;Adventure
-6545536;Favorites
-6545536;Young Adult
-6545536;Fiction
 590125;Young Adult
 590125;Favorites
 590125;Mystery
@@ -12149,6 +12066,11 @@ id_knjige;zanr
 7801229;Young Adult
 7801229;Magic
 7801229;Romance
+286582;Science Fiction
+286582;Aliens
+286582;Fantasy
+286582;Childrens
+286582;Young Adult
 125341;Science Fiction
 125341;Young Adult
 125341;Fiction
@@ -12161,6 +12083,10 @@ id_knjige;zanr
 363359;Fantasy
 363359;Childrens
 363359;Aliens
+363359;Adventure
+363359;Animals
+363359;Middle Grade
+363359;Teen
 16043857;Fantasy
 16043857;Young Adult
 16043857;Fiction
@@ -12176,11 +12102,6 @@ id_knjige;zanr
 8735255;Young Adult
 8735255;Paranormal
 8735255;Fairies
-25272178;Fantasy
-25272178;Young Adult
-25272178;Fiction
-25272178;Science Fiction
-25272178;Time Travel
 15861491;Favorites
 15861491;Young Adult
 15861491;Fantasy
@@ -12202,6 +12123,11 @@ id_knjige;zanr
 12291646;Historical
 12291646;Historical Fiction
 12291646;Favorites
+47906;Fantasy
+47906;Young Adult
+47906;Favorites
+47906;Science Fiction
+47906;Dystopia
 13667;Fantasy
 13667;Fiction
 13667;Young Adult
@@ -12217,6 +12143,10 @@ id_knjige;zanr
 6185409;Magic
 6185409;Adventure
 6185409;Fiction
+6185409;Mythology
+6185409;Childrens
+6185409;Middle Grade
+6185409;Young Adult Fantasy
 23381009;Fantasy
 23381009;Young Adult
 23381009;Short Stories
@@ -12245,11 +12175,6 @@ id_knjige;zanr
 33921998;Science Fiction
 33921998;Favorites
 33921998;Fiction
-33921998;Adventure
-33921998;Teen
-33921998;Romance
-33921998;Science Fiction Fantasy
-33921998;Action
 21813486;Sequential Art
 21813486;Graphic Novels
 21813486;Comics
@@ -12263,6 +12188,12 @@ id_knjige;zanr
 1829709;Fantasy
 1829709;Favorites
 1829709;Science Fiction
+1829709;Adventure
+1829709;Fiction
+1829709;Paranormal
+1829709;Romance
+1829709;Action
+1829709;Teen
 10778410;Fantasy
 10778410;Young Adult
 10778410;Favorites
@@ -12275,6 +12206,10 @@ id_knjige;zanr
 13262797;Middle Grade
 13262797;Young Adult
 13262797;Fiction
+13262797;Magic
+13262797;Juvenile
+13262797;Science Fiction
+13262797;Time Travel
 1285223;Fantasy
 1285223;Mythology
 1285223;Young Adult
@@ -12291,6 +12226,12 @@ id_knjige;zanr
 11181274;Time Travel
 11181274;Historical
 11181274;Historical Fiction
+8008715;Fantasy
+8008715;Young Adult
+8008715;Childrens
+8008715;Adventure
+8008715;Favorites
+8008715;Fiction
 18892;Fantasy
 18892;Fiction
 18892;Historical
@@ -12330,11 +12271,6 @@ id_knjige;zanr
 2743031;European Literature
 2743031;German Literature
 2743031;Favorites
-31450941;Fantasy
-31450941;Childrens
-31450941;Middle Grade
-31450941;Romance
-31450941;Science Fiction Fantasy
 34735291;Humor
 34735291;Childrens
 34735291;Fiction
@@ -12396,13 +12332,8 @@ id_knjige;zanr
 15822336;Romance
 15822336;Historical
 15822336;Historical Fiction
-18513756;Science Fiction
-18513756;Steampunk
-18513756;Young Adult
-18513756;Fantasy
-18513756;Romance
-18513756;Favorites
-18513756;Paranormal
+15822336;Paranormal
+15822336;Fiction
 2470390;Fantasy
 2470390;Epic Fantasy
 2470390;Favorites
@@ -12427,6 +12358,7 @@ id_knjige;zanr
 751369;Fantasy
 751369;Favorites
 751369;Christian Fiction
+751369;Christian Fantasy
 59263;Fantasy
 59263;Young Adult
 59263;Favorites
@@ -12442,13 +12374,6 @@ id_knjige;zanr
 9409469;Magic
 9409469;Romance
 9409469;High Fantasy
-24810403;Science Fiction
-24810403;Adventure
-24810403;Fantasy
-24810403;Family
-751370;Fantasy
-751370;Favorites
-751370;Christian Fiction
 222576;Fantasy
 222576;Young Adult
 222576;Fiction
@@ -12515,12 +12440,6 @@ id_knjige;zanr
 24781;Favorites
 24781;Fiction
 24781;Childrens
-147842;Fantasy
-147842;Favorites
-147842;Fiction
-147842;Magic
-147842;High Fantasy
-147842;Epic Fantasy
 116343;Fantasy
 116343;Fiction
 116343;Historical
@@ -12602,21 +12521,11 @@ id_knjige;zanr
 5955666;Paranormal
 5955666;Fairies
 5955666;Fae
-3002302;Fantasy
-3002302;Young Adult
-3002302;Dragons
-3002302;Favorites
-3002302;Fiction
 16131484;Young Adult
 16131484;Favorites
 16131484;Science Fiction
 16131484;Dystopia
 16131484;Aliens
-25689056;Fantasy
-25689056;Young Adult
-25689056;Favorites
-25689056;Magic
-25689056;Adventure
 22206715;Fantasy
 22206715;Childrens
 22206715;Middle Grade
@@ -12635,6 +12544,13 @@ id_knjige;zanr
 13003565;Favorites
 13003565;Adventure
 13003565;Fiction
+13003565;Action
+13003565;Historical
+13003565;Historical Fiction
+13003565;Medieval
+13003565;Young Adult Fantasy
+13003565;Childrens
+13003565;Middle Grade
 7747064;Fantasy
 7747064;Favorites
 7747064;Young Adult
@@ -12682,18 +12598,21 @@ id_knjige;zanr
 6354623;Historical
 6354623;Historical Fiction
 6354623;Adventure
-9955669;Horror
-9955669;Young Adult
-9955669;Favorites
-9955669;Fantasy
-9955669;Historical
-9955669;Historical Fiction
-9955669;Paranormal
 2330041;Fantasy
 2330041;Adventure
 2330041;Favorites
 2330041;Mystery
 2330041;Childrens
+363389;Science Fiction
+363389;Young Adult
+363389;Fiction
+363389;Fantasy
+363389;Childrens
+47905;Fantasy
+47905;Young Adult
+47905;Favorites
+47905;Science Fiction
+47905;Dystopia
 26571;Fantasy
 26571;Young Adult
 26571;Fiction
@@ -12799,13 +12718,6 @@ id_knjige;zanr
 18163310;Favorites
 18163310;Shojo
 18163310;Graphic Novels
-18163314;Sequential Art
-18163314;Manga
-18163314;Fantasy
-18163314;Favorites
-18163314;Shojo
-18163314;Historical
-18163314;Historical Fiction
 7885589;Fantasy
 7885589;Mythology
 7885589;Arthurian
@@ -12850,11 +12762,16 @@ id_knjige;zanr
 7981;Favorites
 7981;Childrens
 7981;Adventure
+7981;Animals
+7981;Science Fiction Fantasy
+7981;Middle Grade
+7981;High Fantasy
 2523134;Science Fiction
 2523134;Fiction
 2523134;Science Fiction Fantasy
 2523134;Space
 2523134;Space Opera
+2523134;Fantasy
 10546;Fantasy
 10546;Adventure
 10546;Favorites
@@ -12879,6 +12796,12 @@ id_knjige;zanr
 23380998;Short Stories
 23380998;Favorites
 23380998;Paranormal
+181424;Young Adult
+181424;Fantasy
+181424;Paranormal
+181424;Supernatural
+181424;Mythology
+181424;Urban Fantasy
 60179;Fantasy
 60179;Classics
 60179;Childrens
@@ -12895,11 +12818,6 @@ id_knjige;zanr
 13570486;Romance
 13570486;Paranormal Romance
 13570486;Young Adult
-11309018;Favorites
-11309018;Young Adult
-11309018;Fantasy
-11309018;Adventure
-11309018;Fiction
 13531506;Fantasy
 13531506;Favorites
 13531506;Young Adult
@@ -12935,6 +12853,13 @@ id_knjige;zanr
 12127750;Fantasy
 12127750;Young Adult
 12127750;Mythology
+12127750;Fiction
+12127750;Adventure
+12127750;Childrens
+12127750;Middle Grade
+12127750;Greek Mythology
+12127750;Romance
+12127750;Urban Fantasy
 10172939;Historical
 10172939;Historical Fiction
 10172939;Young Adult
@@ -12946,14 +12871,20 @@ id_knjige;zanr
 179565;Classics
 179565;Fiction
 179565;Childrens
+179565;Young Adult
+179565;Favorites
+179565;Adventure
+179565;Middle Grade
+179565;Juvenile
+179565;Magic
 18490638;Fantasy
 18490638;Fiction
 18490638;Epic Fantasy
 18490638;Science Fiction Fantasy
 34286;Fantasy
 34286;Young Adult
-34286;Favorites
 34286;Fiction
+34286;Favorites
 366784;Science Fiction
 366784;Young Adult
 366784;Fiction
@@ -12983,13 +12914,6 @@ id_knjige;zanr
 169872;Magic
 169872;Regency
 169872;Mystery
-26114250;Science Fiction
-26114250;Steampunk
-26114250;Childrens
-26114250;Fantasy
-26114250;Adventure
-26114250;Science Fiction Fantasy
-26114250;Historical
 972188;Fantasy
 972188;Young Adult
 972188;Favorites
@@ -13057,6 +12981,12 @@ id_knjige;zanr
 26228034;Science Fiction
 26228034;Favorites
 26228034;Dystopia
+26228034;Science Fiction Fantasy
+26228034;Apocalyptic
+26228034;Post Apocalyptic
+26228034;Audiobook
+26228034;Adult
+26228034;Epic Fantasy
 649514;Young Adult
 649514;Sports and Games
 649514;Sports
@@ -13090,17 +13020,6 @@ id_knjige;zanr
 13658;Young Adult
 13658;Dragons
 13658;Science Fiction
-34702209;Fantasy
-34702209;Young Adult
-34702209;Young Adult Fantasy
-34702209;Favorites
-34702209;Magic
-34702209;Paranormal
-34702209;Fiction
-34702209;Adventure
-34702209;Action
-34702209;Childrens
-34702209;Middle Grade
 1446826;Young Adult
 1446826;Science Fiction
 1446826;Favorites
@@ -13115,13 +13034,6 @@ id_knjige;zanr
 560637;Classics
 560637;Childrens
 560637;Fiction
-92719;Fantasy
-92719;Young Adult
-92719;Favorites
-92719;Paranormal
-92719;Vampires
-92719;Fiction
-92719;Romance
 31133972;Young Adult
 31133972;Fantasy
 31133972;Childrens
@@ -13142,15 +13054,6 @@ id_knjige;zanr
 97090;Classics
 97090;Childrens
 97090;Fiction
-234972;Young Adult
-234972;Fiction
-234972;Favorites
-607612;Young Adult
-607612;Fiction
-607612;Favorites
-607612;Teen
-607612;Childrens
-607612;Middle Grade
 215539;Fantasy
 215539;Young Adult
 215539;Favorites
@@ -13164,6 +13067,13 @@ id_knjige;zanr
 34281;Favorites
 34281;Childrens
 34281;Magic
+23735633;Fantasy
+23735633;Young Adult
+23735633;Fiction
+23735633;Childrens
+23735633;Middle Grade
+23735633;Paranormal
+23735633;Ghosts
 8659601;Young Adult
 8659601;Favorites
 8659601;Fantasy
@@ -13231,15 +13141,6 @@ id_knjige;zanr
 7549828;Magic
 7549828;Favorites
 7549828;Middle Grade
-14781171;Science Fiction
-14781171;Steampunk
-14781171;Fantasy
-14781171;Urban Fantasy
-14781171;Paranormal
-14781171;Vampires
-14781171;Favorites
-14781171;Shapeshifters
-14781171;Werewolves
 40158;Fantasy
 40158;Favorites
 40158;Young Adult
@@ -13291,17 +13192,16 @@ id_knjige;zanr
 13130788;Young Adult
 13130788;Science Fiction
 13130788;Dystopia
+15829770;Fantasy
+15829770;Favorites
+15829770;Young Adult
+15829770;Magic
+15829770;Mythology
 78418;Fiction
 78418;Young Adult
 78418;Childrens
 78418;Fantasy
 78418;Favorites
-363349;Science Fiction
-363349;Young Adult
-363349;Fiction
-363349;Fantasy
-363349;Childrens
-363349;Aliens
 8695;Fiction
 8695;Science Fiction
 8695;Humor
@@ -13332,12 +13232,6 @@ id_knjige;zanr
 363402;Fiction
 363402;Childrens
 363402;Fantasy
-343179;Science Fiction
-343179;Young Adult
-343179;Fiction
-343179;Fantasy
-343179;Childrens
-343179;Aliens
 19346451;Young Adult
 19346451;Favorites
 19346451;Science Fiction
@@ -13352,6 +13246,14 @@ id_knjige;zanr
 64467;Science Fiction
 64467;Fiction
 64467;Fantasy
+64467;Science Fiction Fantasy
+64467;Space
+64467;Space Opera
+64467;Audiobook
+64467;Aliens
+64467;Abandoned
+64467;Adventure
+64467;Hard Science Fiction
 18404957;Fantasy
 18404957;Young Adult
 18404957;Fiction
@@ -13387,6 +13289,11 @@ id_knjige;zanr
 179639;Fairy Tales
 179639;Science Fiction Fantasy
 179639;Juvenile
+8702912;Fantasy
+8702912;Fiction
+8702912;Young Adult
+8702912;Adventure
+8702912;Animals
 23846013;Young Adult
 23846013;Fantasy
 23846013;Favorites
@@ -13432,8 +13339,8 @@ id_knjige;zanr
 102853;Fantasy
 102853;Paranormal
 102853;Favorites
+102853;Supernatural
 102853;Mystery
-102853;Teen
 23534301;Fantasy
 23534301;Magic
 23534301;Young Adult
@@ -13462,28 +13369,12 @@ id_knjige;zanr
 3249541;Young Adult
 3249541;Adventure
 3249541;Fiction
-7693853;Paranormal
-7693853;Vampires
-7693853;Fantasy
-7693853;Young Adult
-7693853;Fiction
-7693853;Favorites
-7693853;Supernatural
-7693853;Young Adult Paranormal
-7693853;Urban Fantasy
 2475768;Fantasy
 2475768;Young Adult
 2475768;Favorites
 2475768;Adventure
 2475768;Magic
 2475768;Fiction
-11737314;Fantasy
-11737314;Childrens
-11737314;Middle Grade
-11737314;Mystery
-11737314;Favorites
-11737314;Magic
-11737314;Adventure
 5454;Young Adult
 5454;Fiction
 5454;Womens Fiction
@@ -13531,11 +13422,6 @@ id_knjige;zanr
 125340;Fiction
 125340;Childrens
 125340;Fantasy
-33814737;Fantasy
-33814737;Magic
-33814737;Adventure
-33814737;Favorites
-33814737;Young Adult
 12893742;Fantasy
 12893742;Favorites
 12893742;Mythology
@@ -13585,18 +13471,16 @@ id_knjige;zanr
 28006120;Young Adult
 28006120;Childrens
 28006120;Middle Grade
+28006120;Fiction
+28006120;Adventure
+28006120;Lgbt
+28006120;Urban Fantasy
 77736;Science Fiction
 77736;Space
 77736;Space Opera
 77736;Fiction
 77736;War
 77736;Military Fiction
-363422;Science Fiction
-363422;Young Adult
-363422;Fiction
-363422;Fantasy
-363422;Aliens
-363422;Childrens
 1814843;Fantasy
 1814843;Favorites
 1814843;Young Adult
@@ -13627,16 +13511,15 @@ id_knjige;zanr
 297792;Childrens
 297792;Favorites
 297792;Mystery
+297792;Fantasy
+297792;Middle Grade
+297792;Adventure
+297792;Humor
+297792;Audiobook
 2200913;Fantasy
 2200913;Fairy Tales
 2200913;Romance
 2200913;Fiction
-2200913;Magic
-2200913;Science Fiction Fantasy
-2200913;Adult
-2200913;Favorites
-2200913;Fantasy Romance
-2200913;Retellings
 9728144;Fantasy
 9728144;Fairy Tales
 9728144;Favorites
@@ -13646,12 +13529,6 @@ id_knjige;zanr
 4415692;Young Adult
 4415692;Science Fiction
 4415692;Fiction
-366790;Science Fiction
-366790;Young Adult
-366790;Fiction
-366790;Fantasy
-366790;Aliens
-366790;Childrens
 9520360;Favorites
 9520360;Fantasy
 9520360;Young Adult
@@ -13678,10 +13555,6 @@ id_knjige;zanr
 4588949;Fiction
 4588949;Magic
 4588949;Mythology
-6371676;Science Fiction
-6371676;Fantasy
-6371676;Space
-6371676;Space Opera
 444315;Fantasy
 444315;Young Adult
 444315;Fiction
@@ -13731,15 +13604,15 @@ id_knjige;zanr
 18752959;Favorites
 18752959;Young Adult
 18752959;Short Stories
-185287;Fantasy
-185287;Fiction
-185287;Dragons
-185287;Favorites
-185287;Science Fiction Fantasy
 36390008;Fantasy
 36390008;Magic
 36390008;Adventure
 36390008;Epic Fantasy
+2664597;Fantasy
+2664597;Young Adult
+2664597;Favorites
+2664597;Science Fiction
+2664597;Dystopia
 31817749;Fantasy
 31817749;Fiction
 31817749;Science Fiction
@@ -13756,6 +13629,12 @@ id_knjige;zanr
 324506;Fantasy
 324506;Childrens
 324506;Aliens
+16101027;Fantasy
+16101027;Childrens
+16101027;Middle Grade
+16101027;Mystery
+16101027;Favorites
+16101027;Magic
 119324;Young Adult
 119324;Favorites
 119324;Fiction
@@ -13766,6 +13645,13 @@ id_knjige;zanr
 823564;Favorites
 823564;Paranormal
 823564;Fairies
+823564;Fiction
+823564;Fae
+823564;Romance
+823564;Magic
+823564;Urban Fantasy
+823564;Cultural
+823564;Ireland
 363350;Fantasy
 363350;Science Fiction
 363350;Aliens
@@ -13813,6 +13699,13 @@ id_knjige;zanr
 13563669;Favorites
 13563669;Fiction
 13563669;Childrens
+97962;Fantasy
+97962;Romance
+97962;Favorites
+97962;Fiction
+97962;Magic
+97962;Fantasy Romance
+97962;Adult
 363361;Science Fiction
 363361;Young Adult
 363361;Fiction
@@ -13847,7 +13740,6 @@ id_knjige;zanr
 561456;Favorites
 561456;Young Adult
 561456;Mythology
-561456;Fiction
 13662;Fiction
 13662;Favorites
 13662;Young Adult
@@ -13855,20 +13747,12 @@ id_knjige;zanr
 13662;Fantasy
 13662;Magic
 13662;Classics
-28526703;Fantasy
-28526703;Magic
-28526703;High Fantasy
-28526703;Science Fiction Fantasy
 20518811;Fantasy
 20518811;Young Adult
 20518811;Favorites
 20518811;Adventure
 20518811;Childrens
 20518811;Middle Grade
-2187538;Fantasy
-2187538;Favorites
-2187538;Fiction
-2187538;Science Fiction Fantasy
 15241;Fantasy
 15241;Favorites
 15241;Classics
@@ -13924,11 +13808,6 @@ id_knjige;zanr
 150037;Favorites
 150037;Fantasy
 150037;Mystery
-47622;Fantasy
-47622;Young Adult
-47622;Fiction
-47622;Childrens
-47622;Adventure
 324505;Science Fiction
 324505;Young Adult
 324505;Fiction
@@ -13938,6 +13817,19 @@ id_knjige;zanr
 325416;Childrens
 325416;Animals
 325416;Fantasy
+325416;Young Adult
+325416;Juvenile
+325416;Adventure
+325416;Middle Grade
+325416;Travel
+325416;Childrens Classics
+7811727;Historical
+7811727;Historical Fiction
+7811727;Young Adult
+7811727;Adventure
+7811727;Favorites
+7811727;Pirates
+7811727;Fiction
 756687;Fantasy
 756687;Young Adult
 756687;Favorites
@@ -13986,6 +13878,10 @@ id_knjige;zanr
 16101024;Time Travel
 16101024;Childrens
 16101024;Middle Grade
+8507450;Science Fiction
+8507450;Dystopia
+8507450;Favorites
+8507450;Young Adult
 28504482;Fantasy
 28504482;Romance
 28504482;Fantasy Romance
@@ -14007,14 +13903,11 @@ id_knjige;zanr
 438492;Childrens
 438492;Fantasy
 438492;Favorites
-15748529;Fantasy
-15748529;Urban Fantasy
-15748529;Favorites
-15748529;Fairies
-15748529;Fae
-15748529;Paranormal
-15748529;Magic
-15748529;Fiction
+95910;Fantasy
+95910;Young Adult
+95910;Favorites
+95910;Fiction
+95910;Young Adult Fantasy
 36621586;Fantasy
 36621586;Historical
 36621586;Historical Fiction
@@ -14120,10 +14013,6 @@ id_knjige;zanr
 7939759;Adventure
 7939759;Childrens
 7939759;Middle Grade
-7939759;Fiction
-7939759;Young Adult
-7939759;Humor
-7939759;Funny
 13138734;Science Fiction
 13138734;Young Adult
 13138734;Romance
@@ -14201,6 +14090,12 @@ id_knjige;zanr
 11465743;Young Adult
 11465743;Fantasy
 11465743;Paranormal
+6509143;Young Adult
+6509143;Fantasy
+6509143;Paranormal
+6509143;Ghosts
+6509143;Supernatural
+6509143;Vampires
 28472165;Fantasy
 28472165;Magical Realism
 28472165;Historical
@@ -14224,12 +14119,6 @@ id_knjige;zanr
 9758788;Young Adult
 9758788;Favorites
 9758788;Fantasy
-1474473;Fantasy
-1474473;Christian Fiction
-1474473;Favorites
-1474473;Fiction
-1474473;Science Fiction Fantasy
-1474473;Christian Fantasy
 31450852;Fantasy
 31450852;Favorites
 31450852;Young Adult
@@ -14240,17 +14129,15 @@ id_knjige;zanr
 28220807;Fiction
 28220807;Magic
 28220807;Favorites
-15764039;Fantasy
-15764039;Young Adult
-15764039;Favorites
-15764039;Romance
-15764039;Magic
-15764039;Paranormal
 346222;Fantasy
 346222;Fiction
 346222;Favorites
 346222;Epic Fantasy
 346222;High Fantasy
+25906360;Fantasy
+25906360;Magic
+25906360;Young Adult
+25906360;Fiction
 34197390;Fantasy
 34197390;Young Adult
 34197390;Favorites
@@ -14371,6 +14258,10 @@ id_knjige;zanr
 9463960;Christian
 9463960;Romance
 9463960;Fiction
+20523187;Fantasy
+20523187;Adventure
+20523187;Young Adult
+20523187;Favorites
 9465845;Adventure
 9465845;Mystery
 9465845;Favorites
@@ -14395,9 +14286,6 @@ id_knjige;zanr
 21457243;Vampires
 21457243;Shapeshifters
 21457243;Werewolves
-28260101;Favorites
-28260101;Young Adult
-28260101;Science Fiction
 18398797;Fantasy
 18398797;Urban Fantasy
 18398797;Paranormal
@@ -14411,6 +14299,11 @@ id_knjige;zanr
 13224631;Adventure
 13224631;Favorites
 13224631;Fiction
+17786254;Fantasy
+17786254;Paranormal
+17786254;Science Fiction
+17786254;Fiction
+17786254;Witches
 20980648;Science Fiction
 20980648;Steampunk
 20980648;Young Adult
@@ -14420,12 +14313,10 @@ id_knjige;zanr
 20980648;Historical Fiction
 20980648;Favorites
 20980648;Vampires
-767917;Historical
-767917;Historical Fiction
-767917;Fiction
-767917;Literature
-767917;Epic
-767917;American
+17859267;Fantasy
+17859267;Childrens
+17859267;Science Fiction
+17859267;Dystopia
 77743;Science Fiction
 77743;Space
 77743;Space Opera
@@ -14436,12 +14327,22 @@ id_knjige;zanr
 27188596;Young Adult
 27188596;Science Fiction
 27188596;Dystopia
+16130317;Fantasy
+16130317;Urban Fantasy
+16130317;Fiction
+16130317;Favorites
+16130317;Science Fiction
+16130317;Alternate History
 35084084;Fantasy
 35084084;Paranormal
 35084084;Favorites
 35084084;Young Adult
 35084084;Christian Fiction
 35084084;Christian
+384356;Fantasy
+384356;Favorites
+384356;Fiction
+384356;Epic Fantasy
 384353;Fantasy
 384353;Favorites
 384353;Fiction
@@ -14452,19 +14353,19 @@ id_knjige;zanr
 26404752;Fiction
 26404752;Fantasy
 26404752;Romance
+23460382;Fantasy
+23460382;Suspense
+23460382;Urban Fantasy
+23460382;Paranormal
+23460382;Contemporary
+23460382;Wizards
 29483403;Fantasy
 29483403;Favorites
 29483403;Young Adult
-29483403;Magic
 29483403;Romance
+29483403;Magic
 29483403;New Adult
 29483403;High Fantasy
-29483403;Young Adult Fantasy
-29483403;Fantasy Romance
-29483403;Fiction
-27207602;Mystery
-27207602;Childrens
-27207602;Middle Grade
 15673;Childrens
 15673;Fiction
 15673;Humor
@@ -14480,6 +14381,16 @@ id_knjige;zanr
 28105547;Magic
 28105547;Young Adult
 28105547;Fiction
+28105547;Favorites
+28105547;Adventure
+28105547;Young Adult Fantasy
+28105547;Science Fiction Fantasy
+28105547;Romance
+15991959;Fantasy
+15991959;Childrens
+15991959;Middle Grade
+15991959;Favorites
+15991959;Fiction
 22428828;Fantasy
 22428828;Young Adult
 22428828;Short Stories
@@ -14494,14 +14405,6 @@ id_knjige;zanr
 761359;Fantasy
 761359;Young Adult
 761359;Magic
-8532164;Fantasy
-8532164;Paranormal
-8532164;Vampires
-8532164;Romance
-8532164;Paranormal Romance
-8532164;Young Adult
-8532164;Favorites
-8532164;Ghosts
 23367130;Young Adult
 23367130;Action
 23367130;Fantasy
@@ -14543,12 +14446,6 @@ id_knjige;zanr
 8369680;Romance
 8369680;Favorites
 8369680;Fiction
-13496452;Fantasy
-13496452;Young Adult
-13496452;Paranormal
-13496452;Witches
-13496452;Magic
-13496452;Favorites
 15829923;Fantasy
 15829923;Young Adult
 15829923;Paranormal
@@ -14570,6 +14467,12 @@ id_knjige;zanr
 9683254;Supernatural
 9683254;Magic
 9683254;Comics Manga
+9684805;Sequential Art
+9684805;Manga
+9684805;Manhwa
+9684805;Fantasy
+9684805;Supernatural
+9684805;Magic
 9683249;Sequential Art
 9683249;Manga
 9683249;Manhwa
@@ -14598,6 +14501,9 @@ id_knjige;zanr
 47572;Childrens
 47572;Favorites
 47572;Magic
+15564;Fantasy
+15564;Fiction
+15564;Science Fiction Fantasy
 15561;Fantasy
 15561;Fiction
 15561;Science Fiction Fantasy
@@ -14618,11 +14524,6 @@ id_knjige;zanr
 3029879;Young Adult
 3029879;Favorites
 3029879;Fiction
-30333;Fantasy
-30333;Young Adult
-30333;Favorites
-30333;Romance
-30333;Paranormal
 17332218;Fantasy
 17332218;Favorites
 17332218;Fiction
@@ -14653,6 +14554,12 @@ id_knjige;zanr
 47573;Favorites
 47573;Fiction
 47573;Magic
+10757817;Favorites
+10757817;Mystery
+10757817;Fiction
+10757817;Childrens
+10757817;Middle Grade
+10757817;Adventure
 432019;Sequential Art
 432019;Manga
 432019;Fantasy
@@ -14686,19 +14593,6 @@ id_knjige;zanr
 1728166;Graphic Novels
 1728166;Favorites
 1728166;Supernatural
-3868856;Sequential Art
-3868856;Manga
-3868856;Graphic Novels
-3868856;Fantasy
-3868856;Supernatural
-3868856;Favorites
-3988712;Sequential Art
-3988712;Manga
-3988712;Fantasy
-3988712;Graphic Novels
-3988712;Favorites
-3988712;Supernatural
-3988712;Shonen
 6322503;Sequential Art
 6322503;Manga
 6322503;Fantasy
@@ -14706,6 +14600,13 @@ id_knjige;zanr
 6322503;Supernatural
 6322503;Favorites
 6322503;Shonen
+6639752;Sequential Art
+6639752;Manga
+6639752;Fantasy
+6639752;Graphic Novels
+6639752;Favorites
+6639752;Supernatural
+6639752;Shonen
 972782;Sequential Art
 972782;Manga
 972782;Fantasy
@@ -14734,6 +14635,13 @@ id_knjige;zanr
 432017;Favorites
 432017;Supernatural
 432017;Paranormal
+1114344;Sequential Art
+1114344;Manga
+1114344;Fantasy
+1114344;Graphic Novels
+1114344;Supernatural
+1114344;Favorites
+1114344;Shonen
 432016;Fantasy
 432016;Sequential Art
 432016;Graphic Novels

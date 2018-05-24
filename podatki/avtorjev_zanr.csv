@@ -22,6 +22,9 @@ id;zanr
 10317;Literary Fiction
 1031822;Literary Fiction
 103321;Literary Fiction
+10336;Mathematics
+10336;Science
+10336;Science Fiction Fantasy
 103556;Comics
 10359;Comics
 10365;Graphic Novels Comics
@@ -49,6 +52,8 @@ id;zanr
 1051835;Young Adult
 1051835;Childrens
 1051835;Science Fiction Fantasy
+105630;Graphic Novels Comics
+105630;Childrens
 1057083;Science Fiction
 1057083;Fantasy
 1057083;Humor
@@ -200,7 +205,12 @@ id;zanr
 12534;Fantasy
 125984;Science Fiction Fantasy
 12696;Literary Fiction
-1287267;Literary Fiction
+12739;Arts Photography
+12739;Graphic Novels Comics
+12739;Lgbt
+1287267;Arts Photography
+1287267;Graphic Novels Comics
+1287267;Lgbt
 129092;Young Adult
 129092;Science Fiction Fantasy
 12950;Young Adult
@@ -807,6 +817,9 @@ id;zanr
 17086236;Science Fiction Fantasy
 17086236;Mystery Thrillers
 17086236;Romance
+17087119;Science Fiction Fantasy
+17087119;Mystery Thrillers
+17087119;Romance
 17101277;Science Fiction Fantasy
 17101277;Mystery Thrillers
 17101277;Romance
@@ -816,6 +829,9 @@ id;zanr
 17153032;Fantasy
 17153032;Paranormal
 17153032;Young Adult
+17162288;Fantasy
+17162288;Paranormal
+17162288;Young Adult
 171691;Graphic Novels Comics
 17176446;Graphic Novels Comics
 17183686;Graphic Novels Comics
@@ -984,7 +1000,14 @@ id;zanr
 1938680;Science Fiction Fantasy
 1938680;Young Adult
 1938680;Childrens
+19440;Science Fiction Fantasy
+19440;Young Adult
+19440;Childrens
+19441;Science
+19441;Science Fiction Fantasy
 19443;Science Fiction Fantasy
+1948907;Science Fiction
+1948907;Fantasy
 1949;Childrens
 1954;Childrens
 1954;Fantasy
@@ -994,6 +1017,9 @@ id;zanr
 19564;Classics
 195727;Literary Fiction
 195727;Mystery Thrillers
+1964987;Conspiracy
+1964987;Espionage
+1964987;Horror
 19733;Graphic Novels Comics
 19733;Science Fiction Fantasy
 1977;Graphic Novels Comics
@@ -1149,9 +1175,10 @@ id;zanr
 25422;Fantasy
 25422;Young Adult
 25422;Childrens
-2570636;Fantasy
-2570636;Young Adult
+25523;Childrens
+25523;Fantasy
 2570636;Childrens
+2570636;Fantasy
 26;Fantasy
 26;Science Fiction
 2617;Fiction
@@ -1481,6 +1508,9 @@ id;zanr
 337207;Young Adult
 337207;Science Fiction Fantasy
 337207;Humor
+3376756;Young Adult
+3376756;Science Fiction Fantasy
+3376756;Humor
 3377501;Young Adult
 3377501;Childrens
 3377501;Graphic Novels Comics
@@ -1666,6 +1696,7 @@ id;zanr
 4106;Science Fiction Fantasy
 410653;Childrens
 4124325;Childrens
+4150084;Childrens
 4160;Childrens
 41661;Literary Fiction
 41661;Poetry
@@ -2024,6 +2055,7 @@ id;zanr
 5186274;Young Adult
 5186274;Science Fiction Fantasy
 5186274;Literary Fiction
+51924;Graphic Novels Comics
 521676;Fantasy
 521676;Ebooks
 521676;Science Fiction
@@ -2136,7 +2168,8 @@ id;zanr
 5542108;Comics
 55811;Graphic Novels Comics
 55825;Graphic Novels Comics
-5594270;Graphic Novels Comics
+55830;Science Fiction
+5594270;Science Fiction
 5614141;Science Fiction
 5614141;Fantasy
 5614141;Childrens
@@ -2955,6 +2988,8 @@ id;zanr
 7793848;Young Adult
 780120;Fantasy
 780120;Young Adult
+7801932;Fantasy
+7801932;Young Adult
 7803964;Ya Paranormal Romance
 7803964;Contemporary
 7803964;Clean Romance
@@ -3273,6 +3308,8 @@ id;zanr
 94868;Young Adult
 94868;Science Fiction Fantasy
 94868;Romance
+9533;Science Fiction Fantasy
+9533;Nonfiction
 96017;Science Fiction Fantasy
 96017;Literary Fiction
 96017;Mystery Thrillers

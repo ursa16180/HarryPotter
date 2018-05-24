@@ -92,7 +92,7 @@ id;ime;stevilo_knjig
 130601;Nemedian Trilogy;2
 130699;Summoner;4
 130830;The Dreamer Saga;1
-130921;London Below,  The World of Neverwhere;2
+130921;London Below,  The World of Neverwhere;1
 130993;Witch in the Woods;3
 131003;Pha Yul;3
 131672;Obsidian Universe;8
@@ -139,6 +139,7 @@ id;ime;stevilo_knjig
 149999;Chains of Honor;2
 150151;The Seven Deadly Sins;22
 150939;Honor Harrington FRG;17
+151293;The Weir Chronicles;5
 151746;The Sheysu's Gold;1
 153031;Aoleon The Martian Girl;4
 153790;Wendy Darling;3
@@ -170,6 +171,7 @@ id;ime;stevilo_knjig
 163412;Avalonia Chronicles;2
 163914;Powers of Ezron;1
 163924;Books of Arilland;8
+164049;Légendes du Drakanitt et du Continent-Coloré;4
 164647;Birthright;2
 165346;Amanda Lester, Detective;4
 166161;Dragon Rider;3
@@ -462,6 +464,7 @@ id;ime;stevilo_knjig
 47052;Fallen;5
 47329;The Iron Fey;7
 47396;Chronicles of Nick;8
+47903;Alégracia;4
 48207;Dork Diaries;12
 48329;Lorien Legacies;7
 49073;The Chronicles of Narnia (Publication Order);7
@@ -514,7 +517,7 @@ id;ime;stevilo_knjig
 50674;Angélique - Version Originale;15
 50834;The Magicians, ;3
 51161;Steampunk Chronicles;4
-51187;Avalon;7
+51187;Avalon;6
 51228;Nightmare Academy;3
 51276;Aurelia;3
 51288;Throne of Glass;7
@@ -533,7 +536,7 @@ id;ime;stevilo_knjig
 52056;Oh. My. Gods.;2
 52121;Fire Thief Trilogy;3
 52308;The Gatekeepers;5
-52350;Ulysses Moore;17
+52350;Ulysses Moore;18
 52577;The Books of Elsewhere;5
 52607;"Witch &amp; Wizard";5
 52645;The Familiars;4
@@ -570,7 +573,7 @@ id;ime;stevilo_knjig
 56126;The Witches of Karres;3
 56186;The Land of Elyon;4
 56529;Anna;2
-56532;Avalon: Chronological Order;7
+56532;Avalon: Chronological Order;6
 56581;Mabinogion Tetralogy;1
 56682;The Princesses of Westfalin Trilogy;3
 56730;Emelan;11
@@ -784,7 +787,6 @@ id;ime;stevilo_knjig
 148333;Gotham Academy ;1
 148592;Gameknight999;1
 150914;Beyond the Tales;2
-151293;The Weir Chronicles;1
 163896;Bentwhistle the Dragon;1
 164261;Folktales;1
 164263;Brüder Grimm: Kinder- und Hausmärchen;1

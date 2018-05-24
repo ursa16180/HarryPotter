@@ -11,6 +11,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 10317;Maureen Johnson;3.89;;Philadelphia, PA, The United States
 1031822;Dorothy Reynolds Miller;3.84;;
 103321;E.E. Knight;3.89;;
+10336;Ian Stewart;3.88;19450924;England, The United Kingdom
 103556;Jazan Wild;3.6;;
 10359;Lynn Kurland;4.11;;
 10365;Dave McKean;4.15;19631229;Maidenhead, The United Kingdom
@@ -23,6 +24,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 1051591;Tera Lynn Childs;3.89;;Anoka, MN, The United States
 10517;David Weber;4.12;19521024; Cleveland, Ohio, The United States
 1051835;Christopher Mahoney;3.74;;Pittsburgh, PA, The United States
+105630;Robert Venditti;3.95;;The United States
 1057083;Michael G. Munz;3.71;;
 105776;Ted Naifeh;3.98;;The United States
 106;Madeleine L'Engle;4.03;19181129;New York City, New York, The United States
@@ -84,6 +86,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 12534;Larry Niven;3.91;19380430;Los Angeles, California, The United States
 125984;Obert Skye;3.91;;The United States
 12696;Jerry Spinelli;3.78;19410201;Norristown, PA, The United States
+12739;José Villarrubia;3.98;19711117;Madrid, Spain
 1287267;Jason Chan;3.97;;
 129092;P.W. Catanese;4.03;;The United States
 12950;Wendelin Van Draanen;4.02;;Chicago, Illinois, The United States
@@ -170,7 +173,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 14426339;Jennifer McKeithen;4.3;;The United States
 14427770;Ruth Lauren;3.94;;The United Kingdom
 14434144;Julie  Hall;4.35;;The United States
-14457808;Kamilla Benko;4.26;;
+14457808;Kamilla Benko;4.25;;
 145092;Stuart Hill;4.12;;Leicester, The United Kingdom
 14530648;Christopher G. Nuttall;4.06;19820323;
 14533956;Dr Lesley Hunter;5.0;;
@@ -242,7 +245,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 15546341;Jeff Minerd;4.48;;Dearborn, MI, The United States
 15564258;Aim Ruivivar;4.83;;
 15568;Charles Kingsley;3.4;18190612;Holne, Devon, England
-15572575;Diane Magras;4.27;;
+15572575;Diane Magras;4.26;;
 15578218;Rednal Sua;3.5;;
 15590;Mary  Stewart;4.05;19160912;Sunderland, The United Kingdom
 15599831;Kalah Allen;4.07;;
@@ -289,10 +292,10 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 1638953;Julie Berry;3.81;;
 16424486;Rouya Shamsai;4.75;;
 16430470;Ashley McLeo;4.75;;
-16492534;Jade Harley;4.23;;The United Kingdom
+16492534;Jade Harley;4.24;;The United Kingdom
 16508596;Frank Maddish;5.0;;
 165168;Derek Landy;4.36;19741023;Lusk, Ireland
-16526622;A.M. Morgen;4.14;;
+16526622;A.M. Morgen;4.16;;
 1654;Terry Pratchett;4.14;19480428;Beaconsfield, Buckinghamshire, England, The United Kingdom
 16544802;Sasha Laika;3.97;;
 165989;Phillip Tomasso III;3.99;;Rochester, NY Monroe, The United States
@@ -301,7 +304,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 16663911;Melanie Pinnock;3.0;;
 16673675;T J Rogers;5.0;;
 16692490;L. N. Passmore;5.0;;
-16733102;Sean Easley;4.39;;Dallas, TX, The United States
+16733102;Sean Easley;4.41;;Dallas, TX, The United States
 16780195;Heather  Renee;4.28;;
 16802569;Madison Ruth;4.4;;
 168353;Elise Primavera;3.95;;
@@ -311,7 +314,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 16900628;Tessa Clare;4.18;;Chicago, IL, The United States
 16933476;R.J. Knight;4.0;;
 1693533;Richard Gleaves;4.09;;
-16949224;Samantha M. Clark;4.44;;
+16949224;Samantha M. Clark;4.43;;
 16957839;Mastho Vamsee;3.67;;
 16969269;Braden Wheeler;4.5;;
 16985026;Matthew J. Murphy;4.75;;Ohio, The United States
@@ -325,9 +328,11 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 17082;Amelia Atwater-Rhodes;3.98;19840416;Silver Springs, Maryland, The United States
 17086135;Cody L. Collins;4.33;;
 17086236;Dillon Sapp;4.25;;
+17087119;Юлія Прокопець;4.11;;
 17101277;Denise Marques Leitao;3.52;;
 17102919;Ken Janisch;4.67;;Minneapolis, The United States
-17153032;Jen L. Grey;4.34;;
+17153032;Jen L. Grey;4.38;;
+17162288;Олександ­р Михельсон;0.0;;
 171691;Lan Medina;4.0;;Philippines
 17176446;Lucas Sterling;4.05;;
 17183686;Nathan Westerville;4.13;;
@@ -354,7 +359,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 17489121;Joyce Villeta;5.0;;
 17521138;Sarah Mendivel;4.14;;
 17546096;Jamie Reir;3.0;;
-17557569;B. Muze;4.52;;
+17557569;B. Muze;4.54;;
 17565403;John Williams III;5.0;;
 17567374;LeAnn Mason;4.53;;
 175855;Melissa Marr;3.76;;The United States
@@ -400,11 +405,15 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 191475;Jonathan Rogers;4.18;;
 1917064;Dave Freer;3.84;;
 1938680;L. Jagi Lamplighter;3.84;;Manhattan, The United States
+19440;Paul Kidby;4.15;;
+19441;Jack Cohen;3.92;19330919;Norwich, The United Kingdom
 19443;David Langford;4.23;19530410;The United Kingdom
+1948907;Todd McCaffrey;4.03;19560427; Montclair, New Jersey, The United States
 1949;Katherine Paterson;3.94;19321031;Qing Jiang, China
 1954;Natalie Babbitt;3.86;19320728;Dayton, Ohio, The United States
-19564;Neal Shusterman;4.17;;Brooklyn, New York, The United States
+19564;Neal Shusterman;4.18;;Brooklyn, New York, The United States
 195727;Norah Lofts;3.93;19040827;Shipdham, Norfolk, The United Kingdom
+1964987;A.K. Kuykendall;4.13;19741123;Albany, Georgia, The United States
 19733;James A. Owen;4.01;;
 1977;Tite Kubo;4.27;19770626;Hiroshima Prefecture, Japan
 1982335;James Lucas Jones;4.07;;
@@ -416,7 +425,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 205;Robert A. Heinlein;3.93;19070707;Butler, MO, The United States
 20513;Ed Greenwood;3.76;19590101;Toronto, Canada
 2063919;Michael J. Sullivan;4.3;;Detroit, MI, The United States
-2085475;E.M. Cooper;4.19;;Australia
+2085475;E.M. Cooper;4.2;;Australia
 208650;Eiichirō Oda;4.46;19750101;Kumamoto, Japan
 2086916;Brandon Dorman;4.32;;
 2091984;Miles Allen;3.58;;The United Kingdom
@@ -475,6 +484,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 2541147;Antonio Javier Caparo;4.0;;
 25421;Tony DiTerlizzi;3.93;;Los Angeles, The United States
 25422;Holly Black;3.89;;New Jersey, The United States
+25523;Pauline Baynes;4.12;19220909;Hove, Sussex, The United Kingdom
 2570636;Donna D. Dawson;3.65;;
 26;Anne McCaffrey;4.07;19260401;Cambridge, Massachusetts, The United States
 2617;Jonathan Safran Foer;3.96;;Washington, D.C., The United States
@@ -588,7 +598,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 3128534;Hablot Knight Browne;3.83;18150712;Lambeth, London, The United Kingdom
 3141498;D. VonThaer;4.0;;Warren, Ohio, The United States
 3145809;Anne Elisabeth Stengl;4.08;;
-31468;Todd Strasser;3.74;19500505;New York, New York, The United States
+31468;Todd Strasser;3.73;19500505;New York, New York, The United States
 3155347;P.B. Kerr;3.84;19560222;Edinburgh Scotland, The United Kingdom
 3162469;Zeal Okogeri;5.0;;
 316751;Anthony Paolucci;4.53;;Milford, The United States
@@ -627,6 +637,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 33467;Jonathan Stroud;4.13;;Bedford, The United Kingdom
 33502;Esther M. Friesner;3.8;19510716;New York City, New York, The United States
 337207;Greg Call;4.03;;
+3376756;Attila Futaki;4.01;;
 3377501;Adam Jay Epstein;4.19;;Great Neck, New York, The United States
 3377502;Andrew Jacobson;4.19;;Milwaukee, Wisconsin, The United States
 3377941;Rick Yancey;4.0;;The United States
@@ -681,7 +692,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 3843;Kenneth Grahame;3.98;18590308;Edinburgh, Scotland, The United Kingdom
 38449;Ralph Manheim;4.13;19070404;New York, The United States
 3849415;Deborah Harkness;4.04;;The United States
-3850275;Judith Affleck;3.83;;
+3850275;Judith Affleck;3.82;;
 38550;Brandon Sanderson;4.38;;Lincoln, Nebraska, The United States
 385574;N.M. Bodecker;3.99;;Copenhagen, Denmark
 38951;John Connolly;4.03;;Dublin, Ireland
@@ -689,7 +700,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 38982;Debra Doyle;3.79;19520101;The United States
 390509;John Allison;4.1;;The United Kingdom
 3911096;Agnes Sims;4.14;;
-3948054;Geof Isherwood;3.57;;
+3948054;Geof Isherwood;3.56;;
 3978667;Di Kerry;4.33;;
 3995;Emily Rodda;3.97;;Sydney, Australia
 3999413;Lalit Kumar Singh;3.57;;
@@ -712,6 +723,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 4106;Pamela Dean;3.81;19530101;The United States
 410653;Astrid Lindgren;4.16;19071114;Vimmerby, Småland, Sweden
 4124325;M.L. Forman;4.25;;The United States
+4150084;Paz Pruneda;3.96;;
 4160;Jean Thesman;3.7;;
 41661;Hope Mirrlees;3.86;19011213;The United Kingdom
 41878;Jack D. Zipes;4.11;;The United States
@@ -727,9 +739,9 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 4273;Roald Dahl;4.11;19160913;Llandaff, Cardiff, Wales, The United Kingdom
 427430;Poly Bernatene;4.14;;
 4278384;Erik Daniel Shein;4.32;;Cleveland , The United States
-4280;Kazuo Ishiguro;3.82;19541108;Nagasaki, Japan
+4280;Kazuo Ishiguro;3.83;19541108;Nagasaki, Japan
 428566;Carson Ellis;4.05;19751005;Vancouver, Canada
-4308706;Kady Cross;3.86;;Canada
+4308706;Kady Cross;3.87;;Canada
 4322279;Hiroshi Shiibashi;4.21;19800606;Suita, Osaka, Japan
 4342215;Marie Lu;4.21;;Wuxi, China
 4344140;Kieran Shields;3.5;;
@@ -749,7 +761,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 4474929;David Leslie Johnson;3.53;;
 4478744;Jeff W. Horton;4.13;;The United States
 4488686;Jack Hessey;3.87;19870901;
-4492558;M.G. Wells;4.25;;The United States
+4492558;M.G. Wells;4.26;;The United States
 44926;David J. Skal;3.98;19520621;Garfield Heights, Ohio, The United States
 4494948;Ceri Clark;3.87;;The United Kingdom
 4512224;Lindsay Buroker;4.2;;Seattle, The United States
@@ -798,9 +810,9 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 478703;Leonid Gore;3.83;;
 4789839;Cassandra Kay;3.67;;
 47991;Alan Garner;3.86;19341017;Congleton, Cheshire, England
-4799212;Gary  Hoover;3.78;;Pittsburgh, The United States
+4799212;Gary  Hoover;3.79;;Pittsburgh, The United States
 4799229;D.M. Raver;3.8;;The United States
-4800563;Craig W. Dressler;4.08;;Kirkland, WA, The United States
+4800563;Craig W. Dressler;4.07;;Kirkland, WA, The United States
 4809796;Lili Tufel;3.58;;
 481045;Flavia Bujor;3.51;19880808;Romania
 4811674;Theresa Oliver;4.41;;
@@ -818,7 +830,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 487465;Antonia Lloyd-Jones;3.91;;The United Kingdom
 487718;Mark Walden;4.2;;The United Kingdom
 4883287;Rahma Krambo;3.85;;The United States
-4894063;Cuthbert Soup;4.04;;
+4894063;Cuthbert Soup;4.05;;
 4916627;A.E. Mayer;3.7;;
 49177;Shannon Hale;3.94;;Salt Lake City, Utah, The United States
 4919495;Chris Colfer;4.32;19900527;Clovis, California, The United States
@@ -856,6 +868,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 5175986;Ray Norris;3.98;;London, The United Kingdom
 5184237;Veronica Blade;3.85;;Chihuahua, Mexico
 5186274;A.G. Howard;4.02;;
+51924;Nate Powell;4.35;;Little Rock, Arkansas, The United States
 521676;C.S. Marks;3.9;;
 5240947;Deby Adair;4.73;;Australia
 5244611;Laurisa White Reyes;4.05;;
@@ -904,6 +917,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 5542108;Jill Beaton;4.16;;
 55811;Mark Buckingham;4.17;19660523;Clevedon, The United Kingdom
 55825;H.R. Millar;3.97;;
+55830;Aaron Johnston;3.96;;The United States
 5594270;Brian Snōddy;4.13;;
 5614141;Stephen Cole;3.71;;The United Kingdom
 5621459;A.E. Curzon;4.81;;
@@ -974,7 +988,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 619712;Mark Zug;4.04;;The United States
 61986;Richard Maxwell;3.81;;
 6206;Jenny Nimmo;3.9;19440115;Windsor, Berkshire, The United Kingdom
-6216915;Emma Warner-Reed;4.81;;Torquay, The United Kingdom
+6216915;Emma Warner-Reed;4.82;;Torquay, The United Kingdom
 623693;John Keating;4.06;;
 6244;Ridley Pearson;4.02;19530313;Glen Cove, New York, The United States
 6245;Dave Barry;3.98;19470703;Armonk, New York, The United States
@@ -999,7 +1013,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 6455260;V.K. Finnish;4.32;;
 6456772;Craig R. Everett;4.23;;Bangor, Maine, The United States
 6458922;Candace Knoebel;3.91;;The United States
-6470636;R.A. Gates;3.67;;Sacramento, The United States
+6470636;R.A. Gates;3.66;;Sacramento, The United States
 6472264;Dennis  Mahoney;3.68;;Troy, The United States
 6473734;William L.  Stuart;4.24;;The United States
 6474348;Pierce Brown;4.36;;
@@ -1029,8 +1043,8 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 6556774;D.E.M. Emrys;3.79;;Swansea, The United Kingdom
 6558842;Kirstin Pulioff;4.19;;California, The United States
 6562403;David Velasco;4.21;;Malaga, Spain
-6564943;Evren Sener;4.15;;
-6564946;Charise Diamond;4.1;;
+6564943;Evren Sener;4.2;;
+6564946;Charise Diamond;4.14;;
 6565990;Katie Lee O'Guinn;3.95;;The United States
 6569;Louis Sachar;3.97;19540320;East Meadow, New York, The United States
 656983;J.R.R. Tolkien;4.31;18920103;Bloemfontein, Mangaung, Free State, South Africa
@@ -1042,7 +1056,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 6585995;Lilian Roberts;4.19;;
 6586436;Merry Brown;3.99;;
 6587;Tad Williams;4.0;;San Jose, California, The United States
-6588515;Christina Benjamin;4.05;;Georgia, The United States
+6588515;Christina Benjamin;4.06;;Georgia, The United States
 6592469;Michael S. Fedison;4.26;;Rochester, New York, The United States
 6595274;Folami Morris;4.17;;The United States
 6595275;Abeni Morris;4.1;;
@@ -1086,7 +1100,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 6908034;Rachel Calish;3.85;;
 6912725;M.R. Forbes;4.11;;
 69163;Arthur Rackham;4.23;18670919;London, The United Kingdom
-6917374;Earl T. Roske;3.72;;
+6917374;Earl T. Roske;3.76;;
 6920286;Stanko Markovic;5.0;19780706;Zagreb, Croatia
 6921;William Weaver;4.06;19230724;Virginia, The United States
 6922454;Kass Morgan;3.64;;New York, The United States
@@ -1131,7 +1145,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 7105947;Erin Claiborne;3.49;;
 7113091;James Barlog;4.1;;Chicago, The United States
 7122185;J.M.  Richards;3.75;;The United States
-7125278;Will Wight;4.23;19890811;
+7125278;Will Wight;4.24;19890811;
 7127497;Dax Varley;3.77;;The United States
 7127632;Zachary Katz-Stein;3.91;;Dayton, The United States
 7128;Jodi Picoult;3.96;;Nesconset, Long Island, New York,, The United States
@@ -1225,7 +1239,8 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 7771479;E.J. Koh;3.8;;
 777907;Adrienne Kress;4.0;;Toronto, Canada
 7793848;Erik Kort;4.37;;
-780120;Soman Chainani;4.06;;The United States
+780120;Soman Chainani;4.07;;The United States
+7801932;Террі Пратчетт;4.38;;
 7803964;C.J. Anaya;4.2;;
 7817816;Jan Raymond;4.33;;
 7820145;James   Stevens;4.03;;
@@ -1262,13 +1277,13 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 8126382;Deirdra Eden;4.24;;
 815;Carlos Ruiz Zafón;4.11;19640925;Barcelona, Spain
 8154939;Ben Herr;4.5;;Atlanta, The United States
-8158940;Philip Tolhurst;4.12;;Sidcup, The United Kingdom
+8158940;Philip Tolhurst;4.13;;Sidcup, The United Kingdom
 8160294;C. Lynn De Leon;3.96;;Munster, The United States
 8164;Lewis Carroll;4.06;18320127;Daresbury, Cheshire, England, The United Kingdom
 8187644;Danelle O'Donnell;4.0;;The United States
 8189569;Jacqueline Beard;4.13;;
 8189839;Terry  Madden;4.14;;Los Angeles, The United States
-8189910;Michelle Merrill;4.34;;The United States
+8189910;Michelle Merrill;4.35;;The United States
 819789;J.D. Salinger;3.83;19190101;Manhattan, New York, The United States
 8211545;Christopher  Patterson;4.0;;Tucson, The United States
 8222;Howard Stern;3.73;19540112;Jackson Heights, New York, The United States
@@ -1350,6 +1365,7 @@ id;ime;povprecna_ocena;datum_rojstva;kraj_rojstva
 9399;Jeanette Winterson;3.85;19590827;Manchester, England, The United Kingdom
 9414;Victoria Foyt;2.14;;
 94868;Jodi Lynn Anderson;3.84;;Annapolis, MD, The United States
+9533;Christopher Tolkien;3.93;19241121;Leeds, West Yorkshire, The United Kingdom
 96017;Kevin Hoffman;3.7;;The United States
 9615;Jody Lynn Nye;3.98;;Chicago, Illinois, The United States
 9629;Terry Brooks;3.95;19440108;Sterling, Illinois, The United States
