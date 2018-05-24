@@ -15,6 +15,15 @@ def ustvari_tabelo(seznam):
     print("Narejena tabela %s" % seznam[0])
     conn.commit()
 
+def daj_pravice():
+    cur.execute("GRANT ALL ON SCHEMA public TO ursap; "
+                "GRANT ALL ON SCHEMA public TO ninast;"
+                "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO ursap;"
+                "GRANT ALL ON ALL TABLES IN SCHEMA public TO ursap;"
+                "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO ninast;"
+                "GRANT ALL ON ALL TABLES IN SCHEMA public TO ninast;")
+    print("Dodane pravice")
+    conn.commit()
 
 def pobrisi_tabelo(seznam):
     cur.execute("""
@@ -214,6 +223,7 @@ seznamVseh = [knjiga, avtor, zanr, serija, del_serije, avtor_knjige, zanr_knjige
 def ustvari_vse_tabele():
     for seznam in seznamVseh:
         ustvari_tabelo(seznam)
+    daj_pravice()
 
 def uvozi_vse_podatke():
     for seznam in seznamVseh:
@@ -230,5 +240,5 @@ def izbrisi_vse_tabele():
 #popravi_zanre("podatki/zanr_knjige.csv")
 #uvozi_podatke(avtorjev_zanr)
 
-ustvari_vse_tabele()
+#ustvari_vse_tabele()
 uvozi_vse_podatke()
