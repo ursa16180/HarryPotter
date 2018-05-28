@@ -1,0 +1,22 @@
+.opozorilo {
+    color: #ff0000;
+}
+
+body {
+    background-color: powderblue;
+}
+h1 {
+    color: blue;
+}
+h2 {
+    color: red;
+}
+p {
+    color: red;
+    font-family: courier;
+}
+
+tr {
+    color: teal;
+    font-family: courier;
+}
