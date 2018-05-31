@@ -5,13 +5,9 @@ import delamo_csv_serija as dcs
 import delamo_csv_zanr as dcz
 import orodja
 
-<<<<<<< HEAD
-zp.zajemi_knjige()
-=======
-seznam_vseh_tujih_knjig=[]
+
 
 #zp.zajemi_knjige()
->>>>>>> cf08dae805c32cd28525e92d7b2e16c8bf28c0b8
 # v mapo knjige shrani knjige s seznama (z vseh strani naceloma)
 mapa_knjige = orodja.datoteke("knjige")
 print('shranjujem knjige')
@@ -33,11 +29,7 @@ dc.shrani_knjige(mapa_knjige)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ do tu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-<<<<<<< HEAD
-# zp.zajemi_serije()
-=======
 #zp.zajemi_serije()
->>>>>>> cf08dae805c32cd28525e92d7b2e16c8bf28c0b8
 mapa_serije = orodja.datoteke("serije")
 print('shranjujem serije')
 dcs.shrani_serije(mapa_serije)
@@ -50,9 +42,8 @@ dcs.shrani_serije(mapa_serije)
 # urlji_knjig_iz_serij  - seznam novih knjig za zajem
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# zp.zajemi_dodatne_knjige()
+#zp.zajemi_dodatne_knjige()
 # zajamemo nove knjige: njihove spletne strani shranimo v mapo dodatne
-# PAZI: vedno jo izbrisi, ce delas od zacetka:
 mapa_dodatne_knjige = orodja.datoteke("dodatne_knjige")
 dc.shrani_knjige(mapa_dodatne_knjige, prvic=False)
 # seznam_vseh_tujih_knjig += dc.seznam_tujih_knjig
@@ -78,7 +69,7 @@ dca.shrani_avtorje(mapa_avtorji)
 # množica_vseh_zanrov vsebuje vse žanre, ki jih pišejo avtorji
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# zp.zajemi_zanre()
+#zp.zajemi_zanre()
 mapa_zanri = orodja.datoteke("zanri")
 dcz.shrani_zanre(mapa_zanri)
 

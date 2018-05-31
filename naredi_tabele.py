@@ -208,7 +208,8 @@ avtorjev_zanr = ["avtorjev_zanr",
                 RETURNING (id, zanr)
             """]
 
-seznamVseh = [knjiga, avtor, zanr, serija, del_serije, avtor_knjige, zanr_knjige, avtorjev_zanr]
+seznamVseh = [#knjiga, avtor, zanr, serija,
+              del_serije, avtor_knjige, zanr_knjige, avtorjev_zanr]
 
 
 def ustvari_vse_tabele():
@@ -227,8 +228,10 @@ def izbrisi_vse_tabele():
 
 
 # ustvari_tabelo(avtorjev_zanr)
-#popravi_zanre("podatki/zanr_knjige.csv")
+popravi_zanre("podatki/zanr_knjige.csv")
 #uvozi_podatke(avtorjev_zanr)
 
-ustvari_vse_tabele()
+#ustvari_vse_tabele()
+for datoteka in ['knjiga', 'avtor', 'zanr', 'serija', 'del_serije', 'avtor_knjige', 'zanr_knjige', 'avtorjev_zanr']:
+    izbrisi_podovojene_vrstice( 'podatki/{0}.csv'.format(datoteka))
 uvozi_vse_podatke()
