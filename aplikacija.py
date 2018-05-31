@@ -14,7 +14,7 @@ psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo pro
 
 
 # odkomentiraj, če želiš sporočila o napakah
-# debug(True)
+debug(True)
 
 @get('/static/<filename:path>')
 def static(filename):
@@ -25,6 +25,12 @@ def static(filename):
 def index():
     cur.execute("SELECT id, naslov, dolzina FROM knjiga ORDER BY naslov LIMIT 20")
     return template('tabela_knjig.html', knjige=cur)
+
+@post('/isci')
+def iskanje_get():
+    dolzina = int(request.forms.get('dolzinaInput'))
+    cur.execute("SELECT id, naslov, dolzina FROM knjiga WHERE dolzina>{0}".format(dolzina))
+    return template('izpis_knjig.html', dolzina=dolzina, knjige=cur)
 
 
 # @get('/transakcije/:x/')
