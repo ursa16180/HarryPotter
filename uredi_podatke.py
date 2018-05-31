@@ -7,8 +7,6 @@ import delamo_csv_kljucne_besede as dckb
 import orodja
 
 
-#seznam_vseh_tujih_knjig=[]
-
 #zp.zajemi_knjige()
 # v mapo knjige shrani knjige s seznama (z vseh strani naceloma)
 mapa_knjige = orodja.datoteke("knjige")
@@ -44,9 +42,8 @@ dcs.shrani_serije(mapa_serije)
 # urlji_knjig_iz_serij  - seznam novih knjig za zajem
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# zp.zajemi_dodatne_knjige()
+#zp.zajemi_dodatne_knjige()
 # zajamemo nove knjige: njihove spletne strani shranimo v mapo dodatne
-# PAZI: vedno jo izbrisi, ce delas od zacetka:
 mapa_dodatne_knjige = orodja.datoteke("dodatne_knjige")
 dc.shrani_knjige(mapa_dodatne_knjige, prvic=False)
 # seznam_vseh_tujih_knjig += dc.seznam_tujih_knjig
