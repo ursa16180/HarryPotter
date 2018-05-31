@@ -1,19 +1,22 @@
 %rebase('osnova.html', naslov='Seznam4')
 
-<div class="container-fluid">
+<div class="container">
 <div class="row">
 
-<div class="col">
+<div class="col-sm">
     BU
  <form action="/isci" method="POST">
-    <p>Dolžina knjige: <input type="text" name="dolzinaInput"></p>
+     <div class="slidecontainer">
+         <input type="range" min="0" max="2007" value="200" class="slider" id="drsnikDolzina" name="dolzinaInput">
+     </div>
+    <!--<p>Dolžina knjige: <input type="text" name="dolzinaInput"></p>-->
     <p><input type="submit" value="Išči"></p>
 </form>
 
 
 </div>
 
-<div class="col">
+<div class="col-sm">
 
   <table cellpadding="0" cellspacing="0" border="1">
   <tr>
