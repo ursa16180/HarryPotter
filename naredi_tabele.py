@@ -242,9 +242,6 @@ popravi_zanre("podatki/zanr_knjige.csv")
 #uvozi_podatke(avtorjev_zanr)
 
 #ustvari_vse_tabele()
-<<<<<<< HEAD
 for datoteka in ['knjiga', 'avtor', 'zanr', 'serija', 'del_serije', 'avtor_knjige', 'zanr_knjige', 'avtorjev_zanr']:
     izbrisi_podovojene_vrstice( 'podatki/{0}.csv'.format(datoteka))
-=======
->>>>>>> 0eef5b04e9ceeda7ebdf2ae7018bf524c9863db2
 uvozi_vse_podatke()

@@ -51,7 +51,6 @@ def index():
 #                         napaka='Zgodila se je napaka: %s' % ex)
 #     redirect("/")
 
-
 ######################################################################
 # Glavni program
 
