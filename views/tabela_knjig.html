@@ -1,40 +1,86 @@
 %rebase('osnova.html', naslov='Seznam4')
 
 <div class="container">
-<div class="row">
+    <div class="row">
+        <div class="col-sm">
+            <form action="/isci" method="POST">
+                BU
+                <div class="form-group">
+                    <div class="slidecontainer">
+                         <input type="range" min="0" max="2007" value="200" class="slider" id="drsnikDolzina" name="dolzinaInput">
+                     </div>
+                 </div>
+                <p>
+                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#skupineKljucnihBesed" aria-expanded="true" aria-controls="skupineKljucnihBesed">
+                    Ključne besede
+                  </button>
+                </p>
 
-<div class="col-sm">
-    BU
- <form action="/isci" method="POST">
-     <div class="slidecontainer">
-         <input type="range" min="0" max="2007" value="200" class="slider" id="drsnikDolzina" name="dolzinaInput">
-     </div>
-    <!--<p>Dolžina knjige: <input type="text" name="dolzinaInput"></p>-->
-    <p><input type="submit" value="Išči"></p>
-</form>
+                <div class="collapse" id="skupineKljucnihBesed">
+                  <div class="card card-body">
+                     %for (skupina, besede) in vseKljucne.items():
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target=#{{skupina}} aria-expanded="true" aria-controls={{skupina}}>
+                          {{skupina}}
+                        </button>
+                        <div id={{skupina}} class="collapse">
+                          <div class="card card-body">
+                            <div class="form-group">
+                                %for beseda in besede:
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value={{beseda}} id={{beseda}} name="kljucnaBeseda">
+                                  <label class="form-check-label" for={{beseda}}>
+                                    {{beseda}}
+                                  </label>
+                                </div>
+                                %end
+                            </div>
+                          </div>
+                        </div>
+                      %end
+                    <!--<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#seznamMagija" aria-expanded="true" aria-controls="seznamMagija">-->
+                      <!--Magija-->
+                    <!--</button>-->
+                    <!--<div id="seznamMagija" class="collapse">-->
+                      <!--<div class="card-body">-->
+                        <!--<div class="form-group">-->
+                                <!--<div class="form-check">-->
+                                  <!--<input class="form-check-input" type="checkbox" value={{beseda}} id={{beseda}} name="kljucnaBeseda">-->
+                                  <!--<label class="form-check-label" for={{beseda}}>-->
+                                    <!--{{beseda}}-->
+                                  <!--</label>-->
+                                <!--</div>-->
+                            <!--<div class="form-check">-->
+                              <!--<input class="form-check-input" type="checkbox" value="Flying" id="FlyingCheck" name="kljucnaBeseda">-->
+                              <!--<label class="form-check-label" for="FlyingCheck">-->
+                                <!--Flying-->
+                              <!--</label>-->
+                            <!--</div>-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
+                <p><input type="submit" class="btn btn-primary" value="Išči"></p>
+            </form>
+        </div>
 
-</div>
+        <div class="col-sm">
+          <table cellpadding="0" cellspacing="0" border="1">
+              <tr>
+                 <th>Id</th>
+                 <th>Naslov</th>
+                 <th>Dolžina</th>
+              </tr>
 
-<div class="col-sm">
-
-  <table cellpadding="0" cellspacing="0" border="1">
-  <tr>
-     <th>Id</th>
-     <th>Naslov</th>
-     <th>Dolžina</th>
-
-  </tr>
-  %for (id, naslov, dolzina) in knjige:
-    <tr>
-       <td>{{id}}</td>
-       <td>{{naslov}}</td>
-       <td>{{dolzina}}</td>
-    </tr>
-  %end
-  </table>
-
-  </div>
-
-  </div>
+              %for (id, naslov, dolzina) in knjige:
+                <tr>
+                   <td>{{id}}</td>
+                   <td>{{naslov}}</td>
+                   <td>{{dolzina}}</td>
+                </tr>
+              %end
+          </table>
+        </div>
+    </div>
 </div>

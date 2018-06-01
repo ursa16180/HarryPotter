@@ -24,13 +24,19 @@ def static(filename):
 @get('/')
 def index():
     cur.execute("SELECT id, naslov, dolzina FROM knjiga ORDER BY naslov LIMIT 20")
-    return template('tabela_knjig.html', knjige=cur)
+    kljucne = {'Magija': ['Magic', 'Flying'], 'Bitja': ['Centaur', 'Troll']}
+    #TODO: Tole dela, ampak izjemno počasi. Al sm pa samo jst mela v tistem trenutku slab internet :)
+    return template('tabela_knjig.html', knjige=cur, vseKljucne=kljucne)
 
 @post('/isci')
 def iskanje_get():
     dolzina = int(request.forms.get('dolzinaInput'))
+    kljucne = request.forms.get('kljucnaBeseda')
+    #TODO: kako dodat vse te izbrane ključne besede sem. trenutno ostane shranjena samo
+    # zadnja, ker imajo vse isto ime, in se prepisuje. Samo te besede bova verjetno dodajali skozi neko
+    # zanko, pa ne vem a bova potem to vsaki posebej dali ime in vse preverli, če dela.
     cur.execute("SELECT id, naslov, dolzina FROM knjiga WHERE dolzina>=%s", [dolzina])
-    return template('izpis_knjig.html', dolzina=dolzina, knjige=cur)
+    return template('izpis_knjig.html', dolzina=dolzina, knjige=cur, kljucne=kljucne)
 
 
 # @get('/transakcije/:x/')
