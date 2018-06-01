@@ -29,7 +29,7 @@ def index():
 @post('/isci')
 def iskanje_get():
     dolzina = int(request.forms.get('dolzinaInput'))
-    cur.execute("SELECT id, naslov, dolzina FROM knjiga WHERE dolzina>={0}".format(dolzina))
+    cur.execute("SELECT id, naslov, dolzina FROM knjiga WHERE dolzina>=%s", [dolzina])
     return template('izpis_knjig.html', dolzina=dolzina, knjige=cur)
 
 
