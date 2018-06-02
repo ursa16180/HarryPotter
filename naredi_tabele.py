@@ -16,7 +16,8 @@ def ustvari_tabelo(seznam):
     conn.commit()
 
 def daj_pravice():
-    cur.execute(#"GRANT CONNECT ON DATABASE sem2018_ursap TO student;"
+    cur.execute("GRANT CONNECT ON DATABASE sem2018_ursap TO javnost;"
+                "GRANT SELECT ON ALL TABLES IN SCHEMA public TO javnost;"
                 "GRANT ALL ON SCHEMA public TO ursap; "
                 "GRANT ALL ON SCHEMA public TO ninast;"
                 "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO ursap;"
