@@ -12,9 +12,9 @@ import psycopg2, psycopg2.extensions, psycopg2.extras
 
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo problemov s šumniki
 
-
 # odkomentiraj, če želiš sporočila o napakah
 debug(True)
+
 
 @get('/static/<filename:path>')
 def static(filename):
@@ -25,17 +25,24 @@ def static(filename):
 def index():
     cur.execute("SELECT id, naslov, dolzina FROM knjiga ORDER BY naslov LIMIT 20")
     kljucne = {'Magija': ['Magic', 'Flying'], 'Bitja': ['Centaur', 'Troll']}
-    #TODO: Tole dela, ampak izjemno počasi. Al sm pa samo jst mela v tistem trenutku slab internet :)
+    # TODO: Tole dela, ampak izjemno počasi. Al sm pa samo jst mela v tistem trenutku slab internet :)
     return template('tabela_knjig.html', knjige=cur, vseKljucne=kljucne)
+
 
 @post('/isci')
 def iskanje_get():
     dolzina = int(request.forms.get('dolzinaInput'))
-    kljucne = request.forms.get('kljucnaBeseda')
-    #TODO: kako dodat vse te izbrane ključne besede sem. trenutno ostane shranjena samo
-    # zadnja, ker imajo vse isto ime, in se prepisuje. Samo te besede bova verjetno dodajali skozi neko
-    # zanko, pa ne vem a bova potem to vsaki posebej dali ime in vse preverli, če dela.
-    cur.execute("SELECT id, naslov, dolzina FROM knjiga WHERE dolzina>=%s", [dolzina])
+    # print(request.POST.getall('kljucne_besede'))
+    kljucne = request.POST.getall('kljucne_besede')
+    jeDelZbirke = request.forms.get('jeDelZbirke')
+    # TODO: išči po ključnih besedah
+    if jeDelZbirke is None:  # TODO tukaj izbere če želi da je v zbirki ali če mu je vseeno... kaj pa če prou noče da je v zbirki?
+        cur.execute("SELECT id, naslov, dolzina FROM knjiga WHERE dolzina>=%s", [dolzina])
+    else:
+        cur.execute(
+            "SELECT id, naslov, dolzina FROM knjiga JOIN del_serije ON knjiga.id=del_serije.id_knjige WHERE dolzina>=%s",
+            [dolzina])
+
     return template('izpis_knjig.html', dolzina=dolzina, knjige=cur, kljucne=kljucne)
 
 

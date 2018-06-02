@@ -38,7 +38,7 @@ def pobrisi_tabelo(seznam):
 def uvozi_podatke(seznam):
     if seznam[0] in ["zanr_knjige","avtorjev_zanr"]:
         popravi_zanre("podatki/%s.csv" % seznam[0])
-    if seznam[0] in ["knjiga","zanr", "avtor_knjige", "zanr_knjige", "avtorjev_zanr"]:
+    if seznam[0] in ['knjiga', 'avtor', 'zanr', 'serija', 'del_serije', 'avtor_knjige', 'zanr_knjige', 'avtorjev_zanr', 'knjiga_kljucne_besede']:
         izbrisi_podovojene_vrstice("podatki/%s.csv" % seznam[0])
     with open("podatki/%s.csv" % seznam[0], encoding="utf8") as f:
         rd = csv.reader(f, delimiter=';')
@@ -219,8 +219,34 @@ avtorjev_zanr = ["avtorjev_zanr",
                 RETURNING (id, zanr)
             """]
 
-seznamVseh = [#knjiga, avtor, zanr, serija,
-              del_serije, avtor_knjige, zanr_knjige, avtorjev_zanr]
+kljucna_beseda=["kljucna_beseda",
+               """
+         CREATE TABLE kljucna_beseda (
+             pojem TEXT PRIMARY KEY,
+             skupina TEXT NOT NULL
+         );
+     """, """
+                INSERT INTO kljucna_beseda
+                (pojem, skupina)
+                VALUES (%s, %s)
+                RETURNING (pojem)
+            """]
+
+knjiga_kljucne_besede= ["knjiga_kljucne_besede",
+                 """
+           CREATE TABLE knjiga_kljucne_besede (
+               id_knjige TEXT NOT NULL REFERENCES knjiga(id),
+               kljucna_beseda TEXT NOT NULL REFERENCES kljucna_beseda(pojem),
+               PRIMARY KEY (id_knjige, kljucna_beseda)
+           );
+       """, """
+                INSERT INTO knjiga_kljucne_besede
+                (id_knjige, kljucna_beseda)
+                VALUES (%s, %s)
+                RETURNING (id_knjige, kljucna_beseda)
+            """]
+
+seznamVseh = [knjiga, avtor, zanr, serija, del_serije, avtor_knjige, zanr_knjige, avtorjev_zanr, kljucna_beseda, knjiga_kljucne_besede]
 
 
 def ustvari_vse_tabele():
@@ -239,11 +265,10 @@ def izbrisi_vse_tabele():
 
 
 
-# ustvari_tabelo(avtorjev_zanr)
-popravi_zanre("podatki/zanr_knjige.csv")
-#uvozi_podatke(avtorjev_zanr)
+#ustvari_tabelo(knjiga_kljucne_besede)
+#uvozi_podatke(kljucna_beseda)
+#uvozi_podatke(knjiga_kljucne_besede) # TODO Knjige 33570856 ni v knjigah?!?!
 
-#ustvari_vse_tabele()
-for datoteka in ['knjiga', 'avtor', 'zanr', 'serija', 'del_serije', 'avtor_knjige', 'zanr_knjige', 'avtorjev_zanr']:
-    izbrisi_podovojene_vrstice( 'podatki/{0}.csv'.format(datoteka))
-uvozi_vse_podatke()
+#ustvari_vse_tabele()0
+
+#uvozi_vse_podatke()

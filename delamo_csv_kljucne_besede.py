@@ -1,68 +1,39 @@
 import orodja
 
-seznam_besed = ['Headmaster', 'School', 'Student', 'Castle', 'Boarding school', 'Beast', 'Goblin', 'Centaur',
-                'Giant',
-                'Phoenix', 'Witch', 'Wizard', 'Dragon', 'Boggart', 'Vampire', 'Monster', 'Elf', 'Dwarf', 'Demigod',
-                'Alien',
-                'Werewolf', 'Unicorn', ' Rat ', ' Rats ', ' Owl', 'Sphinx', 'Troll', 'Hobbit', 'Fairy', 'Human',
-                'Angel', 'Demon',
-                'God',
-                'mystical creatures ', 'Prince', 'Princess', 'Queen', 'Prisoner', 'Orphan', 'Muggle', 'Witch',
-                'Wizard',
-                'Dark Lord', 'Apprentice', 'Friend', 'Enemy', 'Magic', 'Witchcraft', 'Wizardry', 'Charms',
-                'Transfiguration', 'Curse',
-                'Jinx', 'Divination', 'Dark arts', 'Patronus', 'Invisibility', 'Immortal', 'Alchemy', 'Animagus',
-                'Spell', 'Sorcery',
-                'ability to fly', 'Powers', 'Time travel', 'Magician', 'Miracles', 'Transform', 'Enchantment', 'Force',
-                'Friendship',
-                'Power', 'Bravery', 'Courage', 'Loyalty', 'Honesty', 'Dark side', 'Wisdom ', 'Evil', 'Love', 'Elitism',
-                'Pure Blood',
-                'Choice', 'Friendship', 'Imagination', 'eternal life', 'Family', 'Goblet', 'Potion', 'Wand',
-                'Flying broom', 'Train',
-                'Socks', 'Mirror', 'Letter', 'Sword', 'Chess', 'Scar', 'Pig tail', 'Chocolate', 'Parchment',
-                'Maze',
-                'Voldemort', 'Hermione Granger', 'Harry Potter', 'Ron Weasley', 'Nicholas Flamel', 'marauders ', 'Duel',
-                'Invisible',
-                'Apocalypse', 'Journey', 'Invasion ', 'Fighting', 'test', 'Nightmare', 'Mankind', 'Secret', 'Legend',
-                'Myth',
-                'Destiny', 'Fate', 'Mysterious', 'Consequences', 'Danger ', 'Dangerous', 'Future', 'Revenge', 'Hate',
-                'Tom Riddle',
-                'Leacky cauldron', 'Orphanage', 'Outsider', 'Mission', 'Quest', 'Calling', 'Save the world',
-                'Destroy the base',
-                'Find', ' King', ' Hat '] + ['warlock', 'ghost', 'faries', 'academy', 'adevture', 'adventure',
-                                             'intelligence', 'symbol',
-                                             'voyage', 'pirate', 'enemy', 'eternal', 'eternity', 'life', 'time',
-                                             'world', 'Black', 'save', 'lost', 'adventure', 'learn', 'dead', 'death',
-                                             'life', 'live',
-                                             'father', 'mother', 'parent', 'help', 'home', 'fantasy', 'battle', 'child',
-                                             ' war', 'different', 'truth', 'lies',
-                                             'inherit', 'special', 'dream', 'survival', 'survive', 'hope', 'trouble',
-                                             'travel', 'peculiar', 'dark', 'chosen one',
-                                             'army', ' teen', 'ancient', 'London', 'sacrifice', 'escape', 'rescue']
+def naredi_slovar_kljucnih_besed():
+    datoteka = open('podatki/kljucna_beseda.csv', 'r')
+    slovar_kljucnih = dict()
+    for vrstica in datoteka:
+        (pojem, skupina) = vrstica.split(';')
+        slovar_kljucnih[' {0}'.format(pojem.lower())]=pojem
+    datoteka.close()
+    return slovar_kljucnih
 
 seznam_vseh_knjig_kljucnih_besed = []
 dodane_knjige = set()
 mankajoce = []
 
 frekvenca = dict()
-for pojem in seznam_besed:
-    frekvenca[pojem.lower()] = 0
+for pojem in naredi_slovar_kljucnih_besed().values():
+    frekvenca[pojem] = 0
 
 
 def poisci_kljucne_besede(seznam_vseh_knjig):
     for knjiga in seznam_vseh_knjig:
-        opis = knjiga['opis'].lower()
-        naslov = knjiga['naslov'].lower()
-        for beseda in seznam_besed:
-            if beseda.lower() in opis + naslov:
-                kljucna_beseda = dict()
-                kljucna_beseda['id_knjige'] = knjiga['id']
-                kljucna_beseda['kljucna_beseda'] = beseda
-                seznam_vseh_knjig_kljucnih_besed.append(kljucna_beseda)
-                dodane_knjige.add(knjiga['id'])
-                frekvenca[beseda.lower()] += 1
-        if knjiga['id'] not in dodane_knjige:  # Naredi csv knjig, ki niso imele nobene kljucne besede
-            mankajoce.append(knjiga)
+        if knjiga['opis'] is not None:
+            opis = knjiga['opis'].lower()
+            naslov = knjiga['naslov'].lower()
+            slovar_kljucnih = naredi_slovar_kljucnih_besed()
+            for beseda in slovar_kljucnih.keys():
+                if beseda in opis + naslov:
+                    kljucna_beseda = dict()
+                    kljucna_beseda['id_knjige'] = knjiga['id']
+                    kljucna_beseda['kljucna_beseda'] = slovar_kljucnih[beseda]
+                    seznam_vseh_knjig_kljucnih_besed.append(kljucna_beseda)
+                    dodane_knjige.add(knjiga['id'])
+                    frekvenca[slovar_kljucnih[beseda]] += 1
+            if knjiga['id'] not in dodane_knjige:  # Naredi csv knjig, ki niso imele nobene kljucne besede
+                mankajoce.append(knjiga)
     orodja.zapisi_tabelo(mankajoce,
                          ['id', 'ISBN', 'naslov', 'dolzina', 'povprecna_ocena', 'stevilo_ocen', 'leto', 'opis'],
                          'podatki/mankajoce.csv')
