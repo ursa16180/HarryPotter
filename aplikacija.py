@@ -35,14 +35,27 @@ def iskanje_get():
     # print(request.POST.getall('kljucne_besede'))
     kljucne = request.POST.getall('kljucne_besede')
     jeDelZbirke = request.forms.get('jeDelZbirke')
-    # TODO: išči po ključnih besedah
-    if jeDelZbirke is None:  # TODO tukaj izbere če želi da je v zbirki ali če mu je vseeno... kaj pa če prou noče da je v zbirki?
-        cur.execute("SELECT id, naslov, dolzina FROM knjiga WHERE dolzina>=%s", [dolzina])
-    else:
-        cur.execute(
-            "SELECT id, naslov, dolzina FROM knjiga JOIN del_serije ON knjiga.id=del_serije.id_knjige WHERE dolzina>=%s",
-            [dolzina])
 
+    #~~~~~~~~~~~~~~Če so izbrane ključne besede, jih doda
+    if kljucne == []:
+        niz ="SELECT DISTINCT id, naslov, dolzina FROM knjiga"
+    else: # TODO: išči po ključnih besedah - ni lepo ampak mislim da dela
+       niz = "SELECT DISTINCT id, naslov, dolzina FROM knjiga JOIN (SELECT DISTINCT * FROM knjiga_kljucne_besede knjiga1 WHERE {0}".format(
+            " AND ".join(
+                'EXISTS (SELECT * FROM knjiga_kljucne_besede WHERE kljucna_beseda = \'{0}\' AND id_knjige=knjiga1.id_knjige)'.format(
+                    kljucna_beseda) for kljucna_beseda in kljucne)) + ") pomozna_tabela ON id=id_knjige"
+
+    # ~~~~~~~~~~~~~~Če želi da je del serije, se združi s tabelo serij
+    #TODO Ali če se združi že izloči tiste ki niso v serijah?
+    # TODO tukaj izbere če želi da je v zbirki ali če mu je vseeno... kaj pa če prou noče da je v zbirki?
+    if jeDelZbirke is not None:
+        niz +=" JOIN del_serije ON knjiga.id=del_serije.id_knjige "
+        #cur.execute("SELECT id, naslov, dolzina FROM knjiga WHERE dolzina>=%s", [dolzina])
+
+    # ~~~~~~~~~~~~~~Tukaj se doda pogoj o dolžini knjige
+    niz +=" WHERE dolzina>={0}".format(dolzina)
+
+    cur.execute(niz)
     return template('izpis_knjig.html', dolzina=dolzina, knjige=cur, kljucne=kljucne)
 
 
