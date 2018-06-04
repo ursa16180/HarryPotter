@@ -9,7 +9,7 @@
                 <input type="range" min="0" max="2007" value="200" class="slider" id="drsnikDolzina"
                        name="dolzinaInput" onchange="spremembaDrsnika(this.value)">
                 <br/>
-                Knjiga naj ima največ <span id="vrednostDrsnika">200</span> strani.
+                Knjiga naj ima najmanj <span id="vrednostDrsnika">200</span> strani.
             </div>
         </div>
         <p>
@@ -42,33 +42,40 @@
                     </div>
                 </div>
                 %end
-                <!--<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#seznamMagija" aria-expanded="true" aria-controls="seznamMagija">-->
-                <!--Magija-->
-                <!--</button>-->
-                <!--<div id="seznamMagija" class="collapse">-->
-                <!--<div class="card-body">-->
-                <!--<div class="form-group">-->
-                <!--<div class="form-check">-->
-                <!--<input class="form-check-input" type="checkbox" value={{beseda}} id={{beseda}} name="kljucnaBeseda">-->
-                <!--<label class="form-check-label" for={{beseda}}>-->
-                <!--{{beseda}}-->
-                <!--</label>-->
-                <!--</div>-->
-                <!--<div class="form-check">-->
-                <!--<input class="form-check-input" type="checkbox" value="Flying" id="FlyingCheck" name="kljucnaBeseda">-->
-                <!--<label class="form-check-label" for="FlyingCheck">-->
-                <!--Flying-->
-                <!--</label>-->
-                <!--</div>-->
             </div>
 
         </div>
         <br/>
+
+
         <div class="form-group">
             <label for="jeDelZbirke">
             Del zbirke:</label>
             <input class="checkbox pull-right" type="checkbox" value="jeDelZbirke" id=jeDelZbirke
                    name="jeDelZbirke">
+        </div>
+
+
+        <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#zanri"
+                    aria-expanded="true" aria-controls="zanri">
+                Žanri
+            </button>
+        </p>
+        <div class="collapse" id="zanri">
+            <div class="card card-body">
+                <div class="form-group">
+                    %for zanr in zanri:
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value={{zanr}} id={{zanr}}
+                               name="zanri">
+                        <label class="form-check-label" for={{zanr}}>
+                            {{zanr}}
+                        </label>
+                    </div>
+                    %end
+                </div>
+            </div>
 
         </div>
 
