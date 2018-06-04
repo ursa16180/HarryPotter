@@ -8,8 +8,34 @@ vzorec_ime_zanra =re.compile("""<div class="genreHeader">\s+<h1 class="left">\s+
 
 seznam_vseh_zanrov = []
 
+zanri_za_popravit={'Academic': 'School Stories', 'School': 'School Stories', 'Education': 'School Stories',
+                   'American Revolution': 'American', 'Animal Fiction':'Animals', 'Children S Young Adult':'Childrens',
+                   'Adult': 'Adult Fiction', 'Christian Fantasy':'Christian Fiction', 'Chivalric Romance':'Romance',
+                   'Business Investing':'Business', 'Biography Memoir':'Biography', 'Astrophysics':'Science',
+                   'Arthurian Romance': 'Arthurian', 'Arts Photography': 'Art', 'Christian': 'Christian Fiction',
+                   'Christianity':'Christian Fiction', 'Classic Literature': 'Classics', 'Comics Manga':'Comics',
+                   'Graphic Novels Comics':'Comics','Dc Comics':'Comics','Cooking Food Wine':'Cookbooks',
+                   'Cooking':'Cookbooks', 'Food and Drink': 'Cookbooks',
+                   'Epic Fantasy':'Epic','Fables':'Fairy Tales', 'English History':'Historical', 'Fae':'Fairies',
+                   'Fairy Tale Retellings':'Fairy Tales', 'Science Fiction Fantasy':'Science Fiction',
+                   'Folk Tales':'Folklore','Funny':'Humor','Ghost':'Ghost Stories', 'Gods': 'Mythology',
+                   'Greek Mythology':'Mythology', 'Health, Mind & Body':'Health', 'High School':'School Stories',
+                   'History':'Historical', 'Humor Satire':'Humor', 'Juvenile':'Young Adult', 'Lds Fiction':'Lds',
+                   'M M Romance':'Lgbt', 'Mystery Thrillers':'Mystery Thriller','New York':'American',
+                   'Northern Africa':'Africa','Paranormal Fiction':'Paranormal','Parenting Families':'Family',
+                   'Mental Health':'Psychology', 'Screenplays Plays':'Plays', 'Shojo':'Manga', 'Shonen':'Manga',
+                   'Social Science':'Sociology', 'Sports and Games':'Sports','Teen':'Young Adult',
+                   'Thriller and Horror':'Thriller','Translations':'Translation','Tudor Period':'Historical',
+                   'Did Not Finish':'Unfinished','Upper Middle Grade':'Young Adult','Middle Grade':'Childrens',
+                   'Urban':'Contemporary','Webcomic':'Comics','Wicca':'Witches','Writing Creativity':'Writing',
+                   'Ya Paranormal Romance':'Young Adult Paranormal', 'Young Adult Paranormal Fantasy':'Young Adult Paranormal',
+                   'Young Adult Contemporary Fiction':'Young Adult Contemporary','Youth Fiction':'Young Adult',
+                   'Government':'Politics','18th Century':'Historical','19th Century':'Historical', 'Gay and Lesbian':'Lgbt',
+                   'Books About Books':'Literature', 'Literary Fiction':'Fiction'
+                   }
 
-#mapa = "zanri"
+# TODO: uskladit seznam v naredi_tabele
+mapa = orodja.datoteke("zanri")
 def shrani_zanre(mapa):
     for zanr in mapa:
         print(zanr)
@@ -27,6 +53,13 @@ def shrani_zanre(mapa):
 
         ###CSV za zanr
         podatkiZanr = dict()
-        podatkiZanr['ime_zanra'] = html.unescape(podatki1['ime_zanra'])
-        podatkiZanr['opis'] = podatki2['opis']
-        seznam_vseh_zanrov.append(podatkiZanr)
+        zajeti_zanr = html.unescape(podatki1['ime_zanra'])
+        if not zajeti_zanr in zanri_za_popravit.keys():
+            podatkiZanr['ime_zanra'] = zajeti_zanr
+            podatkiZanr['opis'] = podatki2['opis']
+            seznam_vseh_zanrov.append(podatkiZanr)
+
+shrani_zanre(mapa)
+orodja.zapisi_tabelo(seznam_vseh_zanrov,
+                     ['ime_zanra', 'opis'],
+                     'podatki/zanr.csv')

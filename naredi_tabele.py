@@ -10,6 +10,7 @@ psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo pro
 import csv
 import re
 
+from delamo_csv_zanr import zanri_za_popravit
 def ustvari_tabelo(seznam):
     cur.execute(seznam[1])
     print("Narejena tabela %s" % seznam[0])
@@ -29,7 +30,7 @@ def daj_pravice():
 
 def pobrisi_tabelo(seznam):
     cur.execute("""
-        DROP TABLE %s;
+        DROP TABLE %s CASCADE;
     """ % seznam[0])
     print("Izbrisna tabela %s" % seznam[0])
     conn.commit()
@@ -67,30 +68,60 @@ def izbrisi_podovojene_vrstice(datoteka):
 
 def popravi_zanre(ime_datoteke):
     seznam_vrstic = []
-    slovar_napacnih ={'Children\'s Books':'Childrens', 'Comics & Graphic Novels':'Graphic Novels Comics',
-                      'Children\'s':'Childrens', 'Arts & Photography':'Arts Photography', 'Literature & Fiction':'Literary Fiction',
-                      'Science Fiction & Fantasy':'Science Fiction Fantasy', 'Biographies & Memoirs':'Biography', 'Mystery & Thrillers':'Mystery Thrillers',
-                      'Screenplays & Plays':'Screenplays Plays','Ya Fantasy':'Young Adult Fantasy', 'Humor and Comedy':'Humor',
-                      'Religion & Spirituality':'Spirituality', 'Mystery & Thriller':'Mystery Thriller','Gay and Lesbian':'Lgbt',
-                      'Outdoors & Nature': 'Outdoors Nature', 'Young Adult Paranormal & Fantasy':'Young Adult Paranormal Fantasy',
-                      'Health, Mind & Body':'Health Mind Body', 'Glbt':'Lgbt', 'Kids':'Childrens','North American Hi...':'North American History',
+    slovar_napacnih ={'Children\'s Books':'Childrens', 'Comics & Graphic Novels':'Comics',
+                      'Children\'s':'Childrens', 'Arts & Photography':'Art',
+                      'Literature & Fiction':'Literary Fiction','Mystery & Thrillers':'Mystery Thrillers',
+                      'Science Fiction & Fantasy':'Science Fiction', 'Biographies & Memoirs':'Biography',
+                      'Screenplays & Plays':'Plays','Ya Fantasy':'Young Adult Fantasy',
+                      'Humor and Comedy':'Humor','Gay and Lesbian':'Lgbt','North American Hi...':'Historical',
+                      'Religion & Spirituality':'Spirituality', 'Mystery & Thriller':'Mystery Thriller',
+                      'Young Adult Paranormal & Fantasy':'Young Adult Paranormal Fantasy',
+                      'Health, Mind & Body':'Health', 'Glbt':'Lgbt', 'Kids':'Childrens',
                       'Sci Fi Fantasy':'Science Fiction', 'Crafts & Hobbies':'Crafts Hobbies',
-                      'Business & Investing':'Business Investing','Gay & Lesbian':'Lgbt', 'Professional & Technical':'Professional Technical',
-                      'Computers & Internet':'Computers Internet', 'Fantasy, Magic, Adventure':'Fantasy Magic Adventure',
-                      'Cooking, Food & Wine':'Cooking Food Wine', 'Dystopian':'Dystopia', 'Fanfiction':'Fan Fiction',
-                      'Women & Gender Studies':'Women Gender Studies','Audiobooks':'Audiobook','Social Sciences':'Social Science',
-                      'Teen Fiction':'Teen','Parenting & Families':'Parenting Families','Writing & Creativity':'Writing Creativity',
-                      'Fantasy & Science Fiction':'Science Fiction','Children\'s, Young Adult':'Children S Young Adult',
-                      'Humor & Satire':'Humor Satire'} #TODO Aboriginal Astronomy ne obstaja(avtor 5175986 ima)
+                      'Business & Investing':'Business Investing','Gay & Lesbian':'Lgbt', 'Teen Fiction':'Teen',
+                      'Professional & Technical':'Professional Technical', 'Social Sciences':'Social Science',
+                      'Computers & Internet':'Computers Internet', 'Fantasy, Magic, Adventure':'Magic',
+                      'Cooking, Food & Wine':'Cookbooks', 'Dystopian':'Dystopia', 'Fanfiction':'Fan Fiction',
+                      'Women & Gender Studies':'Women Gender Studies','Audiobooks':'Audiobook',
+                      'Parenting & Families':'Family','Outdoors & Nature': 'Outdoors Nature',
+                      'Fantasy & Science Fiction':'Science Fiction','Children\'s, Young Adult':'Childrens',
+                      'Humor & Satire':'Humor', 'Writing & Creativity':'Writing','Academic': 'School Stories',
+                      'School': 'School Stories', 'Education': 'School Stories',
+                   'American Revolution': 'American', 'Animal Fiction':'Animals', 'Children S Young Adult':'Childrens',
+                   'Adult': 'Adult Fiction', 'Christian Fantasy':'Christian Fiction', 'Chivalric Romance':'Romance',
+                   'Business Investing':'Business', 'Biography Memoir':'Biography', 'Astrophysics':'Science',
+                   'Arthurian Romance': 'Arthurian', 'Arts Photography': 'Art', 'Christian': 'Christian Fiction',
+                   'Christianity':'Christian Fiction', 'Classic Literature': 'Classics', 'Comics Manga':'Comics',
+                   'Graphic Novels Comics':'Comics','Dc Comics':'Comics','Cooking Food Wine':'Cookbooks',
+                   'Cooking':'Cookbooks', 'Food and Drink': 'Cookbooks',
+                   'Epic Fantasy':'Epic','Fables':'Fairy Tales', 'English History':'Historical', 'Fae':'Fairies',
+                   'Fairy Tale Retellings':'Fairy Tales', 'Science Fiction Fantasy':'Science Fiction',
+                   'Folk Tales':'Folklore','Funny':'Humor','Ghost':'Ghost Stories', 'Gods': 'Mythology',
+                   'Greek Mythology':'Mythology', 'Health Mind Body':'Health', 'High School':'School Stories',
+                   'History':'Historical', 'Humor Satire':'Humor', 'Juvenile':'Young Adult', 'Lds Fiction':'Lds',
+                   'M M Romance':'Lgbt', 'Mystery Thrillers':'Mystery Thriller','New York':'American',
+                   'Northern Africa':'Africa','Paranormal Fiction':'Paranormal','Parenting Families':'Family',
+                   'Mental Health':'Psychology', 'Screenplays Plays':'Plays', 'Shojo':'Manga', 'Shonen':'Manga',
+                   'Social Science':'Sociology', 'Sports and Games':'Sports','Teen':'Young Adult',
+                   'Thriller and Horror':'Thriller','Translations':'Translation','Tudor Period':'Historical',
+                   'Did Not Finish':'Unfinished','Upper Middle Grade':'Young Adult','Middle Grade':'Childrens',
+                   'Urban':'Contemporary','Webcomic':'Comics','Wicca':'Witches','Writing Creativity':'Writing',
+                   'Ya Paranormal Romance':'Young Adult Paranormal', 'Young Adult Paranormal Fantasy':'Young Adult Paranormal',
+                   'Young Adult Contemporary Fiction':'Young Adult Contemporary','Youth Fiction':'Young Adult',
+                   'Government':'Politics','18th Century':'Historical','19th Century':'Historical',
+                   'Books About Books':'Literature', 'Literary Fiction':'Fiction'
+                   }
+    #slovar_napacnih.update(zanri_za_popravit) #TODO Aboriginal Astronomy ne obstaja(avtor 5175986 ima)
     with open(ime_datoteke, 'r') as moj_csv:
         bralec_csvja = csv.reader(moj_csv, delimiter=';')
         for vrstica in bralec_csvja:
-            if vrstica[1] in ['Aboriginal Astronomy']:
+            zanr = vrstica[1]
+            if zanr in ['Aboriginal Astronomy']:
                 continue
-            if vrstica[1] in slovar_napacnih.keys():
-                seznam_vrstic.append(vrstica[0]+";"+slovar_napacnih[vrstica[1]]+'\n')
+            if zanr in slovar_napacnih.keys():
+                seznam_vrstic.append(vrstica[0]+";"+slovar_napacnih[zanr]+'\n')
             else:
-                seznam_vrstic.append(vrstica[0]+";"+vrstica[1]+'\n')
+                seznam_vrstic.append(vrstica[0]+";"+zanr+'\n')
     moj_csv.close()
     izhodna_datoteka = open(ime_datoteke, "w", encoding="utf8")
     for vrstica in seznam_vrstic:
@@ -263,12 +294,13 @@ def izbrisi_vse_tabele():
     for seznam in seznamVseh:
         pobrisi_tabelo(seznam)
 
-
-
-#ustvari_tabelo(knjiga_kljucne_besede)
-#uvozi_podatke(kljucna_beseda)
+for x in [zanr, zanr_knjige, avtorjev_zanr]:
+    pobrisi_tabelo(x)
+    ustvari_tabelo(x)
+    uvozi_podatke(x)
 #uvozi_podatke(knjiga_kljucne_besede) # TODO Knjige 33570856 ni v knjigah?!?!
 
 #ustvari_vse_tabele()0
 
 #uvozi_vse_podatke()
+#izbrisi_podovojene_vrstice('podatki/zanr.csv')
