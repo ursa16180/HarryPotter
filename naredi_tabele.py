@@ -35,6 +35,12 @@ def pobrisi_tabelo(seznam):
     print("Izbrisna tabela %s" % seznam[0])
     conn.commit()
 
+def izprazni_tabelo(seznam):
+    cur.execute("""
+            DELETE FROM %s;
+        """ % seznam[0])
+    print("Izpraznjena tabela %s" % seznam[0])
+    conn.commit()
 
 def uvozi_podatke(seznam):
     if seznam[0] in ["zanr_knjige","avtorjev_zanr"]:
@@ -70,7 +76,7 @@ def popravi_zanre(ime_datoteke):
     seznam_vrstic = []
     slovar_napacnih ={'Children\'s Books':'Childrens', 'Comics & Graphic Novels':'Comics',
                       'Children\'s':'Childrens', 'Arts & Photography':'Art',
-                      'Literature & Fiction':'Literary Fiction','Mystery & Thrillers':'Mystery Thrillers',
+                      'Literature & Fiction':'Fiction','Mystery & Thrillers':'Mystery Thrillers',
                       'Science Fiction & Fantasy':'Science Fiction', 'Biographies & Memoirs':'Biography',
                       'Screenplays & Plays':'Plays','Ya Fantasy':'Young Adult Fantasy',
                       'Humor and Comedy':'Humor','Gay and Lesbian':'Lgbt','North American Hi...':'Historical',
@@ -86,48 +92,22 @@ def popravi_zanre(ime_datoteke):
                       'Parenting & Families':'Family','Outdoors & Nature': 'Outdoors Nature',
                       'Fantasy & Science Fiction':'Science Fiction','Children\'s, Young Adult':'Childrens',
                       'Humor & Satire':'Humor', 'Writing & Creativity':'Writing','Academic': 'School Stories',
-                      'School': 'School Stories', 'Education': 'School Stories',
-                   'American Revolution': 'American', 'Animal Fiction':'Animals', 'Children S Young Adult':'Childrens',
-                   'Adult': 'Adult Fiction', 'Christian Fantasy':'Christian Fiction', 'Chivalric Romance':'Romance',
-                   'Business Investing':'Business', 'Biography Memoir':'Biography', 'Astrophysics':'Science',
-                   'Arthurian Romance': 'Arthurian', 'Arts Photography': 'Art', 'Christian': 'Christian Fiction',
-                   'Christianity':'Christian Fiction', 'Classic Literature': 'Classics', 'Comics Manga':'Comics',
-                   'Graphic Novels Comics':'Comics','Dc Comics':'Comics','Cooking Food Wine':'Cookbooks',
-                   'Cooking':'Cookbooks', 'Food and Drink': 'Cookbooks',
-                   'Epic Fantasy':'Epic','Fables':'Fairy Tales', 'English History':'Historical', 'Fae':'Fairies',
-                   'Fairy Tale Retellings':'Fairy Tales', 'Science Fiction Fantasy':'Science Fiction',
-                   'Folk Tales':'Folklore','Funny':'Humor','Ghost':'Ghost Stories', 'Gods': 'Mythology',
-                   'Greek Mythology':'Mythology', 'Health Mind Body':'Health', 'High School':'School Stories',
-                   'History':'Historical', 'Humor Satire':'Humor', 'Juvenile':'Young Adult', 'Lds Fiction':'Lds',
-                   'M M Romance':'Lgbt', 'Mystery Thrillers':'Mystery Thriller','New York':'American',
-                   'Northern Africa':'Africa','Paranormal Fiction':'Paranormal','Parenting Families':'Family',
-                   'Mental Health':'Psychology', 'Screenplays Plays':'Plays', 'Shojo':'Manga', 'Shonen':'Manga',
-                   'Social Science':'Sociology', 'Sports and Games':'Sports','Teen':'Young Adult',
-                   'Thriller and Horror':'Thriller','Translations':'Translation','Tudor Period':'Historical',
-                   'Did Not Finish':'Unfinished','Upper Middle Grade':'Young Adult','Middle Grade':'Childrens',
-                   'Urban':'Contemporary','Webcomic':'Comics','Wicca':'Witches','Writing Creativity':'Writing',
-                   'Ya Paranormal Romance':'Young Adult Paranormal', 'Young Adult Paranormal Fantasy':'Young Adult Paranormal',
-                   'Young Adult Contemporary Fiction':'Young Adult Contemporary','Youth Fiction':'Young Adult',
-                   'Government':'Politics','18th Century':'Historical','19th Century':'Historical',
-                   'Books About Books':'Literature', 'Literary Fiction':'Fiction'
-                   }
-    #slovar_napacnih.update(zanri_za_popravit) #TODO Aboriginal Astronomy ne obstaja(avtor 5175986 ima)
+                      'School': 'School Stories', 'Education': 'School Stories'}
+    slovar_napacnih.update(zanri_za_popravit) #TODO Aboriginal Astronomy ne obstaja(avtor 5175986 ima)
     with open(ime_datoteke, 'r') as moj_csv:
         bralec_csvja = csv.reader(moj_csv, delimiter=';')
         for vrstica in bralec_csvja:
-            zanr = vrstica[1]
-            if zanr in ['Aboriginal Astronomy']:
+            if vrstica[1] in ['Aboriginal Astronomy', ''] or slovar_napacnih.get(vrstica[1],'nič') == '':
                 continue
-            if zanr in slovar_napacnih.keys():
-                seznam_vrstic.append(vrstica[0]+";"+slovar_napacnih[zanr]+'\n')
+            if vrstica[1] in slovar_napacnih.keys():
+                seznam_vrstic.append(vrstica[0]+";"+slovar_napacnih[vrstica[1]]+'\n')
             else:
-                seznam_vrstic.append(vrstica[0]+";"+zanr+'\n')
+                seznam_vrstic.append(vrstica[0]+";"+ vrstica[1] +'\n')
     moj_csv.close()
     izhodna_datoteka = open(ime_datoteke, "w", encoding="utf8")
     for vrstica in seznam_vrstic:
         izhodna_datoteka.write(vrstica)
     izhodna_datoteka.close()
-
 
 
 
@@ -294,9 +274,11 @@ def izbrisi_vse_tabele():
     for seznam in seznamVseh:
         pobrisi_tabelo(seznam)
 
-for x in [zanr, zanr_knjige, avtorjev_zanr]:
-    pobrisi_tabelo(x)
-    ustvari_tabelo(x)
+#daj_pravice()
+for x in [avtorjev_zanr, zanr_knjige, zanr]:
+    izprazni_tabelo(x)
+for x in [zanr, avtorjev_zanr, zanr_knjige]:
+    #ustvari_tabelo(x)
     uvozi_podatke(x)
 #uvozi_podatke(knjiga_kljucne_besede) # TODO Knjige 33570856 ni v knjigah?!?!
 
