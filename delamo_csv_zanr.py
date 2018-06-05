@@ -37,10 +37,12 @@ zanri_za_popravit={'Academic': 'School Stories', 'School': 'School Stories', 'Ed
                    'Italy':'','Australia':'', 'Chapter Books':'', 'Favorites':'', 'Unfinished':'', 'Africa':'', 'Movies':'',
                    'Reference':'', 'Entertainment':'', 'India':'', 'Egypt':'', 'Multi Genre':'', 'Historical Fiction':'Historical',
                    'Ebooks':'', 'Audiobooks':'', 'Audiobook':'', 'Literature':'', 'Amazon':'','Japan':'','Read For School':'',
-                   'British Literature':'', 'Ireland':'', 'Russia':''
+                   'British Literature':'', 'Ireland':'', 'Russia':'', 'Glbt':'Lgbt', 'North American Hi...':'Historical',
+                   'Kids':'Childrens', 'Sci Fi Fantasy':'Science Fiction' ,'Teen Fiction':'Teen', 'Social Sciences':'Sociology',
+                   'Ya Fantasy':'Young Adult Fantasy', 'Dystopian':'Dystopia', 'Fanfiction':'Fan Fiction',
+                   'Children\'s, Young Adult':'Childrens'
                    }
 
-# TODO: uskladit seznam v naredi_tabele
 mapa = orodja.datoteke("zanri")
 def shrani_zanre(mapa):
     for zanr in mapa:
