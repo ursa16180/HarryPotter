@@ -1,0 +1,30 @@
+%rebase('osnova.html', naslov='Izpis knjig')
+
+
+%for knjiga in knjige:
+
+<div class="row">
+    <div class="btn-group-vertical">
+    <br/>
+        <form action="/knjiga/{{knjiga['naslov']}}" method="POST">
+            <b><input type="submit" class="btn btn-basic" value="{{knjiga['naslov']}}"></b>
+
+        </form>
+        %for avtor in knjiga['avtorji']:
+        <form action="/avtor/{{avtor}}" method="POST">
+             <p><input type="submit" class="btn btn-link" value="{{avtor}}">
+            </p>
+        </form>
+        %end
+        <div class="btn-group">
+        %for zanr in knjiga['zanri']:
+        <form action="/zanr/{{zanr}}" method="POST">
+            <p><input type="submit" class="btn btn-link" value="{{zanr}}">
+            </p>
+        </form>
+        %end
+        </div>
+    <br/>
+    </div>
+</div>
+%end
