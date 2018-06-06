@@ -69,7 +69,7 @@ def shrani_zanre(mapa):
         else:
             print('Nisem dodal {}'.format(zajeti_zanr))
 
-shrani_zanre(mapa)
-orodja.zapisi_tabelo(seznam_vseh_zanrov,
-                     ['ime_zanra', 'opis'],
-                     'podatki/zanr.csv')
+#shrani_zanre(mapa)
+#orodja.zapisi_tabelo(seznam_vseh_zanrov,
+#                     ['ime_zanra', 'opis'],
+#                     'podatki/zanr.csv')
