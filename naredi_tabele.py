@@ -275,9 +275,9 @@ def izbrisi_vse_tabele():
         pobrisi_tabelo(seznam)
 
 #daj_pravice()
-for x in [avtorjev_zanr, zanr_knjige, zanr]:
+for x in [knjiga_kljucne_besede, kljucna_beseda]:
     izprazni_tabelo(x)
-for x in [zanr, avtorjev_zanr, zanr_knjige]:
+for x in [kljucna_beseda, knjiga_kljucne_besede]:
     #ustvari_tabelo(x)
     uvozi_podatke(x)
 #uvozi_podatke(knjiga_kljucne_besede) # TODO Knjige 33570856 ni v knjigah?!?!
