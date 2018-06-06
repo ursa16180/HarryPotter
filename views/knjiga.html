@@ -22,40 +22,53 @@
     </div>
     </div>
 
-<div class="row">
-    %for avtor in knjiga['avtor']:
-    <form action="/avtor/{{avtor[0]}}" method="POST">
-         <p><input type="submit" class="btn btn-link" value="{{avtor[1]}}">
-        </p>
-    </form>
-    %end
-</div>
+% if knjiga['avtor'] != set():
+    <div class="row">
+        %for avtor in knjiga['avtor']:
+        <form action="/avtor/{{avtor[0]}}" method="POST">
+             <p><input type="submit" class="btn btn-link" value="{{avtor[1]}}">
+            </p>
+        </form>
+        %end
+    </div>
+% end
 
-<div class="row">
-    %for serija in knjiga['serija']:
-    <form action="/zbirka/{{serija[0]}}" method="POST">
-         <p><input type="submit" class="btn btn-link" value="{{serija[1]}} #{{serija[2]}}">
-        </p>
-    </form>
-    %end
-</div>
+% if knjiga['serija'] != set():
+    <div class="row">
+        %for serija in knjiga['serija']:
+        <form action="/zbirka/{{serija[0]}}" method="POST">
+             <p><input type="submit" class="btn btn-link" value="{{serija[1]}} #{{serija[2]}}">
+            </p>
+        </form>
+        %end
+    </div>
+% end
 
+% if knjiga['opis'] is not None:
 <div class="row">
     {{knjiga['opis']}}
 </div>
+% end
 
-<div class="row">
-    Dolžina knjige: {{knjiga['dolzina']}} strani
-</div>
-% if {{knjiga['isbn']}} != Not
-<div class="row">
-    ISBN13: {{knjiga['isbn']}}
-</div>
+% if knjiga['dolzina'] is not None:
+    <div class="row">
+        Dolžina knjige: {{knjiga['dolzina']}} strani
+    </div>
+% end
 
+% if knjiga['isbn'] is not None:
+    <div class="row">
+        ISBN13: {{knjiga['isbn']}}
+    </div>
+%end
+
+% if knjiga['leto'] is not None:
 <div class="row">
     Leto izdaje: {{knjiga['leto']}}
 </div>
+% end
 
+% if knjiga['zanri'] != set():
 <div class="row">
     Žanri:
     %for zanr in knjiga['zanri']:
@@ -65,7 +78,9 @@
     </form>
     %end
 </div>
+%end
 
+% if knjiga['zanri'] != set():
 <div class="row">
     Ključne besede:
     %for kljucna_beseda in knjiga['kljucna_beseda']:
@@ -75,3 +90,4 @@
     </form>
     %end
 </div>
+% end

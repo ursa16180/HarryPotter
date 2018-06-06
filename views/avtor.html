@@ -5,20 +5,25 @@
     <div class="col">
         <b>{{avtor[1]}}</b>
         <br/>Povprečna ocena: {{avtor[2]}}
-        <br/>Datum rojstva: {{avtor[3]}}
-        <br/>Kraj rojstva: {{avtor[4]}}
+        % if avtor[3] is not None:
+            <br/>Datum rojstva: {{avtor[3]}}
+        % end
+        % if avtor[4] is not None:
+            <br/>Kraj rojstva: {{avtor[4]}}
+        % end
     </div>
-
-    <div class="col-sm">
-        <div class="btn-group-vertical">
-            Avtorjevi žanri:
-            %for zanr in zanriAvtorja:
-                <form action="/zanr/{{zanr[0]}}" method="POST">
-                    <input type="submit" class="btn btn-link" value="{{zanr[0]}}">
-                </form>
-            %end
+    % if zanriAvtorja != []:
+        <div class="col-sm">
+            <div class="btn-group-vertical">
+                Avtorjevi žanri:
+                %for zanr in zanriAvtorja:
+                    <form action="/zanr/{{zanr[0]}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{zanr[0]}}">
+                    </form>
+                %end
+            </div>
         </div>
-    </div>
+    % end
 </div>
 
 <div class="row">

@@ -4,11 +4,13 @@
 <div class="row">
     <b>{{zanr[0]}}</b>
 
-    <br/><br/>
-
+    <br/>
+</div>
+% if zanr[1] is not None:
+<div class="row">
     {{zanr[1]}}
 </div>
-
+% end
 <div class="row">
     <div class="btn-group-vertical">
         <br/>

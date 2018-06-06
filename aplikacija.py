@@ -24,7 +24,6 @@ def static(filename):
 @get('/')
 def index():
     cur.execute("SELECT id, naslov, dolzina FROM knjiga ORDER BY naslov LIMIT 20")
-    # TODO: Tole dela, ampak izjemno počasi. Al sm pa samo jst mela v tistem trenutku slab internet :)
     return template('tabela_knjig.html', knjige=cur, vseKljucne=vseKljucne, zanri=vsiZanri)
 
 
