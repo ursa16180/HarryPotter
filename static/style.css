@@ -2,13 +2,27 @@ tr {
     color: teal;
 }
 
-text-sredina{
-    text-align: center!important;
+.text-sredina{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
 }
 
-label{
-    word-wrap: break-word;
-    display: block;
-    padding-top: 5px;
+.blocks .btn-basic
+{margin: 5px;
 }
+
+.btn-group-vertical .btn-basic
+{margin: 2px;
+white-space: normal;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+

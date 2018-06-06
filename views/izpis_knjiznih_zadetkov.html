@@ -1,11 +1,30 @@
 %rebase('osnova.html', naslov='Izpis knjig')
 
 
+<div class="row px-4">
+    Vašim parametrom
+    %if len(knjige)%100 == 1:
+    ustreza {{len(knjige)}} knjiga.
+    %end
+    %if len(knjige)%100 == 2:
+    ustrezata {{len(knjige)}} knjigi.
+    %end
+    %if len(knjige)%100 in {3,4}:
+    ustrezajo {{len(knjige)}} knjige.
+    %end
+    %if len(knjige)%100 not in {1,2,3,4}:
+    ustreza {{len(knjige)}} knjig.
+    %end
+
+
+
+</div>
+<hr />
 %for knjiga in knjige:
 
-<div class="row">
+<div class="row px-4">
     <div class="btn-group-vertical">
-    <br/>
+    <!--<br/>-->
         <form action="/knjiga/{{knjiga['id']}}" method="POST">
             <b><input type="submit" class="btn btn-basic" value="{{knjiga['naslov']}}"></b>
 
@@ -22,9 +41,12 @@
             <p><input type="submit" class="btn btn-link" value="{{zanr}}">
             </p>
         </form>
+
         %end
         </div>
-    <br/>
+
+    <!--<br/>-->
     </div>
 </div>
+<hr />
 %end

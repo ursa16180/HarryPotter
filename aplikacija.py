@@ -31,7 +31,7 @@ def index():
 @post('/isci')
 def iskanje_get():
     kljucne = request.POST.getall('kljucne_besede')
-    print(kljucne)
+    #print(kljucne)
     if request.forms.get('dolzinaInput') is None:
         dolzina = 0
     else:
@@ -71,7 +71,7 @@ def iskanje_get():
     niz += " JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige JOIN avtor ON avtor_knjige.id_avtorja = avtor.id"
     # ~~~~~~~~~~~~~~Tukaj se doda pogoj o dolžini knjige
     niz += " WHERE dolzina>=%s ORDER BY knjiga.id, avtor.id" % dolzina
-    print(niz)
+    #print(niz)
     cur.execute(niz)
     vse_vrstice = cur.fetchall()
     if vse_vrstice == []:
@@ -175,7 +175,7 @@ def kazalo_avtorja():
         avtorji_na_crko.sort()
     avtorji = list(urejeni_avtorji.items())
     avtorji.sort()
-    print(avtorji)
+    #print(avtorji)
     return template('kazalo_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri, avtorji=avtorji)
 
 
@@ -184,29 +184,7 @@ def kazalo_zanra():
     cur.execute("""SELECT ime_zanra FROM zanr""")
     vsi_zanri_iz_baze = cur.fetchall()
     return template('kazalo_zanrov.html', vseKljucne=vseKljucne, zanri=vsiZanri, zanri_kazalo=vsi_zanri_iz_baze)
-# @get('/transakcije/:x/')
-# def transakcije(x):
-#     cur.execute("SELECT * FROM transakcija WHERE znesek > %s ORDER BY znesek, id", [int(x)])
-#     return template('transakcije.html', x=x, transakcije=cur)
-#
-#
-# @get('/dodaj_transakcijo')
-# def dodaj_transakcijo():
-#     return template('dodaj_transakcijo.html', znesek='', racun='', opis='', napaka=None)
-#
-#
-# @post('/dodaj_transakcijo')
-# def dodaj_transakcijo_post():
-#     znesek = request.forms.znesek
-#     racun = request.forms.racun
-#     opis = request.forms.opis
-#     try:
-#         cur.execute("INSERT INTO transakcija (znesek, racun, opis) VALUES (%s, %s, %s)",
-#                     (znesek, racun, opis))
-#     except Exception as ex:
-#         return template('dodaj_transakcijo.html', znesek=znesek, racun=racun, opis=opis,
-#                         napaka='Zgodila se je napaka: %s' % ex)
-#     redirect("/")
+
 
 ######################################################################
 # Glavni program
