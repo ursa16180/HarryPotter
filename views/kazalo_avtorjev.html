@@ -1,0 +1,67 @@
+%rebase('osnova.html', naslov='Kazalo avtorjev')
+
+
+<div class="row">
+    <div class="col">
+        <div class="btn-group-vertical">
+            <br/>
+            % for (crka1, ostalo) in avtorji[:10]:
+                <button class="btn btn-basic" type="button" data-toggle="collapse" data-target=#{{crka1}}
+                        aria-expanded="true" aria-controls={{crka1}}>
+                    {{crka1}}
+                </button>
+                <div class="collapse" id="{{crka1}}">
+                    <div class="card card-body">
+                        % for (priimek, avtor) in ostalo:
+                            <form action="/avtor/{{avtor[0]}}" method="POST">
+                                <b><input type="submit" class="btn btn-basic" value="{{avtor[1]}}"></b>
+                            </form>
+                        % end
+                    </div>
+                </div>
+            %end
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="btn-group-vertical">
+            <br/>
+            % for (crka2, ostalo) in avtorji[10:20]:
+                <button class="btn btn-basic" type="button" data-toggle="collapse" data-target=#{{crka2}}
+                        aria-expanded="true" aria-controls={{crka2}}>
+                    {{crka2}}
+                </button>
+                <div class="collapse" id="{{crka2}}">
+                    <div class="card card-body">
+                        % for (priimek, avtor) in ostalo:
+                            <form action="/avtor/{{avtor[0]}}" method="POST">
+                                <b><input type="submit" class="btn btn-basic" value="{{avtor[1]}}"></b>
+                            </form>
+                        % end
+                    </div>
+                </div>
+            %end
+        </div>
+    </div>
+    <div class="col">
+        <div class="btn-group-vertical">
+            <br/>
+            % for (crka3, ostalo) in avtorji[20:]:
+                <button class="btn btn-basic" type="button" data-toggle="collapse" data-target=#{{crka3}}
+                        aria-expanded="true" aria-controls={{crka3}}>
+                    {{crka3}}
+                </button>
+                <div class="collapse" id="{{crka3}}">
+                    <div class="card card-body">
+                        % for (priimek, avtor) in ostalo:
+                            <form action="/avtor/{{avtor[0]}}" method="POST">
+                                <b><input type="submit" class="btn btn-basic" value="{{avtor[1]}}"></b>
+                            </form>
+                        % end
+                    </div>
+                </div>
+            %end
+        </div>
+    </div>
+</div>
+

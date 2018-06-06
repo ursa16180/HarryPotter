@@ -1,0 +1,13 @@
+%rebase('osnova.html', naslov='Kazalo žanrov')
+
+
+<div class="row">
+   <div class="btn-group-vertical">
+        <br/>
+        % for zanr in zanri_kazalo:
+            <form action="/zanr/{{zanr[0]}}" method="POST">
+                 <b><input type="submit" class="btn btn-basic" value="{{zanr[0]}}"></b>
+            </form>
+       %end
+   </div>
+</div>
