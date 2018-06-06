@@ -15,6 +15,7 @@ psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo pro
 # odkomentiraj, če želiš sporočila o napakah
 debug(True)
 
+
 @get('/static/<filename:path>')
 def static(filename):
     return static_file(filename, root='static')
@@ -37,12 +38,12 @@ def iskanje_get():
 
     # ~~~~~~~~~~~~~~Če so izbrane ključne besede, jih doda
     if kljucne == []:
-        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.ime, zanr FROM knjiga"
+        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr FROM knjiga"
     else:  # TODO: išči po ključnih besedah - ni lepo ampak mislim da dela
         vmesni_niz = " AND ".join(
             'EXISTS (SELECT * FROM knjiga_kljucne_besede WHERE kljucna_beseda = \'%s\' AND knjiga_kljucne_besede.id_knjige=knjiga1.id_knjige)' % (
                 kljucna_beseda) for kljucna_beseda in kljucne)
-        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.ime, zanr FROM knjiga JOIN (SELECT DISTINCT * FROM knjiga_kljucne_besede knjiga1 WHERE " + vmesni_niz + ") pomozna_tabela ON knjiga.id=pomozna_tabela.id_knjige"
+        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr FROM knjiga JOIN (SELECT DISTINCT * FROM knjiga_kljucne_besede knjiga1 WHERE " + vmesni_niz + ") pomozna_tabela ON knjiga.id=pomozna_tabela.id_knjige"
 
     # ~~~~~~~~~~~~~~če so izbrani zanri, jih doda
     if zanri != []:
@@ -64,8 +65,8 @@ def iskanje_get():
     # ~~~~~~~~~~~~~~~Tukaj se doda avtor
     niz += " JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige JOIN avtor ON avtor_knjige.id_avtorja = avtor.id"
     # ~~~~~~~~~~~~~~Tukaj se doda pogoj o dolžini knjige
-    niz += " WHERE dolzina>=%s ORDER BY knjiga.id, avtor.ime" % dolzina
-
+    niz += " WHERE dolzina>=%s ORDER BY knjiga.id, avtor.id" % dolzina
+    print(niz)
     cur.execute(niz)
     vse_vrstice = cur.fetchall()
     slovar_slovarjev_knjig = {}
@@ -74,8 +75,8 @@ def iskanje_get():
         id = vrstica[0]
         trenutna_knjiga = slovar_slovarjev_knjig.get(id, {'id': id, 'naslov': None, 'avtorji': set(), 'zanri': set()})
         trenutna_knjiga['naslov'] = vrstica[1]
-        trenutna_knjiga['avtorji'].add(vrstica[2])
-        trenutna_knjiga['zanri'].add(vrstica[3])
+        trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
+        trenutna_knjiga['zanri'].add(vrstica[4])
         slovar_slovarjev_knjig[id] = trenutna_knjiga
     return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
                     knjige=slovar_slovarjev_knjig.values())
@@ -84,25 +85,53 @@ def iskanje_get():
 @post('/avtor/:x')
 def avtor(x):
     print(x)
-    cur.execute("SELECT * FROM avtor WHERE ime='%s'"%x)
+    cur.execute("SELECT * FROM avtor WHERE id='%s'" % x)
     return template('avtor.html', vseKljucne=vseKljucne, zanri=vsiZanri,
                     avtor=cur.fetchone())
+
 
 @post('/zanr/:x')
 def zanr(x):
     print(x)
-    cur.execute("SELECT * FROM zanr WHERE ime_zanra='%s'"%x)
+    cur.execute("SELECT * FROM zanr WHERE ime_zanra='%s'" % x)
     return template('zanr.html', vseKljucne=vseKljucne, zanri=vsiZanri,
                     zanr=cur.fetchone())
+
 
 @post('/knjiga/:x')
 def knjiga(x):
     print(x)
-    cur.execute("SELECT * FROM knjiga WHERE naslov='%s'"%x)
+    cur.execute("""SELECT knjiga.id, isbn, naslov, dolzina, knjiga.povprecna_ocena, stevilo_ocen, leto, knjiga.opis, 
+    avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra FROM knjiga
+LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
+LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
+LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
+LEFT JOIN serija ON serija.id=del_serije.id_serije
+LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
+LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
+LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
+WHERE knjiga.id ='%s'""" % x)
+    vseVrstice = cur.fetchall()
+    knjiga = {'id':vseVrstice[0][0],
+              'isbn':vseVrstice[0][1],
+              'naslov':vseVrstice[0][2],
+              'dolzina':vseVrstice[0][3],
+              'povprecna_ocena':vseVrstice[0][4],
+              'stevilo_ocen':vseVrstice[0][5],
+              'leto':vseVrstice[0][6],
+              'opis':vseVrstice[0][7],
+              'avtor':set(),
+              'serija':set(),
+              'kljucna_beseda':set(),
+              'zanri':set()}
+    for vrstica in vseVrstice:
+        knjiga['avtor'].add((vrstica[8],vrstica[9]))
+        knjiga['serija'].add((vrstica[10],vrstica[11], vrstica[12]))
+        knjiga['kljucna_beseda'].add(vrstica[13])
+        knjiga['zanri'].add(vrstica[14])
+    print(knjiga)
     return template('knjiga.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                    knjiga=cur.fetchone())
-
-
+                    knjiga=knjiga)
 
 
 # @get('/transakcije/:x/')
@@ -137,7 +166,7 @@ conn = psycopg2.connect(database=auth.db, host=auth.host, user=auth.user, passwo
 # conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT) # onemogočimo transakcije
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-#~~~~~~~~~~~~~~~~~~~~~Pridobi 50 najpogostejših žanrov
+# ~~~~~~~~~~~~~~~~~~~~~Pridobi 50 najpogostejših žanrov
 cur.execute("""SELECT sum(stevilo) AS stevilo_skupaj, ime_zanra FROM (
  SELECT count(*) AS stevilo, ime_zanra FROM zanr AS zanr1
  JOIN zanr_knjige ON zanr1.ime_zanra=zanr_knjige.zanr
@@ -170,4 +199,3 @@ for vrstica in kljucne_iz_baze:
 
 # poženemo strežnik na portu 8080, glej http://localhost:8080/
 run(host='localhost', port=8080, reloader=True)
-
