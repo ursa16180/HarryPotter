@@ -1,7 +1,77 @@
 %rebase('osnova.html', naslov='Knjiga')
 
+<!--{'id':vseVrstice[0][0],-->
+              <!--'isbn':vseVrstice[0][1],-->
+              <!--'naslov':vseVrstice[0][2],-->
+              <!--'dolzina':vseVrstice[0][3],-->
+              <!--'povprecna_ocena':vseVrstice[0][4],-->
+              <!--'stevilo_ocen':vseVrstice[0][5],-->
+              <!--'leto':vseVrstice[0][6],-->
+              <!--'opis':vseVrstice[0][7],-->
+              <!--'avtor':set(),-->
+              <!--'serija':set(),-->
+              <!--'kljucna_beseda':set()}-->
+
 
 <div class="row">
-    <p>{{knjiga['naslov']}}</p>
+    <div slass="col">
+    <b>{{knjiga['naslov']}}</b>
+    </div>
+    <div class="col-sm">
+        Povprečna ocena: {{knjiga['povprecna_ocena']}} (Število ocen: {{knjiga['stevilo_ocen']}})
+    </div>
+    </div>
 
+<div class="row">
+    %for avtor in knjiga['avtor']:
+    <form action="/avtor/{{avtor[0]}}" method="POST">
+         <p><input type="submit" class="btn btn-link" value="{{avtor[1]}}">
+        </p>
+    </form>
+    %end
+</div>
+
+<div class="row">
+    %for serija in knjiga['serija']:
+    <form action="/zbirka/{{serija[0]}}" method="POST">
+         <p><input type="submit" class="btn btn-link" value="{{serija[1]}} #{{serija[2]}}">
+        </p>
+    </form>
+    %end
+</div>
+
+<div class="row">
+    {{knjiga['opis']}}
+</div>
+
+<div class="row">
+    Dolžina knjige: {{knjiga['dolzina']}} strani
+</div>
+
+<div class="row">
+    ISBN13: {{knjiga['isbn']}}
+</div>
+
+<div class="row">
+    Leto izdaje: {{knjiga['leto']}}
+</div>
+
+<div class="row">
+    Žanri:
+    %for zanr in knjiga['zanri']:
+    <form action="/zanr/{{zanr}}" method="POST">
+         <p><input type="submit" class="btn btn-link" value="{{zanr}}">
+        </p>
+    </form>
+    %end
+</div>
+
+<div class="row">
+    Ključne besede:
+    %for kljucna_beseda in knjiga['kljucna_beseda']:
+    <form action="/isci" method="POST">
+         <p><input type="submit" class="btn btn-link" value="{{kljucna_beseda}}">
+        </p>
+    </form>
+    %end
 </div>
