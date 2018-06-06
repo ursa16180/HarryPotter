@@ -10,7 +10,6 @@ import auth_public as auth
 # uvozimo psycopg2
 import psycopg2, psycopg2.extensions, psycopg2.extras
 
-import jinja2
 
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo problemov s šumniki
 
@@ -74,24 +73,32 @@ def iskanje_get():
 
     cur.execute(niz)
     vse_vrstice = cur.fetchall()
-    idiji_knjig = set()
-    seznam_slovarjev_knjig = []
-    for vrstica in vse_vrstice:  # TODO to dela prepočasi!
-        # print(vrstica)
-        idiji_knjig.add(vrstica[0])
-    for id in list(idiji_knjig):
-        slovar = {'id': id, 'naslov': None, 'avtorji': set(), 'zanri': set()}
-        for vrstica in vse_vrstice:
-            if vrstica[0] == id:
-                slovar['naslov'] = vrstica[1]
-                slovar['avtorji'].add(vrstica[2])
-                slovar['zanri'].add(vrstica[3])
-        slovar['avtorji'] = list(slovar['avtorji'])
-        slovar['zanri'] = list(slovar['zanri'])
-        seznam_slovarjev_knjig.append(slovar)
+    slovar_slovarjev_knjig = {}
+
+    for vrstica in vse_vrstice:
+        id = vrstica[0]
+        trenutna_knjiga = slovar_slovarjev_knjig.get(id, {'id': id, 'naslov': None, 'avtorji': set(), 'zanri': set()})
+        trenutna_knjiga['naslov'] = vrstica[1]
+        trenutna_knjiga['avtorji'].add(vrstica[2])
+        trenutna_knjiga['zanri'].add(vrstica[3])
+        slovar_slovarjev_knjig[id] = trenutna_knjiga
+
+    # for vrstica in vse_vrstice:  # TODO to dela prepočasi!
+    #     # print(vrstica)
+    #     idiji_knjig.add(vrstica[0])
+    # for id in list(idiji_knjig):
+    #     slovar = {'id': id, 'naslov': None, 'avtorji': set(), 'zanri': set()}
+    #     for vrstica in vse_vrstice:
+    #         if vrstica[0] == id:
+    #             slovar['naslov'] = vrstica[1]
+    #             slovar['avtorji'].add(vrstica[2])
+    #             slovar['zanri'].add(vrstica[3])
+    #     slovar['avtorji'] = list(slovar['avtorji'])
+    #     slovar['zanri'] = list(slovar['zanri'])
+    #     seznam_slovarjev_knjig.append(slovar)
 
     return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                    knjige=seznam_slovarjev_knjig)  # , dolzina=dolzina, kljucne=kljucne, zanri=zanri)
+                    knjige=slovar_slovarjev_knjig.values())  # , dolzina=dolzina, kljucne=kljucne, zanri=zanri)
 
 
 @post('/avtor/:x')
