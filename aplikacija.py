@@ -30,9 +30,14 @@ def index():
 
 @post('/isci')
 def iskanje_get():
-    dolzina = int(request.forms.get('dolzinaInput'))
-    # print(request.POST.getall('kljucne_besede'))
     kljucne = request.POST.getall('kljucne_besede')
+    print(kljucne)
+    if request.forms.get('dolzinaInput') is None:
+        dolzina = 0
+    else:
+        dolzina = int(request.forms.get('dolzinaInput'))
+    # print(request.POST.getall('kljucne_besede'))
+
     zanri = request.POST.getall('zanri')
     jeDelZbirke = request.forms.get('jeDelZbirke')
 
@@ -84,23 +89,44 @@ def iskanje_get():
 
 @post('/avtor/:x')
 def avtor(x):
-    print(x)
-    cur.execute("SELECT * FROM avtor WHERE id='%s'" % x)
+    #print(x)
+    cur.execute("SELECT id, ime, povprecna_ocena, datum_rojstva, kraj_rojstva FROM avtor WHERE id='%s'" % x)
+    avtor = cur.fetchone()
+    cur.execute("SELECT zanr FROM avtorjev_zanr WHERE id = '%s'" % x)
+    zanriAvtorja=cur.fetchall()
+    cur.execute("""SELECT knjiga.id, knjiga.naslov FROM avtor_knjige LEFT JOIN knjiga ON knjiga.id = avtor_knjige.id_knjige WHERE id_avtorja ='%s'""" % x)
+    knjige = cur.fetchall()
+    #print(avtor, zanriAvtorja, knjige)
     return template('avtor.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                    avtor=cur.fetchone())
+                    avtor=avtor, knjige=knjige, zanriAvtorja=zanriAvtorja)
 
 
 @post('/zanr/:x')
 def zanr(x):
-    print(x)
-    cur.execute("SELECT * FROM zanr WHERE ime_zanra='%s'" % x)
+    #print(x)
+    cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra='%s'" % x)
+    zanr = cur.fetchone()
+    cur.execute("SELECT id, naslov FROM knjiga JOIN zanr_knjige on knjiga.id = zanr_knjige.id_knjige WHERE zanr='%s'"%x)
+    knjige = cur.fetchall()
     return template('zanr.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                    zanr=cur.fetchone())
+                    zanr=zanr, knjige=knjige)
+
+@post('/zbirka/:x')
+def zbirka(x):
+    print(x)
+    cur.execute("""SELECT serija.ime, del_serije.zaporedna_stevilka_serije, knjiga.id, knjiga.naslov FROM serija
+JOIN del_serije ON del_serije.id_serije=serija.id
+JOIN knjiga ON del_serije.id_knjige = knjiga.id
+WHERE serija.id = '%s'
+ORDER BY zaporedna_stevilka_serije""" % x)
+    #print(cur.fetchall())
+    return template('zbirka.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+                    knjige=cur.fetchall())
 
 
 @post('/knjiga/:x')
 def knjiga(x):
-    print(x)
+    #print(x)
     cur.execute("""SELECT knjiga.id, isbn, naslov, dolzina, knjiga.povprecna_ocena, stevilo_ocen, leto, knjiga.opis, 
     avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra FROM knjiga
 LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
@@ -129,7 +155,7 @@ WHERE knjiga.id ='%s'""" % x)
         knjiga['serija'].add((vrstica[10],vrstica[11], vrstica[12]))
         knjiga['kljucna_beseda'].add(vrstica[13])
         knjiga['zanri'].add(vrstica[14])
-    print(knjiga)
+    #print(knjiga)
     return template('knjiga.html', vseKljucne=vseKljucne, zanri=vsiZanri,
                     knjiga=knjiga)
 
