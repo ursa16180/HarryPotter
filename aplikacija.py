@@ -10,16 +10,10 @@ import auth_public as auth
 # uvozimo psycopg2
 import psycopg2, psycopg2.extensions, psycopg2.extras
 
-import jinja2
-
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo problemov s šumniki
 
 # odkomentiraj, če želiš sporočila o napakah
 debug(True)
-
-vseKljucne = {'Magija': ['Magic', 'Flying'], 'Bitja': ['Centaur', 'Troll']}
-vsiZanri = {'Childrens', 'Fantasy', 'Young Adult'}
-
 
 @get('/static/<filename:path>')
 def static(filename):
@@ -86,7 +80,7 @@ def iskanje_get():
                 slovar['naslov'] = vrstica[1]
                 slovar['avtorji'].add(vrstica[2])
                 slovar['zanri'].add(vrstica[3])
-        slovar['avtorji'] = list(slovar['avtorji'])
+        slovar['avtorji'] = list(slovar['avtorji']) #TODO ali množica ni kul?
         slovar['zanri'] = list(slovar['zanri'])
         seznam_slovarjev_knjig.append(slovar)
 
@@ -150,5 +144,28 @@ conn = psycopg2.connect(database=auth.db, host=auth.host, user=auth.user, passwo
 # conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT) # onemogočimo transakcije
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
+#~~~~~~~~~~~~~~~~~~~~~Pridobi 50 najpogostejših žanrov
+cur.execute("""SELECT sum(stevilo) AS stevilo_skupaj, ime_zanra FROM (
+ SELECT count(*) AS stevilo, ime_zanra FROM zanr AS zanr1
+ JOIN zanr_knjige ON zanr1.ime_zanra=zanr_knjige.zanr
+ GROUP BY ime_zanra
+ UNION ALL
+ SELECT count(*) AS stevilo, ime_zanra FROM zanr AS zanr2
+ JOIN avtorjev_zanr ON zanr2.ime_zanra=avtorjev_zanr.zanr
+ GROUP BY ime_zanra
+) AS tabela
+GROUP BY ime_zanra
+ORDER BY stevilo_skupaj DESC
+LIMIT 50""")
+
+klucni2=cur.fetchall()
+vsiZanri=[]
+for vrstica in klucni2:
+    vsiZanri.append(vrstica[1])
+vsiZanri.sort()
+vseKljucne = {'Magija': ['Magic', 'Flying'], 'Bitja': ['Centaur', 'Troll']}
+#vsiZanri = {'Childrens', 'Fantasy', 'Young Adult'}
+
 # poženemo strežnik na portu 8080, glej http://localhost:8080/
 run(host='localhost', port=8080, reloader=True)
+
