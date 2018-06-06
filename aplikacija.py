@@ -133,7 +133,28 @@ WHERE knjiga.id ='%s'""" % x)
     return template('knjiga.html', vseKljucne=vseKljucne, zanri=vsiZanri,
                     knjiga=knjiga)
 
+@post('/kazaloAvtorja')
+def kazalo_avtorja():
+    cur.execute("""SELECT id, ime FROM avtor""")
+    neurejeni_avtorji = cur.fetchall()
+    urejeni_avtorji = {}
+    for avtor in neurejeni_avtorji:
+        priimek = avtor[1].split(' ')[-1]
+        crka = priimek[0]
+        urejeni_avtorji[crka] = urejeni_avtorji.get(crka, []) + [(priimek, avtor)]
+    for avtorji_na_crko in urejeni_avtorji.values():
+        avtorji_na_crko.sort()
+    avtorji = list(urejeni_avtorji.items())
+    avtorji.sort()
+    print(avtorji)
+    return template('kazalo_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri, avtorji=avtorji)
 
+
+@post('/kazaloZanra')
+def kazalo_zanra():
+    cur.execute("""SELECT ime_zanra FROM zanr""")
+    vsi_zanri_iz_baze = cur.fetchall()
+    return template('kazalo_zanrov.html', vseKljucne=vseKljucne, zanri=vsiZanri, zanri_kazalo=vsi_zanri_iz_baze)
 # @get('/transakcije/:x/')
 # def transakcije(x):
 #     cur.execute("SELECT * FROM transakcija WHERE znesek > %s ORDER BY znesek, id", [int(x)])
