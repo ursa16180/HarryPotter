@@ -2,7 +2,13 @@ tr {
     color: teal;
 }
 
+text-sredina{
+    text-align: center!important;
+    width: 100%;
+}
+
 label{
+    word-wrap: break-word;
     display: block;
     padding-top: 5px;
 }
