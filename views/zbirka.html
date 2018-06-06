@@ -1,0 +1,21 @@
+%rebase('osnova.html', naslov='Zbirka')
+
+
+<div class="row">
+    <b>{{knjige[0][0]}}</b>
+
+</div>
+<div class="row">
+    <div class="btn-group-vertical">
+        <br/>
+            V zbirki so knjige:
+            %for knjiga in knjige:
+                <form action="/knjiga/{{knjiga[2]}}" method="POST">
+                    <input type="submit" class="btn btn-link" value="{{knjiga[3]}} ({{knjiga[0]}} #{{knjiga[1]}})">
+
+                </form>
+            %end
+    </div>
+
+
+</div>

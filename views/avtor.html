@@ -2,6 +2,33 @@
 
 
 <div class="row">
-    <p>{{avtor['ime']}}</p>
+    <div class="col">
+        <b>{{avtor[1]}}</b>
+        <br/>Povprečna ocena: {{avtor[2]}}
+        <br/>Datum rojstva: {{avtor[3]}}
+        <br/>Kraj rojstva: {{avtor[4]}}
+    </div>
 
+    <div class="col-sm">
+        <div class="btn-group-vertical">
+            Avtorjevi žanri:
+            %for zanr in zanriAvtorja:
+                <form action="/zanr/{{zanr[0]}}" method="POST">
+                    <input type="submit" class="btn btn-link" value="{{zanr[0]}}">
+                </form>
+            %end
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="btn-group">
+            Knjige:
+            %for knjiga in knjige:
+                <form action="/knjiga/{{knjiga[0]}}" method="POST">
+                    <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
+
+                </form>
+            %end
+    </div>
 </div>
