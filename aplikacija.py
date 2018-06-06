@@ -25,7 +25,7 @@ def static(filename):
 def index():
     cur.execute("SELECT id, naslov, dolzina FROM knjiga ORDER BY naslov LIMIT 20")
     # TODO: Tole dela, ampak izjemno počasi. Al sm pa samo jst mela v tistem trenutku slab internet :)
-    return template('tabela_knjig.html', knjige=cur, vseKljucne=vseKljucne, zanri=vsiZanri)
+    return template('zacetna_stran.html', knjige=cur, vseKljucne=vseKljucne, zanri=vsiZanri)
 
 
 @post('/isci')
@@ -74,17 +74,20 @@ def iskanje_get():
     print(niz)
     cur.execute(niz)
     vse_vrstice = cur.fetchall()
-    slovar_slovarjev_knjig = {}
+    if vse_vrstice == []:
+        return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri)
+    else:
+        slovar_slovarjev_knjig = {}
 
-    for vrstica in vse_vrstice:
-        id = vrstica[0]
-        trenutna_knjiga = slovar_slovarjev_knjig.get(id, {'id': id, 'naslov': None, 'avtorji': set(), 'zanri': set()})
-        trenutna_knjiga['naslov'] = vrstica[1]
-        trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
-        trenutna_knjiga['zanri'].add(vrstica[4])
-        slovar_slovarjev_knjig[id] = trenutna_knjiga
-    return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                    knjige=slovar_slovarjev_knjig.values())
+        for vrstica in vse_vrstice:
+            id = vrstica[0]
+            trenutna_knjiga = slovar_slovarjev_knjig.get(id, {'id': id, 'naslov': None, 'avtorji': set(), 'zanri': set()})
+            trenutna_knjiga['naslov'] = vrstica[1]
+            trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
+            trenutna_knjiga['zanri'].add(vrstica[4])
+            slovar_slovarjev_knjig[id] = trenutna_knjiga
+        return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+                        knjige=slovar_slovarjev_knjig.values())
 
 
 @post('/avtor/:x')
