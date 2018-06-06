@@ -151,13 +151,22 @@ GROUP BY ime_zanra
 ORDER BY stevilo_skupaj DESC
 LIMIT 50""")
 
-klucni2=cur.fetchall()
+zanri_iz_baze=cur.fetchall()
 vsiZanri=[]
-for vrstica in klucni2:
+for vrstica in zanri_iz_baze:
     vsiZanri.append(vrstica[1])
 vsiZanri.sort()
-vseKljucne = {'Magija': ['Magic', 'Flying'], 'Bitja': ['Centaur', 'Troll']}
-#vsiZanri = {'Childrens', 'Fantasy', 'Young Adult'}
+
+#~~~~~~~~~~~~~~~~~~~~~Pridobi vse skupine ključnih besed
+#vseKljucne = {'Magija': ['Magic', 'Flying'], 'Bitja': ['Centaur', 'Troll']}
+cur.execute("""SELECT skupina, pojem FROM kljucna_beseda""")
+kljucne_iz_baze = cur.fetchall()
+vseKljucne = {}
+for vrstica in kljucne_iz_baze:
+    skupina = vrstica[0]
+    #pojmi = vseKljucne.get(skupina, list())
+    #print(pojmi, vrstica)
+    vseKljucne[skupina] = vseKljucne.get(skupina, list()) + [vrstica[1]]
 
 # poženemo strežnik na portu 8080, glej http://localhost:8080/
 run(host='localhost', port=8080, reloader=True)

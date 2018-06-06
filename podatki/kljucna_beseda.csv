@@ -24,7 +24,7 @@ Demigod;Creatures
 Alien;Creatures
 Werewolf;Creatures
 Unicorn;Creatures
-Rat;Creatures
+Rat ;Creatures
 Owl;Creatures
 Sphinx;Creatures
 Troll;Creatures
@@ -96,7 +96,7 @@ Elitism;Values
 Pure Blood;Values
 Choice;Values
 Imagination;Values
-eternal life;Values
+Eternal life;Values
 Family;Values
 Goblet;Object
 Potion;Object
@@ -105,7 +105,7 @@ Flying broom;Object
 Train;Object
 Socks;Object
 Mirror;Object
-Hat;Object
+Hat ;Object
 Letter;Object
 Sword;Object
 Chess;Object
@@ -162,28 +162,28 @@ Save;Mission
 War;Mission
 World;Place
 Find;Mission
-Symbol;TODO
-Eternal;TODO
-Eternity;TODO
-Life;TODO
-Time;TODO
-Lost;TODO
-Learn;TODO
-Dead;TODO
-Death;TODO
-Live;TODO
-Help;TODO
-Home;TODO
-Fantasy;TODO
-Different;TODO
-Truth;TODO
-Lies;TODO
-Inherit;TODO
-Special;TODO
-Hope;TODO
-Peculiar;TODO
-Army;TODO
-Ancient;TODO
-Sacrifice;TODO
-Escape;TODO
-Rescue;TODO
+Symbol;Spiritual
+Eternal; Values
+Eternity;Time
+Life;Event
+Time;Time
+Lost;Place
+Learn;Values
+Dead;Spiritual
+Death;Spiritual
+Live;Mission
+Help;Mission
+Home;Place
+Fantasy;Values
+Different;Values
+Truth;Values
+Lies;Values
+Inherit;Event
+Special;Values
+Hope;Values
+Peculiar;Values
+Army;Humans
+Ancient;Time
+Sacrifice;Spiritual
+Escape;Event
+Rescue;Event

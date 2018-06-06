@@ -177,7 +177,7 @@ id_knjige;kljucna_beseda
 231012;Magic
 231012;Imagination
 231012;Family
-231012;Hat
+231012;Hat 
 231012;Adventure
 231012;Secret
 231012;Destiny
@@ -284,7 +284,7 @@ id_knjige;kljucna_beseda
 16299991;Love
 16299991;Family
 16299991;Train
-16299991;Hat
+16299991;Hat 
 16299991;Sword
 16299991;Journey
 16299991;Dream
@@ -554,7 +554,7 @@ id_knjige;kljucna_beseda
 7507944;Magic
 7507944;Powers
 7507944;Power
-7507944;Hat
+7507944;Hat 
 7507944;Future
 7507944;Mission
 7507944;World
@@ -954,7 +954,7 @@ id_knjige;kljucna_beseda
 26831034;World
 26831034;Find
 26831034;Death
-2420340;Rat
+2420340;Rat 
 2420340;Prince
 2420340;Princess
 2420340;King
@@ -1020,11 +1020,11 @@ id_knjige;kljucna_beseda
 619891;Angel
 619891;Enemies
 619891;Love
-619891;Hat
+619891;Hat 
 619891;Hate
 619891;Help
 22045740;Dwarf
-22045740;Rat
+22045740;Rat 
 22045740;Friend
 22045740;Force
 22045740;Dark
@@ -1424,7 +1424,7 @@ id_knjige;kljucna_beseda
 21872574;Friend
 21872574;Magic
 21872574;Power
-21872574;Hat
+21872574;Hat 
 21872574;Secret
 21872574;Hate
 21872574;Travel
@@ -1498,13 +1498,13 @@ id_knjige;kljucna_beseda
 1819625;Train
 1819625;Scar
 35144326;Witch
-35144326;Rat
+35144326;Rat 
 35144326;Prince
 35144326;Immortal
 35144326;Dark
 35144326;Love
 35144326;Family
-35144326;Hat
+35144326;Hat 
 35144326;Hate
 35144326;Save
 17792558;Mother
@@ -1539,7 +1539,7 @@ id_knjige;kljucna_beseda
 18377623;Courage
 18377623;Love
 18377623;Family
-18377623;Hat
+18377623;Hat 
 18377623;Trouble
 18377623;Dream
 18377623;Nightmare
@@ -1594,7 +1594,7 @@ id_knjige;kljucna_beseda
 21839933;Evil
 21839933;Family
 21839933;Train
-21839933;Hat
+21839933;Hat 
 21839933;Journey
 21839933;Battle
 21839933;Future
@@ -2186,7 +2186,7 @@ id_knjige;kljucna_beseda
 8490112;Truth
 589979;Alien
 589979;Enemy
-589979;Hat
+589979;Hat 
 589979;Adventure
 589979;Dangerous
 589979;Hate
@@ -2414,7 +2414,7 @@ id_knjige;kljucna_beseda
 447937;Imagination
 447937;World
 447937;Fantasy
-32945774;Rat
+32945774;Rat 
 32945774;Test
 32945774;Survival
 32945774;Find
@@ -2425,7 +2425,7 @@ id_knjige;kljucna_beseda
 6054449;School
 6054449;Life
 6054449;Time
-26815493;Rat
+26815493;Rat 
 26815493;Friend
 26815493;Parent
 26815493;Child
@@ -2523,9 +2523,9 @@ id_knjige;kljucna_beseda
 201054;Death
 201054;Help
 703323;Dragon
-703323;Rat
+703323;Rat 
 703323;Mother
-703323;Hat
+703323;Hat 
 703323;Journey
 703323;Fate
 703323;Dangerous
@@ -2754,7 +2754,7 @@ id_knjige;kljucna_beseda
 36926788;Wisdom 
 36926788;Learn
 12180248;Castle
-12180248;Rat
+12180248;Rat 
 12180248;Prince
 12180248;Friend
 12180248;Magic
@@ -2861,7 +2861,7 @@ id_knjige;kljucna_beseda
 113436;Dark
 113436;Evil
 113436;Family
-113436;Hat
+113436;Hat 
 113436;Sword
 113436;Legend
 113436;Destiny
@@ -3316,7 +3316,7 @@ id_knjige;kljucna_beseda
 1675216;Different
 210250;Monster
 210250;Potion
-210250;Hat
+210250;Hat 
 210250;Journey
 210250;Dangerous
 210250;World
@@ -3356,7 +3356,7 @@ id_knjige;kljucna_beseda
 36593216;Quest
 36593216;World
 22553270;Witch
-22553270;Rat
+22553270;Rat 
 22553270;Fairy
 22553270;God
 22553270;Friend
@@ -3538,7 +3538,7 @@ id_knjige;kljucna_beseda
 2536134;Dead
 2536134;Help
 12067;Witch
-12067;Rat
+12067;Rat 
 12067;Angel
 12067;Demon
 12067;Evil
@@ -3595,7 +3595,7 @@ id_knjige;kljucna_beseda
 3236307;Live
 3236307;Truth
 3236307;Lies
-30634709;Rat
+30634709;Rat 
 30634709;Human
 30634709;Friend
 30634709;Enemy
@@ -3638,7 +3638,7 @@ id_knjige;kljucna_beseda
 147843;Death
 147843;Home
 147843;Lies
-262430;Rat
+262430;Rat 
 262430;Human
 262430;Father
 262430;Dark
@@ -3829,7 +3829,7 @@ id_knjige;kljucna_beseda
 21918977;World
 21918977;Learn
 10016013;Wizard
-10016013;Rat
+10016013;Rat 
 10016013;Magic
 10016013;Harry Potter
 10016013;Find
@@ -3846,7 +3846,7 @@ id_knjige;kljucna_beseda
 18723722;King
 18723722;Enemy
 18723722;Power
-18723722;Hat
+18723722;Hat 
 18723722;Learn
 50;Father
 50;Mother
@@ -3854,14 +3854,14 @@ id_knjige;kljucna_beseda
 50;Transform
 50;Force
 50;Courage
-50;Hat
+50;Hat 
 50;Secret
 50;Survival
 50;Find
 50;Learn
 50;Special
 23600009;Love
-23600009;Hat
+23600009;Hat 
 23600009;Dream
 23600009;World
 23600009;Live
@@ -3987,7 +3987,7 @@ id_knjige;kljucna_beseda
 5287473;Mother
 5287473;Spell
 5287473;Power
-5287473;Hat
+5287473;Hat 
 5287473;Secret
 5287473;Mysterious
 5287473;Hate
@@ -4072,7 +4072,7 @@ id_knjige;kljucna_beseda
 2164402;Friend
 2164402;Parent
 2164402;Teen
-2164402;Hat
+2164402;Hat 
 2164402;Hate
 34213424;Learn
 36266744;Love
@@ -4096,7 +4096,7 @@ id_knjige;kljucna_beseda
 6294;Find
 6294;Home
 6294;Lies
-35064610;Rat
+35064610;Rat 
 35064610;Angel
 35064610;Demon
 35064610;God
@@ -4241,7 +4241,7 @@ id_knjige;kljucna_beseda
 28194;Time
 28194;Learn
 28194;Fantasy
-187753;Rat
+187753;Rat 
 187753;Dark
 187753;Secret
 187753;Revenge
@@ -4340,7 +4340,7 @@ id_knjige;kljucna_beseda
 8710072;Fantasy
 8710072;Truth
 8710072;Lies
-28173857;Rat
+28173857;Rat 
 28173857;Human
 28173857;Magic
 28173857;Force
@@ -4468,7 +4468,7 @@ id_knjige;kljucna_beseda
 2399928;Transform
 2399928;Power
 2399928;Love
-2399928;Hat
+2399928;Hat 
 2399928;Hate
 2399928;Life
 22927854;Monster
@@ -4542,7 +4542,7 @@ id_knjige;kljucna_beseda
 162719;Intelligence
 162719;Escape
 36067816;Witch
-36067816;Rat
+36067816;Rat 
 36067816;Fairy
 36067816;Prince
 36067816;Princess
@@ -4905,7 +4905,7 @@ id_knjige;kljucna_beseda
 34567449;Home
 34567449;Fantasy
 12910472;Werewolf
-12910472;Rat
+12910472;Rat 
 12910472;Demon
 12910472;Friend
 12910472;Secret
@@ -5133,12 +5133,12 @@ id_knjige;kljucna_beseda
 36046817;Journey
 36046817;Myth
 36046817;Quest
-164719;Rat
+164719;Rat 
 164719;Demon
 164719;Dark
 164719;Love
 164719;Family
-164719;Hat
+164719;Hat 
 164719;Journey
 164719;Nightmare
 164719;Hate
@@ -5613,7 +5613,7 @@ id_knjige;kljucna_beseda
 12993856;Home
 61549;Child
 61549;Home
-9822;Rat
+9822;Rat 
 9822;Child
 9822;Family
 9822;Death
@@ -5636,7 +5636,7 @@ id_knjige;kljucna_beseda
 31546202;Transform
 31546202;Force
 31546202;Power
-31546202;Hat
+31546202;Hat 
 31546202;Fate
 31546202;Future
 31546202;War
@@ -5656,7 +5656,7 @@ id_knjige;kljucna_beseda
 797298;World
 13099652;School
 13099652;Wizard
-13099652;Rat
+13099652;Rat 
 13099652;King
 13099652;Magic
 13099652;Family
@@ -5672,7 +5672,7 @@ id_knjige;kljucna_beseda
 18868273;Alien
 18868273;Enemy
 18868273;Magic
-18868273;Hat
+18868273;Hat 
 18868273;Mysterious
 18868273;War
 18868273;World
@@ -5741,7 +5741,7 @@ id_knjige;kljucna_beseda
 36415649;Life
 36415649;Learn
 36415649;Hope
-6871358;Rat
+6871358;Rat 
 6871358;Ghost
 6871358;Demon
 6871358;Dark
@@ -5977,7 +5977,7 @@ id_knjige;kljucna_beseda
 11805486;Enemy
 11805486;Magic
 11805486;Courage
-11805486;Hat
+11805486;Hat 
 11805486;Invisible
 11805486;Test
 11805486;Hate
@@ -6109,7 +6109,7 @@ id_knjige;kljucna_beseda
 16101040;Learn
 16101040;Home
 16101040;Truth
-35921;Hat
+35921;Hat 
 35921;Trouble
 35921;Hate
 6393119;School
@@ -6230,7 +6230,7 @@ id_knjige;kljucna_beseda
 29502206;Life
 29502206;Lost
 29502206;Home
-18164439;Rat
+18164439;Rat 
 18164439;Child
 18164439;Curse
 18164439;Spell
@@ -6306,7 +6306,7 @@ id_knjige;kljucna_beseda
 35343338;Find
 35343338;Dead
 186103;Vampire
-186103;Rat
+186103;Rat 
 186103;Human
 186103;Battle
 186103;Secret
@@ -6401,12 +6401,12 @@ id_knjige;kljucna_beseda
 18149630;Legend
 18149630;Life
 18149630;Live
-13036777;Rat
+13036777;Rat 
 13036777;Curse
 13036777;Harry Potter
 13036777;Life
 13036777;Hope
-143727;Rat
+143727;Rat 
 143727;King
 143727;Orphan
 143727;Pirate
@@ -6517,7 +6517,7 @@ id_knjige;kljucna_beseda
 13177;King
 13177;Father
 13177;Love
-13177;Hat
+13177;Hat 
 13177;Hate
 13177;Life
 13177;Time
@@ -6597,7 +6597,7 @@ id_knjige;kljucna_beseda
 38531505;Elf
 38531505;Troll
 38531505;God
-38531505;Hat
+38531505;Hat 
 38531505;Trouble
 38531505;Find
 38531505;Rescue
@@ -6654,7 +6654,7 @@ id_knjige;kljucna_beseda
 22328546;Princess
 22328546;Queen
 22328546;Power
-22328546;Hat
+22328546;Hat 
 22328546;Dangerous
 22328546;Hate
 22328546;World
@@ -6703,7 +6703,7 @@ id_knjige;kljucna_beseda
 15707974;Life
 15707974;Time
 15707974;Fantasy
-7996;Rat
+7996;Rat 
 7996;Apprentice
 7996;Friend
 7996;Courage
@@ -7206,7 +7206,7 @@ id_knjige;kljucna_beseda
 28129287;War
 28129287;World
 19549841;Dragon
-19549841;Rat
+19549841;Rat 
 19549841;Human
 19549841;Prince
 19549841;King
@@ -7287,7 +7287,7 @@ id_knjige;kljucna_beseda
 16396752;Home
 16396752;Truth
 16396752;Lies
-11411118;Rat
+11411118;Rat 
 11411118;Prince
 11411118;Princess
 11411118;Parent
@@ -7515,7 +7515,7 @@ id_knjige;kljucna_beseda
 116563;Wizardry
 116563;Power
 116563;Dark
-116563;Hat
+116563;Hat 
 116563;Adventure
 116563;Legend
 116563;Mysterious
@@ -7708,7 +7708,7 @@ id_knjige;kljucna_beseda
 36288171;Dead
 26130645;School
 26130645;Student
-26130645;Rat
+26130645;Rat 
 26130645;Angel
 26130645;Demon
 26130645;Parent
@@ -7719,7 +7719,7 @@ id_knjige;kljucna_beseda
 26130645;Courage
 26130645;Dark
 26130645;Evil
-26130645;Hat
+26130645;Hat 
 26130645;Journey
 26130645;Battle
 26130645;Secret
@@ -7786,7 +7786,7 @@ id_knjige;kljucna_beseda
 10401084;Truth
 10401084;Lies
 47212;Wizard
-47212;Rat
+47212;Rat 
 47212;Human
 47212;Magic
 47212;Love
@@ -7851,7 +7851,7 @@ id_knjige;kljucna_beseda
 66659;Friend
 66659;Father
 66659;Love
-66659;Hat
+66659;Hat 
 66659;Letter
 66659;Voyage
 66659;Secret
@@ -8128,7 +8128,7 @@ id_knjige;kljucna_beseda
 17402605;Human
 17402605;Alchemy
 17402605;Power
-17402605;eternal life
+17402605;Eternal life
 17402605;Nicholas Flamel
 17402605;Secret
 17402605;Legend
@@ -8236,7 +8236,7 @@ id_knjige;kljucna_beseda
 32327701;Student
 32327701;Wizard
 32327701;Unicorn
-32327701;Rat
+32327701;Rat 
 32327701;Magic
 32327701;Spell
 32327701;Force
@@ -8276,7 +8276,7 @@ id_knjige;kljucna_beseda
 25740412;Power
 25740412;Courage
 25740412;Evil
-25740412;Hat
+25740412;Hat 
 25740412;Dream
 25740412;Destiny
 25740412;Hate
@@ -8417,7 +8417,7 @@ id_knjige;kljucna_beseda
 17326204;Special
 36373314;Beast
 36373314;Force
-36373314;Hat
+36373314;Hat 
 36373314;Journey
 36373314;Adventure
 36373314;Mysterious
@@ -8703,7 +8703,7 @@ id_knjige;kljucna_beseda
 81524;War
 81524;Find
 81524;Lies
-83506;Rat
+83506;Rat 
 83506;Dark
 83506;Wand
 83506;Adventure
@@ -9020,7 +9020,7 @@ id_knjige;kljucna_beseda
 16189172;Force
 16189172;Power
 16189172;Love
-16189172;Hat
+16189172;Hat 
 16189172;Legend
 16189172;Hate
 16189172;Survival
@@ -9105,7 +9105,7 @@ id_knjige;kljucna_beseda
 20639269;Force
 20639269;Love
 20639269;Wand
-20639269;Hat
+20639269;Hat 
 20639269;Secret
 20639269;Hate
 20639269;World
@@ -9162,7 +9162,7 @@ id_knjige;kljucna_beseda
 35820633;Dead
 35820633;Live
 35820633;Hope
-20960464;Rat
+20960464;Rat 
 20960464;Father
 20960464;Mother
 20960464;Teen
@@ -9723,7 +9723,7 @@ id_knjige;kljucna_beseda
 285209;Power
 285209;Evil
 285209;Family
-285209;Hat
+285209;Hat 
 285209;Hate
 285209;Save
 5907;Wizard
@@ -9881,7 +9881,7 @@ id_knjige;kljucna_beseda
 34465216;Live
 34465216;Help
 6644117;School
-6644117;Rat
+6644117;Rat 
 6644117;Prince
 6644117;King
 6644117;Friend
@@ -10115,7 +10115,7 @@ id_knjige;kljucna_beseda
 274868;World
 274868;Special
 274868;Escape
-17263570;Rat
+17263570;Rat 
 17263570;God
 17263570;Prince
 17263570;Legend
@@ -10173,7 +10173,7 @@ id_knjige;kljucna_beseda
 44170;Orphan
 44170;Spell
 44170;Imagination
-44170;Hat
+44170;Hat 
 44170;Battle
 44170;War
 44170;World
@@ -10289,7 +10289,7 @@ id_knjige;kljucna_beseda
 81026;Home
 28158462;Academy
 28158462;Dragon
-28158462;Rat
+28158462;Rat 
 28158462;Friend
 28158462;Magic
 28158462;Alchemy
@@ -10332,7 +10332,7 @@ id_knjige;kljucna_beseda
 28249;Magician
 28249;Force
 28249;Power
-28249;Hat
+28249;Hat 
 28249;Hate
 16286;Friend
 16286;Friendship
@@ -10448,7 +10448,7 @@ id_knjige;kljucna_beseda
 6457229;Time
 6457229;Dead
 6457229;Special
-16690;Rat
+16690;Rat 
 16690;Human
 16690;Find
 16690;Time
@@ -10460,7 +10460,7 @@ id_knjige;kljucna_beseda
 20615403;Time
 20615403;Death
 20615403;Truth
-13576132;Rat
+13576132;Rat 
 13576132;Father
 13576132;Dark
 13576132;Family
@@ -10627,7 +10627,7 @@ id_knjige;kljucna_beseda
 16155612;Hope
 16155612;Ancient
 674749;School
-674749;Rat
+674749;Rat 
 674749;Fairy
 674749;Prince
 674749;Princess
@@ -10797,7 +10797,7 @@ id_knjige;kljucna_beseda
 21787;Father
 21787;Miracles
 21787;Love
-21787;Hat
+21787;Hat 
 21787;Fighting
 21787;Dream
 21787;Revenge
@@ -11373,7 +11373,7 @@ id_knjige;kljucna_beseda
 822200;Father
 822200;Mother
 822200;Dark
-822200;eternal life
+822200;Eternal life
 822200;Family
 822200;Secret
 822200;Future
@@ -11987,7 +11987,7 @@ id_knjige;kljucna_beseda
 7235533;Power
 7235533;World
 7235533;Time
-3227063;Rat
+3227063;Rat 
 3227063;Magic
 3227063;Dangerous
 3227063;Survival
@@ -12039,7 +12039,7 @@ id_knjige;kljucna_beseda
 153783;Friend
 153783;War
 153783;Find
-5659;Rat
+5659;Rat 
 5659;Human
 5659;Friend
 5659;Child
@@ -12102,7 +12102,7 @@ id_knjige;kljucna_beseda
 15997688;Force
 15997688;Power
 15997688;Train
-15997688;Hat
+15997688;Hat 
 15997688;Battle
 15997688;Secret
 15997688;War
@@ -12155,7 +12155,7 @@ id_knjige;kljucna_beseda
 317621;Time
 317621;Rescue
 385804;Witch
-385804;Rat
+385804;Rat 
 385804;Friend
 385804;Mother
 385804;Magic
@@ -12178,7 +12178,7 @@ id_knjige;kljucna_beseda
 6327;Child
 6327;Powers
 6327;Power
-6327;Hat
+6327;Hat 
 6327;Find
 12111260;London
 12111260;Castle
@@ -12469,7 +12469,7 @@ id_knjige;kljucna_beseda
 2657;Human
 2657;Child
 2657;Love
-2657;Hat
+2657;Hat 
 34796986;Friend
 34796986;Magic
 34796986;Dark
@@ -12483,7 +12483,7 @@ id_knjige;kljucna_beseda
 34796986;Time
 34796986;Home
 34796986;Fantasy
-6892626;Rat
+6892626;Rat 
 6892626;God
 6892626;Prince
 6892626;Child
@@ -12530,7 +12530,7 @@ id_knjige;kljucna_beseda
 9439989;Time
 9439989;Dead
 9439989;Death
-10445208;Rat
+10445208;Rat 
 10445208;Prince
 10445208;Magic
 10445208;Powers
@@ -12654,7 +12654,7 @@ id_knjige;kljucna_beseda
 20489361;Lies
 20489361;Ancient
 84981;Magic
-84981;eternal life
+84981;Eternal life
 84981;Family
 84981;Wand
 84981;Secret
@@ -12783,14 +12783,14 @@ id_knjige;kljucna_beseda
 345627;Power
 345627;Evil
 345627;Love
-345627;Hat
+345627;Hat 
 345627;Danger 
 345627;Dangerous
 345627;World
 345627;Life
 345627;Time
 263147;Vampire
-263147;Rat
+263147;Rat 
 263147;Dark
 263147;Love
 263147;Secret
@@ -12841,7 +12841,7 @@ id_knjige;kljucna_beseda
 29004052;Adventure
 29004052;Life
 674479;Student
-674479;Rat
+674479;Rat 
 674479;Friend
 674479;Wisdom 
 674479;Train
@@ -12865,7 +12865,7 @@ id_knjige;kljucna_beseda
 23263700;Dark
 23263700;Evil
 23263700;Choice
-23263700;Hat
+23263700;Hat 
 23263700;Journey
 23263700;Dream
 23263700;Secret
@@ -12887,7 +12887,7 @@ id_knjige;kljucna_beseda
 10586539;Power
 10586539;Dark
 10586539;Love
-10586539;Hat
+10586539;Hat 
 10586539;Secret
 10586539;Dangerous
 10586539;Hate
@@ -13369,7 +13369,7 @@ id_knjige;kljucna_beseda
 1231900;Mother
 1231900;Evil
 1231900;Family
-1231900;Hat
+1231900;Hat 
 1231900;Hate
 1231900;Find
 1231900;Help
@@ -13488,7 +13488,7 @@ id_knjige;kljucna_beseda
 23132010;Dark
 23132010;Love
 23132010;Family
-23132010;Hat
+23132010;Hat 
 23132010;Sword
 23132010;Hate
 23132010;Outsider
@@ -14035,7 +14035,7 @@ id_knjige;kljucna_beseda
 22024829;Rescue
 1041257;Magic
 1041257;Power
-1041257;Hat
+1041257;Hat 
 1041257;Adventure
 1041257;Secret
 1041257;Mysterious
@@ -14061,7 +14061,7 @@ id_knjige;kljucna_beseda
 6469790;Child
 6469790;Family
 135433;Dragon
-135433;Hat
+135433;Hat 
 135433;Secret
 135433;Save
 135433;War
@@ -14202,7 +14202,7 @@ id_knjige;kljucna_beseda
 18130;School
 18130;Dragon
 18130;Alien
-18130;Rat
+18130;Rat 
 18130;Adventure
 18130;World
 18130;Find
@@ -14255,7 +14255,7 @@ id_knjige;kljucna_beseda
 39980;Child
 39980;Life
 39980;Time
-334643;Rat
+334643;Rat 
 334643;King
 334643;Friend
 334643;Enemy
@@ -14668,14 +14668,14 @@ id_knjige;kljucna_beseda
 28912565;Learn
 25952323;School
 25952323;Student
-25952323;Rat
+25952323;Rat 
 25952323;Secret
 25952323;Find
 25952323;Learn
 25952323;Dead
 25952323;Help
 27374015;School
-27374015;Rat
+27374015;Rat 
 27374015;Friend
 27374015;Force
 27374015;Trouble
@@ -14818,13 +14818,13 @@ id_knjige;kljucna_beseda
 7171859;Dragon
 7171859;Love
 7171859;Family
-7171859;Hat
+7171859;Hat 
 7171859;World
 7171859;Life
 7171859;Time
 7171859;Ancient
 6359434;Alien
-6359434;Rat
+6359434;Rat 
 6359434;God
 6359434;Love
 6359434;Fate
@@ -14891,7 +14891,7 @@ id_knjige;kljucna_beseda
 33897336;Apprentice
 33897336;Magic
 33897336;Train
-33897336;Hat
+33897336;Hat 
 33897336;Hate
 33897336;Survive
 33897336;Travel
@@ -14967,7 +14967,7 @@ id_knjige;kljucna_beseda
 28149935;Immortal
 28149935;Love
 28149935;Family
-28149935;Hat
+28149935;Hat 
 28149935;Danger 
 28149935;Hate
 28149935;Find
@@ -15178,7 +15178,7 @@ id_knjige;kljucna_beseda
 34512471;War
 34512471;Live
 34512471;Fantasy
-2220338;Rat
+2220338;Rat 
 2220338;Evil
 2220338;Danger 
 2220338;War
@@ -15203,7 +15203,7 @@ id_knjige;kljucna_beseda
 16074409;Friend
 16074409;Child
 16074409;Force
-16074409;Hat
+16074409;Hat 
 16074409;Battle
 16074409;Mysterious
 16074409;Quest
@@ -15235,7 +15235,7 @@ id_knjige;kljucna_beseda
 10081055;Home
 10081055;Escape
 10081055;Rescue
-164721;Rat
+164721;Rat 
 164721;Demon
 164721;Orphan
 164721;Journey
@@ -15544,7 +15544,7 @@ id_knjige;kljucna_beseda
 5996153;Princess
 5996153;Friend
 5996153;Love
-5996153;Hat
+5996153;Hat 
 5996153;Fate
 5996153;Quest
 5996153;Save
@@ -15638,23 +15638,23 @@ id_knjige;kljucna_beseda
 23156034;Learn
 23156034;Help
 2913;Friend
-2913;Hat
+2913;Hat 
 2913;World
 2913;Find
 2913;Learn
 2913;Live
 2913;Home
 141371;School
-141371;Hat
+141371;Hat 
 141371;Survive
 141371;Find
 141371;Life
 141372;Enemy
-141372;Hat
+141372;Hat 
 141372;Dangerous
 141372;War
 141372;Find
-58893;Rat
+58893;Rat 
 58893;Friend
 58893;Magic
 58893;Spell
@@ -15668,7 +15668,7 @@ id_knjige;kljucna_beseda
 186669;Imagination
 186669;Adventure
 186669;Travel
-16126082;Rat
+16126082;Rat 
 16126082;Orphan
 16126082;Friend
 16126082;Mother
@@ -15774,7 +15774,7 @@ id_knjige;kljucna_beseda
 229148;Magic
 229148;Powers
 229148;Power
-229148;Hat
+229148;Hat 
 229148;Hate
 229147;School
 229147;Friend
@@ -15922,7 +15922,7 @@ id_knjige;kljucna_beseda
 22140065;Castle
 22140065;Dragon
 22140065;Monster
-22140065;Rat
+22140065;Rat 
 22140065;Queen
 22140065;Friend
 22140065;Magic
@@ -16439,7 +16439,7 @@ id_knjige;kljucna_beseda
 519546;Force
 519546;Evil
 519546;Choice
-519546;Hat
+519546;Hat 
 519546;Battle
 519546;Mankind
 519546;Future
@@ -16831,7 +16831,7 @@ id_knjige;kljucna_beseda
 39282216;Enemy
 39282216;Courage
 39282216;Love
-39282216;Hat
+39282216;Hat 
 39282216;Hate
 39282216;War
 39282216;Life
@@ -16954,7 +16954,7 @@ id_knjige;kljucna_beseda
 8428064;World
 8428064;Live
 23264425;Monster
-23264425;Rat
+23264425;Rat 
 23264425;Human
 23264425;Apprentice
 23264425;Friend
@@ -17070,7 +17070,7 @@ id_knjige;kljucna_beseda
 325415;Letter
 325415;War
 325415;World
-325423;Rat
+325423;Rat 
 325423;Friend
 325423;Adventure
 325423;Trouble
@@ -17099,7 +17099,7 @@ id_knjige;kljucna_beseda
 974195;Find
 974195;Time
 974195;Different
-2856130;Rat
+2856130;Rat 
 2856130;Friend
 2856130;Enemies
 2856130;Power
@@ -17309,7 +17309,7 @@ id_knjige;kljucna_beseda
 1189399;Choice
 1189399;Family
 1189399;Train
-1189399;Hat
+1189399;Hat 
 1189399;Adventure
 1189399;Battle
 1189399;Fate
@@ -17360,7 +17360,7 @@ id_knjige;kljucna_beseda
 238968;Friendship
 238968;Power
 238968;Dark
-238968;Hat
+238968;Hat 
 238968;Sword
 238968;Dangerous
 238968;Future
@@ -17375,7 +17375,7 @@ id_knjige;kljucna_beseda
 68378;Evil
 68378;Dead
 7879322;Dragon
-7879322;Rat
+7879322;Rat 
 7879322;Friend
 7879322;Enemy
 7879322;Power
@@ -17400,7 +17400,7 @@ id_knjige;kljucna_beseda
 23454;Friend
 23454;Friendship
 23454;Dark
-23454;Hat
+23454;Hat 
 23454;Battle
 23454;War
 23454;World
@@ -17412,7 +17412,7 @@ id_knjige;kljucna_beseda
 31323449;Power
 31323449;Evil
 31323449;Love
-31323449;Hat
+31323449;Hat 
 31323449;Adventure
 31323449;Legend
 31323449;Fate
@@ -17637,11 +17637,11 @@ id_knjige;kljucna_beseda
 15993071;Learn
 15993071;Live
 15993071;Home
-15985373;Rat
+15985373;Rat 
 15985373;Demon
 15985373;King
 15985373;Father
-15985373;Hat
+15985373;Hat 
 15985373;Sword
 15985373;Hate
 15985373;Find
@@ -18193,7 +18193,7 @@ id_knjige;kljucna_beseda
 30332;Save
 30332;Home
 27158739;Friend
-27158739;Hat
+27158739;Hat 
 27158739;Test
 27158739;Mission
 27158739;Time
@@ -18323,7 +18323,7 @@ id_knjige;kljucna_beseda
 31987113;Father
 31987113;Power
 31987113;Choice
-31987113;Hat
+31987113;Hat 
 31987113;Invasion 
 31987113;War
 31987113;Life
@@ -18349,7 +18349,7 @@ id_knjige;kljucna_beseda
 6137154;Father
 6137154;Power
 6137154;Family
-6137154;Hat
+6137154;Hat 
 6137154;Dream
 6137154;Secret
 6137154;Hate
@@ -18413,7 +18413,7 @@ id_knjige;kljucna_beseda
 13645235;Evil
 13645235;Love
 13645235;Family
-13645235;Hat
+13645235;Hat 
 13645235;Fighting
 13645235;Hate
 13645235;Find
@@ -18516,7 +18516,7 @@ id_knjige;kljucna_beseda
 77738;Force
 77738;Power
 77738;Love
-77738;Hat
+77738;Hat 
 77738;Hate
 77738;World
 77738;Death
@@ -18561,7 +18561,7 @@ id_knjige;kljucna_beseda
 1678247;Learn
 1678247;Help
 1678247;Escape
-27028188;Rat
+27028188;Rat 
 27028188;Angel
 27028188;Friend
 27028188;Teen
@@ -18589,7 +18589,7 @@ id_knjige;kljucna_beseda
 355917;Learn
 355917;Fantasy
 91477;Wizard
-91477;Rat
+91477;Rat 
 91477;Love
 91477;Potion
 91477;Lost
@@ -18710,7 +18710,7 @@ id_knjige;kljucna_beseda
 2282133;Mother
 2282133;Force
 2282133;Love
-2282133;Hat
+2282133;Hat 
 2282133;Dead
 2282133;Rescue
 33384153;Dragon
@@ -18724,7 +18724,7 @@ id_knjige;kljucna_beseda
 33384153;Mysterious
 33384153;Life
 136862;School
-136862;Hat
+136862;Hat 
 136862;Secret
 136862;Hate
 136862;Find
@@ -19009,7 +19009,7 @@ id_knjige;kljucna_beseda
 91476;Giant
 91476;Wizard
 91476;Vampire
-91476;Rat
+91476;Rat 
 91476;Ghost
 91476;Love
 91476;Potion
@@ -19047,7 +19047,7 @@ id_knjige;kljucna_beseda
 24963;Dangerous
 24963;Time
 24963;Help
-537070;Rat
+537070;Rat 
 537070;War
 537070;Time
 537070;Death
@@ -19060,7 +19060,7 @@ id_knjige;kljucna_beseda
 385706;War
 385706;Time
 385706;Help
-319644;Rat
+319644;Rat 
 319644;Queen
 319644;Adventure
 319644;Test
@@ -19069,7 +19069,7 @@ id_knjige;kljucna_beseda
 319644;Mission
 319644;Find
 319644;Time
-385742;Rat
+385742;Rat 
 385742;Prince
 385742;Princess
 385742;Adventure
@@ -19431,7 +19431,7 @@ id_knjige;kljucna_beseda
 20759481;Prisoner
 20759481;Friend
 20759481;Child
-20759481;Hat
+20759481;Hat 
 20759481;Dream
 20759481;Time
 20759481;Army
@@ -19515,7 +19515,7 @@ id_knjige;kljucna_beseda
 16704220;Curse
 16704220;Powers
 16704220;Power
-16704220;Hat
+16704220;Hat 
 16704220;Battle
 16704220;Destiny
 16704220;Fate
@@ -19809,7 +19809,7 @@ id_knjige;kljucna_beseda
 14979;Live
 14288998;Friend
 14288998;Love
-14288998;Hat
+14288998;Hat 
 14288998;Revenge
 14288998;Outsider
 14288998;Mission
@@ -19888,7 +19888,7 @@ id_knjige;kljucna_beseda
 17063691;Army
 17063691;Rescue
 23497854;Beast
-23497854;Rat
+23497854;Rat 
 23497854;Friend
 23497854;Enemy
 23497854;Power
@@ -20389,7 +20389,7 @@ id_knjige;kljucna_beseda
 1310325;Family
 687393;Magic
 687393;World
-439854;Hat
+439854;Hat 
 439854;War
 439854;Find
 459222;Find
@@ -20731,7 +20731,7 @@ id_knjige;kljucna_beseda
 148205;Myth
 148205;Dangerous
 22238209;Power
-22238209;Hat
+22238209;Hat 
 22238209;Legend
 22238209;Hate
 22238209;Find
@@ -20795,7 +20795,7 @@ id_knjige;kljucna_beseda
 18725742;London
 18725742;Vampire
 18725742;Werewolf
-18725742;Rat
+18725742;Rat 
 18725742;Friend
 18725742;Save
 151370;Parent
@@ -20806,7 +20806,7 @@ id_knjige;kljucna_beseda
 151370;Time
 151370;Home
 7993;School
-7993;Rat
+7993;Rat 
 7993;Pirate
 7993;Father
 7993;Voyage
@@ -21226,7 +21226,7 @@ id_knjige;kljucna_beseda
 30831335;Power
 30831335;Dark
 30831335;Train
-30831335;Hat
+30831335;Hat 
 30831335;Secret
 30831335;Mysterious
 30831335;Hate
@@ -21292,7 +21292,7 @@ id_knjige;kljucna_beseda
 22147221;Angel
 22147221;Enemy
 22147221;Evil
-22147221;Hat
+22147221;Hat 
 22147221;Hate
 22147221;Travel
 22147221;War
@@ -21379,7 +21379,7 @@ id_knjige;kljucna_beseda
 16150830;Enemies
 16150830;Child
 16150830;Love
-16150830;Hat
+16150830;Hat 
 16150830;Secret
 16150830;Dangerous
 16150830;Future
@@ -21429,7 +21429,7 @@ id_knjige;kljucna_beseda
 23243695;Child
 23243695;Love
 23243695;Family
-23243695;Hat
+23243695;Hat 
 23243695;Secret
 23243695;Quest
 23243695;Survive
@@ -21438,7 +21438,7 @@ id_knjige;kljucna_beseda
 23243695;Time
 23243695;Help
 23243695;Fantasy
-632941;Rat
+632941;Rat 
 632941;Scar
 632941;Adventure
 298568;Beast
@@ -21495,7 +21495,7 @@ id_knjige;kljucna_beseda
 65094;Home
 65094;Rescue
 25506341;Father
-25506341;Hat
+25506341;Hat 
 25506341;Secret
 25506341;Hate
 25506341;Life
@@ -21593,7 +21593,7 @@ id_knjige;kljucna_beseda
 13259266;World
 13259266;Time
 13259266;Learn
-13259267;Rat
+13259267;Rat 
 13259267;Human
 13259267;Demon
 13259267;King
@@ -21706,7 +21706,7 @@ id_knjige;kljucna_beseda
 25222064;Find
 25222064;Life
 25222064;Home
-140673;Rat
+140673;Rat 
 140673;Ghost
 140673;Human
 140673;Invisible
@@ -21828,7 +21828,7 @@ id_knjige;kljucna_beseda
 364959;Legend
 364959;Escape
 364949;Pirate
-364949;Hat
+364949;Hat 
 364949;Escape
 364953;Giant
 364953;Power
@@ -21849,7 +21849,7 @@ id_knjige;kljucna_beseda
 1826195;Lost
 1826195;Dead
 1826195;Lies
-2382362;Hat
+2382362;Hat 
 2382362;Learn
 3430775;Friend
 3430775;Dream
@@ -21860,19 +21860,19 @@ id_knjige;kljucna_beseda
 6801645;Enemy
 6801645;Power
 6801645;Love
-6801645;Hat
+6801645;Hat 
 6801645;Battle
 6801645;Save
 6801645;Hope
 6801646;Pirate
 6801646;Enemies
-6801646;Hat
+6801646;Hat 
 6801646;Dangerous
 6801646;Time
 6801601;Save
 6801601;Find
 6801614;Train
-6801614;Hat
+6801614;Hat 
 6801614;Find
 6801614;Rescue
 7421452;Human
@@ -21883,7 +21883,7 @@ id_knjige;kljucna_beseda
 7421452;Army
 7421463;Powers
 7421463;Power
-7421463;Hat
+7421463;Hat 
 7421463;Battle
 7421463;Save
 7421463;Time
@@ -21896,13 +21896,13 @@ id_knjige;kljucna_beseda
 7421457;Dragon
 7421457;King
 7421457;Pirate
-7421457;Hat
+7421457;Hat 
 7421457;Mysterious
 7421457;Save
 7421457;Help
 7421456;King
 7421456;Power
-7421456;Hat
+7421456;Hat 
 7421456;Battle
 7421456;War
 7421456;World
@@ -21922,12 +21922,12 @@ id_knjige;kljucna_beseda
 13547242;Pirate
 13547242;Power
 13547242;Train
-13547242;Hat
+13547242;Hat 
 13547242;Hope
 15803923;Giant
 15803923;Human
 15803923;Pirate
-15803923;Hat
+15803923;Hat 
 15803923;Adventure
 15803923;Battle
 15803923;World
@@ -21935,7 +21935,7 @@ id_knjige;kljucna_beseda
 16146218;Dragon
 16146218;Pirate
 16146218;Dark
-16146218;Hat
+16146218;Hat 
 16146218;Secret
 16146218;Mysterious
 16146218;World
@@ -22276,7 +22276,7 @@ id_knjige;kljucna_beseda
 13611114;Find
 13611114;Time
 13611114;Dead
-6686101;Rat
+6686101;Rat 
 6686101;Enemies
 6686101;Power
 6686101;Dark
@@ -22330,7 +22330,7 @@ id_knjige;kljucna_beseda
 216160;Mother
 216160;Evil
 216160;Family
-216160;Hat
+216160;Hat 
 216160;Hate
 216160;Find
 216160;Help
@@ -22446,7 +22446,7 @@ id_knjige;kljucna_beseda
 13642647;Teen
 13642647;Find
 16005263;Monster
-16005263;Rat
+16005263;Rat 
 16005263;God
 16005263;Friend
 16005263;Enemy
@@ -22921,7 +22921,7 @@ id_knjige;kljucna_beseda
 769515;Mother
 769515;Evil
 769515;Family
-769515;Hat
+769515;Hat 
 769515;Hate
 769515;Find
 769515;Help
@@ -22932,7 +22932,7 @@ id_knjige;kljucna_beseda
 25270361;Powers
 25270361;Power
 25270361;Evil
-25270361;eternal life
+25270361;Eternal life
 25270361;Quest
 25270361;Find
 25270361;Eternal
@@ -23030,7 +23030,7 @@ id_knjige;kljucna_beseda
 12988089;Mother
 12988089;Powers
 12988089;Power
-12988089;Hat
+12988089;Hat 
 12988089;Save
 12988089;World
 12988089;Time
@@ -23208,7 +23208,7 @@ id_knjige;kljucna_beseda
 23503711;Mysterious
 23503711;World
 23503711;Ancient
-112968;Rat
+112968;Rat 
 112968;Demon
 112968;Prince
 112968;Queen
@@ -23616,7 +23616,7 @@ id_knjige;kljucna_beseda
 2802316;Evil
 2802316;Love
 2802316;Choice
-2802316;Hat
+2802316;Hat 
 2802316;Battle
 2802316;Nightmare
 2802316;Dangerous
@@ -23625,7 +23625,7 @@ id_knjige;kljucna_beseda
 2802316;Life
 2802316;Time
 2802316;Live
-160859;Rat
+160859;Rat 
 160859;Prince
 160859;Princess
 160859;Parent
@@ -23941,7 +23941,7 @@ id_knjige;kljucna_beseda
 13650355;Find
 13650355;Rescue
 6091075;Giant
-6091075;Rat
+6091075;Rat 
 6091075;God
 6091075;Imagination
 6091075;Mysterious
@@ -24024,7 +24024,7 @@ id_knjige;kljucna_beseda
 30968579;Lost
 30968579;Death
 30968579;Ancient
-1223288;Hat
+1223288;Hat 
 1223288;Adventure
 1223288;Survive
 1223288;Learn
@@ -24162,7 +24162,7 @@ id_knjige;kljucna_beseda
 7597778;Escape
 11199165;Friend
 13494365;School
-13494365;Rat
+13494365;Rat 
 13494365;Enemies
 13494365;Powers
 13494365;Power
@@ -24171,7 +24171,7 @@ id_knjige;kljucna_beseda
 13494365;Learn
 6479259;Academy
 6479259;Friend
-6479259;Hat
+6479259;Hat 
 6479259;Journey
 6479259;Live
 295323;Spell
@@ -24188,7 +24188,7 @@ id_knjige;kljucna_beseda
 15799164;Friend
 15799164;Enemies
 15799164;Love
-15799164;Hat
+15799164;Hat 
 15799164;Journey
 15799164;Adventure
 15799164;Travel
@@ -24315,7 +24315,7 @@ id_knjige;kljucna_beseda
 17034859;Find
 17034859;Army
 25232816;Friend
-25232816;Hat
+25232816;Hat 
 25232816;Test
 25232816;Dangerous
 25232816;Mission
@@ -24337,7 +24337,7 @@ id_knjige;kljucna_beseda
 33439;Chocolate
 33439;Life
 33439;Dead
-24093;Rat
+24093;Rat 
 24093;Magic
 24093;Power
 24093;Wand
@@ -24363,7 +24363,7 @@ id_knjige;kljucna_beseda
 33442;Dead
 91478;Wizard
 91478;Alien
-91478;Rat
+91478;Rat 
 91478;God
 91478;Queen
 91478;Friend
@@ -24380,7 +24380,7 @@ id_knjige;kljucna_beseda
 123512;Magic
 123512;Dead
 1191449;Giant
-1191449;Rat
+1191449;Rat 
 1191449;Owl
 1191449;Human
 1191449;God
@@ -24426,7 +24426,7 @@ id_knjige;kljucna_beseda
 4935682;Life
 4935682;Lost
 4935682;Escape
-7976;Rat
+7976;Rat 
 7976;Family
 7976;Journey
 7976;Adventure
@@ -24519,7 +24519,7 @@ id_knjige;kljucna_beseda
 330122;Power
 330122;Love
 330122;Wand
-330122;Hat
+330122;Hat 
 330122;Secret
 330122;Hate
 330122;War
@@ -24548,7 +24548,7 @@ id_knjige;kljucna_beseda
 828196;Hope
 828196;Ancient
 474111;God
-474111;Hat
+474111;Hat 
 474111;Fate
 474111;World
 474111;Life
@@ -24680,7 +24680,7 @@ id_knjige;kljucna_beseda
 10803121;Learn
 10803121;Home
 34534;Monster
-34534;Rat
+34534;Rat 
 34534;Power
 34534;Dark
 34534;Evil
@@ -24902,7 +24902,7 @@ id_knjige;kljucna_beseda
 2120932;Time
 2120932;Army
 31687423;Friend
-31687423;Hat
+31687423;Hat 
 31687423;Battle
 31687423;Dangerous
 31687423;Quest
@@ -24953,7 +24953,7 @@ id_knjige;kljucna_beseda
 11431896;Power
 11431896;Dark
 11431896;Love
-11431896;Hat
+11431896;Hat 
 11431896;Journey
 11431896;Secret
 11431896;Destiny
@@ -24995,7 +24995,7 @@ id_knjige;kljucna_beseda
 123208;Spell
 123208;Help
 123207;Train
-123207;Hat
+123207;Hat 
 123207;Hate
 123207;Life
 123204;Wand
@@ -25145,7 +25145,7 @@ id_knjige;kljucna_beseda
 383618;Live
 383618;Fantasy
 383618;Hope
-145383;Rat
+145383;Rat 
 145383;Journey
 145383;Danger 
 145383;Survive
@@ -25165,7 +25165,7 @@ id_knjige;kljucna_beseda
 145385;Live
 145385;Help
 145385;Home
-816223;Rat
+816223;Rat 
 816223;Family
 816223;Life
 816223;Live
@@ -25304,7 +25304,7 @@ id_knjige;kljucna_beseda
 24779;Power
 24779;Evil
 24779;Train
-24779;Hat
+24779;Hat 
 24779;Dangerous
 24779;Hate
 24779;Quest
@@ -25554,7 +25554,7 @@ id_knjige;kljucna_beseda
 7775755;Curse
 7775755;Transform
 7775755;Love
-7775755;Hat
+7775755;Hat 
 7775755;Legend
 7775755;Myth
 7775755;Hate
@@ -25889,7 +25889,7 @@ id_knjige;kljucna_beseda
 590125;Secret
 590125;Danger 
 590125;Life
-6550815;Rat
+6550815;Rat 
 6550815;Pirate
 6550815;Dark arts
 6550815;Immortal
@@ -26150,14 +26150,14 @@ id_knjige;kljucna_beseda
 1020421;Secret
 1020421;World
 1020421;Truth
-83502;Rat
+83502;Rat 
 83502;Evil
 83502;Survive
 83502;Dead
 83502;Live
 33921998;Mother
 33921998;Force
-33921998;Hat
+33921998;Hat 
 33921998;Battle
 33921998;Survive
 33921998;World
@@ -26802,7 +26802,7 @@ id_knjige;kljucna_beseda
 16131484;Friend
 16131484;Force
 16131484;Love
-16131484;Hat
+16131484;Hat 
 16131484;Battle
 16131484;Hate
 16131484;World
@@ -27102,7 +27102,7 @@ id_knjige;kljucna_beseda
 7987;War
 7987;Truth
 7987;Hope
-17263581;Rat
+17263581;Rat 
 17263581;God
 17263581;Prince
 17263581;Legend
@@ -27236,7 +27236,7 @@ id_knjige;kljucna_beseda
 18070688;Lost
 18070688;Dead
 215543;Lost
-37586;Rat
+37586;Rat 
 37586;Fairy
 37586;Human
 37586;Demon
@@ -27358,7 +27358,7 @@ id_knjige;kljucna_beseda
 47525;Spell
 47525;Magician
 47525;Family
-47525;Hat
+47525;Hat 
 47525;Mysterious
 47525;Hate
 47525;Learn
@@ -27772,7 +27772,7 @@ id_knjige;kljucna_beseda
 97090;Phoenix
 97090;Child
 97090;Magic
-97090;Hat
+97090;Hat 
 97090;Adventure
 97090;Time
 97090;Ancient
@@ -28059,7 +28059,7 @@ id_knjige;kljucna_beseda
 35169810;Learn
 35169810;Live
 35169810;Fantasy
-442556;Rat
+442556;Rat 
 442556;King
 442556;Friend
 442556;Father
@@ -28267,7 +28267,7 @@ id_knjige;kljucna_beseda
 203659;Save
 203659;Find
 203659;Life
-2915;Hat
+2915;Hat 
 2915;Survival
 2915;Survive
 2915;Life
@@ -28313,7 +28313,7 @@ id_knjige;kljucna_beseda
 23846013;Power
 23846013;Dark
 23846013;Family
-23846013;Hat
+23846013;Hat 
 23846013;Adventure
 23846013;Revenge
 23846013;Hate
@@ -28323,7 +28323,7 @@ id_knjige;kljucna_beseda
 23846013;Hope
 23846013;Army
 27779765;Beast
-27779765;Rat
+27779765;Rat 
 27779765;King
 27779765;Parent
 27779765;Power
@@ -28397,7 +28397,7 @@ id_knjige;kljucna_beseda
 23534301;School
 23534301;Academy
 23534301;Friend
-23534301;Hat
+23534301;Hat 
 23534301;Secret
 23534301;Mission
 23534301;Live
@@ -28779,7 +28779,7 @@ id_knjige;kljucna_beseda
 9728144;Power
 9728144;Love
 9728144;Mirror
-9728144;Hat
+9728144;Hat 
 9728144;Dream
 9728144;Hate
 9728144;Mission
@@ -29341,7 +29341,7 @@ id_knjige;kljucna_beseda
 38748749;Time
 38748749;Home
 150037;Child
-150037;Hat
+150037;Hat 
 150037;Live
 47622;Spell
 47622;Power
@@ -29776,7 +29776,7 @@ id_knjige;kljucna_beseda
 13138734;Force
 13138734;Love
 13138734;Choice
-13138734;Hat
+13138734;Hat 
 13138734;War
 13138734;World
 13138734;Life
@@ -30001,7 +30001,7 @@ id_knjige;kljucna_beseda
 15764039;Prince
 15764039;Power
 15764039;Evil
-15764039;Hat
+15764039;Hat 
 15764039;Secret
 15764039;Hate
 15764039;Survive
@@ -30102,7 +30102,7 @@ id_knjige;kljucna_beseda
 35382980;Friend
 35382980;Love
 35382980;Family
-35382980;Hat
+35382980;Hat 
 35382980;Battle
 35382980;Future
 35382980;Revenge
@@ -30185,7 +30185,7 @@ id_knjige;kljucna_beseda
 7696564;Time
 7696564;Dead
 7696564;Live
-17250966;Rat
+17250966;Rat 
 17250966;Time
 29227774;Consequences
 38362765;Human
@@ -30571,7 +30571,7 @@ id_knjige;kljucna_beseda
 15991959;Giant
 15991959;Wizard
 15991959;Family
-15991959;Hat
+15991959;Hat 
 15991959;Dangerous
 15991959;Find
 15991959;Time
@@ -30651,7 +30651,7 @@ id_knjige;kljucna_beseda
 21798049;Dark
 21798049;Evil
 21798049;Love
-21798049;Hat
+21798049;Hat 
 21798049;Destiny
 21798049;Consequences
 21798049;Hate
@@ -30794,7 +30794,7 @@ id_knjige;kljucna_beseda
 30333;Prince
 30333;Princess
 30333;Love
-30333;Hat
+30333;Hat 
 30333;Future
 30333;War
 30333;Find

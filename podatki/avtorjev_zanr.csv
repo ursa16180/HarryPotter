@@ -1,14 +1,14 @@
 id;zanr
 10038;Childrens
-10038;History
+10038;Historical
 10038;Humor
-10039;Literary Fiction
+10039;Fiction
 10074;Childrens
-100752;Science Fiction Fantasy
+100752;Science Fiction
 100752;Romance
 100752;Childrens
 10087;Childrens
-10087;Science Fiction Fantasy
+10087;Science Fiction
 10087;Young Adult
 10105;Childrens
 10105;Young Adult
@@ -19,62 +19,62 @@ id;zanr
 1026961;Steampunk
 1026961;Romance
 1026961;Young Adult
-10317;Literary Fiction
-1031822;Literary Fiction
-103321;Literary Fiction
+10317;Fiction
+1031822;Fiction
+103321;Fiction
 10336;Mathematics
 10336;Science
-10336;Science Fiction Fantasy
+10336;Science Fiction
 103556;Comics
 10359;Comics
-10365;Graphic Novels Comics
-10365;Arts Photography
+10365;Comics
+10365;Art
 10365;Childrens
 10366;Horror
-10366;Science Fiction Fantasy
+10366;Science Fiction
 10366;Young Adult
-1036615;Literary Fiction
+1036615;Fiction
 1036736;Fiction
 1036736;Childrens
-1040250;Literary Fiction
+1040250;Fiction
 1040250;Childrens
-1040250;Mystery Thrillers
-1043533;Literary Fiction
+1040250;Mystery Thriller
+1043533;Fiction
 1043533;Childrens
-1043533;Mystery Thrillers
+1043533;Mystery Thriller
 1050;Childrens
 1050;Fiction
 1051591;Young Adult
 1051591;Fantasy
 1051591;Paranormal
-10517;Science Fiction Fantasy
+10517;Science Fiction
 10517;Alternate History
 1051835;Young Adult
 1051835;Childrens
-1051835;Science Fiction Fantasy
-105630;Graphic Novels Comics
+1051835;Science Fiction
+105630;Comics
 105630;Childrens
 1057083;Science Fiction
 1057083;Fantasy
 1057083;Humor
-105776;Graphic Novels Comics
+105776;Comics
 105776;Young Adult
-106;Literary Fiction
-106;Science Fiction Fantasy
+106;Fiction
+106;Science Fiction
 106;Biography
-1067608;Science Fiction Fantasy
-1067608;Literary Fiction
+1067608;Science Fiction
+1067608;Fiction
 1067608;Nonfiction
-1069006;Christian
+1069006;Christian Fiction
 1069006;Religion
 10706586;Science Fiction
 10706586;Fantasy
-10706586;Historical Fiction
-10746;Science Fiction Fantasy
+10706586;Historical
+10746;Science Fiction
 10746;Urban Fantasy
-1074866;Mystery Thrillers
+1074866;Mystery Thriller
 1074866;Biography
-1074866;Literary Fiction
+1074866;Fiction
 1076161;Fantasy
 1076161;Science Fiction
 1076161;Fiction
@@ -90,7 +90,7 @@ id;zanr
 10777875;Young Adult
 10777875;Fiction
 1079136;Young Adult
-1079136;Science Fiction Fantasy
+1079136;Science Fiction
 1079136;Contemporary
 10796781;Nonfiction
 10796781;Paranormal
@@ -98,28 +98,28 @@ id;zanr
 10812991;Science Fiction
 10812991;Fantasy
 10812991;Graphic Novels
-108424;Science Fiction Fantasy
+108424;Science Fiction
 108424;Young Adult
-108693;Science Fiction Fantasy
+108693;Science Fiction
 108693;Childrens
 108693;Young Adult
-10885;Science Fiction Fantasy
-10885;Literary Fiction
-10896;Literary Fiction
-10896;Science Fiction Fantasy
-10896;Mystery Thrillers
-1090823;Literary Fiction
-1090823;Science Fiction Fantasy
-1090823;Mystery Thrillers
-109354;Literary Fiction
-109354;Science Fiction Fantasy
-109354;Mystery Thrillers
+10885;Science Fiction
+10885;Fiction
+10896;Fiction
+10896;Science Fiction
+10896;Mystery Thriller
+1090823;Fiction
+1090823;Science Fiction
+1090823;Mystery Thriller
+109354;Fiction
+109354;Science Fiction
+109354;Mystery Thriller
 1100089;Childrens
 1100089;Fantasy
 1100089;Suspense
 110234;Young Adult
 110234;Horror
-11078;Science Fiction Fantasy
+11078;Science Fiction
 11078;Young Adult
 11078;Nonfiction
 11259428;Childrens
@@ -128,46 +128,46 @@ id;zanr
 11259429;Childrens
 11259429;Fantasy
 11259429;Young Adult
-1127619;Science Fiction Fantasy
+1127619;Science Fiction
 1127619;Young Adult
-1127619;Thriller and Horror
+1127619;Thriller
 11327592;Fantasy
 11327592;Horror
 11327592;Science Fiction
-1136158;Science Fiction Fantasy
+1136158;Science Fiction
 1136158;Horror
-11466;Literary Fiction
+11466;Fiction
 11466;Young Adult
-1156431;Literary Fiction
+1156431;Fiction
 1156431;Young Adult
 11633;Childrens
-11654;Literary Fiction
+11654;Fiction
 11654;Young Adult
 11654;Romance
-117369;Graphic Novels Comics
+117369;Comics
 117369;Romance
-117369;Science Fiction Fantasy
-11761;Science Fiction Fantasy
+117369;Science Fiction
+11761;Science Fiction
 11761;Young Adult
-11761;Graphic Novels Comics
+11761;Comics
 117775;Childrens
-117775;Historical Fiction
+117775;Historical
 1177779;Childrens
 1177779;Young Adult
 11861607;Fantasy
 11861607;Young Adult
 11861607;Romance
-118847;Science Fiction Fantasy
+118847;Science Fiction
 118847;Young Adult
 118848;Childrens
-11906;Science Fiction Fantasy
+11906;Science Fiction
 11912;Childrens
 11912;Mystery
 11912;Young Adult
 1193089;Childrens
 1193089;Mystery
 1193089;Young Adult
-119755;Science Fiction Fantasy
+119755;Science Fiction
 119755;Childrens
 119755;Young Adult
 119933;Childrens
@@ -183,111 +183,111 @@ id;zanr
 1228482;Fantasy
 1228482;Young Adult
 1228482;Childrens
-1230366;Graphic Novels Comics
-123087;Science Fiction Fantasy
+1230366;Comics
+123087;Science Fiction
 123087;Young Adult
 123087;Childrens
-123318;Science Fiction Fantasy
+123318;Science Fiction
 123318;Young Adult
 123318;Childrens
-123344;Science Fiction Fantasy
+123344;Science Fiction
 123344;Young Adult
 123344;Childrens
-12444;Graphic Novels Comics
-12444;Literary Fiction
-12521;Literary Fiction
+12444;Comics
+12444;Fiction
+12521;Fiction
 12521;Biography
-12521;Screenplays Plays
-125308;Literary Fiction
-125308;Science Fiction Fantasy
+12521;Plays
+125308;Fiction
+125308;Science Fiction
 125308;Young Adult
 12534;Science Fiction
 12534;Fantasy
-125984;Science Fiction Fantasy
-12696;Literary Fiction
-12739;Arts Photography
-12739;Graphic Novels Comics
+125984;Science Fiction
+12696;Fiction
+12739;Art
+12739;Comics
 12739;Lgbt
-1287267;Arts Photography
-1287267;Graphic Novels Comics
+1287267;Art
+1287267;Comics
 1287267;Lgbt
 129092;Young Adult
-129092;Science Fiction Fantasy
+129092;Science Fiction
 12950;Young Adult
 12950;Childrens
-12950;Mystery Thrillers
-12980;Science Fiction Fantasy
-12980;Mystery Thrillers
+12950;Mystery Thriller
+12980;Science Fiction
+12980;Mystery Thriller
 12980;Nonfiction
-12991;Literary Fiction
-12991;Science Fiction Fantasy
+12991;Fiction
+12991;Science Fiction
 12991;Horror
 13014;Horror
-13014;Literary Fiction
+13014;Fiction
 13014;Childrens
-1301649;Science Fiction Fantasy
-13026;Science Fiction Fantasy
+1301649;Science Fiction
+13026;Science Fiction
 1304470;Young Adult
-1304470;Science Fiction Fantasy
-131208;Science Fiction Fantasy
+1304470;Science Fiction
+131208;Science Fiction
 131208;Romance
 131208;Horror
-1313638;Science Fiction Fantasy
+1313638;Science Fiction
 1313638;Romance
 1313638;Horror
 131683;Childrens
-1318;Science Fiction Fantasy
+1318;Science Fiction
 1318;Young Adult
-1318;Historical Fiction
-13219;Science Fiction Fantasy
-1323268;Science Fiction Fantasy
-13290;Literary Fiction
+1318;Historical
+13219;Science Fiction
+1323268;Science Fiction
+13290;Fiction
 1330287;Childrens
 1330287;Young Adult
-1330287;Science Fiction Fantasy
+1330287;Science Fiction
 1330292;Young Adult
-1330292;Science Fiction Fantasy
+1330292;Science Fiction
 1330292;Romance
 13425674;Fantasy
 13425674;Romance
 13425674;Childrens
-13450;Literary Fiction
+13450;Fiction
 13450;Short Stories
 13450;Magical Realism
-13471208;Literary Fiction
+13471208;Fiction
 13471208;Short Stories
 13471208;Magical Realism
-13478819;Literary Fiction
+13478819;Fiction
 13478819;Short Stories
 13478819;Magical Realism
 1351538;Graphic Novels
 1351538;Young Adult
 1351538;Fantasy
-135829;Science Fiction Fantasy
-135829;Literary Fiction
+135829;Science Fiction
+135829;Fiction
 135829;Short Stories
-1359220;Science Fiction Fantasy
-1359220;Literary Fiction
+1359220;Science Fiction
+1359220;Fiction
 1359220;Short Stories
 13608;Childrens
 13608;Young Adult
 13613;Childrens
-13632;Arts Photography
-13635311;Arts Photography
-13643447;Arts Photography
+13632;Art
+13635311;Art
+13643447;Art
 1366481;Thriller
 1366481;Paranormal
 1366481;Romantic Suspense
 13677;Childrens
-13677;Science Fiction Fantasy
+13677;Science Fiction
 13677;Young Adult
-13681;Science Fiction Fantasy
-13681;Graphic Novels Comics
-1369219;Science Fiction Fantasy
-1370283;Literary Fiction
-1370283;Science Fiction Fantasy
+13681;Science Fiction
+13681;Comics
+1369219;Science Fiction
+1370283;Fiction
+1370283;Science Fiction
 13709;Childrens
-13709;Literary Fiction
+13709;Fiction
 13709;Young Adult
 13711116;Fantasy
 13711116;Humor
@@ -295,22 +295,19 @@ id;zanr
 1372734;Fantasy
 1372734;Fiction
 1372734;Young Adult
-1373880;Science Fiction Fantasy
+1373880;Science Fiction
 1373880;Young Adult
-1373880;Ebooks
-13746479;Science Fiction Fantasy
+13746479;Science Fiction
 13746479;Young Adult
-13746479;Ebooks
 13763089;Paranormal
 13763089;Fantasy
 13763089;Science Fiction
 1378267;Childrens
 1378267;Fantasy
 1378267;Young Adult
-137902;Science Fiction Fantasy
+137902;Science Fiction
 137902;Young Adult
 13797054;Fantasy
-13797054;Ebooks
 13797054;Fiction
 13846794;Fiction
 13846794;Fantasy
@@ -335,24 +332,24 @@ id;zanr
 13922215;Fantasy
 13922215;Fiction
 139257;Childrens
-139257;Historical Fiction
+139257;Historical
 13954966;Young Adult
 13954966;Paranormal
 13954966;Fantasy
-13957;Science Fiction Fantasy
+13957;Science Fiction
 13957;Young Adult
 13973394;Fantasy
 13973394;Science Fiction
 13973394;Apocalyptic
 14008804;Fantasy
 14008804;Paranormal
-14018535;Historical Fiction
+14018535;Historical
 14018535;Young Adult
 14018535;Childrens
-14028306;Historical Fiction
+14028306;Historical
 14028306;Young Adult
 14028306;Childrens
-1407121;Historical Fiction
+1407121;Historical
 1407121;Young Adult
 1407121;Childrens
 1407489;Young Adult
@@ -382,7 +379,6 @@ id;zanr
 14137359;Romance
 1414132;Fantasy
 1414132;Science Fiction
-1414132;Ebooks
 14141621;Fantasy
 14141621;Childrens
 14141621;Fiction
@@ -399,15 +395,15 @@ id;zanr
 14220917;Young Adult
 14220917;Fantasy
 14220917;Romance
-142270;Science Fiction Fantasy
-142270;Literary Fiction
-142270;Mystery Thrillers
+142270;Science Fiction
+142270;Fiction
+142270;Mystery Thriller
 14231488;Fantasy
 14231488;Fiction
 14231488;Young Adult
 14245886;Fantasy
 14245886;Manga
-14245886;Historical Fiction
+14245886;Historical
 142894;Childrens
 1437962;Childrens
 1437962;Fantasy
@@ -416,7 +412,7 @@ id;zanr
 1441013;Young Adult
 1441013;Suspense
 1441013;Fantasy
-14426339;Historical Fiction
+14426339;Historical
 14426339;Fantasy
 14426339;Young Adult
 14427770;Childrens
@@ -424,15 +420,15 @@ id;zanr
 14427770;Young Adult
 14434144;Young Adult
 14434144;Fantasy
-14434144;Christian
+14434144;Christian Fiction
 14457808;Fantasy
 14457808;Childrens
 14457808;Fiction
-145092;Science Fiction Fantasy
+145092;Science Fiction
 145092;Young Adult
-14530648;Science Fiction Fantasy
+14530648;Science Fiction
 14530648;Young Adult
-14533956;Science Fiction Fantasy
+14533956;Science Fiction
 14533956;Young Adult
 14537381;Fantasy
 14537381;Science Fiction
@@ -445,16 +441,16 @@ id;zanr
 14592729;Young Adult
 14592729;Childrens
 145946;Childrens
-145946;Literary Fiction
+145946;Fiction
 146;Childrens
 14617;Childrens
 14617;Young Adult
 146374;Young Adult
 146374;Horror
-146374;Science Fiction Fantasy
+146374;Science Fiction
 14667181;Young Adult
 14667181;Horror
-14667181;Science Fiction Fantasy
+14667181;Science Fiction
 1467;Fiction
 14673594;Fantasy
 14682824;Fantasy
@@ -505,8 +501,8 @@ id;zanr
 14954003;Fiction
 14970407;Fantasy
 14976408;Fantasy
-150038;Science Fiction Fantasy
-15006836;Science Fiction Fantasy
+150038;Science Fiction
+15006836;Science Fiction
 15010120;Fantasy
 15012869;Fantasy
 15016;Childrens
@@ -519,12 +515,12 @@ id;zanr
 15058478;Young Adult
 15076945;Fantasy
 15076945;Young Adult
-150810;Graphic Novels Comics
-150820;Graphic Novels Comics
-15091;Graphic Novels Comics
-15091;Science Fiction Fantasy
-15095108;Graphic Novels Comics
-15095108;Science Fiction Fantasy
+150810;Comics
+150820;Comics
+15091;Comics
+15091;Science Fiction
+15095108;Comics
+15095108;Science Fiction
 15095525;Fantasy
 15095525;Young Adult
 15177440;Fantasy
@@ -534,24 +530,24 @@ id;zanr
 15188233;Fantasy
 15225011;Childrens
 15225011;Humor
-15225011;History
+15225011;Historical
 15242875;Childrens
 15242875;Humor
-15242875;History
+15242875;Historical
 15276749;Young Adult
 15276749;Fantasy
 15276749;Fiction
 153394;Fiction
-153394;Science Fiction Fantasy
+153394;Science Fiction
 153394;Young Adult
 15340847;Poetry
 15340847;Childrens
 153473;Childrens
-153473;Science Fiction Fantasy
+153473;Science Fiction
 153734;Young Adult
-153734;Paranormal Fiction
+153734;Paranormal
 15394406;Young Adult
-15394406;Paranormal Fiction
+15394406;Paranormal
 15395207;Fantasy
 15395207;Fiction
 15395207;Young Adult
@@ -569,7 +565,7 @@ id;zanr
 15458298;Young Adult
 15468288;Fantasy
 15468288;Young Adult
-1549088;Science Fiction Fantasy
+1549088;Science Fiction
 15492006;Fantasy
 15492006;Young Adult
 15492006;Adventure
@@ -583,12 +579,12 @@ id;zanr
 15564258;Science Fiction
 15564258;Young Adult
 15568;Childrens
-15568;Historical Fiction
+15568;Historical
 15572575;Childrens
-15572575;Historical Fiction
+15572575;Historical
 15572575;Fantasy
 15578218;Childrens
-15578218;Historical Fiction
+15578218;Historical
 15578218;Fantasy
 15590;Fiction
 15590;Romance
@@ -597,41 +593,40 @@ id;zanr
 15599831;Romance
 15599831;Suspense
 15619;Childrens
-15619;Literary Fiction
-15619;Science Fiction Fantasy
+15619;Fiction
+15619;Science Fiction
 15646761;Childrens
-15646761;Literary Fiction
-15646761;Science Fiction Fantasy
+15646761;Fiction
+15646761;Science Fiction
 15745217;Childrens
-15745217;Literary Fiction
-15745217;Science Fiction Fantasy
+15745217;Fiction
+15745217;Science Fiction
 15745218;Childrens
-15745218;Literary Fiction
-15745218;Science Fiction Fantasy
+15745218;Fiction
+15745218;Science Fiction
 15745487;Childrens
-15745487;Literary Fiction
-15745487;Science Fiction Fantasy
+15745487;Fiction
+15745487;Science Fiction
 15748186;Childrens
-15748186;Literary Fiction
-15748186;Science Fiction Fantasy
+15748186;Fiction
+15748186;Science Fiction
 15749002;Childrens
-15749002;Literary Fiction
-15749002;Science Fiction Fantasy
+15749002;Fiction
+15749002;Science Fiction
 157663;Young Adult
 157663;Fantasy
 157663;Childrens
-1582;Reference
-1582;Science Fiction Fantasy
+1582;Science Fiction
 15872;Childrens
-15872;Science Fiction Fantasy
-15873;Science Fiction Fantasy
+15872;Science Fiction
+15873;Science Fiction
 15873;Young Adult Fantasy
 15873;Childrens
-15890;Science Fiction Fantasy
-158961;Science Fiction Fantasy
+15890;Science Fiction
+158961;Science Fiction
 1598076;Romance
 1598076;Young Adult
-1598076;History
+1598076;Historical
 15983851;Fantasy
 15983851;Fiction
 15983851;Young Adult
@@ -653,21 +648,21 @@ id;zanr
 16099495;Childrens
 16099495;Science Fiction
 16099495;Humor
-16142;Science Fiction Fantasy
-16143;Historical Fiction
+16142;Science Fiction
+16143;Historical
 16143;Childrens
 16143;Fantasy
 16168261;Fantasy
-16168261;Christian
+16168261;Christian Fiction
 16168261;Thriller
 16208276;Fantasy
-16208276;Christian
+16208276;Christian Fiction
 16208276;Thriller
 162326;Fantasy
-162326;Christian
+162326;Christian Fiction
 162326;Thriller
 16234495;Fantasy
-16234495;Christian
+16234495;Christian Fiction
 16234495;Thriller
 1624;Fiction
 1624;Poetry
@@ -687,32 +682,32 @@ id;zanr
 16270940;Fantasy
 16270940;Fiction
 16270940;Childrens
-1630;Literary Fiction
-1630;Science Fiction Fantasy
+1630;Fiction
+1630;Science Fiction
 1630;Horror
-16311956;Literary Fiction
-16311956;Science Fiction Fantasy
+16311956;Fiction
+16311956;Science Fiction
 16311956;Horror
-16311968;Literary Fiction
-16311968;Science Fiction Fantasy
+16311968;Fiction
+16311968;Science Fiction
 16311968;Horror
-163579;Literary Fiction
-163579;Science Fiction Fantasy
+163579;Fiction
+163579;Science Fiction
 163579;Horror
-16367783;Literary Fiction
-16367783;Science Fiction Fantasy
+16367783;Fiction
+16367783;Science Fiction
 16367783;Horror
-16370266;Literary Fiction
-16370266;Science Fiction Fantasy
+16370266;Fiction
+16370266;Science Fiction
 16370266;Horror
-16376829;Literary Fiction
-16376829;Science Fiction Fantasy
+16376829;Fiction
+16376829;Science Fiction
 16376829;Horror
-1638953;Literary Fiction
-1638953;Science Fiction Fantasy
+1638953;Fiction
+1638953;Science Fiction
 1638953;Horror
-16424486;Literary Fiction
-16424486;Science Fiction Fantasy
+16424486;Fiction
+16424486;Science Fiction
 16424486;Horror
 16430470;Fantasy
 16430470;Paranormal
@@ -725,12 +720,12 @@ id;zanr
 16508596;Fantasy
 165168;Young Adult
 165168;Horror
-165168;Mystery Thrillers
+165168;Mystery Thriller
 16526622;Childrens
-1654;Science Fiction Fantasy
+1654;Science Fiction
 1654;Humor
 1654;Childrens
-16544802;Science Fiction Fantasy
+16544802;Science Fiction
 16544802;Humor
 16544802;Childrens
 165989;Fantasy
@@ -738,7 +733,7 @@ id;zanr
 165989;Suspense
 16616431;Contemporary
 16616431;Fantasy
-16616431;Historical Fiction
+16616431;Historical
 16628;Childrens
 16628;Fiction
 16663911;Childrens
@@ -800,7 +795,7 @@ id;zanr
 17054;Thriller
 17054;Young Adult
 170658;Young Adult
-170658;Historical Fiction
+170658;Historical
 170658;Childrens
 17070366;Childrens
 17070366;Young Adult
@@ -808,20 +803,20 @@ id;zanr
 170751;Childrens
 170751;Young Adult
 170751;Paranormal
-17082;Science Fiction Fantasy
-17082;Mystery Thrillers
+17082;Science Fiction
+17082;Mystery Thriller
 17082;Romance
-17086135;Science Fiction Fantasy
-17086135;Mystery Thrillers
+17086135;Science Fiction
+17086135;Mystery Thriller
 17086135;Romance
-17086236;Science Fiction Fantasy
-17086236;Mystery Thrillers
+17086236;Science Fiction
+17086236;Mystery Thriller
 17086236;Romance
-17087119;Science Fiction Fantasy
-17087119;Mystery Thrillers
+17087119;Science Fiction
+17087119;Mystery Thriller
 17087119;Romance
-17101277;Science Fiction Fantasy
-17101277;Mystery Thrillers
+17101277;Science Fiction
+17101277;Mystery Thriller
 17101277;Romance
 17102919;Fiction
 17102919;Fantasy
@@ -832,10 +827,10 @@ id;zanr
 17162288;Fantasy
 17162288;Paranormal
 17162288;Young Adult
-171691;Graphic Novels Comics
-17176446;Graphic Novels Comics
-17183686;Graphic Novels Comics
-17196839;Graphic Novels Comics
+171691;Comics
+17176446;Comics
+17183686;Comics
+17196839;Comics
 17197958;Self Help
 17197958;Nonfiction
 17197958;Romance
@@ -849,30 +844,28 @@ id;zanr
 17209955;Nonfiction
 17209955;Romance
 17216;Young Adult
-17216;Middle Grade
 17216;Childrens
 17237340;Young Adult
-17237340;Middle Grade
 17237340;Childrens
-172487;Arts Photography
-172487;Science Fiction Fantasy
+172487;Art
+172487;Science Fiction
 172487;Horror
-172490;Science Fiction Fantasy
-17276686;Science Fiction Fantasy
-1730;Historical Fiction
+172490;Science Fiction
+17276686;Science Fiction
+1730;Historical
 1730;Mystery
 1730;Philosophy
-17307856;Historical Fiction
+17307856;Historical
 17307856;Mystery
 17307856;Philosophy
 17327390;Romance
 17327390;Contemporary
 17327390;Fantasy
 17348018;Childrens
-17348018;Historical Fiction
+17348018;Historical
 17348018;Science Fiction
 173493;Childrens
-173493;Science Fiction Fantasy
+173493;Science Fiction
 173493;Young Adult
 173745;Fiction
 173745;Nonfiction
@@ -900,34 +893,27 @@ id;zanr
 17567374;Science Fiction
 17567374;Crime
 175855;Young Adult
-175855;Science Fiction Fantasy
+175855;Science Fiction
 175855;Romance
 17628973;Young Adult
-17628973;Science Fiction Fantasy
+17628973;Science Fiction
 17628973;Romance
-17630336;Ebooks
 17630336;Childrens
 17630336;Fantasy
-17634250;Ebooks
 17634250;Childrens
 17634250;Fantasy
-17637529;Ebooks
 17637529;Childrens
 17637529;Fantasy
-17715564;Ebooks
 17715564;Childrens
 17715564;Fantasy
-17716636;Ebooks
 17716636;Childrens
 17716636;Fantasy
 1773124;Fantasy
 1773124;Science Fiction
 17732581;Memoir
-17732581;Christian
-17732581;Ebooks
+17732581;Christian Fiction
 17740651;Memoir
-17740651;Christian
-17740651;Ebooks
+17740651;Christian Fiction
 17762487;Fantasy
 17762487;Horror
 17762487;Young Adult
@@ -959,35 +945,32 @@ id;zanr
 17957382;Fiction
 17976089;Romance
 17976089;Fiction
-18;Literary Fiction
+18;Fiction
 18;Outdoors Nature
 18002918;Fantasy
 18002918;Fiction
-18002918;Ebooks
 18021853;Fantasy
 18021853;Fiction
-18021853;Ebooks
 18026533;Fantasy
 18026533;Fiction
-18026533;Ebooks
 18062;Biography
 18062;Nonfiction
 18062;Short Stories
 1806321;Biography
 1806321;Nonfiction
 1806321;Short Stories
-181668;Literary Fiction
-181668;Mystery Thrillers
-1825;Literary Fiction
-183593;Literary Fiction
+181668;Fiction
+181668;Mystery Thriller
+1825;Fiction
+183593;Fiction
 18451;Childrens
 18738;Childrens
-18819;Mystery Thrillers
+18819;Mystery Thriller
 1885084;Poetry
 1892274;Poetry
 190377;Art
-190441;Literary Fiction
-190887;Science Fiction Fantasy
+190441;Fiction
+190887;Science Fiction
 190887;Poetry
 190887;Young Adult
 190922;Young Adult
@@ -995,17 +978,17 @@ id;zanr
 191456;Fantasy
 191456;Paranormal
 191456;Young Adult
-191475;Science Fiction Fantasy
-1917064;Science Fiction Fantasy
-1938680;Science Fiction Fantasy
+191475;Science Fiction
+1917064;Science Fiction
+1938680;Science Fiction
 1938680;Young Adult
 1938680;Childrens
-19440;Science Fiction Fantasy
+19440;Science Fiction
 19440;Young Adult
 19440;Childrens
 19441;Science
-19441;Science Fiction Fantasy
-19443;Science Fiction Fantasy
+19441;Science Fiction
+19443;Science Fiction
 1948907;Science Fiction
 1948907;Fantasy
 1949;Childrens
@@ -1015,33 +998,33 @@ id;zanr
 19564;Childrens
 19564;Fantasy
 19564;Classics
-195727;Literary Fiction
-195727;Mystery Thrillers
+195727;Fiction
+195727;Mystery Thriller
 1964987;Conspiracy
 1964987;Espionage
 1964987;Horror
-19733;Graphic Novels Comics
-19733;Science Fiction Fantasy
-1977;Graphic Novels Comics
-1977;Science Fiction Fantasy
-1982335;Graphic Novels Comics
-1982335;Science Fiction Fantasy
-198287;Mystery Thrillers
+19733;Comics
+19733;Science Fiction
+1977;Comics
+1977;Science Fiction
+1982335;Comics
+1982335;Science Fiction
+198287;Mystery Thriller
 19954;Young Adult
 19954;Horror
-19954;Science Fiction Fantasy
+19954;Science Fiction
 2013694;Young Adult
 2013694;Horror
-2013694;Science Fiction Fantasy
+2013694;Science Fiction
 202254;Young Adult
 202254;Horror
-202254;Science Fiction Fantasy
+202254;Science Fiction
 2041;Childrens
-2041;Literary Fiction
+2041;Fiction
 205;Science Fiction
 205;Childrens
 205;Fiction
-20513;Science Fiction Fantasy
+20513;Science Fiction
 2063919;Fantasy
 2063919;Science Fiction
 2063919;Adventure
@@ -1051,7 +1034,7 @@ id;zanr
 208650;Manga
 208650;Fantasy
 2086916;Childrens
-2091984;Science Fiction Fantasy
+2091984;Science Fiction
 21198;Romance
 21198;Chick Lit
 21198;Young Adult
@@ -1061,13 +1044,13 @@ id;zanr
 212787;Fantasy
 212787;Science Fiction
 212787;Horror
-212788;Science Fiction Fantasy
-212788;Graphic Novels Comics
+212788;Science Fiction
+212788;Comics
 212788;Humor
-2130;Literary Fiction
-2130;Mystery Thrillers
-21347;Literary Fiction
-21347;Mystery Thrillers
+2130;Fiction
+2130;Mystery Thriller
+21347;Fiction
+21347;Mystery Thriller
 214;Childrens
 215607;Fantasy
 215607;Science Fiction
@@ -1077,26 +1060,24 @@ id;zanr
 2172337;Fantasy
 2172337;Romance
 21911;Young Adult
-21911;Paranormal Fiction
+21911;Paranormal
 21911;Fantasy
 219417;Young Adult
 219417;Childrens
-219417;Science Fiction Fantasy
+219417;Science Fiction
 21981;Fiction
 220245;Fiction
 221559;Childrens
-221645;Translation
 221645;Memoir
-221645;Historical Fiction
-222347;Translation
+221645;Historical
 222347;Memoir
-222347;Historical Fiction
+222347;Historical
 22414;Childrens
-22414;Literary Fiction
+22414;Fiction
 22414;Young Adult
 22542;Young Adult
-22542;Science Fiction Fantasy
-22543;Science Fiction Fantasy
+22542;Science Fiction
+22543;Science Fiction
 22543;Young Adult
 2261547;Young Adult
 2261547;Horror
@@ -1113,36 +1094,36 @@ id;zanr
 232254;Young Adult
 232254;Horror
 232254;Romance
-2347;Science Fiction Fantasy
+2347;Science Fiction
 2347;Childrens
-2348846;Science Fiction Fantasy
+2348846;Science Fiction
 2348846;Childrens
 23509;Childrens
 23509;Outdoors Nature
 235216;Fantasy
 235216;Science Fiction
 237194;Young Adult
-237194;Science Fiction Fantasy
+237194;Science Fiction
 238243;Young Adult
-238243;Science Fiction Fantasy
-239579;Literary Fiction
+238243;Science Fiction
+239579;Fiction
 2413;Childrens
-2413;Science Fiction Fantasy
+2413;Science Fiction
 2413;Spirituality
-242473;Literary Fiction
+242473;Fiction
 242473;Young Adult
-243395;Graphic Novels Comics
-244754;Graphic Novels Comics
+243395;Comics
+244754;Comics
 2448;Fiction
 2448;Crime
 2448;Thriller
-24514;Graphic Novels Comics
-246474;Graphic Novels Comics
+24514;Comics
+246474;Comics
 2471183;Young Adult
-2471183;Science Fiction Fantasy
-24818;Science Fiction Fantasy
+2471183;Science Fiction
+24818;Science Fiction
 24821;Childrens
-24830;Science Fiction Fantasy
+24830;Science Fiction
 24830;Childrens
 24830;Young Adult
 24902;Short Stories
@@ -1151,27 +1132,27 @@ id;zanr
 249080;Nonfiction
 249080;Crafts Hobbies
 2493;Childrens
-2493;Literary Fiction
+2493;Fiction
 2493;Young Adult
 249843;Fantasy
-25;Science Fiction Fantasy
+25;Science Fiction
 25;Young Adult
 25052;Childrens
-25052;Science Fiction Fantasy
+25052;Science Fiction
 2526;Young Adult
-2526;Science Fiction Fantasy
-2526;Literary Fiction
-25307;Science Fiction Fantasy
-25307;History
+2526;Science Fiction
+2526;Fiction
+25307;Science Fiction
+25307;Historical
 25307;Mystery
-25355;Science Fiction Fantasy
-25355;History
+25355;Science Fiction
+25355;Historical
 25355;Mystery
 2541147;Fantasy
 2541147;Science Fiction
 2541147;Young Adult
 25421;Childrens
-25421;Science Fiction Fantasy
+25421;Science Fiction
 25422;Fantasy
 25422;Young Adult
 25422;Childrens
@@ -1185,92 +1166,92 @@ id;zanr
 26170;Fantasy
 262689;Fantasy
 26291;Fantasy
-26306;Graphic Novels Comics
+26306;Comics
 26306;Young Adult
 26306;Romance
-26414;Graphic Novels Comics
+26414;Comics
 26414;Young Adult
 26414;Romance
 2644993;Young Adult
-2644993;Science Fiction Fantasy
+2644993;Science Fiction
 2644993;Chick Lit
 266470;Mystery
 266470;Fantasy
 266470;Romance
 267106;Science Fiction
-267106;Historical Fiction
+267106;Historical
 267106;Romance
 268199;Young Adult
-268524;Arts Photography
-26878;Science Fiction Fantasy
-26878;Literary Fiction
-26897;Science Fiction Fantasy
+268524;Art
+26878;Science Fiction
+26878;Fiction
+26897;Science Fiction
 26897;Romance
-2697291;Science Fiction Fantasy
+2697291;Science Fiction
 2697291;Romance
 2699745;Childrens
 2699745;Humor
-2699745;Mystery Thrillers
+2699745;Mystery Thriller
 270252;Childrens
 270252;Humor
-270252;Mystery Thrillers
+270252;Mystery Thriller
 27100;Fantasy
 27100;Young Adult
 27100;Horror
 27144;Fantasy
 27144;Young Adult
 27144;Horror
-272814;Science Fiction Fantasy
+272814;Science Fiction
 272814;Young Adult
 272814;Childrens
-2731071;Arts Photography
+2731071;Art
 2735638;Young Adult
-2735638;Science Fiction Fantasy
+2735638;Science Fiction
 2735638;Horror
 2738900;Childrens
 2738901;Childrens
 27500;Fiction
 2766469;Childrens
 2766919;Young Adult
-2766919;Science Fiction Fantasy
-2766919;Business Investing
-2767686;Science Fiction Fantasy
+2766919;Science Fiction
+2766919;Business
+2767686;Science Fiction
 2767686;Young Adult
 2767686;Childrens
-277045;Science Fiction Fantasy
+277045;Science Fiction
 277045;Young Adult
 277045;Childrens
-277806;History
-277806;Science Fiction Fantasy
-278879;History
-278879;Science Fiction Fantasy
+277806;Historical
+277806;Science Fiction
+278879;Historical
+278879;Science Fiction
 2803449;Fantasy
-2803449;History
+2803449;Historical
 2803449;Young Adult
 28120;Childrens
 2821016;Fantasy
 2824557;Childrens
 28273;Childrens
 2828;Childrens
-2828;Science Fiction Fantasy
+2828;Science Fiction
 2828543;Childrens
-2828543;Science Fiction Fantasy
+2828543;Science Fiction
 2829062;Young Adult
-2829062;Science Fiction Fantasy
+2829062;Science Fiction
 2829062;Childrens
 2837486;Young Adult
-2837486;Science Fiction Fantasy
+2837486;Science Fiction
 2837486;Childrens
-28474;Literary Fiction
-28474;Graphic Novels Comics
+28474;Fiction
+28474;Comics
 2847442;Contemporary
 2847442;Young Adult
 2847482;Contemporary
 2847482;Young Adult
-28544;Science Fiction Fantasy
+28544;Science Fiction
 28544;Romance
 28544;Young Adult
-2860219;Science Fiction Fantasy
+2860219;Science Fiction
 2860219;Horror
 2860219;Young Adult
 2861813;Spirituality
@@ -1285,57 +1266,57 @@ id;zanr
 2870363;Paranormal
 2870843;Childrens
 28756;Young Adult
-28756;Science Fiction Fantasy
+28756;Science Fiction
 28756;Nonfiction
 2876763;Young Adult
 2876763;Romance
-2876763;Mystery Thrillers
+2876763;Mystery Thriller
 2876982;Young Adult
 2876982;Romance
-2876982;Mystery Thrillers
+2876982;Mystery Thriller
 2882725;Science Fiction
 2882725;Fantasy
-2882725;History
+2882725;Historical
 2884780;Young Adult
-2884780;Science Fiction Fantasy
+2884780;Science Fiction
 2884780;Lgbt
 2886074;Young Adult
-2886074;Science Fiction Fantasy
+2886074;Science Fiction
 2886074;Lgbt
-2887586;Science Fiction Fantasy
+2887586;Science Fiction
 2887586;Romance
 2887586;Young Adult
-2891665;Science Fiction Fantasy
+2891665;Science Fiction
 2891665;Romance
 2891665;Lgbt
-2895618;Literary Fiction
+2895618;Fiction
 2895618;Young Adult
 2895618;Paranormal
 2895706;Young Adult
-2895706;Science Fiction Fantasy
+2895706;Science Fiction
 2895706;Romance
 2895707;Young Adult
 2895707;Romance
-2895707;Science Fiction Fantasy
+2895707;Science Fiction
 290375;Young Adult
 290375;Romance
-290375;Science Fiction Fantasy
+290375;Science Fiction
 2905297;Young Adult
 2905297;Romance
-2905297;Science Fiction Fantasy
-2917917;Science Fiction Fantasy
+2905297;Science Fiction
+2917917;Science Fiction
 2922723;Childrens
 2922723;Fantasy
 2933023;Childrens
 2933023;Fantasy
-2938140;Folk Tales
+2938140;Folklore
 2938140;Fairy Tales
 2938140;Nonfiction
-2938141;Folk Tales
-2938141;History
+2938141;Folklore
+2938141;Historical
 2938141;Nonfiction
 2958986;Childrens
-2958986;Science Fiction Fantasy
+2958986;Science Fiction
 2958986;Young Adult
 2960013;Nonfiction
 2960013;Fiction
@@ -1346,11 +1327,11 @@ id;zanr
 296913;Young Adult
 296913;Childrens
 2973783;Childrens
-2973783;Science Fiction Fantasy
+2973783;Science Fiction
 2973783;Romance
 2978119;Spirituality
 2978119;Childrens
-2978119;Science Fiction Fantasy
+2978119;Science Fiction
 2980337;Manga
 2980337;Romance
 2983974;Young Adult
@@ -1361,7 +1342,7 @@ id;zanr
 2987888;Young Adult
 299142;Young Adult
 2995873;Young Adult
-300162;Literary Fiction
+300162;Fiction
 300162;Spirituality
 300162;Childrens
 3003844;Childrens
@@ -1369,32 +1350,32 @@ id;zanr
 3003844;Fiction
 3005591;Manga
 3009553;Manga
-3012988;Literary Fiction
+3012988;Fiction
 3012988;Poetry
 3012988;Biography
 3014983;Spirituality
 3014983;Poetry
 3014983;Professional Technical
-301506;Science Fiction Fantasy
-3022555;Science Fiction Fantasy
+301506;Science Fiction
+3022555;Science Fiction
 3038019;Childrens
 3040642;Childrens
-304633;Graphic Novels Comics
+304633;Comics
 3046613;Young Adult
-3046613;Arts Photography
-3046613;Mystery Thrillers
+3046613;Art
+3046613;Mystery Thriller
 3056388;Young Adult
-3056388;Arts Photography
-3056388;Mystery Thrillers
+3056388;Art
+3056388;Mystery Thriller
 305654;Young Adult
-305654;Arts Photography
-305654;Mystery Thrillers
+305654;Art
+305654;Mystery Thriller
 3059615;Lgbt
 3059615;Fantasy
 3059615;Young Adult
-306;Literary Fiction
-3077893;Science Fiction Fantasy
-3077893;Literary Fiction
+306;Fiction
+3077893;Science Fiction
+3077893;Fiction
 3077893;Childrens
 30916;Childrens
 3093309;Childrens
@@ -1402,28 +1383,26 @@ id;zanr
 3095710;Childrens
 3095893;Young Adult
 30973;Biography
-30973;Literary Fiction
+30973;Fiction
 3100027;Biography
-3100027;Literary Fiction
+3100027;Fiction
 3115036;Childrens
-3115036;Literary Fiction
-3115036;Science Fiction Fantasy
-31247;Science Fiction Fantasy
-31247;Humor
+3115036;Fiction
+3115036;Science Fiction
 31247;Science Fiction
-3128534;Science Fiction Fantasy
-3128534;Humor
+31247;Humor
 3128534;Science Fiction
+3128534;Humor
 3141498;Fantasy
 3141498;Fiction
 3141498;Horror
-3145809;Science Fiction Fantasy
+3145809;Science Fiction
 31468;Young Adult
 31468;Childrens
 3155347;Childrens
-3155347;Science Fiction Fantasy
+3155347;Science Fiction
 3162469;Childrens
-3162469;Science Fiction Fantasy
+3162469;Science Fiction
 316751;Fantasy
 316751;Paranormal
 316751;Horror
@@ -1434,27 +1413,26 @@ id;zanr
 3180076;Young Adult
 3182455;Fantasy
 3182455;Young Adult
-3182455;Middle Grade
-31869;Mystery Thrillers
+3182455;Childrens
+31869;Mystery Thriller
 31869;Suspense
 31869;Romance
 3190;Fiction
 3190;Short Stories
 319026;Fantasy
-319026;Christian
+319026;Christian Fiction
 319026;Childrens
 3206478;Childrens
-3206478;Historical Fiction
-3206478;Science Fiction Fantasy
+3206478;Historical
+3206478;Science Fiction
 3212303;Childrens
-3212303;Historical Fiction
-3212303;Science Fiction Fantasy
+3212303;Historical
+3212303;Science Fiction
 321303;Childrens
-32168;Entertainment
 3218306;Young Adult
-3218306;Science Fiction Fantasy
+3218306;Science Fiction
 3227102;Young Adult
-3227102;Science Fiction Fantasy
+3227102;Science Fiction
 3231;Fantasy
 3231;Adventure
 3231;Science Fiction
@@ -1473,22 +1451,22 @@ id;zanr
 324500;Fantasy
 324620;Fantasy
 32590;Childrens
-32590;Mystery Thrillers
-32590;Science Fiction Fantasy
+32590;Mystery Thriller
+32590;Science Fiction
 32637;Science Fiction
 32637;Fantasy
 3267859;Childrens
 3267859;Young Adult
-3267859;Science Fiction Fantasy
+3267859;Science Fiction
 327472;Childrens
-3275595;Literary Fiction
-3275595;Mystery Thrillers
+3275595;Fiction
+3275595;Mystery Thriller
 3275595;Politics
 3291710;Nonfiction
-3291710;Literary Fiction
+3291710;Fiction
 3291710;Spirituality
-3305;Science Fiction Fantasy
-3305484;Science Fiction Fantasy
+3305;Science Fiction
+3305484;Science Fiction
 3305484;Childrens
 3305484;Short Stories
 330649;Young Adult
@@ -1498,26 +1476,26 @@ id;zanr
 3343082;Young Adult
 3343082;Self Help
 33461;Young Adult
-33461;Science Fiction Fantasy
-33467;Science Fiction Fantasy
+33461;Science Fiction
+33467;Science Fiction
 33467;Childrens
 33467;Young Adult
 33502;Young Adult
-33502;Science Fiction Fantasy
+33502;Science Fiction
 33502;Humor
 337207;Young Adult
-337207;Science Fiction Fantasy
+337207;Science Fiction
 337207;Humor
 3376756;Young Adult
-3376756;Science Fiction Fantasy
+3376756;Science Fiction
 3376756;Humor
 3377501;Young Adult
 3377501;Childrens
-3377501;Graphic Novels Comics
+3377501;Comics
 3377502;Childrens
-3377502;Science Fiction Fantasy
-3377502;Graphic Novels Comics
-3377941;Mystery Thrillers
+3377502;Science Fiction
+3377502;Comics
+3377941;Mystery Thriller
 3377941;Young Adult
 3377941;Nonfiction
 337831;Childrens
@@ -1526,27 +1504,27 @@ id;zanr
 3378915;Spirituality
 3378915;Paranormal
 3380908;Young Adult
-3380908;Science Fiction Fantasy
-338705;Literary Fiction
-338705;Science Fiction Fantasy
+3380908;Science Fiction
+338705;Fiction
+338705;Science Fiction
 3400294;Romance
 3400294;Suspense
 3400294;Young Adult
 34046;Romance
 34046;Suspense
 34046;Young Adult
-34049;Science Fiction Fantasy
+34049;Science Fiction
 34049;Childrens
 34049;Young Adult
-3408349;Science Fiction Fantasy
+3408349;Science Fiction
 3408349;Young Adult
 3433047;Young Adult
-3433047;Science Fiction Fantasy
-3441;Science Fiction Fantasy
-3441;Literary Fiction
-3443897;Science Fiction Fantasy
+3433047;Science Fiction
+3441;Science Fiction
+3441;Fiction
+3443897;Science Fiction
 3443897;Horror
-34659;Science Fiction Fantasy
+34659;Science Fiction
 34659;Horror
 34660;Childrens
 346732;Fantasy
@@ -1561,56 +1539,56 @@ id;zanr
 34827;Fantasy
 34827;Young Adult Fantasy
 34827;Science Fiction
-3483442;Middle Grade
-3483442;Science Fiction Fantasy
-34850;Science Fiction Fantasy
-34850;Historical Fiction
+3483442;Childrens
+3483442;Science Fiction
+34850;Science Fiction
+34850;Historical
 34850;Spirituality
-34859;Science Fiction Fantasy
-34859;Historical Fiction
+34859;Science Fiction
+34859;Historical
 3486415;Young Adult
-3486415;Science Fiction Fantasy
+3486415;Science Fiction
 3486415;Romance
 348878;Young Adult
 34933;Young Adult
 35017;Outdoors Nature
-35017;Literary Fiction
-35017;Science Fiction Fantasy
+35017;Fiction
+35017;Science Fiction
 3509782;Young Adult
-3510;Literary Fiction
-3521981;Literary Fiction
+3510;Fiction
+3521981;Fiction
 3565;Theatre
 3565;Poetry
 3565;Fiction
 357601;Young Adult
-357601;Science Fiction Fantasy
-357601;Graphic Novels Comics
+357601;Science Fiction
+357601;Comics
 359109;Childrens
 359109;Young Adult
 359109;Fantasy
 36122;Young Adult
 36122;Fantasy
-36175;Science Fiction Fantasy
+36175;Science Fiction
 36175;Young Adult
 3618;Childrens
-3618;Science Fiction Fantasy
+3618;Science Fiction
 3618;Fantasy
-361963;Literary Fiction
+361963;Fiction
 361963;Young Adult
-362098;Literary Fiction
+362098;Fiction
 362098;Young Adult
 3624;Young Adult
-3624;Science Fiction Fantasy
+3624;Science Fiction
 3624;Childrens
-36276;Graphic Novels Comics
+36276;Comics
 36276;Childrens
-36276;Arts Photography
-366097;Graphic Novels Comics
+36276;Art
+366097;Comics
 366097;Childrens
-366097;Arts Photography
+366097;Art
 36746;Childrens
-36746;Mystery Thrillers
-3681;Literary Fiction
+36746;Mystery Thriller
+3681;Fiction
 3681;Romance
 3681;Young Adult
 370361;Young Adult
@@ -1619,117 +1597,117 @@ id;zanr
 3706;Fiction
 3706;Politics
 3706;Journalism
-37060;Science Fiction Fantasy
+37060;Science Fiction
 37060;Young Adult
 374429;Young Adult
-374429;Science Fiction Fantasy
-374429;Mystery Thrillers
-3780;Literary Fiction
+374429;Science Fiction
+374429;Mystery Thriller
+3780;Fiction
 3780;Mystery Thriller
 3780;Young Adult
 379444;Romance
-379444;Science Fiction Fantasy
+379444;Science Fiction
 38120;Childrens
-38120;Arts Photography
+38120;Art
 3839;Childrens
 3839;Nonfiction
 3843;Childrens
 38449;Childrens
-3849415;Literary Fiction
-3849415;History
-3850275;Literary Fiction
-3850275;History
-38550;Science Fiction Fantasy
+3849415;Fiction
+3849415;Historical
+3850275;Fiction
+3850275;Historical
+38550;Science Fiction
 38550;Young Adult
 385574;Childrens
-38951;Literary Fiction
-38951;Mystery Thrillers
-38981;Science Fiction Fantasy
+38951;Fiction
+38951;Mystery Thriller
+38981;Science Fiction
 38981;Horror
-38982;Science Fiction Fantasy
-390509;Graphic Novels Comics
-3911096;Graphic Novels Comics
-3948054;Graphic Novels Comics
-3978667;Graphic Novels Comics
-3995;Science Fiction Fantasy
+38982;Science Fiction
+390509;Comics
+3911096;Comics
+3948054;Comics
+3978667;Comics
+3995;Science Fiction
 3995;Childrens
 3995;Young Adult
-3999413;Science Fiction Fantasy
+3999413;Science Fiction
 3999413;Childrens
 3999413;Young Adult
 4;Science Fiction
 4;Mystery
 4;Humor
-4007811;Science Fiction Fantasy
+4007811;Science Fiction
 4007811;Young Adult
-4007811;Mystery Thrillers
+4007811;Mystery Thriller
 4018722;Young Adult
-4018722;Science Fiction Fantasy
-4026231;Mystery Thrillers
-4026231;Literary Fiction
-403244;Mystery Thrillers
-403244;Literary Fiction
+4018722;Science Fiction
+4026231;Mystery Thriller
+4026231;Fiction
+403244;Mystery Thriller
+403244;Fiction
 4039811;Young Adult
 4039811;Science Fiction
 404580;Young Adult
 404580;Science Fiction
 404733;Young Adult
-404733;Science Fiction Fantasy
-40563;Science Fiction Fantasy
+404733;Science Fiction
+40563;Science Fiction
 40563;Paranormal
 4074051;Young Adult
 4074051;Fantasy
-4074051;Historical Fiction
+4074051;Historical
 4086715;Young Adult
-4086715;Literary Fiction
+4086715;Fiction
 4086715;Horror
 409615;Young Adult
-409615;Literary Fiction
+409615;Fiction
 409615;Horror
-40983;Science Fiction Fantasy
-40983;Literary Fiction
-4099;Science Fiction Fantasy
+40983;Science Fiction
+40983;Fiction
+4099;Science Fiction
 4099;Spirituality
 4099;Young Adult
-40998;Graphic Novels Comics
-4105887;Graphic Novels Comics
-4106;Science Fiction Fantasy
+40998;Comics
+4105887;Comics
+4106;Science Fiction
 410653;Childrens
 4124325;Childrens
 4150084;Childrens
 4160;Childrens
-41661;Literary Fiction
+41661;Fiction
 41661;Poetry
 41878;Folklore
 41878;Fairy Tales
 41878;Anthropology
 418792;Childrens
 418792;Fantasy
-41942;Science Fiction Fantasy
-4208569;Literary Fiction
-42122;Graphic Novels Comics
+41942;Science Fiction
+4208569;Fiction
+42122;Comics
 42122;Humor
-42122;Science Fiction Fantasy
-42275;Graphic Novels Comics
+42122;Science Fiction
+42275;Comics
 42275;Humor
-42275;Science Fiction Fantasy
-4260;Science Fiction Fantasy
+42275;Science Fiction
+4260;Science Fiction
 4260;Young Adult
 4260;Childrens
-426503;Science Fiction Fantasy
+426503;Science Fiction
 426503;Young Adult
 426503;Childrens
-426504;Science Fiction Fantasy
+426504;Science Fiction
 426504;Young Adult
 426504;Childrens
 426944;Fantasy
 426944;Childrens
-426944;Historical Fiction
+426944;Historical
 4273;Childrens
-4273;Literary Fiction
+4273;Fiction
 4273;Short Stories
 427430;Childrens
-427430;Literary Fiction
+427430;Fiction
 427430;Short Stories
 4278384;Young Adult
 4278384;Childrens
@@ -1738,14 +1716,14 @@ id;zanr
 4280;Science Fiction
 4280;Fantasy
 428566;Childrens
-4308706;Historical Fiction
+4308706;Historical
 4308706;Young Adult
-4308706;Science Fiction Fantasy
-4322279;Graphic Novels Comics
+4308706;Science Fiction
+4322279;Comics
 4342215;Young Adult
-4342215;Science Fiction Fantasy
-4344140;Historical Fiction
-4344140;Mystery Thrillers
+4342215;Science Fiction
+4344140;Historical
+4344140;Mystery Thriller
 4344140;Fantasy
 4344451;Young Adult
 4344451;Fantasy
@@ -1754,32 +1732,32 @@ id;zanr
 435477;Childrens
 4366471;Fiction
 43784;Fiction
-43784;Historical Fiction
+43784;Historical
 43784;Fantasy
-43835;Science Fiction Fantasy
-4411007;Science Fiction Fantasy
+43835;Science Fiction
+4411007;Science Fiction
 4430;Paranormal
-4430;Science Fiction Fantasy
+4430;Science Fiction
 4430;Young Adult
-4431689;Science Fiction Fantasy
+4431689;Science Fiction
 4431689;Young Adult
-4432;Science Fiction Fantasy
-4432;Literary Fiction
+4432;Science Fiction
+4432;Fiction
 44524;Childrens
-445303;Science Fiction Fantasy
+445303;Science Fiction
 445303;Young Adult
 445303;Romance
 4455275;Fiction
-4468635;Science Fiction Fantasy
+4468635;Science Fiction
 4468635;Young Adult
 4468635;Short Stories
-4474929;Science Fiction Fantasy
+4474929;Science Fiction
 4474929;Young Adult
 4474929;Short Stories
-4478744;Science Fiction Fantasy
+4478744;Science Fiction
 4478744;Christian Fiction
 4478744;Apocalyptic
-4488686;Science Fiction Fantasy
+4488686;Science Fiction
 4488686;Young Adult
 4488686;Childrens
 4492558;Fantasy
@@ -1793,31 +1771,31 @@ id;zanr
 4512224;Science Fiction
 4512224;Young Adult
 4522;Horror
-4522;Science Fiction Fantasy
+4522;Science Fiction
 4533716;Science
 4533716;Nonfiction
-4533716;Science Fiction Fantasy
-4539876;Middle Grade
-4539876;Science Fiction Fantasy
+4533716;Science Fiction
+4539876;Childrens
+4539876;Science Fiction
 4539876;Young Adult
 456208;Young Adult
 4562979;Young Adult
 4575289;Young Adult
-4575289;Science Fiction Fantasy
-4575289;Historical Fiction
+4575289;Science Fiction
+4575289;Historical
 4593149;Science Fiction
 4593149;Young Adult
 4593149;Cookbooks
 460686;Science Fiction
 460686;Fantasy
-46097;Literary Fiction
-4609969;Literary Fiction
+46097;Fiction
+4609969;Fiction
 4610078;Young Adult
 4610078;Fantasy
-4610078;Science Fiction Fantasy
+4610078;Science Fiction
 4614848;Young Adult
 4614848;Fantasy
-4614848;Science Fiction Fantasy
+4614848;Science Fiction
 4615776;Science Fiction
 4615776;Young Adult
 4615776;Fantasy
@@ -1832,43 +1810,43 @@ id;zanr
 4629065;Romance
 4629194;Young Adult
 4629194;Romance
-4629194;Science Fiction Fantasy
+4629194;Science Fiction
 463173;Fiction
 463173;Young Adult
 463173;Childrens
 4637369;Young Adult
-4637369;Science Fiction Fantasy
+4637369;Science Fiction
 4637369;Romance
 46474;Young Adult
 46474;Childrens
-4648176;Science Fiction Fantasy
+4648176;Science Fiction
 466652;Childrens
-466652;Mystery Thrillers
+466652;Mystery Thriller
 466652;Young Adult
 4681646;Childrens
-4681646;Mystery Thrillers
+4681646;Mystery Thriller
 4681646;Young Adult
 4684322;Young Adult
-4684322;Science Fiction Fantasy
-4684322;Literary Fiction
+4684322;Science Fiction
+4684322;Fiction
 4699102;Young Adult
-4699102;Science Fiction Fantasy
-4699102;Literary Fiction
-4702931;Middle Grade
+4699102;Science Fiction
+4699102;Fiction
+4702931;Childrens
 4702931;Young Adult
 4702931;Fantasy
-4707891;Literary Fiction
+4707891;Fiction
 4707891;Young Adult
-4707891;Science Fiction Fantasy
-47104;Literary Fiction
-47104;Science Fiction Fantasy
+4707891;Science Fiction
+47104;Fiction
+47104;Science Fiction
 47104;Crime
-4713885;Literary Fiction
-4713885;Science Fiction Fantasy
+4713885;Fiction
+4713885;Science Fiction
 4713885;Crime
-4716769;Science Fiction Fantasy
+4716769;Science Fiction
 4716769;Lgbt
-4716769;Historical Fiction
+4716769;Historical
 4718528;Young Adult
 4721536;Fantasy
 4721536;Science Fiction
@@ -1879,7 +1857,7 @@ id;zanr
 4727364;Thriller
 4727364;Suspense
 4735;Childrens
-4735;History
+4735;Historical
 4735;Fiction
 4740566;Fiction
 4740566;Thriller
@@ -1890,45 +1868,45 @@ id;zanr
 4760403;Contemporary
 4760403;Fantasy
 4760403;Poetry
-4766;Science Fiction Fantasy
+4766;Science Fiction
 4766;Young Adult
 4766257;Childrens
 4766257;Young Adult
-4766257;Science Fiction Fantasy
-47672;Literary Fiction
+4766257;Science Fiction
+47672;Fiction
 47672;Childrens
 4768200;Young Adult
-4768200;Science Fiction Fantasy
+4768200;Science Fiction
 4768200;Horror
 478703;Young Adult
-478703;Science Fiction Fantasy
+478703;Science Fiction
 478703;Horror
 4789839;Young Adult
-4789839;Science Fiction Fantasy
+4789839;Science Fiction
 4789839;Horror
-47991;Science Fiction Fantasy
+47991;Science Fiction
 47991;Childrens
-4799212;Science Fiction Fantasy
-4799229;Literary Fiction
-4799229;Science Fiction Fantasy
+4799212;Science Fiction
+4799229;Fiction
+4799229;Science Fiction
 4799229;Short Stories
-4800563;Christian
+4800563;Christian Fiction
 4800563;Thriller
 4800563;Young Adult
-4809796;Mystery Thrillers
+4809796;Mystery Thriller
 4809796;Romance
-4809796;Literary Fiction
-481045;Mystery Thrillers
+4809796;Fiction
+481045;Mystery Thriller
 481045;Romance
-481045;Literary Fiction
-4811674;Mystery Thrillers
+481045;Fiction
+4811674;Mystery Thriller
 4811674;Romance
-4811674;Literary Fiction
+4811674;Fiction
 48192;Romance
 48192;Young Adult
 48192;Paranormal Romance
-4822;Graphic Novels Comics
-4824264;Graphic Novels Comics
+4822;Comics
+4824264;Comics
 4834133;Young Adult
 4834133;Fantasy
 4834133;Spirituality
@@ -1941,12 +1919,12 @@ id;zanr
 4847509;Fantasy
 4847509;Mystery
 4847509;Young Adult
-4850046;Science Fiction Fantasy
+4850046;Science Fiction
 4850046;Young Adult
-4850046;Literary Fiction
-4864779;Science Fiction Fantasy
+4850046;Fiction
+4864779;Science Fiction
 4864779;Young Adult
-4864779;Literary Fiction
+4864779;Fiction
 4867459;Horror
 4874418;Childrens
 4874418;Young Adult
@@ -1954,39 +1932,39 @@ id;zanr
 487465;Childrens
 487465;Young Adult
 487465;Fantasy
-487718;Literary Fiction
+487718;Fiction
 487718;Young Adult
 4883287;Fantasy
-4883287;Historical Fiction
+4883287;Historical
 4883287;Childrens
 4894063;Fantasy
-4894063;Historical Fiction
+4894063;Historical
 4894063;Childrens
-4916627;Literary Fiction
-4916627;Science Fiction Fantasy
+4916627;Fiction
+4916627;Science Fiction
 4916627;Young Adult
 49177;Young Adult
-49177;Literary Fiction
-49177;Graphic Novels Comics
-4919495;Literary Fiction
+49177;Fiction
+49177;Comics
+4919495;Fiction
 4919495;Young Adult
 4919495;Childrens
 4937643;Young Adult
-4937643;Literary Fiction
-4937643;Science Fiction Fantasy
+4937643;Fiction
+4937643;Science Fiction
 495801;Childrens
-495801;Literary Fiction
-495801;Science Fiction Fantasy
-4967287;Literary Fiction
+495801;Fiction
+495801;Science Fiction
+4967287;Fiction
 4967287;Spirituality
-4967287;Science Fiction Fantasy
+4967287;Science Fiction
 4979731;Fantasy
 4979731;Science Fiction
 4979731;Fiction
-4981614;Science Fiction Fantasy
+4981614;Science Fiction
 4981614;Young Adult
 4981614;Childrens
-4998020;Science Fiction Fantasy
+4998020;Science Fiction
 4998020;Young Adult
 4998020;Childrens
 5001127;Young Adult
@@ -2000,28 +1978,28 @@ id;zanr
 50060;Fiction
 5039646;Young Adult
 5039646;Paranormal
-5039646;Mystery Thrillers
+5039646;Mystery Thriller
 5040774;Young Adult
-5040774;Science Fiction Fantasy
+5040774;Science Fiction
 50418;Young Adult
-50418;Science Fiction Fantasy
+50418;Science Fiction
 5044885;Young Adult
-5044885;Science Fiction Fantasy
-5050419;Science Fiction Fantasy
+5044885;Science Fiction
+5050419;Science Fiction
 5050419;Young Adult
-505236;Science Fiction Fantasy
+505236;Science Fiction
 505236;Young Adult
 505695;Fiction
 505695;Fantasy
-505695;Christian
-5061124;Science Fiction Fantasy
-5062419;Science Fiction Fantasy
-5065152;Science Fiction Fantasy
+505695;Christian Fiction
+5061124;Science Fiction
+5062419;Science Fiction
+5065152;Science Fiction
 506873;Childrens
-506873;Science Fiction Fantasy
+506873;Science Fiction
 5068816;Fantasy
 5068816;Young Adult
-5068816;Historical Fiction
+5068816;Historical
 50786;Romance
 50786;Childrens
 50786;Short Stories
@@ -2031,7 +2009,7 @@ id;zanr
 5100743;Fantasy
 5100743;Philosophy
 511540;Art
-511540;Science Fiction Fantasy
+511540;Science Fiction
 5116;Childrens
 5130837;Romance
 5130837;Spirituality
@@ -2039,7 +2017,7 @@ id;zanr
 5133823;Romance
 5133823;Spirituality
 5133823;Mystery
-51484;Literary Fiction
+51484;Fiction
 51484;Young Adult
 5151065;Fantasy
 5151065;Fiction
@@ -2047,25 +2025,24 @@ id;zanr
 5172018;Fantasy
 5172018;Fiction
 5172018;Comics
-5175986;Astrophysics
+5175986;Science
 5175986;Thriller
 5184237;Young Adult
 5184237;Romance
-5184237;Science Fiction Fantasy
+5184237;Science Fiction
 5186274;Young Adult
-5186274;Science Fiction Fantasy
-5186274;Literary Fiction
-51924;Graphic Novels Comics
+5186274;Science Fiction
+5186274;Fiction
+51924;Comics
 521676;Fantasy
-521676;Ebooks
 521676;Science Fiction
-5240947;Fantasy Magic Adventure
-5240947;Youth Fiction
+5240947;Magic
+5240947;Young Adult
 5240947;Childrens
 5244611;Childrens
-5244611;Science Fiction Fantasy
+5244611;Science Fiction
 5249972;Young Adult
-5249972;Science Fiction Fantasy
+5249972;Science Fiction
 5249972;Romance
 5255014;Childrens
 5255014;Fiction
@@ -2074,7 +2051,7 @@ id;zanr
 5258817;Fiction
 5258817;Drama
 5260599;Romance
-5260599;Science Fiction Fantasy
+5260599;Science Fiction
 5260599;Steampunk
 5265619;Science Fiction
 5265619;Young Adult
@@ -2089,8 +2066,8 @@ id;zanr
 5283046;Young Adult
 5283046;Childrens
 5283046;Suspense
-5294786;Cooking Food Wine
-5294786;Science Fiction Fantasy
+5294786;Cookbooks
+5294786;Science Fiction
 5294786;Philosophy
 5295294;Paranormal Fantasy
 5295294;Horror
@@ -2102,72 +2079,71 @@ id;zanr
 5297272;Horror
 5297272;Childrens
 5300;Childrens
-5309014;Science Fiction Fantasy
+5309014;Science Fiction
 5309014;Young Adult
-5309015;Science Fiction Fantasy
+5309015;Science Fiction
 5309015;Young Adult
 5322924;Young Adult
 5329;Young Adult
-5329;Literary Fiction
-5329;Science Fiction Fantasy
-5331494;Science Fiction Fantasy
+5329;Fiction
+5329;Science Fiction
+5331494;Science Fiction
 5331494;Humor
 5331494;Young Adult
-5339;Science Fiction Fantasy
+5339;Science Fiction
 5339;Childrens
 5339;Young Adult
 5347052;Young Adult
-5347052;Science Fiction Fantasy
-5347052;Arthurian Romance
+5347052;Science Fiction
+5347052;Arthurian
 5350;Childrens
-5350;Literary Fiction
+5350;Fiction
 5350164;Fantasy
 5350164;Young Adult
 5350164;Paranormal
 53519;Classics
-53519;Historical Fiction
-53519;Chivalric Romance
+53519;Historical
+53519;Romance
 5360335;Young Adult
-5360335;Science Fiction Fantasy
+5360335;Science Fiction
 5360335;Childrens
 5362029;Childrens
 5362029;Young Adult
-5362029;Science Fiction Fantasy
+5362029;Science Fiction
 5368048;Childrens
-5368048;Science Fiction Fantasy
+5368048;Science Fiction
 5368048;Sports
 5376046;Childrens
 5376046;Fantasy
-5381542;Science Fiction Fantasy
+5381542;Science Fiction
 5381542;Young Adult
 5397;Childrens
 5397;Young Adult
 5400614;Childrens
 5400614;Young Adult
-5407284;Science Fiction Fantasy
+5407284;Science Fiction
 5418937;Short Stories
 5418937;High Fantasy
-5418937;Epic Fantasy
+5418937;Epic
 54201;Childrens
 54201;Young Adult
-54201;Science Fiction Fantasy
-5430378;Mystery Thrillers
+54201;Science Fiction
+5430378;Mystery Thriller
 5430378;Crime
 5430378;Young Adult
 543080;Childrens
 543080;Fiction
-5431793;Historical Fiction
-5431793;Literary Fiction
+5431793;Historical
+5431793;Fiction
 5431793;Fantasy
 5446825;Young Adult
-5446825;Upper Middle Grade
 55094;Childrens
 5523585;Childrens
 5525314;Childrens
 55409;Comics
 5542108;Comics
-55811;Graphic Novels Comics
-55825;Graphic Novels Comics
+55811;Comics
+55825;Comics
 55830;Science Fiction
 5594270;Science Fiction
 5614141;Science Fiction
@@ -2178,26 +2154,26 @@ id;zanr
 5621459;Childrens
 56224;Young Adult
 5626269;Young Adult
-566874;Literary Fiction
-56968;Literary Fiction
-57050;Literary Fiction
-571819;Literary Fiction
-572105;Literary Fiction
-573850;Literary Fiction
+566874;Fiction
+56968;Fiction
+57050;Fiction
+571819;Fiction
+572105;Fiction
+573850;Fiction
 5741473;Graphic Novels
 5741473;Fantasy
 5741473;Science Fiction
-57461;Science Fiction Fantasy
+57461;Science Fiction
 57462;Childrens
 57462;Young Adult
 57462;Romance
 57545;Childrens
 57545;Young Adult
 57545;Romance
-5755759;Historical Fiction
+5755759;Historical
 5755759;Romance
 5757316;Young Adult
-5757316;Literary Fiction
+5757316;Fiction
 5757316;Horror
 5757447;Fantasy
 5757447;Young Adult
@@ -2205,11 +2181,11 @@ id;zanr
 5761934;Young Adult
 5761934;Lgbt
 5761934;Dystopia
-5765120;Science Fiction Fantasy
+5765120;Science Fiction
 5765120;Young Adult
 5765120;Horror
 5765437;Childrens
-5765437;Science Fiction Fantasy
+5765437;Science Fiction
 5765437;Spirituality
 5769159;Fantasy
 5769159;Childrens
@@ -2227,9 +2203,9 @@ id;zanr
 5777764;Science Fiction
 5777764;Romance
 5778486;Fiction
-5778486;Historical Fiction
+5778486;Historical
 5778837;Childrens
-5778837;Science Fiction Fantasy
+5778837;Science Fiction
 5779758;Fantasy
 5779758;Young Adult
 5779758;Fiction
@@ -2240,24 +2216,24 @@ id;zanr
 579130;Young Adult
 579130;Fiction
 57983;Science
-58;Science Fiction Fantasy
-580315;Science Fiction Fantasy
+58;Science Fiction
+580315;Science Fiction
 580315;Romance
-580315;Mystery Thrillers
+580315;Mystery Thriller
 5804248;Childrens
 5805483;Young Adult
 5805483;Fantasy
 5805483;Science Fiction
 5806018;Fan Fiction
 5806077;Young Adult
-5806077;Science Fiction Fantasy
+5806077;Science Fiction
 5806077;Women Gender Studies
 5808133;Young Adult
 5808133;Fantasy
-5808133;Mystery Thrillers
+5808133;Mystery Thriller
 5816;Horror
 5816;Childrens
-5816;Science Fiction Fantasy
+5816;Science Fiction
 5816972;Fantasy
 5816972;Young Adult
 5816972;Science Fiction
@@ -2267,16 +2243,16 @@ id;zanr
 5825906;Romance
 5825906;Suspense
 5825906;Paranormal
-5827858;Science Fiction Fantasy
+5827858;Science Fiction
 5830526;Fiction
 5830526;Fantasy
-5833;Science Fiction Fantasy
+5833;Science Fiction
 58401;Childrens
 5869996;Childrens
-588356;Science Fiction Fantasy
-588356;Literary Fiction
+588356;Science Fiction
+588356;Fiction
 588356;Young Adult
-589;Science Fiction Fantasy
+589;Science Fiction
 589;Poetry
 589;Nonfiction
 5917582;Fiction
@@ -2285,76 +2261,74 @@ id;zanr
 59749;Politics
 59749;Childrens
 5989;Childrens
-5989;Literary Fiction
+5989;Fiction
 5989;Young Adult
 6007331;Young Adult
 6007331;Science Fiction
 6007331;Fantasy
-60172;Science Fiction Fantasy
-60172;Historical Fiction
-60172;History
-60177;Science Fiction Fantasy
-6027670;Science Fiction Fantasy
+60172;Science Fiction
+60172;Historical
+60177;Science Fiction
+6027670;Science Fiction
 6027670;Young Adult
-6027670;Literary Fiction
-60478;Young Adult Paranormal Fantasy
-60478;Young Adult Contemporary Fiction
-609973;Young Adult Paranormal Fantasy
-609973;Young Adult Contemporary Fiction
-610652;Young Adult Paranormal Fantasy
-610652;Young Adult Contemporary Fiction
-6108222;Young Adult Paranormal Fantasy
-6108222;Young Adult Contemporary Fiction
+6027670;Fiction
+60478;Young Adult Paranormal
+60478;Young Adult Contemporary
+609973;Young Adult Paranormal
+609973;Young Adult Contemporary
+610652;Young Adult Paranormal
+610652;Young Adult Contemporary
+6108222;Young Adult Paranormal
+6108222;Young Adult Contemporary
 614889;Childrens
 614889;Young Adult
 614889;Fantasy
-6151667;Literary Fiction
-6151667;Science Fiction Fantasy
+6151667;Fiction
+6151667;Science Fiction
 6159717;Paranormal
 6159717;Fantasy
 6159717;Young Adult
-61659;Literary Fiction
+61659;Fiction
 61659;Fantasy
 61659;Young Adult
 61707;Childrens
-61955;Graphic Novels Comics
-61955;Science Fiction Fantasy
-619712;Graphic Novels Comics
-619712;Science Fiction Fantasy
-61986;Graphic Novels Comics
-61986;Science Fiction Fantasy
-6206;Science Fiction Fantasy
+61955;Comics
+61955;Science Fiction
+619712;Comics
+619712;Science Fiction
+61986;Comics
+61986;Science Fiction
+6206;Science Fiction
 6206;Childrens
 6216915;Childrens
 6216915;Fantasy
 6216915;Fiction
-623693;Audiobook
 6244;Young Adult
-6244;Mystery Thrillers
+6244;Mystery Thriller
 6245;Nonfiction
 6245;Humor
 6245;Childrens
 6252;Fantasy
 6412;Childrens
 6412;Nonfiction
-6412;Science Fiction Fantasy
+6412;Science Fiction
 6420295;Young Adult
-6420295;Epic Fantasy
-6420295;Historical Fiction
-6429144;Science Fiction Fantasy
-6429989;Science Fiction Fantasy
-6431645;Science Fiction Fantasy
+6420295;Epic
+6420295;Historical
+6429144;Science Fiction
+6429989;Science Fiction
+6431645;Science Fiction
 6433173;Young Adult
-6433173;Science Fiction Fantasy
-6437336;Science Fiction Fantasy
+6433173;Science Fiction
+6437336;Science Fiction
 6437336;Young Adult
 6437336;Arthurian
 6440095;Horror
 6440095;Politics
-6440095;Social Science
+6440095;Sociology
 6441814;Horror
 6441814;Politics
-6441814;Social Science
+6441814;Sociology
 6443183;Fantasy
 6443183;Humor
 6443183;Fiction
@@ -2362,13 +2336,13 @@ id;zanr
 6443576;Science Fiction
 6443576;Young Adult
 6444158;Young Adult
-6444158;Science Fiction Fantasy
+6444158;Science Fiction
 6444158;Romance
 6444286;Young Adult
-6444286;Science Fiction Fantasy
+6444286;Science Fiction
 6444286;Romance
 644567;Young Adult
-644567;Science Fiction Fantasy
+644567;Science Fiction
 644567;Romance
 6450065;Fantasy
 6450065;Young Adult
@@ -2379,18 +2353,18 @@ id;zanr
 6455260;Childrens
 6455260;Fantasy
 6455260;Mystery
-6456772;Mystery Thrillers
+6456772;Mystery Thriller
 6456772;Biography
-6456772;Science Fiction Fantasy
+6456772;Science Fiction
 6458922;Paranormal
 6458922;Fantasy
 6458922;Contemporary
 6470636;Young Adult
-6470636;Science Fiction Fantasy
+6470636;Science Fiction
 6472264;Fiction
 6472264;Paranormal
 6473734;Young Adult
-6473734;Science Fiction Fantasy
+6473734;Science Fiction
 6473734;Childrens
 6474348;Science Fiction
 6474348;Fantasy
@@ -2398,7 +2372,6 @@ id;zanr
 6481406;Science Fiction
 6481406;Fantasy
 6481406;Young Adult
-6482810;Cryptozoology
 648360;Fiction
 648360;Nonfiction
 64925;Young Adult
@@ -2406,15 +2379,15 @@ id;zanr
 64925;Mystery
 6494889;Fantasy
 6494889;Young Adult
-6519984;Science Fiction Fantasy
+6519984;Science Fiction
 6519984;Thriller
 6519984;Poetry
 6520834;Young Adult
 6520834;Fiction
 6520834;Fantasy
-65211;Science Fiction Fantasy
+65211;Science Fiction
 65211;Romance
-6522989;Science Fiction Fantasy
+6522989;Science Fiction
 6522989;Romance
 6523566;Fiction
 6523566;Fantasy
@@ -2435,13 +2408,13 @@ id;zanr
 653688;New Adult
 653688;Contemporary
 65391;Nonfiction
-65391;Mystery Thrillers
+65391;Mystery Thriller
 6541797;Fantasy
-6542486;Science Fiction Fantasy
+6542486;Science Fiction
 6542486;Young Adult
-6542486;Literary Fiction
+6542486;Fiction
 6542656;Nonfiction
-6542656;Science Fiction Fantasy
+6542656;Science Fiction
 6542656;Humor
 6543278;Childrens
 6543278;Fantasy
@@ -2449,13 +2422,12 @@ id;zanr
 6545672;Fantasy
 6545672;Fiction
 6545672;Young Adult
-65471;Science Fiction Fantasy
+65471;Science Fiction
 6554852;Fantasy
 6554852;Science Fiction
 6554852;Young Adult
 6556774;Fantasy
 6556774;Science Fiction
-6556774;Ebooks
 6558842;Fantasy
 6558842;Childrens
 6558842;Young Adult
@@ -2472,7 +2444,7 @@ id;zanr
 6565990;Romance
 6565990;Young Adult
 6569;Childrens
-6569;Literary Fiction
+6569;Fiction
 656983;Fantasy
 656983;Fiction
 656983;Childrens
@@ -2483,7 +2455,7 @@ id;zanr
 6579144;Fiction
 6579144;Fantasy
 6580373;Horror
-6580373;Historical Fiction
+6580373;Historical
 6580373;Paranormal
 6583873;Young Adult
 6583873;Fantasy
@@ -2501,7 +2473,6 @@ id;zanr
 6587;Fantasy
 6588515;Young Adult
 6588515;Romance
-6588515;Teen
 6592469;Fiction
 6592469;Young Adult
 6592469;Science Fiction
@@ -2525,13 +2496,13 @@ id;zanr
 660288;Fantasy
 6607474;Fantasy
 6607474;Young Adult
-6607474;Adult
+6607474;Adult Fiction
 661282;Fantasy
 661282;Young Adult
-661282;Adult
+661282;Adult Fiction
 6615140;Fantasy
 6615140;Young Adult
-6615140;Adult
+6615140;Adult Fiction
 6617641;Fantasy
 6617641;Science Fiction
 6617641;Young Adult
@@ -2556,13 +2527,13 @@ id;zanr
 67906;Childrens
 67906;Fiction
 67906;Fantasy
-67927;Science Fiction Fantasy
+67927;Science Fiction
 67927;Science
-679787;Science Fiction Fantasy
+679787;Science Fiction
 679787;Science
-6810;Literary Fiction
-682240;Literary Fiction
-6831880;Literary Fiction
+6810;Fiction
+682240;Fiction
+6831880;Fiction
 6846;Childrens
 6851116;Childrens
 6852583;Fantasy
@@ -2620,9 +2591,7 @@ id;zanr
 6920286;Young Adult
 6920286;Fiction
 6920286;Spirituality
-6921;Translations
 6921;Monographs
-6922454;Translations
 6922454;Monographs
 6925118;Dark Fantasy
 6925118;Fantasy
@@ -2647,7 +2616,6 @@ id;zanr
 6981058;Fiction
 6981058;Young Adult
 6981058;Suspense
-6983518;Ebooks
 6983518;Young Adult
 6983518;Fiction
 6988;Horror
@@ -2681,7 +2649,7 @@ id;zanr
 7060641;Young Adult
 7060641;Childrens
 7065934;Thriller
-7065934;Historical Fiction
+7065934;Historical
 7065934;Young Adult
 7068160;Science Fiction
 7068160;Humor
@@ -2701,12 +2669,11 @@ id;zanr
 7080671;Fantasy
 7080671;Humor
 7085810;Fiction
-7085810;Ebooks
 7085810;Young Adult
 7086152;Fantasy
 7086152;Young Adult
 7086152;Childrens
-70862;Literary Fiction
+70862;Fiction
 70862;Young Adult
 70862;Childrens
 7087848;Fiction
@@ -2732,7 +2699,7 @@ id;zanr
 7105947;Fantasy
 7113091;Fantasy
 7113091;Horror
-7113091;Historical Fiction
+7113091;Historical
 7122185;Young Adult
 7122185;Science Fiction
 7122185;Fantasy
@@ -2741,16 +2708,14 @@ id;zanr
 7125278;Fantasy
 7127497;Young Adult
 7127497;Paranormal
-7127497;Ebooks
 7127632;Fantasy
-7127632;Ebooks
 7127632;Young Adult
-7128;Literary Fiction
-7128;Parenting Families
-7128174;Literary Fiction
-7128174;Parenting Families
-7132534;Literary Fiction
-7132534;Parenting Families
+7128;Fiction
+7128;Family
+7128174;Fiction
+7128174;Family
+7132534;Fiction
+7132534;Family
 7148344;Fantasy
 7148344;Childrens
 7149784;Fantasy
@@ -2765,27 +2730,27 @@ id;zanr
 7156832;Fantasy
 7156832;Mystery
 7156832;Humor
-7157771;Historical Fiction
+7157771;Historical
 7157771;Young Adult
 7157771;Fantasy
-7161667;Historical Fiction
+7161667;Historical
 7161667;Young Adult
 7161667;Fantasy
 7162069;Science Fiction
 7162069;Young Adult
 7162069;Spirituality
-7170207;Historical Fiction
+7170207;Historical
 7170207;Memoir
 7170207;Thriller
-719303;Literary Fiction
+719303;Fiction
 719303;Memoir
-719303;Writing Creativity
-7201935;Literary Fiction
+719303;Writing
+7201935;Fiction
 7201935;Memoir
-7201935;Writing Creativity
-7204656;Literary Fiction
+7201935;Writing
+7204656;Fiction
 7204656;Memoir
-7204656;Writing Creativity
+7204656;Writing
 7205593;Fiction
 7213842;Fantasy
 7213842;Young Adult
@@ -2794,7 +2759,7 @@ id;zanr
 7219081;Young Adult
 7219081;Romance
 72237;Childrens
-72237;Literary Fiction
+72237;Fiction
 72237;Nonfiction
 7225051;Science Fiction
 7225051;Fantasy
@@ -2810,8 +2775,7 @@ id;zanr
 7237199;Paranormal
 7237199;Fantasy
 7238592;Science Fiction
-7238592;Historical Fiction
-7238592;Ebooks
+7238592;Historical
 7242227;Fantasy
 7242227;Paranormal
 7242227;Young Adult
@@ -2829,7 +2793,7 @@ id;zanr
 7246822;Young Adult
 7249775;Fiction
 7249775;Horror
-7249775;History
+7249775;Historical
 7255282;Lgbt
 7255282;Romance
 7255282;Science Fiction
@@ -2853,7 +2817,7 @@ id;zanr
 7303101;Young Adult
 7303101;Paranormal
 7308;Childrens
-7308;Science Fiction Fantasy
+7308;Science Fiction
 7308;Biography
 7314421;Fantasy
 7314421;Science Fiction
@@ -2867,7 +2831,7 @@ id;zanr
 732611;Childrens
 732611;Fantasy
 7327986;Childrens
-7327986;Christian
+7327986;Christian Fiction
 7338350;Young Adult
 7338350;Fantasy
 7338350;Fiction
@@ -2877,7 +2841,7 @@ id;zanr
 7366098;Fantasy
 7366098;Young Adult
 7366098;Paranormal
-7367027;Christian
+7367027;Christian Fiction
 7367027;Young Adult
 7367027;Philosophy
 7371056;Fiction
@@ -2900,7 +2864,7 @@ id;zanr
 7394588;Childrens
 7394588;Contemporary
 7394588;Fiction
-74046;Science Fiction Fantasy
+74046;Science Fiction
 7409626;Young Adult
 7409626;Fantasy
 7409626;Science Fiction
@@ -2913,14 +2877,13 @@ id;zanr
 7430558;Fantasy
 7430558;Paranormal
 7430558;Romance
-74339;Graphic Novels Comics
+74339;Comics
 7447860;Science Fiction
 7447860;Fantasy
 7452124;Science Fiction
 7452124;Fantasy
 7455326;Fantasy
 7455326;Young Adult
-7455326;Ebooks
 7456408;Fantasy
 7456408;Fiction
 7456408;Paranormal
@@ -2938,35 +2901,33 @@ id;zanr
 7540027;Childrens
 754851;Science Fiction
 754851;Fantasy
-754851;Ebooks
 7549;Science Fiction
 7549;Fantasy
-7549;Ebooks
 7558024;Young Adult
 7558024;Fantasy
 755980;Fantasy
 755980;Young Adult
 755980;Self Help
-7581;Science Fiction Fantasy
-7581;Mystery Thrillers
+7581;Science Fiction
+7581;Mystery Thriller
 7581;Young Adult
-761239;Science Fiction Fantasy
-761239;Mystery Thrillers
+761239;Science Fiction
+761239;Mystery Thriller
 761239;Young Adult
-762707;Literary Fiction
+762707;Fiction
 762707;Young Adult
 767547;Young Adult
 767547;Childrens
-767547;Science Fiction Fantasy
+767547;Science Fiction
 7703666;Poetry
 7703666;Fantasy
 7703666;Science Fiction
-7717;Literary Fiction
-7717;Science Fiction Fantasy
-7727649;Literary Fiction
-7727649;Science Fiction Fantasy
-7734665;Literary Fiction
-7734665;Science Fiction Fantasy
+7717;Fiction
+7717;Science Fiction
+7727649;Fiction
+7727649;Science Fiction
+7734665;Fiction
+7734665;Science Fiction
 7739002;Childrens
 7739002;Comics
 7739002;Fiction
@@ -2981,8 +2942,8 @@ id;zanr
 7770617;Suspense
 7771479;Fantasy
 7771479;Suspense
-777907;Science Fiction Fantasy
-777907;Children S Young Adult
+777907;Science Fiction
+777907;Childrens
 777907;Steampunk
 7793848;Fantasy
 7793848;Young Adult
@@ -2990,7 +2951,7 @@ id;zanr
 780120;Young Adult
 7801932;Fantasy
 7801932;Young Adult
-7803964;Ya Paranormal Romance
+7803964;Young Adult Paranormal
 7803964;Contemporary
 7803964;Clean Romance
 7817816;Fantasy
@@ -3027,7 +2988,7 @@ id;zanr
 7958693;Young Adult
 7958693;Classics
 79589;Young Adult
-79589;Science Fiction Fantasy
+79589;Science Fiction
 7964278;Fiction
 7964278;Fantasy
 7979840;Childrens
@@ -3039,18 +3000,18 @@ id;zanr
 7996319;Romance
 7996319;Paranormal
 7996319;Fantasy
-800019;Science Fiction Fantasy
+800019;Science Fiction
 800019;Young Adult
-800019;Historical Fiction
-8025882;Science Fiction Fantasy
+800019;Historical
+8025882;Science Fiction
 8025882;Young Adult
-8025882;Historical Fiction
-8030616;Science Fiction Fantasy
+8025882;Historical
+8030616;Science Fiction
 8030616;Young Adult
-8030616;Historical Fiction
-8042224;Science Fiction Fantasy
+8030616;Historical
+8042224;Science Fiction
 8042224;Young Adult
-8042224;Historical Fiction
+8042224;Historical
 8052536;Science Fiction
 8052536;Horror
 8052536;Fantasy
@@ -3081,14 +3042,14 @@ id;zanr
 8126382;Fantasy
 8126382;Young Adult
 8126382;Paranormal
-815;Literary Fiction
-815;Mystery Thrillers
-815;Historical Fiction
+815;Fiction
+815;Mystery Thriller
+815;Historical
 8154939;Fantasy
 8154939;Childrens
 8154939;Young Adult
 8158940;Fantasy
-8158940;Historical Fiction
+8158940;Historical
 8158940;Science Fiction
 8160294;Contemporary
 8160294;Fantasy
@@ -3099,25 +3060,25 @@ id;zanr
 8187644;Science Fiction
 8187644;Young Adult
 8187644;Fantasy
-8189569;Historical Fiction
+8189569;Historical
 8189569;Crime
 8189569;Fantasy
 8189839;Fantasy
 8189839;Science Fiction
-8189839;Historical Fiction
+8189839;Historical
 8189910;Young Adult
-819789;Literary Fiction
+819789;Fiction
 819789;Short Stories
 8211545;Fantasy
-8211545;Christian
-8211545;Historical Fiction
+8211545;Christian Fiction
+8211545;Historical
 8222;Biography
-82540;Science Fiction Fantasy
+82540;Science Fiction
 8266742;Fantasy
 8266742;Science Fiction
-8266742;Historical Fiction
+8266742;Historical
 827236;Childrens
-827236;Science Fiction Fantasy
+827236;Science Fiction
 827236;Young Adult
 8290679;Young Adult
 8290679;Fantasy
@@ -3136,33 +3097,31 @@ id;zanr
 8306309;Romance
 83085;Horror
 83085;Young Adult
-83085;Historical Fiction
+83085;Historical
 8317107;Fiction
 8317107;Fantasy
-8317107;Multi Genre
 832609;Fiction
 832609;Fantasy
-832609;Multi Genre
 8343236;Fantasy
-8343236;Epic Fantasy
+8343236;Epic
 8343236;High Fantasy
-8347;Science Fiction Fantasy
+8347;Science Fiction
 8347;Young Adult
 8349;Young Adult
 8349;Fantasy
-8349;Science Fiction Fantasy
-8360;Science Fiction Fantasy
+8349;Science Fiction
+8360;Science Fiction
 8360;Young Adult
-836009;Science Fiction Fantasy
+836009;Science Fiction
 836009;Young Adult
 8364376;Paranormal
 8364376;Young Adult
 8364376;Romance
 8382752;Fantasy
 8382752;Sword and Sorcery
-8382752;Epic Fantasy
+8382752;Epic
 8389508;Young Adult
-8389508;Historical Fiction
+8389508;Historical
 8389508;Childrens
 8393378;Childrens
 8393378;Fantasy
@@ -3200,7 +3159,7 @@ id;zanr
 8472193;Fantasy
 8472193;Suspense
 8476;Manga
-8476;Science Fiction Fantasy
+8476;Science Fiction
 8476;Romance
 8476471;Childrens
 8476471;Young Adult
@@ -3219,45 +3178,44 @@ id;zanr
 854076;Fiction
 854076;Poetry
 854076;Horror
-85545;Science Fiction Fantasy
+85545;Science Fiction
 8560627;Fantasy
 8560627;Science Fiction
 8560627;Fiction
 8567495;Fantasy
 8567495;Science Fiction
 8567495;Fiction
-8588;Science Fiction Fantasy
-8591;Science Fiction Fantasy
-8596;Science Fiction Fantasy
+8588;Science Fiction
+8591;Science Fiction
+8596;Science Fiction
 8596;Childrens
-8596;Mystery Thrillers
+8596;Mystery Thriller
 8597;Childrens
 8597;Folklore
 8599864;Childrens
 8599864;Mystery
 8599864;Thriller
-86475;Science Fiction Fantasy
+86475;Science Fiction
 8647877;Fantasy
 8647877;Childrens
-8649;Science Fiction Fantasy
-8649;Historical Fiction
+8649;Science Fiction
+8649;Historical
 8649;Young Adult
-865752;Science Fiction Fantasy
-865752;Historical Fiction
+865752;Science Fiction
+865752;Historical
 865752;Young Adult
-8661;Science Fiction Fantasy
+8661;Science Fiction
 867770;Young Adult
 867770;Paranormal
 867770;Mystery
-868;Science Fiction Fantasy
 868;Science Fiction
 8685;Fantasy
 8685;Science Fiction
 8685;Music
-8686;Science Fiction Fantasy
-8688;Science Fiction Fantasy
-869;Science Fiction Fantasy
-8694;Science Fiction Fantasy
+8686;Science Fiction
+8688;Science Fiction
+869;Science Fiction
+8694;Science Fiction
 8694;Horror
 8694;Young Adult
 8719;Fiction
@@ -3265,16 +3223,16 @@ id;zanr
 8719207;Fantasy
 8719207;Paranormal
 8719207;Thriller
-8730;Literary Fiction
-8730;Science Fiction Fantasy
-8732;Science Fiction Fantasy
-874602;Science Fiction Fantasy
+8730;Fiction
+8730;Science Fiction
+8732;Science Fiction
+874602;Science Fiction
 874602;Young Adult
 874602;Lgbt
-8788;Health Mind Body
+8788;Health
 8788;Philosophy
 8788;Psychology
-8842;Science Fiction Fantasy
+8842;Science Fiction
 8842;Alternate History
 887961;Childrens
 88922;Childrens
@@ -3286,12 +3244,12 @@ id;zanr
 8994;Childrens
 8994;Science Fiction
 8994;Fantasy
-903992;Historical Fiction
+903992;Historical
 903992;Young Adult
 903992;Fantasy
 9072;Young Adult
-9072;Science Fiction Fantasy
-9072;Literary Fiction
+9072;Science Fiction
+9072;Fiction
 915108;Childrens
 93391;Childrens
 93526;Fiction
@@ -3300,37 +3258,37 @@ id;zanr
 93858;Fiction
 93858;Mystery
 93858;Lgbt
-9399;Literary Fiction
+9399;Fiction
 9399;Lgbt
 9414;Young Adult
-9414;Science Fiction Fantasy
+9414;Science Fiction
 9414;Romance
 94868;Young Adult
-94868;Science Fiction Fantasy
+94868;Science Fiction
 94868;Romance
-9533;Science Fiction Fantasy
+9533;Science Fiction
 9533;Nonfiction
-96017;Science Fiction Fantasy
-96017;Literary Fiction
-96017;Mystery Thrillers
-9615;Science Fiction Fantasy
-9629;Science Fiction Fantasy
-9629;Literary Fiction
-963872;Science Fiction Fantasy
-963872;Literary Fiction
+96017;Science Fiction
+96017;Fiction
+96017;Mystery Thriller
+9615;Science Fiction
+9629;Science Fiction
+9629;Fiction
+963872;Science Fiction
+963872;Fiction
 9640;Childrens
-9640;Historical Fiction
-9640;Literary Fiction
-9653;Literary Fiction
-9653;Science Fiction Fantasy
-9653;Humor Satire
-966489;Literary Fiction
-966489;Science Fiction Fantasy
-966489;Humor Satire
+9640;Historical
+9640;Fiction
+9653;Fiction
+9653;Science Fiction
+9653;Humor
+966489;Fiction
+966489;Science Fiction
+966489;Humor
 969582;Childrens
 969582;Young Adult
 969582;Mystery
-9720;Literary Fiction
+9720;Fiction
 9720;Childrens
 9799144;Fantasy
 9799144;Young Adult
@@ -3344,26 +3302,24 @@ id;zanr
 9831549;Fiction
 9831660;Childrens
 9831660;Fantasy
-9831660;Historical Fiction
+9831660;Historical
 98320;Childrens
 9832451;Childrens
 9841395;Young Adult
-9841395;Ebooks
 9864901;Young Adult
-9864901;Ebooks
 9866660;Fantasy
 9866660;Science Fiction
 9866660;Paranormal
 988142;Childrens
-988142;Literary Fiction
+988142;Fiction
 988142;Nonfiction
-990;Literary Fiction
+990;Fiction
 990;Poetry
 990;Theatre
-995;Literary Fiction
+995;Fiction
 995;Poetry
 995;Theatre
-996558;Graphic Novels Comics
+996558;Comics
 996558;Young Adult
-997741;Graphic Novels Comics
+997741;Comics
 997741;Young Adult
