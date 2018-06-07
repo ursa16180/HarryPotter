@@ -5,14 +5,11 @@
     Vašim parametrom
     %if len(knjige)%100 == 1:
     ustreza {{len(knjige)}} knjiga.
-    %end
-    %if len(knjige)%100 == 2:
+    %elif len(knjige)%100 == 2:
     ustrezata {{len(knjige)}} knjigi.
-    %end
-    %if len(knjige)%100 in {3,4}:
+    %elif len(knjige)%100 in {3,4}:
     ustrezajo {{len(knjige)}} knjige.
-    %end
-    %if len(knjige)%100 not in {1,2,3,4}:
+    %else:
     ustreza {{len(knjige)}} knjig.
     %end
 

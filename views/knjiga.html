@@ -9,7 +9,7 @@
     </div>
     </div>
 
-% if knjiga['avtor'] != set():
+% if knjiga['avtor'] != {(None, None)}:
     <div class="row px-4">
         %for avtor in knjiga['avtor']:
         <form action="/avtor/{{avtor[0]}}" method="POST">
@@ -55,7 +55,7 @@
 </div>
 % end
 <br/>
-% if knjiga['zanri'] != set():
+% if knjiga['zanri'] != {None}:
 <div class="row px-4">
     Žanri:
     %for zanr in knjiga['zanri']:
@@ -67,7 +67,7 @@
 </div>
 %end
 
-% if knjiga['zanri'] != set():
+% if knjiga['kljucna_beseda'] != {None}:
 <div class="row px-4">
     Ključne besede:
     %for kljucna_beseda in knjiga['kljucna_beseda']:
