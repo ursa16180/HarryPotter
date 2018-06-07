@@ -32,20 +32,44 @@
 </div>
 <div class="container-fluid bg-dark">
     <div class="row">
-    <div class="col-3">
-    </div>
-    <div class="col-8">
-    <div class="btn-group blocks">
-    <form action="/kazaloAvtorja" method="POST">
-        <b><input type="submit" class="btn btn-basic" value="Avtorji"></b>
-    </form>
+        <div class="col-3">
 
-    <form action="/kazaloZanra" method="POST">
-        <b><input type="submit" class="btn btn-basic" value="Žanri"></b>
-    </form>
+        </div>
+        <div class="col-8">
+            <nav class="nav">
+              <a class="nav-link active" href="#">
+                  <form action="/kazaloAvtorja" method="POST">
+                    <b><input type="submit" class="btn btn-basic" value="Avtorji"></b>
+                  </form>
+              </a>
+              <a class="nav-link" href="#">
+                  <form action="/kazaloZanra" method="POST">
+                    <b><input type="submit" class="btn btn-basic" value="Žanri"></b>
+                </form>
+              </a>
+              <a class="nav-link" href="#">
+                  <form class="form-inline my-2 my-lg-0" action="/rezultatiIskanja" method="POST">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="splosniIskalnik" name="iskaniIzraz">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+              </a>
+            </nav>
+            <!--<div class="btn-group blocks">-->
+                <!--<form action="/kazaloAvtorja" method="POST">-->
+                    <!--<b><input type="submit" class="btn btn-basic" value="Avtorji"></b>-->
+                <!--</form>-->
+        <!---->
+                <!--<form action="/kazaloZanra" method="POST">-->
+                    <!--<b><input type="submit" class="btn btn-basic" value="Žanri"></b>-->
+                <!--</form>-->
+                <!--<form action="/rezultatiIskanja" method="POST">-->
+                    <!--<div class="search_box pull-right">-->
+                        <!--<input placeholder="Search"  type="text" id="splosniIskalnik" name="iskaniIzraz">-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+        </div>
     </div>
-    </div>
-</div>
 </div>
 
 
