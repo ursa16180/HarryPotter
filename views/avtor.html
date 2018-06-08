@@ -17,8 +17,8 @@
             <div class="btn-group-vertical">
                 Avtorjevi žanri:
                 %for zanr in zanriAvtorja:
-                    <form action="/zanr/{{zanr[0]}}" method="POST">
-                        <input type="submit" class="btn btn-link" value="{{zanr[0]}}">
+                    <form action="/zanr/{{zanr}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{zanr}}">
                     </form>
                 %end
             </div>
@@ -27,7 +27,7 @@
 </div>
 
 <div class="row">
-    <div class="btn-group">
+    <div class="btn-group-vertical">
             Knjige:
             %for knjiga in knjige:
                 <form action="/knjiga/{{knjiga[0]}}" method="POST">

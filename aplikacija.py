@@ -95,11 +95,20 @@ def avtor(x):
     avtor = cur.fetchone()
     cur.execute("SELECT zanr FROM avtorjev_zanr WHERE id = '%s'" % x)
     zanriAvtorja=cur.fetchall()
-    cur.execute("""SELECT knjiga.id, knjiga.naslov FROM avtor_knjige LEFT JOIN knjiga ON knjiga.id = avtor_knjige.id_knjige WHERE id_avtorja ='%s'""" % x)
-    knjige = cur.fetchall()
+    zanriAvtorja = set([x[0] for x in  zanriAvtorja])
+    cur.execute("""SELECT knjiga.id, knjiga.naslov, zanr_knjige.zanr FROM avtor_knjige 
+    LEFT JOIN knjiga ON knjiga.id = avtor_knjige.id_knjige 
+    LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
+    WHERE id_avtorja ='%s'""" % x)
+    vrstice_knjig = cur.fetchall()
+    knjige = set()
+    for vrstica in vrstice_knjig:
+        id = vrstica[0]
+        knjige.add((id, vrstica[1]))
+        zanriAvtorja.add(vrstica[2])
     #print(avtor, zanriAvtorja, knjige)
     return template('avtor.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                    avtor=avtor, knjige=knjige, zanriAvtorja=zanriAvtorja)
+                    avtor=avtor, knjige=list(knjige), zanriAvtorja=list(zanriAvtorja))
 
 
 @post('/zanr/:x')
