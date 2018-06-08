@@ -1,0 +1,39 @@
+%rebase('osnova.html', naslov='Izpis avtorjev')
+
+
+<div class="row px-4">
+    Vašim parametrom
+    %if len(avtorji)%100 == 1:
+    ustreza {{len(avtorji)}} avtor.
+    %elif len(avtorji)%100 == 2:
+    ustrezata {{len(avtorji)}} avtorja.
+    %elif len(avtorji)%100 in {3,4}:
+    ustrezajo {{len(avtorji)}} avtorji.
+    %else:
+    ustreza {{len(avtorji)}} avtorjev.
+    %end
+
+
+
+</div>
+<hr />
+%for avtor in avtorji:
+
+<div class="row px-4">
+    <div class="btn-group-vertical">
+        <form action="/avtor/{{avtor['id']}}" method="POST">
+            <b><input type="submit" class="btn btn-basic" value="{{avtor['ime']}}"></b>
+        </form>
+
+        <div class="btn-group">
+            %for zanr in avtor['zanri']:
+                <form action="/zanr/{{zanr}}" method="POST">
+                    <p><input type="submit" class="btn btn-link" value="{{zanr}}">
+                    </p>
+                </form>
+            %end
+        </div>
+    </div>
+</div>
+<hr />
+%end
