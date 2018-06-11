@@ -19,6 +19,9 @@ vzorec_serija = re.compile(
     """BoxRowTitle">Series</div>\s+<div class="infoBoxRowItem">\s+<a href="(?P<url_serije1>/series/(?P<id_serije1>\d+)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije1>\d\d?)?</a>(, <a href="(?P<url_serije2>/series/(?P<id_serije2>\d+?)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije2>\d\d?)?</a>)?(, <a href="(?P<url_serije3>/series/(?P<id_serije3>\d+?)-[^"]*?)">.*?#?(?P<zaporedna_stevilka_serije3>\d\d?)?</a>)?(\s*,\s*<a href="/work/\d+?-[^"]*?/series">more</a>)?\s*</div>""")
 vzorec_jezik = re.compile("""inLanguage'>(?P<jezik>.+?)</div>""")
 
+vzorec_naslovnica = re.compile(
+    """<div class="bookCoverPrimary">\s+?(<a rel="nofollow" itemprop="image" href=".+?"><img id="coverImage" alt=".+?" src="(?P<url_naslovnice>.+?))?(<div class="noCoverMediumContainer">\s+?<img title=".+?" id=".+?" src="(?P<url_prazne>.+?))?\.jpg""")
+
 seznam_vseh_knjig = []
 seznam_tujih_knjig = []
 seznam_avtor_knjiga = []
@@ -34,20 +37,21 @@ def shrani_knjige(mapa, prvic='True'):
     for knjiga in mapa:
         vsebina = orodja.vsebina_datoteke(knjiga)
         print(knjiga)
-        podatki1={'naslov': 'Untitled', 'id_avtorja1': None, 'url_avtorja1' : None,
-                  'id_avtorja2': None, 'url_avtorja2': None,
-                  'id_avtorja3': None, 'url_avtorja3': None}
-        podatki2={'povprecna_ocena':None}
+        podatki1 = {'naslov': 'Untitled', 'id_avtorja1': None, 'url_avtorja1': None,
+                    'id_avtorja2': None, 'url_avtorja2': None,
+                    'id_avtorja3': None, 'url_avtorja3': None}
+        podatki2 = {'povprecna_ocena': None}
         podatki3 = {'opis': None, 'stevilo_ocen': '0'}
         podatki4 = {'leto_izdaje': None, 'stevilo_strani': None}
         podatki5 = {'ISBN': None}
-        podatki6={'zanr1':None}
+        podatki6 = {'zanr1': None}
         podatki7 = {'id_knjige': None}
         podatki8 = {'url_serije1': None, 'url_serije2': None, 'url_serije3': None,
                     'id_serije1': None, 'id_serije2': None, 'id_serije3': None,
                     'zaporedna_stevilka_serije1': None, 'zaporedna_stevilka_serije2': None,
                     'zaporedna_stevilka_serije3': None}
         podatki9 = {'jezik': 'English'}
+        podatki10 = {'url_naslovnice': None, 'url_prazne': None}
 
         for vzorec1 in re.finditer(vzorec_naslov_url_avtorja_serije, vsebina):
             podatki1 = vzorec1.groupdict()
@@ -71,6 +75,8 @@ def shrani_knjige(mapa, prvic='True'):
             podatki8 = vzorec8.groupdict()
         for vzorec9 in re.finditer(vzorec_jezik, vsebina):
             podatki9 = vzorec9.groupdict()
+        for vzorec10 in re.finditer(vzorec_naslovnica, vsebina):
+            podatki10 = vzorec10.groupdict()
 
         if podatki9['jezik'] == 'English':  # Če knjiga ni angleška, se ne sme dodati na noben csv
             ###CSV za tabelo KNJIGA
@@ -84,6 +90,10 @@ def shrani_knjige(mapa, prvic='True'):
             podatkiKnjiga['leto'] = podatki4['leto_izdaje']
             podatkiKnjiga['ISBN'] = podatki5['ISBN']
             podatkiKnjiga['id'] = podatki7['id_knjige']
+            if podatki10['url_naslovnice'] is not None:
+                podatkiKnjiga['url_naslovnice'] = podatki10['url_naslovnice']+'.jpg'
+            else:
+                podatkiKnjiga['url_naslovnice'] = podatki10['url_prazne']+'.jpg'
             idji_knjig.add(podatki7['id_knjige'])
             seznam_vseh_knjig.append(podatkiKnjiga)
 
@@ -144,7 +154,6 @@ def shrani_knjige(mapa, prvic='True'):
                     i += 1
         else:
             seznam_tujih_knjig.append(podatki7['id_knjige'])
-
 
 # mapa = orodja.datoteke("knjige")
 # shrani_knjige(mapa)

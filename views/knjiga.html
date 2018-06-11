@@ -1,8 +1,9 @@
 %rebase('osnova.html', naslov='Knjiga')
 
 <div class="row px-4">
+
     <div class="col">
-    <b>{{knjiga['naslov']}}</b>
+    <h3>{{knjiga['naslov']}}</h3>
     </div>
     <div class="col-sm">
         Povprečna ocena: {{knjiga['povprecna_ocena']}} (Število ocen: {{knjiga['stevilo_ocen']}})
@@ -11,6 +12,12 @@
 
 % if knjiga['avtor'] != {(None, None)}:
     <div class="row px-4">
+        %if len(knjiga['avtor'])==1:
+        Avtor:
+        %end
+        %if len(knjiga['avtor'])>1:
+        Avtorji:
+        %end
         %for avtor in knjiga['avtor']:
         <form action="/avtor/{{avtor[0]}}" method="POST">
              <p><input type="submit" class="btn btn-link" value="{{avtor[1]}}">
@@ -22,6 +29,12 @@
 
 % if knjiga['serija'] != {(None, None, None)}:
     <div class="row px-4">
+        %if len(knjiga['serija'])==1:
+        Zbirka:
+        %end
+        %if len(knjiga['serija'])>1:
+        Zbirke:
+        %end
         %for serija in knjiga['serija']:
         <form action="/zbirka/{{serija[0]}}" method="POST">
              <p><input type="submit" class="btn btn-link" value="{{serija[1]}} #{{serija[2]}}">
@@ -33,10 +46,17 @@
 
 % if knjiga['opis'] is not None:
 <div class="row px-4">
+
+    <div class="col-3">
+    <img src="{{knjiga['url_naslovnice']}}" align="center" class="img-thumbnail"/>
+    </div>
+
+    <div class="col">
     <p>{{knjiga['opis']}}</p>
+    </div>
 </div>
 % end
-
+<br/>
 % if knjiga['dolzina'] is not None:
     <div class="row px-4">
         Dolžina knjige: {{knjiga['dolzina']}} strani

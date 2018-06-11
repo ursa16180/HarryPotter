@@ -20,18 +20,33 @@
 %for knjiga in knjige:
 
 <div class="row px-4">
+    <div class="col-2">
+        <img src="{{knjiga['url_naslovnice']}}" align="center" class="img-thumbnail"/>
+    </div>
+    <div class="col">
     <div class="btn-group-vertical">
     <!--<br/>-->
         <form action="/knjiga/{{knjiga['id']}}" method="POST">
-            <b><input type="submit" class="btn btn-basic" value="{{knjiga['naslov']}}"></b>
+            <h3><input type="submit" class="btn btn-basic" value="{{knjiga['naslov']}}"></h3>
 
         </form>
+        %if knjiga['avtorji']!={None}:
+        %if len(knjiga['avtorji'])==1:
+        Avtor:
+        %end
+        %if len(knjiga['avtorji'])>1:
+        Avtorji:
+        %end
         %for avtor in knjiga['avtorji']:
         <form action="/avtor/{{avtor[0]}}" method="POST">
              <p><input type="submit" class="btn btn-link" value="{{avtor[1]}}">
             </p>
         </form>
         %end
+        %end
+
+        %if knjiga['zanri']!={None}:
+        Žanri:
         <div class="btn-group">
         %for zanr in knjiga['zanri']:
         <form action="/zanr/{{zanr}}" method="POST">
@@ -41,9 +56,12 @@
 
         %end
         </div>
+        %end
 
     <!--<br/>-->
     </div>
+    </div>
+
 </div>
 <hr />
 %end
