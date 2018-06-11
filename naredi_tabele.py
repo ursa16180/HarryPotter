@@ -125,14 +125,15 @@ knjiga = ["knjiga",
             povprecna_ocena FLOAT,
             stevilo_ocen INTEGER,
             leto INTEGER, 
-            opis TEXT
+            opis TEXT,
+            url_naslovnice TEXT
 
         );
     """,
           """
                 INSERT INTO knjiga
-                (id, ISBN, naslov, dolzina, povprecna_ocena, stevilo_ocen, leto, opis)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                (id, ISBN, naslov, dolzina, povprecna_ocena, stevilo_ocen, leto, opis, url_naslovnice)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                 RETURNING id
             """]
 
@@ -277,12 +278,15 @@ def izbrisi_vse_tabele():
 #daj_pravice()
 #for x in [knjiga_kljucne_besede]:
 #    izprazni_tabelo(x)
-for x in [ knjiga_kljucne_besede]:
-    #ustvari_tabelo(x)
-    uvozi_podatke(x)
+# for x in [ knjiga_kljucne_besede]:
+#     #ustvari_tabelo(x)
+#     uvozi_podatke(x)
 #uvozi_podatke(knjiga_kljucne_besede) # TODO Knjige 33570856 ni v knjigah?!?!
-
-#ustvari_vse_tabele()0
+#ustvari_vse_tabele()
 
 #uvozi_vse_podatke()
 #izbrisi_podovojene_vrstice('podatki/zanr.csv')
+
+#ustvari_tabelo(knjiga)
+uvozi_podatke(knjiga)
+daj_pravice()

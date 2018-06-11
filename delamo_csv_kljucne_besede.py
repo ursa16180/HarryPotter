@@ -35,7 +35,7 @@ def poisci_kljucne_besede(seznam_vseh_knjig):
             if knjiga['id'] not in dodane_knjige:  # Naredi csv knjig, ki niso imele nobene kljucne besede
                 mankajoce.append(knjiga)
     orodja.zapisi_tabelo(mankajoce,
-                         ['id', 'ISBN', 'naslov', 'dolzina', 'povprecna_ocena', 'stevilo_ocen', 'leto', 'opis'],
+                         ['id', 'ISBN', 'naslov', 'dolzina', 'povprecna_ocena', 'stevilo_ocen', 'leto', 'opis','url_naslovnice'],
                          'podatki/mankajoce.csv')
 
     print(len(dodane_knjige), len(seznam_vseh_knjig_kljucnih_besed))

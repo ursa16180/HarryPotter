@@ -41,12 +41,12 @@ def iskanje_get():
 
     # ~~~~~~~~~~~~~~Če so izbrane ključne besede, jih doda
     if kljucne == []:
-        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr FROM knjiga"
+        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice FROM knjiga"
     else:  # TODO: išči po ključnih besedah - ni lepo ampak mislim da dela
         vmesni_niz = " AND ".join(
             'EXISTS (SELECT * FROM knjiga_kljucne_besede WHERE kljucna_beseda = \'%s\' AND knjiga_kljucne_besede.id_knjige=knjiga1.id_knjige)' % (
                 kljucna_beseda) for kljucna_beseda in kljucne)
-        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr FROM knjiga JOIN (SELECT DISTINCT * FROM knjiga_kljucne_besede knjiga1 WHERE " + vmesni_niz + ") pomozna_tabela ON knjiga.id=pomozna_tabela.id_knjige"
+        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice FROM knjiga JOIN (SELECT DISTINCT * FROM knjiga_kljucne_besede knjiga1 WHERE " + vmesni_niz + ") pomozna_tabela ON knjiga.id=pomozna_tabela.id_knjige"
 
     # ~~~~~~~~~~~~~~če so izbrani zanri, jih doda
     if zanri != []:
@@ -78,10 +78,11 @@ def iskanje_get():
         slovar_slovarjev_knjig = {}
         for vrstica in vse_vrstice:
             id = vrstica[0]
-            trenutna_knjiga = slovar_slovarjev_knjig.get(id, {'id': id, 'naslov': None, 'avtorji': set(), 'zanri': set()})
+            trenutna_knjiga = slovar_slovarjev_knjig.get(id, {'id': id, 'naslov': None, 'avtorji': set(), 'zanri': set(), 'url_naslovnice':None})
             trenutna_knjiga['naslov'] = vrstica[1]
             trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
             trenutna_knjiga['zanri'].add(vrstica[4])
+            trenutna_knjiga['url_naslovnice']=vrstica[5]
             slovar_slovarjev_knjig[id] = trenutna_knjiga
         return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
                         knjige=list(slovar_slovarjev_knjig.values()), stran=1)
@@ -144,7 +145,7 @@ ORDER BY zaporedna_stevilka_serije""" % x)
 def knjiga(x):
     #print(x)
     cur.execute("""SELECT knjiga.id, isbn, naslov, dolzina, knjiga.povprecna_ocena, stevilo_ocen, leto, knjiga.opis, 
-    avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra FROM knjiga
+    avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, knjiga.url_naslovnice FROM knjiga
 LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
 LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
 LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
@@ -165,7 +166,8 @@ WHERE knjiga.id ='%s'""" % x)
               'avtor':set(),
               'serija':set(),
               'kljucna_beseda':set(),
-              'zanri':set()}
+              'zanri':set(),
+              'url_naslovnice':vseVrstice[0][15]}
     for vrstica in vseVrstice:
         knjiga['avtor'].add((vrstica[8],vrstica[9]))
         knjiga['serija'].add((vrstica[10],vrstica[11], vrstica[12]))
@@ -203,7 +205,7 @@ def kazalo_zanra():
 def rezultati_iskanja():
     if request.forms.get('iskaniIzrazKnjige') != '':
         iskani_izraz = request.forms.get('iskaniIzrazKnjige')
-        cur.execute("""SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr FROM knjiga 
+        cur.execute("""SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice FROM knjiga 
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id
         LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige
@@ -215,10 +217,11 @@ def rezultati_iskanja():
             slovar_slovarjev_knjig = {}
             for vrstica in vse_vrstice:
                 id = vrstica[0]
-                trenutna_knjiga = slovar_slovarjev_knjig.get(id, {'id': id, 'naslov': None, 'avtorji': set(), 'zanri': set()})
+                trenutna_knjiga = slovar_slovarjev_knjig.get(id, {'id': id, 'naslov': None, 'avtorji': set(), 'zanri': set(), 'url_naslovnice':None})
                 trenutna_knjiga['naslov'] = vrstica[1]
                 trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
                 trenutna_knjiga['zanri'].add(vrstica[4])
+                trenutna_knjiga['url_naslovnice']=vrstica[5]
                 slovar_slovarjev_knjig[id] = trenutna_knjiga
             return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
                             knjige=list(slovar_slovarjev_knjig.values()))
