@@ -76,7 +76,6 @@ def iskanje_get():
         return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri)
     else:
         slovar_slovarjev_knjig = {}
-
         for vrstica in vse_vrstice:
             id = vrstica[0]
             trenutna_knjiga = slovar_slovarjev_knjig.get(id, {'id': id, 'naslov': None, 'avtorji': set(), 'zanri': set()})
@@ -85,8 +84,12 @@ def iskanje_get():
             trenutna_knjiga['zanri'].add(vrstica[4])
             slovar_slovarjev_knjig[id] = trenutna_knjiga
         return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                        knjige=slovar_slovarjev_knjig.values())
+                        knjige=list(slovar_slovarjev_knjig.values()), stran=1)
 
+# @post('/isci_stran/:x')
+# def isci_stran(x):
+#     return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+#                         knjige=x[0], stran=x[1])
 
 @post('/avtor/:x')
 def avtor(x):
@@ -96,6 +99,8 @@ def avtor(x):
     cur.execute("SELECT zanr FROM avtorjev_zanr WHERE id = '%s'" % x)
     zanriAvtorja=cur.fetchall()
     zanriAvtorja = set([x[0] for x in  zanriAvtorja])
+    if zanriAvtorja == {None}:
+        zanriAvtorja = set()
     cur.execute("""SELECT knjiga.id, knjiga.naslov, zanr_knjige.zanr FROM avtor_knjige 
     LEFT JOIN knjiga ON knjiga.id = avtor_knjige.id_knjige 
     LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
@@ -105,7 +110,8 @@ def avtor(x):
     for vrstica in vrstice_knjig:
         id = vrstica[0]
         knjige.add((id, vrstica[1]))
-        zanriAvtorja.add(vrstica[2])
+        if vrstica[2] != None:
+            zanriAvtorja.add(vrstica[2])
     #print(avtor, zanriAvtorja, knjige)
     return template('avtor.html', vseKljucne=vseKljucne, zanri=vsiZanri,
                     avtor=avtor, knjige=list(knjige), zanriAvtorja=list(zanriAvtorja))
@@ -192,7 +198,7 @@ def kazalo_zanra():
     vsi_zanri_iz_baze = cur.fetchall()
     return template('kazalo_zanrov.html', vseKljucne=vseKljucne, zanri=vsiZanri, zanri_kazalo=vsi_zanri_iz_baze)
 
-# TODO TODO
+
 @post('/rezultatiIskanja')
 def rezultati_iskanja():
     if request.forms.get('iskaniIzrazKnjige') != '':
@@ -215,7 +221,7 @@ def rezultati_iskanja():
                 trenutna_knjiga['zanri'].add(vrstica[4])
                 slovar_slovarjev_knjig[id] = trenutna_knjiga
             return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                            knjige=slovar_slovarjev_knjig.values())
+                            knjige=list(slovar_slovarjev_knjig.values()))
     elif request.forms.get('iskaniIzrazAvtorji') != None:
         iskani_izraz = request.forms.get('iskaniIzrazAvtorji')
         cur.execute("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor
@@ -232,9 +238,9 @@ def rezultati_iskanja():
                 trenutni_avtor['zanri'].add(vrstica[2])
                 zadetki_avtorjev[id] = trenutni_avtor
             return template('izpis_zadetkov_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                            avtorji=zadetki_avtorjev.values())
+                            avtorji=list(zadetki_avtorjev.values()))
     # če sta obe polji prazni ali če ni zadetkov
-    return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri)
+    return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, stran=1)
 
 ######################################################################
 # Glavni program
