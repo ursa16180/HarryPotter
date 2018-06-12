@@ -224,7 +224,7 @@ def rezultati_iskanja():
                 trenutna_knjiga['url_naslovnice']=vrstica[5]
                 slovar_slovarjev_knjig[id] = trenutna_knjiga
             return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                            knjige=list(slovar_slovarjev_knjig.values()))
+                            knjige=list(slovar_slovarjev_knjig.values()), stran=1)
     elif request.forms.get('iskaniIzrazAvtorji') != None:
         iskani_izraz = request.forms.get('iskaniIzrazAvtorji')
         cur.execute("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor
@@ -243,7 +243,7 @@ def rezultati_iskanja():
             return template('izpis_zadetkov_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri,
                             avtorji=list(zadetki_avtorjev.values()))
     # če sta obe polji prazni ali če ni zadetkov
-    return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, stran=1)
+    return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri)
 
 ######################################################################
 # Glavni program

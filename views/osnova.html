@@ -21,13 +21,29 @@
 <body>
 <div class="container-fluid bg-dark">
     <div class="row">
-    <div class="col-3">
-        <img src="../static/bradavicarka_logo.png" class="center" align="center"/>
+        <div class="col-3">
+            <img src="../static/bradavicarka_logo.png" class="center-medium" align="center"/>
 
-    </div>
-    <div class="col-8">
-        <img src="../static/harry_knjiznica.jpg" class="img-responsive" align="center"/>
-    </div>
+        </div>
+        <div class="col-6">
+            <img src="../static/harry_knjiznica.jpg" class="center-full" align="center"/>
+        </div>
+        <div class="col-3">
+            <form action="/prijava">
+                <div class="form-row">
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="vzdevek">
+                </div>
+                <br/>
+                <div class="form-row">
+                  <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="geslo">
+                </div>
+                <br/>
+                <input type="submit" class="btn btn-basic" value="Sign in">
+                <form action="/registracija" method="POST">
+                    <b><input type="submit" class="btn btn-basic" value="Sign up"></b>
+                </form>
+            </form>
+        </div>
     </div>
 </div>
 <div class="container-fluid bg-dark">
@@ -35,7 +51,7 @@
         <div class="col-3">
 
         </div>
-        <div class="col-8">
+        <div class="col-9">
             <nav class="nav">
                 <a class="nav-link active" href="#">
                     <form action="/kazaloAvtorja" method="POST">
