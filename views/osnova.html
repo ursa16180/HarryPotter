@@ -4,17 +4,16 @@
     <script type="text/javascript">
     function spremembaDrsnika(val) {
     document.getElementById('vrednostDrsnika').innerHTML = val;
-}
-
-
+    }
     </script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link href="/static/style.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="../static/favicon.png">
-    <title>{{naslov}}</title>
+    <title>{{naslov}} OJLA</title>
 
 </head>
 <!--<body  background="../static/ozadje.jpg">-->
@@ -29,19 +28,21 @@
             <img src="../static/harry_knjiznica.jpg" class="center-full" align="center"/>
         </div>
         <div class="col-3">
-            <form action="/prijava">
-                <div class="form-row">
-                    <input type="text" class="form-control" id="username" placeholder="Username" name="vzdevek">
+            <form action="/prijava" method="POST">
+                <div class="w-75 p-3 bg-dark">
+                    <div class="form-row">
+                        <input type="text" class="form-control" id="username" placeholder="Username" name="vzdevek">
+                    </div>
+                    <br/>
+                    <div class="form-row">
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="geslo">
+                    </div>
+                    <br/>
+                    <input type="submit" class="btn btn-basic" value="Sign in">
+                    <form action="/registracija" method="GET">
+                        <b><input type="submit" class="btn btn-basic" value="Sign up"></b>
+                    </form>
                 </div>
-                <br/>
-                <div class="form-row">
-                  <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="geslo">
-                </div>
-                <br/>
-                <input type="submit" class="btn btn-basic" value="Sign in">
-                <form action="/registracija" method="POST">
-                    <b><input type="submit" class="btn btn-basic" value="Sign up"></b>
-                </form>
             </form>
         </div>
     </div>
@@ -95,7 +96,7 @@
         <div class="col-3 bg-secondary">
             <br/>
             <form action="/isci" method="POST">
-                <p class="text-primary"> <b><h4>ISKALNIK</h4></b></p>
+                <p class="text-primary"> <b>ISKALNIK</b></p>
                 <div class="form-group">
                     <div class="slidecontainer">
                         <input type="range" min="0" max="1000" value="200" class="slider" id="drsnikDolzina"
@@ -159,7 +160,6 @@
                             %end
                         </div>
                     </div>
-
                 </div>
 
                 <div class="form-group">

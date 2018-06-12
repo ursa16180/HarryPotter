@@ -10,6 +10,8 @@ import auth_public as auth
 # uvozimo psycopg2
 import psycopg2, psycopg2.extensions, psycopg2.extras
 
+import hashlib
+
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo problemov s šumniki
 
 # odkomentiraj, če želiš sporočila o napakah
