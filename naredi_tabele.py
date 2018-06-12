@@ -361,7 +361,7 @@ prebrane=['prebrane',
             """
            ]
 
-ustvari_tabelo(uporabnik)
+#ustvari_tabelo(uporabnik)
 ustvari_tabelo(ocena_knjige)
 ustvari_tabelo(prebrane)
 ustvari_tabelo(zelje)
