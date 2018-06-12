@@ -25,4 +25,15 @@ white-space: normal;
     width: 50%;
 }
 
-
+.center-full {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+.center-medium {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
