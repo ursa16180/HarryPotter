@@ -9,6 +9,7 @@ import auth_public as auth
 
 # uvozimo psycopg2
 import psycopg2, psycopg2.extensions, psycopg2.extras
+import hashlib
 
 import hashlib
 
@@ -266,12 +267,12 @@ def uporabnik():
             return [0, None, None, None]
 
 
-@get("/logout/")
+@get("/logout")
 def odjava():
     response.delete_cookie('vzdevek', path='/', domain='localhost')
     redirect('/')
 
-@post("/prijava/")
+@post("/prijava")
 def prijava_uporabnika():
     (id, vzdevek, dom, spol) = uporabnik()
 
@@ -292,7 +293,11 @@ def prijava_uporabnika():
         response.set_cookie('vzdevek', vzdevek, path='/')#TODO secret=secret)
         redirect("/")
 
-@post('/registracija/')
+@get('/registracija')
+def odpri_registracijo():
+    return template('registracija.html', )
+
+@post('/registracija')
 def registriraj_uporabnika():
     (id, vzdevek, dom, spol) = uporabnik()
 
