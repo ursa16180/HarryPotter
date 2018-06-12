@@ -8,7 +8,7 @@ import psycopg2, psycopg2.extensions, psycopg2.extras
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo problemov s šumniki
 
 import csv
-import re
+import hashlib
 
 from delamo_csv_zanr import zanri_za_popravit
 def ustvari_tabelo(seznam):
@@ -16,9 +16,16 @@ def ustvari_tabelo(seznam):
     print("Narejena tabela %s" % seznam[0])
     conn.commit()
 
+def zakodiraj_geslo(geslo):
+    hashko=hashlib.md5()
+    hashko.update(geslo.encode('utf-8'))
+    return hashko.hexdigest()
+
 def daj_pravice():
     cur.execute("GRANT CONNECT ON DATABASE sem2018_ursap TO javnost;"
                 "GRANT SELECT ON ALL TABLES IN SCHEMA public TO javnost;"
+                "GRANT UPDATE, INSERT ON uporabnik, ocena_knjige, zelje, prebrane TO javnost;"
+                "GRANT ALL ON ALL SEQUENCES IN uporabnik TO javnost;"
                 "GRANT ALL ON SCHEMA public TO ursap; "
                 "GRANT ALL ON SCHEMA public TO ninast;"
                 "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO ursap;"
@@ -287,6 +294,75 @@ def izbrisi_vse_tabele():
 #uvozi_vse_podatke()
 #izbrisi_podovojene_vrstice('podatki/zanr.csv')
 
-#ustvari_tabelo(knjiga)
-uvozi_podatke(knjiga)
+#~~~~~~~~~~~~~~~~~~~~~~~~~UPORABNIKI
+uporabnik=['uporabnik',
+           """
+           CREATE TYPE spol AS ENUM('Female','Male');
+           CREATE TYPE dom AS ENUM('Gryffindor','Slytherin', 'Hufflepuff','Ravenclaw ');
+           CREATE TABLE uporabnik (
+               id SERIAL PRIMARY KEY,
+               vzdevek TEXT NOT NULL UNIQUE,
+               geslo TEXT NOT NULL,
+               email TEXT NOT NULL,
+               dom dom NOT NULL,
+               spol spol NOT NULL
+           );
+       """, """
+                INSERT INTO uporabnik
+                (id, vzdevek, geslo, email, dom, spol)
+                VALUES (%s, %s, %s, %s, %s, %s)
+                RETURNING (id_uporabnika)
+            """
+           ]
+
+ocena_knjige=['ocena_knjige',
+           """
+           CREATE TABLE ocena_knjige (
+               id_uporabnika INTEGER NOT NULL REFERENCES uporabnik(id),
+               id_knjige TEXT NOT NULL REFERENCES knjiga(id),
+               ocena INTEGER,
+               PRIMARY KEY(id_uporabnika, id_knjige)
+           );
+       """, """
+                INSERT INTO ocena_knjige
+                (id_uporabnika, id_knjige, ocena)
+                VALUES (%s, %s, %s)
+                RETURNING (id_uporabnika, id_knjige)
+            """
+           ]
+
+zelje=['zelje',
+           """
+           CREATE TABLE zelje (
+               id_uporabnika INTEGER NOT NULL REFERENCES uporabnik(id),
+               id_knjige TEXT NOT NULL REFERENCES knjiga(id),
+               PRIMARY KEY(id_uporabnika, id_knjige)
+           );
+       """, """
+                INSERT INTO zelje
+                (id_uporabnika, id_knjige)
+                VALUES (%s, %s)
+                RETURNING (id_uporabnika, id_knjige)
+            """
+           ]
+
+prebrane=['prebrane',
+           """
+           CREATE TABLE prebrane (
+               id_uporabnika INTEGER NOT NULL REFERENCES uporabnik(id),
+               id_knjige TEXT NOT NULL REFERENCES knjiga(id),
+               PRIMARY KEY(id_uporabnika, id_knjige)
+           );
+       """, """
+                INSERT INTO prebrane
+                (id_uporabnika, id_knjige)
+                VALUES (%s, %s)
+                RETURNING (id_uporabnika, id_knjige)
+            """
+           ]
+
+ustvari_tabelo(uporabnik)
+ustvari_tabelo(ocena_knjige)
+ustvari_tabelo(prebrane)
+ustvari_tabelo(zelje)
 daj_pravice()

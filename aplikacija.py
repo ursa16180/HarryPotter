@@ -16,6 +16,11 @@ psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo pro
 debug(True)
 
 
+def zakodiraj_geslo(geslo):
+    hashko=hashlib.md5()
+    hashko.update(geslo.encode('utf-8'))
+    return hashko.hexdigest()
+
 @get('/static/<filename:path>')
 def static(filename):
     return static_file(filename, root='static')
@@ -245,6 +250,69 @@ def rezultati_iskanja():
     # če sta obe polji prazni ali če ni zadetkov
     return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri)
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~UPORABNIKI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def uporabnik():
+    #Preveri če je kdo vpisan in vrne njegove podatke ali pa NONE če ni nihče opisan
+    vzdevek = request.get_cookie('vzdevek') #TODO Secret?
+    if vzdevek is not None:
+        cur.execute("SELECT id, vzdevek, dom, spol  FROM uporabnik WHERE vzdevek=%s" %vzdevek)
+        vrstica = cur.fetchone()
+        if vrstica is not None:
+            return vrstica
+        else:
+            return [0, None, None, None]
+
+
+@get("/logout/")
+def odjava():
+    response.delete_cookie('vzdevek', path='/', domain='localhost')
+    redirect('/')
+
+@post("/prijava/")
+def prijava_uporabnika():
+    (id, vzdevek, dom, spol) = uporabnik()
+
+    vzdevek = request.forms.vzdevek
+    geslo = zakodiraj_geslo(request.forms.geslo)
+    # Preverimo če se je prav prijavil
+    if vzdevek is not None:
+        cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek='%s'"%vzdevek)
+        if cur.fetchone() is None:
+            #TODO TA VZDEVEK NE OBSTAJA
+            return template("")
+    elif vzdevek is not None and geslo is not None:
+        cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek='%s' AND geslo='%s' " % vzdevek, geslo)
+        if cur.fetchone() is None:
+            #TODO geslo ni pravilno
+            return template("")
+    else:
+        response.set_cookie('vzdevek', vzdevek, path='/')#TODO secret=secret)
+        redirect("/")
+
+@post('/registracija/')
+def registriraj_uporabnika():
+    (id, vzdevek, dom, spol) = uporabnik()
+
+    vzdevek = request.forms.uporabniskoime
+    geslo1 = request.forms.geslo
+    geslo2 = request.forms.geslo2
+    email= request.forms.email
+    dom= request.forms.dom #TODO request.forms.get("dom")
+    spol=request.forms.spol #TODO request.forms.get("spol")
+
+    cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek='%s'" %vzdevek)
+    if cur.fetchone() is not None:
+        return template("")
+        #TODO REGISTER return template('register.html', napaka = 'To uporabniško ime je že zavzeto', barva="red", prijavljen_uporabnik=username_login, stanje=stanje, id_uporabnik=id_user)
+    elif not geslo1 == geslo2:
+        return template("")
+        #TODO REGISTER NAPAKA return template('register.html', napaka = 'Gesli se ne ujemata', barva="red", prijavljen_uporabnik=username_login, stanje=stanje, id_uporabnik=id_user)
+    cur.execute("INSERT INTO uporabnik(vzdevek, geslo, email, dom, spol) VALUES('%s','%s','%s','%s','%s');"%vzdevek, geslo1, email, dom, spol)
+
+
+
+
 ######################################################################
 # Glavni program
 
@@ -274,14 +342,11 @@ for vrstica in zanri_iz_baze:
 vsiZanri.sort()
 
 #~~~~~~~~~~~~~~~~~~~~~Pridobi vse skupine ključnih besed
-#vseKljucne = {'Magija': ['Magic', 'Flying'], 'Bitja': ['Centaur', 'Troll']}
 cur.execute("""SELECT skupina, pojem FROM kljucna_beseda""")
 kljucne_iz_baze = cur.fetchall()
 vseKljucne = {}
 for vrstica in kljucne_iz_baze:
     skupina = vrstica[0]
-    #pojmi = vseKljucne.get(skupina, list())
-    #print(pojmi, vrstica)
     vseKljucne[skupina] = vseKljucne.get(skupina, list()) + [vrstica[1]]
 
 # poženemo strežnik na portu 8080, glej http://localhost:8080/

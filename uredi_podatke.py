@@ -29,7 +29,7 @@ dc.shrani_knjige(mapa_knjige)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ do tu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-# zp.zajemi_serije()
+#zp.zajemi_serije()
 mapa_serije = orodja.datoteke("serije")
 print('shranjujem serije')
 dcs.shrani_serije(mapa_serije)
@@ -104,7 +104,7 @@ print('delam csvje')
 # naredimo csv datoteke iz zbranih podatkov:
 # KNJIGA
 orodja.zapisi_tabelo(dc.seznam_vseh_knjig,
-                     ['id', 'ISBN', 'naslov', 'dolzina', 'povprecna_ocena', 'stevilo_ocen', 'leto', 'opis'],
+                     ['id', 'ISBN', 'naslov', 'dolzina', 'povprecna_ocena', 'stevilo_ocen', 'leto', 'opis', 'url_naslovnice'],
                      'podatki/knjiga.csv')
 # AVTOR
 orodja.zapisi_tabelo(dca.seznam_vseh_avtorjev,
