@@ -13,7 +13,7 @@ def zajemi_knjige():
     """Iz spletnega seznama "What to read after Harry Potter" zajamemo url-je vseh knjig na sznamu.
     Seznam je trenutno dolg 15 strani."""
 
-    for stran in range(7, 8):
+    for stran in range(16):
         r = requests.get(
             'https://www.goodreads.com/list/show/559.What_To_Read_After_Harry_Potter?page={}'.format(stran))
         page_source = r.text

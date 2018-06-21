@@ -295,7 +295,7 @@ def prijava_uporabnika():
 
 @get('/registracija')
 def odpri_registracijo():
-    return template('registracija.html', )
+    return template('registracija.html', vseKljucne=vseKljucne, zanri=vsiZanri)
 
 @post('/registracija')
 def registriraj_uporabnika():
