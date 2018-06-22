@@ -52,8 +52,7 @@ def iskanje_get():
         niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice FROM knjiga"
     else:  # TODO: išči po ključnih besedah - ni lepo ampak mislim da dela
         vmesni_niz = " AND ".join(
-            'EXISTS (SELECT * FROM knjiga_kljucne_besede WHERE kljucna_beseda = \'%s\' AND knjiga_kljucne_besede.id_knjige=knjiga1.id_knjige)' % (
-                kljucna_beseda) for kljucna_beseda in kljucne)
+            'EXISTS (SELECT * FROM knjiga_kljucne_besede WHERE kljucna_beseda = \'%s\' AND knjiga_kljucne_besede.id_knjige=knjiga1.id_knjige)' % (kljucna_beseda) for kljucna_beseda in kljucne)
         niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice FROM knjiga JOIN (SELECT DISTINCT * FROM knjiga_kljucne_besede knjiga1 WHERE " + vmesni_niz + ") pomozna_tabela ON knjiga.id=pomozna_tabela.id_knjige"
 
     # ~~~~~~~~~~~~~~če so izbrani zanri, jih doda
@@ -93,12 +92,8 @@ def iskanje_get():
             trenutna_knjiga['url_naslovnice']=vrstica[5]
             slovar_slovarjev_knjig[id] = trenutna_knjiga
         return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                        knjige=list(slovar_slovarjev_knjig.values()), stran=1)
+                        knjige=list(slovar_slovarjev_knjig.values()), stran=1, poizvedba=niz)
 
-# @post('/isci_stran/:x')
-# def isci_stran(x):
-#     return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-#                         knjige=x[0], stran=x[1])
 
 @post('/avtor/:x')
 def avtor(x):
@@ -213,13 +208,14 @@ def kazalo_zanra():
 def rezultati_iskanja():
     if request.forms.get('iskaniIzrazKnjige') != '':
         iskani_izraz = request.forms.get('iskaniIzrazKnjige')
-        cur.execute("""SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice FROM knjiga 
+        niz = """SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice FROM knjiga 
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id
         LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige
         WHERE 
         CONCAT_WS('|', knjiga.naslov, knjiga.opis)
-        LIKE '%""" + '%s' % iskani_izraz + "%'")
+        LIKE '%""" + '%s' % iskani_izraz + "%'"
+        cur.execute(niz)
         vse_vrstice = cur.fetchall()
         if vse_vrstice != []:
             slovar_slovarjev_knjig = {}
@@ -232,13 +228,14 @@ def rezultati_iskanja():
                 trenutna_knjiga['url_naslovnice']=vrstica[5]
                 slovar_slovarjev_knjig[id] = trenutna_knjiga
             return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                            knjige=list(slovar_slovarjev_knjig.values()), stran=1)
+                            knjige=list(slovar_slovarjev_knjig.values()), stran=1, poizvedba=niz)
     elif request.forms.get('iskaniIzrazAvtorji') != None:
         iskani_izraz = request.forms.get('iskaniIzrazAvtorji')
-        cur.execute("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor
+        niz = """SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor
         LEFT JOIN avtorjev_zanr ON avtor.id=avtorjev_zanr.id
         WHERE avtor.ime
-        LIKE '%""" + '%s' % iskani_izraz + "%'")
+        LIKE '%""" + '%s' % iskani_izraz + "%'"
+        cur.execute(niz)
         vse_vrstice = cur.fetchall()
         if vse_vrstice != []:
             zadetki_avtorjev = {}
@@ -249,10 +246,42 @@ def rezultati_iskanja():
                 trenutni_avtor['zanri'].add(vrstica[2])
                 zadetki_avtorjev[id] = trenutni_avtor
             return template('izpis_zadetkov_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                            avtorji=list(zadetki_avtorjev.values()))
+                            avtorji=list(zadetki_avtorjev.values()), stran=1, poizvedba=niz)
     # če sta obe polji prazni ali če ni zadetkov
     return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri)
 
+@post('/izpis_zadetkov/:x')
+def izpis_zadetkov(x):
+    [tip, stran, niz] =  x.split('&')
+    cur.execute(niz)
+    vse_vrstice = cur.fetchall()
+    if vse_vrstice == []:
+        return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri)
+    else:
+        if tip == 'knjiga':
+            slovar_slovarjev_knjig = {}
+            for vrstica in vse_vrstice:
+                id = vrstica[0]
+                trenutna_knjiga = slovar_slovarjev_knjig.get(id,
+                                                             {'id': id, 'naslov': None, 'avtorji': set(), 'zanri': set(),
+                                                              'url_naslovnice': None})
+                trenutna_knjiga['naslov'] = vrstica[1]
+                trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
+                trenutna_knjiga['zanri'].add(vrstica[4])
+                trenutna_knjiga['url_naslovnice'] = vrstica[5]
+                slovar_slovarjev_knjig[id] = trenutna_knjiga
+            return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+                            knjige=list(slovar_slovarjev_knjig.values()), stran=stran, poizvedba=niz)
+        elif tip == 'avtor':
+            zadetki_avtorjev = {}
+            for vrstica in vse_vrstice:
+                id = vrstica[0]
+                trenutni_avtor = zadetki_avtorjev.get(id, {'id': id, 'ime': None, 'zanri': set()})
+                trenutni_avtor['ime'] = vrstica[1]
+                trenutni_avtor['zanri'].add(vrstica[2])
+                zadetki_avtorjev[id] = trenutni_avtor
+            return template('izpis_zadetkov_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+                            avtorji=list(zadetki_avtorjev.values()), stran=stran, poizvedba=niz)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~UPORABNIKI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def uporabnik():
