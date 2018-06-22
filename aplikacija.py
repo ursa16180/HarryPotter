@@ -105,20 +105,25 @@ def avtor(x):
     zanriAvtorja = set([x[0] for x in  zanriAvtorja])
     if zanriAvtorja == {None}:
         zanriAvtorja = set()
-    cur.execute("""SELECT knjiga.id, knjiga.naslov, zanr_knjige.zanr FROM avtor_knjige 
+    cur.execute("""SELECT knjiga.id, knjiga.naslov, zanr_knjige.zanr, serija.id, serija.ime, serija.stevilo_knjig FROM avtor_knjige 
     LEFT JOIN knjiga ON knjiga.id = avtor_knjige.id_knjige 
     LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
+    LEFT JOIN del_serije ON knjiga.id = del_serije.id_knjige
+    LEFT JOIN serija ON del_serije.id_serije = serija.id
     WHERE id_avtorja ='%s'""" % x)
     vrstice_knjig = cur.fetchall()
     knjige = set()
+    serijeAvtorja = {}
     for vrstica in vrstice_knjig:
         id = vrstica[0]
         knjige.add((id, vrstica[1]))
         if vrstica[2] != None:
             zanriAvtorja.add(vrstica[2])
+        if vrstica[3] != None:
+            serijeAvtorja[vrstica[3]] = (vrstica[4], vrstica[5])
     #print(avtor, zanriAvtorja, knjige)
     return template('avtor.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                    avtor=avtor, knjige=list(knjige), zanriAvtorja=list(zanriAvtorja))
+                    avtor=avtor, knjige=list(knjige), zanriAvtorja=list(zanriAvtorja), serijeAvtorja=serijeAvtorja)
 
 
 @post('/zanr/:x')
@@ -208,13 +213,7 @@ def kazalo_zanra():
 def rezultati_iskanja():
     if request.forms.get('iskaniIzrazKnjige') != '':
         iskani_izraz = request.forms.get('iskaniIzrazKnjige')
-        niz = """SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice FROM knjiga 
-        LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
-        LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id
-        LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige
-        WHERE 
-        CONCAT_WS('|', knjiga.naslov, knjiga.opis)
-        LIKE '%""" + '%s' % iskani_izraz + "%'"
+        niz = """SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE '%""" + '%s' % iskani_izraz + "%'"
         cur.execute(niz)
         vse_vrstice = cur.fetchall()
         if vse_vrstice != []:
@@ -250,7 +249,7 @@ def rezultati_iskanja():
     # če sta obe polji prazni ali če ni zadetkov
     return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri)
 
-@post('/izpis_zadetkov/:x')
+@get('/izpis_zadetkov/:x')
 def izpis_zadetkov(x):
     [tip, stran, niz] =  x.split('&')
     cur.execute(niz)

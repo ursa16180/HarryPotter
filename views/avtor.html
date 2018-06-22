@@ -24,6 +24,27 @@
             </div>
         </div>
     % end
+    % if serijeAvtorja != {}:
+        <div class="col-sm">
+            <div class="btn-group-vertical">
+                Avtorjeve serije:
+                %for id, (ime, knjig) in serijeAvtorja.items():
+                    <form action="/serija/{{id}}" method="POST">
+                        %if knjig%100 == 1:
+                        %    kon = 'knjiga'
+                        %elif knjig%100 == 2:
+                        %    kon = 'knjigi'
+                        %elif knjig%100 in {3,4}:
+                        %    kon = 'knjige'
+                        %else:
+                        %    kon = 'knjig'
+                        %end
+                        <input type="submit" class="btn btn-link" value="{{ime}} (vsebuje {{knjig}} {{kon}})">
+                    </form>
+                %end
+            </div>
+        </div>
+    % end
 </div>
 
 <div class="row">
