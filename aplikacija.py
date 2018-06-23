@@ -141,14 +141,26 @@ def zanr(x):
 @post('/zbirka/:x')
 def zbirka(x):
     print(x)
-    cur.execute("""SELECT serija.ime, del_serije.zaporedna_stevilka_serije, knjiga.id, knjiga.naslov FROM serija
+    cur.execute("""SELECT serija.ime, del_serije.zaporedna_stevilka_serije, knjiga.id, knjiga.naslov, avtor.id, avtor.ime FROM serija
 JOIN del_serije ON del_serije.id_serije=serija.id
 JOIN knjiga ON del_serije.id_knjige = knjiga.id
+JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige
+JOIN avtor ON avtor_knjige.id_avtorja =  avtor.id
 WHERE serija.id = '%s'
 ORDER BY zaporedna_stevilka_serije""" % x)
+    # knjiga ima lahko več avtorjev, več knjig ima iste avtorje
+    knjige_ponovitve = cur.fetchall()
+    knjige={}
+    avtorji = {}
+    serija = knjige_ponovitve[0][0]
+    for knjiga in knjige_ponovitve:
+        knjiga_id = knjiga[2]
+        avtor_id = knjiga[4]
+        knjige[knjiga_id] = [knjiga_id, knjiga[3], knjiga[1]]
+        avtorji[avtor_id] = [avtor_id, knjiga[5]]
     #print(cur.fetchall())
     return template('zbirka.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                    knjige=cur.fetchall())
+                    knjige=list(knjige.values()), avtorji=list(avtorji.values()), serija=serija)
 
 
 @post('/knjiga/:x')
