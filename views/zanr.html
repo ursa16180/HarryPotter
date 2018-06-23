@@ -12,14 +12,31 @@
 </div>
 % end
 <div class="row px-4">
-    <div class="btn-group-vertical">
-        <br/>
-            Knjige iz žanra {{zanr[0]}}:
-            %for knjiga in knjige:
-                <form action="/knjiga/{{knjiga[0]}}" method="POST">
-                    <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
-
-                </form>
+    <div class="col-6">
+        <div class="btn-group-vertical">
+            <br/><br/>
+            %if knjige != []:
+                Books in genre {{zanr[0]}}:
+                %for knjiga in knjige:
+                    <form action="/knjiga/{{knjiga[0]}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
+                    </form>
+                %end
             %end
+        </div>
     </div>
+    <div class="col-3">
+        <div class="btn-group-vertical">
+            <br/><br/>
+            %if avtorji != []:
+                Authors writting in genre {{zanr[0]}}:
+                %for avtor in avtorji:
+                    <form action="/avtor/{{avtor[0]}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{avtor[1]}}">
+                    </form>
+                %end
+            %end
+        </div>
+    </div>
+
 </div>
