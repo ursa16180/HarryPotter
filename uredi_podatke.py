@@ -118,9 +118,9 @@ orodja.zapisi_tabelo(nov_seznam_serij,
                      'podatki/serija.csv')
 
 # ŽANR (drugi poskus)
-# orodja.zapisi_tabelo(dcz.seznam_vseh_zanrov,
-#                      ['ime_zanra', 'opis'],
-#                      'podatki/zanr.csv')
+orodja.zapisi_tabelo(dcz.seznam_vseh_zanrov,
+                      ['ime_zanra', 'opis'],
+                      'podatki/zanr.csv')
 
 # knjiga-avtor:
 # orodja.zapisi_tabelo(dc.seznam_avtor_knjiga, ['id_knjige', 'id_avtorja'], 'podatki/avtor_knjige.csv')
