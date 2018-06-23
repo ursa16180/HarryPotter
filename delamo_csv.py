@@ -31,7 +31,7 @@ seznam_serija_knjiga = []
 slovar_url_serij = dict()
 idji_knjig = set()
 slovar_url_zanrov = dict()
-
+dodaj_ze_znanim_serijam = []
 
 def shrani_knjige(mapa, prvic='True'):
     for knjiga in mapa:
@@ -141,17 +141,21 @@ def shrani_knjige(mapa, prvic='True'):
                 seznam_zanr_knjiga.append(x)
 
             ###CSV za tabelo DelSerije
-            if prvic:
-                podatkiSerije = dict()
-                podatkiSerije['id_knjige'] = podatki7['id_knjige']
-                i = 1
-                while i < 4 and podatki8['id_serije{0}'.format(str(i))] is not None:
+            podatkiSerije = dict()
+            podatkiSerije['id_knjige'] = podatki7['id_knjige']
+            i = 1
+            while i < 4 and podatki8['id_serije{0}'.format(str(i))] is not None:
+                if prvic:
                     slovar_url_serij[podatki8['id_serije{0}'.format(str(i))]] = podatki8['url_serije{0}'.format(str(i))]
-                    podatkiSerije['id_serije'] = copy.copy(podatki8['id_serije{0}'.format(str(i))])
-                    podatkiSerije['zaporedna_stevilka_serije'] = copy.copy(
-                        podatki8['zaporedna_stevilka_serije{0}'.format(str(i))])
+                podatkiSerije['id_serije'] = copy.copy(podatki8['id_serije{0}'.format(str(i))])
+                podatkiSerije['zaporedna_stevilka_serije'] = copy.copy(
+                    podatki8['zaporedna_stevilka_serije{0}'.format(str(i))])
+                if prvic:
                     seznam_serija_knjiga.append(podatkiSerije.copy())
-                    i += 1
+                else:
+                    dodaj_ze_znanim_serijam.append(podatkiSerije.copy())
+                i += 1
+
         else:
             seznam_tujih_knjig.append(podatki7['id_knjige'])
 
