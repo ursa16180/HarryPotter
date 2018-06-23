@@ -3,7 +3,17 @@
 
 <div class="row px-4">
     <br/>
-    <p class="center"> Nobena knjiga ne ustreza željenim parametrom.</p>
+    <p class="center"> No book matches your search.</p>
+</div>
+
+<div class="row px-4">
+    <br/>
+    <p class="center">
+        % for parameter in parametri[:-1]:
+        {{parameter}},
+        %end
+        {{parametri[-1]}}
+    </p>
 </div>
 
 <div class="row px-4">

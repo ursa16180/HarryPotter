@@ -9,7 +9,7 @@ import auth_public as auth
 
 # uvozimo psycopg2
 import psycopg2, psycopg2.extensions, psycopg2.extras
-import hashlib
+import copy
 
 import hashlib
 
@@ -37,14 +37,16 @@ def index():
 @post('/isci')
 def iskanje_get():
     kljucne = request.POST.getall('kljucne_besede')
-    #print(kljucne)
+    parametri = copy.copy(kljucne)
     if request.forms.get('dolzinaInput') is None:
         dolzina = 0
     else:
         dolzina = int(request.forms.get('dolzinaInput'))
+        parametri.append(str(dolzina) + '+ pages')
     # print(request.POST.getall('kljucne_besede'))
 
     zanri = request.POST.getall('zanri')
+    parametri += zanri
     jeDelZbirke = request.forms.get('jeDelZbirke')
 
     # ~~~~~~~~~~~~~~Če so izbrane ključne besede, jih doda
@@ -57,7 +59,7 @@ def iskanje_get():
 
     # ~~~~~~~~~~~~~~če so izbrani zanri, jih doda
     if zanri != []:
-        print(zanri)
+        #print(zanri)
         vmesni_niz = " AND ".join(
             'EXISTS (SELECT * FROM zanr_knjige WHERE zanr = \'%s\' AND id_knjige=knjiga2.id_knjige)' % (zanr) for zanr
             in zanri)
@@ -70,6 +72,7 @@ def iskanje_get():
     # TODO tukaj izbere če želi da je v zbirki ali če mu je vseeno... kaj pa če prou noče da je v zbirki?
     if jeDelZbirke is not None:
         niz += " JOIN del_serije ON knjiga.id=del_serije.id_knjige "
+        parametri += ['In series']
         # cur.execute("SELECT id, naslov, dolzina FROM knjiga WHERE dolzina>=%s", [dolzina])
 
     # ~~~~~~~~~~~~~~~Tukaj se doda avtor
@@ -80,7 +83,7 @@ def iskanje_get():
     cur.execute(niz)
     vse_vrstice = cur.fetchall()
     if vse_vrstice == []:
-        return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri)
+        return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, parametri=parametri)
     else:
         slovar_slovarjev_knjig = {}
         for vrstica in vse_vrstice:
@@ -92,7 +95,7 @@ def iskanje_get():
             trenutna_knjiga['url_naslovnice']=vrstica[5]
             slovar_slovarjev_knjig[id] = trenutna_knjiga
         return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                        knjige=list(slovar_slovarjev_knjig.values()), stran=1, poizvedba=niz)
+                        knjige=list(slovar_slovarjev_knjig.values()), stran=1, poizvedba=niz, parametri=parametri)
 
 
 @post('/avtor/:x')
@@ -140,7 +143,7 @@ def zanr(x):
 
 @post('/zbirka/:x')
 def zbirka(x):
-    print(x)
+    #print(x)
     cur.execute("""SELECT serija.ime, del_serije.zaporedna_stevilka_serije, knjiga.id, knjiga.naslov, avtor.id, avtor.ime FROM serija
 JOIN del_serije ON del_serije.id_serije=serija.id
 JOIN knjiga ON del_serije.id_knjige = knjiga.id
@@ -241,7 +244,7 @@ def rezultati_iskanja():
                 trenutna_knjiga['url_naslovnice']=vrstica[5]
                 slovar_slovarjev_knjig[id] = trenutna_knjiga
             return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                            knjige=list(slovar_slovarjev_knjig.values()), stran=1, poizvedba=niz)
+                            knjige=list(slovar_slovarjev_knjig.values()), stran=1, poizvedba=niz, parametri=[])
     elif request.forms.get('iskaniIzrazAvtorji') != None:
         iskani_izraz = request.forms.get('iskaniIzrazAvtorji')
         niz = """SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor
@@ -284,7 +287,7 @@ def izpis_zadetkov(x):
                 trenutna_knjiga['url_naslovnice'] = vrstica[5]
                 slovar_slovarjev_knjig[id] = trenutna_knjiga
             return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
-                            knjige=list(slovar_slovarjev_knjig.values()), stran=stran, poizvedba=niz)
+                            knjige=list(slovar_slovarjev_knjig.values()), stran=stran, poizvedba=niz, parametri=[])
         elif tip == 'avtor':
             zadetki_avtorjev = {}
             for vrstica in vse_vrstice:
@@ -391,7 +394,8 @@ for vrstica in zanri_iz_baze:
 vsiZanri.sort()
 
 #~~~~~~~~~~~~~~~~~~~~~Pridobi vse skupine ključnih besed
-cur.execute("""SELECT skupina, pojem FROM kljucna_beseda""")
+cur.execute("""SELECT skupina, pojem FROM kljucna_beseda JOIN knjiga_kljucne_besede ON pojem=kljucna_beseda
+GROUP BY pojem""")
 kljucne_iz_baze = cur.fetchall()
 vseKljucne = {}
 for vrstica in kljucne_iz_baze:

@@ -2,16 +2,30 @@
 %# TODO: bug pri iskanju npr. besede Dear, Dawn, Cen... pri kakšnih dela ok. npr. Harry, Boo, Ring ...
 
 <div class="row px-4">
-    Vašim parametrom
+    <!--%if len(knjige)%100 == 1:-->
+    <!--ustreza {{len(knjige)}} knjiga.-->
+    <!--%elif len(knjige)%100 == 2:-->
+    <!--ustrezata {{len(knjige)}} knjigi.-->
+    <!--%elif len(knjige)%100 in {3,4}:-->
+    <!--ustrezajo {{len(knjige)}} knjige.-->
+    <!--%else:-->
+    <!--ustreza {{len(knjige)}} knjig.-->
+    <!--%end-->
     %if len(knjige)%100 == 1:
-    ustreza {{len(knjige)}} knjiga.
-    %elif len(knjige)%100 == 2:
-    ustrezata {{len(knjige)}} knjigi.
-    %elif len(knjige)%100 in {3,4}:
-    ustrezajo {{len(knjige)}} knjige.
-    %else:
-    ustreza {{len(knjige)}} knjig.
+    1 book matches
+    %elif len(knjige)%100 > 2:
+    {{len(knjige)}} books match
     %end
+    your search.
+    <br/>
+    % if parametri is not None and parametri != []:
+        % for parameter in parametri[:-1]:
+            {{parameter}},
+        %end
+        {{parametri[-1]}}
+    %end
+    <br/>
+
 </div>
 % if len(knjige) > 10:
     <nav aria-label="Page navigation example">
