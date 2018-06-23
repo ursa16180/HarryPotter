@@ -16,7 +16,7 @@
         <div class="btn-group-vertical">
             <br/><br/>
             %if knjige != []:
-                Books in genre {{zanr[0]}}:
+                Best books in genre {{zanr[0]}}:
                 %for knjiga in knjige:
                     <form action="/knjiga/{{knjiga[0]}}" method="POST">
                         <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">

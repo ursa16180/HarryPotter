@@ -131,7 +131,7 @@ def zanr(x):
     #print(x)
     cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra='%s'" % x)
     zanr = cur.fetchone()
-    cur.execute("SELECT id, naslov FROM knjiga JOIN zanr_knjige ON knjiga.id = zanr_knjige.id_knjige WHERE zanr='%s'"%x)
+    cur.execute("SELECT id, naslov FROM knjiga JOIN zanr_knjige ON knjiga.id = zanr_knjige.id_knjige WHERE zanr='%s' ORDER BY knjiga.povprecna_ocena DESC LIMIT 50"%x)
     knjige = cur.fetchall()
     cur.execute("SELECT avtor.id, avtor.ime FROM avtor JOIN avtorjev_zanr ON avtor.id = avtorjev_zanr.id WHERE avtorjev_zanr.zanr='%s'"%x)
     avtorji = cur.fetchall()
