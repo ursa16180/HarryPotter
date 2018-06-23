@@ -11,7 +11,12 @@
             V zbirki so knjige:
             %for knjiga in knjige:
                 <form action="/knjiga/{{knjiga[2]}}" method="POST">
-                    <input type="submit" class="btn btn-link" value="{{knjiga[3]}} ({{knjiga[0]}} #{{knjiga[1]}})">
+                    %if knjiga[1] is not None:
+                    %    dodatek = ' #' + str(knjiga[1])
+                    %else:
+                    %    dodatek = ''
+                    %end
+                    <input type="submit" class="btn btn-link" value="{{knjiga[3]}} ({{knjiga[0]}}{{dodatek}})">
 
                 </form>
             %end

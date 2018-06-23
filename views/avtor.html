@@ -29,9 +29,9 @@
             <div class="btn-group-vertical">
                 Avtorjeve serije:
                 %for id, (ime, knjig) in serijeAvtorja.items():
-                    <form action="/serija/{{id}}" method="POST">
+                    <form action="/zbirka/{{id}}" method="POST">
                         %if knjig%100 == 1:
-                        %    kon = 'knjiga'
+                        %    kon = 'knjigo'
                         %elif knjig%100 == 2:
                         %    kon = 'knjigi'
                         %elif knjig%100 in {3,4}:

@@ -37,7 +37,12 @@
         %end
         %for serija in knjiga['serija']:
         <form action="/zbirka/{{serija[0]}}" method="POST">
-             <p><input type="submit" class="btn btn-link" value="{{serija[1]}} #{{serija[2]}}">
+            %if serija[2] is not None:
+            %    dodatek = ' #' + str(serija[2])
+            %else:
+            %    dodatek = ''
+            %end
+             <p><input type="submit" class="btn btn-link" value="{{serija[1]}}{{dodatek}}">
             </p>
         </form>
         %end
