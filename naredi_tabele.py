@@ -366,3 +366,7 @@ prebrane=['prebrane',
 ustvari_tabelo(prebrane)
 ustvari_tabelo(zelje)
 daj_pravice()
+
+
+# ODSTRANI odvečne besede iz kljucnih_besed:
+

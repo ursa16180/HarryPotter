@@ -56,13 +56,13 @@ dc.shrani_knjige(mapa_dodatne_knjige, prvic=False)
 # seznam_serija_knjiga vsebuje podatke serija-knjiga-stevilka za to relacijo
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# TODO: Ta del ni stestiran (nekej popravljeno tudi v delamocsv in delamocsv_serije!!!!!!!!!!!!!!!!!!!! ------------------------------------
 # V tabelo del_serije dodamo še tiste dodatne knjige, ki so že v kakšni prej znani seriji:
 for knjiga in dc.dodaj_ze_znanim_serijam:
     if knjiga['id_serije'] in dcs.idji_serij:
         dc.seznam_serija_knjiga.append(knjiga)
 
 # Počistimo tuje knjige, ki so se ponesreši dodale v tabelo knjiga - serija in preštejemo knjige v posameznih serijah:
+#TODO: odstrani še avtorje tujih knjig
 seznam_serija_knjiga = []  # nujno moraš narediti nov seznam, ker če ostranjuješ se zaplete z indeksiranjem in for zanka ne deluje
 stejemo_knjige_v_serijah = {}
 for knjiga in dcs.seznam_serija_knjiga + dc.seznam_serija_knjiga:
@@ -73,9 +73,8 @@ for knjiga in dcs.seznam_serija_knjiga + dc.seznam_serija_knjiga:
 # preštejemo knjige v serijah
 nov_seznam_serij = []
 for serija in dcs.seznam_vseh_serij:
-    serija['stevilo_knjig'] = stejemo_knjige_v_serijah.get([serija['id']], 0)
+    serija['stevilo_knjig'] = stejemo_knjige_v_serijah.get(serija['id'], 0)
     nov_seznam_serij.append(serija)
-# TODO: --------------------------------------------------------------
 
 #zp.zajemi_avtorje()
 # v mapo avtorji shrani avtorje
@@ -94,11 +93,14 @@ for serija in dcs.seznam_vseh_serij:
 # zp.zajemi_zanre()
 # mapa_zanri = orodja.datoteke("zanri")
 # dcz.shrani_zanre(mapa_zanri)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#Tukaj zajamemo podatke za tabelo žanrov
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #dckb.poisci_kljucne_besede(dc.seznam_vseh_knjig)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #Tukaj zajamemo podatke za tabelo knjiga_kljucna_beseda
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
@@ -118,14 +120,14 @@ orodja.zapisi_tabelo(nov_seznam_serij,
                      'podatki/serija.csv')
 
 # ŽANR (drugi poskus)
-orodja.zapisi_tabelo(dcz.seznam_vseh_zanrov,
-                      ['ime_zanra', 'opis'],
-                      'podatki/zanr.csv')
+#orodja.zapisi_tabelo(dcz.seznam_vseh_zanrov,
+#                      ['ime_zanra', 'opis'],
+#                      'podatki/zanr.csv')
 
 # knjiga-avtor:
-# orodja.zapisi_tabelo(dc.seznam_avtor_knjiga, ['id_knjige', 'id_avtorja'], 'podatki/avtor_knjige.csv')
-# # knjiga-zanr:
-# orodja.zapisi_tabelo(dc.seznam_zanr_knjiga, ['id_knjige', 'zanr'], 'podatki/zanr_knjige.csv')
+#orodja.zapisi_tabelo(dc.seznam_avtor_knjiga, ['id_knjige', 'id_avtorja'], 'podatki/avtor_knjige.csv')
+# knjiga-zanr:
+#orodja.zapisi_tabelo(dc.seznam_zanr_knjiga, ['id_knjige', 'zanr'], 'podatki/zanr_knjige.csv')
 # knjiga-serija:
 orodja.zapisi_tabelo(seznam_serija_knjiga,
                      ['id_knjige', 'id_serije', 'zaporedna_stevilka_serije'],
@@ -133,5 +135,5 @@ orodja.zapisi_tabelo(seznam_serija_knjiga,
 # avtor_zanr:
 #orodja.zapisi_tabelo(dca.seznam_vseh_avtorjevih_zanrov, ['id', 'zanr'], 'podatki/avtorjev_zanr.csv')
 
-#knjiga_kljucne_besede:
-#orodja.zapisi_tabelo(dckb.seznam_vseh_knjig_kljucnih_besed, ['id_knjige', 'kljucna_beseda'], 'podatki/knjiga_kljucne_besede.csv')
+# knjiga_kljucne_besede:
+orodja.zapisi_tabelo(dckb.seznam_vseh_knjig_kljucnih_besed, ['id_knjige', 'kljucna_beseda'], 'podatki/knjiga_kljucne_besede.csv')
