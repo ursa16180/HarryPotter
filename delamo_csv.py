@@ -8,7 +8,7 @@ vzorec_naslov_url_avtorja_serije = re.compile(
 vzorec_ocene = re.compile(
     """stars staticStars"(\stitle="really liked it")?>(<span size="12x12" class="staticStar p\d\d?">.*?</span>){5}</span>\s*?<span class="value rating"><span class="average" itemprop="ratingValue">(?P<povprecna_ocena>.*?)</span>""")
 vzorec_stevilo_ocen_opis = re.compile(
-    """ratingCount" content=".*?">\s*?<span class="votes value-title" title=".*?">\s*(?P<stevilo_ocen>.*?)\s*?</span>\s*?Ratings?\s*?</a><span class="greyText">&nbsp;&middot;&nbsp;</span>\s+?<a class="gr-hyperlink" href="#other_reviews">\s+?<span class="count value-title" title="\d+?">\s+?.+?\s+?</span>\s+?Reviews?\s+?</a>\s+?</div>\s+?<div id="descriptionContainer">\s+?(<div id='choiceBadge'>\s*?<a (class="choiceWinnerBadge20\d\d" )?href="https://www.goodreads.com/choiceawards/best-books-20\d\d">(<img src=".*?" alt=".*?" />)?</a>\s+?</div>\s+?)?<div id="description" class="readable stacked" style="right:0">\s+?<span id="freeTextContainer\d+?">(Alternate Cover Edition can be found <a href=".*?" rel="nofollow">here</a>.)?(<strong>\s+?<i>This is an adaptation. For the editions of the original book, see <a href=".*?" rel="nofollow">here</a></i>\s+?</strong>.<br /><br />)?(.*?[Aa]lternate [Cc]overs? ([Ee]ditions?)?.*?(here</a>\s*and.*?)?here</a>\.?)?(Also see: [Aa]lternate [Cc]overs? ([Ee]ditions? )?for this ISBN \[ACE\] ACE)?(.*?[Aa]lternate [Cc]over [Ee]ditions? (for )?(ASIN \w+?|ISBN \d+ \(ISBN13: \d+\))\.?<.*?>)?(.*?[Aa]lternate [Cc]overs? [Ee]dition.*?\d+?</a>)?(?P<opis1>.+?)</span>(\s+?<span id="freeText\d+?" style="display:none">(Alternate Cover Edition can be found <a href=".*?" rel="nofollow">here</a>.)?(<strong>\s+?<i>This is an adaptation. For the editions of the original book, see <a href=".*?" rel="nofollow">here</a></i>\s+?</strong>.<br /><br />)?(.*?[Aa]lternate [Cc]overs? ([Ee]ditions?)?.*?(here</a>\s*and.*?)?here</a>\.?)?(Also see: [Aa]lternate [Cc]overs? ([Ee]ditions? )?for this ISBN \[ACE\] ACE)?(.*?[Aa]lternate [Cc]over [Ee]ditions? (for )?(ASIN \w+?|ISBN \d+ \(ISBN13: \d+\))\.?<.*?>)?(.*?[Aa]lternate [Cc]overs? [Ee]dition.*?\d+?</a>)?(?P<opis>[\s\S]+?)(</p>)?</span>\s+?<a data-text-id="\d+?" href="#" onclick)?""")
+    """ratingCount" content=".*?">\s*?<span class="votes value-title" title=".*?">\s*(?P<stevilo_ocen>.*?)\s*?</span>\s*?Ratings?\s*?</a><span class="greyText">&nbsp;&middot;&nbsp;</span>\s+?<a class="gr-hyperlink" href="#other_reviews">\s+?<span class="count value-title" title="\d+?">\s+?.+?\s+?</span>\s+?Reviews?\s+?</a>\s+?</div>\s+?<div id="descriptionContainer">\s+?(<div id='choiceBadge'>\s*?<a (class="choiceWinnerBadge20\d\d" )?href="https://www.goodreads.com/choiceawards/best-books-20\d\d">(<img src=".*?" alt=".*?" />)?</a>\s+?</div>\s+?)?<div id="description" class="readable stacked" style="right:0">\s+?<span id="freeTextContainer\d+?">(Alternate Cover Edition can be found <a href=".*?" rel="nofollow">here</a>.)?(<strong>\s+?<i>This is an adaptation. For the editions of the original book, see <a href=".*?" rel="nofollow">here</a></i>\s+?</strong>.<br /><br />)?(.*?[Aa]lternate [Cc]overs? ([Ee]ditions?)?.*?(here</a>\s*and.*?)?here</a>\.?)?(Also see: [Aa]lternate [Cc]overs? ([Ee]ditions? )?for this ISBN \[ACE\] ACE)?(.*?[Aa]lternate [Cc]over [Ee]ditions? (for )?(ASIN \w+?|ISBN \d+ \(.+?\))\.?<.*?>)?(.*?[Aa]lternate [Cc]overs? [Ee]dition.*?\d+?</a>)?(?P<opis1>.+?)</span>(\s+?<span id="freeText\d+?" style="display:none">(Alternate Cover Edition can be found <a href=".*?" rel="nofollow">here</a>.)?(<strong>\s+?<i>This is an adaptation. For the editions of the original book, see <a href=".*?" rel="nofollow">here</a></i>\s+?</strong>.<br /><br />)?(.*?[Aa]lternate [Cc]overs? ([Ee]ditions?)?.*?(here</a>\s*and.*?)?here</a>\.?)?(Also see: [Aa]lternate [Cc]overs? ([Ee]ditions? )?for this ISBN \[ACE\] ACE)?(.*?[Aa]lternate [Cc]over [Ee]ditions? (for )?(ASIN \w+?|ISBN \d+ \(.+?\))\.?<.*?>)?(.*?[Aa]lternate [Cc]overs? [Ee]dition.*?\d+?</a>)?(?P<opis>[\s\S]+?)(</p>)?</span>\s+?<a data-text-id="\d+?" href="#" onclick)?""")
 vzorec_stevilo_strani_leto = re.compile(
     """bookFormat">(.*?)</span>,\s*?<span itemprop="numberOfPages">(?P<stevilo_strani>\d\d\d?\d?) pages</span></div>\s*?<div class="row">\s*?Published(\s|.)*?(<nobr class="greyText">\s*?\(first published (?P<leto_izdaje>\d\d\d\d)\)\s*?</nobr>)?\s*?</div>""")
 vzorec_ISBN = re.compile("""itemprop='isbn'>(?P<ISBN>(\d{13}|\w{10}))""")
@@ -31,7 +31,7 @@ seznam_serija_knjiga = []
 slovar_url_serij = dict()
 idji_knjig = set()
 slovar_url_zanrov = dict()
-
+dodaj_ze_znanim_serijam = []
 
 def shrani_knjige(mapa, prvic='True'):
     for knjiga in mapa:
@@ -141,17 +141,21 @@ def shrani_knjige(mapa, prvic='True'):
                 seznam_zanr_knjiga.append(x)
 
             ###CSV za tabelo DelSerije
-            if prvic:
-                podatkiSerije = dict()
-                podatkiSerije['id_knjige'] = podatki7['id_knjige']
-                i = 1
-                while i < 4 and podatki8['id_serije{0}'.format(str(i))] is not None:
+            podatkiSerije = dict()
+            podatkiSerije['id_knjige'] = podatki7['id_knjige']
+            i = 1
+            while i < 4 and podatki8['id_serije{0}'.format(str(i))] is not None:
+                if prvic:
                     slovar_url_serij[podatki8['id_serije{0}'.format(str(i))]] = podatki8['url_serije{0}'.format(str(i))]
-                    podatkiSerije['id_serije'] = copy.copy(podatki8['id_serije{0}'.format(str(i))])
-                    podatkiSerije['zaporedna_stevilka_serije'] = copy.copy(
-                        podatki8['zaporedna_stevilka_serije{0}'.format(str(i))])
+                podatkiSerije['id_serije'] = copy.copy(podatki8['id_serije{0}'.format(str(i))])
+                podatkiSerije['zaporedna_stevilka_serije'] = copy.copy(
+                    podatki8['zaporedna_stevilka_serije{0}'.format(str(i))])
+                if prvic:
                     seznam_serija_knjiga.append(podatkiSerije.copy())
-                    i += 1
+                else:
+                    dodaj_ze_znanim_serijam.append(podatkiSerije.copy())
+                i += 1
+
         else:
             seznam_tujih_knjig.append(podatki7['id_knjige'])
 

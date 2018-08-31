@@ -17,7 +17,38 @@
 
 </div>
 <hr />
-%for avtor in avtorji:
+% if len(avtorji) > 10:
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+          %if stran !=1:
+            <li class="page-item">
+                <form action="/izpis_zadetkov/avtor&{{int(stran)-1}}&{{poizvedba}}" method="POST">
+                  <p><input type="submit" class="btn btn-link" value="<<">
+                  </p>
+              </form>
+            </li>
+          %end
+          %for i in range(1, (len(avtorji)-1)//10 + 2):
+             <li class="page-item">
+                 <form action="/izpis_zadetkov/avtor&{{str(i)}}&{{poizvedba}}" method="POST">
+                         <p><input type="submit" class="btn btn-link" value="{{i}}">
+                         </p>
+                 </form>
+             </li>
+          %end
+          %if int(stran)*10 < len(avtorji):
+            <li class="page-item">
+                <form action="/izpis_zadetkov/avtor&{{int(stran)+1}}&{{poizvedba}}" method="POST">
+                  <p><input type="submit" class="btn btn-link" value=">>">
+                  </p>
+                </form>
+            </li>
+          %end
+      </ul>
+    </nav>
+%end
+
+%for avtor in avtorji[(int(stran)-1)*10  : (int(stran))*10]:
 
 <div class="row px-4">
     <div class="btn-group-vertical">
@@ -36,4 +67,35 @@
     </div>
 </div>
 <hr />
+%end
+
+% if len(avtorji) > 10:
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+          %if stran !=1:
+            <li class="page-item">
+                <form action="/izpis_zadetkov/avtor&{{int(stran)-1}}&{{poizvedba}}" method="POST">
+                  <p><input type="submit" class="btn btn-link" value="<<">
+                  </p>
+              </form>
+            </li>
+          %end
+          %for i in range(1, (len(avtorji)-1)//10 + 2):
+             <li class="page-item">
+                 <form action="/izpis_zadetkov/avtor&{{str(i)}}&{{poizvedba}}" method="POST">
+                         <p><input type="submit" class="btn btn-link" value="{{i}}">
+                         </p>
+                 </form>
+             </li>
+          %end
+          %if int(stran)*10 < len(avtorji):
+            <li class="page-item">
+                <form action="/izpis_zadetkov/avtor&{{int(stran)+1}}&{{poizvedba}}" method="POST">
+                  <p><input type="submit" class="btn btn-link" value=">>">
+                  </p>
+                </form>
+            </li>
+          %end
+      </ul>
+    </nav>
 %end

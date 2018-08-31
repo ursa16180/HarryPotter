@@ -9,7 +9,7 @@ tr {
     width: 100%;
 }
 
-.blocks .btn-basic
+.btn-basic
 {margin: 5px;
 }
 
@@ -36,4 +36,9 @@ white-space: normal;
     margin-left: auto;
     margin-right: auto;
     width: 70%;
+}
+
+.pagination li {
+  display:inline-block;
+  padding:5px;
 }

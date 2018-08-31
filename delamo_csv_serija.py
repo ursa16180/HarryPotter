@@ -9,18 +9,17 @@ vzorec_knjige_v_seriji = re.compile(
 
 seznam_vseh_serij = []
 urlji_knjig_iz_serij = []
+idji_serij = set()
 seznam_serija_knjiga = []
 # mapa_serije = orodja.datoteke("serije")
 def shrani_serije(mapa):
     for serija in mapa:
-        st_knjig = 0
         vsebina = orodja.vsebina_datoteke(serija)
 
         for vzorec in re.finditer(vzorec_ime_serije, vsebina):
             podatki_serija = vzorec.groupdict()
 
         for vzorec in re.finditer(vzorec_knjige_v_seriji, vsebina):
-            st_knjig += 1
             knjiga = vzorec.groupdict()
             if knjiga['id_knjige'] not in idji_knjig and (knjiga['serija'] == podatki_serija['ime']):
                 naslov = re.sub('[:|/|?]', '-', knjiga['naslov'])
@@ -28,10 +27,11 @@ def shrani_serije(mapa):
                 seznam_serija_knjiga.append({'id_knjige': knjiga['id_knjige'],
                                              'id_serije': serija.split('.')[0].split('\\')[-1],
                                              'zaporedna_stevilka_serije': knjiga['zaporedna_st']})
+
                 
         # CSV datoteka serija: - naslov se je dodal že prej
         podatki_serija['id'] = serija.split('.')[0].split('\\')[-1]
-        podatki_serija['stevilo_knjig'] = st_knjig
+        idji_serij.add(podatki_serija['id'])
         seznam_vseh_serij.append(podatki_serija)
 
                                

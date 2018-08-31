@@ -6,17 +6,17 @@
     <h3>{{knjiga['naslov']}}</h3>
     </div>
     <div class="col-sm">
-        Povprečna ocena: {{knjiga['povprecna_ocena']}} (Število ocen: {{knjiga['stevilo_ocen']}})
+        Average rating: {{knjiga['povprecna_ocena']}} (Rating count: {{knjiga['stevilo_ocen']}})
     </div>
     </div>
 
 % if knjiga['avtor'] != {(None, None)}:
     <div class="row px-4">
         %if len(knjiga['avtor'])==1:
-        Avtor:
+        Author:
         %end
         %if len(knjiga['avtor'])>1:
-        Avtorji:
+        Authors:
         %end
         %for avtor in knjiga['avtor']:
         <form action="/avtor/{{avtor[0]}}" method="POST">
@@ -29,15 +29,15 @@
 
 % if knjiga['serija'] != {(None, None, None)}:
     <div class="row px-4">
-        %if len(knjiga['serija'])==1:
-        Zbirka:
-        %end
-        %if len(knjiga['serija'])>1:
-        Zbirke:
-        %end
+        Series:
         %for serija in knjiga['serija']:
         <form action="/zbirka/{{serija[0]}}" method="POST">
-             <p><input type="submit" class="btn btn-link" value="{{serija[1]}} #{{serija[2]}}">
+            %if serija[2] is not None:
+            %    dodatek = ' #' + str(serija[2])
+            %else:
+            %    dodatek = ''
+            %end
+             <p><input type="submit" class="btn btn-link" value="{{serija[1]}}{{dodatek}}">
             </p>
         </form>
         %end
@@ -59,7 +59,7 @@
 <br/>
 % if knjiga['dolzina'] is not None:
     <div class="row px-4">
-        Dolžina knjige: {{knjiga['dolzina']}} strani
+        Pages: {{knjiga['dolzina']}}
     </div>
 % end
 
@@ -71,13 +71,13 @@
 
 % if knjiga['leto'] is not None:
 <div class="row px-4">
-    Leto izdaje: {{knjiga['leto']}}
+    Published: {{knjiga['leto']}}
 </div>
 % end
 <br/>
 % if knjiga['zanri'] != {None}:
 <div class="row px-4">
-    Žanri:
+    Genre:
     %for zanr in knjiga['zanri']:
     <form action="/zanr/{{zanr}}" method="POST">
          <p><input type="submit" class="btn btn-link" value="{{zanr}}">
@@ -89,7 +89,7 @@
 
 % if knjiga['kljucna_beseda'] != {None}:
 <div class="row px-4">
-    Ključne besede:
+    Key words:
     %for kljucna_beseda in knjiga['kljucna_beseda']:
     <form action="/isci" method="POST">
          <p><input name="kljucne_besede" type="submit" class="btn btn-link" value="{{kljucna_beseda}}">

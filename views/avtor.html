@@ -4,21 +4,42 @@
 <div class="row">
     <div class="col">
         <b>{{avtor[1]}}</b>
-        <br/>Povprečna ocena: {{avtor[2]}}
+        <br/>Average rating: {{avtor[2]}}
         % if avtor[3] is not None:
-            <br/>Datum rojstva: {{avtor[3]}}
+            <br/>Birth date: {{avtor[3]}}
         % end
         % if avtor[4] is not None:
-            <br/>Kraj rojstva: {{avtor[4]}}
+            <br/>Birth place: {{avtor[4]}}
         % end
     </div>
     % if zanriAvtorja != []:
         <div class="col-sm">
             <div class="btn-group-vertical">
-                Avtorjevi žanri:
+                Author's genre:
                 %for zanr in zanriAvtorja:
                     <form action="/zanr/{{zanr}}" method="POST">
                         <input type="submit" class="btn btn-link" value="{{zanr}}">
+                    </form>
+                %end
+            </div>
+        </div>
+    % end
+    % if serijeAvtorja != {}:
+        <div class="col-sm">
+            <div class="btn-group-vertical">
+                Author's series:
+                %for id, (ime, knjig) in serijeAvtorja.items():
+                    <form action="/zbirka/{{id}}" method="POST">
+                        %if knjig%100 == 1:
+                        %    kon = 'knjigo'
+                        %elif knjig%100 == 2:
+                        %    kon = 'knjigi'
+                        %elif knjig%100 in {3,4}:
+                        %    kon = 'knjige'
+                        %else:
+                        %    kon = 'knjig'
+                        %end
+                        <input type="submit" class="btn btn-link" value="{{ime}} (vsebuje {{knjig}} {{kon}})">
                     </form>
                 %end
             </div>
@@ -28,7 +49,7 @@
 
 <div class="row">
     <div class="btn-group-vertical">
-            Knjige:
+            Books:
             %for knjiga in knjige:
                 <form action="/knjiga/{{knjiga[0]}}" method="POST">
                     <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">

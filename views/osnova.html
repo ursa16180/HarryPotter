@@ -15,14 +15,16 @@
     <link rel="shortcut icon" type="image/png" href="../static/favicon.png">
     <title>{{naslov}}</title>
 
+
 </head>
 <!--<body  background="../static/ozadje.jpg">-->
 <body>
 <div class="container-fluid bg-dark">
     <div class="row">
         <div class="col-3">
+            <a href="/">
             <img src="../static/bradavicarka_logo.png" class="center-medium" align="center"/>
-
+            </a>
         </div>
         <div class="col-6">
             <img src="../static/harry_knjiznica.jpg" class="center-full" align="center"/>
@@ -41,10 +43,10 @@
                     <input type="submit" class="btn btn-basic" value="Sign in">
                 </div>
             </form>
-            <form action="/registracija" method="POST">
-                <b><input type="submit" class="btn btn-basic" value="Sign up"></b>
-            </form>
 
+            <form action="/registracija" method="GET">
+                    <b><input type="submit" class="btn btn-success btn-sm" value="Sign up"></b>
+            </form>
         </div>
     </div>
 </div>
