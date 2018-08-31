@@ -263,8 +263,8 @@ def uporabnik():
         vrstica = cur.fetchone()
         if vrstica is not None:
             return vrstica
-        else:
-            return [0, None, None, None]
+    else:
+        return [0, None, None, None]
 
 
 @get("/logout")
