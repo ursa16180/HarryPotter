@@ -18,6 +18,7 @@ psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo pro
 # odkomentiraj, če želiš sporočila o napakah
 debug(True)
 
+skrivnost= "To je ultimativni urok za skrivanje skrivnosti. Ne povedati Hagridu. Bljuz43988asjjjdskazzzzz"
 
 def zakodiraj_geslo(geslo):
     hashko=hashlib.md5()
@@ -31,7 +32,7 @@ def static(filename):
 
 @get('/')
 def index():
-    return template('zacetna_stran.html', vseKljucne=vseKljucne, zanri=vsiZanri)
+    return template('zacetna_stran.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik())
 
 
 @post('/isci')
@@ -83,7 +84,7 @@ def iskanje_get():
     cur.execute(niz)
     vse_vrstice = cur.fetchall()
     if vse_vrstice == []:
-        return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, parametri=parametri)
+        return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,uporabnik = uporabnik(), parametri=parametri)
     else:
         slovar_slovarjev_knjig = {}
         for vrstica in vse_vrstice:
@@ -94,7 +95,7 @@ def iskanje_get():
             trenutna_knjiga['zanri'].add(vrstica[4])
             trenutna_knjiga['url_naslovnice']=vrstica[5]
             slovar_slovarjev_knjig[id] = trenutna_knjiga
-        return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+        return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                         knjige=list(slovar_slovarjev_knjig.values()), stran=1, poizvedba=niz, parametri=parametri)
 
 
@@ -125,7 +126,7 @@ def avtor(x):
         if vrstica[3] != None:
             serijeAvtorja[vrstica[3]] = (vrstica[4], vrstica[5])
     #print(avtor, zanriAvtorja, knjige)
-    return template('avtor.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+    return template('avtor.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                     avtor=avtor, knjige=list(knjige), zanriAvtorja=list(zanriAvtorja), serijeAvtorja=serijeAvtorja)
 
 
@@ -138,7 +139,7 @@ def zanr(x):
     knjige = cur.fetchall()
     cur.execute("SELECT avtor.id, avtor.ime FROM avtor JOIN avtorjev_zanr ON avtor.id = avtorjev_zanr.id WHERE avtorjev_zanr.zanr='%s'"%x)
     avtorji = cur.fetchall()
-    return template('zanr.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+    return template('zanr.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                     zanr=zanr, knjige=knjige, avtorji=avtorji)
 
 @post('/zbirka/:x')
@@ -162,7 +163,7 @@ ORDER BY zaporedna_stevilka_serije""" % x)
         knjige[knjiga_id] = [knjiga_id, knjiga[3], knjiga[1]]
         avtorji[avtor_id] = [avtor_id, knjiga[5]]
     #print(cur.fetchall())
-    return template('zbirka.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+    return template('zbirka.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                     knjige=list(knjige.values()), avtorji=list(avtorji.values()), serija=serija)
 
 
@@ -199,7 +200,7 @@ WHERE knjiga.id ='%s'""" % x)
         knjiga['kljucna_beseda'].add(vrstica[13])
         knjiga['zanri'].add(vrstica[14])
     #print(knjiga)
-    return template('knjiga.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+    return template('knjiga.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                     knjiga=knjiga)
 
 @post('/kazaloAvtorja')
@@ -216,14 +217,14 @@ def kazalo_avtorja():
     avtorji = list(urejeni_avtorji.items())
     avtorji.sort()
     #print(avtorji)
-    return template('kazalo_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri, avtorji=avtorji)
+    return template('kazalo_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(), avtorji=avtorji)
 
 
 @post('/kazaloZanra')
 def kazalo_zanra():
     cur.execute("""SELECT ime_zanra FROM zanr""")
     vsi_zanri_iz_baze = cur.fetchall()
-    return template('kazalo_zanrov.html', vseKljucne=vseKljucne, zanri=vsiZanri, zanri_kazalo=vsi_zanri_iz_baze)
+    return template('kazalo_zanrov.html', vseKljucne=vseKljucne, zanri=vsiZanri,uporabnik = uporabnik(), zanri_kazalo=vsi_zanri_iz_baze)
 
 
 @post('/rezultatiIskanja')
@@ -243,7 +244,7 @@ def rezultati_iskanja():
                 trenutna_knjiga['zanri'].add(vrstica[4])
                 trenutna_knjiga['url_naslovnice']=vrstica[5]
                 slovar_slovarjev_knjig[id] = trenutna_knjiga
-            return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+            return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                             knjige=list(slovar_slovarjev_knjig.values()), stran=1, poizvedba=niz, parametri=[])
     elif request.forms.get('iskaniIzrazAvtorji') != None:
         iskani_izraz = request.forms.get('iskaniIzrazAvtorji')
@@ -261,10 +262,10 @@ def rezultati_iskanja():
                 trenutni_avtor['ime'] = vrstica[1]
                 trenutni_avtor['zanri'].add(vrstica[2])
                 zadetki_avtorjev[id] = trenutni_avtor
-            return template('izpis_zadetkov_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+            return template('izpis_zadetkov_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                             avtorji=list(zadetki_avtorjev.values()), stran=1, poizvedba=niz)
     # če sta obe polji prazni ali če ni zadetkov
-    return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri)
+    return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik())
 
 @get('/izpis_zadetkov/:x')
 def izpis_zadetkov(x):
@@ -272,7 +273,7 @@ def izpis_zadetkov(x):
     cur.execute(niz)
     vse_vrstice = cur.fetchall()
     if vse_vrstice == []:
-        return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri)
+        return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik())
     else:
         if tip == 'knjiga':
             slovar_slovarjev_knjig = {}
@@ -286,7 +287,7 @@ def izpis_zadetkov(x):
                 trenutna_knjiga['zanri'].add(vrstica[4])
                 trenutna_knjiga['url_naslovnice'] = vrstica[5]
                 slovar_slovarjev_knjig[id] = trenutna_knjiga
-            return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+            return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                             knjige=list(slovar_slovarjev_knjig.values()), stran=stran, poizvedba=niz, parametri=[])
         elif tip == 'avtor':
             zadetki_avtorjev = {}
@@ -296,62 +297,75 @@ def izpis_zadetkov(x):
                 trenutni_avtor['ime'] = vrstica[1]
                 trenutni_avtor['zanri'].add(vrstica[2])
                 zadetki_avtorjev[id] = trenutni_avtor
-            return template('izpis_zadetkov_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri,
+            return template('izpis_zadetkov_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri,uporabnik = uporabnik(),
                             avtorji=list(zadetki_avtorjev.values()), stran=stran, poizvedba=niz)
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~UPORABNIKI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def uporabnik():
-    #Preveri če je kdo vpisan in vrne njegove podatke ali pa NONE če ni nihče opisan
-    vzdevek = request.get_cookie('vzdevek') #TODO Secret?
-    if vzdevek is not None:
-        cur.execute("SELECT id, vzdevek, dom, spol  FROM uporabnik WHERE vzdevek=%s" %vzdevek)
+    #Preveri če je kdo vpisan
+    vzdevek = request.get_cookie('vzdevek', secret=skrivnost)
+    if vzdevek is not None: #Preveri če uporabnik obsataja
+        cur.execute("SELECT id, vzdevek, dom FROM uporabnik WHERE vzdevek='%s'" %vzdevek)
         vrstica = cur.fetchone()
-        if vrstica is not None:
+        if vrstica is not None: #TODO ali možno?
             return vrstica
     else:
-        return [0, None, None, None]
+        return [0, None, None]
 
 
-@get("/logout")
+@get("/odjava")
 def odjava():
     response.delete_cookie('vzdevek', path='/', domain='localhost')
     redirect('/')
 
 @post("/prijava")
 def prijava_uporabnika():
-    (id, vzdevek, dom, spol) = uporabnik()
+    print("PRIJAVAAAAAA")
+    #(vzdevek, dom) = uporabnik()
 
     vzdevek = request.forms.vzdevek
-    geslo = zakodiraj_geslo(request.forms.geslo)
-    # Preverimo če se je prav prijavil
+    geslo =request.forms.geslo
+    print(vzdevek, geslo)
+    #zakodiraj_geslo(request.forms.geslo)
+    # Preverimo če je bila pravilna prijava
     if vzdevek is not None:
         cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek='%s'"%vzdevek)
         if cur.fetchone() is None:
             #TODO TA VZDEVEK NE OBSTAJA
-            return template("")
-    elif vzdevek is not None and geslo is not None:
-        cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek='%s' AND geslo='%s' " % vzdevek, geslo)
+            print('prazno')
+            return template("")#TODO
+    if vzdevek is not None and geslo is not None:
+        cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek='%s' AND geslo='%s' " % (vzdevek, geslo))
         if cur.fetchone() is None:
             #TODO geslo ni pravilno
-            return template("")
-    else:
-        response.set_cookie('vzdevek', vzdevek, path='/')#TODO secret=secret)
-        redirect("/")
+            return template("zacetna_stran.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik()) #TODO geslo ni pravilno
+        else:
+            response.set_cookie('vzdevek', vzdevek, path='/', secret= skrivnost)#TODO secret=secret)
+            #return template("zacetna_stran.html", vseKljucne=vseKljucne, zanri=vsiZanri,
+                            #uporabnik=uporabnik())
+            print("Ratal")
+            redirect("/") #TODO huh?
 
 @get('/registracija')
 def odpri_registracijo():
-    return template('registracija.html', vseKljucne=vseKljucne, zanri=vsiZanri)
+    return template('registracija.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik())
 
 @post('/registracija')
 def registriraj_uporabnika():
     (id, vzdevek, dom, spol) = uporabnik()
 
-    vzdevek = request.forms.uporabniskoime
+    vzdevek = request.forms.vzdevek
     geslo1 = request.forms.geslo
     geslo2 = request.forms.geslo2
     email= request.forms.email
     dom= request.forms.dom #TODO request.forms.get("dom")
     spol=request.forms.spol #TODO request.forms.get("spol")
+    if spol == "Witch":
+        spol = "Female"
+    else:
+        spol = "Male"
+    print(vzdevek, geslo1, email, dom, spol)
 
     cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek='%s'" %vzdevek)
     if cur.fetchone() is not None:
@@ -360,7 +374,21 @@ def registriraj_uporabnika():
     elif not geslo1 == geslo2:
         return template("")
         #TODO REGISTER NAPAKA return template('register.html', napaka = 'Gesli se ne ujemata', barva="red", prijavljen_uporabnik=username_login, stanje=stanje, id_uporabnik=id_user)
-    cur.execute("INSERT INTO uporabnik(vzdevek, geslo, email, dom, spol) VALUES('%s','%s','%s','%s','%s');"%vzdevek, geslo1, email, dom, spol)
+
+    print(vzdevek, geslo1, email, dom, spol)
+    cur.execute("INSERT INTO uporabnik (vzdevek, geslo, email, dom, spol) VALUES('%s','%s','%s','%s','%s');" % (vzdevek, geslo1, email, dom, spol))
+    print("vpisan")
+    return template('zacetna_stran.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik())
+
+@post('/profile/:x')
+def profil(x):
+    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN prebrane ON knjiga.id= prebrane.id_knjige WHERE prebrane.id_uporabnika='%s'"%uporabnik()[0])
+    prebrane = cur.fetchall()
+
+    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN zelje ON knjiga.id= zelje.id_knjige WHERE zelje.id_uporabnika='%s'"%uporabnik()[0])
+    zelje=cur.fetchall()
+
+    return template('profile.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), prebrane=prebrane, zelje=zelje)
 
 
 
