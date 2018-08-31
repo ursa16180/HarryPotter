@@ -360,7 +360,7 @@ def registriraj_uporabnika():
     elif not geslo1 == geslo2:
         return template("")
         #TODO REGISTER NAPAKA return template('register.html', napaka = 'Gesli se ne ujemata', barva="red", prijavljen_uporabnik=username_login, stanje=stanje, id_uporabnik=id_user)
-    cur.execute("INSERT INTO uporabnik(vzdevek, geslo, email, dom, spol) VALUES('%s','%s','%s','%s','%s');"%vzdevek, geslo1, email, dom, spol)
+    cur.execute("INSERT INTO uporabnik(vzdevek, geslo, email, dom, spol) VALUES('%s','%s','%s','%s','%s');" % vzdevek, geslo1, email, dom, spol)
 
 
 
