@@ -23,9 +23,10 @@ def zakodiraj_geslo(geslo):
 
 def daj_pravice():
     cur.execute("GRANT CONNECT ON DATABASE sem2018_ursap TO javnost;"
+                "GRANT USAGE ON SCHEMA public TO javnost;"
                 "GRANT SELECT ON ALL TABLES IN SCHEMA public TO javnost;"
                 "GRANT UPDATE, INSERT ON uporabnik, ocena_knjige, zelje, prebrane TO javnost;"
-                "GRANT ALL ON ALL SEQUENCES IN uporabnik TO javnost;"
+                "GRANT ALL ON SEQUENCE uporabnik_id_seq TO javnost;"
                 "GRANT ALL ON SCHEMA public TO ursap; "
                 "GRANT ALL ON SCHEMA public TO ninast;"
                 "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO ursap;"
@@ -298,7 +299,7 @@ def izbrisi_vse_tabele():
 uporabnik=['uporabnik',
            """
            CREATE TYPE spol AS ENUM('Female','Male');
-           CREATE TYPE dom AS ENUM('Gryffindor','Slytherin', 'Hufflepuff','Ravenclaw ');
+           CREATE TYPE dom AS ENUM('Gryffindor','Slytherin', 'Hufflepuff','Ravenclaw');
            CREATE TABLE uporabnik (
                id SERIAL PRIMARY KEY,
                vzdevek TEXT NOT NULL UNIQUE,
@@ -363,8 +364,8 @@ prebrane=['prebrane',
 
 #ustvari_tabelo(uporabnik)
 #ustvari_tabelo(ocena_knjige)
-ustvari_tabelo(prebrane)
-ustvari_tabelo(zelje)
+#ustvari_tabelo(prebrane)
+#ustvari_tabelo(zelje)
 daj_pravice()
 
 
