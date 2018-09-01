@@ -19,11 +19,30 @@
 </head>
 <!--<body  background="../static/ozadje.jpg">-->
 <body>
-<div class="container-fluid bg-dark">
+%if uporabnik[2] == "Hufflepuff":
+    %barva = "bg-warning"
+    %grb = "../static/Hufflepuff_Crest.png"
+%elif uporabnik[2] == "Ravenclaw ":
+<!--TODO popravi ravenclaw-->
+    %barva = "bg-primary"
+    %grb = "../static/Ravenclaw_Crest.png"
+%elif uporabnik[2] == "Slytherin":
+    %barva = "bg-success"
+    %grb = "../static/Slytherin_Crest.png"
+
+%elif uporabnik[2] == "Gryffindor":
+    %barva = "bg-danger"
+    %grb = "../static/Gryffindor_Crest.png"
+%else:
+    %barva = "bg-dark"
+    %grb = "../static/bradavicarka_logo.png"
+%end
+
+<div class="container-fluid {{barva}}">
     <div class="row">
         <div class="col-3">
             <a href="/">
-            <img src="../static/bradavicarka_logo.png" class="center-medium" align="center"/>
+            <img src={{grb}} class="center-medium" align="center"/>
             </a>
         </div>
         <div class="col-6">
@@ -51,15 +70,12 @@
                 </div>
             </form>
             %else:
-            %if uporabnik[2] == "Hufflepuff":
-                %barva = "bg-warning"
-            %end
-
+            <!--TODO barva napisa se pri ravenclaw ne vidi-->
             <form action="/profile/{{uporabnik[0]}}" method="POST">
                 <input type="submit" class="btn btn-link" value="{{uporabnik[1]}}">
             </form>
             <form action="/odjava" method="GET">
-                <div class="p-3 bg-dark">
+                <div class="p-3 {{barva}}">
                     <b><input type="submit" class="btn btn-success btn-sm" value="Sign out"></b>
                 </div>
             </form>
@@ -193,7 +209,7 @@
             </form>
 
         </div>
-        <div class="col-9 {{barva}}">
+        <div class="col-9">
             <br/>
             {{!base}}
         </div>
