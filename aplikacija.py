@@ -49,24 +49,25 @@ def iskanje_get():
     zanri = request.POST.getall('zanri')
     parametri += zanri
     jeDelZbirke = request.forms.get('jeDelZbirke')
-
+    parametri_SQL = ()
     # ~~~~~~~~~~~~~~Če so izbrane ključne besede, jih doda
     if kljucne == []:
         niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice FROM knjiga"
-    else:  # TODO: išči po ključnih besedah - ni lepo ampak mislim da dela
-        vmesni_niz = " AND ".join(
-            'EXISTS (SELECT * FROM knjiga_kljucne_besede WHERE kljucna_beseda = \'%s\' AND knjiga_kljucne_besede.id_knjige=knjiga1.id_knjige)'% (kljucna_beseda) for kljucna_beseda in kljucne)
-        # TODO: tuki ne dela vejica
-        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice FROM knjiga JOIN (SELECT DISTINCT * FROM knjiga_kljucne_besede knjiga1 WHERE " + vmesni_niz + ") pomozna_tabela ON knjiga.id=pomozna_tabela.id_knjige"
+    else:
+        vmesni_niz = ''
+        for kljucna_beseda in kljucne:
+            vmesni_niz += """ AND EXISTS (SELECT * FROM knjiga_kljucne_besede WHERE kljucna_beseda = %s AND knjiga_kljucne_besede.id_knjige=knjiga1.id_knjige)"""
+            parametri_SQL += (kljucna_beseda,)
+        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice FROM knjiga JOIN (SELECT DISTINCT * FROM knjiga_kljucne_besede knjiga1 WHERE " + vmesni_niz[5:] + ") pomozna_tabela ON knjiga.id=pomozna_tabela.id_knjige"
 
     # ~~~~~~~~~~~~~~če so izbrani zanri, jih doda
     if zanri != []:
         #print(zanri)
-        vmesni_niz = " AND ".join(
-            'EXISTS (SELECT * FROM zanr_knjige WHERE zanr = \'%s\' AND id_knjige=knjiga2.id_knjige)' % (zanr) for zanr
-            in zanri)
-        # TODO: tuki ne dela vejica
-        niz += " JOIN (SELECT DISTINCT * FROM zanr_knjige knjiga2 WHERE " + vmesni_niz + ") pomozna_tabela2 ON knjiga.id=pomozna_tabela2.id_knjige"
+        vmesni_niz = ''
+        for zanr in zanri:
+            vmesni_niz += """ AND EXISTS (SELECT * FROM zanr_knjige WHERE zanr = %s AND id_knjige=knjiga2.id_knjige)"""
+            parametri_SQL += (zanr,)
+        niz += " JOIN (SELECT DISTINCT * FROM zanr_knjige knjiga2 WHERE " + vmesni_niz[5:] + ") pomozna_tabela2 ON knjiga.id=pomozna_tabela2.id_knjige"
     else:
         niz += " JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige"
 
@@ -76,14 +77,13 @@ def iskanje_get():
     if jeDelZbirke is not None:
         niz += " JOIN del_serije ON knjiga.id=del_serije.id_knjige "
         parametri += ['In series']
-        # cur.execute("SELECT id, naslov, dolzina FROM knjiga WHERE dolzina>=%s", [dolzina])
 
     # ~~~~~~~~~~~~~~~Tukaj se doda avtor
     niz += " JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige JOIN avtor ON avtor_knjige.id_avtorja = avtor.id"
     # ~~~~~~~~~~~~~~Tukaj se doda pogoj o dolžini knjige
-    niz += " WHERE dolzina>=%s ORDER BY knjiga.id, avtor.id"% dolzina
-    #print(niz)
-    cur.execute(niz)
+    niz += " WHERE dolzina>=%s ORDER BY knjiga.id, avtor.id"
+    parametri_SQL += (dolzina,)
+    cur.execute(niz, parametri_SQL)
     vse_vrstice = cur.fetchall()
     if vse_vrstice == []:
         return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri,uporabnik = uporabnik(), parametri=parametri)
@@ -98,15 +98,15 @@ def iskanje_get():
             trenutna_knjiga['url_naslovnice']=vrstica[5]
             slovar_slovarjev_knjig[id] = trenutna_knjiga
         return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
-                        knjige=list(slovar_slovarjev_knjig.values()), stran=1, poizvedba=niz, parametri=parametri)
+                        knjige=list(slovar_slovarjev_knjig.values()), stran=1, poizvedba=(niz, parametri_SQL), parametri=parametri)
 
 
 @post('/avtor/:x')
 def avtor(x):
     #print(x)
-    cur.execute("SELECT id, ime, povprecna_ocena, datum_rojstva, kraj_rojstva FROM avtor WHERE id='%s'"% x)
+    cur.execute("SELECT id, ime, povprecna_ocena, datum_rojstva, kraj_rojstva FROM avtor WHERE id=%s", (x,))
     avtor = cur.fetchone()
-    cur.execute("SELECT zanr FROM avtorjev_zanr WHERE id = '%s'"% x)
+    cur.execute("SELECT zanr FROM avtorjev_zanr WHERE id = %s", (x,))
     zanriAvtorja=cur.fetchall()
     zanriAvtorja = set([x[0] for x in  zanriAvtorja])
     if zanriAvtorja == {None}:
@@ -116,7 +116,7 @@ def avtor(x):
     LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
     LEFT JOIN del_serije ON knjiga.id = del_serije.id_knjige
     LEFT JOIN serija ON del_serije.id_serije = serija.id
-    WHERE id_avtorja ='%s'""" % x)
+    WHERE id_avtorja =%s""" , (x,))
     vrstice_knjig = cur.fetchall()
     knjige = set()
     serijeAvtorja = {}
@@ -135,11 +135,11 @@ def avtor(x):
 @post('/zanr/:x')
 def zanr(x):
     #print(x)
-    cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra='%s'" % x)
+    cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra=%s", (x,))
     zanr = cur.fetchone()
-    cur.execute("SELECT id, naslov FROM knjiga JOIN zanr_knjige ON knjiga.id = zanr_knjige.id_knjige WHERE zanr='%s' ORDER BY knjiga.povprecna_ocena DESC LIMIT 50" % x)
+    cur.execute("SELECT id, naslov FROM knjiga JOIN zanr_knjige ON knjiga.id = zanr_knjige.id_knjige WHERE zanr=%s ORDER BY knjiga.povprecna_ocena DESC LIMIT 50", (x,))
     knjige = cur.fetchall()
-    cur.execute("SELECT avtor.id, avtor.ime FROM avtor JOIN avtorjev_zanr ON avtor.id = avtorjev_zanr.id WHERE avtorjev_zanr.zanr='%s'" % x)
+    cur.execute("SELECT avtor.id, avtor.ime FROM avtor JOIN avtorjev_zanr ON avtor.id = avtorjev_zanr.id WHERE avtorjev_zanr.zanr=%s", (x,))
     avtorji = cur.fetchall()
     return template('zanr.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                     zanr=zanr, knjige=knjige, avtorji=avtorji)
@@ -152,8 +152,8 @@ JOIN del_serije ON del_serije.id_serije=serija.id
 JOIN knjiga ON del_serije.id_knjige = knjiga.id
 JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige
 JOIN avtor ON avtor_knjige.id_avtorja =  avtor.id
-WHERE serija.id = '%s'
-ORDER BY zaporedna_stevilka_serije""" % x)
+WHERE serija.id = %s
+ORDER BY zaporedna_stevilka_serije""", (x, ))
     # knjiga ima lahko več avtorjev, več knjig ima iste avtorje
     knjige_ponovitve = cur.fetchall()
     knjige={}
@@ -181,7 +181,7 @@ LEFT JOIN serija ON serija.id=del_serije.id_serije
 LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
 LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
 LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
-WHERE knjiga.id ='%s'""" % x)
+WHERE knjiga.id =%s""", (x,))
     vseVrstice = cur.fetchall()
     knjiga = {'id':vseVrstice[0][0],
               'isbn':vseVrstice[0][1],
@@ -233,8 +233,8 @@ def kazalo_zanra():
 def rezultati_iskanja():
     if request.forms.get('iskaniIzrazKnjige') != '':
         iskani_izraz = request.forms.get('iskaniIzrazKnjige')
-        niz = """SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE '%""" + '%s' % iskani_izraz + "%'"
-        cur.execute(niz)
+        niz = ("""SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s""", ('%' + iskani_izraz + '%',))
+        cur.execute(niz[0], niz[1])
         vse_vrstice = cur.fetchall()
         if vse_vrstice != []:
             slovar_slovarjev_knjig = {}
@@ -250,11 +250,8 @@ def rezultati_iskanja():
                             knjige=list(slovar_slovarjev_knjig.values()), stran=1, poizvedba=niz, parametri=[])
     elif request.forms.get('iskaniIzrazAvtorji') != None:
         iskani_izraz = request.forms.get('iskaniIzrazAvtorji')
-        niz = """SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor
-        LEFT JOIN avtorjev_zanr ON avtor.id=avtorjev_zanr.id
-        WHERE avtor.ime
-        LIKE '%""" + '%s' % iskani_izraz + "%'"
-        cur.execute(niz)
+        niz = ("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor LEFT JOIN avtorjev_zanr ON avtor.id=avtorjev_zanr.id WHERE avtor.ime LIKE %s""", ('%' + iskani_izraz + '%',))
+        cur.execute(niz[0], niz[1])
         vse_vrstice = cur.fetchall()
         if vse_vrstice != []:
             zadetki_avtorjev = {}
@@ -267,15 +264,36 @@ def rezultati_iskanja():
             return template('izpis_zadetkov_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                             avtorji=list(zadetki_avtorjev.values()), stran=1, poizvedba=niz)
     # če sta obe polji prazni ali če ni zadetkov
-    return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik())
+    return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(), parametri=[iskani_izraz])
 
 @get('/izpis_zadetkov/:x')
 def izpis_zadetkov(x):
     [tip, stran, niz] =  x.split('&')
-    cur.execute(niz)
+    print('Tole je cel niz')
+    print(niz)
+    niz1, niz2 = niz.split(", ('")
+    print(niz1[2:-1])
+    parametri_SQL = ()
+    for param in niz2[:-2]. split(','):
+        print(param)
+        if param != '':
+            if " " == param[0]:
+                param = param[1:]
+            print(param)
+            try:
+                param = int(param)
+                parametri_SQL += (param,)
+            except:
+                if "'" == param[-1]:
+                    param = param[:-1]
+                if "'" == param[0]:
+                    param = param[1:]
+                parametri_SQL += (param,)
+    print(parametri_SQL)
+    cur.execute(niz1[2:-1], parametri_SQL)
     vse_vrstice = cur.fetchall()
     if vse_vrstice == []:
-        return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik())
+        return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(), parametri = niz2[:-3])
     else:
         if tip == 'knjiga':
             slovar_slovarjev_knjig = {}
@@ -308,7 +326,7 @@ def uporabnik():
     #Preveri če je kdo vpisan
     vzdevek = request.get_cookie('vzdevek', secret=skrivnost)
     if vzdevek is not None: #Preveri če uporabnik obsataja
-        cur.execute("SELECT id, vzdevek, dom FROM uporabnik WHERE vzdevek='%s'" % vzdevek)
+        cur.execute("SELECT id, vzdevek, dom FROM uporabnik WHERE vzdevek=%s", (vzdevek,))
         vrstica = cur.fetchone()
         if vrstica is not None: #TODO ali možno?
             return vrstica
@@ -332,16 +350,13 @@ def prijava_uporabnika():
     #zakodiraj_geslo(request.forms.geslo)
     # Preverimo če je bila pravilna prijava
     if vzdevek is not None:
-        print('1')
-        cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek='%s'" % vzdevek)
-        print('2')
+        cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
         if cur.fetchone() is None:
             #TODO TA VZDEVEK NE OBSTAJA
             print('prazno')
             return template("ni_zadetkov.html", vseKljucne=vseKljucne, zanri=vsiZanri, parametri=[], uporabnik=uporabnik())
     if vzdevek is not None and geslo is not None:
-        #print('2')
-        cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek='%s' AND geslo='%s' "% (vzdevek, geslo))
+        cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s AND geslo=%s ", (vzdevek, geslo))
         if cur.fetchone() is None:
             #TODO geslo ni pravilno
             return template("zacetna_stran.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik()) #TODO geslo ni pravilno
@@ -373,25 +388,25 @@ def registriraj_uporabnika():
         spol = "Male"
     print(vzdevek, geslo1, email, dom, spol)
 
-    cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek='%s'" % vzdevek)
+    cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s",(vzdevek,))
     if cur.fetchone() is not None:
-        return template("")
+        return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik())
         #TODO REGISTER return template('register.html', napaka = 'To uporabniško ime je že zavzeto', barva="red", prijavljen_uporabnik=username_login, stanje=stanje, id_uporabnik=id_user)
     elif not geslo1 == geslo2:
-        return template("")
+        return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik())
         #TODO REGISTER NAPAKA return template('register.html', napaka = 'Gesli se ne ujemata', barva="red", prijavljen_uporabnik=username_login, stanje=stanje, id_uporabnik=id_user)
 
     print(vzdevek, geslo1, email, dom, spol)
-    cur.execute("INSERT INTO uporabnik (vzdevek, geslo, email, dom, spol) VALUES('%s','%s','%s','%s','%s');" % (vzdevek, geslo1, email, dom, spol))
+    cur.execute("INSERT INTO uporabnik (vzdevek, geslo, email, dom, spol) VALUES(%s,%s,%s,%s,%s);" , (vzdevek, geslo1, email, dom, spol))
     print("vpisan")
     return template('zacetna_stran.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik())
 
 @post('/profile/:x')
 def profil(x):
-    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN prebrane ON knjiga.id= prebrane.id_knjige WHERE prebrane.id_uporabnika='%s'"% uporabnik()[0])
+    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN prebrane ON knjiga.id= prebrane.id_knjige WHERE prebrane.id_uporabnika=%s", (uporabnik()[0],))
     prebrane = cur.fetchall()
 
-    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN zelje ON knjiga.id= zelje.id_knjige WHERE zelje.id_uporabnika='%s'"% uporabnik()[0])
+    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN zelje ON knjiga.id= zelje.id_knjige WHERE zelje.id_uporabnika=%s", (uporabnik()[0],))
     zelje=cur.fetchall()
 
     return template('profile.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), prebrane=prebrane, zelje=zelje)
