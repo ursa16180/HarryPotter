@@ -1,7 +1,10 @@
-%rebase('osnova.html', naslov='Sign up')
+%rebase('osnova.html', naslov='Change profile')
 <div class="row">
     <div class="col-5">
         <form action="/spremeni_profil" method="POST">
+            %if sporocilo is not None:
+            <div class="alert alert-success" role="alert">{{sporocilo}}</div>
+            %end
             <div class="form-row">
               <label for="inputPassword">Current password</label>
               <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="geslo_trenutno" required>
@@ -16,7 +19,7 @@
             </div>
             <div class="form-row">
                 <label for="dom">House</label>
-                <select id="dom" class="form-control" name="dom">
+                <select id="dom" class="form-control" name="dom" required>
                     % dom_uporabnika = uporabnik[2]
                     <option selected>{{dom_uporabnika}}</option>
                     % if dom_uporabnika != 'Gryffindor':
@@ -36,11 +39,11 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="spol">Sex</label>
-                  <select id="spol" class="form-control" name="spol">
+                  <select id="spol" class="form-control" name="spol" required>
                       <option selected>{{spol}}</option>
                       %if spol == 'Witch':
                       <option>Wizard</option>
-                      %else:
+                      %elif spol == 'Wizard':
                       <option>Witch</option>
                       %end
                   </select>
