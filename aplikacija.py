@@ -269,10 +269,10 @@ def rezultati_iskanja():
 @get('/izpis_zadetkov/:x')
 def izpis_zadetkov(x):
     [tip, stran, niz] =  x.split('&')
-    print('Tole je cel niz')
-    print(niz)
+    #print('Tole je cel niz')
+    #print(niz)
     niz1, niz2 = niz.split(", ('")
-    print(niz1[2:-1])
+    #print(niz1[2:-1])
     parametri_SQL = ()
     for param in niz2[:-2]. split(','):
         print(param)
@@ -289,7 +289,7 @@ def izpis_zadetkov(x):
                 if "'" == param[0]:
                     param = param[1:]
                 parametri_SQL += (param,)
-    print(parametri_SQL)
+    #print(parametri_SQL)
     cur.execute(niz1[2:-1], parametri_SQL)
     vse_vrstice = cur.fetchall()
     if vse_vrstice == []:
@@ -370,7 +370,7 @@ def prijava_uporabnika():
 
 @get('/registracija')
 def odpri_registracijo():
-    return template('registracija.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik())
+    return template('registracija.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(), sporocilo=None)
 
 @post('/registracija')
 def registriraj_uporabnika():
@@ -390,14 +390,13 @@ def registriraj_uporabnika():
 
     cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s",(vzdevek,))
     if cur.fetchone() is not None:
-        return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik())
-        #TODO REGISTER return template('register.html', napaka = 'To uporabniško ime je že zavzeto', barva="red", prijavljen_uporabnik=username_login, stanje=stanje, id_uporabnik=id_user)
+        return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), sporocilo='Unfortunately this nickname is taken. Good one though.')
     elif not geslo1 == geslo2:
-        return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik())
-        #TODO REGISTER NAPAKA return template('register.html', napaka = 'Gesli se ne ujemata', barva="red", prijavljen_uporabnik=username_login, stanje=stanje, id_uporabnik=id_user)
-
+        return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), sporocilo='The passwords do not match. Check them again.')
     print(vzdevek, geslo1, email, dom, spol)
     cur.execute("INSERT INTO uporabnik (vzdevek, geslo, email, dom, spol) VALUES(%s,%s,%s,%s,%s);" , (vzdevek, geslo1, email, dom, spol))
+    #cur.query()
+    conn.commit()
     print("vpisan")
     return template('zacetna_stran.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik())
 
