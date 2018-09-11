@@ -354,13 +354,14 @@ def prijava_uporabnika():
         if cur.fetchone() is None:
             #TODO TA VZDEVEK NE OBSTAJA
             print('prazno')
-            return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(),
+            return template("prijava.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(),
                             sporocilo='This username does not yet exist. You may create a new user here.')
     if vzdevek is not None and geslo is not None:
         cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s AND geslo=%s;", (vzdevek, geslo))
         if cur.fetchone() is None:
             #TODO geslo ni pravilno
-            return template("zacetna_stran.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik()) #TODO geslo ni pravilno
+            return template("prijava.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
+                            sporocilo='Password you have entered is not correct. Try again.') #TODO geslo ni pravilno
         else:
             response.set_cookie('vzdevek', vzdevek, path='/', secret= skrivnost)#TODO secret=secret)
             id = uporabnik()[0]
@@ -397,8 +398,8 @@ def registriraj_uporabnika():
     cur.execute("INSERT INTO uporabnik (vzdevek, geslo, email, dom, spol) VALUES(%s,%s,%s,%s,%s);", (vzdevek, geslo1, email, dom, spol))
     #cur.query()
     conn.commit()
-    #TODO: odpri neko stran, kjer ti pove da si se registriral in se zdej lahko vpišeš tukaj
-    return template('zacetna_stran.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik())
+    return template('prijava.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
+                    sporocilo='Great, you are now member of our community. You can sign in here.')
 
 @post('/profile/:x')
 def profil(x):
@@ -424,9 +425,8 @@ def spremeni():
 
 @post('/spremeni_profil')
 def spremeni():
-    #TODO!!!!!!
     (id, vzdevek, dom) = uporabnik()
-    #
+
     geslo_staro = request.forms.geslo_trenutno
     geslo_novo = request.forms.novo_geslo
     print(geslo_novo == '')

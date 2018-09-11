@@ -1,0 +1,20 @@
+%rebase('osnova.html', naslov='Sign in')
+
+<div class="row">
+    <div class="col">
+        {{sporocilo}}
+    <form action="/prijava" method="POST">
+                <div class="w-75 p-3 ">
+                    <div class="form-row">
+                        <input type="text" class="form-control" id="username" placeholder="Username" name="vzdevek">
+                    </div>
+                    <br/>
+                    <div class="form-row">
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="geslo">
+                    </div>
+                    <br/>
+                    <input type="submit" class="btn btn-basic btn-sm" value="Sign in">
+                </div>
+            </form>
+    </div>
+</div>
