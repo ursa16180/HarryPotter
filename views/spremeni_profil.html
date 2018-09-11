@@ -1,0 +1,55 @@
+%rebase('osnova.html', naslov='Sign up')
+<div class="row">
+    <div class="col-5">
+        <form action="/spremeni_profil" method="POST">
+            <div class="form-row">
+              <label for="inputPassword">Current password</label>
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="geslo_trenutno" required>
+            </div>
+            <div class="form-row">
+              <label for="inputNewPassword">New password</label>
+              <input type="password" class="form-control" id="inputNewPassword" placeholder="Password" name="novo_geslo">
+            </div>
+            <div class="form-row">
+                <label for="inputNewPasswordRepeat">Confirm new password</label>
+                <input type="password" class="form-control" id="inputNewPasswordRepeat" placeholder="Confirm Password" name="novo_geslo2">
+            </div>
+            <div class="form-row">
+                <label for="dom">House</label>
+                <select id="dom" class="form-control" name="dom">
+                    % dom_uporabnika = uporabnik[2]
+                    <option selected>{{dom_uporabnika}}</option>
+                    % if dom_uporabnika != 'Gryffindor':
+                    <option>Gryffindor</option>
+                    % end
+                    % if dom_uporabnika != 'Hufflepuff':
+                    <option>Hufflepuff</option>
+                    %end
+                    % if dom_uporabnika != 'Ravenclaw':
+                    <option>Ravenclaw</option>
+                    %end
+                    % if dom_uporabnika != 'Slytherin':
+                    <option>Slytherin</option>
+                    %end
+                </select>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="spol">Sex</label>
+                  <select id="spol" class="form-control" name="spol">
+                      <option selected>{{spol}}</option>
+                      %if spol == 'Witch':
+                      <option>Wizard</option>
+                      %else:
+                      <option>Witch</option>
+                      %end
+                  </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Change</button>
+        </form>
+    </div>
+    <div class="col-5">
+        <img src="../static/Alohomora.jpg" class="center-full" align="center"/>
+    </div>
+</div>

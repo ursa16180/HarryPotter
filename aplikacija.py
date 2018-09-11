@@ -412,9 +412,12 @@ def profil(x):
 
 @get('/spremeni_profil')
 def spremeni():
-    return template('registracija.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik())
+    cur.execute("SELECT spol FROM uporabnik WHERE id=%s", (uporabnik()[0],))
+    return template('spremeni_profil.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), spol=cur.fetchone())
 
-
+@post('/spremeni_profil')
+def spremeni():
+    print('tukaj')
 ######################################################################
 # Glavni program
 
