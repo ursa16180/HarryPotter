@@ -7,7 +7,7 @@
             %end
             <div class="form-row">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Username" name="vzdevek" required>
+                <input type="text" class="form-control" id="username" placeholder="Username" name="vzdevek" value={{username}} required>
             </div>
             <div class="form-row">
               <label for="inputPassword">Password</label>
@@ -19,23 +19,30 @@
             </div>
             <div class="form-row">
                 <label for="inputEmail">E-mail</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" required>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email", value={{email}} required>
             </div>
             <div class="form-row">
                 <label for="dom">House</label>
                 <select id="dom" class="form-control" name="dom" required>
-                    <option selected>Gryffindor</option>
-                    <option>Hufflepuff</option>
-                    <option>Ravenclaw</option>
-                    <option>Slytherin</option>
+                    <option selected>{{house}}</option>
+                    %for dom in ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin']:
+                        %if house != dom:
+                            <option>{{dom}}</option>
+                        %end
+                    %end
                 </select>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="spol">Sex</label>
                   <select id="spol" class="form-control" name="spol" required>
+                      %if sex == 'Male':
+                      <option selected>Wizard</option>
+                      <option>Witch</option>
+                      %else:
                       <option selected>Witch</option>
                       <option>Wizard</option>
+                      %end
                   </select>
                 </div>
             </div>

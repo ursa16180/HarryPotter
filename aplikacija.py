@@ -377,7 +377,8 @@ def prijava_uporabnika():
 
 @get('/registracija')
 def odpri_registracijo():
-    return template('registracija.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(), sporocilo=None)
+    return template('registracija.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(), sporocilo=None,
+                    email='', username='', house='Gryffindor', sex='Witch')
 
 @post('/registracija')
 def registriraj_uporabnika():
@@ -398,10 +399,12 @@ def registriraj_uporabnika():
     cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s;",(vzdevek,))
     if cur.fetchone() is not None:
         # TODO: naj ostanejo nekatera polja izpolnjena
-        return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), sporocilo='Unfortunately this nickname is taken. Good one though.')
+        return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), sporocilo='Unfortunately this nickname is taken. Good one though.',
+                        email=email, username='', house=dom, sex=spol)
     elif not geslo1 == geslo2:
         # TODO: naj ostanejo nekatera polja izpolnjena
-        return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), sporocilo='The passwords do not match. Check them again.')
+        return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), sporocilo='The passwords do not match. Check them again.',
+                        email=email, username=vzdevek, house=dom, sex=spol)
     print(vzdevek, geslo1, email, dom, spol)
     cur.execute("INSERT INTO uporabnik (vzdevek, geslo, email, dom, spol) VALUES(%s,%s,%s,%s,%s);", (vzdevek, geslo1, email, dom, spol))
     #cur.query()
