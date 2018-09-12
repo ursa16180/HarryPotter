@@ -44,7 +44,6 @@ def iskanje_get():
     else:
         dolzina = int(request.forms.get('dolzinaInput'))
         parametri.append(str(dolzina) + '+ pages')
-    # print(request.POST.getall('kljucne_besede'))
 
     zanri = request.POST.getall('zanri')
     parametri += zanri
@@ -63,7 +62,6 @@ def iskanje_get():
 
     # ~~~~~~~~~~~~~~če so izbrani zanri, jih doda
     if zanri != []:
-        #print(zanri)
         vmesni_niz = ''
         for zanr in zanri:
             vmesni_niz += """ AND EXISTS (SELECT * FROM zanr_knjige WHERE zanr = %s AND id_knjige=knjiga2.id_knjige)"""
@@ -105,7 +103,6 @@ def iskanje_get():
 
 @post('/avtor/:x')
 def avtor(x):
-    #print(x)
     cur.execute("SELECT id, ime, povprecna_ocena, datum_rojstva, kraj_rojstva FROM avtor WHERE id=%s", (x,))
     avtor = cur.fetchone()
     cur.execute("SELECT zanr FROM avtorjev_zanr WHERE id = %s", (x,))
@@ -129,14 +126,12 @@ def avtor(x):
             zanriAvtorja.add(vrstica[2])
         if vrstica[3] != None:
             serijeAvtorja[vrstica[3]] = (vrstica[4], vrstica[5])
-    #print(avtor, zanriAvtorja, knjige)
     return template('avtor.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                     avtor=avtor, knjige=list(knjige), zanriAvtorja=list(zanriAvtorja), serijeAvtorja=serijeAvtorja)
 
 
 @post('/zanr/:x')
 def zanr(x):
-    #print(x)
     cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra=%s;", (x,))
     zanr = cur.fetchone()
     cur.execute("SELECT id, naslov FROM knjiga JOIN zanr_knjige ON knjiga.id = zanr_knjige.id_knjige WHERE zanr=%s ORDER BY knjiga.povprecna_ocena DESC LIMIT 50;", (x,))
@@ -148,7 +143,6 @@ def zanr(x):
 
 @post('/zbirka/:x')
 def zbirka(x):
-    #print(x)
     cur.execute("""SELECT serija.ime, del_serije.zaporedna_stevilka_serije, knjiga.id, knjiga.naslov, avtor.id, avtor.ime FROM serija
 JOIN del_serije ON del_serije.id_serije=serija.id
 JOIN knjiga ON del_serije.id_knjige = knjiga.id
@@ -166,14 +160,12 @@ ORDER BY zaporedna_stevilka_serije;""", (x, ))
         avtor_id = knjiga[4]
         knjige[knjiga_id] = [knjiga_id, knjiga[3], knjiga[1]]
         avtorji[avtor_id] = [avtor_id, knjiga[5]]
-    #print(cur.fetchall())
     return template('zbirka.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                     knjige=list(knjige.values()), avtorji=list(avtorji.values()), serija=serija)
 
 
 @post('/knjiga/:x')
 def knjiga(x):
-    #print(x)
     cur.execute("""SELECT knjiga.id, isbn, naslov, dolzina, knjiga.povprecna_ocena, stevilo_ocen, leto, knjiga.opis, 
     avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, knjiga.url_naslovnice FROM knjiga
 LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
@@ -203,7 +195,6 @@ WHERE knjiga.id =%s;""", (x,))
         knjiga['serija'].add((vrstica[10],vrstica[11], vrstica[12]))
         knjiga['kljucna_beseda'].add(vrstica[13])
         knjiga['zanri'].add(vrstica[14])
-    #print(knjiga)
     return template('knjiga.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                     knjiga=knjiga)
 
@@ -220,7 +211,6 @@ def kazalo_avtorja():
         avtorji_na_crko.sort()
     avtorji = list(urejeni_avtorji.items())
     avtorji.sort()
-    #print(avtorji)
     return template('kazalo_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(), avtorji=avtorji)
 
 
@@ -271,17 +261,12 @@ def rezultati_iskanja():
 @get('/izpis_zadetkov/:x')
 def izpis_zadetkov(x):
     [tip, stran, niz] =  x.split('&')
-    #print('Tole je cel niz')
-    #print(niz)
     niz1, niz2 = niz.split(", ('")
-    #print(niz1[2:-1])
     parametri_SQL = ()
     for param in niz2[:-2]. split(','):
-        print(param)
         if param != '':
             if " " == param[0]:
                 param = param[1:]
-            print(param)
             try:
                 param = int(param)
                 parametri_SQL += (param,)
@@ -291,7 +276,6 @@ def izpis_zadetkov(x):
                 if "'" == param[0]:
                     param = param[1:]
                 parametri_SQL += (param,)
-    #print(parametri_SQL)
     cur.execute(niz1[2:-1], parametri_SQL)
     vse_vrstice = cur.fetchall()
     if vse_vrstice == []:
@@ -343,25 +327,18 @@ def odjava():
 
 @post("/prijava")
 def prijava_uporabnika():
-    print("PRIJAVAAAAAA")
-    #(vzdevek, dom) = uporabnik()
-
     vzdevek = request.forms.vzdevek
     geslo =request.forms.geslo
-    #print(vzdevek, geslo)
     #zakodiraj_geslo(request.forms.geslo)
     # Preverimo če je bila pravilna prijava
     if vzdevek is not None:
         cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
         if cur.fetchone() is None:
-            print('prazno')
-            # TODO: naj ostanejo nekatera polja izpolnjena
             return template("prijava.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(),
                             sporocilo='This username does not yet exist. You may create a new user here.')
     if vzdevek is not None and geslo is not None:
         cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s AND geslo=%s;", (vzdevek, geslo))
         if cur.fetchone() is None:
-            # TODO: naj ostanejo nekatera polja izpolnjena
             return template("prijava.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                             sporocilo='Password you have entered is not correct. Try again.')
         else:
@@ -394,20 +371,16 @@ def registriraj_uporabnika():
         spol = "Female"
     else:
         spol = "Male"
-    print(vzdevek, geslo1, email, dom, spol)
 
     cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s;",(vzdevek,))
     if cur.fetchone() is not None:
-        # TODO: naj ostanejo nekatera polja izpolnjena
         return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), sporocilo='Unfortunately this nickname is taken. Good one though.',
                         email=email, username='', house=dom, sex=spol)
     elif not geslo1 == geslo2:
-        # TODO: naj ostanejo nekatera polja izpolnjena
         return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), sporocilo='The passwords do not match. Check them again.',
                         email=email, username=vzdevek, house=dom, sex=spol)
-    print(vzdevek, geslo1, email, dom, spol)
+    #TODO: a pogledava še za unikatne mejle?
     cur.execute("INSERT INTO uporabnik (vzdevek, geslo, email, dom, spol) VALUES(%s,%s,%s,%s,%s);", (vzdevek, geslo1, email, dom, spol))
-    #cur.query()
     conn.commit()
     return template('prijava.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                     sporocilo='Great, you are now member of our community. You can sign in here.')
@@ -424,10 +397,8 @@ def profil(x):
 
 @get('/spremeni_profil')
 def spremeni():
-    print(uporabnik()[0])
     cur.execute("SELECT spol FROM uporabnik WHERE id=%s;", (uporabnik()[0],))
     spol = cur.fetchone()[0]
-    print(spol)
     if spol == 'Female':
         spol = 'Witch'
     else:
@@ -440,7 +411,6 @@ def spremeni():
 
     geslo_staro = request.forms.geslo_trenutno
     geslo_novo = request.forms.novo_geslo
-    print(geslo_novo == '')
     geslo_novo2 = request.forms.novo_geslo2
     novi_dom = request.forms.dom  # TODO request.forms.get("dom")
     novi_spol = request.forms.spol  # TODO request.forms.get("spol")
@@ -448,13 +418,11 @@ def spremeni():
     cur.execute("SELECT geslo FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
     pravo_geslo = cur.fetchone()[0]
     if pravo_geslo != geslo_staro:
-        # TODO: naj ostanejo nekatera polja izpolnjena
         return template("spremeni_profil.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(),
                         sporocilo='The current password you typed is not correct, try again.', spol=novi_spol)
     elif geslo_novo == '':
         geslo_novo = geslo_staro
     elif geslo_novo != geslo_novo2:
-        # TODO: naj ostanejo nekatera polja izpolnjena
         return template("spremeni_profil.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(),
                          sporocilo='The new passwords do not match. Check them again.', spol=novi_spol)
     if novi_spol == "Witch":
