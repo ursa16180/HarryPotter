@@ -49,6 +49,7 @@ def iskanje_get():
     zanri = request.POST.getall('zanri')
     parametri += zanri
     jeDelZbirke = request.forms.get('jeDelZbirke')
+    niDelZbirke = request.forms.get('niDelZbirke')
     parametri_SQL = ()
     # ~~~~~~~~~~~~~~Če so izbrane ključne besede, jih doda
     if kljucne == []:
@@ -70,16 +71,17 @@ def iskanje_get():
         niz += " JOIN (SELECT DISTINCT * FROM zanr_knjige knjiga2 WHERE " + vmesni_niz[5:] + ") pomozna_tabela2 ON knjiga.id=pomozna_tabela2.id_knjige"
     else:
         niz += " JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige"
-
+    # ~~~~~~~~~~~~~~~Tukaj se doda avtor
+    niz += " JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige JOIN avtor ON avtor_knjige.id_avtorja = avtor.id"
     # ~~~~~~~~~~~~~~Če želi da je del serije, se združi s tabelo serij
     # TODO Ali če se združi že izloči tiste ki niso v serijah?
     # TODO tukaj izbere če želi da je v zbirki ali če mu je vseeno... kaj pa če prou noče da je v zbirki?
-    if jeDelZbirke is not None:
+    if jeDelZbirke is not None and niDelZbirke is None:
         niz += " JOIN del_serije ON knjiga.id=del_serije.id_knjige "
         parametri += ['In series']
-
-    # ~~~~~~~~~~~~~~~Tukaj se doda avtor
-    niz += " JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige JOIN avtor ON avtor_knjige.id_avtorja = avtor.id"
+    #if niDelZbirke is not None and jeDelZbirke is None:
+    #    niz += " WHERE knjiga.id NOT IN (SELECT id_knjige FROM del_serije)"
+    #    parametri += ['Not in series']
     # ~~~~~~~~~~~~~~Tukaj se doda pogoj o dolžini knjige
     niz += " WHERE dolzina>=%s ORDER BY knjiga.id, avtor.id"
     parametri_SQL += (dolzina,)
@@ -352,21 +354,25 @@ def prijava_uporabnika():
     if vzdevek is not None:
         cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
         if cur.fetchone() is None:
-            #TODO TA VZDEVEK NE OBSTAJA
             print('prazno')
+            # TODO: naj ostanejo nekatera polja izpolnjena
             return template("prijava.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(),
                             sporocilo='This username does not yet exist. You may create a new user here.')
     if vzdevek is not None and geslo is not None:
         cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s AND geslo=%s;", (vzdevek, geslo))
         if cur.fetchone() is None:
-            #TODO geslo ni pravilno
+            # TODO: naj ostanejo nekatera polja izpolnjena
             return template("prijava.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
-                            sporocilo='Password you have entered is not correct. Try again.') #TODO geslo ni pravilno
+                            sporocilo='Password you have entered is not correct. Try again.')
         else:
-            response.set_cookie('vzdevek', vzdevek, path='/', secret= skrivnost)#TODO secret=secret)
+            response.set_cookie('vzdevek', vzdevek, path='/', secret= skrivnost)
             id = uporabnik()[0]
+            # TODO: ko tukaj kličeva naslednjo stran, cookie še ni nastavljen in je prva stran še nepobarvana, zato
+            # je trenutno narejen uporabnik na roke.
+            cur.execute("SELECT id, vzdevek, dom FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
+            vrstica = cur.fetchone()
             return template("zacetna_stran.html", vseKljucne=vseKljucne, zanri=vsiZanri,
-                            uporabnik=uporabnik())
+                            uporabnik=vrstica)
             #redirect('/profile/' + str(id))
 
 @get('/registracija')
@@ -391,8 +397,10 @@ def registriraj_uporabnika():
 
     cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s;",(vzdevek,))
     if cur.fetchone() is not None:
+        # TODO: naj ostanejo nekatera polja izpolnjena
         return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), sporocilo='Unfortunately this nickname is taken. Good one though.')
     elif not geslo1 == geslo2:
+        # TODO: naj ostanejo nekatera polja izpolnjena
         return template("registracija.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), sporocilo='The passwords do not match. Check them again.')
     print(vzdevek, geslo1, email, dom, spol)
     cur.execute("INSERT INTO uporabnik (vzdevek, geslo, email, dom, spol) VALUES(%s,%s,%s,%s,%s);", (vzdevek, geslo1, email, dom, spol))
@@ -437,11 +445,13 @@ def spremeni():
     cur.execute("SELECT geslo FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
     pravo_geslo = cur.fetchone()[0]
     if pravo_geslo != geslo_staro:
+        # TODO: naj ostanejo nekatera polja izpolnjena
         return template("spremeni_profil.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(),
                         sporocilo='The current password you typed is not correct, try again.', spol=novi_spol)
     elif geslo_novo == '':
         geslo_novo = geslo_staro
     elif geslo_novo != geslo_novo2:
+        # TODO: naj ostanejo nekatera polja izpolnjena
         return template("spremeni_profil.html", vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(),
                          sporocilo='The new passwords do not match. Check them again.', spol=novi_spol)
     if novi_spol == "Witch":
