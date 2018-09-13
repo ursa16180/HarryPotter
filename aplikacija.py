@@ -561,5 +561,6 @@ run(host='localhost', port=8080, reloader=True)
 # TODO: je/ni del serije
 # TODO: gumbi prebrano, want to read
 # TODO: računanje povprečne ocene
-# TODO: če je preveč strani, se izpišejo v stolpec (omejiti število strani)
+# TODO: če je preveč strani, se izpišejo v stolpec ????
 # TODO: kodiranje gesel
+# TODO: a že išče ok besede? da ne vrača pr iskanju rat tut rattle
