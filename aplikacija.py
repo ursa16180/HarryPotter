@@ -49,8 +49,7 @@ def iskanje_get():
 
     zanri = request.POST.getall('zanri')
     parametri += zanri
-    je_del_zbirke = request.forms.get('jeDelZbirke')
-    ni_del_zbirke = request.forms.get('niDelZbirke')
+    je_del_zbirke = request.forms.get('zbirka')
     parametri_sql = ()
     # ~~~~~~~~~~~~~~ Če so izbrane ključne besede, jih doda
     if kljucne == []:
@@ -78,16 +77,20 @@ def iskanje_get():
     # ~~~~~~~~~~~~~~~Tukaj se doda avtor
     niz += " JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige JOIN avtor ON avtor_knjige.id_avtorja = avtor.id"
     # ~~~~~~~~~~~~~~Če želi da je del serije, se združi s tabelo serij
-    # TODO Ali če se združi že izloči tiste ki niso v serijah?
-    # TODO tukaj izbere če želi da je v zbirki ali če mu je vseeno... kaj pa če prou noče da je v zbirki?
-    if je_del_zbirke is not None and ni_del_zbirke is None:
-        niz += " JOIN del_serije ON knjiga.id=del_serije.id_knjige "
+    print(je_del_zbirke)
+    if je_del_zbirke == 'Yes':
+        print('je v zbirki')
+        niz += " JOIN del_serije ON knjiga.id=del_serije.id_knjige WHERE"
         parametri += ['In series']
-    # if ni_del_zbirke is not None and je_del_zbirke is None:
-    #     niz += " WHERE knjiga.id NOT IN (SELECT id_knjige FROM del_serije)"
-    #     parametri += ['Not in series']
+    elif je_del_zbirke == 'No':
+        print('ni v zbirki')
+        niz += " WHERE knjiga.id NOT IN (SELECT id_knjige FROM del_serije) AND"
+        parametri += ['Not in series']
+    else:
+        niz += " WHERE"
     # ~~~~~~~~~~~~~~Tukaj se doda pogoj o dolžini knjige
-    niz += " WHERE dolzina>=%s ORDER BY knjiga.id, avtor.id"
+    niz += " dolzina>=%s ORDER BY knjiga.id, avtor.id"
+    print(niz)
     parametri_sql += (dolzina,)
     cur.execute(niz, parametri_sql)
     vse_vrstice = cur.fetchall()
@@ -558,7 +561,7 @@ for vrstica in kljucne_iz_baze:
 # poženemo strežnik na portu 8080, glej http://localhost:8080/
 run(host='localhost', port=8080, reloader=True)
 
-# TODO: je/ni del serije
+
 # TODO: gumbi prebrano, want to read
 # TODO: računanje povprečne ocene
 # TODO: če je preveč strani, se izpišejo v stolpec ????
