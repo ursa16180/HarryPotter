@@ -181,7 +181,8 @@ ORDER BY zaporedna_stevilka_serije;""", (x, ))
 
 @post('/knjiga/:x')
 def knjiga(x):
-    cur.execute("""SELECT knjiga.id, isbn, naslov, dolzina, knjiga.povprecna_ocena, stevilo_ocen, leto, knjiga.opis, 
+    cur.execute(  # SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis,
+        """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.povprecna_ocena, stevilo_ocen, leto, knjiga.opis, 
     avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
     knjiga.url_naslovnice FROM knjiga
 LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
@@ -197,8 +198,9 @@ WHERE knjiga.id =%s;""", (x,))
               'isbn': vse_vrstice[0][1],
               'naslov': vse_vrstice[0][2],
               'dolzina': vse_vrstice[0][3],
-              'povprecna_ocena': vse_vrstice[0][4],
+              # 'vsota_ocen': vse_vrstice[0][4],
               'stevilo_ocen': vse_vrstice[0][5],
+              'povprecna_ocena': vse_vrstice[0][4],  # vsota_ocen / stevilo_ocen,
               'leto': vse_vrstice[0][6],
               'opis': vse_vrstice[0][7],
               'avtor': set(),
@@ -231,12 +233,17 @@ WHERE knjiga.id =%s;""", (x,))
             if stara_ocena[0] != nova_ocena:
                 cur.execute("UPDATE ocena_knjige SET ocena = %s WHERE id_knjige= %s AND id_uporabnika=%s;",
                             (nova_ocena, knjiga['id'], trenutni_uporabnik[0]))
+                # cur.execute("UPDATE knjiga SET vsota_ocen = %s WHERE id=%s;",
+                #             (knjiga['vsota_ocen'] + nova_ocena - stara_ocena, knjiga['id']))
                 conn.commit()
             ocena_uporabnika = int(nova_ocena)
         else:
             if nova_ocena is not None:
+                # uporabnik je knjigo na novo ocenil
                 cur.execute("INSERT INTO ocena_knjige (ocena, id_knjige, id_uporabnika) VALUES (%s, %s, %s);",
                             (nova_ocena, knjiga['id'], trenutni_uporabnik[0]))
+                # cur.execute("UPDATE knjiga SET vsota_ocen = %s, stevilo_ocen = %s WHERE id=%s;",
+                #             (knjiga['vsota_ocen'] + nova_ocena - stara_ocena, knjiga['stevilo_ocen'] + 1, knjiga['id']))
                 conn.commit()
                 ocena_uporabnika = int(nova_ocena)
             else:
@@ -565,9 +572,8 @@ run(host='localhost', port=8080, reloader=True)
 
 
 # TODO: gumbi prebrano, want to read
-# TODO: računanje povprečne ocene
-# TODO: če je preveč strani, se izpišejo v stolpec ????
-# TODO: kodiranje gesel
+# TODO: računanje povprečne ocene - preveri. Moralo bi bit ok s tem, kar je napisano, ampak nisem zihr
+# TODO: Strani se izpišejo v stolpec (pri iskanju) ????
 # TODO: a že išče ok besede? da ne vrača pr iskanju rat tut rattle
 # TODO: lepše narejena razdelitev na strani (zdej se notri pošilja cel SQL)
 # TODO: popravi ER diagram

@@ -82,9 +82,9 @@ def shrani_knjige(mapa, prvic='True'):
             ###CSV za tabelo KNJIGA
             podatkiKnjiga = dict()
             podatkiKnjiga['naslov'] = html.unescape(podatki1['naslov'])
-            podatkiKnjiga['povprecna_ocena'] = podatki2['povprecna_ocena']
             podatkiKnjiga['stevilo_ocen'] = int(
                 re.sub('[,]', '', podatki3['stevilo_ocen']))  ###to spremeni niz glasov v integer brez vejc
+            podatkiKnjiga['vsota_ocen'] = podatki2['povprecna_ocena'] * podatki_knjiga['stevilo_ocen']
             podatkiKnjiga['opis'] = podatki3['opis']
             podatkiKnjiga['dolzina'] = podatki4['stevilo_strani']
             podatkiKnjiga['leto'] = podatki4['leto_izdaje']
