@@ -394,8 +394,7 @@ def odjava():
 @post("/prijava")
 def prijava_uporabnika():
     vzdevek = request.forms.vzdevek
-    geslo = request.forms.geslo
-    # zakodiraj_geslo(request.forms.geslo)
+    geslo = zakodiraj_geslo(request.forms.geslo)
     # Preverimo če je bila pravilna prijava
     if vzdevek is not None:
         cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
@@ -448,8 +447,9 @@ def registriraj_uporabnika():
                         sporocilo='The passwords do not match. Check them again.',
                         email=email, username=vzdevek, house=dom, sex=spol)
     # TODO: a pogledava še za unikatne mejle?
+    geslo_kodirano = zakodiraj_geslo(geslo1)
     cur.execute("INSERT INTO uporabnik (vzdevek, geslo, email, dom, spol) VALUES(%s,%s,%s,%s,%s);",
-                (vzdevek, geslo1, email, dom, spol))
+                (vzdevek, geslo_kodirano, email, dom, spol))
     conn.commit()
     return template('prijava.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                     sporocilo='Great, you are now member of our community. You can sign in here.')
@@ -486,7 +486,7 @@ def spremeni():
 def spremeni():
     (id, vzdevek, dom) = uporabnik()
 
-    geslo_staro = request.forms.geslo_trenutno
+    geslo_staro = zakodiraj_geslo(request.forms.geslo_trenutno)
     geslo_novo = request.forms.novo_geslo
     geslo_novo2 = request.forms.novo_geslo2
     novi_dom = request.forms.dom  # TODO request.forms.get("dom")
@@ -502,6 +502,8 @@ def spremeni():
     elif geslo_novo != geslo_novo2:
         return template("spremeni_profil.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                         sporocilo='The new passwords do not match. Check them again.', spol=novi_spol)
+    else:
+        geslo_novo = zakodiraj_geslo(geslo_novo)
     if novi_spol == "Witch":
         novi_spol = "Female"
     elif novi_spol == "Wizard":
@@ -567,3 +569,5 @@ run(host='localhost', port=8080, reloader=True)
 # TODO: če je preveč strani, se izpišejo v stolpec ????
 # TODO: kodiranje gesel
 # TODO: a že išče ok besede? da ne vrača pr iskanju rat tut rattle
+# TODO: lepše narejena razdelitev na strani (zdej se notri pošilja cel SQL)
+# TODO: popravi ER diagram
