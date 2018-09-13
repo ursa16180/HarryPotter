@@ -122,9 +122,9 @@ def avtor(x):
     for vrstica in vrstice_knjig:
         id = vrstica[0]
         knjige.add((id, vrstica[1]))
-        if vrstica[2] != None:
+        if vrstica[2] is not None:
             zanriAvtorja.add(vrstica[2])
-        if vrstica[3] != None:
+        if vrstica[3] is not None:
             serijeAvtorja[vrstica[3]] = (vrstica[4], vrstica[5])
     return template('avtor.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
                     avtor=avtor, knjige=list(knjige), zanriAvtorja=list(zanriAvtorja), serijeAvtorja=serijeAvtorja)
@@ -195,8 +195,39 @@ WHERE knjiga.id =%s;""", (x,))
         knjiga['serija'].add((vrstica[10],vrstica[11], vrstica[12]))
         knjiga['kljucna_beseda'].add(vrstica[13])
         knjiga['zanri'].add(vrstica[14])
-    return template('knjiga.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
-                    knjiga=knjiga)
+
+    trenutni_uporabnik = uporabnik()
+
+    if trenutni_uporabnik[1] is None:
+        prebrano = False
+    else:
+        cur.execute("SELECT id_knjige FROM prebrane WHERE id_uporabnika=%s AND id_knjige=%s;", (trenutni_uporabnik[0], knjiga['id']))
+        prebrano = len(cur.fetchall()) > 0
+    if prebrano:
+        cur.execute("SELECT ocena FROM ocena_knjige WHERE id_uporabnika=%s AND id_knjige=%s;", (trenutni_uporabnik[0], knjiga['id']))
+        stara_ocena = cur.fetchone()
+        nova_ocena = request.forms.get('ocena')
+
+        if stara_ocena is not None:
+            # knjigo je uporabnik že ocenil, preverimo, ali je oceno spremenil:
+            if stara_ocena[0] != nova_ocena:
+                cur.execute("UPDATE ocena_knjige SET ocena = %s WHERE id_knjige= %s AND id_uporabnika=%s;",
+                            (nova_ocena, knjiga['id'], trenutni_uporabnik[0]))
+                conn.commit()
+            ocena_uporabnika = int(nova_ocena)
+        else:
+            if nova_ocena is not None:
+                cur.execute("INSERT INTO ocena_knjige (ocena, id_knjige, id_uporabnika) VALUES (%s, %s, %s);",
+                            (nova_ocena, knjiga['id'], trenutni_uporabnik[0]))
+                conn.commit()
+                ocena_uporabnika = int(nova_ocena)
+            else:
+                ocena_uporabnika = None
+    else:
+        #uporabnik knjige še ni prebral, ali nihče ni vpisan
+        ocena_uporabnika = None
+    return template('knjiga.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=trenutni_uporabnik,
+                    knjiga=knjiga, ocena=ocena_uporabnika, prebrano=prebrano)
 
 @post('/kazaloAvtorja')
 def kazalo_avtorja():
@@ -225,7 +256,10 @@ def kazalo_zanra():
 def rezultati_iskanja():
     if request.forms.get('iskaniIzrazKnjige') != '':
         iskani_izraz = request.forms.get('iskaniIzrazKnjige')
-        niz = ("""SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s""", ('%' + iskani_izraz + '%;',))
+        niz = ("""SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice 
+                  FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor 
+                  ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige 
+                  WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s""", ('%' + iskani_izraz + '%;',))
         cur.execute(niz[0], niz[1])
         vse_vrstice = cur.fetchall()
         if vse_vrstice != []:
@@ -238,11 +272,12 @@ def rezultati_iskanja():
                 trenutna_knjiga['zanri'].add(vrstica[4])
                 trenutna_knjiga['url_naslovnice']=vrstica[5]
                 slovar_slovarjev_knjig[id] = trenutna_knjiga
-            return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
+            return template('izpis_knjiznih_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(),
                             knjige=list(slovar_slovarjev_knjig.values()), stran=1, poizvedba=niz, parametri=[])
-    elif request.forms.get('iskaniIzrazAvtorji') != None:
+    elif request.forms.get('iskaniIzrazAvtorji') is not None:
         iskani_izraz = request.forms.get('iskaniIzrazAvtorji')
-        niz = ("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor LEFT JOIN avtorjev_zanr ON avtor.id=avtorjev_zanr.id WHERE avtor.ime LIKE %s""", ('%' + iskani_izraz + '%;',))
+        niz = ("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor LEFT JOIN avtorjev_zanr ON 
+                  avtor.id=avtorjev_zanr.id WHERE avtor.ime LIKE %s""", ('%' + iskani_izraz + '%;',))
         cur.execute(niz[0], niz[1])
         vse_vrstice = cur.fetchall()
         if vse_vrstice != []:
@@ -253,14 +288,14 @@ def rezultati_iskanja():
                 trenutni_avtor['ime'] = vrstica[1]
                 trenutni_avtor['zanri'].add(vrstica[2])
                 zadetki_avtorjev[id] = trenutni_avtor
-            return template('izpis_zadetkov_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(),
+            return template('izpis_zadetkov_avtorjev.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(),
                             avtorji=list(zadetki_avtorjev.values()), stran=1, poizvedba=niz)
     # če sta obe polji prazni ali če ni zadetkov
     return template('ni_zadetkov.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik = uporabnik(), parametri=[iskani_izraz])
 
 @get('/izpis_zadetkov/:x')
 def izpis_zadetkov(x):
-    [tip, stran, niz] =  x.split('&')
+    [tip, stran, niz] = x.split('&')
     niz1, niz2 = niz.split(", ('")
     parametri_SQL = ()
     for param in niz2[:-2]. split(','):
@@ -445,7 +480,6 @@ def spremeni():
     return template('profile.html', vseKljucne=vseKljucne, zanri=vsiZanri, uporabnik=uporabnik(), prebrane=prebrane,
                     zelje=zelje)
 
-
 ######################################################################
 # Glavni program
 
@@ -485,3 +519,8 @@ for vrstica in kljucne_iz_baze:
 
 # poženemo strežnik na portu 8080, glej http://localhost:8080/
 run(host='localhost', port=8080, reloader=True)
+
+#TODO: ne dela iskanje po ključnih in po avtorjih
+# TODO: je/ni del serije
+#TODO: ocenjevanje knjige
+# TODO: če je preveč strani, se izpišejo v stolpec (omejiti število strani)
