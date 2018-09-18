@@ -5,6 +5,7 @@
     function spremembaDrsnika(val) {
     document.getElementById('vrednostDrsnika').innerHTML = val;
     }
+
     </script>
 
     <meta charset="utf-8">
@@ -20,29 +21,28 @@
 <!--<body  background="../static/ozadje.jpg">-->
 <body>
 %if uporabnik[2] == "Hufflepuff":
-    %barva = "bg-warning"
-    %grb = "../static/Hufflepuff_Crest.png"
+%barva = "bg-warning"
+%grb = "../static/Hufflepuff_Crest.png"
 %elif uporabnik[2] == "Ravenclaw":
-<!--TODO popravi ravenclaw-->
-    %barva = "bg-primary"
-    %grb = "../static/Ravenclaw_Crest.png"
+%barva = "bg-primary"
+%grb = "../static/Ravenclaw_Crest.png"
 %elif uporabnik[2] == "Slytherin":
-    %barva = "bg-success"
-    %grb = "../static/Slytherin_Crest.png"
+%barva = "bg-success"
+%grb = "../static/Slytherin_Crest.png"
 
 %elif uporabnik[2] == "Gryffindor":
-    %barva = "bg-danger"
-    %grb = "../static/Gryffindor_Crest.png"
+%barva = "bg-danger"
+%grb = "../static/Gryffindor_Crest.png"
 %else:
-    %barva = "bg-dark"
-    %grb = "../static/bradavicarka_logo.png"
+%barva = "bg-dark"
+%grb = "../static/bradavicarka_logo.png"
 %end
 
 <div class="container-fluid {{barva}}">
     <div class="row">
         <div class="col-3">
             <a href="/">
-            <img src={{grb}} class="center-medium" align="center"/>
+                <img src={{grb}} class="center-medium" align="center"/>
             </a>
         </div>
         <div class="col-6">
@@ -57,7 +57,8 @@
                     </div>
                     <br/>
                     <div class="form-row">
-                      <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="geslo">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password"
+                               name="geslo">
                     </div>
                     <br/>
                     <input type="submit" class="btn btn-basic btn-sm" value="Sign in">
@@ -102,12 +103,31 @@
                 </a>
                 <a class="nav-link" href="#">
                     <form class="form-inline my-2 my-lg-0" action="/rezultatiIskanja" method="POST">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search books" aria-label="Search" id="splosniIskalnikKnjig" name="iskaniIzrazKnjige">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search authors" aria-label="Search" id="splosniIskalnikAvtorjev" name="iskaniIzrazAvtorji">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search books" aria-label="Search"
+                               id="splosniIskalnikKnjig" name="iskaniIzrazKnjige">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search authors"
+                               aria-label="Search" id="splosniIskalnikAvtorjev" name="iskaniIzrazAvtorji">
                         <button class="btn btn-success" type="submit">Search</button>
                     </form>
                 </a>
             </nav>
+<<<<<<< HEAD
+=======
+            <!--<div class="btn-group blocks">-->
+            <!--<form action="/kazaloAvtorja" method="POST">-->
+            <!--<b><input type="submit" class="btn btn-basic" value="Avtorji"></b>-->
+            <!--</form>-->
+            <!---->
+            <!--<form action="/kazaloZanra" method="POST">-->
+            <!--<b><input type="submit" class="btn btn-basic" value="Žanri"></b>-->
+            <!--</form>-->
+            <!--<form action="/rezultatiIskanja" method="POST">-->
+            <!--<div class="search_box pull-right">-->
+            <!--<input placeholder="Search"  type="text" id="splosniIskalnik" name="iskaniIzraz">-->
+            <!--</div>-->
+            <!--</form>-->
+            <!--</div>-->
+>>>>>>> 947d08e50c16b353d3b89100251b73fee574c32e
         </div>
     </div>
 </div>
@@ -118,7 +138,7 @@
         <div class="col-3 bg-secondary">
             <br/>
             <form action="/isci" method="POST">
-                <p class="text-primary"> <b>Search</b></p>
+                <p class="text-primary"><b>Search</b></p>
                 <div class="form-group">
                     <div class="slidecontainer">
                         <input type="range" min="0" max="1000" value="200" class="slider" id="drsnikDolzina"

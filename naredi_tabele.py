@@ -25,7 +25,8 @@ def daj_pravice():
     cur.execute("GRANT CONNECT ON DATABASE sem2018_ursap TO javnost;"
                 "GRANT USAGE ON SCHEMA public TO javnost;"
                 "GRANT SELECT ON ALL TABLES IN SCHEMA public TO javnost;"
-                "GRANT UPDATE, INSERT ON uporabnik, ocena_knjige, zelje, prebrane TO javnost;"
+                "GRANT UPDATE, INSERT ON uporabnik, zelje, prebrane TO javnost;"
+                "GRANT UPDATE(vsota_ocen, stevilo_ocen) ON knjiga TO javnost;"
                 "GRANT ALL ON SEQUENCE uporabnik_id_seq TO javnost;"
                 "GRANT ALL ON SCHEMA public TO ursap; "
                 "GRANT ALL ON SCHEMA public TO ninast;"
@@ -297,7 +298,7 @@ def izbrisi_vse_tabele():
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~UPORABNIKI
 uporabnik=['uporabnik',
-           """
+           """           
            CREATE TYPE spol AS ENUM('Female','Male');
            CREATE TYPE dom AS ENUM('Gryffindor','Slytherin', 'Hufflepuff','Ravenclaw');
            CREATE TABLE uporabnik (
@@ -316,21 +317,21 @@ uporabnik=['uporabnik',
             """
            ]
 
-ocena_knjige=['ocena_knjige',
-           """
-           CREATE TABLE ocena_knjige (
-               id_uporabnika INTEGER NOT NULL REFERENCES uporabnik(id),
-               id_knjige TEXT NOT NULL REFERENCES knjiga(id),
-               ocena INTEGER,
-               PRIMARY KEY(id_uporabnika, id_knjige)
-           );
-       """, """
-                INSERT INTO ocena_knjige
-                (id_uporabnika, id_knjige, ocena)
-                VALUES (%s, %s, %s)
-                RETURNING (id_uporabnika, id_knjige)
-            """
-           ]
+# ocena_knjige=['ocena_knjige',
+#            """
+#            CREATE TABLE ocena_knjige (
+#                id_uporabnika INTEGER NOT NULL REFERENCES uporabnik(id),
+#                id_knjige TEXT NOT NULL REFERENCES knjiga(id),
+#                ocena INTEGER,
+#                PRIMARY KEY(id_uporabnika, id_knjige)
+#            );
+#        """, """
+#                 INSERT INTO ocena_knjige
+#                 (id_uporabnika, id_knjige, ocena)
+#                 VALUES (%s, %s, %s)
+#                 RETURNING (id_uporabnika, id_knjige)
+#             """
+#            ]
 
 zelje=['zelje',
            """
@@ -352,12 +353,13 @@ prebrane=['prebrane',
            CREATE TABLE prebrane (
                id_uporabnika INTEGER NOT NULL REFERENCES uporabnik(id),
                id_knjige TEXT NOT NULL REFERENCES knjiga(id),
+               ocena INTEGER,
                PRIMARY KEY(id_uporabnika, id_knjige)
            );
        """, """
                 INSERT INTO prebrane
-                (id_uporabnika, id_knjige)
-                VALUES (%s, %s)
+                (id_uporabnika, id_knjige, ocena)
+                VALUES (%s, %s, %s)
                 RETURNING (id_uporabnika, id_knjige)
             """
            ]
@@ -366,8 +368,14 @@ prebrane=['prebrane',
 #ustvari_tabelo(ocena_knjige)
 #ustvari_tabelo(prebrane)
 #ustvari_tabelo(zelje)
+#pobrisi_tabelo(uporabnik)
+#pobrisi_tabelo(zelje)
+#pobrisi_tabelo(ocena_knjige)
+#pobrisi_tabelo(prebrane)
 daj_pravice()
 
 
-# ODSTRANI odvečne besede iz kljucnih_besed:
+#NAKNADNO DODANI SQL-stavki
+#UPDATE knjiga SET stevilo_ocen = COALESCE(stevilo_ocen,0)
+#UPDATE knjiga SET vsota_ocen = COALESCE(vsota_ocen,0)
 
