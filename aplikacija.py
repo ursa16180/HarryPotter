@@ -305,17 +305,26 @@ def kazalo_zanra():
 def rezultati_iskanja():
     if request.forms.get('iskaniIzrazKnjige') != '':
         iskani_izraz = request.forms.get('iskaniIzrazKnjige')
-        velik_izraz = iskani_izraz[0].upper() + iskani_izraz[1:]
-        iskani_izrazi = [' ' + iskani_izraz + ' ', ' ' + velik_izraz + ' ', ' ' + iskani_izraz + 's ', ' ' + velik_izraz + 's ']
-        vse_vrstice = []
-        for izraz in iskani_izrazi:
-            niz = ("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
+        #velik_izraz = iskani_izraz[0].upper() + iskani_izraz[1:]
+        #iskani_izrazi = [' ' + iskani_izraz + ' ', ' ' + velik_izraz + ' ', ' ' + iskani_izraz + 's ', ' ' + velik_izraz + 's ']
+        #vse_vrstice = []
+        #for izraz in iskani_izrazi:
+        #    niz = ("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
+        #       "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
+        #       "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
+        #       "WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s", ('%' + izraz + '%',))
+        #    cur.execute(niz[0], niz[1])
+        #    trenutne_vrstice = cur.fetchall()
+        #    vse_vrstice +=
+
+        niz = ("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
                "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
                "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
-               "WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s", ('%' + izraz + '%',))
-            cur.execute(niz[0], niz[1])
-            trenutne_vrstice = cur.fetchall()
-            vse_vrstice += trenutne_vrstice
+               "WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s;",
+               ('% ' + iskani_izraz + ' %',))
+        # TODO: Naredi serijo 4 nizov: Veliko, malo začetnico in z ali brez s-ja.
+        cur.execute(niz[0], niz[1])
+        vse_vrstice = cur.fetchall()
         if vse_vrstice != []:
             slovar_slovarjev_knjig = {}
             for vrstica in vse_vrstice:
@@ -357,6 +366,7 @@ def rezultati_iskanja():
 def izpis_zadetkov(x):
     [tip, stran, niz] = x.split('&')
     niz1, niz2 = niz.split(", ('")
+    #TODO: dobil bos komplet 4 nizov, popravi!
     parametri_sql = ()
     for param in niz2[:-2]. split(','):
         if param != '':
@@ -766,3 +776,6 @@ run(host='localhost', port=8080, reloader=True)
 # TODO: lepše narejena razdelitev na strani (zdej se notri pošilja cel SQL) - Vprašaj Ines
 # TODO: popravi ER diagram
 # TODO: barva napisa se pri ravenclaw ne vidi - barve linkov in ozadij
+# TODO: gumbi preberi/wishlist pri zadetkih
+# TODO: na profilu odstranjevanje iz wishlista in prebrano
+# TODO: da bo možno videti tudi strani od 10. naprej (5 prejšnjih in 5 naslednjih)
