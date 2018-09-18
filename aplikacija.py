@@ -210,7 +210,7 @@ WHERE knjiga.id =%s;""", (x,))
     if knjiga['vsota_ocen'] == 0:
         knjiga['povprecna_ocena'] = 0
     else:
-        knjiga['povprecna_ocena'] = knjiga['vsota_ocen'] / knjiga['stevilo_ocen']
+        knjiga['povprecna_ocena'] = round(knjiga['vsota_ocen'] / knjiga['stevilo_ocen'], 2)
     for vrstica in vse_vrstice:
         knjiga['avtor'].add((vrstica[8], vrstica[9]))
         knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
@@ -292,12 +292,17 @@ def kazalo_zanra():
 def rezultati_iskanja():
     if request.forms.get('iskaniIzrazKnjige') != '':
         iskani_izraz = request.forms.get('iskaniIzrazKnjige')
-        niz = ("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
+        velik_izraz = iskani_izraz[0].upper() + iskani_izraz[1:]
+        iskani_izrazi = [' ' + iskani_izraz + ' ', ' ' + velik_izraz + ' ', ' ' + iskani_izraz + 's ', ' ' + velik_izraz + 's ']
+        vse_vrstice = []
+        for izraz in iskani_izrazi:
+            niz = ("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
                "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
                "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
-               "WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s", ('%' + iskani_izraz + '%',))
-        cur.execute(niz[0], niz[1])
-        vse_vrstice = cur.fetchall()
+               "WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s", ('%' + izraz + '%',))
+            cur.execute(niz[0], niz[1])
+            trenutne_vrstice = cur.fetchall()
+            vse_vrstice += trenutne_vrstice
         if vse_vrstice != []:
             slovar_slovarjev_knjig = {}
             for vrstica in vse_vrstice:
@@ -580,12 +585,8 @@ run(host='localhost', port=8080, reloader=True)
 
 
 # TODO: gumbi prebrano, want to read
-# TODO: računanje povprečne ocene - preveri. Moralo bi bit ok s tem, kar je napisano, ampak nisem zihr
 # TODO: Strani se izpišejo v stolpec (pri iskanju) ????
 # TODO: a že išče ok besede? da ne vrača pr iskanju rat tut rattle
 # TODO: lepše narejena razdelitev na strani (zdej se notri pošilja cel SQL)
 # TODO: popravi ER diagram
-# TODO: Popravi tabelo uporabnikov za Ravenclaw
 # TODO: barva napisa se pri ravenclaw ne vidi
-# TODO: popravi % v naredi tabelo
-# TODO: povprečna ocena - da je na dve decimalki
