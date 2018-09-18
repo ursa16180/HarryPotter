@@ -13,6 +13,22 @@ tr {
 {margin: 5px;
 }
 
+.btn.btn-link.Ravenclaw{
+color: brown;
+}
+
+.btn.btn-link.Hufflepuff{
+color: black;
+}
+.btn.btn-link.Slytherin{
+color: gray;
+}
+.btn.btn-link.Gryffindor{
+color: yellow;
+}
+
+
+
 .btn-group-vertical .btn-basic
 {margin: 2px;
 white-space: normal;
