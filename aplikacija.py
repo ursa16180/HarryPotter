@@ -182,7 +182,7 @@ ORDER BY zaporedna_stevilka_serije;""", (x, ))
 @post('/knjiga/:x')
 def knjiga(x):
     cur.execute(  # SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis,
-        """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.povprecna_ocena, stevilo_ocen, leto, knjiga.opis, 
+        """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
     avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
     knjiga.url_naslovnice FROM knjiga
 LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
@@ -198,9 +198,8 @@ WHERE knjiga.id =%s;""", (x,))
               'isbn': vse_vrstice[0][1],
               'naslov': vse_vrstice[0][2],
               'dolzina': vse_vrstice[0][3],
-              # 'vsota_ocen': vse_vrstice[0][4],
+              'vsota_ocen': vse_vrstice[0][4],
               'stevilo_ocen': vse_vrstice[0][5],
-              'povprecna_ocena': vse_vrstice[0][4],  # vsota_ocen / stevilo_ocen,
               'leto': vse_vrstice[0][6],
               'opis': vse_vrstice[0][7],
               'avtor': set(),
@@ -208,6 +207,10 @@ WHERE knjiga.id =%s;""", (x,))
               'kljucna_beseda': set(),
               'zanri': set(),
               'url_naslovnice': vse_vrstice[0][15]}
+    if knjiga['vsota_ocen'] == 0:
+        knjiga['povprecna_ocena'] = 0
+    else:
+        knjiga['povprecna_ocena'] = knjiga['vsota_ocen'] / knjiga['stevilo_ocen']
     for vrstica in vse_vrstice:
         knjiga['avtor'].add((vrstica[8], vrstica[9]))
         knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
@@ -223,29 +226,34 @@ WHERE knjiga.id =%s;""", (x,))
                     (trenutni_uporabnik[0], knjiga['id']))
         prebrano = len(cur.fetchall()) > 0
     if prebrano:
-        cur.execute("SELECT ocena FROM ocena_knjige WHERE id_uporabnika=%s AND id_knjige=%s;",
+        cur.execute("SELECT ocena FROM prebrane WHERE id_uporabnika=%s AND id_knjige=%s;",
                     (trenutni_uporabnik[0], knjiga['id']))
         stara_ocena = cur.fetchone()
+        stara_ocena = stara_ocena[0]
         nova_ocena = request.forms.get('ocena')
-
         if stara_ocena is not None:
             # knjigo je uporabnik že ocenil, preverimo, ali je oceno spremenil:
-            if stara_ocena[0] != nova_ocena:
-                cur.execute("UPDATE ocena_knjige SET ocena = %s WHERE id_knjige= %s AND id_uporabnika=%s;",
+            if nova_ocena is None:
+                nova_ocena = stara_ocena
+            elif stara_ocena != int(nova_ocena):
+                #print(knjiga['vsota_ocen'], nova_ocena, stara_ocena)
+                cur.execute("UPDATE prebrane SET ocena = %s WHERE id_knjige = %s AND id_uporabnika = %s;",
                             (nova_ocena, knjiga['id'], trenutni_uporabnik[0]))
-                # cur.execute("UPDATE knjiga SET vsota_ocen = %s WHERE id=%s;",
-                #             (knjiga['vsota_ocen'] + nova_ocena - stara_ocena, knjiga['id']))
+                nova_vsota_ocen = knjiga['vsota_ocen'] + int(nova_ocena) - stara_ocena
+                cur.execute("UPDATE knjiga SET vsota_ocen = %s WHERE id = %s;",
+                            (nova_vsota_ocen, knjiga['id']))
                 conn.commit()
             ocena_uporabnika = int(nova_ocena)
         else:
             if nova_ocena is not None:
+                nova_ocena = int(nova_ocena)
                 # uporabnik je knjigo na novo ocenil
-                cur.execute("INSERT INTO ocena_knjige (ocena, id_knjige, id_uporabnika) VALUES (%s, %s, %s);",
-                            (nova_ocena, knjiga['id'], trenutni_uporabnik[0]))
-                # cur.execute("UPDATE knjiga SET vsota_ocen = %s, stevilo_ocen = %s WHERE id=%s;",
-                #             (knjiga['vsota_ocen'] + nova_ocena - stara_ocena, knjiga['stevilo_ocen'] + 1, knjiga['id']))
+                cur.execute("UPDATE prebrane SET ocena = %s WHERE id_knjige = %s AND id_uporabnika = %s;",
+                           (nova_ocena, knjiga['id'], trenutni_uporabnik[0]))
+                cur.execute("UPDATE knjiga SET vsota_ocen = %s, stevilo_ocen = %s WHERE id = %s;",
+                            (knjiga['vsota_ocen'] + nova_ocena, knjiga['stevilo_ocen'] + 1, knjiga['id']))
                 conn.commit()
-                ocena_uporabnika = int(nova_ocena)
+                ocena_uporabnika = nova_ocena
             else:
                 ocena_uporabnika = None
     else:
@@ -577,3 +585,7 @@ run(host='localhost', port=8080, reloader=True)
 # TODO: a že išče ok besede? da ne vrača pr iskanju rat tut rattle
 # TODO: lepše narejena razdelitev na strani (zdej se notri pošilja cel SQL)
 # TODO: popravi ER diagram
+# TODO: Popravi tabelo uporabnikov za Ravenclaw
+# TODO: barva napisa se pri ravenclaw ne vidi
+# TODO: popravi % v naredi tabelo
+# TODO: povprečna ocena - da je na dve decimalki
