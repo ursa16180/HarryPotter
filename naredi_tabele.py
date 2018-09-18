@@ -25,7 +25,7 @@ def daj_pravice():
     cur.execute("GRANT CONNECT ON DATABASE sem2018_ursap TO javnost;"
                 "GRANT USAGE ON SCHEMA public TO javnost;"
                 "GRANT SELECT ON ALL TABLES IN SCHEMA public TO javnost;"
-                "GRANT UPDATE, INSERT ON uporabnik, zelje, prebrane TO javnost;"
+                "GRANT UPDATE, INSERT, DELETE ON uporabnik, zelje, prebrane TO javnost;"
                 "GRANT UPDATE(vsota_ocen, stevilo_ocen) ON knjiga TO javnost;"
                 "GRANT ALL ON SEQUENCE uporabnik_id_seq TO javnost;"
                 "GRANT ALL ON SCHEMA public TO ursap; "
