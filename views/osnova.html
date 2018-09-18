@@ -73,7 +73,7 @@
             %else:
             <!--TODO barva napisa se pri ravenclaw ne vidi-->
             <form action="/profile/{{uporabnik[0]}}" method="POST">
-                <input type="submit" class="btn btn-link" value="{{uporabnik[1]}}">
+                <input type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{uporabnik[1]}}">
             </form>
             <form action="/odjava" method="GET">
                 <div class="p-3 {{barva}}">
