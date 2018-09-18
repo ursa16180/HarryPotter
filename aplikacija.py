@@ -451,7 +451,8 @@ WHERE knjiga.id =%s;""", (x,))
                         knjiga=knjiga, ocena=None, prebrano=False, zelja=True)
     # ~~~~~~~~~~~~~~~~~~~ GUMBI PREBRANO / WISHLIST ~~~~~~~~~~~~~~~~~~~~~~
 
-    cur.execute("""INSERT TO zelje (id_uporabnika, id_knjige) VALUES (%s,%s)""", (trenutni_uporabnik[0], x))
+
+    cur.execute("""INSERT INTO zelje (id_uporabnika, id_knjige) VALUES (%s,%s)""", (trenutni_uporabnik[0], x))
     conn.commit()
 
     return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
@@ -557,8 +558,9 @@ WHERE knjiga.id =%s;""", (x,))
                         knjiga=knjiga, ocena=None, prebrano=True, zelja=False)
     # ~~~~~~~~~~~~~~~~~~~ GUMBI PREBRANO / WISHLIST ~~~~~~~~~~~~~~~~~~~~~~
 
-    cur.execute("""DELETE FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s);
-    INSERT TO prebrano (id_uporabnika, id_knjige, ocena) VALUES (%s, %s, %s)""", (trenutni_uporabnik[0], x, None))
+    cur.execute("""DELETE FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s;
+    INSERT INTO prebrane (id_uporabnika, id_knjige, ocena) VALUES (%s, %s, %s)""", (trenutni_uporabnik[0], x, trenutni_uporabnik[0], x, None))
+
     conn.commit()
 
     return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,

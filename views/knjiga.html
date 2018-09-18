@@ -55,12 +55,12 @@
     %if not prebrano and zelja:
     <!--Dodaj gumb read in remove from Wishlist-->
     <div class="col-2">
-        <form action="/remove_wishlist" method="POST">
+        <form action="/remove_wishlist/{{knjiga['id']}}" method="POST">
             <b><input type="submit" class="btn btn-success btn-sm" value="Remove from wishlist"></b>
         </form>
     </div>
     <div class="col-2">
-        <form action="/read" method="POST">
+        <form action="/read/{{knjiga['id']}}" method="POST">
             <b><input type="submit" class="btn btn-success btn-sm" value="Read"></b>
         </form>
 
@@ -70,12 +70,12 @@
     %if not prebrano and not zelja:
     <!--Dodaj gumb "preberi" in add to Wishlist-->
     <div class="col-2">
-        <form action="/add_wishlist" method="POST">
+        <form action="/add_wishlist/{{knjiga['id']}}" method="POST">
             <b><input type="submit" class="btn btn-success btn-sm" value="Add to wishlist"></b>
         </form>
     </div>
     <div class="col-2">
-        <form action="/read" method="POST">
+        <form action="/read/{{knjiga['id']}}" method="POST">
             <b><input type="submit" class="btn btn-success btn-sm" value="Read"></b>
         </form>
 
