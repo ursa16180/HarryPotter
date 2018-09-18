@@ -219,12 +219,25 @@ WHERE knjiga.id =%s;""", (x,))
 
     trenutni_uporabnik = uporabnik()
 
+    # ~~~~~~~~~~~~~~~~~~~ GUMBI PREBRANO / WISHLIST ~~~~~~~~~~~~~~~~~~~~~~
+
     if trenutni_uporabnik[1] is None:
         prebrano = False
+        zelja = False
     else:
         cur.execute("SELECT id_knjige FROM prebrane WHERE id_uporabnika=%s AND id_knjige=%s;",
                     (trenutni_uporabnik[0], knjiga['id']))
         prebrano = len(cur.fetchall()) > 0
+        cur.execute("SELECT id_knjige FROM zelje WHERE id_uporabnika=%s AND id_knjige=%s;",
+                    (trenutni_uporabnik[0], knjiga['id']))
+        zelja = len(cur.fetchall()) > 0
+
+        if not prebrano:
+            request.forms.get('')
+
+    # ~~~~~~~~~~~~~~~~~~ OCENE ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
     if prebrano:
         cur.execute("SELECT ocena FROM prebrane WHERE id_uporabnika=%s AND id_knjige=%s;",
                     (trenutni_uporabnik[0], knjiga['id']))
@@ -260,7 +273,7 @@ WHERE knjiga.id =%s;""", (x,))
         # uporabnik knjige še ni prebral, ali nihče ni vpisan
         ocena_uporabnika = None
     return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
-                    knjiga=knjiga, ocena=ocena_uporabnika, prebrano=prebrano)
+                    knjiga=knjiga, ocena=ocena_uporabnika, prebrano=prebrano, zelja=zelja)
 
 
 @post('/kazaloAvtorja')
@@ -389,6 +402,154 @@ def izpis_zadetkov(x):
                 zadetki_avtorjev[id] = trenutni_avtor
             return template('izpis_zadetkov_avtorjev.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
                             uporabnik=uporabnik(), avtorji=list(zadetki_avtorjev.values()), stran=stran, poizvedba=niz)
+
+
+@post('/add_wishlist/:x')
+def dodaj_zeljo(x):
+    cur.execute(  # SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis,
+        """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
+    avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
+    knjiga.url_naslovnice FROM knjiga
+LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
+LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
+LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
+LEFT JOIN serija ON serija.id=del_serije.id_serije
+LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
+LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
+LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
+WHERE knjiga.id =%s;""", (x,))
+    vse_vrstice = cur.fetchall()
+    knjiga = {'id': vse_vrstice[0][0],
+              'isbn': vse_vrstice[0][1],
+              'naslov': vse_vrstice[0][2],
+              'dolzina': vse_vrstice[0][3],
+              'vsota_ocen': vse_vrstice[0][4],
+              'stevilo_ocen': vse_vrstice[0][5],
+              'leto': vse_vrstice[0][6],
+              'opis': vse_vrstice[0][7],
+              'avtor': set(),
+              'serija': set(),
+              'kljucna_beseda': set(),
+              'zanri': set(),
+              'url_naslovnice': vse_vrstice[0][15]}
+    if knjiga['vsota_ocen'] == 0:
+        knjiga['povprecna_ocena'] = 0
+    else:
+        knjiga['povprecna_ocena'] = round(knjiga['vsota_ocen'] / knjiga['stevilo_ocen'], 2)
+    for vrstica in vse_vrstice:
+        knjiga['avtor'].add((vrstica[8], vrstica[9]))
+        knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
+        knjiga['kljucna_beseda'].add(vrstica[13])
+        knjiga['zanri'].add(vrstica[14])
+
+    trenutni_uporabnik = uporabnik()
+
+    # ~~~~~~~~~~~~~~~~~~~ GUMBI PREBRANO / WISHLIST ~~~~~~~~~~~~~~~~~~~~~~
+
+    cur.execute("""INSERT TO zelje (id_uporabnika, id_knjige) VALUES (%s,%s)""", (trenutni_uporabnik[0], x))
+    cur.commit()
+
+    return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                    knjiga=knjiga, ocena=None, prebrano=False, zelja=True)
+
+
+@post('/remove_wishlist/:x')
+def odstrani_zeljo(x):
+    cur.execute(
+        """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
+    avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
+    knjiga.url_naslovnice FROM knjiga
+LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
+LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
+LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
+LEFT JOIN serija ON serija.id=del_serije.id_serije
+LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
+LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
+LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
+WHERE knjiga.id =%s;""", (x,))
+    vse_vrstice = cur.fetchall()
+    knjiga = {'id': vse_vrstice[0][0],
+              'isbn': vse_vrstice[0][1],
+              'naslov': vse_vrstice[0][2],
+              'dolzina': vse_vrstice[0][3],
+              'vsota_ocen': vse_vrstice[0][4],
+              'stevilo_ocen': vse_vrstice[0][5],
+              'leto': vse_vrstice[0][6],
+              'opis': vse_vrstice[0][7],
+              'avtor': set(),
+              'serija': set(),
+              'kljucna_beseda': set(),
+              'zanri': set(),
+              'url_naslovnice': vse_vrstice[0][15]}
+    if knjiga['vsota_ocen'] == 0:
+        knjiga['povprecna_ocena'] = 0
+    else:
+        knjiga['povprecna_ocena'] = round(knjiga['vsota_ocen'] / knjiga['stevilo_ocen'], 2)
+    for vrstica in vse_vrstice:
+        knjiga['avtor'].add((vrstica[8], vrstica[9]))
+        knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
+        knjiga['kljucna_beseda'].add(vrstica[13])
+        knjiga['zanri'].add(vrstica[14])
+
+    trenutni_uporabnik = uporabnik()
+
+    # ~~~~~~~~~~~~~~~~~~~ GUMBI PREBRANO / WISHLIST ~~~~~~~~~~~~~~~~~~~~~~
+
+    cur.execute("""DELETE FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s)""", (trenutni_uporabnik[0], x))
+    cur.commit()
+
+    return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                    knjiga=knjiga, ocena=None, prebrano=False, zelja=False)
+
+
+@post('/read/:x')
+def odstrani_zeljo(x):
+    cur.execute(
+        """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
+    avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
+    knjiga.url_naslovnice FROM knjiga
+LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
+LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
+LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
+LEFT JOIN serija ON serija.id=del_serije.id_serije
+LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
+LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
+LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
+WHERE knjiga.id =%s;""", (x,))
+    vse_vrstice = cur.fetchall()
+    knjiga = {'id': vse_vrstice[0][0],
+              'isbn': vse_vrstice[0][1],
+              'naslov': vse_vrstice[0][2],
+              'dolzina': vse_vrstice[0][3],
+              'vsota_ocen': vse_vrstice[0][4],
+              'stevilo_ocen': vse_vrstice[0][5],
+              'leto': vse_vrstice[0][6],
+              'opis': vse_vrstice[0][7],
+              'avtor': set(),
+              'serija': set(),
+              'kljucna_beseda': set(),
+              'zanri': set(),
+              'url_naslovnice': vse_vrstice[0][15]}
+    if knjiga['vsota_ocen'] == 0:
+        knjiga['povprecna_ocena'] = 0
+    else:
+        knjiga['povprecna_ocena'] = round(knjiga['vsota_ocen'] / knjiga['stevilo_ocen'], 2)
+    for vrstica in vse_vrstice:
+        knjiga['avtor'].add((vrstica[8], vrstica[9]))
+        knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
+        knjiga['kljucna_beseda'].add(vrstica[13])
+        knjiga['zanri'].add(vrstica[14])
+
+    trenutni_uporabnik = uporabnik()
+
+    # ~~~~~~~~~~~~~~~~~~~ GUMBI PREBRANO / WISHLIST ~~~~~~~~~~~~~~~~~~~~~~
+
+    cur.execute("""DELETE FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s);
+    INSERT TO prebrano (id_uporabnika, id_knjige, ocena) VALUES (%s, %s, %s)""", (trenutni_uporabnik[0], x, None))
+    cur.commit()
+
+    return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                    knjiga=knjiga, ocena=None, prebrano=True, zelja=False)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~UPORABNIKI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -543,6 +704,8 @@ def spremeni():
     return template('profile.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(), prebrane=prebrane,
                     zelje=zelje)
 
+
+
 ######################################################################
 # Glavni program
 
@@ -590,3 +753,4 @@ run(host='localhost', port=8080, reloader=True)
 # TODO: lepše narejena razdelitev na strani (zdej se notri pošilja cel SQL)
 # TODO: popravi ER diagram
 # TODO: barva napisa se pri ravenclaw ne vidi
+# TODO: če je prebrana knjiga, jo odstrani iz wishlista
