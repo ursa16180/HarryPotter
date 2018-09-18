@@ -2,34 +2,52 @@
 
 <div class="row">
     <div class="col">
-        {{uporabnik[1]}}
-
-      <div class="btn-group-vertical">
-        <br/>
-            Read books:
-            %for knjiga in prebrane:
-                <form action="/knjiga/{{knjiga[0]}}" method="POST">
-                    <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
-
-                </form>
-            %end
-    </div>
-
-      <div class="btn-group-vertical">
-        <br/>
-            Wishlist:
-            %for knjiga in zelje:
-                <form action="/knjiga/{{knjiga[0]}}" method="POST">
-                    <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
-
-                </form>
-            %end
-      </div>
-
+        Welcome {{uporabnik[1]}} to you common room!
+    </br>
+        If you wish you can transfigure yourself here:
         <form action="/spremeni_profil" method="GET">
                 <div class="p-3">
                     <b><input type="submit" class="btn btn-success btn-sm" value="Change profile"></b>
                 </div>
         </form>
+
+    </div>
+</div>
+
+<div class="row">
+       <div class="col">
+      <div class="btn-group-vertical">
+        <br/>Books you have already read:
+            %if prebrane == []:
+                </br>You have not read any books yet.
+            %else:
+
+                %for knjiga in prebrane:
+                    <form action="/knjiga/{{knjiga[0]}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
+
+                    </form>
+                %end
+            %end
+    </div>
+       </div>
+    <div class="col">
+      <div class="btn-group-vertical">
+        <br/>
+            Books you wish to read:
+            %if zelje == []:
+                </br>You apparently drank Felix Felices, so there are no wishes left...
+            %else:
+                BU
+                %for knjiga in zelje:
+                    <form action="/knjiga/{{knjiga[0]}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
+
+                    </form>
+                %end
+            %end
+      </div>
+
+
     </div>
 </div>
