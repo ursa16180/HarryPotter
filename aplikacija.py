@@ -444,10 +444,15 @@ WHERE knjiga.id =%s;""", (x,))
 
     trenutni_uporabnik = uporabnik()
 
+    cur.execute("""SELECT * FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
+    zelja = len(cur.fetchall()) > 0
+    if zelja:
+        return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                        knjiga=knjiga, ocena=None, prebrano=False, zelja=True)
     # ~~~~~~~~~~~~~~~~~~~ GUMBI PREBRANO / WISHLIST ~~~~~~~~~~~~~~~~~~~~~~
 
     cur.execute("""INSERT TO zelje (id_uporabnika, id_knjige) VALUES (%s,%s)""", (trenutni_uporabnik[0], x))
-    cur.commit()
+    conn.commit()
 
     return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
                     knjiga=knjiga, ocena=None, prebrano=False, zelja=True)
@@ -492,18 +497,22 @@ WHERE knjiga.id =%s;""", (x,))
         knjiga['zanri'].add(vrstica[14])
 
     trenutni_uporabnik = uporabnik()
-
+    cur.execute("""SELECT * FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
+    zelja = len(cur.fetchall()) > 0
+    if not zelja:
+        return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                        knjiga=knjiga, ocena=None, prebrano=False, zelja=False)
     # ~~~~~~~~~~~~~~~~~~~ GUMBI PREBRANO / WISHLIST ~~~~~~~~~~~~~~~~~~~~~~
 
-    cur.execute("""DELETE FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s)""", (trenutni_uporabnik[0], x))
-    cur.commit()
+    cur.execute("""DELETE FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s""", (trenutni_uporabnik[0], x))
+    conn.commit()
 
     return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
                     knjiga=knjiga, ocena=None, prebrano=False, zelja=False)
 
 
 @post('/read/:x')
-def odstrani_zeljo(x):
+def prebral(x):
     cur.execute(
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
     avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
@@ -541,12 +550,16 @@ WHERE knjiga.id =%s;""", (x,))
         knjiga['zanri'].add(vrstica[14])
 
     trenutni_uporabnik = uporabnik()
-
+    cur.execute("""SELECT * FROM prebrane WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
+    prebrano = len(cur.fetchall()) > 0
+    if prebrano:
+        return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                        knjiga=knjiga, ocena=None, prebrano=True, zelja=False)
     # ~~~~~~~~~~~~~~~~~~~ GUMBI PREBRANO / WISHLIST ~~~~~~~~~~~~~~~~~~~~~~
 
     cur.execute("""DELETE FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s);
     INSERT TO prebrano (id_uporabnika, id_knjige, ocena) VALUES (%s, %s, %s)""", (trenutni_uporabnik[0], x, None))
-    cur.commit()
+    conn.commit()
 
     return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
                     knjiga=knjiga, ocena=None, prebrano=True, zelja=False)
@@ -747,10 +760,7 @@ for vrstica in kljucne_iz_baze:
 run(host='localhost', port=8080, reloader=True)
 
 
-# TODO: gumbi prebrano, want to read
 # TODO: Strani se izpišejo v stolpec (pri iskanju) ????
-# TODO: a že išče ok besede? da ne vrača pr iskanju rat tut rattle
-# TODO: lepše narejena razdelitev na strani (zdej se notri pošilja cel SQL)
+# TODO: lepše narejena razdelitev na strani (zdej se notri pošilja cel SQL) - Vprašaj Ines
 # TODO: popravi ER diagram
-# TODO: barva napisa se pri ravenclaw ne vidi
-# TODO: če je prebrana knjiga, jo odstrani iz wishlista
+# TODO: barva napisa se pri ravenclaw ne vidi - barve linkov in ozadij
