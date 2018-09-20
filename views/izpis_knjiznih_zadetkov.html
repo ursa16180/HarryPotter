@@ -1,7 +1,5 @@
 %rebase('osnova.html', naslov='Izpis knjig')
-%# TODO: bug pri iskanju npr. besede Dear, Dawn, Cen... pri kakšnih dela ok. npr. Harry, Boo, Ring ...
 
-% print(len(knjige))
 <div class="row px-4">
     <!--%if len(knjige)%100 == 1:-->
     <!--ustreza {{len(knjige)}} knjiga.-->
@@ -30,37 +28,47 @@
 </div>
 % if len(knjige) > 10:
     <nav aria-label="Page navigation example">
-      <ul class="pagination">
-          %if stran != 1:
-            <li class="page-item">
-              <form action="/izpis_zadetkov/knjiga&{{int(stran)-1}}&{{poizvedba}}" method="GET">
-                  <p><input type="submit" class="btn btn-link" value="<<">
-                  </p>
-              </form>
-            </li>
-          %end
-          %for i in range(1, min((len(knjige)-1)//10 + 2, 11)):
-             <li class="page-item">
-                 <form action="/izpis_zadetkov/knjiga&{{str(i)}}&{{poizvedba}}" method="GET">
-                         <input type="submit" class="btn btn-link" value="{{i}}">
-                 </form>
-             </li>
-          %end
-          %if len(knjige) > 100:
-            <li class="page-item">
-              ...
-            </li>
-%end
-          %if int(stran)*10 < len(knjige):
-            <li class="page-item">
-              <form action="/izpis_zadetkov/knjiga&{{int(stran)+1}}&{{poizvedba}}" method="GET">
-                                    %print('ulala')
-                  <p><input type="submit" class="btn btn-link" value=">>">
-                  </p>
-              </form>
-            </li>
-          %end
-      </ul>
+        <ul class="pagination">
+            %if stran != 1:
+                <li class="page-item">
+                    <form action="/izpis_zadetkov/knjiga&{{int(stran)-1}}&{{idji}}" method="GET">
+                        <p><input type="submit" class="btn btn-link" value="<<">
+                        </p>
+                    </form>
+                </li>
+            %end
+            %zadnja = len(knjige)//10
+            %if len(knjige)% 10 != 0:
+            %    zadnja += 1
+            %end
+            %zacetna = max(1, int(stran) - 4)
+            %koncna = min(int(stran) + 5, zadnja +1)
+            %for i in range(zacetna, koncna):
+                <li class="page-item">
+                    <form action="/izpis_zadetkov/knjiga&{{str(i)}}&{{idji}}" method="GET">
+                        <input type="submit" class="btn btn-link" value="{{i}}">
+                    </form>
+                </li>
+            %end
+            %if koncna < zadnja:
+                <li class="page-item">
+                    ...
+                </li>
+                <li class="page-item">
+                    <form action="/izpis_zadetkov/knjiga&{{zadnja}}&{{idji}}" method="GET">
+                        <input type="submit" class="btn btn-link" value="{{zadnja}}">
+                    </form>
+                </li>
+            %end
+            %if int(stran)*10 < len(knjige):
+                <li class="page-item">
+                    <form action="/izpis_zadetkov/knjiga&{{int(stran)+1}}&{{idji}}" method="GET">
+                        <p><input type="submit" class="btn btn-link" value=">>">
+                        </p>
+                    </form>
+                </li>
+            %end
+        </ul>
     </nav>
 %end
 
@@ -102,7 +110,6 @@
                         %end
                     </div>
                 %end
-            <!--<br/>-->
             </div>
         </div>
     </div>
@@ -111,35 +118,46 @@
 
 % if len(knjige) > 10:
     <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        %if stran != 1:
-            <li class="page-item">
-              <form action="/izpis_zadetkov/knjiga&{{int(stran)-1}}&{{poizvedba}}" method="GET">
-                  <p><input type="submit" class="btn btn-link" value="<<">
-                  </p>
-              </form>
-            </li>
-          %end
-          %for i in range(1, min((len(knjige)-1)//10 + 2, 11)):
-             <li class="page-item">
-                 <form action="/izpis_zadetkov/knjiga&{{str(i)}}&{{poizvedba}}" method="GET">
-                         <input type="submit" class="btn btn-link" value="{{i}}">
-                 </form>
-             </li>
-          %end
-          %if len(knjige) > 100:
-            <li class="page-item">
-              ...
-            </li>
-%end
-          %if int(stran)*10 < len(knjige):
-            <li class="page-item">
-              <form action="/izpis_zadetkov/knjiga&{{int(stran)+1}}&{{poizvedba}}" method="GET">
-                  <p><input type="submit" class="btn btn-link" value=">>">
-                  </p>
-              </form>
-            </li>
-          %end
-      </ul>
+        <ul class="pagination">
+            %if stran != 1:
+                <li class="page-item">
+                    <form action="/izpis_zadetkov/knjiga&{{int(stran)-1}}&{{idji}}" method="GET">
+                        <p><input type="submit" class="btn btn-link" value="<<">
+                        </p>
+                    </form>
+                </li>
+            %end
+            %zadnja = len(knjige)//10
+            %if len(knjige)% 10 != 0:
+            %    zadnja += 1
+            %end
+            %zacetna = max(1, int(stran) - 4)
+            %koncna = min(int(stran) + 5, zadnja +1)
+            %for i in range(zacetna, koncna):
+                <li class="page-item">
+                    <form action="/izpis_zadetkov/knjiga&{{str(i)}}&{{idji}}" method="GET">
+                        <input type="submit" class="btn btn-link" value="{{i}}">
+                    </form>
+                </li>
+            %end
+            %if koncna < zadnja:
+                <li class="page-item">
+                    ...
+                </li>
+                <li class="page-item">
+                    <form action="/izpis_zadetkov/knjiga&{{zadnja}}&{{idji}}" method="GET">
+                        <input type="submit" class="btn btn-link" value="{{zadnja}}">
+                    </form>
+                </li>
+            %end
+            %if int(stran)*10 < len(knjige):
+                <li class="page-item">
+                    <form action="/izpis_zadetkov/knjiga&{{int(stran)+1}}&{{idji}}" method="GET">
+                        <p><input type="submit" class="btn btn-link" value=">>">
+                        </p>
+                    </form>
+                </li>
+            %end
+        </ul>
     </nav>
 %end
