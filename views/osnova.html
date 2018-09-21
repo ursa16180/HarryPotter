@@ -141,18 +141,18 @@
                 <div class="collapse" id="skupineKljucnihBesed">
                     <div class="card card-body">
                         %for (skupina, besede) in vseKljucne.items():
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target=#{{skupina}}
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{skupina}}"
                                 aria-expanded="true" aria-controls={{skupina}}>
                             {{skupina}}
                         </button>
-                        <div id={{skupina}} class="collapse">
+                        <div id="#{{skupina}}" class="collapse">
                             <div class="card card-body">
                                 <div class="form-group">
                                     %for beseda in besede:
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="{{beseda}}" id={{beseda}}
+                                        <input class="form-check-input" type="checkbox" value="{{beseda}}" id="{{beseda}}"
                                                name="kljucne_besede">
-                                        <label class="form-check-label" for={{beseda}}>
+                                        <label class="form-check-label" for="{{beseda}}">
                                             {{beseda}}
                                         </label>
                                     </div>
@@ -176,9 +176,9 @@
                         <div class="form-group">
                             %for zanr in zanri:
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="{{zanr}}" id={{zanr}}
+                                <input class="form-check-input" type="checkbox" value="{{zanr}}" id="{{zanr}}"
                                        name="zanri">
-                                <label class="form-check-label" for={{zanr}}>
+                                <label class="form-check-label" for="{{zanr}}">
                                     {{zanr}}
                                 </label>
                             </div>

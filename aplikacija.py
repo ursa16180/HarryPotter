@@ -110,7 +110,7 @@ def iskanje_get():
             slovar_slovarjev_knjig[id] = trenutna_knjiga
         return template('izpis_knjiznih_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                         knjige=list(slovar_slovarjev_knjig.values()), stran=1,
-                        poizvedba=(niz, parametri_sql), parametri=parametri)
+                        idji=[int(x) for x in list(slovar_slovarjev_knjig.keys())], parametri=parametri)
 
 
 @post('/avtor/:x')
@@ -304,18 +304,6 @@ def kazalo_zanra():
 def rezultati_iskanja():
     if request.forms.get('iskaniIzrazKnjige') != '':
         iskani_izraz = request.forms.get('iskaniIzrazKnjige')
-        #velik_izraz = iskani_izraz[0].upper() + iskani_izraz[1:]
-        #iskani_izrazi = [' ' + iskani_izraz + ' ', ' ' + velik_izraz + ' ', ' ' + iskani_izraz + 's ', ' ' + velik_izraz + 's ']
-        #vse_vrstice = []
-        #for izraz in iskani_izrazi:
-        #    niz = ("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
-        #       "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
-        #       "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
-        #       "WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s", ('%' + izraz + '%',))
-        #    cur.execute(niz[0], niz[1])
-        #    trenutne_vrstice = cur.fetchall()
-        #    vse_vrstice +=
-
         nizi = [("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
                  "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
                  "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
