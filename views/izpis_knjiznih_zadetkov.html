@@ -26,6 +26,7 @@
     <br/>
 
 </div>
+<div class="row px-4">
 % if len(knjige) > 10:
     <nav aria-label="Page navigation example">
         <ul class="pagination">
@@ -71,19 +72,34 @@
         </ul>
     </nav>
 %end
-
+</div>
+<hr/>
 %for knjiga in knjige[(int(stran)-1)*10 : int(stran)*10]:
     <div class="row px-4">
         <div class="col-2">
             <img src="{{knjiga['url_naslovnice']}}" align="center" class="img-thumbnail"/>
         </div>
-        <div class="col">
-            <div class="btn-group-vertical">
-            <!--<br/>-->
+        <div class="col-10">
+
+
+            <div class="row">
+
+            <div class="col-8">
                 <form action="/knjiga/{{knjiga['id']}}" method="POST">
                     <b><input type="submit" class="btn btn-basic" value="{{knjiga['naslov']}}"></b>
 
                 </form>
+            </div>
+                <div class="col-2">
+                    TODO Add to wislist
+                </div>
+                <div class="col-2">
+                    TODO Read
+                </div>
+            </div>
+
+
+                <div class="row">
                 %if knjiga['avtorji']!={None}:
                     %if len(knjiga['avtorji'])==1:
                         Avtor:
@@ -91,29 +107,34 @@
                     %if len(knjiga['avtorji'])>1:
                         Avtorji:
                     %end
+                    <div class="btn-group">
                     %for avtor in knjiga['avtorji']:
                         <form action="/avtor/{{avtor[0]}}" method="POST">
                              <p><input type="submit" class="btn btn-link" value="{{avtor[1]}}">
                             </p>
                         </form>
                     %end
+                    </div>
+
                 %end
+                </div>
+                <div class="row">
                 %if knjiga['zanri']!={None}:
                     Žanri:
                     <div class="btn-group">
                         %for zanr in knjiga['zanri']:
                             <form action="/zanr/{{zanr}}" method="POST">
-                                <p><input type="submit" class="btn btn-link" value="{{zanr}}">
-                                </p>
+                                <input type="submit" class="btn btn-link" value="{{zanr}}">
+
                             </form>
 
                         %end
                     </div>
                 %end
             </div>
+            </div>
         </div>
-    </div>
-    <hr />
+<hr/>
 %end
 
 % if len(knjige) > 10:

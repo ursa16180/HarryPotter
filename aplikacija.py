@@ -148,10 +148,10 @@ def zanr(x):
     cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra=%s;", (x,))
     zanr = cur.fetchone()
     cur.execute("SELECT id, naslov FROM knjiga JOIN zanr_knjige ON knjiga.id = zanr_knjige.id_knjige WHERE zanr=%s "
-                "ORDER BY knjiga.povprecna_ocena DESC LIMIT 50;", (x,))
+                "ORDER BY knjiga.stevilo_ocen DESC LIMIT 50;", (x,)) #TODO da razvrsti najboljše in ne najpopularnejše
     knjige = cur.fetchall()
     cur.execute("SELECT avtor.id, avtor.ime FROM avtor JOIN avtorjev_zanr ON avtor.id = avtorjev_zanr.id "
-                "WHERE avtorjev_zanr.zanr=%s;", (x,))
+                "WHERE avtorjev_zanr.zanr=%s ORDER BY avtor.povprecna_ocena DESC LIMIT 50;", (x,)) #TODO omejeno število avtorjev za posamezn žanr
     avtorji = cur.fetchall()
     return template('zanr.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                     zanr=zanr, knjige=knjige, avtorji=avtorji)
