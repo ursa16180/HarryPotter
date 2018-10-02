@@ -54,8 +54,8 @@ white-space: normal;
     width: 70%;
 }
 
-.pagination li {
-  display:inline-block;
+.pagination {
+  display:inline-flex;
   padding:5px;
 }
 
