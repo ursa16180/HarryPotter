@@ -38,6 +38,8 @@
 %grb = "../static/bradavicarka_logo.png"
 %end
 
+
+
 <div class="container-fluid {{barva}}">
     <div class="row">
         <div class="col-3">
@@ -119,17 +121,30 @@
     </div>
 </div>
 
+% if 'iskane_strani' not in globals():
+%   iskane_strani = 200
+% end
+% if 'iskane_kljucne' not in globals():
+%   iskane_kljucne = []
+% end
+% if 'iskani_zanri' not in globals():
+%   iskani_zanri = []
+% end
+% if 'iskano_zbirka' not in globals():
+%   iskano_zbirka = 'Either way'
+% end
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-3  bg-secondary">
             <br/>
             <div class="row px-3">
-            <form action="/isci" method="POST">
+            <form action="/isci/" method="POST">
                 <p class="text-primary"><b>Bookfinder</b></p>
+
                 <div class="form-group">
                     <div class="slidecontainer">
-                        <input type="range" min="0" max="1000" value="200" class="slider" id="drsnikDolzina"
+                        <input type="range" min="0" max="1000" value="{{iskane_strani}}" class="slider" id="drsnikDolzina"
                                name="dolzinaInput" onchange="spremembaDrsnika(this.value)">
                         <br/>
                         The book should have at least <span id="vrednostDrsnika">200</span> pages.
@@ -156,7 +171,11 @@
                                     %for beseda in besede:
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="{{beseda}}" id="{{beseda}}"
-                                               name="kljucne_besede">
+                                               name="kljucne_besede"
+                                               %if beseda in iskane_kljucne:
+                                               checked
+                                               %end
+                                        >
                                         <label class="form-check-label" for="{{beseda}}">
                                             {{beseda}}
                                         </label>
@@ -182,7 +201,11 @@
                             %for zanr in zanri:
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="{{zanr}}" id="{{zanr}}"
-                                       name="zanri">
+                                       name="zanri"
+                                    %if zanr in iskani_zanri:
+                                               checked
+                                               %end
+                                >
                                 <label class="form-check-label" for="{{zanr}}">
                                     {{zanr}}
                                 </label>
@@ -194,10 +217,23 @@
 
                 <div class="form-group">
                     <label for="zbirka">Part of series</label>
+
                     <select id="zbirka" class="form-control" name="zbirka" required>
+                        % if iskano_zbirka != 'Either way':
+                        <option>Either way</option>
+                        %else:
                         <option selected>Either way</option>
+                        %end
+                        % if iskano_zbirka != 'Yes':
                         <option>Yes</option>
+                        %else:
+                        <option selected>Yes</option>
+                        %end
+                         % if iskano_zbirka != 'No':
                         <option>No</option>
+                        %else:
+                        <option selected>No</option>
+                        %end
                     </select>
                 </div>
 
@@ -248,9 +284,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
         integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
-
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 </body>
 </html>

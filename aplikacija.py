@@ -37,20 +37,19 @@ def index():
     return template('zacetna_stran.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik())
 
 
-@post('/isci')
-def iskanje_get():
+@post('/isci/')
+@post('/isci/<stran>')
+def iskanje_get(stran=1):
     kljucne = request.POST.getall('kljucne_besede')
-    parametri = copy.copy(kljucne)
     if request.forms.get('dolzinaInput') is None:
         dolzina = 0
     else:
         dolzina = int(request.forms.get('dolzinaInput'))
-        parametri.append(str(dolzina) + '+ pages')
 
     zanri = request.POST.getall('zanri')
-    parametri += zanri
     je_del_zbirke = request.forms.get('zbirka')
     parametri_sql = ()
+    parametri = []
     # ~~~~~~~~~~~~~~ Če so izbrane ključne besede, jih doda
     if kljucne == []:
         niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice FROM knjiga"
@@ -63,6 +62,7 @@ def iskanje_get():
         niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice FROM knjiga " \
               "JOIN (SELECT DISTINCT * FROM knjiga_kljucne_besede knjiga1 WHERE " + vmesni_niz[5:] \
               + ") pomozna_tabela ON knjiga.id=pomozna_tabela.id_knjige"
+        parametri += kljucne
 
     # ~~~~~~~~~~~~~~ če so izbrani zanri, jih doda
     if zanri != []:
@@ -72,25 +72,22 @@ def iskanje_get():
             parametri_sql += (zanr,)
         niz += " JOIN (SELECT DISTINCT * FROM zanr_knjige knjiga2 WHERE " + vmesni_niz[5:] + \
                ") pomozna_tabela2 ON knjiga.id=pomozna_tabela2.id_knjige"
+        parametri += zanri
     else:
         niz += " JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige"
     # ~~~~~~~~~~~~~~~Tukaj se doda avtor
     niz += " JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige JOIN avtor ON avtor_knjige.id_avtorja = avtor.id"
     # ~~~~~~~~~~~~~~Če želi da je del serije, se združi s tabelo serij
-    print(je_del_zbirke)
     if je_del_zbirke == 'Yes':
-        print('je v zbirki')
         niz += " JOIN del_serije ON knjiga.id=del_serije.id_knjige WHERE"
-        parametri += ['In series']
+        parametri += ['Part of series']
     elif je_del_zbirke == 'No':
-        print('ni v zbirki')
+        parametri += ['Not part of series']
         niz += " WHERE knjiga.id NOT IN (SELECT id_knjige FROM del_serije) AND"
-        parametri += ['Not in series']
     else:
         niz += " WHERE"
     # ~~~~~~~~~~~~~~Tukaj se doda pogoj o dolžini knjige
     niz += " dolzina>=%s ORDER BY knjiga.id, avtor.id"
-    print(niz)
     parametri_sql += (dolzina,)
     cur.execute(niz, parametri_sql)
     vse_vrstice = cur.fetchall()
@@ -109,8 +106,9 @@ def iskanje_get():
             trenutna_knjiga['url_naslovnice'] = vrstica[5]
             slovar_slovarjev_knjig[id] = trenutna_knjiga
         return template('izpis_knjiznih_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                        knjige=list(slovar_slovarjev_knjig.values()), stran=1,
-                        idji=[int(x) for x in list(slovar_slovarjev_knjig.keys())], parametri=parametri)
+                        knjige=list(slovar_slovarjev_knjig.values()), stran=stran,
+                        idji=[int(x) for x in list(slovar_slovarjev_knjig.keys())], iskane_strani=dolzina,
+                        iskane_kljucne=kljucne, iskani_zanri=zanri, iskano_zbirka=je_del_zbirke, parametri=parametri)
 
 
 @post('/avtor/:x')
@@ -248,7 +246,6 @@ WHERE knjiga.id =%s;""", (x,))
             if nova_ocena is None:
                 nova_ocena = stara_ocena
             elif stara_ocena != int(nova_ocena):
-                #print(knjiga['vsota_ocen'], nova_ocena, stara_ocena)
                 cur.execute("UPDATE prebrane SET ocena = %s WHERE id_knjige = %s AND id_uporabnika = %s;",
                             (nova_ocena, knjiga['id'], trenutni_uporabnik[0]))
                 nova_vsota_ocen = knjiga['vsota_ocen'] + int(nova_ocena) - stara_ocena
