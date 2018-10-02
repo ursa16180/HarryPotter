@@ -23,7 +23,7 @@
             </div>
             <div class="form-row">
                 <label for="dom">House</label>
-                <select id="dom" class="form-control-lg" name="dom" required>
+                <select id="dom" class="form-control" name="dom" required>
                     <option selected>{{house}}</option>
                     %for dom in ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin']:
                         %if house != dom:
@@ -35,7 +35,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="spol">Sex</label>
-                  <select id="spol" class="form-control-lg" name="spol" required>
+                  <select id="spol" class="form-control" name="spol" required>
                       %if sex == 'Male':
                       <option selected>Wizard</option>
                       <option>Witch</option>

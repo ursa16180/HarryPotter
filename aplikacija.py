@@ -300,8 +300,33 @@ def kazalo_zanra():
                     uporabnik=uporabnik(), zanri_kazalo=vsi_zanri_iz_baze)
 
 
-@post('/rezultatiIskanja')
-def rezultati_iskanja():
+@post('/rezultatiIskanjaAvtor')
+def rezultati_iskanja_avtor():
+
+    if request.forms.get('iskaniIzrazAvtorji') != '':
+        iskani_izraz = request.forms.get('iskaniIzrazAvtorji')
+        niz = ("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor LEFT JOIN avtorjev_zanr ON 
+                  avtor.id=avtorjev_zanr.id WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz + '%', ))
+        cur.execute(niz[0], niz[1])
+        vse_vrstice = cur.fetchall()
+        if vse_vrstice != []:
+            zadetki_avtorjev = {}
+            for vrstica in vse_vrstice:
+                id_avtorja = vrstica[0]
+                trenutni_avtor = zadetki_avtorjev.get(id_avtorja, {'id': id_avtorja, 'ime': None, 'zanri': set()})
+                trenutni_avtor['ime'] = vrstica[1]
+                trenutni_avtor['zanri'].add(vrstica[2])
+                zadetki_avtorjev[id_avtorja] = trenutni_avtor
+            return template('izpis_zadetkov_avtorjev.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
+                            uporabnik=uporabnik(), avtorji=tuple(zadetki_avtorjev.values()), stran=1, idji=[int(x) for x in list(zadetki_avtorjev.keys())])
+    # če sta obe polji prazni ali če ni zadetkov
+    else:
+        iskani_izraz = 'You havent searched for any author.'
+    return template('ni_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
+                    uporabnik=uporabnik(), parametri=[iskani_izraz])
+
+@post('/rezultatiIskanjaKnjiga')
+def rezultati_iskanja_knjiga():
     if request.forms.get('iskaniIzrazKnjige') != '':
         iskani_izraz = request.forms.get('iskaniIzrazKnjige')
         nizi = [("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
@@ -339,25 +364,8 @@ def rezultati_iskanja():
             return template('izpis_knjiznih_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
                             uporabnik=uporabnik(), knjige=list(slovar_slovarjev_knjig.values()),
                             stran=1, idji=[int(x) for x in list(slovar_slovarjev_knjig.keys())], parametri=[])
-    elif request.forms.get('iskaniIzrazAvtorji') != '':
-        iskani_izraz = request.forms.get('iskaniIzrazAvtorji')
-        niz = ("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor LEFT JOIN avtorjev_zanr ON 
-                  avtor.id=avtorjev_zanr.id WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz + '%', ))
-        cur.execute(niz[0], niz[1])
-        vse_vrstice = cur.fetchall()
-        if vse_vrstice != []:
-            zadetki_avtorjev = {}
-            for vrstica in vse_vrstice:
-                id_avtorja = vrstica[0]
-                trenutni_avtor = zadetki_avtorjev.get(id_avtorja, {'id': id_avtorja, 'ime': None, 'zanri': set()})
-                trenutni_avtor['ime'] = vrstica[1]
-                trenutni_avtor['zanri'].add(vrstica[2])
-                zadetki_avtorjev[id_avtorja] = trenutni_avtor
-            return template('izpis_zadetkov_avtorjev.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
-                            uporabnik=uporabnik(), avtorji=tuple(zadetki_avtorjev.values()), stran=1, idji=[int(x) for x in list(zadetki_avtorjev.keys())])
-    # če sta obe polji prazni ali če ni zadetkov
     else:
-        iskani_izraz = 'You havent searched for any keyword or author.'
+        iskani_izraz = 'You havent searched for any keyword.'
     return template('ni_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
                     uporabnik=uporabnik(), parametri=[iskani_izraz])
 

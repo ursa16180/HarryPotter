@@ -49,38 +49,7 @@
             <img src="../static/harry_knjiznica.jpg" class="center-full" align="center"/>
         </div>
         <div class="col-3">
-            %if uporabnik[1] is None:
-            <form action="/prijava" method="POST">
-                <div class="w-75 p-3 bg-dark">
-                    <div class="form-row">
-                        <input type="text" class="form-control" id="username" placeholder="Username" name="vzdevek">
-                    </div>
-                    <br/>
-                    <div class="form-row">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password"
-                               name="geslo">
-                    </div>
-                    <br/>
-                    <input type="submit" class="btn btn-basic btn-sm" value="Sign in">
-                </div>
-            </form>
 
-            <form action="/registracija" method="GET">
-                <div class="p-3 bg-dark">
-                    <b><input type="submit" class="btn btn-success btn-sm" value="Sign up"></b>
-                </div>
-            </form>
-            %else:
-            <!--TODO barva napisa se pri ravenclaw ne vidi-->
-            <form action="/profile/{{uporabnik[0]}}" method="POST">
-                <input type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{uporabnik[1]}}">
-            </form>
-            <form action="/odjava" method="GET">
-                <div class="p-3 {{barva}}">
-                    <b><input type="submit" class="btn btn-success btn-sm" value="Sign out"></b>
-                </div>
-            </form>
-            %end
         </div>
     </div>
 </div>
@@ -89,7 +58,7 @@
         <div class="col-3">
 
         </div>
-        <div class="col-9">
+        <div class="col-4">
             <nav class="nav">
                 <a class="nav-link active" href="#">
                     <form action="/kazaloAvtorja" method="POST">
@@ -101,27 +70,63 @@
                         <b><input type="submit" class="btn btn-basic" value="Genres"></b>
                     </form>
                 </a>
-                <a class="nav-link" href="#">
-                    <form class="form-inline my-2 my-lg-0" action="/rezultatiIskanja" method="POST">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search books" aria-label="Search"
-                               id="splosniIskalnikKnjig" name="iskaniIzrazKnjige">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search authors"
-                               aria-label="Search" id="splosniIskalnikAvtorjev" name="iskaniIzrazAvtorji">
-                        <button class="btn btn-success" type="submit">Search</button>
-                    </form>
-                </a>
+
             </nav>
         </div>
+
+            %if uporabnik[1] is None:
+        <div class="col-4">
+            <form class="form-row" action="/prijava" method="POST">
+                <!--<div class="w-75 p-3 bg-dark">-->
+                    <div class="col-auto">
+                        <input type="text" class="form-control" id="username" placeholder="Username" name="vzdevek">
+                    </div>
+
+                    <div class="col-auto">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password"
+                               name="geslo">
+                    </div>
+                <div class="col-auto">
+                    <input type="submit" class="btn btn-basic btn-sm" value="Sign in">
+                </div>
+                <!--</div>-->
+            </form>
+        </div>
+        <div class="col-1">
+            <form class="form-row" action="/registracija" method="GET">
+                <div class="col-auto">
+                    <b><input type="submit" class="btn btn-success btn-sm" value="Sign up"></b>
+                </div>
+            </form>
+        </div>
+            %else:
+        <div class="col-4">
+            <form class="form-inline" action="/profile/{{uporabnik[0]}}" method="POST">
+                <div class="form-group">
+                    <label for="ime_uporabnika">Welcome</label>
+                    <input type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{uporabnik[1]}}" id="ime_uporabnika">
+                </div>
+            </form>
+        </div>
+        <div class="col-1">
+            <form action="/odjava" method="GET">
+                <div class="col-auto">
+                    <b><input type="submit" class="btn btn-success btn-sm" value="Sign out"></b>
+                </div>
+            </form>
+        </div>
+            %end
     </div>
 </div>
 
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3 bg-secondary">
+        <div class="col-3  bg-secondary">
             <br/>
+            <div class="row px-3">
             <form action="/isci" method="POST">
-                <p class="text-primary"><b>Search</b></p>
+                <p class="text-primary"><b>Bookfinder</b></p>
                 <div class="form-group">
                     <div class="slidecontainer">
                         <input type="range" min="0" max="1000" value="200" class="slider" id="drsnikDolzina"
@@ -189,7 +194,7 @@
 
                 <div class="form-group">
                     <label for="zbirka">Part of series</label>
-                    <select id="zbirka" class="form-control-lg" name="zbirka" required>
+                    <select id="zbirka" class="form-control" name="zbirka" required>
                         <option selected>Either way</option>
                         <option>Yes</option>
                         <option>No</option>
@@ -198,8 +203,34 @@
 
                 <p><input type="submit" class="btn btn-success" value="Search"></p>
             </form>
+            </div>
+
+            <div class="row">
+                <nav class="nav">
+                 <a class="nav-link" href="#">
+                    <form class="form-inline my-2 my-lg-0" action="/rezultatiIskanjaKnjiga" method="POST">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search books" aria-label="Search"
+                               id="splosniIskalnikKnjig" name="iskaniIzrazKnjige">
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </form>
+                </a>
+                </nav>
+            </div>
+
+            <div class="row">
+                <nav class="nav">
+                 <a class="nav-link" href="#">
+                    <form class="form-inline my-2 my-lg-0" action="/rezultatiIskanjaAvtor" method="POST">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search authors"
+                               aria-label="Search" id="splosniIskalnikAvtorjev" name="iskaniIzrazAvtorji">
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </form>
+                </a>
+                </nav>
+            </div>
 
         </div>
+
         <div class="col-9">
             <br/>
             {{!base}}
