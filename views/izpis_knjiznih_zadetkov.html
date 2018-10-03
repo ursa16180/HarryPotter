@@ -1,21 +1,12 @@
 %rebase('osnova.html', naslov='Izpis knjig')
 
 <div class="row px-4">
-    <!--%if len(knjige)%100 == 1:-->
-    <!--ustreza {{len(knjige)}} knjiga.-->
-    <!--%elif len(knjige)%100 == 2:-->
-    <!--ustrezata {{len(knjige)}} knjigi.-->
-    <!--%elif len(knjige)%100 in {3,4}:-->
-    <!--ustrezajo {{len(knjige)}} knjige.-->
-    <!--%else:-->
-    <!--ustreza {{len(knjige)}} knjig.-->
-    <!--%end-->
-    %if len(knjige)%100 == 1:
-    {{len(knjige)}} book matches
-    %elif len(knjige)%100 > 2:
-    {{len(knjige)}} books match
+    %if st_zadetkov%100 == 1:
+    {{st_zadetkov}} book matches
+    %else:
+    {{st_zadetkov}} books match
     %end
-    your search.
+    your search with parameters:
     <br/>
     % if parametri is not None and parametri != []:
         % for parameter in parametri[:-1]:
@@ -27,10 +18,10 @@
 
 </div>
 <div class="row px-4">
-% if len(knjige) > 10:
+% if st_strani > 1:
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            %if stran != 1:
+            %if ima_prejsnjo:
                 <li class="page-item">
                     <form action="/isci/{{int(stran)-1}}" method="POST">
                         <p><input type="submit" class="btn btn-link" value="<<">
@@ -38,32 +29,28 @@
                     </form>
                 </li>
             %end
-            %zadnja = len(knjige)//10
-            %if len(knjige)% 10 != 0:
-            %    zadnja += 1
-            %end
             %zacetna = max(1, int(stran) - 4)
-            %koncna = min(int(stran) + 5, zadnja +1)
+            %koncna = min(int(stran) + 5, st_strani +1)
             %for i in range(zacetna, koncna):
                 <li class="page-item">
-                    <form action="/isci/{{int(stran)-1}}" method="POST">
+                    <form action="/isci/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{i-1}}" method="POST">
                         <input type="submit" class="btn btn-link" value="{{i}}">
                     </form>
                 </li>
             %end
-            %if koncna < zadnja:
+            %if koncna < st_strani:
                 <li class="page-item">
                     ...
                 </li>
                 <li class="page-item">
-                    <form action="/isci/{{int(stran)-1}}" method="POST">
-                        <input type="submit" class="btn btn-link" value="{{zadnja}}">
+                    <form action="/isci/{{st_strani-1}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{st_strani}}">
                     </form>
                 </li>
             %end
-            %if int(stran)*10 < len(knjige):
+            %if ima_naslednjo:
                 <li class="page-item">
-                    <form action="/isci/{{int(stran)-1}}" method="POST">
+                    <form action="/isci/{{int(stran)}}" method="POST">
                         <p><input type="submit" class="btn btn-link" value=">>">
                         </p>
                     </form>
@@ -74,7 +61,7 @@
 %end
 </div>
 <hr/>
-%for knjiga in knjige[(int(stran)-1)*10 : int(stran)*10]:
+%for knjiga in knjige:
     <div class="row px-4">
         <div class="col-2">
             <img src="{{knjiga['url_naslovnice']}}" align="center" class="img-thumbnail"/>

@@ -1,7 +1,3 @@
-#!/usr/bin/python
-# -*- encoding: utf-8 -*-
-
-# uvozimo bottle.py
 from bottle import *
 
 # uvozimo ustrezne podatke za povezavo
@@ -9,7 +5,7 @@ import auth_public as auth
 
 # uvozimo psycopg2
 import psycopg2, psycopg2.extensions, psycopg2.extras
-import copy
+from operator import itemgetter
 
 import hashlib
 
@@ -38,21 +34,46 @@ def index():
 
 
 @post('/isci/')
-@post('/isci/<stran>')
-def iskanje_get(stran=1):
-    kljucne = request.POST.getall('kljucne_besede')
-    if request.forms.get('dolzinaInput') is None:
-        dolzina = 0
+@post('/isci/<dolzina>/<kljucne>/<zanri>/<je_del_zbirke>/<stran:int>')
+def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way', stran=0):
+    stran = int(stran)
+    dolzina = int(dolzina)
+    kljucne_v_delu = []
+    if kljucne != '[]':
+        for kljucna_string in kljucne[1:-1].split(', '):
+            kljucne_v_delu.append(kljucna_string[1:-1])
+        kljucne = kljucne_v_delu
     else:
-        dolzina = int(request.forms.get('dolzinaInput'))
+        kljucne = []
+    if zanri != '[]':
+        zanri_v_delu = []
+        for zanr_string in zanri[1:-1].split(', '):
+            zanri_v_delu.append(zanr_string[1:-1])
+        zanri = zanri_v_delu
+    else:
+        zanri = []
 
-    zanri = request.POST.getall('zanri')
-    je_del_zbirke = request.forms.get('zbirka')
+    na_stran = 10
+    offset = stran * na_stran
+
+    dobljena_dolzina = request.forms.get('dolzinaInput')
+    if dobljena_dolzina is not None:
+        dolzina = dobljena_dolzina
+    dobljene_kljucne = request.POST.getall('kljucne_besede')
+    if dobljene_kljucne != []:
+        kljucne = dobljene_kljucne
+    dobljeni_zanri = request.POST.getall('zanri')
+    if dobljeni_zanri != []:
+        zanri = dobljeni_zanri
+    dobljene_zbirke = request.forms.get('zbirka')
+    if dobljene_zbirke is not None:
+        je_del_zbirke = dobljene_zbirke
     parametri_sql = ()
     parametri = []
     # ~~~~~~~~~~~~~~ Če so izbrane ključne besede, jih doda
     if kljucne == []:
-        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice FROM knjiga"
+        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice, " \
+              "vsota_ocen, stevilo_ocen FROM knjiga"
     else:
         vmesni_niz = ''
         for kljucna_beseda in kljucne:
@@ -87,8 +108,9 @@ def iskanje_get(stran=1):
     else:
         niz += " WHERE"
     # ~~~~~~~~~~~~~~Tukaj se doda pogoj o dolžini knjige
-    niz += " dolzina>=%s ORDER BY knjiga.id, avtor.id"
+    niz += " dolzina>=%s ORDER BY knjiga.id, avtor.id "
     parametri_sql += (dolzina,)
+    parametri.append(dolzina)
     cur.execute(niz, parametri_sql)
     vse_vrstice = cur.fetchall()
     if vse_vrstice == []:
@@ -104,11 +126,22 @@ def iskanje_get(stran=1):
             trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
             trenutna_knjiga['zanri'].add(vrstica[4])
             trenutna_knjiga['url_naslovnice'] = vrstica[5]
+            if vrstica[7] != 0:
+                trenutna_knjiga['povprecna_ocena'] = vrstica[6] / vrstica[7]
+            else:
+                trenutna_knjiga['povprecna_ocena'] = 0
             slovar_slovarjev_knjig[id] = trenutna_knjiga
+        vse_knjige = sorted(list(slovar_slovarjev_knjig.values()), key=itemgetter('povprecna_ocena'))
+        stevilo_knjig = len(vse_knjige)
+        st_strani = stevilo_knjig // 10 + 1
+        if stevilo_knjig % 10 == 0:
+            st_strani -= 1
         return template('izpis_knjiznih_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                        knjige=list(slovar_slovarjev_knjig.values()), stran=stran,
-                        idji=[int(x) for x in list(slovar_slovarjev_knjig.keys())], iskane_strani=dolzina,
-                        iskane_kljucne=kljucne, iskani_zanri=zanri, iskano_zbirka=je_del_zbirke, parametri=parametri)
+                        knjige=vse_knjige[offset: offset + na_stran], stran=stran,
+                        idji=[int(x) for x in list(slovar_slovarjev_knjig.keys())], iskane_dolzine=dolzina,
+                        iskane_kljucne=kljucne, iskani_zanri=zanri, iskano_zbirka=je_del_zbirke, parametri=parametri,
+                        ima_naslednjo=stran+1 < st_strani, ima_prejsnjo=stran != 0, st_strani=st_strani,
+                        st_zadetkov=stevilo_knjig)
 
 
 @post('/avtor/:x')
@@ -157,12 +190,12 @@ def zanr(x):
 @post('/zbirka/:x')
 def zbirka(x):
     cur.execute("""SELECT serija.ime, del_serije.zaporedna_stevilka_serije, knjiga.id, knjiga.naslov, avtor.id, avtor.ime FROM serija
-JOIN del_serije ON del_serije.id_serije=serija.id
-JOIN knjiga ON del_serije.id_knjige = knjiga.id
-JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige
-JOIN avtor ON avtor_knjige.id_avtorja =  avtor.id
-WHERE serija.id = %s
-ORDER BY zaporedna_stevilka_serije;""", (x, ))
+        JOIN del_serije ON del_serije.id_serije=serija.id
+        JOIN knjiga ON del_serije.id_knjige = knjiga.id
+        JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige
+        JOIN avtor ON avtor_knjige.id_avtorja =  avtor.id
+        WHERE serija.id = %s
+        ORDER BY zaporedna_stevilka_serije;""", (x, ))
     # knjiga ima lahko več avtorjev, več knjig ima iste avtorje
     knjige_ponovitve = cur.fetchall()
     knjige = {}
@@ -181,16 +214,16 @@ ORDER BY zaporedna_stevilka_serije;""", (x, ))
 def knjiga(x):
     cur.execute(  # SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis,
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
-    avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
-    knjiga.url_naslovnice FROM knjiga
-LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
-LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
-LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
-LEFT JOIN serija ON serija.id=del_serije.id_serije
-LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
-LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
-LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
-WHERE knjiga.id =%s;""", (x,))
+        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
+        knjiga.url_naslovnice FROM knjiga
+        LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
+        LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
+        LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
+        LEFT JOIN serija ON serija.id=del_serije.id_serije
+        LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
+        LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
+        LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
+        WHERE knjiga.id =%s;""", (x,))
     vse_vrstice = cur.fetchall()
     knjiga = {'id': vse_vrstice[0][0],
               'isbn': vse_vrstice[0][1],
@@ -417,16 +450,16 @@ def izpis_zadetkov(x):
 def dodaj_zeljo(x):
     cur.execute(  # SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis,
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
-    avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
-    knjiga.url_naslovnice FROM knjiga
-LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
-LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
-LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
-LEFT JOIN serija ON serija.id=del_serije.id_serije
-LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
-LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
-LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
-WHERE knjiga.id =%s;""", (x,))
+        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
+        knjiga.url_naslovnice FROM knjiga
+        LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
+        LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
+        LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
+        LEFT JOIN serija ON serija.id=del_serije.id_serije
+        LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
+        LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
+        LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
+        WHERE knjiga.id =%s;""", (x,))
     vse_vrstice = cur.fetchall()
     knjiga = {'id': vse_vrstice[0][0],
               'isbn': vse_vrstice[0][1],
@@ -472,16 +505,16 @@ WHERE knjiga.id =%s;""", (x,))
 def odstrani_zeljo(x):
     cur.execute(
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
-    avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
-    knjiga.url_naslovnice FROM knjiga
-LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
-LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
-LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
-LEFT JOIN serija ON serija.id=del_serije.id_serije
-LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
-LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
-LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
-WHERE knjiga.id =%s;""", (x,))
+        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
+        knjiga.url_naslovnice FROM knjiga
+        LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
+        LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
+        LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
+        LEFT JOIN serija ON serija.id=del_serije.id_serije
+        LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
+        LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
+        LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
+        WHERE knjiga.id =%s;""", (x,))
     vse_vrstice = cur.fetchall()
     knjiga = {'id': vse_vrstice[0][0],
               'isbn': vse_vrstice[0][1],
@@ -525,16 +558,16 @@ WHERE knjiga.id =%s;""", (x,))
 def prebral(x):
     cur.execute(
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
-    avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
-    knjiga.url_naslovnice FROM knjiga
-LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
-LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
-LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
-LEFT JOIN serija ON serija.id=del_serije.id_serije
-LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
-LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
-LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
-WHERE knjiga.id =%s;""", (x,))
+        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
+        knjiga.url_naslovnice FROM knjiga
+        LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
+        LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
+        LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
+        LEFT JOIN serija ON serija.id=del_serije.id_serije
+        LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
+        LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
+        LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
+        WHERE knjiga.id =%s;""", (x,))
     vse_vrstice = cur.fetchall()
     knjiga = {'id': vse_vrstice[0][0],
               'isbn': vse_vrstice[0][1],

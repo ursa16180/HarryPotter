@@ -120,9 +120,8 @@
             %end
     </div>
 </div>
-
-% if 'iskane_strani' not in globals():
-%   iskane_strani = 200
+% if 'iskane_dolzine' not in globals():
+%   iskane_dolzine = 200
 % end
 % if 'iskane_kljucne' not in globals():
 %   iskane_kljucne = []
@@ -144,10 +143,10 @@
 
                 <div class="form-group">
                     <div class="slidecontainer">
-                        <input type="range" min="0" max="1000" value="{{iskane_strani}}" class="slider" id="drsnikDolzina"
+                        <input type="range" min="0" max="1000" value="{{iskane_dolzine}}" class="slider" id="drsnikDolzina"
                                name="dolzinaInput" onchange="spremembaDrsnika(this.value)">
                         <br/>
-                        The book should have at least <span id="vrednostDrsnika">200</span> pages.
+                        The book should have at least <span id="vrednostDrsnika">{{iskane_dolzine}}</span> pages.
                     </div>
                 </div>
                 <p>
