@@ -23,34 +23,48 @@
         <ul class="pagination">
             %if ima_prejsnjo:
                 <li class="page-item">
-                    <form action="/isci/{{int(stran)-1}}" method="POST">
+                    <form action="/isci/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{int(stran)-1}}" method="POST">
                         <p><input type="submit" class="btn btn-link" value="<<">
                         </p>
                     </form>
                 </li>
             %end
-            %zacetna = max(1, int(stran) - 4)
+            %if int(stran) > 3:
+                <li class="page-item">
+                    <form action="/isci/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/0" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{1}}">
+                    </form>
+                </li>
+                %if int(stran) > 4:
+                    <li class="page-item">
+                        ...
+                    </li>
+                %end
+            %end
+            %zacetna = max(1, int(stran) - 2)
             %koncna = min(int(stran) + 5, st_strani +1)
             %for i in range(zacetna, koncna):
                 <li class="page-item">
                     <form action="/isci/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{i-1}}" method="POST">
-                        <input type="submit" class="btn btn-link" value="{{i}}">
+                        <input type="submit" class="btn btn-link" value="{{i}}" >
                     </form>
                 </li>
             %end
-            %if koncna < st_strani:
+            %if koncna < st_strani+1:
+                %if koncna < st_strani:
+                    <li class="page-item">
+                        ...
+                    </li>
+                %end
                 <li class="page-item">
-                    ...
-                </li>
-                <li class="page-item">
-                    <form action="/isci/{{st_strani-1}}" method="POST">
+                    <form action="/isci/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{st_strani-1}}" method="POST">
                         <input type="submit" class="btn btn-link" value="{{st_strani}}">
                     </form>
                 </li>
             %end
             %if ima_naslednjo:
                 <li class="page-item">
-                    <form action="/isci/{{int(stran)}}" method="POST">
+                    <form action="/isci/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{int(stran)}}" method="POST">
                         <p><input type="submit" class="btn btn-link" value=">>">
                         </p>
                     </form>
@@ -62,7 +76,7 @@
 </div>
 <hr/>
 %for knjiga in knjige:
-    <div class="row px-4">
+<div class="row px-4">
         <div class="col-2">
             <img src="{{knjiga['url_naslovnice']}}" align="center" class="img-thumbnail"/>
         </div>
@@ -124,43 +138,54 @@
 <hr/>
 %end
 
-% if len(knjige) > 10:
+<div class="row px-4">
+% if st_strani > 1:
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            %if stran != 1:
+            %if ima_prejsnjo:
                 <li class="page-item">
-                    <form action="/izpis_zadetkov/knjiga&{{int(stran)-1}}&{{idji}}" method="GET">
+                    <form action="/isci/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{int(stran)-1}}" method="POST">
                         <p><input type="submit" class="btn btn-link" value="<<">
                         </p>
                     </form>
                 </li>
             %end
-            %zadnja = len(knjige)//10
-            %if len(knjige)% 10 != 0:
-            %    zadnja += 1
+            %if int(stran) > 3:
+                <li class="page-item">
+                    <form action="/isci/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/0" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{1}}">
+                    </form>
+                </li>
+                %if int(stran) > 4:
+                    <li class="page-item">
+                        ...
+                    </li>
+                %end
             %end
-            %zacetna = max(1, int(stran) - 4)
-            %koncna = min(int(stran) + 5, zadnja +1)
+            %zacetna = max(1, int(stran) - 2)
+            %koncna = min(int(stran) + 5, st_strani +1)
             %for i in range(zacetna, koncna):
                 <li class="page-item">
-                    <form action="/izpis_zadetkov/knjiga&{{str(i)}}&{{idji}}" method="GET">
-                        <input type="submit" class="btn btn-link" value="{{i}}">
+                    <form action="/isci/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{i-1}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{i}}" >
                     </form>
                 </li>
             %end
-            %if koncna < zadnja:
+            %if koncna < st_strani+1:
+                %if koncna < st_strani:
+                    <li class="page-item">
+                        ...
+                    </li>
+                %end
                 <li class="page-item">
-                    ...
-                </li>
-                <li class="page-item">
-                    <form action="/izpis_zadetkov/knjiga&{{zadnja}}&{{idji}}" method="GET">
-                        <input type="submit" class="btn btn-link" value="{{zadnja}}">
+                    <form action="/isci/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{st_strani-1}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{st_strani}}">
                     </form>
                 </li>
             %end
-            %if int(stran)*10 < len(knjige):
+            %if ima_naslednjo:
                 <li class="page-item">
-                    <form action="/izpis_zadetkov/knjiga&{{int(stran)+1}}&{{idji}}" method="GET">
+                    <form action="/isci/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{int(stran)}}" method="POST">
                         <p><input type="submit" class="btn btn-link" value=">>">
                         </p>
                     </form>
@@ -169,3 +194,4 @@
         </ul>
     </nav>
 %end
+</div></div>
