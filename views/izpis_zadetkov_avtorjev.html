@@ -2,53 +2,74 @@
 
 
 <div class="row px-4">
-    Vašim parametrom
-    %if len(avtorji)%100 == 1:
-    ustreza {{len(avtorji)}} avtor.
-    %elif len(avtorji)%100 == 2:
-    ustrezata {{len(avtorji)}} avtorja.
-    %elif len(avtorji)%100 in {3,4}:
-    ustrezajo {{len(avtorji)}} avtorji.
+    %if st_zadetkov%100 == 1:
+    {{st_zadetkov}} author matches
     %else:
-    ustreza {{len(avtorji)}} avtorjev.
+    {{st_zadetkov}} authors match
     %end
-
-
+     your search.
 
 </div>
 <hr />
-% if len(avtorji) > 10:
+<div class="row px-4">
+% if st_strani > 1:
     <nav aria-label="Page navigation example">
-      <ul class="pagination">
-          %if stran !=1:
-            <li class="page-item">
-                <form action="/izpis_zadetkov/avtor&{{int(stran)-1}}&{{idji}}" method="GET">
-                  <p><input type="submit" class="btn btn-link" value="<<">
-                  </p>
-              </form>
-            </li>
-          %end
-          %for i in range(1, (len(avtorji)-1)//10 + 2):
-             <li class="page-item">
-                 <form action="/izpis_zadetkov/avtor&{{str(i)}}&{{idji}}" method="GET">
-                         <p><input type="submit" class="btn btn-link" value="{{i}}">
-                         </p>
-                 </form>
-             </li>
-          %end
-          %if int(stran)*10 < len(avtorji):
-            <li class="page-item">
-                <form action="/izpis_zadetkov/avtor&{{int(stran)+1}}&{{idji}}" method="GET">
-                  <p><input type="submit" class="btn btn-link" value=">>">
-                  </p>
-                </form>
-            </li>
-          %end
-      </ul>
+        <ul class="pagination">
+            %if ima_prejsnjo:
+                <li class="page-item">
+                    <form action="/rezultati_iskanja_avtor/{{iskani_izraz_avtor}}/{{int(stran)-1}}" method="POST">
+                        <p><input type="submit" class="btn btn-link" value="<<">
+                        </p>
+                    </form>
+                </li>
+            %end
+            %if int(stran) > 3:
+                <li class="page-item">
+                    <form action="/rezultati_iskanja_avtor/{{iskani_izraz_avtor}}/0" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{1}}">
+                    </form>
+                </li>
+                %if int(stran) > 4:
+                    <li class="page-item">
+                        ...
+                    </li>
+                %end
+            %end
+            %zacetna = max(1, int(stran) - 2)
+            %koncna = min(int(stran) + 5, st_strani +1)
+            %for i in range(zacetna, koncna):
+                <li class="page-item">
+                    <form action="/rezultati_iskanja_avtor/{{iskani_izraz_avtor}}/{{i-1}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{i}}" >
+                    </form>
+                </li>
+            %end
+            %if koncna < st_strani+1:
+                %if koncna < st_strani:
+                    <li class="page-item">
+                        ...
+                    </li>
+                %end
+                <li class="page-item">
+                    <form action="/rezultati_iskanja_avtor/{{iskani_izraz_avtor}}/{{st_strani-1}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{st_strani}}">
+                    </form>
+                </li>
+            %end
+            %if ima_naslednjo:
+                <li class="page-item">
+                    <form action="/rezultati_iskanja_avtor/{{iskani_izraz_avtor}}//{{int(stran)+1}}" method="POST">
+                        <p><input type="submit" class="btn btn-link" value=">>">
+                        </p>
+                    </form>
+                </li>
+            %end
+        </ul>
     </nav>
 %end
+</div>
 
-%for avtor in avtorji[(int(stran)-1)*10  : (int(stran))*10]:
+%for avtor in avtorji:
 
 <div class="row px-4">
     <div class="btn-group-vertical">
@@ -69,33 +90,60 @@
 <hr />
 %end
 
-% if len(avtorji) > 10:
+<div class="row px-4">
+% if st_strani > 1:
     <nav aria-label="Page navigation example">
-      <ul class="pagination">
-          %if stran !=1:
-            <li class="page-item">
-                <form action="/izpis_zadetkov/avtor&{{int(stran)-1}}&{{idji}}" method="GET">
-                  <p><input type="submit" class="btn btn-link" value="<<">
-                  </p>
-              </form>
-            </li>
-          %end
-          %for i in range(1, (len(avtorji)-1)//10 + 2):
-             <li class="page-item">
-                 <form action="/izpis_zadetkov/avtor&{{str(i)}}&{{idji}}" method="GET">
-                         <p><input type="submit" class="btn btn-link" value="{{i}}">
-                         </p>
-                 </form>
-             </li>
-          %end
-          %if int(stran)*10 < len(avtorji):
-            <li class="page-item">
-                <form action="/izpis_zadetkov/avtor&{{int(stran)+1}}&{{idji}}" method="GET">
-                  <p><input type="submit" class="btn btn-link" value=">>">
-                  </p>
-                </form>
-            </li>
-          %end
-      </ul>
+        <ul class="pagination">
+            %if ima_prejsnjo:
+                <li class="page-item">
+                    <form action="/rezultati_iskanja_avtor/{{iskani_izraz_avtor}}/{{int(stran)-1}}" method="POST">
+                        <p><input type="submit" class="btn btn-link" value="<<">
+                        </p>
+                    </form>
+                </li>
+            %end
+            %if int(stran) > 3:
+                <li class="page-item">
+                    <form action="/rezultati_iskanja_avtor/{{iskani_izraz_avtor}}/0" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{1}}">
+                    </form>
+                </li>
+                %if int(stran) > 4:
+                    <li class="page-item">
+                        ...
+                    </li>
+                %end
+            %end
+            %zacetna = max(1, int(stran) - 2)
+            %koncna = min(int(stran) + 5, st_strani +1)
+            %for i in range(zacetna, koncna):
+                <li class="page-item">
+                    <form action="/rezultati_iskanja_avtor/{{iskani_izraz_avtor}}/{{i-1}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{i}}" >
+                    </form>
+                </li>
+            %end
+            %if koncna < st_strani+1:
+                %if koncna < st_strani:
+                    <li class="page-item">
+                        ...
+                    </li>
+                %end
+                <li class="page-item">
+                    <form action="/rezultati_iskanja_avtor/{{iskani_izraz_avtor}}/{{st_strani-1}}" method="POST">
+                        <input type="submit" class="btn btn-link" value="{{st_strani}}">
+                    </form>
+                </li>
+            %end
+            %if ima_naslednjo:
+                <li class="page-item">
+                    <form action="/rezultati_iskanja_avtor/{{iskani_izraz_avtor}}//{{int(stran)+1}}" method="POST">
+                        <p><input type="submit" class="btn btn-link" value=">>">
+                        </p>
+                    </form>
+                </li>
+            %end
+        </ul>
     </nav>
 %end
+</div>
