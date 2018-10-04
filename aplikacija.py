@@ -172,6 +172,7 @@ def zanr(x):
                     zanr=zanr, knjige=knjige, avtorji=avtorji)
 
 
+@get('/zbirka/:x')
 @post('/zbirka/:x')
 def zbirka(x):
     cur.execute("""SELECT serija.ime, del_serije.zaporedna_stevilka_serije, knjiga.id, knjiga.naslov, avtor.id, avtor.ime FROM serija
@@ -330,6 +331,7 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
                         st_zadetkov=stevilo_knjig, veliki_mali='veliki')
 
 
+@get('/rezultati_iskanja_knjiga/<iskani_izraz>/')
 @post('/rezultati_iskanja_knjiga/')
 @post('/rezultati_iskanja_knjiga/<iskani_izraz>/<stran>')
 def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.", stran=0):
