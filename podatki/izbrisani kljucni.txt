@@ -1,0 +1,5 @@
+POPRAVLJENE KLJUČNE
+Izbrisane podvojene besed:
+Witch;Humans ---ali bolje Creatures
+Wizard;Humans
+Friendship;Values

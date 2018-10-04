@@ -92,7 +92,7 @@ id;ime;stevilo_knjig
 130601;Nemedian Trilogy;2
 130699;Summoner;4
 130830;The Dreamer Saga;1
-130921;London Below,  The World of Neverwhere;1
+130921;London Below,  The World of Neverwhere;2
 130993;Witch in the Woods;3
 131003;Pha Yul;3
 131672;Obsidian Universe;8
@@ -127,7 +127,7 @@ id;ime;stevilo_knjig
 145276;The Sigilord Chronicles;2
 145435;Lightmasters;1
 145944;The Whisperer's Chronicles;1
-146340;To Kill a Mockingbird;1
+146340;To Kill a Mockingbird;2
 146415;Saga;9
 146458;Magicae Mathematica;3
 146549;Habitan;1
@@ -137,7 +137,7 @@ id;ime;stevilo_knjig
 149670;Average Joe;1
 149715;The Mabel Gray Adventures;1
 149999;Chains of Honor;2
-150151;The Seven Deadly Sins;22
+150151;The Seven Deadly Sins;23
 150939;Honor Harrington FRG;17
 151293;The Weir Chronicles;5
 151746;The Sheysu's Gold;1
@@ -171,7 +171,6 @@ id;ime;stevilo_knjig
 163412;Avalonia Chronicles;2
 163914;Powers of Ezron;1
 163924;Books of Arilland;8
-164049;Légendes du Drakanitt et du Continent-Coloré;4
 164647;Birthright;2
 165346;Amanda Lester, Detective;4
 166161;Dragon Rider;3
@@ -213,7 +212,7 @@ id;ime;stevilo_knjig
 192190;Alyssa McCarthy's Magical Missions;1
 192614;Fables (édition française);9
 192810;Lost Knight;2
-192821;Cradle;4
+192821;Cradle;6
 193501;Chase Tinker;3
 194210;Aki e le Sfere del Tempo;2
 194949;Chronicles of Rhianna;2
@@ -267,7 +266,7 @@ id;ime;stevilo_knjig
 40339;Shadow Children;7
 40340;Redwall;22
 40346;The Dresden Files;17
-40350;Hunter Legends;46
+40350;Hunter Legends;45
 40365;Five Hundred Kingdoms;6
 40366;Dragon Jousters;4
 40369;Obsidian Mountain;3
@@ -442,7 +441,7 @@ id;ime;stevilo_knjig
 45935;Dune;11
 45939;Princess;4
 45940;The Tapestry;5
-46160;Flavia de Luce ;9
+46160;Flavia de Luce ;10
 46208;Imager Portfolio;11
 46311;Madison Avery;3
 46343;Hex Hall;3
@@ -464,8 +463,7 @@ id;ime;stevilo_knjig
 47052;Fallen;5
 47329;The Iron Fey;7
 47396;Chronicles of Nick;8
-47903;Alégracia;4
-48207;Dork Diaries;12
+48207;Dork Diaries;14
 48329;Lorien Legacies;7
 49073;The Chronicles of Narnia (Publication Order);7
 49075;The Stormlight Archive;10
@@ -517,7 +515,7 @@ id;ime;stevilo_knjig
 50674;Angélique - Version Originale;15
 50834;The Magicians, ;3
 51161;Steampunk Chronicles;4
-51187;Avalon;6
+51187;Avalon;7
 51228;Nightmare Academy;3
 51276;Aurelia;3
 51288;Throne of Glass;7
@@ -573,14 +571,14 @@ id;ime;stevilo_knjig
 56126;The Witches of Karres;3
 56186;The Land of Elyon;4
 56529;Anna;2
-56532;Avalon: Chronological Order;6
+56532;Avalon: Chronological Order;7
 56581;Mabinogion Tetralogy;1
 56682;The Princesses of Westfalin Trilogy;3
 56730;Emelan;11
 56771;Elemental;5
 57017;The Once and Future King;5
 57151;Fire and Thorns;3
-57193;One Piece;89
+57193;One Piece;90
 57517;The Selection;5
 57530;Divergent;3
 57592;Graceling Realm;3
@@ -655,7 +653,7 @@ id;ime;stevilo_knjig
 69034;The Icemark Chronicles;3
 69261;YuYu Hakusho Kanzenban;8
 69629;The Sylvie Cycle;3
-69714;The Grishaverse;3
+69714;The Grisha Trilogy;3
 69814;Fairy Circle;2
 69828;Under the Never Sky;3
 70002;Starbound;3
@@ -663,7 +661,7 @@ id;ime;stevilo_knjig
 70277;Ultraviolet;2
 70361;Tales of Alterra, The World That Is;3
 70756;Gunnerkrigg Court ;5
-71516;Keeper of the Lost Cities;7
+71516;Keeper of the Lost Cities;9
 71837;Jack Blank Adventure;3
 72095;Magnificent Devices;13
 72520;My Merlin Trilogy;3
@@ -775,7 +773,7 @@ id;ime;stevilo_knjig
 98294;Edelstein-Trilogie;3
 98634;Splintered;3
 99085;Shannara (Publication Order);35
-99557;The Others;6
+99557;The Others;7
 109902;Gaia Girls;1
 112352;Once Upon a Time;2
 114135;American Gods;1

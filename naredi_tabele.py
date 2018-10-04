@@ -25,7 +25,7 @@ def daj_pravice():
     cur.execute("GRANT CONNECT ON DATABASE sem2018_ursap TO javnost;"
                 "GRANT USAGE ON SCHEMA public TO javnost;"
                 "GRANT SELECT ON ALL TABLES IN SCHEMA public TO javnost;"
-                "GRANT UPDATE, INSERT, DELETE ON uporabnik, zelje, prebrane TO javnost;"
+                "GRANT UPDATE, INSERT, DELETE ON uporabnik, wishlist, prebrana_knjiga TO javnost;"
                 "GRANT UPDATE(vsota_ocen, stevilo_ocen) ON knjiga TO javnost;"
                 "GRANT ALL ON SEQUENCE uporabnik_id_seq TO javnost;"
                 "GRANT ALL ON SCHEMA public TO ursap; "
@@ -127,11 +127,11 @@ cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 knjiga = ["knjiga",
           """
         CREATE TABLE knjiga (
-            id TEXT PRIMARY KEY,
+            id INTEGER PRIMARY KEY,
             ISBN TEXT,
             naslov TEXT NOT NULL,
             dolzina INTEGER,
-            vsota_ocen FLOAT,
+            povprecna_ocena FLOAT,
             stevilo_ocen INTEGER,
             leto INTEGER, 
             opis TEXT,
@@ -149,7 +149,7 @@ knjiga = ["knjiga",
 avtor = ["avtor",
          """
         CREATE TABLE avtor (
-            id TEXT PRIMARY KEY,
+            id INTEGER PRIMARY KEY,
             ime TEXT NOT NULL,
             povprecna_ocena FLOAT,
             datum_rojstva DATE,
@@ -163,7 +163,7 @@ avtor = ["avtor",
                 RETURNING id
             """]
 
-serija = ["serija", """CREATE TABLE serija (id TEXT PRIMARY KEY, ime TEXT NOT NULL, stevilo_knjig INTEGER NOT NULL);""",
+serija = ["serija", """CREATE TABLE serija (id INTEGER PRIMARY KEY, ime TEXT NOT NULL, stevilo_knjig INTEGER NOT NULL);""",
           """INSERT INTO serija (id, ime, stevilo_knjig) VALUES (%s, %s, %s) RETURNING id"""]
 
 # Arts Photography, null ---> zato opis lahko null
@@ -186,8 +186,8 @@ zanr = ["zanr",
 del_serije = ["del_serije",
               """
         CREATE TABLE del_serije (
-            id_knjige TEXT NOT NULL REFERENCES knjiga(id),
-            id_serije TEXT NOT NULL REFERENCES serija(id),
+            id_knjige INTEGER NOT NULL REFERENCES knjiga(id),
+            id_serije INTEGER NOT NULL REFERENCES serija(id),
             zaporedna_stevilka_serije INTEGER,
             PRIMARY KEY (id_serije, id_knjige)
         );
@@ -202,8 +202,8 @@ del_serije = ["del_serije",
 avtor_knjige = ["avtor_knjige",
                 """
         CREATE TABLE avtor_knjige (
-            id_knjige TEXT NOT NULL REFERENCES knjiga(id),
-            id_avtorja TEXT NOT NULL REFERENCES avtor(id),
+            id_knjige INTEGER NOT NULL REFERENCES knjiga(id),
+            id_avtorja INTEGER NOT NULL REFERENCES avtor(id),
             PRIMARY KEY (id_avtorja, id_knjige)
         );
     """, """
@@ -216,7 +216,7 @@ avtor_knjige = ["avtor_knjige",
 zanr_knjige = ["zanr_knjige",
                """
          CREATE TABLE zanr_knjige (
-             id_knjige TEXT NOT NULL REFERENCES knjiga(id),
+             id_knjige INTEGER NOT NULL REFERENCES knjiga(id),
              zanr TEXT NOT NULL REFERENCES zanr(ime_zanra),
              PRIMARY KEY (id_knjige, zanr)
          );
@@ -229,15 +229,15 @@ zanr_knjige = ["zanr_knjige",
 avtorjev_zanr = ["avtorjev_zanr",
                  """
            CREATE TABLE avtorjev_zanr (
-               id TEXT NOT NULL REFERENCES avtor(id),
+               id_avtorja INTEGER NOT NULL REFERENCES avtor(id),
                zanr TEXT NOT NULL REFERENCES zanr(ime_zanra),
-               PRIMARY KEY (id, zanr)
+               PRIMARY KEY (id_avtorja, zanr)
            );
        """, """
                 INSERT INTO avtorjev_zanr
-                (id, zanr)
+                (id_avtorja, zanr)
                 VALUES (%s, %s)
-                RETURNING (id, zanr)
+                RETURNING (id_avtorja, zanr)
             """]
 
 kljucna_beseda=["kljucna_beseda",
@@ -256,7 +256,7 @@ kljucna_beseda=["kljucna_beseda",
 knjiga_kljucne_besede= ["knjiga_kljucne_besede",
                  """
            CREATE TABLE knjiga_kljucne_besede (
-               id_knjige TEXT NOT NULL REFERENCES knjiga(id),
+               id_knjige INTEGER NOT NULL REFERENCES knjiga(id),
                kljucna_beseda TEXT NOT NULL REFERENCES kljucna_beseda(pojem),
                PRIMARY KEY (id_knjige, kljucna_beseda)
            );
@@ -267,22 +267,7 @@ knjiga_kljucne_besede= ["knjiga_kljucne_besede",
                 RETURNING (id_knjige, kljucna_beseda)
             """]
 
-seznamVseh = [knjiga, avtor, zanr, serija, del_serije, avtor_knjige, zanr_knjige, avtorjev_zanr, kljucna_beseda, knjiga_kljucne_besede]
 
-
-def ustvari_vse_tabele():
-    for seznam in seznamVseh:
-        ustvari_tabelo(seznam)
-    daj_pravice()
-
-def uvozi_vse_podatke():
-    for seznam in seznamVseh:
-        uvozi_podatke(seznam)
-
-
-def izbrisi_vse_tabele():
-    for seznam in seznamVseh:
-        pobrisi_tabelo(seznam)
 
 #daj_pravice()
 #for x in [knjiga_kljucne_besede]:
@@ -298,14 +283,14 @@ def izbrisi_vse_tabele():
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~UPORABNIKI
 uporabnik=['uporabnik',
+           # CREATE TYPE spol AS ENUM('Female', 'Male');
+           #  CREATE TYPE dom AS ENUM('Gryffindor', 'Slytherin', 'Hufflepuff', 'Ravenclaw');
            """           
-           CREATE TYPE spol AS ENUM('Female','Male');
-           CREATE TYPE dom AS ENUM('Gryffindor','Slytherin', 'Hufflepuff','Ravenclaw');
            CREATE TABLE uporabnik (
                id SERIAL PRIMARY KEY,
                vzdevek TEXT NOT NULL UNIQUE,
                geslo TEXT NOT NULL,
-               email TEXT NOT NULL,
+               email TEXT NOT NULL UNIQUE,
                dom dom NOT NULL,
                spol spol NOT NULL
            );
@@ -317,62 +302,69 @@ uporabnik=['uporabnik',
             """
            ]
 
-# ocena_knjige=['ocena_knjige',
-#            """
-#            CREATE TABLE ocena_knjige (
-#                id_uporabnika INTEGER NOT NULL REFERENCES uporabnik(id),
-#                id_knjige TEXT NOT NULL REFERENCES knjiga(id),
-#                ocena INTEGER,
-#                PRIMARY KEY(id_uporabnika, id_knjige)
-#            );
-#        """, """
-#                 INSERT INTO ocena_knjige
-#                 (id_uporabnika, id_knjige, ocena)
-#                 VALUES (%s, %s, %s)
-#                 RETURNING (id_uporabnika, id_knjige)
-#             """
-#            ]
-
-zelje=['zelje',
+wishlist=['wishlist',
            """
-           CREATE TABLE zelje (
+           CREATE TABLE wishlist (
                id_uporabnika INTEGER NOT NULL REFERENCES uporabnik(id),
-               id_knjige TEXT NOT NULL REFERENCES knjiga(id),
+               id_knjige INTEGER NOT NULL REFERENCES knjiga(id),
                PRIMARY KEY(id_uporabnika, id_knjige)
            );
        """, """
-                INSERT INTO zelje
+                INSERT INTO wishlist
                 (id_uporabnika, id_knjige)
                 VALUES (%s, %s)
                 RETURNING (id_uporabnika, id_knjige)
             """
            ]
 
-prebrane=['prebrane',
+prebrana_knjiga=['prebrana_knjiga',
            """
-           CREATE TABLE prebrane (
+           CREATE TABLE prebrana_knjiga (
                id_uporabnika INTEGER NOT NULL REFERENCES uporabnik(id),
-               id_knjige TEXT NOT NULL REFERENCES knjiga(id),
+               id_knjige INTEGER NOT NULL REFERENCES knjiga(id),
                ocena INTEGER,
                PRIMARY KEY(id_uporabnika, id_knjige)
            );
        """, """
-                INSERT INTO prebrane
+                INSERT INTO prebrana_knjiga
                 (id_uporabnika, id_knjige, ocena)
                 VALUES (%s, %s, %s)
                 RETURNING (id_uporabnika, id_knjige)
             """
            ]
+#knjiga, avtor, zanr, serija, del_serije,
+seznamVseh = [ avtor_knjige, zanr_knjige, avtorjev_zanr, kljucna_beseda, knjiga_kljucne_besede, uporabnik, wishlist, prebrana_knjiga]
+
+
+def ustvari_vse_tabele():
+    for seznam in seznamVseh:
+        ustvari_tabelo(seznam)
+    daj_pravice()
+
+def uvozi_vse_podatke():
+    for seznam in seznamVseh[:-3]:
+        uvozi_podatke(seznam)
+
+
+def izbrisi_vse_tabele():
+    for seznam in seznamVseh:
+        pobrisi_tabelo(seznam)
+
+#izbrisi_vse_tabele()
+#ustvari_vse_tabele()
+uvozi_vse_podatke()
 
 #ustvari_tabelo(uporabnik)
 #ustvari_tabelo(ocena_knjige)
-#ustvari_tabelo(prebrane)
-#ustvari_tabelo(zelje)
+#ustvari_tabelo(prebrana_knjiga)
+#ustvari_tabelo(wishlist)
+#ustvari_tabelo(zanr_knjige)
+
 #pobrisi_tabelo(uporabnik)
 #pobrisi_tabelo(zelje)
 #pobrisi_tabelo(ocena_knjige)
 #pobrisi_tabelo(prebrane)
-daj_pravice()
+#daj_pravice()
 
 
 #NAKNADNO DODANI SQL-stavki
