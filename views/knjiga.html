@@ -5,7 +5,7 @@
     <div class="col-7">
         <h3>{{knjiga['naslov']}}</h3>
     </br>
-        Average rating: {{knjiga['povprecna_ocena']}} (Rating count: {{knjiga['stevilo_ocen']}})
+        <p>Average rating: {{knjiga['povprecna_ocena']}} (Rating count: {{knjiga['stevilo_ocen']}})</p>
     </div>
     %if uporabnik[1] is not None:
         %if prebrano and (ocena is None):
@@ -86,17 +86,18 @@
 
 %if knjiga['avtor'] != {(None, None)}:
     <div class="row px-4">
-        %if len(knjiga['avtor'])==1:
-            Author:
-        %end
-        %if len(knjiga['avtor'])>1:
-            Authors:
-        %end
-        %for avtor in knjiga['avtor']:
-            <form action="/avtor/{{avtor[0]}}" method="POST">
-                <p><input type="submit" class="btn btn-link" value="{{avtor[1]}}"></p>
-            </form>
-        %end
+            %if len(knjiga['avtor'])==1:
+            <p>Author: <a href="/avtor/{{list(knjiga['avtor'])[0][0]}}">{{list(knjiga['avtor'])[0][1]}}</a></p>
+            %end
+            %if len(knjiga['avtor'])>1:
+                <p>Authors:
+                %for avtor in list(knjiga['avtor'])[:-1]:
+                    <a href="/avtor/{{avtor[0]}}">{{avtor[1]}}, </a>
+                %end
+                    <a href="/avtor/{{list(knjiga['avtor'])[-1][0]}}"> {{list(knjiga['avtor'])[-1][1]}}</a></p>
+
+            %end
+
     </div>
 %end
 
@@ -153,7 +154,7 @@
     <div class="row px-4">
         Genre:
         %for zanr in knjiga['zanri']:
-            <form action="/zanr/{{zanr}}" method="POST">
+            <form action="/zanr/{{zanr}}" method="GET">
                 <p><input type="submit" class="btn btn-link" value="{{zanr}}">
                 </p>
             </form>

@@ -17,7 +17,7 @@
             <div class="btn-group-vertical">
                 Author's genre:
                 %for zanr in zanriAvtorja:
-                    <form action="/zanr/{{zanr}}" method="POST">
+                    <form action="/zanr/{{zanr}}" method="GET">
                         <input type="submit" class="btn btn-link" value="{{zanr}}">
                     </form>
                 %end
