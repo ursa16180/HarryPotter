@@ -103,18 +103,23 @@
 
 % if knjiga['serija'] != {(None, None, None)}:
     <div class="row px-4">
-        Series:
-        %for serija in knjiga['serija']:
-            <form action="/zbirka/{{serija[0]}}" method="POST">
+        <p>Series:
+        %for serija in list(knjiga['serija'])[:-1]:
                 %if serija[2] is not None:
                 %    dodatek = ' #' + str(serija[2])
                 %else:
                 %    dodatek = ''
                 %end
-                <p><input type="submit" class="btn btn-link" value="{{serija[1]}}{{dodatek}}">
-                </p>
-            </form>
+                <a href="/zbirka/{{serija[0]}}">{{serija[1]}}{{dodatek}},</a>
         %end
+
+        %if list(knjiga['serija'])[-1][2] is not None:
+        %    dodatek = ' #' + str(list(knjiga['serija'])[-1][2])
+        %else:
+        %    dodatek = ''
+        %end
+            <a href="/zbirka/{{list(knjiga['serija'])[-1][0]}}">{{list(knjiga['serija'])[-1][1]}}{{dodatek}}</a></p>
+
     </div>
 % end
 
@@ -152,24 +157,22 @@
 
 % if knjiga['zanri'] != {None}:
     <div class="row px-4">
-        Genre:
-        %for zanr in knjiga['zanri']:
-            <form action="/zanr/{{zanr}}" method="GET">
-                <p><input type="submit" class="btn btn-link" value="{{zanr}}">
-                </p>
-            </form>
-        %end
+        <p>Genre:
+            %for zanr in list(knjiga['zanri'])[:-1]:
+                <a href="/zanr/{{zanr}}">{{zanr}}, </a>
+            %end
+        <a href="/zanr/{{list(knjiga['zanri'])[-1]}}">{{list(knjiga['zanri'])[-1]}}</a></p>
     </div>
 %end
 
 % if knjiga['kljucna_beseda'] != {None}:
     <div class="row px-4">
-        Key words:
-        %for kljucna_beseda in knjiga['kljucna_beseda']:
-            <form action="/isci" method="POST">
-                <p><input name="kljucne_besede" type="submit" class="btn btn-link" value="{{kljucna_beseda}}">
-                </p>
-            </form>
+
+        <p>Key words:
+        %for kljucna_beseda in list(knjiga['kljucna_beseda'])[:-1]:
+            <a href="/rezultati_iskanja_knjiga/{{kljucna_beseda}}/">{{kljucna_beseda}},</a>
         %end
+        <a href="/rezultati_iskanja_knjiga/{{list(knjiga['kljucna_beseda'])[-1]}}/">{{list(knjiga['kljucna_beseda'])[-1]}}</a></p>
+
     </div>
 % end

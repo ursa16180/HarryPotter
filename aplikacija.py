@@ -174,6 +174,7 @@ def zanr(x):
                     zanr=zanr, knjige=knjige, avtorji=avtorji)
 
 
+@get('/zbirka/:x')
 @post('/zbirka/:x')
 def zbirka(x):
     cur.execute("""SELECT serija.ime, del_serije.zaporedna_stevilka_serije, knjiga.id, knjiga.naslov, avtor.id, avtor.ime FROM serija
@@ -343,6 +344,7 @@ def poisci_kombinacije(besede):
         kombinacije += [prva_beseda[0].upper() + prva_beseda[1:] + ' ' + kombinacija]
     return kombinacije
 
+@get('/rezultati_iskanja_knjiga/<iskani_izraz>/')
 @post('/rezultati_iskanja_knjiga/')
 @post('/rezultati_iskanja_knjiga/<iskani_izraz>/<stran>')
 def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.", stran=0):
