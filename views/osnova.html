@@ -171,10 +171,10 @@
                     <div class="card card-body">
                         %for (skupina, besede) in vseKljucne.items():
                         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{skupina}}"
-                                aria-expanded="true" aria-controls={{skupina}}>
+                                aria-expanded="true" aria-controls="{{skupina}}">
                             {{skupina}}
                         </button>
-                        <div id="#{{skupina}}" class="collapse">
+                        <div id="{{skupina}}" class="collapse">
                             <div class="card card-body">
                                 <div class="form-group">
                                     %for beseda in besede:
@@ -190,7 +190,6 @@
                                                 {{beseda}}
                                             </label>
                                         %end
-
                                     </div>
                                     %end
                                 </div>

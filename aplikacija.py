@@ -267,8 +267,8 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
             vmesni_niz += """ AND EXISTS (SELECT * FROM knjiga_kljucne_besede WHERE kljucna_beseda = %s 
                               AND knjiga_kljucne_besede.id_knjige=knjiga1.id_knjige)"""
             parametri_sql += (kljucna_beseda,)
-        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice FROM knjiga " \
-              "JOIN (SELECT DISTINCT * FROM knjiga_kljucne_besede knjiga1 WHERE " + vmesni_niz[5:] \
+        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice, vsota_ocen, stevilo_ocen" \
+              " FROM knjiga JOIN (SELECT DISTINCT * FROM knjiga_kljucne_besede knjiga1 WHERE " + vmesni_niz[5:] \
               + ") pomozna_tabela ON knjiga.id=pomozna_tabela.id_knjige"
         parametri += kljucne
 
