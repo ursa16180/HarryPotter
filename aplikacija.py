@@ -79,10 +79,10 @@ def knjiga(x):
         prebrano = False
         zelja = False
     else:
-        cur.execute("SELECT id_knjige FROM prebrane WHERE id_uporabnika=%s AND id_knjige=%s;",
+        cur.execute("SELECT id_knjige FROM prebrana_knjiga WHERE id_uporabnika=%s AND id_knjige=%s;",
                     (trenutni_uporabnik[0], knjiga['id']))
         prebrano = len(cur.fetchall()) > 0
-        cur.execute("SELECT id_knjige FROM zelje WHERE id_uporabnika=%s AND id_knjige=%s;",
+        cur.execute("SELECT id_knjige FROM wishlist WHERE id_uporabnika=%s AND id_knjige=%s;",
                     (trenutni_uporabnik[0], knjiga['id']))
         zelja = len(cur.fetchall()) > 0
 
@@ -92,7 +92,7 @@ def knjiga(x):
     # ~~~~~~~~~~~~~~~~~~ OCENE ~~~~~~~~~~~~~~~~~~~~~~~~~
 
     if prebrano:
-        cur.execute("SELECT ocena FROM prebrane WHERE id_uporabnika=%s AND id_knjige=%s;",
+        cur.execute("SELECT ocena FROM prebrana_knjiga WHERE id_uporabnika=%s AND id_knjige=%s;",
                     (trenutni_uporabnik[0], knjiga['id']))
         stara_ocena = cur.fetchone()
         stara_ocena = stara_ocena[0]
@@ -102,7 +102,7 @@ def knjiga(x):
             if nova_ocena is None:
                 nova_ocena = stara_ocena
             elif stara_ocena != int(nova_ocena):
-                cur.execute("UPDATE prebrane SET ocena = %s WHERE id_knjige = %s AND id_uporabnika = %s;",
+                cur.execute("UPDATE prebrana_knjiga SET ocena = %s WHERE id_knjige = %s AND id_uporabnika = %s;",
                             (nova_ocena, knjiga['id'], trenutni_uporabnik[0]))
                 nova_vsota_ocen = knjiga['vsota_ocen'] + int(nova_ocena) - stara_ocena
                 cur.execute("UPDATE knjiga SET vsota_ocen = %s WHERE id = %s;",
@@ -113,7 +113,7 @@ def knjiga(x):
             if nova_ocena is not None:
                 nova_ocena = int(nova_ocena)
                 # uporabnik je knjigo na novo ocenil
-                cur.execute("UPDATE prebrane SET ocena = %s WHERE id_knjige = %s AND id_uporabnika = %s;",
+                cur.execute("UPDATE prebrana_knjiga SET ocena = %s WHERE id_knjige = %s AND id_uporabnika = %s;",
                            (nova_ocena, knjiga['id'], trenutni_uporabnik[0]))
                 cur.execute("UPDATE knjiga SET vsota_ocen = %s, stevilo_ocen = %s WHERE id = %s;",
                             (knjiga['vsota_ocen'] + nova_ocena, knjiga['stevilo_ocen'] + 1, knjiga['id']))
@@ -132,7 +132,7 @@ def knjiga(x):
 def avtor(x):
     cur.execute("SELECT id, ime, povprecna_ocena, datum_rojstva, kraj_rojstva FROM avtor WHERE id=%s", (x,))
     avtor = cur.fetchone()
-    cur.execute("SELECT zanr FROM avtorjev_zanr WHERE id = %s", (x,))
+    cur.execute("SELECT zanr FROM avtorjev_zanr WHERE id_avtorja = %s", (x,))
     zanri_avtorja = cur.fetchall()
     zanri_avtorja = set([x[0] for x in zanri_avtorja])
     if zanri_avtorja == {None}:
@@ -165,7 +165,7 @@ def zanr(x):
     cur.execute("SELECT id, naslov FROM knjiga JOIN zanr_knjige ON knjiga.id = zanr_knjige.id_knjige WHERE zanr=%s "
                 "ORDER BY knjiga.stevilo_ocen DESC LIMIT 50;", (x,)) #TODO da razvrsti najboljše in ne najpopularnejše
     knjige = cur.fetchall()
-    cur.execute("SELECT avtor.id, avtor.ime FROM avtor JOIN avtorjev_zanr ON avtor.id = avtorjev_zanr.id "
+    cur.execute("SELECT avtor.id, avtor.ime FROM avtor JOIN avtorjev_zanr ON avtor.id = avtorjev_zanr.id_avtorja "
                 "WHERE avtorjev_zanr.zanr=%s ORDER BY avtor.povprecna_ocena DESC LIMIT 50;", (x,)) #TODO omejeno število avtorjev za posamezn žanr
     avtorji = cur.fetchall()
     return template('zanr.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
@@ -294,7 +294,7 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
         niz += " WHERE knjiga.id NOT IN (SELECT id_knjige FROM del_serije) AND"
     else:
         niz += " WHERE"
-    # ~~~~~~~~~~~~~~Tukaj se doda pogoj o dolžini knjige
+    # ~~~~~~~~~~~~~ Tukaj se doda pogoj o dolžini knjige
     niz += " dolzina>=%s ORDER BY knjiga.id, avtor.id "
     parametri_sql += (dolzina,)
     parametri.append(str(dolzina) + ' pages')
@@ -382,7 +382,7 @@ def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.
                 st_strani -= 1
             return template('izpis_knjiznih_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
                             uporabnik=uporabnik(), knjige=vse_knjige[offset: offset + na_stran],
-                            stran=stran, parametri=[], iskani_izraz_knjiga=iskani_izraz, st_zadetkov=st_zadetkov,
+                            stran=stran, parametri=[iskani_izraz], iskani_izraz_knjiga=iskani_izraz, st_zadetkov=st_zadetkov,
                             st_strani=st_strani, ima_naslednjo=stran+1 < st_strani, ima_prejsnjo=stran != 0,
                             veliki_mali='mali')
     return template('ni_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
@@ -401,7 +401,7 @@ def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.",
         iskani_izraz = dobljeni_izraz
     if iskani_izraz != '':
         niz = ("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor LEFT JOIN avtorjev_zanr ON 
-                  avtor.id=avtorjev_zanr.id WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz + '%', ))
+                  avtor.id=avtorjev_zanr.id_avtorja WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz + '%', ))
         cur.execute(niz[0], niz[1])
         vse_vrstice = cur.fetchall()
         if vse_vrstice != []:
@@ -456,7 +456,7 @@ def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.",
 #                         stran=stran, idji=[int(x) for x in idji_tup], parametri=[])
 #     elif tip == 'avtor':
 #         cur.execute("SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr "
-#                     "FROM avtor LEFT JOIN avtorjev_zanr ON avtor.id=avtorjev_zanr.id "
+#                     "FROM avtor LEFT JOIN avtorjev_zanr ON avtor.id=avtorjev_zanr.id_avtorja "
 #                     "WHERE avtor.id IN %s", (idji_tup,))
 #         vse_vrstice = cur.fetchall()
 #         if vse_vrstice == []:
@@ -513,7 +513,7 @@ def dodaj_zeljo(x):
 
     trenutni_uporabnik = uporabnik()
 
-    cur.execute("""SELECT * FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
+    cur.execute("""SELECT * FROM wishlist WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
     zelja = len(cur.fetchall()) > 0
     if zelja:
         return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
@@ -521,7 +521,7 @@ def dodaj_zeljo(x):
     # ~~~~~~~~~~~~~~~~~~~ GUMBI PREBRANO / WISHLIST ~~~~~~~~~~~~~~~~~~~~~~
 
 
-    cur.execute("""INSERT INTO zelje (id_uporabnika, id_knjige) VALUES (%s,%s)""", (trenutni_uporabnik[0], x))
+    cur.execute("""INSERT INTO wishlist (id_uporabnika, id_knjige) VALUES (%s,%s)""", (trenutni_uporabnik[0], x))
     conn.commit()
 
     return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
@@ -567,14 +567,14 @@ def odstrani_zeljo(x):
         knjiga['zanri'].add(vrstica[14])
 
     trenutni_uporabnik = uporabnik()
-    cur.execute("""SELECT * FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
+    cur.execute("""SELECT * FROM wishlist WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
     zelja = len(cur.fetchall()) > 0
     if not zelja:
         return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
                         knjiga=knjiga, ocena=None, prebrano=False, zelja=False)
     # ~~~~~~~~~~~~~~~~~~~ GUMBI PREBRANO / WISHLIST ~~~~~~~~~~~~~~~~~~~~~~
 
-    cur.execute("""DELETE FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s""", (trenutni_uporabnik[0], x))
+    cur.execute("""DELETE FROM wishlist WHERE id_uporabnika = %s AND id_knjige = %s""", (trenutni_uporabnik[0], x))
     conn.commit()
 
     return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
@@ -620,15 +620,15 @@ def prebral(x):
         knjiga['zanri'].add(vrstica[14])
 
     trenutni_uporabnik = uporabnik()
-    cur.execute("""SELECT * FROM prebrane WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
+    cur.execute("""SELECT * FROM prebrana_knjiga WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
     prebrano = len(cur.fetchall()) > 0
     if prebrano:
         return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
                         knjiga=knjiga, ocena=None, prebrano=True, zelja=False)
     # ~~~~~~~~~~~~~~~~~~~ GUMBI PREBRANO / WISHLIST ~~~~~~~~~~~~~~~~~~~~~~
 
-    cur.execute("""DELETE FROM zelje WHERE id_uporabnika = %s AND id_knjige = %s;
-    INSERT INTO prebrane (id_uporabnika, id_knjige, ocena) VALUES (%s, %s, %s)""", (trenutni_uporabnik[0], x, trenutni_uporabnik[0], x, None))
+    cur.execute("""DELETE FROM wishlist WHERE id_uporabnika = %s AND id_knjige = %s;
+    INSERT INTO prebrana_knjiga (id_uporabnika, id_knjige, ocena) VALUES (%s, %s, %s)""", (trenutni_uporabnik[0], x, trenutni_uporabnik[0], x, None))
 
     conn.commit()
 
@@ -723,12 +723,12 @@ def registriraj_uporabnika():
 @post('/profile/:x')
 def profil(x):
     # TODO: tudi zdej sploh ne rabva pisat ker profil je, ker je to vse v cookijih shranjeno
-    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN prebrane "
-                "ON knjiga.id= prebrane.id_knjige WHERE prebrane.id_uporabnika=%s;", (uporabnik()[0],))
+    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN prebrana_knjiga "
+                "ON knjiga.id= prebrana_knjiga.id_knjige WHERE prebrana_knjiga.id_uporabnika=%s;", (uporabnik()[0],))
     prebrane = cur.fetchall()
 
-    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN zelje ON knjiga.id= zelje.id_knjige "
-                "WHERE zelje.id_uporabnika=%s;", (uporabnik()[0],))
+    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN wishlist ON knjiga.id= wishlist.id_knjige "
+                "WHERE wishlist.id_uporabnika=%s;", (uporabnik()[0],))
     zelje = cur.fetchall()
 
     return template('profile.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
@@ -776,12 +776,12 @@ def spremeni():
     cur.execute("UPDATE uporabnik SET geslo = %s, dom = %s, spol = %s WHERE id = %s;",
                 (geslo_novo, novi_dom, novi_spol, id))
     conn.commit()
-    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN prebrane "
-                "ON knjiga.id= prebrane.id_knjige WHERE prebrane.id_uporabnika=%s;",
+    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN prebrana_knjiga "
+                "ON knjiga.id= prebrana_knjiga.id_knjige WHERE prebrana_knjiga.id_uporabnika=%s;",
                 (uporabnik()[0],))
     prebrane = cur.fetchall()
-    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN zelje "
-                "ON knjiga.id= zelje.id_knjige WHERE zelje.id_uporabnika=%s;",
+    cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN wishlist "
+                "ON knjiga.id= wishlist.id_knjige WHERE wishlist.id_uporabnika=%s;",
                 (uporabnik()[0],))
     zelje = cur.fetchall()
 
@@ -837,3 +837,4 @@ run(host='localhost', port=8080, reloader=True)
 # TODO: barva napisa se pri ravenclaw ne vidi - barve linkov in ozadij
 # TODO: gumbi preberi/wishlist pri zadetkih
 # TODO: na profilu odstranjevanje iz wishlista in prebrano
+# TODO: slike ne delajo, ko se premakneš na naslednjo stran zadetkov
