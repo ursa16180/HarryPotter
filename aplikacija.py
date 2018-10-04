@@ -162,11 +162,13 @@ def avtor(x):
 def zanr(x):
     cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra=%s;", (x,))
     zanr = cur.fetchone()
-    cur.execute("SELECT id, naslov FROM knjiga JOIN zanr_knjige ON knjiga.id = zanr_knjige.id_knjige WHERE zanr=%s "
-                "ORDER BY knjiga.stevilo_ocen DESC LIMIT 50;", (x,)) #TODO da razvrsti najboljše in ne najpopularnejše
+    cur.execute("SELECT id, naslov, knjiga.vsota_ocen / knjiga.stevilo_ocen as povprecna_ocena FROM knjiga JOIN zanr_knjige "
+                "ON knjiga.id = zanr_knjige.id_knjige WHERE zanr=%s "
+                "ORDER BY povprecna_ocena DESC LIMIT 50;", (x,))
     knjige = cur.fetchall()
+
     cur.execute("SELECT avtor.id, avtor.ime FROM avtor JOIN avtorjev_zanr ON avtor.id = avtorjev_zanr.id_avtorja "
-                "WHERE avtorjev_zanr.zanr=%s ORDER BY avtor.povprecna_ocena DESC LIMIT 50;", (x,)) #TODO omejeno število avtorjev za posamezn žanr
+                "WHERE avtorjev_zanr.zanr=%s ORDER BY avtor.povprecna_ocena DESC LIMIT 50;", (x,))
     avtorji = cur.fetchall()
     return template('zanr.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                     zanr=zanr, knjige=knjige, avtorji=avtorji)
@@ -361,16 +363,17 @@ def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.
 
         vse_vrstice = []
         for niz in nizi:
-            cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
-                 "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
-                 "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
-                 "WHERE knjiga.opis LIKE %s;", niz)
+            cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice, "
+                        "knjiga.stevilo_ocen, knjiga.vsota_ocen FROM knjiga LEFT JOIN avtor_knjige "
+                        "ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id "
+                        "LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE knjiga.opis LIKE %s;", niz)
             nove_vrstice = cur.fetchall()
             vse_vrstice += nove_vrstice
-        cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
-                    "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
-                    "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
-                    "WHERE knjiga.naslov LIKE %s;", ('%' + iskani_izraz + '%',))
+        cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice, "
+                    "knjiga.stevilo_ocen, knjiga.vsota_ocen FROM knjiga LEFT JOIN avtor_knjige "
+                    "ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id "
+                    "LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE knjiga.naslov LIKE %s;",
+                    ('%' + iskani_izraz + '%',))
         nove_vrstice = cur.fetchall()
         vse_vrstice += nove_vrstice
         if vse_vrstice != []:
@@ -384,8 +387,13 @@ def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.
                 trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
                 trenutna_knjiga['zanri'].add(vrstica[4])
                 trenutna_knjiga['url_naslovnice'] = vrstica[5]
+                trenutna_knjiga['stevilo_ocen'] = vrstica[6]
+                if vrstica[6] != 0:
+                    trenutna_knjiga['povprecna_ocena'] = vrstica[7]/vrstica[6]
+                else:
+                    trenutna_knjiga['povprecna_ocena'] = 0
                 slovar_slovarjev_knjig[id_knjige] = trenutna_knjiga
-            vse_knjige = list(slovar_slovarjev_knjig.values())
+            vse_knjige =sorted(list(slovar_slovarjev_knjig.values()), key=itemgetter('povprecna_ocena'))
             st_zadetkov = len(vse_knjige)
             st_strani = st_zadetkov//10 + 1
             if st_zadetkov % 10 == 0:
@@ -410,10 +418,9 @@ def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.",
     if dobljeni_izraz is not None:
         iskani_izraz = dobljeni_izraz
     if iskani_izraz != '':
-        nizi = [("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor LEFT JOIN avtorjev_zanr ON 
-                  avtor.id=avtorjev_zanr.id_avtorja WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz + '%', )),
-                ("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor LEFT JOIN avtorjev_zanr ON 
-                  avtor.id=avtorjev_zanr.id_avtorja WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz[0].upper() + iskani_izraz[1:] + '%', )),]
+        iskani_izraz = iskani_izraz.title()
+        nizi = [("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr, avtor.povprecna_ocena FROM avtor LEFT JOIN avtorjev_zanr ON 
+                  avtor.id=avtorjev_zanr.id_avtorja WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz + '%', ))]
         vse_vrstice = []
         for niz in nizi:
             cur.execute(niz[0], niz[1])
@@ -425,8 +432,9 @@ def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.",
                 trenutni_avtor = zadetki_avtorjev.get(id_avtorja, {'id': id_avtorja, 'ime': None, 'zanri': set()})
                 trenutni_avtor['ime'] = vrstica[1]
                 trenutni_avtor['zanri'].add(vrstica[2])
+                trenutni_avtor['povprecna_ocena']  = vrstica[3]
                 zadetki_avtorjev[id_avtorja] = trenutni_avtor
-            vsi_avtorji = list(zadetki_avtorjev.values())
+            vsi_avtorji = sorted(list(zadetki_avtorjev.values()), key=itemgetter('povprecna_ocena'))
             st_zadetkov = len(vsi_avtorji)
             st_strani = st_zadetkov// 10 + 1
             if st_zadetkov%10 == 0:
@@ -434,8 +442,7 @@ def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.",
             return template('izpis_zadetkov_avtorjev.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
                             uporabnik=uporabnik(), avtorji=vsi_avtorji[offset:offset + na_stran], stran=stran,
                             iskani_izraz_avtor=iskani_izraz, st_zadetkov=st_zadetkov,
-                            st_strani=st_strani, ima_naslednjo=stran + 1 < st_strani, ima_prejsnjo=stran != 0
-                            )
+                            st_strani=st_strani, ima_naslednjo=stran + 1 < st_strani, ima_prejsnjo=stran != 0)
     # če je polje prazno ali če ni zadetkov
     return template('ni_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
                     uporabnik=uporabnik(), parametri=[iskani_izraz])
@@ -764,6 +771,9 @@ def spremeni():
                     zelje=zelje)
 
 
+@error(404)
+def error404(error):
+    return template('404.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik())
 
 ######################################################################
 # Glavni program
