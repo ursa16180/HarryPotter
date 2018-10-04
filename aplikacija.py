@@ -128,7 +128,7 @@ def knjiga(x):
                     knjiga=knjiga, ocena=ocena_uporabnika, prebrano=prebrano, zelja=zelja)
 
 
-@post('/avtor/:x')
+@get('/avtor/:x')
 def avtor(x):
     cur.execute("SELECT id, ime, povprecna_ocena, datum_rojstva, kraj_rojstva FROM avtor WHERE id=%s", (x,))
     avtor = cur.fetchone()
@@ -158,7 +158,7 @@ def avtor(x):
                     avtor=avtor, knjige=list(knjige), zanriAvtorja=list(zanri_avtorja), serijeAvtorja=serije_avtorja)
 
 
-@post('/zanr/:x')
+@get('/zanr/:x')
 def zanr(x):
     cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra=%s;", (x,))
     zanr = cur.fetchone()

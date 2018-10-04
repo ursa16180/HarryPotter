@@ -33,7 +33,7 @@
             %if avtorji != []:
                 Authors writting in genre {{zanr[0]}}:
                 %for avtor in avtorji:
-                    <form action="/avtor/{{avtor[0]}}" method="POST">
+                    <form action="/avtor/{{avtor[0]}}" method="GET">
                         <input type="submit" class="btn btn-link" value="{{avtor[1]}}">
                     </form>
                 %end

@@ -332,8 +332,8 @@ prebrana_knjiga=['prebrana_knjiga',
                 RETURNING (id_uporabnika, id_knjige)
             """
            ]
-#knjiga, avtor, zanr, serija, del_serije,
-seznamVseh = [ avtor_knjige, zanr_knjige, avtorjev_zanr, kljucna_beseda, knjiga_kljucne_besede, uporabnik, wishlist, prebrana_knjiga]
+#
+seznamVseh = [knjiga, avtor, zanr, serija, del_serije, avtor_knjige, zanr_knjige, avtorjev_zanr, kljucna_beseda, knjiga_kljucne_besede, uporabnik, wishlist, prebrana_knjiga]
 
 
 def ustvari_vse_tabele():
@@ -352,7 +352,7 @@ def izbrisi_vse_tabele():
 
 #izbrisi_vse_tabele()
 #ustvari_vse_tabele()
-uvozi_vse_podatke()
+#uvozi_vse_podatke()
 
 #ustvari_tabelo(uporabnik)
 #ustvari_tabelo(ocena_knjige)
@@ -368,6 +368,9 @@ uvozi_vse_podatke()
 
 
 #NAKNADNO DODANI SQL-stavki
-#UPDATE knjiga SET stevilo_ocen = COALESCE(stevilo_ocen,0)
-#UPDATE knjiga SET vsota_ocen = COALESCE(vsota_ocen,0)
+# ALTER TABLE knjiga ADD vsota_ocen float;
+# UPDATE knjiga SET vsota_ocen = stevilo_ocen * povprecna_ocena;
+# ALTER TABLE knjiga DROP COLUMN povprecna_ocena;
+#UPDATE knjiga SET stevilo_ocen = COALESCE(stevilo_ocen,0);
+#UPDATE knjiga SET vsota_ocen = COALESCE(vsota_ocen,0);
 

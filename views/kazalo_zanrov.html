@@ -5,7 +5,7 @@
    <div class="btn-group-vertical">
         <br/>
         % for zanr in zanri_kazalo:
-            <form action="/zanr/{{zanr[0]}}" method="POST">
+            <form action="/zanr/{{zanr[0]}}" method="GET">
                  <b><input type="submit" class="btn btn-basic" value="{{zanr[0]}}"></b>
             </form>
        %end

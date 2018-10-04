@@ -74,13 +74,13 @@
 
 <div class="row px-4">
     <div class="btn-group-vertical">
-        <form action="/avtor/{{avtor['id']}}" method="POST">
+        <form action="/avtor/{{avtor['id']}}" method="GET">
             <b><input type="submit" class="btn btn-basic" value="{{avtor['ime']}}"></b>
         </form>
 
         <div class="btn-group">
             %for zanr in avtor['zanri']:
-                <form action="/zanr/{{zanr}}" method="POST">
+                <form action="/zanr/{{zanr}}" method="GET">
                     <p><input type="submit" class="btn btn-link" value="{{zanr}}">
                     </p>
                 </form>

@@ -13,7 +13,7 @@
                 <div class="collapse" id="{{crka1}}">
                     <div class="card card-body">
                         % for (priimek, avtor) in ostalo:
-                            <form action="/avtor/{{avtor[0]}}" method="POST">
+                            <form action="/avtor/{{avtor[0]}}" method="GET">
                                 <b><input type="submit" class="btn btn-basic" value="{{avtor[1]}}"></b>
                             </form>
                         % end
@@ -34,7 +34,7 @@
                 <div class="collapse" id="{{crka2}}">
                     <div class="card card-body">
                         % for (priimek, avtor) in ostalo:
-                            <form action="/avtor/{{avtor[0]}}" method="POST">
+                            <form action="/avtor/{{avtor[0]}}" method="GET">
                                 <b><input type="submit" class="btn btn-basic" value="{{avtor[1]}}"></b>
                             </form>
                         % end
@@ -54,7 +54,7 @@
                 <div class="collapse" id="{{crka3}}">
                     <div class="card card-body">
                         % for (priimek, avtor) in ostalo:
-                            <form action="/avtor/{{avtor[0]}}" method="POST">
+                            <form action="/avtor/{{avtor[0]}}" method="GET">
                                 <b><input type="submit" class="btn btn-basic" value="{{avtor[1]}}"></b>
                             </form>
                         % end
