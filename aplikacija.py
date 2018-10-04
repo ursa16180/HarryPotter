@@ -329,6 +329,17 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
                         ima_naslednjo=stran+1 < st_strani, ima_prejsnjo=stran != 0, st_strani=st_strani,
                         st_zadetkov=stevilo_knjig, veliki_mali='veliki')
 
+def poisci_kombinacije(besede):
+    if besede == []:
+        return []
+    prva_beseda = besede[0]
+    if len(besede) == 1:
+        return [prva_beseda, prva_beseda[0].upper() + prva_beseda[1:]]
+    kombinacije = []
+    for kombinacija in poisci_kombinacije(besede[1:]):
+        kombinacije += [prva_beseda + ' ' + kombinacija]
+        kombinacije += [prva_beseda[0].upper() + prva_beseda[1:] + ' ' + kombinacija]
+    return kombinacije
 
 @post('/rezultati_iskanja_knjiga/')
 @post('/rezultati_iskanja_knjiga/<iskani_izraz>/<stran>')
@@ -340,29 +351,28 @@ def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.
     if dobljen_izraz is not None:
         iskani_izraz = dobljen_izraz
     if iskani_izraz != '':
-        nizi = [("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
-                 "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
-                 "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
-                 "WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s;", ('% ' + iskani_izraz + ' %',)),
-                ("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
-                 "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
-                 "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
-                 "WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s;", ('% ' + iskani_izraz + 's %',)),
-                ("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
-                 "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
-                 "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
-                 "WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s;",
-                 ('% ' + iskani_izraz[0].upper() + iskani_izraz[1:] + ' %',)),
-                ("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
-                 "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
-                 "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
-                 "WHERE CONCAT_WS('|', knjiga.naslov, knjiga.opis) LIKE %s;",
-                 ('% ' + iskani_izraz[0].upper() + iskani_izraz[1:] + 's %',))]
+        nizi = [('% ' + iskani_izraz + ' %',), ('% ' + iskani_izraz[0].upper() + iskani_izraz[1:] + ' %',),
+                ('% ' + iskani_izraz + 's %',), ('% ' + iskani_izraz[0].upper() + iskani_izraz[1:] + 's %',)]
+        besede = iskani_izraz.split(' ')
+        if len(besede) > 1:
+            vse_moznosti = poisci_kombinacije(besede)
+            for izraz in vse_moznosti:
+                nizi += [('% ' + izraz + ' %',)]
+
         vse_vrstice = []
         for niz in nizi:
-            cur.execute(niz[0], niz[1])
+            cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
+                 "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
+                 "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
+                 "WHERE knjiga.opis LIKE %s;", niz)
             nove_vrstice = cur.fetchall()
             vse_vrstice += nove_vrstice
+        cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
+                    "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
+                    "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
+                    "WHERE knjiga.naslov LIKE %s;", ('%' + iskani_izraz + '%',))
+        nove_vrstice = cur.fetchall()
+        vse_vrstice += nove_vrstice
         if vse_vrstice != []:
             slovar_slovarjev_knjig = {}
             for vrstica in vse_vrstice:
@@ -400,10 +410,14 @@ def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.",
     if dobljeni_izraz is not None:
         iskani_izraz = dobljeni_izraz
     if iskani_izraz != '':
-        niz = ("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor LEFT JOIN avtorjev_zanr ON 
-                  avtor.id=avtorjev_zanr.id_avtorja WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz + '%', ))
-        cur.execute(niz[0], niz[1])
-        vse_vrstice = cur.fetchall()
+        nizi = [("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor LEFT JOIN avtorjev_zanr ON 
+                  avtor.id=avtorjev_zanr.id_avtorja WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz + '%', )),
+                ("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr FROM avtor LEFT JOIN avtorjev_zanr ON 
+                  avtor.id=avtorjev_zanr.id_avtorja WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz[0].upper() + iskani_izraz[1:] + '%', )),]
+        vse_vrstice = []
+        for niz in nizi:
+            cur.execute(niz[0], niz[1])
+            vse_vrstice += cur.fetchall()
         if vse_vrstice != []:
             zadetki_avtorjev = {}
             for vrstica in vse_vrstice:
@@ -426,51 +440,6 @@ def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.",
     return template('ni_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
                     uporabnik=uporabnik(), parametri=[iskani_izraz])
 
-#
-# @get('/izpis_zadetkov/:x')
-# def izpis_zadetkov(x):
-#     [tip, stran, idji] = x.split('&')
-#     idji_tup = tuple(idji[1:-1].split(', '))
-#     if tip == 'knjiga':
-#         cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice "
-#                     "FROM knjiga LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor "
-#                     "ON avtor_knjige.id_avtorja=avtor.id LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige "
-#                     "WHERE knjiga.id IN %s", (idji_tup,))
-#         vse_vrstice = cur.fetchall()
-#         if vse_vrstice == []:
-#             return template('ni_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
-#                             uporabnik=uporabnik(), parametri=[])
-#         slovar_slovarjev_knjig = {}
-#         for vrstica in vse_vrstice:
-#             id = vrstica[0]
-#             trenutna_knjiga = slovar_slovarjev_knjig.get(id,
-#                                                          {'id': id, 'naslov': None, 'avtorji': set(),
-#                                                           'zanri': set(), 'url_naslovnice': None})
-#             trenutna_knjiga['naslov'] = vrstica[1]
-#             trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
-#             trenutna_knjiga['zanri'].add(vrstica[4])
-#             trenutna_knjiga['url_naslovnice'] = vrstica[5]
-#             slovar_slovarjev_knjig[id] = trenutna_knjiga
-#         return template('izpis_knjiznih_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
-#                         uporabnik=uporabnik(), knjige=list(slovar_slovarjev_knjig.values()),
-#                         stran=stran, idji=[int(x) for x in idji_tup], parametri=[])
-#     elif tip == 'avtor':
-#         cur.execute("SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr "
-#                     "FROM avtor LEFT JOIN avtorjev_zanr ON avtor.id=avtorjev_zanr.id_avtorja "
-#                     "WHERE avtor.id IN %s", (idji_tup,))
-#         vse_vrstice = cur.fetchall()
-#         if vse_vrstice == []:
-#             return template('ni_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
-#                             uporabnik=uporabnik(), parametri=[])
-#         zadetki_avtorjev = {}
-#         for vrstica in vse_vrstice:
-#             id = vrstica[0]
-#             trenutni_avtor = zadetki_avtorjev.get(id, {'id': id, 'ime': None, 'zanri': set()})
-#             trenutni_avtor['ime'] = vrstica[1]
-#             trenutni_avtor['zanri'].add(vrstica[2])
-#             zadetki_avtorjev[id] = trenutni_avtor
-#         return template('izpis_zadetkov_avtorjev.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-#                         avtorji=list(zadetki_avtorjev.values()), stran=stran, idji=[int(x) for x in idji_tup])
 
 
 @post('/add_wishlist/:x')
@@ -703,15 +672,21 @@ def registriraj_uporabnika():
         spol = "Male"
 
     cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
-    if cur.fetchone() is not None:
+    nov_vzdevek = cur.fetchone() is None
+    cur.execute("SELECT email FROM uporabnik WHERE email=%s;", (email,))
+    nov_mail = cur.fetchone() is None
+    if not nov_vzdevek:
         return template("registracija.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                         sporocilo='Unfortunately this nickname is taken. Good one though.',
                         email=email, username='', house=dom, sex=spol)
+    if not nov_mail:
+        return template("registracija.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        sporocilo='Unfortunately someone has already used this email to sign up to our library.',
+                        username=vzdevek, house=dom, sex=spol, email='')
     elif not geslo1 == geslo2:
         return template("registracija.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                         sporocilo='The passwords do not match. Check them again.',
                         email=email, username=vzdevek, house=dom, sex=spol)
-    # TODO: a pogledava še za unikatne mejle?
     geslo_kodirano = zakodiraj_geslo(geslo1)
     cur.execute("INSERT INTO uporabnik (vzdevek, geslo, email, dom, spol) VALUES(%s,%s,%s,%s,%s);",
                 (vzdevek, geslo_kodirano, email, dom, spol))
