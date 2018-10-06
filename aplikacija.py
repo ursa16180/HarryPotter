@@ -33,7 +33,7 @@ def index():
     return template('zacetna_stran.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik())
 
 
-@post('/knjiga/:x')
+@post('/book/:x')
 def knjiga(x):
     cur.execute(  # SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis,
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
@@ -128,7 +128,7 @@ def knjiga(x):
                     knjiga=knjiga, ocena=ocena_uporabnika, prebrano=prebrano, zelja=zelja)
 
 
-@get('/avtor/:x')
+@get('/author/:x')
 def avtor(x):
     cur.execute("SELECT id, ime, povprecna_ocena, datum_rojstva, kraj_rojstva FROM avtor WHERE id=%s", (x,))
     avtor = cur.fetchone()
@@ -158,7 +158,7 @@ def avtor(x):
                     avtor=avtor, knjige=list(knjige), zanriAvtorja=list(zanri_avtorja), serijeAvtorja=serije_avtorja)
 
 
-@get('/zanr/:x')
+@get('/genre/:x')
 def zanr(x):
     cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra=%s;", (x,))
     zanr = cur.fetchone()
@@ -174,8 +174,8 @@ def zanr(x):
                     zanr=zanr, knjige=knjige, avtorji=avtorji)
 
 
-@get('/zbirka/:x')
-@post('/zbirka/:x')
+@get('/series/:x')
+@post('/series/:x')
 def zbirka(x):
     cur.execute("""SELECT serija.ime, del_serije.zaporedna_stevilka_serije, knjiga.id, knjiga.naslov, avtor.id, avtor.ime FROM serija
         JOIN del_serije ON del_serije.id_serije=serija.id
@@ -198,7 +198,7 @@ def zbirka(x):
                     knjige=list(knjige.values()), avtorji=list(avtorji.values()), serija=serija)
 
 
-@post('/kazaloAvtorja')
+@post('/all_authors')
 def kazalo_avtorja():
     cur.execute("""SELECT id, ime FROM avtor;""")
     neurejeni_avtorji = cur.fetchall()
@@ -215,7 +215,7 @@ def kazalo_avtorja():
                     uporabnik=uporabnik(), avtorji=avtorji)
 
 
-@post('/kazaloZanra')
+@post('/all_genres')
 def kazalo_zanra():
     cur.execute("""SELECT ime_zanra FROM zanr;""")
     vsi_zanri_iz_baze = cur.fetchall()
@@ -223,8 +223,8 @@ def kazalo_zanra():
                     uporabnik=uporabnik(), zanri_kazalo=vsi_zanri_iz_baze)
 
 
-@post('/isci/')
-@post('/isci/<dolzina>/<kljucne>/<zanri>/<je_del_zbirke>/<stran:int>')
+@post('/search/')
+@post('/search/<dolzina>/<kljucne>/<zanri>/<je_del_zbirke>/<stran:int>')
 def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way', stran=0):
     stran = int(stran)
     dolzina = int(dolzina)
@@ -344,9 +344,9 @@ def poisci_kombinacije(besede):
         kombinacije += [prva_beseda[0].upper() + prva_beseda[1:] + ' ' + kombinacija]
     return kombinacije
 
-@get('/rezultati_iskanja_knjiga/<iskani_izraz>/')
-@post('/rezultati_iskanja_knjiga/')
-@post('/rezultati_iskanja_knjiga/<iskani_izraz>/<stran>')
+@get('/search_results_books/<iskani_izraz>/')
+@post('/search_results_books/')
+@post('/search_results_books/<iskani_izraz>/<stran>')
 def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.", stran=0):
     stran = int(stran)
     na_stran = 10
@@ -409,8 +409,8 @@ def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.
                     uporabnik=uporabnik(), parametri=[iskani_izraz])
 
 
-@post('/rezultati_iskanja_avtor/')
-@post('/rezultati_iskanja_avtor/<iskani_izraz>/<stran>')
+@post('/search_results_authors/')
+@post('/search_results_authors/<iskani_izraz>/<stran>')
 def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.", stran=0):
     stran = int(stran)
     na_stran = 10
@@ -628,13 +628,13 @@ def uporabnik():
         return [0, None, None]
 
 
-@get("/odjava")
+@get("/sign_out")
 def odjava():
     response.delete_cookie('vzdevek', path='/', domain='localhost')
     redirect('/')
 
 
-@post("/prijava")
+@post("/sign_in")
 def prijava_uporabnika():
     vzdevek = request.forms.vzdevek
     geslo = zakodiraj_geslo(request.forms.geslo)
@@ -661,13 +661,13 @@ def prijava_uporabnika():
             # redirect('/profile/' + str(id))
 
 
-@get('/registracija')
+@get('/sign_up')
 def odpri_registracijo():
     return template('registracija.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(), sporocilo=None,
                     email='', username='', house='Gryffindor', sex='Witch')
 
 
-@post('/registracija')
+@post('/sign_up')
 def registriraj_uporabnika():
     vzdevek = request.forms.vzdevek
     geslo1 = request.forms.geslo
@@ -719,7 +719,7 @@ def profil(x):
                     prebrane=prebrane, zelje=zelje)
 
 
-@get('/spremeni_profil')
+@get('/change_profile')
 def spremeni():
     cur.execute("SELECT spol FROM uporabnik WHERE id=%s;", (uporabnik()[0],))
     spol = cur.fetchone()[0]
@@ -731,7 +731,7 @@ def spremeni():
                     spol=spol, sporocilo=None)
 
 
-@post('/spremeni_profil')
+@post('/change_profil')
 def spremeni():
     (id, vzdevek, dom) = uporabnik()
 

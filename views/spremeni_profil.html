@@ -1,7 +1,7 @@
 %rebase('osnova.html', naslov='Change profile')
 <div class="row">
     <div class="col-5">
-        <form action="/spremeni_profil" method="POST">
+        <form action="/change_profile" method="POST">
             %if sporocilo is not None:
             <div class="alert alert-success" role="alert">{{sporocilo}}</div>
             %end

@@ -63,12 +63,12 @@
         <div class="col-3">
             <nav class="nav">
                 <a class="nav-link active" href="#">
-                    <form action="/kazaloAvtorja" method="POST">
+                    <form action="/all_authors" method="POST">
                         <b><input type="submit" class="btn btn-basic" value="Authors"></b>
                     </form>
                 </a>
                 <a class="nav-link" href="#">
-                    <form action="/kazaloZanra" method="POST">
+                    <form action="/all_genres" method="POST">
                         <b><input type="submit" class="btn btn-basic" value="Genres"></b>
                     </form>
                 </a>
@@ -78,7 +78,7 @@
 
             %if uporabnik[1] is None:
         <div class="col-5">
-            <form class="form-row" action="/prijava" method="POST">
+            <form class="form-row" action="/sign_in" method="POST">
                 <!--<div class="w-75 p-3 bg-dark">-->
                     <div class="col-auto">
                         <input type="text" class="form-control" id="username" placeholder="Username" name="vzdevek">
@@ -95,7 +95,7 @@
             </form>
         </div>
         <div class="col-1">
-            <form class="form-row" action="/registracija" method="GET">
+            <form class="form-row" action="/sign_up" method="GET">
                 <div class="col-auto">
                     <b><input type="submit" class="btn btn-success btn-sm" value="Sign up"></b>
                 </div>
@@ -111,7 +111,7 @@
             </form>
         </div>
         <div class="col-1">
-            <form action="/odjava" method="GET">
+            <form action="/sign_out" method="GET">
                 <div class="col-auto">
                     <b><input type="submit" class="btn btn-success btn-sm" value="Sign out"></b>
                 </div>

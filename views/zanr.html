@@ -20,7 +20,7 @@
             %if knjige != []:
                 Best books in genre {{zanr[0]}}:
                 %for knjiga in knjige:
-                    <form action="/knjiga/{{knjiga[0]}}" method="POST">
+                    <form action="/book/{{knjiga[0]}}" method="POST">
                         <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
                     </form>
                 %end
@@ -33,7 +33,7 @@
             %if avtorji != []:
                 Authors writting in genre {{zanr[0]}}:
                 %for avtor in avtorji:
-                    <form action="/avtor/{{avtor[0]}}" method="GET">
+                    <form action="/author/{{avtor[0]}}" method="GET">
                         <input type="submit" class="btn btn-link" value="{{avtor[1]}}">
                     </form>
                 %end

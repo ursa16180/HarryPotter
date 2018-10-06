@@ -11,7 +11,7 @@
             <br/>
                 Books in series:
                 %for knjiga in knjige:
-                    <form action="/knjiga/{{knjiga[0]}}" method="POST">
+                    <form action="/book/{{knjiga[0]}}" method="POST">
                         %if knjiga[2] is not None:
                         %    dodatek = ' #' + str(knjiga[2])
                         %else:
@@ -32,7 +32,7 @@
             Series authors:
             %end
             %for avtor in avtorji:
-                <form action="/avtor/{{avtor[0]}}" method="GET">
+                <form action="/author/{{avtor[0]}}" method="GET">
                     <input type="submit" class="btn btn-link" value="{{avtor[1]}}">
                 </form>
             %end

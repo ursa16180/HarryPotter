@@ -11,7 +11,7 @@
         %if prebrano and (ocena is None):
         Rate book:
         <div class="col-5">
-            <form action="/knjiga/{{knjiga['id']}}" method="POST">
+            <form action="/book/{{knjiga['id']}}" method="POST">
                 <div class="rating-block">
                     %for i in range(1, 6):
                         <div class="form-check form-check-inline">
@@ -28,7 +28,7 @@
         %if prebrano and (ocena is not None):
             Your rating:
             <div class="col-5">
-                <form action="/knjiga/{{knjiga['id']}}" method="POST">
+                <form action="/book/{{knjiga['id']}}" method="POST">
                     <div class="rating-block">
                         %for i in range(1, ocena):
                             <div class="form-check form-check-inline">
@@ -87,14 +87,14 @@
 %if knjiga['avtor'] != {(None, None)}:
     <div class="row px-4">
             %if len(knjiga['avtor'])==1:
-            <p>Author: <a href="/avtor/{{list(knjiga['avtor'])[0][0]}}">{{list(knjiga['avtor'])[0][1]}}</a></p>
+            <p>Author: <a href="/author/{{list(knjiga['avtor'])[0][0]}}">{{list(knjiga['avtor'])[0][1]}}</a></p>
             %end
             %if len(knjiga['avtor'])>1:
                 <p>Authors:
                 %for avtor in list(knjiga['avtor'])[:-1]:
-                    <a href="/avtor/{{avtor[0]}}">{{avtor[1]}}, </a>
+                    <a href="/author/{{avtor[0]}}">{{avtor[1]}}, </a>
                 %end
-                    <a href="/avtor/{{list(knjiga['avtor'])[-1][0]}}"> {{list(knjiga['avtor'])[-1][1]}}</a></p>
+                    <a href="/author/{{list(knjiga['avtor'])[-1][0]}}"> {{list(knjiga['avtor'])[-1][1]}}</a></p>
 
             %end
 
@@ -110,7 +110,7 @@
                 %else:
                 %    dodatek = ''
                 %end
-                <a href="/zbirka/{{serija[0]}}">{{serija[1]}}{{dodatek}},</a>
+                <a href="/series/{{serija[0]}}">{{serija[1]}}{{dodatek}},</a>
         %end
 
         %if list(knjiga['serija'])[-1][2] is not None:
@@ -118,7 +118,7 @@
         %else:
         %    dodatek = ''
         %end
-            <a href="/zbirka/{{list(knjiga['serija'])[-1][0]}}">{{list(knjiga['serija'])[-1][1]}}{{dodatek}}</a></p>
+            <a href="/series/{{list(knjiga['serija'])[-1][0]}}">{{list(knjiga['serija'])[-1][1]}}{{dodatek}}</a></p>
 
     </div>
 % end
@@ -159,9 +159,9 @@
     <div class="row px-4">
         <p>Genre:
             %for zanr in list(knjiga['zanri'])[:-1]:
-                <a href="/zanr/{{zanr}}">{{zanr}}, </a>
+                <a href="/genre/{{zanr}}">{{zanr}}, </a>
             %end
-        <a href="/zanr/{{list(knjiga['zanri'])[-1]}}">{{list(knjiga['zanri'])[-1]}}</a></p>
+        <a href="/genre/{{list(knjiga['zanri'])[-1]}}">{{list(knjiga['zanri'])[-1]}}</a></p>
     </div>
 %end
 
