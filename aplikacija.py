@@ -646,8 +646,9 @@ def prijava_uporabnika():
     if vzdevek is not None:
         cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
         if cur.fetchone() is None:
-            return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                            sporocilo='This username does not yet exist. You may create a new user here.')
+            return template("registracija.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                            sporocilo='This username does not yet exist. You may create a new user here.',
+                            email='', username='', house='Gryffindor', sex='Witch')
     if vzdevek is not None and geslo is not None:
         cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s AND geslo=%s;", (vzdevek, geslo))
         if cur.fetchone() is None:
