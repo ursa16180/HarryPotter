@@ -373,15 +373,15 @@ def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.
                         "knjiga.stevilo_ocen, knjiga.vsota_ocen FROM knjiga LEFT JOIN avtor_knjige "
                         "ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id "
                         "LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE knjiga.opis LIKE %s;", niz)
-            nove_vrstice = cur.fetchall()
-            vse_vrstice += nove_vrstice
+            nove_vrstice1 = cur.fetchall()
+            vse_vrstice += nove_vrstice1
         cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice, "
                     "knjiga.stevilo_ocen, knjiga.vsota_ocen FROM knjiga LEFT JOIN avtor_knjige "
                     "ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id "
                     "LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE knjiga.naslov LIKE %s;",
-                    ('%' + iskani_izraz + '%',))
-        nove_vrstice = cur.fetchall()
-        vse_vrstice += nove_vrstice
+                    ('%' + iskani_izraz[0].upper() + iskani_izraz[1:] + '%',))
+        nove_vrstice2 = cur.fetchall()
+        vse_vrstice += nove_vrstice2
         if vse_vrstice != []:
             slovar_slovarjev_knjig = {}
             for vrstica in vse_vrstice:
@@ -822,10 +822,4 @@ for vrstica in kljucne_iz_baze:
 run(host='localhost', port=8080, reloader=True)
 
 
-# TODO: Strani se izpišejo v stolpec (pri iskanju) ????
-# TODO: lepše narejena razdelitev na strani (zdej se notri pošilja cel SQL) - Vprašaj Ines
-# TODO: popravi ER diagram
-# TODO: barva napisa se pri ravenclaw ne vidi - barve linkov in ozadij
-# TODO: gumbi preberi/wishlist pri zadetkih
-# TODO: na profilu odstranjevanje iz wishlista in prebrano
 # TODO: slike ne delajo, ko se premakneš na naslednjo stran zadetkov
