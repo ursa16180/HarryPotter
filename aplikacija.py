@@ -162,16 +162,20 @@ def avtor(x):
 def zanr(x):
     cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra=%s;", (x,))
     zanr = cur.fetchone()
-    cur.execute("SELECT id, naslov, knjiga.vsota_ocen / knjiga.stevilo_ocen as povprecna_ocena FROM knjiga JOIN zanr_knjige "
-                "ON knjiga.id = zanr_knjige.id_knjige WHERE zanr=%s "
-                "ORDER BY povprecna_ocena DESC LIMIT 50;", (x,))
+    cur.execute("SELECT id, naslov, knjiga.vsota_ocen, knjiga.stevilo_ocen FROM knjiga JOIN zanr_knjige "
+                "ON knjiga.id = zanr_knjige.id_knjige WHERE zanr=%s ", (x,))
     knjige = cur.fetchall()
+    for knjiga in knjige:
+        if knjiga[3] == 0:
+            knjiga[2] = 0
+        else:
+            knjiga[2] = knjiga[2]/knjiga[3]
 
     cur.execute("SELECT avtor.id, avtor.ime FROM avtor JOIN avtorjev_zanr ON avtor.id = avtorjev_zanr.id_avtorja "
                 "WHERE avtorjev_zanr.zanr=%s ORDER BY avtor.povprecna_ocena DESC LIMIT 50;", (x,))
     avtorji = cur.fetchall()
     return template('zanr.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                    zanr=zanr, knjige=knjige, avtorji=avtorji)
+                    zanr=zanr, knjige=sorted(knjige, key=itemgetter(2), reverse=True)[:50], avtorji=avtorji)
 
 
 @get('/series/:x')
@@ -731,7 +735,7 @@ def spremeni():
                     spol=spol, sporocilo=None)
 
 
-@post('/change_profil')
+@post('/change_profile')
 def spremeni():
     (id, vzdevek, dom) = uporabnik()
 

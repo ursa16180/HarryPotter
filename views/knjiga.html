@@ -170,9 +170,9 @@
 
         <p>Key words:
         %for kljucna_beseda in list(knjiga['kljucna_beseda'])[:-1]:
-            <a href="/rezultati_iskanja_knjiga/{{kljucna_beseda}}/">{{kljucna_beseda}},</a>
+            <a href="/search_results_books/{{kljucna_beseda}}/">{{kljucna_beseda}},</a>
         %end
-        <a href="/rezultati_iskanja_knjiga/{{list(knjiga['kljucna_beseda'])[-1]}}/">{{list(knjiga['kljucna_beseda'])[-1]}}</a></p>
+        <a href="/search_results_books/{{list(knjiga['kljucna_beseda'])[-1]}}/">{{list(knjiga['kljucna_beseda'])[-1]}}</a></p>
 
     </div>
 % end

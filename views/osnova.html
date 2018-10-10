@@ -148,7 +148,7 @@
             <br/>
             <div class="row px-3">
                 <!-- Veliki iskalnik -->
-                <form action="/isci/" method="POST">
+                <form action="/search/" method="POST">
                 <p class="text-primary"><b>Bookfinder</b></p>
 
                 <div class="form-group">
@@ -258,7 +258,7 @@
             <div class="row">
                 <nav class="nav">
                  <a class="nav-link" href="#">
-                    <form class="form-inline my-2 my-lg-0" action="/rezultati_iskanja_knjiga/" method="POST">
+                    <form class="form-inline my-2 my-lg-0" action="/search_results_books/" method="POST">
                         % if iskani_izraz_knjiga is not None:
                         <input class="form-control mr-sm-2" type="search" placeholder="Search books" aria-label="Search"
                                id="splosniIskalnikKnjig1" name="iskaniIzrazKnjige" value="{{iskani_izraz_knjiga}}">
@@ -275,7 +275,7 @@
             <div class="row">
                 <nav class="nav">
                  <a class="nav-link" href="#">
-                    <form class="form-inline my-2 my-lg-0" action="/rezultati_iskanja_avtor/" method="POST">
+                    <form class="form-inline my-2 my-lg-0" action="/search_results_authors/" method="POST">
                         % if iskani_izraz_avtor is not None:
                             <input class="form-control mr-sm-2" type="search" placeholder="Search authors"
                                    aria-label="Search" id="splosniIskalnikAvtorjev1" name="iskaniIzrazAvtorji" value="{{iskani_izraz_avtor}}">
