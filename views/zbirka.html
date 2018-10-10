@@ -1,4 +1,4 @@
-%rebase('osnova.html', naslov='Zbirka')
+%rebase('osnova.html', naslov='Series')
 
 
 <div class="row px-4">
@@ -22,20 +22,32 @@
 
 </div>
 
-<div class="row px-4">
-        <div class="btn-group-vertical">
+<div class="row px-2">
+    <div class="col">
+
             <br/>
                 Books in series:
+
+
                 %for knjiga in knjige:
-                    <form action="/book/{{knjiga[0]}}" method="POST">
-                        %if knjiga[2] is not None:
-                        %    dodatek = ' #' + str(knjiga[2])
-                        %else:
-                        %    dodatek = ''
-                        %end
-                        <input type="submit" class="btn btn-link" value="{{knjiga[1]}} ({{serija}}{{dodatek}})">
+    <div class="row py-1 align-items-center">
+                    <div class="col-1">
+                        <img src="{{knjiga[3]}}" align="center" class="img-thumbnail"/>
+
+                    </div>
+                    <div class="col-10 ">
+                        <form action="/book/{{knjiga[0]}}" method="POST">
+                            %if knjiga[2] is not None:
+                            %    dodatek = ' #' + str(knjiga[2])
+                            %else:
+                            %    dodatek = ''
+                            %end
+                            <input type="submit" class="btn btn-link" value="{{knjiga[1]}} ({{serija}}{{dodatek}})" >
 
                     </form>
+                    </div>
+                    </div>
                 %end
-        </div>
+
+    </div>
     </div>

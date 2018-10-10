@@ -13,29 +13,29 @@
     <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link href="/static/style.css" rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="../static/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="/static/favicon.png">
     <title>{{naslov}}</title>
 
 
 </head>
-<!--<body  background="../static/ozadje.jpg">-->
+<!--<body  background="/static/ozadje.jpg">-->
 <body>
+
 %if uporabnik[2] == "Hufflepuff":
 %barva = "bg-warning"
-%grb = "../static/Hufflepuff_Crest.png"
+%grb = "/static/Hufflepuff_Crest.png"
 %elif uporabnik[2] == "Ravenclaw":
 %barva = "bg-primary"
-%grb = "../static/Ravenclaw_Crest.png"
+%grb = "/static/Ravenclaw_Crest.png"
 %elif uporabnik[2] == "Slytherin":
 %barva = "bg-success"
-%grb = "../static/Slytherin_Crest.png"
-
+%grb = "/static/Slytherin_Crest.png"
 %elif uporabnik[2] == "Gryffindor":
 %barva = "bg-danger"
-%grb = "../static/Gryffindor_Crest.png"
+%grb = "/static/Gryffindor_Crest.png"
 %else:
 %barva = "bg-dark"
-%grb = "../static/bradavicarka_logo.png"
+%grb = "/static/bradavicarka_logo.png"
 %end
 
 
@@ -44,11 +44,11 @@
     <div class="row">
         <div class="col-3">
             <a href="/">
-                <img src={{grb}} class="center-medium" align="center"/>
+                <img src={{grb}} class="center-medium" align="center" alt="Crest"/>
             </a>
         </div>
         <div class="col-6">
-            <img src="../static/harry_knjiznica.jpg" class="center-full" align="center"/>
+            <img src="/static/harry_knjiznica.jpg" class="center-full" align="center" alt="Library"/>
         </div>
         <div class="col-3">
 
@@ -56,7 +56,7 @@
     </div>
 </div>
 <div class="container-fluid bg-dark">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col-3">
 
         </div>
@@ -103,12 +103,9 @@
         </div>
             %else:
         <div class="col-5">
-            <form class="form-inline" action="/profile/{{uporabnik[0]}}" method="POST">
-                <div class="form-group">
-                    <label for="ime_uporabnika">Welcome</label>
-                    <input type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{uporabnik[1]}}" id="ime_uporabnika">
-                </div>
-            </form>
+
+            Welcome, <a class="{{uporabnik[2]}}" href="/profile/{{uporabnik[0]}}">{{uporabnik[1]}}!</a>
+
         </div>
         <div class="col-1">
             <form action="/sign_out" method="GET">
