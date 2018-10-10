@@ -58,47 +58,38 @@
 <div class="container-fluid bg-dark">
     <div class="row align-items-center">
         <div class="col-3">
-
-        </div>
-        <div class="col-3">
-            <nav class="nav">
-                <a class="nav-link active" href="#">
+            <div class="btn-group" role="group">
                     <form action="/all_authors" method="POST">
-                        <b><input type="submit" class="btn btn-basic" value="Authors"></b>
+                        <input type="submit" class="btn btn-basic" value="Authors">
                     </form>
-                </a>
-                <a class="nav-link" href="#">
-                    <form action="/all_genres" method="POST">
-                        <b><input type="submit" class="btn btn-basic" value="Genres"></b>
-                    </form>
-                </a>
 
-            </nav>
+                    <form action="/all_genres" method="POST">
+                        <input type="submit" class="btn btn-basic" value="Genres">
+                    </form>
+        </div>
         </div>
 
             %if uporabnik[1] is None:
-        <div class="col-5">
-            <form class="form-row" action="/sign_in" method="POST">
+        <div class="col-8">
+            <form class="form-row justify-content-end" action="/sign_in" method="POST">
                 <!--<div class="w-75 p-3 bg-dark">-->
-                    <div class="col-auto">
+                    <div class="col-3">
                         <input type="text" class="form-control" id="username" placeholder="Username" name="vzdevek">
                     </div>
 
-                    <div class="col-auto">
+                    <div class="col-3">
                         <input type="password" class="form-control" id="inputPassword" placeholder="Password"
                                name="geslo">
                     </div>
-                <div class="col-auto">
+                <div class="col-1">
                     <input type="submit" class="btn btn-basic btn-sm" value="Sign in">
                 </div>
                 <!--</div>-->
             </form>
         </div>
         <div class="col-1">
-            <form class="form-row" action="/sign_up" method="GET">
-                <div class="col-auto">
+            <form action="/sign_up" method="GET">
                     <b><input type="submit" class="btn btn-success btn-sm" value="Sign up"></b>
-                </div>
             </form>
         </div>
             %else:
