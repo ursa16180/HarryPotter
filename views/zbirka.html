@@ -2,11 +2,27 @@
 
 
 <div class="row px-4">
-    <b>{{serija}}</b>
+    <h2>{{serija}}</h2>
 
 </div>
+
 <div class="row px-4">
-    <div class="col-6">
+%if len(avtorji)==1:
+            <p>Author: <a href="/author/{{list(avtorji)[0][0]}}">{{list(avtorji)[0][1]}}</a></p>
+            %end
+            %if len(avtorji)>1:
+                <p>Authors:
+                %for avtor in avtorji[:-1]:
+                    <a href="/author/{{avtor[0]}}">{{avtor[1]}},</a>
+                %end
+                    <a href="/author/{{list(avtorji)[-1][0]}}"> {{list(avtorji)[-1][1]}}</a></p>
+
+            %end
+
+
+</div>
+
+<div class="row px-4">
         <div class="btn-group-vertical">
             <br/>
                 Books in series:
@@ -23,23 +39,3 @@
                 %end
         </div>
     </div>
-    <div class="col-3">
-        <div class="btn-group-vertical">
-            <br/>
-            % if len(avtorji) == 1:
-            Series author:
-            % elif len(avtorji) > 1:
-            Series authors:
-            %end
-            %for avtor in avtorji:
-                <form action="/author/{{avtor[0]}}" method="GET">
-                    <input type="submit" class="btn btn-link" value="{{avtor[1]}}">
-                </form>
-            %end
-        </div>
-    </div>
-
-
-
-
-</div>
