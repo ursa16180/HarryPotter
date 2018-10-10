@@ -181,7 +181,7 @@ def zanr(x):
 @get('/series/:x')
 @post('/series/:x')
 def zbirka(x):
-    cur.execute("""SELECT serija.ime, del_serije.zaporedna_stevilka_serije, knjiga.id, knjiga.naslov, avtor.id, avtor.ime FROM serija
+    cur.execute("""SELECT serija.ime, del_serije.zaporedna_stevilka_serije, knjiga.id, knjiga.naslov, avtor.id, avtor.ime, knjiga.url_naslovnice FROM serija
         JOIN del_serije ON del_serije.id_serije=serija.id
         JOIN knjiga ON del_serije.id_knjige = knjiga.id
         JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige
@@ -196,7 +196,7 @@ def zbirka(x):
     for knjiga in knjige_ponovitve:
         knjiga_id = knjiga[2]
         avtor_id = knjiga[4]
-        knjige[knjiga_id] = [knjiga_id, knjiga[3], knjiga[1]]
+        knjige[knjiga_id] = [knjiga_id, knjiga[3], knjiga[1], knjiga[6]]
         avtorji[avtor_id] = [avtor_id, knjiga[5]]
     return template('zbirka.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                     knjige=list(knjige.values()), avtorji=list(avtorji.values()), serija=serija)
@@ -707,7 +707,7 @@ def registriraj_uporabnika():
     return template('prijava.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                     sporocilo='Great, you are now member of our community. You can sign in here.')
 
-
+@get('/profile/:x')
 @post('/profile/:x')
 def profil(x):
     # TODO: tudi zdej sploh ne rabva pisat ker profil je, ker je to vse v cookijih shranjeno
