@@ -1,5 +1,6 @@
 %rebase('osnova.html', naslov='Search results')
 
+
 <div class="row px-4">
     %if st_zadetkov%100 == 1:
     {{st_zadetkov}} book matches
@@ -25,6 +26,7 @@
                 <li class="page-item">
                     % if veliki_mali == 'veliki':
                         <form action="/search/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{int(stran)-1}}" method="POST">
+
                             <p><input type="submit" class="btn btn-link" value="<<">
                             </p>
                         </form>
@@ -40,6 +42,7 @@
                 <li class="page-item">
                     % if veliki_mali == 'veliki':
                         <form action="/search/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/0" method="POST">
+
                             <input type="submit" class="btn btn-link" value="{{1}}">
                         </form>
                     % elif veliki_mali == 'mali':
@@ -60,6 +63,7 @@
                 <li class="page-item">
                     % if veliki_mali == 'veliki':
                         <form action="/search/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{i-1}}" method="POST">
+
                             <input type="submit" class="btn btn-link" value="{{i}}" >
                         </form>
                     % elif veliki_mali == 'mali':
@@ -78,8 +82,10 @@
                 <li class="page-item">
                     % if veliki_mali == 'veliki':
                         <form action="/search/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{st_strani-1}}" method="POST">
+
                             <input type="submit" class="btn btn-link" value="{{st_strani}}">
                         </form>
+
                     % elif veliki_mali == 'mali':
                         <form action="/search_results_books/{{iskani_izraz_knjiga}}/{{st_strani-1}}" method="POST">
                             <input type="submit" class="btn btn-link" value="{{st_strani}}">
@@ -91,9 +97,11 @@
                 <li class="page-item">
                     % if veliki_mali == 'veliki':
                         <form action="/search/{{iskane_dolzine}}/{{iskane_kljucne}}/{{iskani_zanri}}/{{iskano_zbirka}}/{{int(stran)+1}}" method="POST">
+
                             <p><input type="submit" class="btn btn-link" value=">>">
                             </p>
                         </form>
+
                     % elif veliki_mali == 'mali':
                         <form action="/search_results_books/{{iskani_izraz_knjiga}}/{{int(stran)+1}}" method="POST">
                             <p><input type="submit" class="btn btn-link" value=">>">
