@@ -325,7 +325,7 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
             else:
                 trenutna_knjiga['povprecna_ocena'] = 0
             slovar_slovarjev_knjig[id] = trenutna_knjiga
-        vse_knjige = sorted(list(slovar_slovarjev_knjig.values()), key=itemgetter('povprecna_ocena'))
+        vse_knjige = sorted(list(slovar_slovarjev_knjig.values()), key=itemgetter('povprecna_ocena'), reverse=True)
         stevilo_knjig = len(vse_knjige)
         st_strani = stevilo_knjig // 10 + 1
         if stevilo_knjig % 10 == 0:
@@ -399,7 +399,7 @@ def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.
                 else:
                     trenutna_knjiga['povprecna_ocena'] = 0
                 slovar_slovarjev_knjig[id_knjige] = trenutna_knjiga
-            vse_knjige =sorted(list(slovar_slovarjev_knjig.values()), key=itemgetter('povprecna_ocena'))
+            vse_knjige =sorted(list(slovar_slovarjev_knjig.values()), key=itemgetter('povprecna_ocena'), reverse=True)
             st_zadetkov = len(vse_knjige)
             st_strani = st_zadetkov//10 + 1
             if st_zadetkov % 10 == 0:
