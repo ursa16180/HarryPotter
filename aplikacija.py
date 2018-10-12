@@ -37,7 +37,7 @@ def index():
 def knjiga(x):
     cur.execute(  # SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis,
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
-        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, pojem, ime_zanra, 
+        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, knjiga_kljucne_besede.kljucna_beseda, ime_zanra, 
         knjiga.url_naslovnice FROM knjiga
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
@@ -288,7 +288,7 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
             vmesni_niz += """ AND (knjiga.id, %s) IN (
                 SELECT id_knjige, kljucna_beseda FROM knjiga_kljucne_besede)"""
             parametri_sql += (kljucna_beseda,)
-        niz += vmesni_niz[4:]
+        niz += vmesni_niz
         parametri += kljucne
 
     # ~~~~~~~~~~~~~~ če so izbrani zanri, jih doda
@@ -298,52 +298,11 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
             vmesni_niz += """ AND (knjiga.id, %s) IN (
                 SELECT id_knjige, zanr FROM zanr_knjige)"""
             parametri_sql += (zanr,)
-        niz += vmesni_niz[4:]
+        niz += vmesni_niz
         parametri += zanri
     niz += " ORDER BY knjiga.id, avtor.id"
     cur.execute(niz, parametri_sql)
     vse_vrstice = cur.fetchall()
-
-#     # ~~~~~~~~~~~~~~~Tukaj se doda avtor
-#     niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr_knjiga.id_zanra, url_naslovnice, " \
-#               "vsota_ocen, stevilo_ocen FROM knjiga" \
-#           "JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige " \
-#           "JOIN avtor ON avtor_knjige.id_avtorja = avtor.id"
-#     # ~~~~~~~~~~~~~~Če želi da je del serije, se združi s tabelo serij
-#     if je_del_zbirke == 'Yes':
-#         niz += " WHERE knjiga.id IN (SELECT id_knjige FROM del_serije) AND"
-#         parametri += ['Part of series']
-#     elif je_del_zbirke == 'No':
-#         parametri += ['Not part of series']
-#         niz += " WHERE knjiga.id NOT IN (SELECT id_knjige FROM del_serije) AND"
-#     else:
-#         niz += " WHERE"
-#     # ~~~~~~~~~~~~~ Tukaj se doda pogoj o dolžini knjige
-#     niz += " dolzina>=%s "
-#     parametri_sql += (dolzina,)
-#     parametri.append(str(dolzina) + ' pages')
-#     # ~~~~~~~~~~~~~~ Če so izbrane ključne besede, jih doda
-#     if kljucne != []:
-#         vmesni_niz = ''
-#         for kljucna_beseda in kljucne:
-#             vmesni_niz += """ AND EXISTS (SELECT * FROM knjiga_kljucne_besede WHERE kljucna_beseda = %s
-#                               AND knjiga_kljucne_besede.id_knjige=knjiga1.id_knjige)"""
-#             parametri_sql += (kljucna_beseda,)
-#         niz += vmesni_niz[4:]
-#         parametri += kljucne
-#
-#     # ~~~~~~~~~~~~~~ če so izbrani zanri, jih doda
-#     if zanri != []:
-#         vmesni_niz = ''
-#         for zanr in zanri:
-#             vmesni_niz += """ AND EXISTS (SELECT * FROM zanr_knjige WHERE id_zanra = %s AND id_knjige=knjiga2.id_knjige)"""
-#             parametri_sql += (zanr,)
-#         niz += vmesni_niz[4:]
-#         parametri += zanri
-#     niz += " ORDER BY knjiga.id, avtor.id"
-#     print(niz)
-#     cur.execute(niz, parametri_sql)
-#     vse_vrstice = cur.fetchall()
     if vse_vrstice == []:
         return template('ni_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
                         uporabnik=uporabnik(), parametri=parametri)

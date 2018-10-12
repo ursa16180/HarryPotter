@@ -152,14 +152,15 @@
                 </div>
 
                 <div class="row">
-                %if knjiga['zanri']!={None}:
-                   <p>Genre:
-                        %for zanr in list(knjiga['zanri'])[:-1]:
-                            <a href="/genre/{{zanr}}">{{zanr}}, </a>
-                        %end
-                    <a href="/genre/{{list(knjiga['zanri'])[-1]}}">{{list(knjiga['zanri'])[-1]}}</a></p>
-                %end
-            </div>
+                    %print(knjiga['zanri'])
+                    %if knjiga['zanri']!= set() and if knjiga['zanr'] != {None}:
+                       <p>Genre:
+                            %for zanr in list(knjiga['zanri'])[:-1]:
+                                <a href="/genre/{{zanr}}">{{zanr}}, </a>
+                            %end
+                        <a href="/genre/{{list(knjiga['zanri'])[-1]}}">{{list(knjiga['zanri'])[-1]}}</a></p>
+                    %end
+                </div>
             </div>
         </div>
 <hr/>
