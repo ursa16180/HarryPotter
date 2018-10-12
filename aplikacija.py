@@ -434,8 +434,10 @@ def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.",
         iskani_izraz = dobljeni_izraz
     if iskani_izraz != '':
         iskani_izraz = iskani_izraz.title()
-        nizi = [("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr, avtor.povprecna_ocena FROM avtor LEFT JOIN avtorjev_zanr ON 
-                  avtor.id=avtorjev_zanr.id_avtorja WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz + '%', ))]
+        nizi = [("""SELECT avtor.id, avtor.ime, zanr.ime_zanra, avtor.povprecna_ocena, zanr.id FROM avtor 
+        LEFT JOIN avtorjev_zanr ON avtor.id=avtorjev_zanr.id_avtorja 
+        LEFT JOIN zanr ON zanr.id = avtorjev_zanr.id_zanra
+        WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz + '%', ))]
         vse_vrstice = []
         for niz in nizi:
             cur.execute(niz[0], niz[1])
