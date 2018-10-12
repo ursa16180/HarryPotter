@@ -152,12 +152,12 @@
                 </div>
 
                 <div class="row">
-                %if knjiga['zanri']!={None}:
+                %if knjiga['zanri']!=[]:
                    <p>Genre:
-                        %for zanr in list(knjiga['zanri'])[:-1]:
-                            <a href="/genre/{{zanr}}">{{zanr}}, </a>
+                        %for zanr in knjiga['zanri'][:-1]:
+                            <a href="/genre/{{zanr[0]}}">{{zanr[1]}}, </a>
                         %end
-                    <a href="/genre/{{list(knjiga['zanri'])[-1]}}">{{list(knjiga['zanri'])[-1]}}</a></p>
+                    <a href="/genre/{{knjiga['zanri'][-1][0]}}">{{knjiga['zanri'][-1][1]}}</a></p>
                 %end
             </div>
             </div>

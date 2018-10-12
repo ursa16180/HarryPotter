@@ -165,15 +165,15 @@
                         <div id="{{skupina}}" class="collapse">
                             <div class="card card-body">
                                 <div class="form-group">
-                                    %for beseda in besede:
+                                    %for beseda, id in besede:
                                     <div class="form-check">
-                                        %if beseda in iskane_kljucne:
-                                            <input class="form-check-input" type="checkbox" value="{{beseda}}" id="{{beseda}}1" name="kljucne_besede" checked>
+                                        %if str(id) in iskane_kljucne:
+                                            <input class="form-check-input" type="checkbox" value="{{id}}" id="{{beseda}}1" name="kljucne_besede" checked>
                                              <label class="form-check-label" for="{{beseda}}1">
                                                 {{beseda}}
                                             </label>
                                         %else:
-                                            <input class="form-check-input" type="checkbox" value="{{beseda}}" id="{{beseda}}2" name="kljucne_besede">
+                                            <input class="form-check-input" type="checkbox" value="{{id}}" id="{{beseda}}2" name="kljucne_besede">
                                             <label class="form-check-label" for="{{beseda}}2">
                                                 {{beseda}}
                                             </label>
@@ -197,17 +197,17 @@
                 <div class="collapse" id="zanri">
                     <div class="card card-body">
                         <div class="form-group">
-                            %for zanr in zanri:
+                            %for ime_zanra, id_zanra in zanri:
                             <div class="form-check">
-                                %if zanr in iskani_zanri:
-                                    <input class="form-check-input" type="checkbox" value="{{zanr}}" id="{{zanr}}1" name="zanri" checked>
-                                    <label class="form-check-label" for="{{zanr}}1">
-                                        {{zanr}}
+                                %if str(id_zanra) in iskani_zanri:
+                                    <input class="form-check-input" type="checkbox" value="{{id_zanra}}" id="{{ime_zanra}}1" name="zanri" checked>
+                                    <label class="form-check-label" for="{{ime_zanra}}1">
+                                        {{ime_zanra}}
                                     </label>
                                 %else:
-                                    <input class="form-check-input" type="checkbox" value="{{zanr}}" id="{{zanr}}2" name="zanri">
-                                    <label class="form-check-label" for="{{zanr}}2">
-                                        {{zanr}}
+                                    <input class="form-check-input" type="checkbox" value="{{id_zanra}}" id="{{ime_zanra}}2" name="zanri">
+                                    <label class="form-check-label" for="{{ime_zanra}}2">
+                                        {{ime_zanra}}
                                     </label>
                                 %end
 
