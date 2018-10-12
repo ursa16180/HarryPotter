@@ -265,7 +265,7 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
     parametri_sql = ()
     parametri = []
     niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, url_naslovnice, " \
-          "vsota_ocen, stevilo_ocen FROM knjiga" \
+          "vsota_ocen, stevilo_ocen FROM knjiga " \
           "JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige " \
           "JOIN avtor ON avtor_knjige.id_avtorja = avtor.id"
     # ~~~~~~~~~~~~~~Če želi da je del serije, se združi s tabelo serij
@@ -301,7 +301,6 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
         niz += vmesni_niz[4:]
         parametri += zanri
     niz += " ORDER BY knjiga.id, avtor.id"
-    print(niz)
     cur.execute(niz, parametri_sql)
     vse_vrstice = cur.fetchall()
 
@@ -354,7 +353,6 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
                 WHERE id_knjige IN ({})
             """.format(", ".join(["%s"] * len(vse_vrstice))), [v[0] for v in vse_vrstice])
         zanri_knjig = cur.fetchall()
-        print(zanri_knjig)
         slovar_slovarjev_knjig = {}
         for vrstica in vse_vrstice:
             id = vrstica[0]
@@ -362,13 +360,14 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
                                                               'zanri': set(), 'url_naslovnice': None})
             trenutna_knjiga['naslov'] = vrstica[1]
             trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
-            trenutna_knjiga['url_naslovnice'] = vrstica[5]
-            if vrstica[7] != 0:
-                trenutna_knjiga['povprecna_ocena'] = vrstica[6] / vrstica[7]
+            trenutna_knjiga['url_naslovnice'] = vrstica[4]
+            if vrstica[6] != 0:
+                trenutna_knjiga['povprecna_ocena'] = vrstica[5] / vrstica[6]
             else:
                 trenutna_knjiga['povprecna_ocena'] = 0
             slovar_slovarjev_knjig[id] = trenutna_knjiga
-
+        for zanr_knjiga in zanri_knjig:
+            slovar_slovarjev_knjig[zanr_knjiga[0]]['zanri'].add(zanr_knjiga[1])
         vse_knjige = sorted(list(slovar_slovarjev_knjig.values()), key=itemgetter('povprecna_ocena'), reverse=True)
         stevilo_knjig = len(vse_knjige)
         st_strani = stevilo_knjig // 10 + 1
