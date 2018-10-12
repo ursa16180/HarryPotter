@@ -37,13 +37,14 @@ def index():
 def knjiga(x):
     cur.execute(  # SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis,
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
-        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
+        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, pojem, ime_zanra, 
         knjiga.url_naslovnice FROM knjiga
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
         LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
         LEFT JOIN serija ON serija.id=del_serije.id_serije
         LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
+        LEFT JOIN kljucna_beseda ON knjiga_kljucna_beseda.id_knjige = kljucna_beseda.id 
         LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
         LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
         WHERE knjiga.id =%s;""", (x,))
@@ -132,12 +133,12 @@ def knjiga(x):
 def avtor(x):
     cur.execute("SELECT id, ime, povprecna_ocena, datum_rojstva, kraj_rojstva FROM avtor WHERE id=%s", (x,))
     avtor = cur.fetchone()
-    cur.execute("SELECT zanr FROM avtorjev_zanr WHERE id_avtorja = %s", (x,))
+    cur.execute("SELECT id_zanra FROM avtorjev_zanr WHERE id_avtorja = %s", (x,))
     zanri_avtorja = cur.fetchall()
     zanri_avtorja = set([x[0] for x in zanri_avtorja])
     if zanri_avtorja == {None}:
         zanri_avtorja = set()
-    cur.execute("""SELECT knjiga.id, knjiga.naslov, zanr_knjige.zanr, serija.id, serija.ime, serija.stevilo_knjig 
+    cur.execute("""SELECT knjiga.id, knjiga.naslov, zanr_knjige.id_zanra, serija.id, serija.ime, serija.stevilo_knjig 
     FROM avtor_knjige 
     LEFT JOIN knjiga ON knjiga.id = avtor_knjige.id_knjige 
     LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
@@ -163,7 +164,7 @@ def zanr(x):
     cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra=%s;", (x,))
     zanr = cur.fetchone()
     cur.execute("SELECT id, naslov, knjiga.vsota_ocen, knjiga.stevilo_ocen FROM knjiga JOIN zanr_knjige "
-                "ON knjiga.id = zanr_knjige.id_knjige WHERE zanr=%s ", (x,))
+                "ON knjiga.id = zanr_knjige.id_knjige WHERE id_zanra=%s ", (x,))
     knjige = cur.fetchall()
     for knjiga in knjige:
         if knjiga[3] == 0:
@@ -264,37 +265,14 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
         je_del_zbirke = dobljene_zbirke
     parametri_sql = ()
     parametri = []
-    # ~~~~~~~~~~~~~~ Če so izbrane ključne besede, jih doda
-    if kljucne == []:
-        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice, " \
-              "vsota_ocen, stevilo_ocen FROM knjiga"
-    else:
-        vmesni_niz = ''
-        for kljucna_beseda in kljucne:
-            vmesni_niz += """ AND EXISTS (SELECT * FROM knjiga_kljucne_besede WHERE kljucna_beseda = %s 
-                              AND knjiga_kljucne_besede.id_knjige=knjiga1.id_knjige)"""
-            parametri_sql += (kljucna_beseda,)
-        niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr, url_naslovnice, vsota_ocen, stevilo_ocen" \
-              " FROM knjiga JOIN (SELECT DISTINCT * FROM knjiga_kljucne_besede knjiga1 WHERE " + vmesni_niz[5:] \
-              + ") pomozna_tabela ON knjiga.id=pomozna_tabela.id_knjige"
-        parametri += kljucne
-
-    # ~~~~~~~~~~~~~~ če so izbrani zanri, jih doda
-    if zanri != []:
-        vmesni_niz = ''
-        for zanr in zanri:
-            vmesni_niz += """ AND EXISTS (SELECT * FROM zanr_knjige WHERE zanr = %s AND id_knjige=knjiga2.id_knjige)"""
-            parametri_sql += (zanr,)
-        niz += " JOIN (SELECT DISTINCT * FROM zanr_knjige knjiga2 WHERE " + vmesni_niz[5:] + \
-               ") pomozna_tabela2 ON knjiga.id=pomozna_tabela2.id_knjige"
-        parametri += zanri
-    else:
-        niz += " JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige"
     # ~~~~~~~~~~~~~~~Tukaj se doda avtor
-    niz += " JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige JOIN avtor ON avtor_knjige.id_avtorja = avtor.id"
+    niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, zanr_knjiga.id_zanra, url_naslovnice, " \
+              "vsota_ocen, stevilo_ocen FROM knjiga" \
+          "JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige " \
+          "JOIN avtor ON avtor_knjige.id_avtorja = avtor.id"
     # ~~~~~~~~~~~~~~Če želi da je del serije, se združi s tabelo serij
     if je_del_zbirke == 'Yes':
-        niz += " JOIN del_serije ON knjiga.id=del_serije.id_knjige WHERE"
+        niz += " WHERE knjiga.id IN (SELECT id_knjige FROM del_serije) AND"
         parametri += ['Part of series']
     elif je_del_zbirke == 'No':
         parametri += ['Not part of series']
@@ -302,9 +280,29 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
     else:
         niz += " WHERE"
     # ~~~~~~~~~~~~~ Tukaj se doda pogoj o dolžini knjige
-    niz += " dolzina>=%s ORDER BY knjiga.id, avtor.id "
+    niz += " dolzina>=%s "
     parametri_sql += (dolzina,)
     parametri.append(str(dolzina) + ' pages')
+    # ~~~~~~~~~~~~~~ Če so izbrane ključne besede, jih doda
+    if kljucne != []:
+        vmesni_niz = ''
+        for kljucna_beseda in kljucne:
+            vmesni_niz += """ AND EXISTS (SELECT * FROM knjiga_kljucne_besede WHERE kljucna_beseda = %s 
+                              AND knjiga_kljucne_besede.id_knjige=knjiga1.id_knjige)"""
+            parametri_sql += (kljucna_beseda,)
+        niz += vmesni_niz[4:]
+        parametri += kljucne
+
+    # ~~~~~~~~~~~~~~ če so izbrani zanri, jih doda
+    if zanri != []:
+        vmesni_niz = ''
+        for zanr in zanri:
+            vmesni_niz += """ AND EXISTS (SELECT * FROM zanr_knjige WHERE id_zanra = %s AND id_knjige=knjiga2.id_knjige)"""
+            parametri_sql += (zanr,)
+        niz += vmesni_niz[4:]
+        parametri += zanri
+    niz += " ORDER BY knjiga.id, avtor.id"
+    print(niz)
     cur.execute(niz, parametri_sql)
     vse_vrstice = cur.fetchall()
     if vse_vrstice == []:
@@ -369,13 +367,13 @@ def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.
 
         vse_vrstice = []
         for niz in nizi:
-            cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice, "
+            cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.id_zanra, knjiga.url_naslovnice, "
                         "knjiga.stevilo_ocen, knjiga.vsota_ocen FROM knjiga LEFT JOIN avtor_knjige "
                         "ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id "
                         "LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE knjiga.opis LIKE %s;", niz)
             nove_vrstice1 = cur.fetchall()
             vse_vrstice += nove_vrstice1
-        cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice, "
+        cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.id_zanra, knjiga.url_naslovnice, "
                     "knjiga.stevilo_ocen, knjiga.vsota_ocen FROM knjiga LEFT JOIN avtor_knjige "
                     "ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id "
                     "LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE knjiga.naslov LIKE %s;",
@@ -467,7 +465,7 @@ def dodaj_zeljo(x):
         LEFT JOIN serija ON serija.id=del_serije.id_serije
         LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
         LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
-        LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
+        LEFT JOIN zanr ON zanr_knjige.id_zanra = zanr.id
         WHERE knjiga.id =%s;""", (x,))
     vse_vrstice = cur.fetchall()
     knjiga = {'id': vse_vrstice[0][0],
@@ -522,7 +520,7 @@ def odstrani_zeljo(x):
         LEFT JOIN serija ON serija.id=del_serije.id_serije
         LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
         LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
-        LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
+        LEFT JOIN zanr ON zanr_knjige.id_zanra = zanr.id
         WHERE knjiga.id =%s;""", (x,))
     vse_vrstice = cur.fetchall()
     knjiga = {'id': vse_vrstice[0][0],
@@ -575,7 +573,7 @@ def prebral(x):
         LEFT JOIN serija ON serija.id=del_serije.id_serije
         LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
         LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
-        LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
+        LEFT JOIN zanr ON zanr_knjige.id_zanra = zanr.id
         WHERE knjiga.id =%s;""", (x,))
     vse_vrstice = cur.fetchall()
     knjiga = {'id': vse_vrstice[0][0],
@@ -711,7 +709,6 @@ def registriraj_uporabnika():
 @get('/profile/:x')
 @post('/profile/:x')
 def profil(x):
-    # TODO: tudi zdej sploh ne rabva pisat ker profil je, ker je to vse v cookijih shranjeno
     cur.execute("SELECT knjiga.id, knjiga.naslov FROM knjiga JOIN prebrana_knjiga "
                 "ON knjiga.id= prebrana_knjiga.id_knjige WHERE prebrana_knjiga.id_uporabnika=%s;", (uporabnik()[0],))
     prebrane = cur.fetchall()
@@ -794,10 +791,10 @@ cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 # ~~~~~~~~~~~~~~~~~~~~~Pridobi 50 najpogostejših žanrov
 cur.execute("""SELECT sum(stevilo) AS stevilo_skupaj, ime_zanra FROM (
  SELECT count(*) AS stevilo, ime_zanra FROM zanr AS zanr1
- JOIN zanr_knjige ON zanr1.ime_zanra=zanr_knjige.zanr
+ JOIN zanr_knjige ON zanr1.id=zanr_knjige.id_zanra
  GROUP BY ime_zanra UNION ALL
  SELECT count(*) AS stevilo, ime_zanra FROM zanr AS zanr2
- JOIN avtorjev_zanr ON zanr2.ime_zanra=avtorjev_zanr.zanr
+ JOIN avtorjev_zanr ON zanr2.id=avtorjev_zanr.id_zanra
  GROUP BY ime_zanra
 ) AS tabela
 GROUP BY ime_zanra
@@ -811,8 +808,8 @@ for vrstica in zanri_iz_baze:
 vsi_zanri.sort()
 
 # ~~~~~~~~~~~~~~~~~~~~~Pridobi vse skupine ključnih besed
-cur.execute("""SELECT skupina, pojem FROM kljucna_beseda JOIN knjiga_kljucne_besede ON pojem=kljucna_beseda
-GROUP BY pojem;""")
+cur.execute("""SELECT skupina, pojem FROM kljucna_beseda JOIN knjiga_kljucne_besede ON id=id_kljucne_besede
+GROUP BY id;""")
 kljucne_iz_baze = cur.fetchall()
 vse_kljucne = {}
 for vrstica in kljucne_iz_baze:

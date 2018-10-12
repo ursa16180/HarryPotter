@@ -23,6 +23,7 @@ def zakodiraj_geslo(geslo):
 
 def daj_pravice():
     cur.execute("GRANT CONNECT ON DATABASE sem2018_ursap TO javnost;"
+                "GRANT CONNECT ON DATABASE sem2018_ursap TO ninast;"
                 "GRANT USAGE ON SCHEMA public TO javnost;"
                 "GRANT SELECT ON ALL TABLES IN SCHEMA public TO javnost;"
                 "GRANT UPDATE, INSERT, DELETE ON uporabnik, wishlist, prebrana_knjiga TO javnost;"
@@ -61,8 +62,19 @@ def uvozi_podatke(seznam):
         print("berem")
         next(rd)  # izpusti naslovno vrstico ###TODO če mava res vedno prvo vrstico kr nekej
         for r in rd:
-            print(r)
+            #print(r)
             r = [None if x in ('', '-') else x for x in r]
+            if seznam[0] in ["zanr_knjige","avtorjev_zanr"]:
+                #print(r)
+                cur.execute("SELECT id from zanr WHERE ime_zanra= %s ",(r[1],))
+                r[1]=cur.fetchone()[0]
+                #print(r)
+            if seznam[0] in ["knjiga_kljucne_besede"]:
+                #print(r)
+                cur.execute("SELECT id from kljucna_beseda WHERE pojem= %s ",(r[1],))
+                r[1]=cur.fetchone()[0]
+                #print(r)
+
             cur.execute(seznam[2], r)
             rid, = cur.fetchone()
             print("Uvožen/a %s" % (r[0]))
@@ -170,7 +182,8 @@ serija = ["serija", """CREATE TABLE serija (id INTEGER PRIMARY KEY, ime TEXT NOT
 zanr = ["zanr",
         """
         CREATE TABLE zanr (
-            ime_zanra TEXT PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
+            ime_zanra TEXT NOT NULL,
             opis TEXT
         );
     """,
@@ -217,33 +230,34 @@ zanr_knjige = ["zanr_knjige",
                """
          CREATE TABLE zanr_knjige (
              id_knjige INTEGER NOT NULL REFERENCES knjiga(id),
-             zanr TEXT NOT NULL REFERENCES zanr(ime_zanra),
-             PRIMARY KEY (id_knjige, zanr)
+             id_zanra INTEGER NOT NULL REFERENCES zanr(id),
+             PRIMARY KEY (id_knjige, id_zanra)
          );
      """, """
                 INSERT INTO zanr_knjige
-                (id_knjige, zanr)
+                (id_knjige, id_zanra)
                 VALUES (%s, %s)
-                RETURNING (id_knjige, zanr)
+                RETURNING (id_knjige, id_zanra)
             """]
 avtorjev_zanr = ["avtorjev_zanr",
                  """
            CREATE TABLE avtorjev_zanr (
                id_avtorja INTEGER NOT NULL REFERENCES avtor(id),
-               zanr TEXT NOT NULL REFERENCES zanr(ime_zanra),
-               PRIMARY KEY (id_avtorja, zanr)
+               id_zanra INTEGER NOT NULL REFERENCES zanr(id),
+               PRIMARY KEY (id_avtorja, id_zanra)
            );
        """, """
                 INSERT INTO avtorjev_zanr
-                (id_avtorja, zanr)
+                (id_avtorja, id_zanra)
                 VALUES (%s, %s)
-                RETURNING (id_avtorja, zanr)
+                RETURNING (id_avtorja, id_zanra)
             """]
 
 kljucna_beseda=["kljucna_beseda",
                """
          CREATE TABLE kljucna_beseda (
-             pojem TEXT PRIMARY KEY,
+             id SERIAL PRIMARY KEY,
+             pojem TEXT NOT NULL,
              skupina TEXT NOT NULL
          );
      """, """
@@ -257,14 +271,14 @@ knjiga_kljucne_besede= ["knjiga_kljucne_besede",
                  """
            CREATE TABLE knjiga_kljucne_besede (
                id_knjige INTEGER NOT NULL REFERENCES knjiga(id),
-               kljucna_beseda TEXT NOT NULL REFERENCES kljucna_beseda(pojem),
-               PRIMARY KEY (id_knjige, kljucna_beseda)
+               id_kljucne_besede INTEGER NOT NULL REFERENCES kljucna_beseda(id),
+               PRIMARY KEY (id_knjige, id_kljucne_besede)
            );
        """, """
                 INSERT INTO knjiga_kljucne_besede
-                (id_knjige, kljucna_beseda)
+                (id_knjige, id_kljucne_besede)
                 VALUES (%s, %s)
-                RETURNING (id_knjige, kljucna_beseda)
+                RETURNING (id_knjige, id_kljucne_besede)
             """]
 
 
@@ -275,7 +289,7 @@ knjiga_kljucne_besede= ["knjiga_kljucne_besede",
 # for x in [ knjiga_kljucne_besede]:
 #     #ustvari_tabelo(x)
 #     uvozi_podatke(x)
-#uvozi_podatke(knjiga_kljucne_besede) # TODO Knjige 33570856 ni v knjigah?!?!
+#uvozi_podatke(knjiga_kljucne_besede)
 #ustvari_vse_tabele()
 
 #uvozi_vse_podatke()
@@ -354,6 +368,9 @@ def izbrisi_vse_tabele():
 #ustvari_vse_tabele()
 #uvozi_vse_podatke()
 
+seznam2=[zanr_knjige,avtorjev_zanr,kljucna_beseda,knjiga_kljucne_besede]
+#ustvari_tabelo(knjiga_kljucne_besede)
+
 #ustvari_tabelo(uporabnik)
 #ustvari_tabelo(ocena_knjige)
 #ustvari_tabelo(prebrana_knjiga)
@@ -364,7 +381,7 @@ def izbrisi_vse_tabele():
 #pobrisi_tabelo(zelje)
 #pobrisi_tabelo(ocena_knjige)
 #pobrisi_tabelo(prebrane)
-#daj_pravice()
+daj_pravice()
 
 
 #NAKNADNO DODANI SQL-stavki
