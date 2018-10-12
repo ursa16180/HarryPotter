@@ -3,14 +3,14 @@
 <div class="row pxy-4">
 
     <div class="col-7">
-        <h3>{{knjiga['naslov']}}</h3>
+        <h2>{{knjiga['naslov']}}</h2>
     </br>
         <p>Average rating: {{knjiga['povprecna_ocena']}} (Rating count: {{knjiga['stevilo_ocen']}})</p>
     </div>
     %if uporabnik[1] is not None:
         %if prebrano and (ocena is None):
         Rate book:
-        <div class="col-5">
+        <div class="col-5 justify-content-end">
             <form action="/book/{{knjiga['id']}}" method="POST">
                 <div class="rating-block">
                     %for i in range(1, 6):
@@ -27,7 +27,7 @@
 
         %if prebrano and (ocena is not None):
             Your rating:
-            <div class="col-5">
+            <div class="col-5 justify-content-end">
                 <form action="/book/{{knjiga['id']}}" method="POST">
                     <div class="rating-block">
                         %for i in range(1, ocena):
@@ -54,12 +54,11 @@
 
         %if not prebrano and zelja:
         <!--Dodaj gumb read in remove from Wishlist-->
-        <div class="col-2">
+        <div class="col-5 justify-content-end">
             <form action="/remove_wishlist/{{knjiga['id']}}" method="POST">
                 <b><input type="submit" class="btn btn-success btn-sm" value="Remove from wishlist"></b>
             </form>
-        </div>
-        <div class="col-3">
+
             <form action="/read/{{knjiga['id']}}" method="POST">
                 <b><input type="submit" class="btn btn-success btn-sm" value="Read"></b>
             </form>
@@ -69,16 +68,16 @@
 
         %if not prebrano and not zelja:
         <!--Dodaj gumb "preberi" in add to Wishlist-->
-        <div class="col-2">
+        <div class="col-5">
+            <div class="btn-group px-2" role="group">
             <form action="/add_wishlist/{{knjiga['id']}}" method="POST">
                 <b><input type="submit" class="btn btn-success btn-sm" value="Add to wishlist"></b>
             </form>
-        </div>
-        <div class="col-3">
+
             <form action="/read/{{knjiga['id']}}" method="POST">
                 <b><input type="submit" class="btn btn-success btn-sm" value="Read"></b>
             </form>
-
+            </div>
         </div>
         %end
     %end

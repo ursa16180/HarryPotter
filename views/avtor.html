@@ -1,9 +1,14 @@
 %rebase('osnova.html', naslov='Author')
 
 
-<div class="row">
+<div class="row px-3">
     <div class="col">
-        <b>{{avtor[1]}}</b>
+    <h2>{{avtor[1]}}</h2>
+        </div>
+</div>
+<div class="row px-3">
+    <div class="col-8">
+
         <br/>Average rating: {{avtor[2]}}
         % if avtor[3] is not None:
             <br/>Birth date: {{avtor[3]}}
@@ -11,21 +16,42 @@
         % if avtor[4] is not None:
             <br/>Birth place: {{avtor[4]}}
         % end
-    </div>
+
     % if zanriAvtorja != []:
-        <div class="col-sm">
-            <div class="btn-group-vertical">
-                Author's genre:
-                %for zanr in zanriAvtorja:
-                    <form action="/genre/{{zanr}}" method="GET">
-                        <input type="submit" class="btn btn-link" value="{{zanr}}">
-                    </form>
-                %end
-            </div>
-        </div>
+        <p>Author's genre:
+            %for zanr in zanriAvtorja[:-1]:
+                <a href="/genre/{{zanr}}">{{zanr}}, </a>
+            %end
+        <a href="/genre/{{zanr}}">{{zanriAvtorja[-1]}}</a></p>
+
+
     % end
+    </div>
+    <div class="col-1">
+    </div>
+<div class="col-2">
+    <img src="/static/ink.png" class="center-full" align="center"/>
+</div>
+       <div class="col-1">
+    </div>
+    </div>
+<br/>
+<div class="row px-3">
+
+    <div class="col-6">
+    <div class="btn-group-vertical">
+            Books:
+            %for knjiga in knjige:
+                <form action="/book/{{knjiga[0]}}" method="POST">
+                    <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
+
+                </form>
+            %end
+    </div>
+</div>
+
     % if serijeAvtorja != {}:
-        <div class="col-sm">
+        <div class="col-6">
             <div class="btn-group-vertical">
                 Author's series:
                 %for id, (ime, knjig) in serijeAvtorja.items():
@@ -47,14 +73,3 @@
     % end
 </div>
 
-<div class="row">
-    <div class="btn-group-vertical">
-            Books:
-            %for knjiga in knjige:
-                <form action="/book/{{knjiga[0]}}" method="POST">
-                    <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
-
-                </form>
-            %end
-    </div>
-</div>
