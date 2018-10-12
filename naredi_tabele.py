@@ -369,7 +369,7 @@ def izbrisi_vse_tabele():
 #uvozi_vse_podatke()
 
 seznam2=[zanr_knjige,avtorjev_zanr,kljucna_beseda,knjiga_kljucne_besede]
-#ustvari_tabelo(knjiga_kljucne_besede)
+
 
 #ustvari_tabelo(uporabnik)
 #ustvari_tabelo(ocena_knjige)
