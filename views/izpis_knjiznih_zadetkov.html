@@ -153,7 +153,7 @@
 
                 <div class="row">
                     %print(knjiga['zanri'])
-                    %if (knjiga['zanri']!= set() and knjiga['zanr'] != {None}):
+                    %if (knjiga['zanri']!= set() and knjiga['zanri'] != {None}):
                        <p>Genre:
                             %for zanr in list(knjiga['zanri'])[:-1]:
                                 <a href="/genre/{{zanr}}">{{zanr}}, </a>
