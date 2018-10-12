@@ -37,7 +37,7 @@ def index():
 def knjiga(x):
     cur.execute(  # SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis,
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
-        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, knjiga_kljucne_besede.kljucna_beseda, ime_zanra, 
+        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, knjiga_kljucne_besede.kljucna_beseda, zanr, 
         knjiga.url_naslovnice FROM knjiga
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
@@ -45,7 +45,6 @@ def knjiga(x):
         LEFT JOIN serija ON serija.id=del_serije.id_serije
         LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige 
         LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
-        LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
         WHERE knjiga.id =%s;""", (x,))
     vse_vrstice = cur.fetchall()
     knjiga = {'id': vse_vrstice[0][0],
