@@ -121,20 +121,15 @@
             <img src="{{knjiga['url_naslovnice']}}" align="center" class="img-thumbnail"/>
         </div>
         <div class="col-10">
-
-
             <div class="row">
-
-            <div class="col">
-                <form action="/book/{{knjiga['id']}}" method="POST">
-                    <b><input type="submit" class="btn btn-basic" value="{{knjiga['naslov']}}"></b>
-
-                </form>
+                <div class="col">
+                    <form action="/book/{{knjiga['id']}}" method="POST">
+                        <b><input type="submit" class="btn btn-basic" value="{{knjiga['naslov']}}"></b>
+                    </form>
+                </div>
             </div>
-            </div>
-
-
-                <div class="row">
+            <br/>
+            <div class="row px-4">
                 %if knjiga['avtorji']!={None}:
                     %if len(knjiga['avtorji'])==1:
                     <p>Author: <a href="/author/{{list(knjiga['avtorji'])[0][0]}}">{{list(knjiga['avtorji'])[0][1]}}</a></p>
@@ -151,7 +146,7 @@
                 %end
                 </div>
 
-                <div class="row">
+                <div class="row  px-4">
                     %print(knjiga['zanri'])
                     %if (knjiga['zanri']!= set() and knjiga['zanri'] != {None}):
                        <p>Genre:
