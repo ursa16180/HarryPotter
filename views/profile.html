@@ -1,36 +1,48 @@
 %rebase('osnova.html', naslov='Profile')
 
 <div class="row">
-    <div class="col">
-        Welcome {{uporabnik[1]}} to you common room!
-    </br>
-        If you wish you can transfigure yourself here:
+    <div class="col-5">
+        <div class="h3">
+            Welcome {{uporabnik[1]}} to you common room!
+        </div>
+        </br>
+        <div class="pl-3">
+            If you wish you can transfigure yourself here:
+        </div>
         <form action="/change_profile" method="GET">
                 <div class="p-3">
                     <b><input type="submit" class="btn btn-success btn-sm" value="Change profile"></b>
                 </div>
         </form>
-
+    </div>
+    <div class="col-7 pb-4">
+        <img src="/static/{{uporabnik[2]}}Commonroom.jpg" align="center" class="img-thumbnail"/>
     </div>
 </div>
 
 <div class="row">
-       <div class="col">
-      <div class="btn-group-vertical">
-        <br/>Books you have already read:
+    <div class="col">
+        <div class="btn-group-vertical">
+            <br/>Books you have already read:
             %if prebrane == []:
                 </br>You have not read any books yet.
             %else:
-
                 %for knjiga in prebrane:
-                    <form action="/book/{{knjiga[0]}}" method="POST">
-                        <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
-
-                    </form>
+                    <br/>
+                    <div class="row p-2 align-items-center">
+                        <div class="col-2">
+                            <img src="{{knjiga['url_naslovnice']}}" align="center" class="img-thumbnail"/>
+                        </div>
+                        <div class="col-10">
+                            <form action="/book/{{knjiga[0]}}" method="POST">
+                                <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
+                            </form>
+                        </div>
+                    </div>
                 %end
             %end
+        </div>
     </div>
-       </div>
     <div class="col">
       <div class="btn-group-vertical">
         <br/>
@@ -39,10 +51,17 @@
                 </br>You apparently drank Felix Felices, so there are no wishes left...
             %else:
                 %for knjiga in zelje:
-                    <form action="/book/{{knjiga[0]}}" method="POST">
-                        <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
-
-                    </form>
+                    <br/>
+                    <div class="row p-2 align-items-center">
+                        <div class="col-2">
+                            <img src="{{knjiga['url_naslovnice']}}" align="center" class="img-thumbnail"/>
+                        </div>
+                        <div class="col-10">
+                            <form action="/book/{{knjiga[0]}}" method="POST">
+                                <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
+                            </form>
+                        </div>
+                    </div>
                 %end
             %end
       </div>

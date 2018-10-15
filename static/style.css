@@ -10,8 +10,8 @@ tr {
     width: 100%;
 }
 
-.form-control{
-   width:auto;
+.form-control {
+   width:60%;
 }
 
 .form-inline{
@@ -41,7 +41,7 @@ color: yellow;
 }
 
 a.Ravenclaw{
-color: brown;
+color: #c96019;
 }
 
 a.Hufflepuff{

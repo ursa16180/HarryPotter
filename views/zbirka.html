@@ -7,47 +7,41 @@
 </div>
 
 <div class="row px-4">
-%if len(avtorji)==1:
-            <p>Author: <a href="/author/{{list(avtorji)[0][0]}}">{{list(avtorji)[0][1]}}</a></p>
-            %end
-            %if len(avtorji)>1:
-                <p>Authors:
-                %for avtor in avtorji[:-1]:
-                    <a href="/author/{{avtor[0]}}">{{avtor[1]}},</a>
-                %end
-                    <a href="/author/{{list(avtorji)[-1][0]}}"> {{list(avtorji)[-1][1]}}</a></p>
-
-            %end
-
-
+    %if len(avtorji)==1:
+        <p>Author: <a href="/author/{{list(avtorji)[0][0]}}">{{list(avtorji)[0][1]}}</a></p>
+    %end
+    %if len(avtorji)>1:
+        <p>Authors:
+        %for avtor in avtorji[:-1]:
+            <a href="/author/{{avtor[0]}}">{{avtor[1]}},</a>
+        %end
+            <a href="/author/{{list(avtorji)[-1][0]}}"> {{list(avtorji)[-1][1]}}</a></p>
+    %end
 </div>
 
 <div class="row px-2">
     <div class="col">
+        <br/>
+        Books in series:
 
-            <br/>
-                Books in series:
 
+        %for knjiga in knjige:
+            <div class="row py-1 align-items-center">
+                <div class="col-1">
+                    <img src="{{knjiga[3]}}" align="center" class="img-thumbnail"/>
 
-                %for knjiga in knjige:
-    <div class="row py-1 align-items-center">
-                    <div class="col-1">
-                        <img src="{{knjiga[3]}}" align="center" class="img-thumbnail"/>
-
-                    </div>
-                    <div class="col-10 ">
-                        <form action="/book/{{knjiga[0]}}" method="POST">
-                            %if knjiga[2] is not None:
-                            %    dodatek = ' #' + str(knjiga[2])
-                            %else:
-                            %    dodatek = ''
-                            %end
-                            <input type="submit" class="btn btn-link" value="{{knjiga[1]}} ({{serija}}{{dodatek}})" >
-
+                </div>
+                <div class="col-10 ">
+                    <form action="/book/{{knjiga[0]}}" method="POST">
+                        %if knjiga[2] is not None:
+                        %    dodatek = ' #' + str(knjiga[2])
+                        %else:
+                        %    dodatek = ''
+                        %end
+                        <input type="submit" class="btn btn-link" value="{{knjiga[1]}} ({{serija}}{{dodatek}})" >
                     </form>
-                    </div>
-                    </div>
-                %end
-
+                </div>
+            </div>
+        %end
     </div>
-    </div>
+</div>
