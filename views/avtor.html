@@ -43,8 +43,7 @@
             Books:
             %for knjiga in knjige:
                 <form action="/book/{{knjiga[0]}}" method="POST">
-                    <input type="submit" class="btn btn-link" value="{{knjiga[1]}}">
-
+                    <button type="submit" class="btn btn-link" value="{{knjiga[1]}}"><i class="icon-knjiga"></i>  {{knjiga[1]}}</button>
                 </form>
             %end
     </div>
@@ -61,7 +60,7 @@
                         %else:
                         %    kon = 'books'
                         %end
-                        <input type="submit" class="btn btn-link" value="{{ime}} (includes {{knjig}} {{kon}})">
+                        <button type="submit" class="btn btn-link" value="{{ime}} (includes {{knjig}} {{kon}})"><i class="icon-zbirka"></i> {{ime}} (includes {{knjig}} {{kon}})</button>
                     </form>
                 %end
             </div>

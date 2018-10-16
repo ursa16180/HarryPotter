@@ -108,3 +108,48 @@ ul {
 li {
     display: inline;
 }
+
+.icon-knjiga {
+    background-image: url('../../static/book.svg');
+    background-position: center center;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    display: inline-block;
+}
+
+.icon-avtor {
+    background-image: url('../../static/quill.svg');
+    background-position: center center;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    display: inline-block;
+}
+
+.icon-zbirka {
+    background-image: url('../../static/books.svg');
+    background-position: center center;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    display: inline-block;
+}
+
+.icon-isciKnjige {
+    background-image: url('../../static/searchBook.svg');
+    background-position: center center;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    display: inline-block;
+}
+
+.icon-isci {
+    background-image: url('../../static/search.svg');
+    background-position: center center;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    display: inline-block;
+}

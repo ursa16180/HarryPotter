@@ -12,6 +12,7 @@
         %if prebrano and (ocena is None):
 
         <div class="col-5">
+            <div class="float-right">
             Rate book:
             <form action="/book/{{knjiga['id']}}" method="POST">
                 <div class="rating-block">
@@ -25,11 +26,13 @@
                 <button class="btn btn-success" type="submit">Rate</button>
             </form>
         </div>
+        </div>
         %end
 
         %if prebrano and (ocena is not None):
 
             <div class="col-5">
+                <div class="float-right">
                 Your rating:
                 <form action="/book/{{knjiga['id']}}" method="POST">
                     <div class="rating-block">
@@ -53,11 +56,13 @@
                     <button class="btn btn-success" type="submit">Change rating</button>
                 </form>
             </div>
+            </div>
         %end
 
         %if not prebrano and zelja:
         <!--Dodaj gumb read in remove from Wishlist-->
-        <div class="col-5 justify-content-end">
+        <div class="col-5">
+            <div class="float-right">
             <div class="btn-group" role="group">
             <form action="/remove_wishlist/{{knjiga['id']}}" method="POST">
                 <input type="submit" class="btn btn-success btn-sm" value="Remove from wishlist">
@@ -70,21 +75,24 @@
 
         </div>
         </div>
+        </div>
         %end
 
         %if not prebrano and not zelja:
         <!--Dodada gumb "preberi" in add to Wishlist-->
-        <div class="col-5 justify-content-end">
+        <div class="col-5">
+            <div class="float-right">
             <div class="btn-group" role="group">
             <form action="/add_wishlist/{{knjiga['id']}}" method="POST">
                 <input type="submit" class="btn btn-success btn-sm" value="Add to wishlist">
             </form>
                 </div>
-<div class="btn-group" role="group">
+            <div class="btn-group" role="group">
             <form action="/read/{{knjiga['id']}}" method="POST">
                 <input type="submit" class="btn btn-success btn-sm" value="Read">
             </form>
             </div>
+                </div>
         </div>
         %end
     %end
