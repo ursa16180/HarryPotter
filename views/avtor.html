@@ -30,7 +30,7 @@
     <div class="col-1">
     </div>
 <div class="col-2">
-    <img src="/static/ink.png" class="center-full" align="center"/>
+    <img src="/static/ink.png" class="center-medium" align="center"/>
 </div>
        <div class="col-1">
     </div>
@@ -57,15 +57,11 @@
                 %for id, (ime, knjig) in serijeAvtorja.items():
                     <form action="/series/{{id}}" method="POST">
                         %if knjig%100 == 1:
-                        %    kon = 'knjigo'
-                        %elif knjig%100 == 2:
-                        %    kon = 'knjigi'
-                        %elif knjig%100 in {3,4}:
-                        %    kon = 'knjige'
+                        %    kon = 'book'
                         %else:
-                        %    kon = 'knjig'
+                        %    kon = 'books'
                         %end
-                        <input type="submit" class="btn btn-link" value="{{ime}} (vsebuje {{knjig}} {{kon}})">
+                        <input type="submit" class="btn btn-link" value="{{ime}} (includes {{knjig}} {{kon}})">
                     </form>
                 %end
             </div>

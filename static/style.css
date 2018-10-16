@@ -26,6 +26,8 @@ white-space: normal;
 text-align: left;
 }
 
+
+
 .btn.btn-link.Ravenclaw{
 color: brown;
 }
@@ -94,6 +96,7 @@ white-space: normal;
 	border:1px solid #EFEFEF;
 	padding:15px 15px 20px 15px;
 	border-radius:3px;
+	display: inline-block;
 }
 
 ul {

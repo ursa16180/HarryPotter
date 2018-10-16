@@ -3,20 +3,29 @@
 
 <div class="row px-4">
      <div class="col">
-    <b>{{zanr[0]}}</b>
+        <h2>{{zanr[0]}}</h2>
+    </div>
+</div>
 
-    <br/>
-</div>
-</div>
+<br/>
+
 % if zanr[1] is not None:
 <div class="row px-4">
+    <div class="col-9">
     {{zanr[1]}}
+    </div>
+    <div class="col-3">
+        <img src="/static/genres.jpg" class="center-full" align="center"/>
+
+    </div>
 </div>
 % end
+<br/>
+
 <div class="row px-4">
     <div class="col-6">
         <div class="btn-group-vertical">
-            <br/><br/>
+            <br/>
             %if knjige != []:
                 Best books in genre {{zanr[0]}}:
                 %for knjiga in knjige:

@@ -1,16 +1,18 @@
 %rebase('osnova.html', naslov='Book')
 
-<div class="row pxy-4">
+<div class="row px-4">
 
     <div class="col-7">
         <h2>{{knjiga['naslov']}}</h2>
     </br>
         <p>Average rating: {{knjiga['povprecna_ocena']}} (Rating count: {{knjiga['stevilo_ocen']}})</p>
     </div>
+
     %if uporabnik[1] is not None:
         %if prebrano and (ocena is None):
-        Rate book:
-        <div class="col-5 justify-content-end">
+
+        <div class="col-5">
+            Rate book:
             <form action="/book/{{knjiga['id']}}" method="POST">
                 <div class="rating-block">
                     %for i in range(1, 6):
@@ -26,8 +28,9 @@
         %end
 
         %if prebrano and (ocena is not None):
-            Your rating:
-            <div class="col-5 justify-content-end">
+
+            <div class="col-5">
+                Your rating:
                 <form action="/book/{{knjiga['id']}}" method="POST">
                     <div class="rating-block">
                         %for i in range(1, ocena):
@@ -55,27 +58,31 @@
         %if not prebrano and zelja:
         <!--Dodaj gumb read in remove from Wishlist-->
         <div class="col-5 justify-content-end">
+            <div class="btn-group" role="group">
             <form action="/remove_wishlist/{{knjiga['id']}}" method="POST">
-                <b><input type="submit" class="btn btn-success btn-sm" value="Remove from wishlist"></b>
+                <input type="submit" class="btn btn-success btn-sm" value="Remove from wishlist">
             </form>
-
+            </div>
+                <div class="btn-group" role="group">
             <form action="/read/{{knjiga['id']}}" method="POST">
-                <b><input type="submit" class="btn btn-success btn-sm" value="Read"></b>
+                <input type="submit" class="btn btn-success btn-sm" value="Read">
             </form>
 
+        </div>
         </div>
         %end
 
         %if not prebrano and not zelja:
-        <!--Dodaj gumb "preberi" in add to Wishlist-->
-        <div class="col-5">
-            <div class="btn-group px-2" role="group">
+        <!--Dodada gumb "preberi" in add to Wishlist-->
+        <div class="col-5 justify-content-end">
+            <div class="btn-group" role="group">
             <form action="/add_wishlist/{{knjiga['id']}}" method="POST">
-                <b><input type="submit" class="btn btn-success btn-sm" value="Add to wishlist"></b>
+                <input type="submit" class="btn btn-success btn-sm" value="Add to wishlist">
             </form>
-
+                </div>
+<div class="btn-group" role="group">
             <form action="/read/{{knjiga['id']}}" method="POST">
-                <b><input type="submit" class="btn btn-success btn-sm" value="Read"></b>
+                <input type="submit" class="btn btn-success btn-sm" value="Read">
             </form>
             </div>
         </div>
@@ -85,6 +92,7 @@
 
 %if knjiga['avtor'] != {(None, None)}:
     <div class="row px-4">
+        <div class="col">
             %if len(knjiga['avtor'])==1:
             <p>Author: <a href="/author/{{list(knjiga['avtor'])[0][0]}}">{{list(knjiga['avtor'])[0][1]}}</a></p>
             %end
@@ -94,14 +102,14 @@
                     <a href="/author/{{avtor[0]}}">{{avtor[1]}}, </a>
                 %end
                     <a href="/author/{{list(knjiga['avtor'])[-1][0]}}"> {{list(knjiga['avtor'])[-1][1]}}</a></p>
-
             %end
-
+        </div>
     </div>
 %end
 
 % if knjiga['serija'] != {(None, None, None)}:
     <div class="row px-4">
+        <div class="col">
         <p>Series:
         %for serija in list(knjiga['serija'])[:-1]:
                 %if serija[2] is not None:
@@ -119,6 +127,7 @@
         %end
             <a href="/series/{{list(knjiga['serija'])[-1][0]}}">{{list(knjiga['serija'])[-1][1]}}{{dodatek}}</a></p>
 
+        </div>
     </div>
 % end
 
@@ -128,7 +137,7 @@
             <img src="{{knjiga['url_naslovnice']}}" align="center" class="img-thumbnail"/>
         </div>
 
-        <div class="col">
+        <div class="col-9">
             <p>{{knjiga['opis']}}</p>
         </div>
     </div>
@@ -137,35 +146,46 @@
 <br/>
 % if knjiga['dolzina'] is not None:
     <div class="row px-4">
+        <div class="col">
         Pages: {{knjiga['dolzina']}}
+        </div>
     </div>
 % end
 
 % if knjiga['isbn'] is not None:
     <div class="row px-4">
+        <div class="col">
         ISBN13: {{knjiga['isbn']}}
+        </div>
     </div>
+<br/>
 %end
 
 % if knjiga['leto'] is not None:
     <div class="row px-4">
+        <div class="col">
         Published: {{knjiga['leto']}}
+        </div>
     </div>
-% end
 <br/>
+% end
+
 
 % if knjiga['zanri'] != {None}:
     <div class="row px-4">
+        <div class="col">
         <p>Genre:
             %for zanr in list(knjiga['zanri'])[:-1]:
                 <a href="/genre/{{zanr}}">{{zanr}}, </a>
             %end
         <a href="/genre/{{list(knjiga['zanri'])[-1]}}">{{list(knjiga['zanri'])[-1]}}</a></p>
+        </div>
     </div>
 %end
 
 % if knjiga['kljucna_beseda'] != {None}:
     <div class="row px-4">
+        <div class="col">
 
         <p>Key words:
         %for kljucna_beseda in list(knjiga['kljucna_beseda'])[:-1]:
@@ -173,5 +193,6 @@
         %end
         <a href="/search_results_books/{{list(knjiga['kljucna_beseda'])[-1]}}/">{{list(knjiga['kljucna_beseda'])[-1]}}</a></p>
 
+        </div>
     </div>
 % end
