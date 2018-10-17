@@ -10,8 +10,8 @@ tr {
     width: 100%;
 }
 
-.form-control {
-   width:60%;
+.form-control.krajsi {
+   width:60% !important;
 }
 
 .form-inline{
