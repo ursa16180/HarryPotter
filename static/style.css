@@ -29,31 +29,62 @@ text-align: left;
 
 
 .btn.btn-link.Ravenclaw{
-color: brown;
+color: #ae7b59;
 }
 
 .btn.btn-link.Hufflepuff{
-color: black;
+color: #404039;
 }
 .btn.btn-link.Slytherin{
-color: gray;
+color: #9a9c9a;
 }
 .btn.btn-link.Gryffindor{
-color: yellow;
+color: #e78c00;
+}
+
+.btn.btn-link.neprijavljen{
+color: #671b2a;
+}
+
+.btn.Ravenclaw{
+background-color:#ae7b59;
+color: #0c78c9;
+}
+
+.btn.Hufflepuff{
+background-color:#404039;
+color: #ead404;
+}
+.btn.Slytherin{
+background-color:#9a9c9a;
+color: #197a24;
+}
+.btn.Gryffindor{
+background-color:#e78c00;
+color: #d80909;
+}
+
+.btn.neprijavljen{
+background-color:#671b2a;
+color: #3c3c3c;
 }
 
 a.Ravenclaw{
-color: #c96019;
+color: #ae7b59;
 }
 
 a.Hufflepuff{
-color: black;
+color: #404039;
 }
 a.Slytherin{
-color: gray;
+color: #9a9c9a;
 }
 a.Gryffindor{
-color: yellow;
+color: #e78c00;
+}
+
+a.neprijavljen{
+color: #671b2a;
 }
 
 
