@@ -829,13 +829,12 @@ run(host='localhost', port=8080, reloader=True)
 
 
 #TODO: reigstracija se pr men čudno zamakne - Ursa:Meni tudi
-#TODO: Ko imaš knjigo na wishlistu, se gumb za oceno premakne dol- Ursa-popravljeno
-#TODO: ocene - ko knjigo prebereš, se te ocene dajo kr nekam-- Ursa-popravljeno
 #TODO: Če knjigo enkrat prebereš je ne morš odbrat? Kaj če narobe klikne?
 #TODO: knjižnica na vrhu strani - a bo samo grb?
 #TODO: link za barve : https://www.color-hex.com/
 #TODO: za manjša okenca iskalnika (ki se ne bodo prekrivala ven), dela, če daš v style.css
-# .form-control {
-#    width:60% !important;
-# }
-# ampak potem spremeni to tudi pri vseh ostalih takih okenčkih (npr pri sign in) in zglega grdo tam
+#barve: Hogwarts: #3c3c3c + #671b2a
+# Ravenclaw: #0c78c9 + #ae7b59
+# Gryffindor: #d80909 + #e78c00
+# Slytherin: #197a24 + #9a9c9a
+# Hufflepuff: #ead404 + #404039
