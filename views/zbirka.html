@@ -2,20 +2,20 @@
 
 
 <div class="row px-4">
-    <h2>{{serija}}</h2>
+    <h2 class="{{uporabnik[2]}}">{{serija}}</h2>
 
 </div>
 
 <div class="row px-4">
     %if len(avtorji)==1:
-        <p>Author: <a href="/author/{{list(avtorji)[0][0]}}">{{list(avtorji)[0][1]}}</a></p>
+        <p>Author: <a class="{{uporabnik[2]}}" href="/author/{{list(avtorji)[0][0]}}">{{list(avtorji)[0][1]}}</a></p>
     %end
     %if len(avtorji)>1:
         <p>Authors:
         %for avtor in avtorji[:-1]:
-            <a href="/author/{{avtor[0]}}">{{avtor[1]}},</a>
+            <a class="{{uporabnik[2]}}" href="/author/{{avtor[0]}}">{{avtor[1]}},</a>
         %end
-            <a href="/author/{{list(avtorji)[-1][0]}}"> {{list(avtorji)[-1][1]}}</a></p>
+            <a class="{{uporabnik[2]}}" href="/author/{{list(avtorji)[-1][0]}}"> {{list(avtorji)[-1][1]}}</a></p>
     %end
 </div>
 
@@ -38,7 +38,7 @@
                         %else:
                         %    dodatek = ''
                         %end
-                        <input type="submit" class="btn btn-link" value="{{knjiga[1]}} ({{serija}}{{dodatek}})" >
+                        <input type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{knjiga[1]}} ({{serija}}{{dodatek}})" >
                     </form>
                 </div>
             </div>
