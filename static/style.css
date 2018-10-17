@@ -1,14 +1,19 @@
 :root {
-    --prim-Gryf: #d80909;
-    --prim-Huff: #ead404;
-    --prim-Slyt: #197a24;
-    --prim-Rave: #24329c;
-    --prim-none: #029583;
-    --sec-Gryf: #e78c00;
+    --prim-Gryf: #a70000;
+    --prim-Huff: #eab822;
+    --prim-Slyt: #005a0a;
+    --prim-Rave: #1c5589;
+    --prim-none: #2f2f2f;
+    --sec-Gryf: #ba8114;
     --sec-Huff: #404039;
     --sec-Slyt: #9a9c9a;
-    --sec-Rave: #ae7b59;
-    --sec-none: #671b2a;
+    --sec-Rave: #a76d46;
+    --sec-none: #cead60;
+    --trd-Gryf: #c99f74;
+    --trd-Huff: #e7d483;
+    --trd-Slyt: #6ba972;
+    --trd-Rave: #7e95a9;
+    --trd-none: #a7a7a7;
 }
 
 .text-sredina{
@@ -221,4 +226,20 @@ background-color: var(--prim-Gryf);
 }
 .container-fluid.None{
 background-color: var(--prim-none);
+}
+
+.col-3.Ravenclaw-l{
+background-color: var(--trd-Rave);
+}
+.col-3.Hufflepuff-l{
+background-color: var(--trd-Huff);
+}
+.col-3.Slytherin-l{
+background-color: var(--trd-Slyt);
+}
+.col-3.Gryffindor-l{
+background-color: var(--trd-Gryf);
+}
+.col-3.None-l{
+background-color: var(--trd-none);
 }

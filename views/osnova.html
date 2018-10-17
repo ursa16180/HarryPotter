@@ -21,30 +21,13 @@
 <!--<body  background="/static/ozadje.jpg">-->
 <body>
 
-%if uporabnik[2] == "Hufflepuff":
-%barva = "bg-warning"
-%grb = "/static/Hufflepuff_Crest.png"
-%elif uporabnik[2] == "Ravenclaw":
-%barva = "bg-primary"
-%grb = "/static/Ravenclaw_Crest.png"
-%elif uporabnik[2] == "Slytherin":
-%barva = "bg-success"
-%grb = "/static/Slytherin_Crest.png"
-%elif uporabnik[2] == "Gryffindor":
-%barva = "bg-danger"
-%grb = "/static/Gryffindor_Crest.png"
-%else:
-%barva = "bg-dark"
-%grb = "/static/bradavicarka_logo.png"
-%end
-
 
 <!-- grb, slika in menu bar-->
-<div class="container-fluid {{barva}}">
+<div class="container-fluid {{uporabnik[2]}}">
     <div class="row">
         <div class="col-3">
             <a href="/">
-                <img src={{grb}} class="center-medium" align="center" alt="Crest"/>
+                <img src="/static/{{uporabnik[2]}}_Crest.png" class="center-medium" align="center" alt="Crest"/>
             </a>
         </div>
         <div class="col-6">
@@ -55,7 +38,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid {{barva}}">
+<div class="container-fluid {{uporabnik[2]}}">
     <div class="row align-items-center">
         <div class="col-3">
             <nav class="nav">
@@ -139,7 +122,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3  bg-secondary">
+        <div class="col-3 {{uporabnik[2]}}-l">
             <br/>
             <div class="row px-3">
                 <!-- Veliki iskalnik -->
