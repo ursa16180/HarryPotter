@@ -6,7 +6,7 @@
         <div class="btn-group-vertical">
             <br/>
             % for (crka1, ostalo) in avtorji[:10]:
-                <button class="btn btn-basic" type="button" data-toggle="collapse" data-target=#{{crka1}}
+                <button class="btn {{uporabnik[2]}}" type="button" data-toggle="collapse" data-target=#{{crka1}}
                         aria-expanded="true" aria-controls={{crka1}}>
                     {{crka1}}
                 </button>
@@ -14,7 +14,7 @@
                     <div class="card card-body">
                         % for (priimek, avtor) in ostalo:
                             <form action="/author/{{avtor[0]}}" method="GET">
-                                <b><input type="submit" class="btn btn-basic" value="{{avtor[1]}}"></b>
+                                <b><input type="submit" class="btn {{uporabnik[2]}}" value="{{avtor[1]}}"></b>
                             </form>
                         % end
                     </div>
@@ -27,7 +27,7 @@
         <div class="btn-group-vertical">
             <br/>
             % for (crka2, ostalo) in avtorji[10:20]:
-                <button class="btn btn-basic" type="button" data-toggle="collapse" data-target=#{{crka2}}
+                <button class="btn {{uporabnik[2]}}" type="button" data-toggle="collapse" data-target=#{{crka2}}
                         aria-expanded="true" aria-controls={{crka2}}>
                     {{crka2}}
                 </button>
@@ -35,7 +35,7 @@
                     <div class="card card-body">
                         % for (priimek, avtor) in ostalo:
                             <form action="/author/{{avtor[0]}}" method="GET">
-                                <b><input type="submit" class="btn btn-basic" value="{{avtor[1]}}"></b>
+                                <b><input type="submit" class="btn {{uporabnik[2]}}" value="{{avtor[1]}}"></b>
                             </form>
                         % end
                     </div>
@@ -47,7 +47,7 @@
         <div class="btn-group-vertical">
             <br/>
             % for (crka3, ostalo) in avtorji[20:]:
-                <button class="btn btn-basic" type="button" data-toggle="collapse" data-target=#{{crka3}}
+                <button class="btn {{uporabnik[2]}}" type="button" data-toggle="collapse" data-target=#{{crka3}}
                         aria-expanded="true" aria-controls={{crka3}}>
                     {{crka3}}
                 </button>
@@ -55,7 +55,7 @@
                     <div class="card card-body">
                         % for (priimek, avtor) in ostalo:
                             <form action="/author/{{avtor[0]}}" method="GET">
-                                <b><input type="submit" class="btn btn-basic" value="{{avtor[1]}}"></b>
+                                <b><input type="submit" class="btn {{uporabnik[2]}}" value="{{avtor[1]}}"></b>
                             </form>
                         % end
                     </div>

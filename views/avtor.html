@@ -3,7 +3,7 @@
 
 <div class="row px-3">
     <div class="col">
-    <h2>{{avtor[1]}}</h2>
+    <h2 class="{{uporabnik[2]}}">{{avtor[1]}}</h2>
         </div>
 </div>
 <div class="row px-3">
@@ -20,9 +20,9 @@
     % if zanriAvtorja != []:
         <p>Author's genre:
             %for zanr in zanriAvtorja[:-1]:
-                <a href="/genre/{{zanr}}">{{zanr}}, </a>
+                <a class="{{uporabnik[2]}}" href="/genre/{{zanr}}">{{zanr}}, </a>
             %end
-        <a href="/genre/{{zanr}}">{{zanriAvtorja[-1]}}</a></p>
+        <a class="{{uporabnik[2]}}" href="/genre/{{zanr}}">{{zanriAvtorja[-1]}}</a></p>
 
 
     % end
@@ -43,7 +43,7 @@
             Books:
             %for knjiga in knjige:
                 <form action="/book/{{knjiga[0]}}" method="POST">
-                    <button type="submit" class="btn btn-link" value="{{knjiga[1]}}"><i class="icon-knjiga"></i>  {{knjiga[1]}}</button>
+                    <button type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{knjiga[1]}}"><i class="icon-knjiga"></i>  {{knjiga[1]}}</button>
                 </form>
             %end
     </div>
@@ -60,7 +60,7 @@
                         %else:
                         %    kon = 'books'
                         %end
-                        <button type="submit" class="btn btn-link" value="{{ime}} (includes {{knjig}} {{kon}})"><i class="icon-zbirka"></i> {{ime}} (includes {{knjig}} {{kon}})</button>
+                        <button type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{ime}} (includes {{knjig}} {{kon}})"><i class="icon-zbirka"></i> {{ime}} (includes {{knjig}} {{kon}})</button>
                     </form>
                 %end
             </div>

@@ -3,7 +3,7 @@
 <div class="row px-4">
 
     <div class="col-7">
-        <h2>{{knjiga['naslov']}}</h2>
+        <h2 class="{{uporabnik[2]}}">{{knjiga['naslov']}}</h2>
     </br>
         <p>Average rating: {{knjiga['povprecna_ocena']}} (Rating count: {{knjiga['stevilo_ocen']}})</p>
     </div>
@@ -23,7 +23,7 @@
                         </div>
                     %end
                 </div>
-                <button class="btn btn-success" type="submit">Rate</button>
+                <button class="btn {{uporabnik[2]}}" type="submit">Rate</button>
             </form>
         </div>
         </div>
@@ -53,7 +53,7 @@
                             </div>
                         %end
                     </div>
-                    <button class="btn btn-success" type="submit">Change rating</button>
+                    <button class="btn {{uporabnik[2]}}" type="submit">Change rating</button>
                 </form>
             </div>
             </div>
@@ -65,12 +65,12 @@
             <div class="float-right">
             <div class="btn-group" role="group">
             <form action="/remove_wishlist/{{knjiga['id']}}" method="POST">
-                <input type="submit" class="btn btn-success btn-sm" value="Remove from wishlist">
+                <input type="submit" class="btn {{uporabnik[2]}}" value="Remove from wishlist">
             </form>
             </div>
                 <div class="btn-group" role="group">
             <form action="/read/{{knjiga['id']}}" method="POST">
-                <input type="submit" class="btn btn-success btn-sm" value="Read">
+                <input type="submit" class="btn {{uporabnik[2]}}" value="Read">
             </form>
 
         </div>
@@ -84,12 +84,12 @@
             <div class="float-right">
             <div class="btn-group" role="group">
             <form action="/add_wishlist/{{knjiga['id']}}" method="POST">
-                <input type="submit" class="btn btn-success btn-sm" value="Add to wishlist">
+                <input type="submit" class="btn {{uporabnik[2]}}" value="Add to wishlist">
             </form>
                 </div>
             <div class="btn-group" role="group">
             <form action="/read/{{knjiga['id']}}" method="POST">
-                <input type="submit" class="btn btn-success btn-sm" value="Read">
+                <input type="submit" class="btn {{uporabnik[2]}}" value="Read">
             </form>
             </div>
                 </div>
@@ -102,14 +102,14 @@
     <div class="row px-4">
         <div class="col">
             %if len(knjiga['avtor'])==1:
-            <p>Author: <a href="/author/{{list(knjiga['avtor'])[0][0]}}">{{list(knjiga['avtor'])[0][1]}}</a></p>
+            <p>Author: <a class="{{uporabnik[2]}}" href="/author/{{list(knjiga['avtor'])[0][0]}}">{{list(knjiga['avtor'])[0][1]}}</a></p>
             %end
             %if len(knjiga['avtor'])>1:
                 <p>Authors:
                 %for avtor in list(knjiga['avtor'])[:-1]:
-                    <a href="/author/{{avtor[0]}}">{{avtor[1]}}, </a>
+                    <a class="{{uporabnik[2]}}" href="/author/{{avtor[0]}}">{{avtor[1]}}, </a>
                 %end
-                    <a href="/author/{{list(knjiga['avtor'])[-1][0]}}"> {{list(knjiga['avtor'])[-1][1]}}</a></p>
+                    <a class="{{uporabnik[2]}}" href="/author/{{list(knjiga['avtor'])[-1][0]}}"> {{list(knjiga['avtor'])[-1][1]}}</a></p>
             %end
         </div>
     </div>
@@ -125,7 +125,7 @@
                 %else:
                 %    dodatek = ''
                 %end
-                <a href="/series/{{serija[0]}}">{{serija[1]}}{{dodatek}},</a>
+                <a class="{{uporabnik[2]}}" href="/series/{{serija[0]}}">{{serija[1]}}{{dodatek}},</a>
         %end
 
         %if list(knjiga['serija'])[-1][2] is not None:
@@ -133,7 +133,7 @@
         %else:
         %    dodatek = ''
         %end
-            <a href="/series/{{list(knjiga['serija'])[-1][0]}}">{{list(knjiga['serija'])[-1][1]}}{{dodatek}}</a></p>
+            <a class="{{uporabnik[2]}}" href="/series/{{list(knjiga['serija'])[-1][0]}}">{{list(knjiga['serija'])[-1][1]}}{{dodatek}}</a></p>
 
         </div>
     </div>
@@ -184,9 +184,9 @@
         <div class="col">
         <p>Genre:
             %for zanr in list(knjiga['zanri'])[:-1]:
-                <a href="/genre/{{zanr}}">{{zanr}}, </a>
+                <a class="{{uporabnik[2]}}" href="/genre/{{zanr}}">{{zanr}}, </a>
             %end
-        <a href="/genre/{{list(knjiga['zanri'])[-1]}}">{{list(knjiga['zanri'])[-1]}}</a></p>
+        <a class="{{uporabnik[2]}}" href="/genre/{{list(knjiga['zanri'])[-1]}}">{{list(knjiga['zanri'])[-1]}}</a></p>
         </div>
     </div>
 %end
@@ -197,9 +197,9 @@
 
         <p>Key words:
         %for kljucna_beseda in list(knjiga['kljucna_beseda'])[:-1]:
-            <a href="/search_results_books/{{kljucna_beseda}}/">{{kljucna_beseda}},</a>
+            <a class="{{uporabnik[2]}}" href="/search_results_books/{{kljucna_beseda}}/">{{kljucna_beseda}},</a>
         %end
-        <a href="/search_results_books/{{list(knjiga['kljucna_beseda'])[-1]}}/">{{list(knjiga['kljucna_beseda'])[-1]}}</a></p>
+        <a class="{{uporabnik[2]}}" href="/search_results_books/{{list(knjiga['kljucna_beseda'])[-1]}}/">{{list(knjiga['kljucna_beseda'])[-1]}}</a></p>
 
         </div>
     </div>

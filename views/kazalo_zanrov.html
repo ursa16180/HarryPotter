@@ -8,7 +8,7 @@
                 <br/>
                 % for zanr in zanri_kazalo[:43]:
                     <form action="/genre/{{zanr[0]}}" method="GET">
-                         <b><input type="submit" class="btn btn-basic" value="{{zanr[0]}}"></b>
+                         <b><input type="submit" class="btn {{uporabnik[2]}}" value="{{zanr[0]}}"></b>
                     </form>
                %end
            </div>
@@ -20,7 +20,7 @@
                 <br/>
                 % for zanr in zanri_kazalo[43:86]:
                     <form action="/genre/{{zanr[0]}}" method="GET">
-                         <b><input type="submit" class="btn btn-basic" value="{{zanr[0]}}"></b>
+                         <b><input type="submit" class="btn {{uporabnik[2]}}" value="{{zanr[0]}}"></b>
                     </form>
                %end
            </div>
@@ -32,7 +32,7 @@
                 <br/>
                 % for zanr in zanri_kazalo[86:129]:
                     <form action="/genre/{{zanr[0]}}" method="GET">
-                         <b><input type="submit" class="btn btn-basic" value="{{zanr[0]}}"></b>
+                         <b><input type="submit" class="btn {{uporabnik[2]}}" value="{{zanr[0]}}"></b>
                     </form>
                %end
            </div>
@@ -44,7 +44,7 @@
                 <br/>
                 % for zanr in zanri_kazalo[129:]:
                     <form action="/genre/{{zanr[0]}}" method="GET">
-                         <b><input type="submit" class="btn btn-basic" value="{{zanr[0]}}"></b>
+                         <b><input type="submit" class="btn {{uporabnik[2]}}" value="{{zanr[0]}}"></b>
                     </form>
                %end
            </div>

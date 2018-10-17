@@ -19,7 +19,7 @@
             %if ima_prejsnjo:
                 <li class="page-item">
                     <form action="/search_results_authors/{{iskani_izraz_avtor}}/{{int(stran)-1}}" method="POST">
-                        <p><input type="submit" class="btn btn-link" value="<<">
+                        <p><input type="submit" class="btn btn-link {{uporabnik[2]}}" value="<<">
                         </p>
                     </form>
                 </li>
@@ -27,7 +27,7 @@
             %if int(stran) > 3:
                 <li class="page-item">
                     <form action="/search_results_authors/{{iskani_izraz_avtor}}/0" method="POST">
-                        <input type="submit" class="btn btn-link" value="{{1}}">
+                        <input type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{1}}">
                     </form>
                 </li>
                 %if int(stran) > 4:
@@ -41,7 +41,7 @@
             %for i in range(zacetna, koncna):
                 <li class="page-item">
                     <form action="/search_results_authors/{{iskani_izraz_avtor}}/{{i-1}}" method="POST">
-                        <input type="submit" class="btn btn-link" value="{{i}}" >
+                        <input type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{i}}" >
                     </form>
                 </li>
             %end
@@ -53,14 +53,14 @@
                 %end
                 <li class="page-item">
                     <form action="/search_results_authors/{{iskani_izraz_avtor}}/{{st_strani-1}}" method="POST">
-                        <input type="submit" class="btn btn-link" value="{{st_strani}}">
+                        <input type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{st_strani}}">
                     </form>
                 </li>
             %end
             %if ima_naslednjo:
                 <li class="page-item">
                     <form action="/search_results_authors/{{iskani_izraz_avtor}}//{{int(stran)+1}}" method="POST">
-                        <p><input type="submit" class="btn btn-link" value=">>">
+                        <p><input type="submit" class="btn btn-link {{uporabnik[2]}}" value=">>">
                         </p>
                     </form>
                 </li>
@@ -75,13 +75,13 @@
 <div class="row px-4">
     <div class="btn-group-vertical">
         <form action="/author/{{avtor['id']}}" method="GET">
-            <b><input type="submit" class="btn btn-basic" value="{{avtor['ime']}}"></b>
+            <b><input type="submit" class="btn {{uporabnik[2]}}" value="{{avtor['ime']}}"></b>
         </form>
 
         <div class="btn-group">
             %for zanr in avtor['zanri']:
                 <form action="/genre/{{zanr}}" method="GET">
-                    <p><input type="submit" class="btn btn-link" value="{{zanr}}">
+                    <p><input type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{zanr}}">
                     </p>
                 </form>
             %end
@@ -98,7 +98,7 @@
             %if ima_prejsnjo:
                 <li class="page-item">
                     <form action="/search_results_authors/{{iskani_izraz_avtor}}/{{int(stran)-1}}" method="POST">
-                        <p><input type="submit" class="btn btn-link" value="<<">
+                        <p><input type="submit" class="btn btn-link {{uporabnik[2]}}" value="<<">
                         </p>
                     </form>
                 </li>
@@ -106,7 +106,7 @@
             %if int(stran) > 3:
                 <li class="page-item">
                     <form action="/search_results_authors/{{iskani_izraz_avtor}}/0" method="POST">
-                        <input type="submit" class="btn btn-link" value="{{1}}">
+                        <input type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{1}}">
                     </form>
                 </li>
                 %if int(stran) > 4:
@@ -120,7 +120,7 @@
             %for i in range(zacetna, koncna):
                 <li class="page-item">
                     <form action="/search_results_authors/{{iskani_izraz_avtor}}/{{i-1}}" method="POST">
-                        <input type="submit" class="btn btn-link" value="{{i}}" >
+                        <input type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{i}}" >
                     </form>
                 </li>
             %end
@@ -132,14 +132,14 @@
                 %end
                 <li class="page-item">
                     <form action="/search_results_authors/{{iskani_izraz_avtor}}/{{st_strani-1}}" method="POST">
-                        <input type="submit" class="btn btn-link" value="{{st_strani}}">
+                        <input type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{st_strani}}">
                     </form>
                 </li>
             %end
             %if ima_naslednjo:
                 <li class="page-item">
                     <form action="/search_results_authors/{{iskani_izraz_avtor}}//{{int(stran)+1}}" method="POST">
-                        <p><input type="submit" class="btn btn-link" value=">>">
+                        <p><input type="submit" class="btn btn-link {{uporabnik[2]}}" value=">>">
                         </p>
                     </form>
                 </li>
