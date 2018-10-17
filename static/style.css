@@ -5,7 +5,7 @@
     --prim-Rave: #1c5589;
     --prim-none: #2f2f2f;
     --sec-Gryf: #ba8114;
-    --sec-Huff: #404039;
+    --sec-Huff: #47473e;
     --sec-Slyt: #9a9c9a;
     --sec-Rave: #a76d46;
     --sec-none: #cead60;
@@ -13,7 +13,7 @@
     --trd-Huff: #e7d483;
     --trd-Slyt: #6ba972;
     --trd-Rave: #7e95a9;
-    --trd-none: #a7a7a7;
+    --trd-none: #7e7e7e;
 }
 
 .text-sredina{
@@ -43,27 +43,33 @@ text-align: left;
 .btn.btn-link.Ravenclaw{
 background-color: white;
 color: var(--sec-Rave);
+border-color: white;
 }
 .btn.btn-link.Hufflepuff{
 background-color: white;
 color: var(--sec-Huff);
+border-color: white;
 }
 .btn.btn-link.Slytherin{
 background-color: white;
 color: var(--sec-Slyt);
+border-color: white;
 }
 .btn.btn-link.Gryffindor{
 background-color: white;
 color: var(--sec-Gryf);
+border-color: white;
 }
 .btn.btn-link.None{
 background-color: white;
 color: var(--sec-none);
+border-color: white;
 }
 
 .btn.Ravenclaw{
 background-color: var(--sec-Rave);
 color: var(--prim-Rave);
+border-color: var(--prim-Rave);
 }
 .btn.Hufflepuff{
 background-color: var(--sec-Huff);
@@ -72,6 +78,7 @@ color: var(--prim-Huff);
 .btn.Slytherin{
 background-color: var(--sec-Slyt);
 color: var(--prim-Slyt);
+border-color: var(--prim-Slyt);
 }
 .btn.Gryffindor{
 background-color: var(--sec-Gryf);
@@ -80,6 +87,7 @@ color: var(--prim-Gryf);
 .btn.None{
 background-color: var(--sec-none);
 color: var(--prim-none);
+border-color: var(--prim-none);
 }
 
 a.Ravenclaw{
