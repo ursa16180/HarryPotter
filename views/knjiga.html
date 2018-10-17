@@ -25,6 +25,7 @@
                 </div>
                 <button class="btn {{uporabnik[2]}}" type="submit">Rate</button>
             </form>
+
         </div>
         </div>
         %end
@@ -100,7 +101,7 @@
 
 %if knjiga['avtor'] != {(None, None)}:
     <div class="row px-4">
-        <div class="col">
+        <div class="col-10">
             %if len(knjiga['avtor'])==1:
             <p>Author: <a class="{{uporabnik[2]}}" href="/author/{{list(knjiga['avtor'])[0][0]}}">{{list(knjiga['avtor'])[0][1]}}</a></p>
             %end
@@ -111,6 +112,13 @@
                 %end
                     <a class="{{uporabnik[2]}}" href="/author/{{list(knjiga['avtor'])[-1][0]}}"> {{list(knjiga['avtor'])[-1][1]}}</a></p>
             %end
+        </div>
+        <div class="col-2">
+            <div class="float-right">
+                    <form action="/remove_read/{{knjiga['id']}}" method="POST">
+                    <input type="submit" class="btn {{uporabnik[2]}}" value="Unread">
+            </form>
+        </div>
         </div>
     </div>
 %end
@@ -151,8 +159,9 @@
     </div>
 % end
 
-<br/>
+
 % if knjiga['dolzina'] is not None:
+<br/>
     <div class="row px-4">
         <div class="col">
         Pages: {{knjiga['dolzina']}}
@@ -161,25 +170,27 @@
 % end
 
 % if knjiga['isbn'] is not None:
+<br/>
     <div class="row px-4">
         <div class="col">
         ISBN13: {{knjiga['isbn']}}
         </div>
     </div>
-<br/>
 %end
 
 % if knjiga['leto'] is not None:
+<br/>
     <div class="row px-4">
         <div class="col">
         Published: {{knjiga['leto']}}
         </div>
     </div>
-<br/>
+
 % end
 
 
 % if knjiga['zanri'] != {None}:
+<br/>
     <div class="row px-4">
         <div class="col">
         <p>Genre:
@@ -194,13 +205,11 @@
 % if knjiga['kljucna_beseda'] != {None}:
     <div class="row px-4">
         <div class="col">
-
         <p>Key words:
         %for kljucna_beseda in list(knjiga['kljucna_beseda'])[:-1]:
             <a class="{{uporabnik[2]}}" href="/search_results_books/{{kljucna_beseda}}/">{{kljucna_beseda}},</a>
         %end
         <a class="{{uporabnik[2]}}" href="/search_results_books/{{list(knjiga['kljucna_beseda'])[-1]}}/">{{list(knjiga['kljucna_beseda'])[-1]}}</a></p>
-
         </div>
     </div>
 % end
