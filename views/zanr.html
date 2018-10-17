@@ -3,7 +3,7 @@
 
 <div class="row px-4">
      <div class="col">
-        <h2>{{zanr[0]}}</h2>
+        <h2 class="{{uporabnik[2]}}" >{{zanr[0]}}</h2>
     </div>
 </div>
 
@@ -30,7 +30,7 @@
                 Best books in genre {{zanr[0]}}:
                 %for knjiga in knjige:
                     <form action="/book/{{knjiga[0]}}" method="POST" class="form-inline">
-                            <button type="submit" class="btn btn-link" value="{{knjiga[1]}}"><i class="icon-knjiga"></i> {{knjiga[1]}}</button>
+                            <button type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{knjiga[1]}}"><i class="icon-knjiga"></i> {{knjiga[1]}}</button>
                     </form>
                 %end
             %end
@@ -43,7 +43,7 @@
                 Authors writting in genre {{zanr[0]}}:
                 %for avtor in avtorji:
                     <form action="/author/{{avtor[0]}}" method="GET">
-                        <button type="submit" class="btn btn-link" value="{{avtor[1]}}"><i class="icon-avtor"></i>  {{avtor[1]}}</button>
+                        <button type="submit" class="btn btn-link {{uporabnik[2]}}" value="{{avtor[1]}}"><i class="icon-avtor"></i>  {{avtor[1]}}</button>
                     </form>
                 %end
             %end
