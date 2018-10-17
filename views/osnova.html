@@ -44,13 +44,15 @@
     <div class="row">
         <div class="col-3">
             <a href="/">
-                <img src={{grb}} class="center-medium" align="center" alt="Crest"/>
+                <img src={{grb}} class="grb" align="center" alt="Crest"/>
             </a>
         </div>
-        <div class="col-6">
-            <img src="/static/harry_knjiznica.jpg" class="center-full" align="center" alt="Library"/>
+        <div class="col-8">
+            <td class="align-bottom">
+            <img src="/static/hogwarts.png" class="bradavicarka" align="middle" alt="Library"/>
+            </td>
         </div>
-        <div class="col-3">
+        <div class="col-1">
 
         </div>
     </div>
@@ -106,9 +108,9 @@
         </div>
         <div class="col-1">
             <form action="/sign_out" method="GET">
-                <div class="col-auto">
-                    <b><input type="submit" class="btn {{uporabnik[2]}}" value="Sign out"></b>
-                </div>
+
+                    <input type="submit" class="btn {{uporabnik[2]}}" value="Sign out">
+
             </form>
         </div>
             %end

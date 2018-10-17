@@ -119,6 +119,25 @@ white-space: normal;
     width: 70%;
 }
 
+
+img.grb{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    padding: 10px;
+}
+
+img.bradavicarka{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    height:100%;
+    vertical-align:bottom;
+    padding-top:10px;
+}
+
 .pagination {
   display:inline-flex;
   padding:5px;
