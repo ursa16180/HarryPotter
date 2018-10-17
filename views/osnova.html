@@ -20,7 +20,8 @@
 </head>
 <!--<body  background="/static/ozadje.jpg">-->
 <body>
-
+%if uporabnik[2] is None:
+%uporabnik[2] = 'neprijavljen'
 %if uporabnik[2] == "Hufflepuff":
 %barva = "bg-warning"
 %grb = "/static/Hufflepuff_Crest.png"
@@ -114,6 +115,7 @@
             %end
     </div>
 </div>
+
 
 <!-- Iskalniki -->
 % if 'iskane_dolzine' not in globals():
@@ -254,10 +256,10 @@
                  <a class="nav-link" href="#">
                     <form class="form-inline my-2 my-lg-0" action="/search_results_books/" method="POST">
                         % if iskani_izraz_knjiga is not None:
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search books" aria-label="Search"
+                        <input class="form-control krajsi mr-sm-2" type="search" placeholder="Search books" aria-label="Search"
                                id="splosniIskalnikKnjig1" name="iskaniIzrazKnjige" value="{{iskani_izraz_knjiga}}">
                         % else:
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search books" aria-label="Search"
+                        <input class="form-control krajsi mr-sm-2" type="search" placeholder="Search books" aria-label="Search"
                                id="splosniIskalnikKnjig2" name="iskaniIzrazKnjige">
                         %end
                         <button class="btn btn-success" type="submit">Search <i class="icon-isci"></i></button>
@@ -271,10 +273,10 @@
                  <a class="nav-link" href="#">
                     <form class="form-inline my-2 my-lg-0" action="/search_results_authors/" method="POST">
                         % if iskani_izraz_avtor is not None:
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search authors"
+                            <input class="form-control krajsi mr-sm-2" type="search" placeholder="Search authors"
                                    aria-label="Search" id="splosniIskalnikAvtorjev1" name="iskaniIzrazAvtorji" value="{{iskani_izraz_avtor}}">
                         %else:
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search authors"
+                            <input class="form-control krajsi mr-sm-2" type="search" placeholder="Search authors"
                                    aria-label="Search" id="splosniIskalnikAvtorjev2" name="iskaniIzrazAvtorji">
                         %end
                         <button class="btn btn-success" type="submit">Search <i class="icon-isci"></i></button>
