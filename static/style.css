@@ -190,6 +190,18 @@ li {
     display: inline-block;
 }
 
-.h2{
-color: red;
+h2.Ravenclaw{
+color: #0c78c9;
+}
+h2.Hufflepuff{
+color: #ead404;
+}
+h2.Slytherin{
+color: #197a24;
+}
+h2.Gryffindor{
+color: #d80909;
+}
+h2.None{
+color: #3c3c3c;
 }
