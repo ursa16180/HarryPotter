@@ -155,7 +155,7 @@
                     </div>
                 </div>
                 <p>
-                    <button class="btn btn-primary" type="button" data-toggle="collapse"
+                    <button class="btn {{uporabnik[2]}}" type="button" data-toggle="collapse"
                             data-target="#skupineKljucnihBesed"
                             aria-expanded="true" aria-controls="skupineKljucnihBesed">
                         Key words
@@ -165,7 +165,7 @@
                 <div class="collapse" id="skupineKljucnihBesed">
                     <div class="card card-body">
                         %for (skupina, besede) in vseKljucne.items():
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{skupina}}"
+                        <button class="btn {{uporabnik[2]}}" type="button" data-toggle="collapse" data-target="#{{skupina}}"
                                 aria-expanded="true" aria-controls="{{skupina}}">
                             {{skupina}}
                         </button>
@@ -196,7 +196,7 @@
                 </div>
 
                 <p>
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#zanri"
+                    <button class="btn {{uporabnik[2]}}" type="button" data-toggle="collapse" data-target="#zanri"
                             aria-expanded="true" aria-controls="zanri">
                         Genres
                     </button>
@@ -245,7 +245,7 @@
                         %end
                     </select>
                 </div>
-                    <button type="submit" class="btn btn-success" value="Find books"><i class="icon-isciKnjige"></i>  Find books</button>
+                    <button type="submit" class="btn {{uporabnik[2]}}" value="Find books"><i class="icon-isciKnjige"></i>  Find books</button>
             </form>
             </div>
             <br/>
@@ -261,7 +261,7 @@
                         <input class="form-control krajsi mr-sm-2" type="search" placeholder="Search books" aria-label="Search"
                                id="splosniIskalnikKnjig2" name="iskaniIzrazKnjige">
                         %end
-                        <button class="btn {{barva}}" type="submit">Search <i class="icon-isci"></i></button>
+                        <button class="btn {{uporabnik[2]}}" type="submit">Search <i class="icon-isci"></i></button>
                     </form>
                 </a>
                 </nav>
@@ -278,7 +278,7 @@
                             <input class="form-control krajsi mr-sm-2" type="search" placeholder="Search authors"
                                    aria-label="Search" id="splosniIskalnikAvtorjev2" name="iskaniIzrazAvtorji">
                         %end
-                        <button class="btn {{barva}}" type="submit">Search <i class="icon-isci"></i></button>
+                        <button class="btn {{uporabnik[2]}}" type="submit">Search <i class="icon-isci"></i></button>
                     </form>
                 </a>
                 </nav>
