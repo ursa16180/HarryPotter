@@ -20,16 +20,16 @@ def zajemi_knjige():
         linki = []  # tu se nabirajo vsi linki do spletnih strani, ki jih moramo prebrati.
         for zadetek in re.finditer(vzorec_linka, page_source):
             # če je v naslovu dvopičje, vprašaj ali slash, pride do napake
-            popravljen_naslov = re.sub('[:|/|?*]', '-', zadetek.groupdict()['naslov'])+zadetek.groupdict()['id']
+            popravljen_naslov = re.sub('[:|/?*]', '-', zadetek.groupdict()['naslov'])+zadetek.groupdict()['id']
             linki += [('https://www.goodreads.com' + zadetek.groupdict()['link_knjige'], popravljen_naslov)]
         for link in linki:
             # Vse html datoteke shranimo v mapo knjige
             orodja.shrani_stran(link[0], 'knjige/{}.html'.format(link[1]))
 
 
-# TODO: Na git ne smeva nalagat stvari ki se same generirajo => v končni verziji ne smeva mape knjige gor loadat i guess??
+# TODO: Na git ne smeva nalagat stvari ki se same generirajo => v končni verziji ne smeva mape knjige gor loadat?
 
-def zajemi_avtorje():  ###TODO za nekatere strani piše not found (6244,8164) - neka čudna napaka, jst sm še enkrat probala in zdej dela, pa nism nč popravlala
+def zajemi_avtorje():
     for avtor in slovar_url_avtorjev.items():
         print(avtor)
         orodja.shrani_stran(avtor[1], 'avtorji/{}.html'.format(avtor[0]))

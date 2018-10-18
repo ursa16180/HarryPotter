@@ -107,7 +107,7 @@ def knjiga(x):
                 cur.execute("UPDATE knjiga SET vsota_ocen = %s WHERE id = %s;",
                             (nova_vsota_ocen, iskana_knjiga['id']))
                 conn.commit()
-                iskana_knjiga['povprecna_ocena'] = round((iskana_knjiga['vsota_ocen'] + int(nova_ocena) \
+                iskana_knjiga['povprecna_ocena'] = round((iskana_knjiga['vsota_ocen'] + int(nova_ocena)
                                                           - int(stara_ocena)) / iskana_knjiga['stevilo_ocen'], 2)
             ocena_uporabnika = int(nova_ocena)
         else:
@@ -121,7 +121,7 @@ def knjiga(x):
                              iskana_knjiga['stevilo_ocen'] + 1, iskana_knjiga['id']))
                 conn.commit()
                 iskana_knjiga['stevilo_ocen'] += 1
-                iskana_knjiga['povprecna_ocena'] = round((iskana_knjiga['vsota_ocen']+ int(nova_ocena))
+                iskana_knjiga['povprecna_ocena'] = round((iskana_knjiga['vsota_ocen'] + int(nova_ocena))
                                                          / iskana_knjiga['stevilo_ocen'], 2)
                 ocena_uporabnika = nova_ocena
             else:
@@ -323,7 +323,7 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
         for vrstica in vse_vrstice:
             id_knjige = vrstica[0]
             trenutna_knjiga = slovar_slovarjev_knjig.get(id_knjige, {'id': id_knjige, 'naslov': None, 'avtorji': set(),
-                                                              'zanri': set(), 'url_naslovnice': None})
+                                                                     'zanri': set(), 'url_naslovnice': None})
             trenutna_knjiga['naslov'] = vrstica[1]
             trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
             trenutna_knjiga['url_naslovnice'] = vrstica[4]
@@ -630,6 +630,7 @@ def prebral(x):
     return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
                     knjiga=prebrana_knjiga, ocena=None, prebrano=True, zelja=False)
 
+
 @get('/remove_read/:x')
 def ne_prebral(x):
     cur.execute(
@@ -678,7 +679,7 @@ def ne_prebral(x):
     ocena = prebrano[0][2]
     if ocena is None:
         cur.execute("""DELETE FROM prebrana_knjiga WHERE id_uporabnika = %s AND id_knjige = %s;""",
-                  (trenutni_uporabnik[0], x))
+                    (trenutni_uporabnik[0], x))
     else:
         cur.execute("""DELETE FROM prebrana_knjiga WHERE id_uporabnika = %s AND id_knjige = %s;
                                UPDATE knjiga SET vsota_ocen = %s, stevilo_ocen= %s WHERE id = %s;""",
@@ -893,6 +894,3 @@ for vrstica_kljucne in kljucne_iz_baze:
 
 # poženemo strežnik na portu 8080, glej http://localhost:8080/
 run(host='localhost', port=8080, reloader=True)
-
-
-#TODO: Če knjigo enkrat prebereš je ne morš odbrat? Kaj če narobe klikne?
