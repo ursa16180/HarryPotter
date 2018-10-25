@@ -631,7 +631,7 @@ def prebral(x):
                     knjiga=prebrana_knjiga, ocena=None, prebrano=True, zelja=False)
 
 
-@get('/remove_read/:x')
+@post('/remove_read/:x')
 def ne_prebral(x):
     cur.execute(
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 

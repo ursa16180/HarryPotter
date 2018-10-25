@@ -31,6 +31,11 @@
 .form-inline{
    flex:1;
 }
+
+select.form-control{
+width:auto;
+}
+
 .btn-basic
 {margin: 5px;
 }
@@ -109,6 +114,14 @@ color: var(--sec-none);
 .btn-group-vertical .btn-basic
 {margin: 2px;
 white-space: normal;
+}
+
+.btn-group-vertical.zanr
+{display:inline-block;
+}
+
+.btn-group-vertical.crka
+{width:230px;
 }
 
 .center {
@@ -226,6 +239,50 @@ li {
     display: inline-block;
 }
 
+.icon-dodaj {
+    background-image: url('../../static/bookmarkPlus.svg');
+    background-position: center center;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    display: inline-block;
+}
+
+.icon-odstrani {
+    background-image: url('../../static/bookmarkMinus.svg');
+    background-position: center center;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    display: inline-block;
+}
+
+.icon-read {
+    background-image: url('../../static/add_book.svg');
+    background-position: center center;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    display: inline-block;
+}
+
+.icon-rate {
+    background-image: url('../../static/rateBook.svg');
+    background-position: center center;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    display: inline-block;
+}
+
+.icon-unread {
+    background-image: url('../../static/remove_book.svg');
+    background-position: center center;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    display: inline-block;
+}
 h2.Ravenclaw{
 color: var(--prim-Rave);
 }

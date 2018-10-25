@@ -2,8 +2,8 @@
 
 
 <div class="row">
-    <div class="col">
-        <div class="btn-group-vertical">
+    <div class="col-4">
+        <div class="btn-group-vertical crka">
             <br/>
             % for (crka1, ostalo) in avtorji[:10]:
                 <button class="btn {{uporabnik[2]}}" type="button" data-toggle="collapse" data-target=#{{crka1}}
@@ -23,8 +23,8 @@
         </div>
     </div>
 
-    <div class="col">
-        <div class="btn-group-vertical">
+    <div class="col-4">
+        <div class="btn-group-vertical crka">
             <br/>
             % for (crka2, ostalo) in avtorji[10:20]:
                 <button class="btn {{uporabnik[2]}}" type="button" data-toggle="collapse" data-target=#{{crka2}}
@@ -43,8 +43,8 @@
             %end
         </div>
     </div>
-    <div class="col">
-        <div class="btn-group-vertical">
+    <div class="col-4">
+        <div class="btn-group-vertical crka">
             <br/>
             % for (crka3, ostalo) in avtorji[20:]:
                 <button class="btn {{uporabnik[2]}}" type="button" data-toggle="collapse" data-target=#{{crka3}}

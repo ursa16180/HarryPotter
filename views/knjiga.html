@@ -23,7 +23,7 @@
                         </div>
                     %end
                 </div>
-                <button class="btn {{uporabnik[2]}}" type="submit">Rate</button>
+                <button class="btn {{uporabnik[2]}}" type="submit"><i class="icon-rate"></i> Rate</button>
             </form>
 
         </div>
@@ -54,7 +54,7 @@
                             </div>
                         %end
                     </div>
-                    <button class="btn {{uporabnik[2]}}" type="submit">Change rating</button>
+                    <button class="btn {{uporabnik[2]}}" type="submit"><i class="icon-rate"></i> Change rating</button>
                 </form>
             </div>
             </div>
@@ -66,12 +66,12 @@
             <div class="float-right">
             <div class="btn-group" role="group">
             <form action="/remove_wishlist/{{knjiga['id']}}" method="POST">
-                <input type="submit" class="btn {{uporabnik[2]}}" value="Remove from wishlist">
+                <button type="submit" class="btn {{uporabnik[2]}}" value="Remove from wishlist"><i class="icon-odstrani"></i> Remove from wishlist</button>
             </form>
             </div>
                 <div class="btn-group" role="group">
             <form action="/read/{{knjiga['id']}}" method="POST">
-                <input type="submit" class="btn {{uporabnik[2]}}" value="Read">
+                <button type="submit" class="btn {{uporabnik[2]}}" value="Read"><i class="icon-read"></i> Read</button>
             </form>
 
         </div>
@@ -85,12 +85,12 @@
             <div class="float-right">
             <div class="btn-group" role="group">
             <form action="/add_wishlist/{{knjiga['id']}}" method="POST">
-                <input type="submit" class="btn {{uporabnik[2]}}" value="Add to wishlist">
+                <button type="submit" class="btn {{uporabnik[2]}}" value="Add to wishlist"><i class="icon-dodaj"></i> Add to wishlist</button>
             </form>
                 </div>
             <div class="btn-group" role="group">
             <form action="/read/{{knjiga['id']}}" method="POST">
-                <input type="submit" class="btn {{uporabnik[2]}}" value="Read">
+                <button type="submit" class="btn {{uporabnik[2]}}" value="Read"><i class="icon-read"></i> Read</button>
             </form>
             </div>
                 </div>
@@ -120,7 +120,7 @@
             <div class="col-2">
                 <div class="float-right">
                     <form action="/remove_read/{{knjiga['id']}}" method="POST">
-                        <input type="submit" class="btn {{uporabnik[2]}}" value="Unread">
+                        <button type="submit" class="btn {{uporabnik[2]}}" value="Unread"><i class="icon-unread"></i> Unread</button>
                     </form>
                 </div>
             </div>
