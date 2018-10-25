@@ -100,13 +100,15 @@ def knjiga(x):
             # knjigo je uporabnik že ocenil, preverimo, ali je oceno spremenil:
             if nova_ocena is None:
                 nova_ocena = stara_ocena
-            elif stara_ocena != int(nova_ocena):
+            elif int(stara_ocena) != int(nova_ocena):
                 cur.execute("UPDATE prebrana_knjiga SET ocena = %s WHERE id_knjige = %s AND id_uporabnika = %s;",
                             (nova_ocena, iskana_knjiga['id'], trenutni_uporabnik[0]))
-                nova_vsota_ocen = iskana_knjiga['vsota_ocen'] + int(nova_ocena) - stara_ocena
+                nova_vsota_ocen = iskana_knjiga['vsota_ocen'] + int(nova_ocena) - int(stara_ocena)
                 cur.execute("UPDATE knjiga SET vsota_ocen = %s WHERE id = %s;",
                             (nova_vsota_ocen, iskana_knjiga['id']))
                 conn.commit()
+                iskana_knjiga['povprecna_ocena'] = round((iskana_knjiga['vsota_ocen'] + int(nova_ocena)
+                                                          - int(stara_ocena)) / iskana_knjiga['stevilo_ocen'], 2)
             ocena_uporabnika = int(nova_ocena)
         else:
             if nova_ocena is not None:
@@ -118,6 +120,9 @@ def knjiga(x):
                             (iskana_knjiga['vsota_ocen'] + nova_ocena,
                              iskana_knjiga['stevilo_ocen'] + 1, iskana_knjiga['id']))
                 conn.commit()
+                iskana_knjiga['stevilo_ocen'] += 1
+                iskana_knjiga['povprecna_ocena'] = round((iskana_knjiga['vsota_ocen'] + int(nova_ocena))
+                                                         / iskana_knjiga['stevilo_ocen'], 2)
                 ocena_uporabnika = nova_ocena
             else:
                 ocena_uporabnika = None
@@ -318,7 +323,7 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
         for vrstica in vse_vrstice:
             id_knjige = vrstica[0]
             trenutna_knjiga = slovar_slovarjev_knjig.get(id_knjige, {'id': id_knjige, 'naslov': None, 'avtorji': set(),
-                                                              'zanri': set(), 'url_naslovnice': None})
+                                                                     'zanri': set(), 'url_naslovnice': None})
             trenutna_knjiga['naslov'] = vrstica[1]
             trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
             trenutna_knjiga['url_naslovnice'] = vrstica[4]
@@ -625,6 +630,69 @@ def prebral(x):
     return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
                     knjiga=prebrana_knjiga, ocena=None, prebrano=True, zelja=False)
 
+
+@get('/remove_read/:x')
+def ne_prebral(x):
+    cur.execute(
+        """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
+        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
+        knjiga.url_naslovnice FROM knjiga
+        LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
+        LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
+        LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
+        LEFT JOIN serija ON serija.id=del_serije.id_serije
+        LEFT JOIN knjiga_kljucne_besede ON knjiga.id = knjiga_kljucne_besede.id_knjige
+        LEFT JOIN zanr_knjige ON zanr_knjige.id_knjige = knjiga.id
+        LEFT JOIN zanr ON zanr_knjige.zanr = zanr.ime_zanra
+        WHERE knjiga.id =%s;""", (x,))
+    vse_vrstice = cur.fetchall()
+    prebrana_knjiga = {'id': vse_vrstice[0][0],
+                       'isbn': vse_vrstice[0][1],
+                       'naslov': vse_vrstice[0][2],
+                       'dolzina': vse_vrstice[0][3],
+                       'vsota_ocen': vse_vrstice[0][4],
+                       'stevilo_ocen': vse_vrstice[0][5],
+                       'leto': vse_vrstice[0][6],
+                       'opis': vse_vrstice[0][7],
+                       'avtor': set(),
+                       'serija': set(),
+                       'kljucna_beseda': set(),
+                       'zanri': set(),
+                       'url_naslovnice': vse_vrstice[0][15]}
+    if prebrana_knjiga['vsota_ocen'] == 0:
+        prebrana_knjiga['povprecna_ocena'] = 0
+    else:
+        prebrana_knjiga['povprecna_ocena'] = round(prebrana_knjiga['vsota_ocen'] / prebrana_knjiga['stevilo_ocen'], 2)
+    for vrstica in vse_vrstice:
+        prebrana_knjiga['avtor'].add((vrstica[8], vrstica[9]))
+        prebrana_knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
+        prebrana_knjiga['kljucna_beseda'].add(vrstica[13])
+        prebrana_knjiga['zanri'].add(vrstica[14])
+
+    trenutni_uporabnik = uporabnik()
+    cur.execute("""SELECT * FROM prebrana_knjiga 
+                   WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
+    prebrano = cur.fetchall()
+    if len(prebrano) == 0:
+        return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                        knjiga=prebrana_knjiga, ocena=None, prebrano=False, zelja=False)
+    ocena = prebrano[0][2]
+    if ocena is None:
+        cur.execute("""DELETE FROM prebrana_knjiga WHERE id_uporabnika = %s AND id_knjige = %s;""",
+                    (trenutni_uporabnik[0], x))
+    else:
+        cur.execute("""DELETE FROM prebrana_knjiga WHERE id_uporabnika = %s AND id_knjige = %s;
+                               UPDATE knjiga SET vsota_ocen = %s, stevilo_ocen= %s WHERE id = %s;""",
+                    (trenutni_uporabnik[0], x,
+                     prebrana_knjiga['vsota_ocen']-ocena, prebrana_knjiga['stevilo_ocen']-1, x))
+        prebrana_knjiga['stevilo_ocen'] -= 1
+        prebrana_knjiga['povprecna_ocena'] = round((prebrana_knjiga['vsota_ocen']-ocena)
+                                                   / prebrana_knjiga['stevilo_ocen'], 2)
+    conn.commit()
+
+    return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                    knjiga=prebrana_knjiga, ocena=None, prebrano=False, zelja=False)
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~UPORABNIKI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -826,15 +894,3 @@ for vrstica_kljucne in kljucne_iz_baze:
 
 # poženemo strežnik na portu 8080, glej http://localhost:8080/
 run(host='localhost', port=8080, reloader=True)
-
-
-#TODO: reigstracija se pr men čudno zamakne - Ursa:Meni tudi
-#TODO: Če knjigo enkrat prebereš je ne morš odbrat? Kaj če narobe klikne?
-#TODO: knjižnica na vrhu strani - a bo samo grb?
-#TODO: link za barve : https://www.color-hex.com/
-#TODO: za manjša okenca iskalnika (ki se ne bodo prekrivala ven), dela, če daš v style.css
-#barve: Hogwarts: #3c3c3c + #671b2a
-# Ravenclaw: #0c78c9 + #ae7b59
-# Gryffindor: #d80909 + #e78c00
-# Slytherin: #197a24 + #9a9c9a
-# Hufflepuff: #ead404 + #404039

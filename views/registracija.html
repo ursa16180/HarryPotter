@@ -3,7 +3,7 @@
     <div class="col-5">
         <form action="/sign_up" method="POST">
             %if sporocilo is not None:
-            <div class="alert alert-success" role="alert">{{sporocilo}}</div>
+            <div class="alert {{uporabnik[2]}}" role="alert">{{sporocilo}}</div>
             %end
             <div class="form-row">
                 <label for="username">Username</label>

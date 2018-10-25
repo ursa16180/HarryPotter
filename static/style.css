@@ -106,7 +106,6 @@ a.None{
 color: var(--sec-none);
 }
 
-
 .btn-group-vertical .btn-basic
 {margin: 2px;
 white-space: normal;
@@ -150,6 +149,10 @@ img.bradavicarka{
     vertical-align:bottom;
     padding-top:10px;
 }
+
+.center-full.FatLady{
+max-height: 300px;
+width: auto;}
 
 .pagination {
   display:inline-flex;
@@ -255,18 +258,44 @@ background-color: var(--prim-Gryf);
 background-color: var(--prim-none);
 }
 
-.col-3.Ravenclaw-l{
+.col-3.Ravenclaw{
 background-color: var(--trd-Rave);
 }
-.col-3.Hufflepuff-l{
+.col-3.Hufflepuff{
 background-color: var(--trd-Huff);
 }
-.col-3.Slytherin-l{
+.col-3.Slytherin{
 background-color: var(--trd-Slyt);
 }
-.col-3.Gryffindor-l{
+.col-3.Gryffindor{
 background-color: var(--trd-Gryf);
 }
-.col-3.None-l{
+.col-3.None{
 background-color: var(--trd-none);
+}
+
+.alert.Ravenclaw{
+background-color: var(--trd-Rave);
+border-color: var(--prim-Rave);
+color: var(--prim-Rave);
+}
+.alert.Hufflepuff{
+background-color: var(--trd-Huff);
+border-color: var(--sec-Huff);
+color: var(--sec-Huff);
+}
+.alert.Slytherin{
+background-color: var(--trd-Slyt);
+border-color: var(--prim-Slyt);
+color: var(--prim-Slyt);
+}
+.alert.Gryffindor{
+background-color: var(--trd-Gryf);
+border-color: var(--prim-Gryf);
+color: var(--prim-Gryf);
+}
+.alert.None{
+background-color: var(--trd-none);
+border-color: var(--prim-none);
+color: var(--prim-none);
 }
