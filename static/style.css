@@ -299,6 +299,22 @@ h2.None{
 color: var(--prim-none);
 }
 
+h4.Ravenclaw{
+color: var(--prim-Rave);
+}
+h4.Hufflepuff{
+color: var(--prim-Huff);
+}
+h4.Slytherin{
+color: var(--prim-Slyt);
+}
+h4.Gryffindor{
+color: var(--prim-Gryf);
+}
+h4.None{
+color: var(--prim-none);
+}
+
 .container-fluid.Ravenclaw{
 background-color: var(--prim-Rave);
 }
@@ -355,4 +371,86 @@ color: var(--prim-Gryf);
 background-color: var(--trd-none);
 border-color: var(--prim-none);
 color: var(--prim-none);
+}
+
+.slider.Ravenclaw::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    height: 32px;
+    width: 32px;
+    appearance: none;
+    background:url('../../static/golden-snitch-Rave.png');
+    border: 0;
+    cursor: pointer; /* Cursor on hover */
+}
+.slider.Ravenclaw::-moz-range-thumb {
+    height: 32px;
+    width: 32px;
+    background:url('../../static/golden-snitch-Rave.png');
+    border: 0;
+    cursor: pointer; /* Cursor on hover */
+}
+
+.slider.Hufflepuff::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    height: 32px;
+    width: 32px;
+    appearance: none;
+    background:url('../../static/golden-snitch-Huff.png');
+    border: 0;
+    cursor: pointer; /* Cursor on hover */
+}
+.slider.Hufflepuff::-moz-range-thumb {
+    height: 32px;
+    width: 32px;
+    background:url('../../static/golden-snitch-Huff.png');
+    border: 0;
+    cursor: pointer; /* Cursor on hover */
+}
+.slider.Slytherin::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    height: 32px;
+    width: 32px;
+    appearance: none;
+    background:url('../../static/golden-snitch-Slyt.png');
+    border: 0;
+    cursor: pointer; /* Cursor on hover */
+}
+.slider.Slytherin::-moz-range-thumb {
+    height: 32px;
+    width: 32px;
+    background:url('../../static/golden-snitch-Slyt.png');
+    border: 0;
+    cursor: pointer; /* Cursor on hover */
+}
+.slider.Gryffindor::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    height: 32px;
+    width: 32px;
+    background: url('../../static/golden-snitch-Gryf.png');
+    border: 0;
+    cursor: pointer; /* Cursor on hover */
+}
+.slider.Gryffindor::-moz-range-thumb {
+    height: 32px;
+    width: 32px;
+    background: url('../../static/golden-snitch-Gryf.png');
+    border: 0;
+    cursor: pointer; /* Cursor on hover */
+}
+.slider.None::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    height: 32px;
+    width: 32px;
+    appearance: none;
+    background:url('../../static/golden-snitch-none.png');
+    border: 0;
+    cursor: pointer; /* Cursor on hover */
+}
+.slider.None::-moz-range-thumb {
+    height: 32px;
+    width: 32px;
+    background:url('../../static/golden-snitch-none.png');
+    border: 0;
+    cursor: pointer; /* Cursor on hover */
 }

@@ -129,11 +129,11 @@
             <div class="row px-3">
                 <!-- Veliki iskalnik -->
                 <form action="/search/" method="POST">
-                <p class="text-primary"><b>Bookfinder</b></p>
+                <p class="text-primary"><h4 class="{{uporabnik[2]}}">Bookfinder</h4></p>
 
                 <div class="form-group">
                     <div class="slidecontainer">
-                        <input type="range" min="0" max="1000" value="{{iskane_dolzine}}" class="slider" id="drsnikDolzina"
+                        <input type="range" min="0" max="1000" value="{{iskane_dolzine}}" class="slider {{uporabnik[2]}}" id="drsnikDolzina"
                                name="dolzinaInput" onchange="spremembaDrsnika(this.value)">
                         <br/>
                         The book should have at least <span id="vrednostDrsnika">{{iskane_dolzine}}</span> pages.
