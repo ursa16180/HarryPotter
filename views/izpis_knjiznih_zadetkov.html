@@ -147,7 +147,6 @@
                 </div>
 
                 <div class="row  px-4">
-                    %print(knjiga['zanri'])
                     %if (knjiga['zanri']!= set() and knjiga['zanri'] != {None}):
                        <p>Genre:
                             %for zanr in list(knjiga['zanri'])[:-1]:
