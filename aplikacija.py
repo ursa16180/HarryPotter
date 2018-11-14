@@ -169,7 +169,7 @@ def zanr(x):
     cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra=%s;", (x,))
     iskani_zanr = cur.fetchone()
     cur.execute("SELECT id, naslov, knjiga.vsota_ocen / COALESCE(NULLIF(knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena,"
-                "knjiga.stevilo_ocen, FROM knjiga JOIN zanr_knjige "
+                "knjiga.stevilo_ocen FROM knjiga JOIN zanr_knjige "
                 "ON knjiga.id = zanr_knjige.id_knjige WHERE zanr=%s "
                 "ORDER BY povprecna_ocena DESC LIMIT 50;", (x,))
     knjige = cur.fetchall()
