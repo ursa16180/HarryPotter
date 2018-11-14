@@ -18,7 +18,7 @@ skrivnost = "To je ultimativni urok za skrivanje skrivnosti. Ne povedati Hagridu
 
 
 def zakodiraj_geslo(geslo):
-    hashko = hashlib.md5()
+    hashko = hashlib.sha3_224()
     hashko.update(geslo.encode('utf-8'))
     return hashko.hexdigest()
 
@@ -36,9 +36,10 @@ def index():
 @post('/book/:x')
 def knjiga(x):
     cur.execute(
-        """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
-        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, 
-        knjiga_kljucne_besede.kljucna_beseda, zanr, knjiga.url_naslovnice FROM knjiga
+        """SELECT knjiga.id, isbn, naslov, dolzina, 
+        knjiga.vsota_ocen / COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena, stevilo_ocen, leto, knjiga.opis, 
+        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije,
+        knjiga_kljucne_besede.kljucna_beseda, zanr, knjiga.url_naslovnice, knjiga.vsota_ocen FROM knjiga
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
         LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
@@ -51,7 +52,7 @@ def knjiga(x):
                      'isbn': vse_vrstice[0][1],
                      'naslov': vse_vrstice[0][2],
                      'dolzina': vse_vrstice[0][3],
-                     'vsota_ocen': vse_vrstice[0][4],
+                     'povprecna_ocena': vse_vrstice[0][4],
                      'stevilo_ocen': vse_vrstice[0][5],
                      'leto': vse_vrstice[0][6],
                      'opis': vse_vrstice[0][7],
@@ -59,11 +60,8 @@ def knjiga(x):
                      'serija': set(),
                      'kljucna_beseda': set(),
                      'zanri': set(),
-                     'url_naslovnice': vse_vrstice[0][15]}
-    if iskana_knjiga['vsota_ocen'] == 0:
-        iskana_knjiga['povprecna_ocena'] = 0
-    else:
-        iskana_knjiga['povprecna_ocena'] = round(iskana_knjiga['vsota_ocen'] / iskana_knjiga['stevilo_ocen'], 2)
+                     'url_naslovnice': vse_vrstice[0][15],
+                     'vsota_ocen':vse_vrstice[0][16]}
     for vrstica in vse_vrstice:
         iskana_knjiga['avtor'].add((vrstica[8], vrstica[9]))
         iskana_knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
@@ -168,20 +166,22 @@ def avtor(x):
 def zanr(x):
     cur.execute("SELECT ime_zanra, opis FROM zanr WHERE ime_zanra=%s;", (x,))
     iskani_zanr = cur.fetchone()
-    cur.execute("SELECT id, naslov, knjiga.vsota_ocen, knjiga.stevilo_ocen FROM knjiga JOIN zanr_knjige "
-                "ON knjiga.id = zanr_knjige.id_knjige WHERE zanr=%s ", (x,))
+    cur.execute("SELECT id, naslov, knjiga.vsota_ocen / COALESCE(NULLIF(knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena,"
+                "knjiga.stevilo_ocen, FROM knjiga JOIN zanr_knjige "
+                "ON knjiga.id = zanr_knjige.id_knjige WHERE zanr=%s "
+                "ORDER BY povprecna_ocena DESC LIMIT 50;", (x,))
     knjige = cur.fetchall()
-    for trenutna_knjiga in knjige:
-        if trenutna_knjiga[3] == 0:
-            trenutna_knjiga[2] = 0
-        else:
-            trenutna_knjiga[2] = trenutna_knjiga[2]/trenutna_knjiga[3]
+    # for trenutna_knjiga in knjige:
+    #     if trenutna_knjiga[3] == 0:
+    #         trenutna_knjiga[2] = 0
+    #     else:
+    #         trenutna_knjiga[2] = trenutna_knjiga[2]/trenutna_knjiga[3]
 
     cur.execute("SELECT avtor.id, avtor.ime FROM avtor JOIN avtorjev_zanr ON avtor.id = avtorjev_zanr.id_avtorja "
                 "WHERE avtorjev_zanr.zanr=%s ORDER BY avtor.povprecna_ocena DESC LIMIT 50;", (x,))
     avtorji = cur.fetchall()
     return template('zanr.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                    zanr=iskani_zanr, knjige=sorted(knjige, key=itemgetter(2), reverse=True)[:50], avtorji=avtorji)
+                    zanr=iskani_zanr, knjige=knjige, avtorji=avtorji)
 
 
 @get('/series/:x')
@@ -271,8 +271,8 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
         je_del_zbirke = dobljene_zbirke
     parametri_sql = ()
     parametri = []
-    niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, url_naslovnice, " \
-          "vsota_ocen, stevilo_ocen FROM knjiga " \
+    niz = "SELECT DISTINCT knjiga.id, naslov, avtor.id, avtor.ime, url_naslovnice, vsota_ocen, stevilo_ocen, " \
+          "knjiga.vsota_ocen /  COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena FROM knjiga " \
           "JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige " \
           "JOIN avtor ON avtor_knjige.id_avtorja = avtor.id"
     # ~~~~~~~~~~~~~~Če želi da je del serije, se združi s tabelo serij
@@ -327,10 +327,7 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
             trenutna_knjiga['naslov'] = vrstica[1]
             trenutna_knjiga['avtorji'].add((vrstica[2], vrstica[3]))
             trenutna_knjiga['url_naslovnice'] = vrstica[4]
-            if vrstica[6] != 0:
-                trenutna_knjiga['povprecna_ocena'] = vrstica[5] / vrstica[6]
-            else:
-                trenutna_knjiga['povprecna_ocena'] = 0
+            trenutna_knjiga['povprecna_ocena'] = vrstica[7]
             slovar_slovarjev_knjig[id_knjige] = trenutna_knjiga
         for zanr_knjiga in zanri_knjig:
             slovar_slovarjev_knjig[zanr_knjiga[0]]['zanri'].add(zanr_knjiga[1])
@@ -381,14 +378,17 @@ def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.
         vse_vrstice = []
         for niz in nizi:
             cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, "
-                        "knjiga.url_naslovnice, knjiga.stevilo_ocen, knjiga.vsota_ocen FROM knjiga "
+                        "knjiga.url_naslovnice, knjiga.stevilo_ocen, knjiga.vsota_ocen, "
+                        "knjiga.vsota_ocen /  COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena FROM knjiga "
                         "LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige "
                         "LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id "
                         "LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE knjiga.opis LIKE %s;", niz)
             nove_vrstice1 = cur.fetchall()
             vse_vrstice += nove_vrstice1
         cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, knjiga.url_naslovnice, "
-                    "knjiga.stevilo_ocen, knjiga.vsota_ocen FROM knjiga LEFT JOIN avtor_knjige "
+                    "knjiga.stevilo_ocen, knjiga.vsota_ocen, "
+                    "knjiga.vsota_ocen /  COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena FROM knjiga "
+                    "LEFT JOIN avtor_knjige "
                     "ON knjiga.id=avtor_knjige.id_knjige LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id "
                     "LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE knjiga.naslov LIKE %s;",
                     ('%' + iskani_izraz[0].upper() + iskani_izraz[1:] + '%',))
@@ -406,10 +406,7 @@ def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.
                 trenutna_knjiga['zanri'].add(vrstica[4])
                 trenutna_knjiga['url_naslovnice'] = vrstica[5]
                 trenutna_knjiga['stevilo_ocen'] = vrstica[6]
-                if vrstica[6] != 0:
-                    trenutna_knjiga['povprecna_ocena'] = vrstica[7]/vrstica[6]
-                else:
-                    trenutna_knjiga['povprecna_ocena'] = 0
+                trenutna_knjiga['povprecna_ocena'] = vrstica[8]
                 slovar_slovarjev_knjig[id_knjige] = trenutna_knjiga
             vse_knjige = sorted(list(slovar_slovarjev_knjig.values()), key=itemgetter('povprecna_ocena'), reverse=True)
             st_zadetkov = len(vse_knjige)
@@ -471,7 +468,7 @@ def dodaj_zeljo(x):
     cur.execute(  # SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis,
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
         avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
-        knjiga.url_naslovnice FROM knjiga
+        knjiga.url_naslovnice, knjiga.vsota_ocen /  COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena FROM knjiga
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
         LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
@@ -493,11 +490,8 @@ def dodaj_zeljo(x):
                       'serija': set(),
                       'kljucna_beseda': set(),
                       'zanri': set(),
-                      'url_naslovnice': vse_vrstice[0][15]}
-    if zeljena_knjiga['vsota_ocen'] == 0:
-        zeljena_knjiga['povprecna_ocena'] = 0
-    else:
-        zeljena_knjiga['povprecna_ocena'] = round(zeljena_knjiga['vsota_ocen'] / zeljena_knjiga['stevilo_ocen'], 2)
+                      'url_naslovnice': vse_vrstice[0][15],
+                      'povprecna_ocena': vse_vrstice[0][16]}
     for vrstica in vse_vrstice:
         zeljena_knjiga['avtor'].add((vrstica[8], vrstica[9]))
         zeljena_knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
@@ -579,7 +573,7 @@ def prebral(x):
     cur.execute(
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
         avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
-        knjiga.url_naslovnice FROM knjiga
+        knjiga.url_naslovnice, knjiga.vsota_ocen /  COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena FROM knjiga
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
         LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
@@ -601,11 +595,8 @@ def prebral(x):
                        'serija': set(),
                        'kljucna_beseda': set(),
                        'zanri': set(),
-                       'url_naslovnice': vse_vrstice[0][15]}
-    if prebrana_knjiga['vsota_ocen'] == 0:
-        prebrana_knjiga['povprecna_ocena'] = 0
-    else:
-        prebrana_knjiga['povprecna_ocena'] = round(prebrana_knjiga['vsota_ocen'] / prebrana_knjiga['stevilo_ocen'], 2)
+                       'url_naslovnice': vse_vrstice[0][15],
+                       'povprecna_ocena': vse_vrstice[0][16]}
     for vrstica in vse_vrstice:
         prebrana_knjiga['avtor'].add((vrstica[8], vrstica[9]))
         prebrana_knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
@@ -636,7 +627,7 @@ def ne_prebral(x):
     cur.execute(
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
         avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
-        knjiga.url_naslovnice FROM knjiga
+        knjiga.url_naslovnice, knjiga.vsota_ocen /  COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena FROM knjiga
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
         LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
@@ -658,11 +649,8 @@ def ne_prebral(x):
                        'serija': set(),
                        'kljucna_beseda': set(),
                        'zanri': set(),
-                       'url_naslovnice': vse_vrstice[0][15]}
-    if prebrana_knjiga['vsota_ocen'] == 0:
-        prebrana_knjiga['povprecna_ocena'] = 0
-    else:
-        prebrana_knjiga['povprecna_ocena'] = round(prebrana_knjiga['vsota_ocen'] / prebrana_knjiga['stevilo_ocen'], 2)
+                       'url_naslovnice': vse_vrstice[0][15],
+                       'povprecna_ocena':vse_vrstice[0][16]}
     for vrstica in vse_vrstice:
         prebrana_knjiga['avtor'].add((vrstica[8], vrstica[9]))
         prebrana_knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
