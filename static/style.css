@@ -32,6 +32,14 @@
    flex:1;
 }
 
+.form-row.registracija{
+padding-bottom:1rem;}
+
+.form-group.registracija{
+    margin-bottom: 0rem;
+
+}
+
 select.form-control{
 width:auto;
 }

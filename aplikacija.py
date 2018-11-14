@@ -137,6 +137,8 @@ def knjiga(x):
 def avtor(x):
     cur.execute("SELECT id, ime, povprecna_ocena, datum_rojstva, kraj_rojstva FROM avtor WHERE id=%s", (x,))
     iskani_avtor = cur.fetchone()
+    if iskani_avtor[3] is not None:
+        iskani_avtor[3]=iskani_avtor[3].strftime("%B %d, %Y")
     cur.execute("SELECT zanr FROM avtorjev_zanr WHERE id_avtorja = %s", (x,))
     zanri_avtorja = cur.fetchall()
     zanri_avtorja = set([x[0] for x in zanri_avtorja])
@@ -784,17 +786,24 @@ def registriraj_uporabnika():
 @get('/profile/:x')
 @post('/profile/:x')
 def profil(x):
-    cur.execute("SELECT knjiga.id, knjiga.naslov, knjiga.url_naslovnice FROM knjiga JOIN prebrana_knjiga "
-                "ON knjiga.id= prebrana_knjiga.id_knjige WHERE prebrana_knjiga.id_uporabnika=%s;", (x,))
-    prebrane = cur.fetchall()
+    id = str(uporabnik()[0])
+    if id==x:
+        cur.execute("SELECT knjiga.id, knjiga.naslov, knjiga.url_naslovnice FROM knjiga JOIN prebrana_knjiga "
+                    "ON knjiga.id= prebrana_knjiga.id_knjige WHERE prebrana_knjiga.id_uporabnika=%s;", (x,))
+        prebrane = cur.fetchall()
 
-    cur.execute("SELECT knjiga.id, knjiga.naslov, knjiga.url_naslovnice FROM knjiga "
-                "JOIN wishlist ON knjiga.id= wishlist.id_knjige "
-                "WHERE wishlist.id_uporabnika=%s;", (x,))
-    zelje = cur.fetchall()
+        cur.execute("SELECT knjiga.id, knjiga.naslov, knjiga.url_naslovnice FROM knjiga "
+                    "JOIN wishlist ON knjiga.id= wishlist.id_knjige "
+                    "WHERE wishlist.id_uporabnika=%s;", (x,))
+        zelje = cur.fetchall()
 
-    return template('profile.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                    prebrane=prebrane, zelje=zelje)
+        return template('profile.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        prebrane=prebrane, zelje=zelje)
+    elif id=="0":
+        return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        sporocilo='To see your profile, you need to sign in.')
+    else:
+        return template('404.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik())
 
 
 @get('/change_profile')

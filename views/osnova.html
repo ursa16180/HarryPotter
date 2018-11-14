@@ -237,7 +237,7 @@
             <!-- Mala iskalnika -->
             <div class="row">
                 <nav class="nav">
-                 <a class="nav-link" href="#">
+                 <div class="nav-link">
                     <form class="form-inline my-2 my-lg-0" action="/search_results_books/" method="POST">
                         % if iskani_izraz_knjiga is not None:
                         <input class="form-control krajsi mr-sm-2" type="search" placeholder="Search books" aria-label="Search"
@@ -248,13 +248,13 @@
                         %end
                         <button class="btn {{uporabnik[2]}}" type="submit"><i class="icon-isci"></i> Search</button>
                     </form>
-                </a>
+                </div>
                 </nav>
             </div>
 
             <div class="row">
                 <nav class="nav">
-                 <a class="nav-link" href="#">
+                 <div class="nav-link">
                     <form class="form-inline my-2 my-lg-0" action="/search_results_authors/" method="POST">
                         % if iskani_izraz_avtor is not None:
                             <input class="form-control krajsi mr-sm-2" type="search" placeholder="Search authors"
@@ -265,7 +265,7 @@
                         %end
                         <button class="btn {{uporabnik[2]}}" type="submit"><i class="icon-isci"></i> Search</button>
                     </form>
-                </a>
+                </div>
                 </nav>
             </div>
 
