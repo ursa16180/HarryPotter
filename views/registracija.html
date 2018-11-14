@@ -5,23 +5,24 @@
             %if sporocilo is not None:
             <div class="alert {{uporabnik[2]}}" role="alert">{{sporocilo}}</div>
             %end
-            <div class="form-row">
+            <div class="form-row registracija">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" placeholder="Username" name="vzdevek" value="{{username}}" required>
             </div>
-            <div class="form-row">
+            <div class="form-row registracija">
               <label for="inputPassword">Password</label>
               <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="geslo" required>
             </div>
-            <div class="form-row">
+            <div class="form-row registracija">
                 <label for="inputPasswordRepeat">Confirm password</label>
                 <input type="password" class="form-control" id="inputPasswordRepeat" placeholder="Confirm Password" name="geslo2" required>
             </div>
-            <div class="form-row">
+            <div class="form-row registracija">
                 <label for="inputEmail">E-mail</label>
                 <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="{{email}}" required>
             </div>
-            <div class="form-row">
+            <div class="form-row registracija">
+                <div class="form-group col-md-4 registracija">
                 <label for="dom">House</label>
                 <select id="dom" class="form-control" name="dom" required>
                     <option selected>{{house}}</option>
@@ -31,9 +32,10 @@
                         %end
                     %end
                 </select>
+                </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
+            <div class="form-row registracija">
+                <div class="form-group col-md-4 registracija">
                   <label for="spol">Sex</label>
                   <select id="spol" class="form-control" name="spol" required>
                       %if sex == 'Male':
