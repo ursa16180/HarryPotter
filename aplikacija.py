@@ -464,7 +464,7 @@ def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.",
     return template('ni_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
                     uporabnik=uporabnik(), parametri=[iskani_izraz])
 
-
+@get('/add_wishlist/:x')
 @post('/add_wishlist/:x')
 def dodaj_zeljo(x):
 
@@ -524,6 +524,7 @@ def dodaj_zeljo(x):
 
 
 @post('/remove_wishlist/:x')
+@get('/remove_wishlist/:x')
 def odstrani_zeljo(x):
     trenutni_uporabnik = uporabnik()
 
@@ -582,6 +583,7 @@ def odstrani_zeljo(x):
 
 
 @post('/read/:x')
+@get('/read/:x')
 def prebral(x):
     trenutni_uporabnik = uporabnik()
 
@@ -641,6 +643,7 @@ def prebral(x):
 
 
 @post('/remove_read/:x')
+@get('/remove_read/:x')
 def ne_prebral(x):
     trenutni_uporabnik = uporabnik()
 
