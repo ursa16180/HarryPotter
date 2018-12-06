@@ -730,7 +730,18 @@ def odjava():
 
 @get("/sign_in")
 def fakeprijava():
-    return template('404.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik())
+    trenutni_uporabnik = uporabnik()
+
+    if trenutni_uporabnik[1] is None:
+        return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                        sporocilo=None)
+    else:
+        odjava()
+        return template('registracija.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        sporocilo="You have been signed out, so you can sign in with a different account.",
+                        email='', username='', house='Gryffindor', sex='Witch')
+
+
 
 @post("/sign_in")
 def prijava_uporabnika():
