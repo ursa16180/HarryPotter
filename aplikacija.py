@@ -825,8 +825,11 @@ def registriraj_uporabnika():
 @get('/profile/:x')
 @post('/profile/:x')
 def profil(x):
-    id = str(uporabnik()[0])
-    if id == x:
+    id= str(uporabnik()[0])
+    if id == "0" :
+        return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        sporocilo='To see your profile, you need to sign in.')
+    elif id == x:
         cur.execute("SELECT knjiga.id, knjiga.naslov, knjiga.url_naslovnice FROM knjiga JOIN prebrana_knjiga "
                     "ON knjiga.id= prebrana_knjiga.id_knjige WHERE prebrana_knjiga.id_uporabnika=%s;", (x,))
         prebrane = cur.fetchall()
@@ -838,9 +841,7 @@ def profil(x):
 
         return template('profile.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                         prebrane=prebrane, zelje=zelje)
-    elif id == "0":
-        return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                        sporocilo='To see your profile, you need to sign in.')
+
     else:
         return template('404.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik())
 
