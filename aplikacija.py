@@ -905,6 +905,9 @@ def spremeni():
 def error404(err):
     return template('404.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik())
 
+@error(405)
+def error405(err):
+    return template('405.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik())
 ######################################################################
 # Glavni program
 
