@@ -467,6 +467,13 @@ def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.",
 
 @post('/add_wishlist/:x')
 def dodaj_zeljo(x):
+
+    trenutni_uporabnik = uporabnik()
+    
+    if trenutni_uporabnik[1] is None:
+        return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                        sporocilo='To add books to your wishlist, you need to sign in.')
+
     cur.execute(  # SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis,
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
         avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
@@ -501,7 +508,6 @@ def dodaj_zeljo(x):
         zeljena_knjiga['kljucna_beseda'].add(vrstica[13])
         zeljena_knjiga['zanri'].add(vrstica[14])
 
-    trenutni_uporabnik = uporabnik()
 
     cur.execute("""SELECT * FROM wishlist WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
     zelja = len(cur.fetchall()) > 0
@@ -519,6 +525,11 @@ def dodaj_zeljo(x):
 
 @post('/remove_wishlist/:x')
 def odstrani_zeljo(x):
+    trenutni_uporabnik = uporabnik()
+
+    if trenutni_uporabnik[1] is None:
+        return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                        sporocilo='To remove books from your wishlist, you need to sign in.')
     cur.execute(
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
         avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
@@ -556,7 +567,6 @@ def odstrani_zeljo(x):
         odstranjena_knjiga['kljucna_beseda'].add(vrstica[13])
         odstranjena_knjiga['zanri'].add(vrstica[14])
 
-    trenutni_uporabnik = uporabnik()
     cur.execute("""SELECT * FROM wishlist WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
     zelja = len(cur.fetchall()) > 0
     if not zelja:
@@ -573,6 +583,11 @@ def odstrani_zeljo(x):
 
 @post('/read/:x')
 def prebral(x):
+    trenutni_uporabnik = uporabnik()
+
+    if trenutni_uporabnik[1] is None:
+        return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                        sporocilo='To mark books you have read, you need to sign in.')
     cur.execute(
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
         avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
@@ -607,7 +622,6 @@ def prebral(x):
         prebrana_knjiga['kljucna_beseda'].add(vrstica[13])
         prebrana_knjiga['zanri'].add(vrstica[14])
 
-    trenutni_uporabnik = uporabnik()
     cur.execute("""SELECT * FROM prebrana_knjiga 
                    WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
     prebrano = len(cur.fetchall()) > 0
@@ -628,6 +642,11 @@ def prebral(x):
 
 @post('/remove_read/:x')
 def ne_prebral(x):
+    trenutni_uporabnik = uporabnik()
+
+    if trenutni_uporabnik[1] is None:
+        return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
+                        sporocilo='To edit the list of read books, you need to sign in.')
     cur.execute(
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
         avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
@@ -662,7 +681,6 @@ def ne_prebral(x):
         prebrana_knjiga['kljucna_beseda'].add(vrstica[13])
         prebrana_knjiga['zanri'].add(vrstica[14])
 
-    trenutni_uporabnik = uporabnik()
     cur.execute("""SELECT * FROM prebrana_knjiga 
                    WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
     prebrano = cur.fetchall()
@@ -703,12 +721,17 @@ def uporabnik():
 
 @get("/sign_out")
 def odjava():
-    response.delete_cookie('vzdevek', path='/', domain='localhost')
+    if uporabnik()[1] is not None:
+        response.delete_cookie('vzdevek', path='/', domain='localhost')
     redirect('/')
 
+@get("/sign_in")
+def fakeprijava():
+    return template('404.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik())
 
 @post("/sign_in")
 def prijava_uporabnika():
+
     vzdevek = request.forms.vzdevek
     geslo = zakodiraj_geslo(request.forms.geslo)
     # Preverimo če je bila pravilna prijava
