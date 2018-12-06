@@ -756,45 +756,59 @@ def prijava_uporabnika():
 
 @get('/sign_up')
 def odpri_registracijo():
-    return template('registracija.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(), sporocilo=None,
+    ime_trenunega = uporabnik()[1]
+    if ime_trenunega is not None:
+        odjava()
+        return template('registracija.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        sporocilo="You have been signed out, so you can now create a new account.",
+                        email='', username='', house='Gryffindor', sex='Witch')
+    else:
+        return template('registracija.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(), sporocilo=None,
                     email='', username='', house='Gryffindor', sex='Witch')
 
 
 @post('/sign_up')
 def registriraj_uporabnika():
-    vzdevek = request.forms.vzdevek
-    geslo1 = request.forms.geslo
-    geslo2 = request.forms.geslo2
-    uporabnikov_email = request.forms.email
-    dom = request.forms.dom
-    spol = request.forms.spol
-    if spol == "Witch":
-        spol = "Female"
+    ime_trenunega = uporabnik()[1]
+    if ime_trenunega is not None:
+        odjava()
+        return template('registracija.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        sporocilo="You have been signed out, so you can now create a new account.",
+                        email='', username='', house='Gryffindor', sex='Witch')
     else:
-        spol = "Male"
+        vzdevek = request.forms.vzdevek
+        geslo1 = request.forms.geslo
+        geslo2 = request.forms.geslo2
+        uporabnikov_email = request.forms.email
+        dom = request.forms.dom
+        spol = request.forms.spol
+        if spol == "Witch":
+            spol = "Female"
+        else:
+            spol = "Male"
 
-    cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
-    nov_vzdevek = cur.fetchone() is None
-    cur.execute("SELECT email FROM uporabnik WHERE email=%s;", (uporabnikov_email,))
-    nov_mail = cur.fetchone() is None
-    if not nov_vzdevek:
-        return template("registracija.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                        sporocilo='Unfortunately this nickname is taken. Good one though.',
-                        email=uporabnikov_email, username='', house=dom, sex=spol)
-    if not nov_mail:
-        return template("registracija.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                        sporocilo='Unfortunately someone has already used this email to sign up to our library.',
-                        username=vzdevek, house=dom, sex=spol, email='')
-    elif not geslo1 == geslo2:
-        return template("registracija.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                        sporocilo='The passwords do not match. Check them again.',
-                        email=uporabnikov_email, username=vzdevek, house=dom, sex=spol)
-    geslo_kodirano = zakodiraj_geslo(geslo1)
-    cur.execute("INSERT INTO uporabnik (vzdevek, geslo, email, dom, spol) VALUES(%s,%s,%s,%s,%s);",
-                (vzdevek, geslo_kodirano, uporabnikov_email, dom, spol))
-    conn.commit()
-    return template('prijava.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                    sporocilo='Great, you are now member of our community. You can sign in here.')
+        cur.execute("SELECT vzdevek FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
+        nov_vzdevek = cur.fetchone() is None
+        cur.execute("SELECT email FROM uporabnik WHERE email=%s;", (uporabnikov_email,))
+        nov_mail = cur.fetchone() is None
+        if not nov_vzdevek:
+            return template("registracija.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                            sporocilo='Unfortunately this nickname is taken. Good one though.',
+                            email=uporabnikov_email, username='', house=dom, sex=spol)
+        if not nov_mail:
+            return template("registracija.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                            sporocilo='Unfortunately someone has already used this email to sign up to our library.',
+                            username=vzdevek, house=dom, sex=spol, email='')
+        elif not geslo1 == geslo2:
+            return template("registracija.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                            sporocilo='The passwords do not match. Check them again.',
+                            email=uporabnikov_email, username=vzdevek, house=dom, sex=spol)
+        geslo_kodirano = zakodiraj_geslo(geslo1)
+        cur.execute("INSERT INTO uporabnik (vzdevek, geslo, email, dom, spol) VALUES(%s,%s,%s,%s,%s);",
+                    (vzdevek, geslo_kodirano, uporabnikov_email, dom, spol))
+        conn.commit()
+        return template('prijava.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        sporocilo='Great, you are now member of our community. You can sign in here.')
 
 
 @get('/profile/:x')
@@ -822,56 +836,66 @@ def profil(x):
 
 @get('/change_profile')
 def spremeni():
-    cur.execute("SELECT spol FROM uporabnik WHERE id=%s;", (uporabnik()[0],))
-    spol = cur.fetchone()[0]
-    if spol == 'Female':
-        spol = 'Witch'
+    ime_trenunega = uporabnik()[1]
+    if ime_trenunega is None:
+        return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        sporocilo='To change your profile, you need to sign in.')
     else:
-        spol = 'Wizard'
-    return template('spremeni_profil.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                    spol=spol, sporocilo=None)
-
+        cur.execute("SELECT spol FROM uporabnik WHERE id=%s;", (uporabnik()[0],))
+        spol = cur.fetchone()[0]
+        if spol == 'Female':
+            spol = 'Witch'
+        else:
+            spol = 'Wizard'
+        return template('spremeni_profil.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        spol=spol, sporocilo=None)
 
 @post('/change_profile')
 def spremeni():
+
     (id_uporabnika, vzdevek, dom) = uporabnik()
 
-    geslo_staro = zakodiraj_geslo(request.forms.geslo_trenutno)
-    geslo_novo = request.forms.novo_geslo
-    geslo_novo2 = request.forms.novo_geslo2
-    novi_dom = request.forms.dom
-    novi_spol = request.forms.spol
-    # Preveri, ali lahko sploh karkoli spreminja:
-    cur.execute("SELECT geslo FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
-    pravo_geslo = cur.fetchone()[0]
-    if pravo_geslo != geslo_staro:
-        return template("spremeni_profil.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                        sporocilo='The current password you typed is not correct, try again.', spol=novi_spol)
-    elif geslo_novo == '':
-        geslo_novo = geslo_staro
-    elif geslo_novo != geslo_novo2:
-        return template("spremeni_profil.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                        sporocilo='The new passwords do not match. Check them again.', spol=novi_spol)
+    if vzdevek is None:
+        return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        sporocilo='To change your profile, you need to sign in.')
     else:
-        geslo_novo = zakodiraj_geslo(geslo_novo)
-    if novi_spol == "Witch":
-        novi_spol = "Female"
-    elif novi_spol == "Wizard":
-        novi_spol = "Male"
-    cur.execute("UPDATE uporabnik SET geslo = %s, dom = %s, spol = %s WHERE id = %s;",
-                (geslo_novo, novi_dom, novi_spol, id_uporabnika))
-    conn.commit()
-    cur.execute("SELECT knjiga.id, knjiga.naslov, knjiga.url_naslovnice FROM knjiga JOIN prebrana_knjiga "
-                "ON knjiga.id= prebrana_knjiga.id_knjige WHERE prebrana_knjiga.id_uporabnika=%s;",
-                (uporabnik()[0],))
-    prebrane = cur.fetchall()
-    cur.execute("SELECT knjiga.id, knjiga.naslov, knjiga.url_naslovnice FROM knjiga JOIN wishlist "
-                "ON knjiga.id= wishlist.id_knjige WHERE wishlist.id_uporabnika=%s;",
-                (uporabnik()[0],))
-    zelje = cur.fetchall()
 
-    return template('profile.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(), prebrane=prebrane,
-                    zelje=zelje)
+        geslo_staro = zakodiraj_geslo(request.forms.geslo_trenutno)
+        geslo_novo = request.forms.novo_geslo
+        geslo_novo2 = request.forms.novo_geslo2
+        novi_dom = request.forms.dom
+        novi_spol = request.forms.spol
+        # Preveri, ali lahko sploh karkoli spreminja:
+        cur.execute("SELECT geslo FROM uporabnik WHERE vzdevek=%s;", (vzdevek,))
+        pravo_geslo = cur.fetchone()[0]
+        if pravo_geslo != geslo_staro:
+            return template("spremeni_profil.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                            sporocilo='The current password you typed is not correct, try again.', spol=novi_spol)
+        elif geslo_novo == '':
+            geslo_novo = geslo_staro
+        elif geslo_novo != geslo_novo2:
+            return template("spremeni_profil.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                            sporocilo='The new passwords do not match. Check them again.', spol=novi_spol)
+        else:
+            geslo_novo = zakodiraj_geslo(geslo_novo)
+        if novi_spol == "Witch":
+            novi_spol = "Female"
+        elif novi_spol == "Wizard":
+            novi_spol = "Male"
+        cur.execute("UPDATE uporabnik SET geslo = %s, dom = %s, spol = %s WHERE id = %s;",
+                    (geslo_novo, novi_dom, novi_spol, id_uporabnika))
+        conn.commit()
+        cur.execute("SELECT knjiga.id, knjiga.naslov, knjiga.url_naslovnice FROM knjiga JOIN prebrana_knjiga "
+                    "ON knjiga.id= prebrana_knjiga.id_knjige WHERE prebrana_knjiga.id_uporabnika=%s;",
+                    (uporabnik()[0],))
+        prebrane = cur.fetchall()
+        cur.execute("SELECT knjiga.id, knjiga.naslov, knjiga.url_naslovnice FROM knjiga JOIN wishlist "
+                    "ON knjiga.id= wishlist.id_knjige WHERE wishlist.id_uporabnika=%s;",
+                    (uporabnik()[0],))
+        zelje = cur.fetchall()
+
+        return template('profile.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(), prebrane=prebrane,
+                        zelje=zelje)
 
 
 @error(404)
