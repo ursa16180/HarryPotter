@@ -37,8 +37,8 @@ def index():
 def knjiga(x):
     cur.execute(
         """SELECT knjiga.id, isbn, naslov, dolzina, 
-        knjiga.vsota_ocen / COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena, stevilo_ocen, leto, knjiga.opis, 
-        avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije,
+        knjiga.vsota_ocen / COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena, stevilo_ocen, leto, 
+        knjiga.opis, avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije,
         knjiga_kljucne_besede.kljucna_beseda, zanr, knjiga.url_naslovnice, knjiga.vsota_ocen FROM knjiga
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
@@ -61,7 +61,7 @@ def knjiga(x):
                      'kljucna_beseda': set(),
                      'zanri': set(),
                      'url_naslovnice': vse_vrstice[0][15],
-                     'vsota_ocen':vse_vrstice[0][16]}
+                     'vsota_ocen': vse_vrstice[0][16]}
     for vrstica in vse_vrstice:
         iskana_knjiga['avtor'].add((vrstica[8], vrstica[9]))
         iskana_knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
@@ -136,7 +136,7 @@ def avtor(x):
     cur.execute("SELECT id, ime, povprecna_ocena, datum_rojstva, kraj_rojstva FROM avtor WHERE id=%s", (x,))
     iskani_avtor = cur.fetchone()
     if iskani_avtor[3] is not None:
-        iskani_avtor[3]=iskani_avtor[3].strftime("%B %d, %Y")
+        iskani_avtor[3] = iskani_avtor[3].strftime("%B %d, %Y")
     cur.execute("SELECT zanr FROM avtorjev_zanr WHERE id_avtorja = %s", (x,))
     zanri_avtorja = cur.fetchall()
     zanri_avtorja = set([x[0] for x in zanri_avtorja])
@@ -381,8 +381,8 @@ def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.
         for niz in nizi:
             cur.execute("SELECT knjiga.id, knjiga.naslov, avtor.id, avtor.ime, zanr_knjige.zanr, "
                         "knjiga.url_naslovnice, knjiga.stevilo_ocen, knjiga.vsota_ocen, "
-                        "knjiga.vsota_ocen /  COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena FROM knjiga "
-                        "LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige "
+                        "knjiga.vsota_ocen / COALESCE(NULLIF(knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena FROM knjiga"
+                        " LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige "
                         "LEFT JOIN avtor ON avtor_knjige.id_avtorja=avtor.id "
                         "LEFT JOIN zanr_knjige ON knjiga.id=zanr_knjige.id_knjige WHERE knjiga.opis LIKE %s;", niz)
             nove_vrstice1 = cur.fetchall()
@@ -470,7 +470,8 @@ def dodaj_zeljo(x):
     cur.execute(  # SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis,
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
         avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
-        knjiga.url_naslovnice, knjiga.vsota_ocen /  COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena FROM knjiga
+        knjiga.url_naslovnice, knjiga.vsota_ocen / COALESCE(NULLIF(knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena 
+        FROM knjiga
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
         LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
@@ -575,7 +576,8 @@ def prebral(x):
     cur.execute(
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
         avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
-        knjiga.url_naslovnice, knjiga.vsota_ocen /  COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena FROM knjiga
+        knjiga.url_naslovnice, knjiga.vsota_ocen /  COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena 
+        FROM knjiga
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
         LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
@@ -629,7 +631,8 @@ def ne_prebral(x):
     cur.execute(
         """SELECT knjiga.id, isbn, naslov, dolzina, knjiga.vsota_ocen, stevilo_ocen, leto, knjiga.opis, 
         avtor.id, avtor.ime, serija.id, serija.ime, del_serije.zaporedna_stevilka_serije, kljucna_beseda, ime_zanra, 
-        knjiga.url_naslovnice, knjiga.vsota_ocen /  COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena FROM knjiga
+        knjiga.url_naslovnice, knjiga.vsota_ocen /  COALESCE(NULLIF( knjiga.stevilo_ocen, 0), 1) AS povprecna_ocena 
+        FROM knjiga
         LEFT JOIN avtor_knjige ON knjiga.id=avtor_knjige.id_knjige
         LEFT JOIN avtor ON avtor_knjige.id_avtorja = avtor.id
         LEFT JOIN del_serije ON knjiga.id=del_serije.id_knjige
@@ -652,7 +655,7 @@ def ne_prebral(x):
                        'kljucna_beseda': set(),
                        'zanri': set(),
                        'url_naslovnice': vse_vrstice[0][15],
-                       'povprecna_ocena':vse_vrstice[0][16]}
+                       'povprecna_ocena': vse_vrstice[0][16]}
     for vrstica in vse_vrstice:
         prebrana_knjiga['avtor'].add((vrstica[8], vrstica[9]))
         prebrana_knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
@@ -775,7 +778,7 @@ def registriraj_uporabnika():
 @post('/profile/:x')
 def profil(x):
     id = str(uporabnik()[0])
-    if id==x:
+    if id == x:
         cur.execute("SELECT knjiga.id, knjiga.naslov, knjiga.url_naslovnice FROM knjiga JOIN prebrana_knjiga "
                     "ON knjiga.id= prebrana_knjiga.id_knjige WHERE prebrana_knjiga.id_uporabnika=%s;", (x,))
         prebrane = cur.fetchall()
@@ -787,7 +790,7 @@ def profil(x):
 
         return template('profile.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                         prebrane=prebrane, zelje=zelje)
-    elif id=="0":
+    elif id == "0":
         return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                         sporocilo='To see your profile, you need to sign in.')
     else:
