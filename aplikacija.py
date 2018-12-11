@@ -725,7 +725,7 @@ def uporabnik():
 @get("/sign_out")
 def odjava():
     if uporabnik()[1] is not None:
-        response.delete_cookie('vzdevek', path='/', domain='localhost')
+        response.delete_cookie('vzdevek', path='/')
     redirect('/')
 
 @get("/sign_in")
@@ -736,7 +736,7 @@ def fakeprijava():
         return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
                         sporocilo=None)
     else:
-        response.delete_cookie('vzdevek', path='/', domain='localhost')
+        response.delete_cookie('vzdevek', path='/')
         return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik= [0, None, None],
                         sporocilo="You have been signed out, so you can sign in with a different account.")
 
@@ -769,7 +769,7 @@ def prijava_uporabnika():
 def odpri_registracijo():
     ime_trenunega = uporabnik()[1]
     if ime_trenunega is not None:
-        response.delete_cookie('vzdevek', path='/', domain='localhost')
+        response.delete_cookie('vzdevek', path='/')
         return template('registracija.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik= [0, None, None],
                         sporocilo="You have been signed out, so you can now create a new account.",
                         email='', username='', house='Gryffindor', sex='Witch')
@@ -782,7 +782,7 @@ def odpri_registracijo():
 def registriraj_uporabnika():
     ime_trenunega = uporabnik()[1]
     if ime_trenunega is not None:
-        response.delete_cookie('vzdevek', path='/', domain='localhost')
+        response.delete_cookie('vzdevek', path='/')
         return template('registracija.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                         sporocilo="You have been signed out, so you can now create a new account.",
                         email='', username='', house='Gryffindor', sex='Witch')
