@@ -7,7 +7,10 @@ import auth_public as auth
 import psycopg2, psycopg2.extensions, psycopg2.extras
 from operator import itemgetter
 
-import hashlib
+try:
+    import sha3 as hashlib
+except ModuleNotFoundError:
+    import hashlib
 
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)  # se znebimo problemov s šumniki
 
@@ -196,7 +199,7 @@ def zbirka(x):
     JOIN avtor_knjige ON knjiga.id = avtor_knjige.id_knjige
     JOIN avtor ON avtor_knjige.id_avtorja =  avtor.id
     WHERE serija.id = %s
-    ORDER BY zaporedna_stevilka_serije;""", (x, ))
+    ORDER BY zaporedna_stevilka_serije;""", (x,))
     # knjiga ima lahko več avtorjev, več knjig ima iste avtorje
     knjige_ponovitve = cur.fetchall()
     knjige = {}
@@ -341,7 +344,7 @@ def iskanje_get(dolzina=200, kljucne='[]', zanri='[]', je_del_zbirke='Either way
         return template('izpis_knjiznih_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                         knjige=vse_knjige[offset: offset + na_stran], stran=stran, iskane_dolzine=dolzina,
                         iskane_kljucne=kljucne, iskani_zanri=zanri, iskano_zbirka=je_del_zbirke, parametri=parametri,
-                        ima_naslednjo=stran+1 < st_strani, ima_prejsnjo=stran != 0, st_strani=st_strani,
+                        ima_naslednjo=stran + 1 < st_strani, ima_prejsnjo=stran != 0, st_strani=st_strani,
                         st_zadetkov=stevilo_knjig, veliki_mali='veliki')
 
 
@@ -412,13 +415,13 @@ def rezultati_iskanja_knjiga(iskani_izraz="You haven't searched for any keyword.
                 slovar_slovarjev_knjig[id_knjige] = trenutna_knjiga
             vse_knjige = sorted(list(slovar_slovarjev_knjig.values()), key=itemgetter('povprecna_ocena'), reverse=True)
             st_zadetkov = len(vse_knjige)
-            st_strani = st_zadetkov//10 + 1
+            st_strani = st_zadetkov // 10 + 1
             if st_zadetkov % 10 == 0:
                 st_strani -= 1
             return template('izpis_knjiznih_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
                             uporabnik=uporabnik(), knjige=vse_knjige[offset: offset + na_stran],
                             stran=stran, parametri=[iskani_izraz], iskani_izraz_knjiga=iskani_izraz,
-                            st_zadetkov=st_zadetkov, st_strani=st_strani, ima_naslednjo=stran+1 < st_strani,
+                            st_zadetkov=st_zadetkov, st_strani=st_strani, ima_naslednjo=stran + 1 < st_strani,
                             ima_prejsnjo=stran != 0, veliki_mali='mali')
     return template('ni_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
                     uporabnik=uporabnik(), parametri=[iskani_izraz])
@@ -437,7 +440,7 @@ def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.",
     if iskani_izraz != '':
         iskani_izraz = iskani_izraz.title()
         nizi = [("""SELECT avtor.id, avtor.ime, avtorjev_zanr.zanr, avtor.povprecna_ocena FROM avtor LEFT JOIN avtorjev_zanr ON 
-                  avtor.id=avtorjev_zanr.id_avtorja WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz + '%', ))]
+                  avtor.id=avtorjev_zanr.id_avtorja WHERE avtor.ime LIKE %s """, ('%' + iskani_izraz + '%',))]
         vse_vrstice = []
         for niz in nizi:
             cur.execute(niz[0], niz[1])
@@ -464,12 +467,12 @@ def rezultati_iskanja_avtor(iskani_izraz="You haven't searched for any author.",
     return template('ni_zadetkov.html', vseKljucne=vse_kljucne, zanri=vsi_zanri,
                     uporabnik=uporabnik(), parametri=[iskani_izraz])
 
+
 @get('/add_wishlist/:x')
 @post('/add_wishlist/:x')
 def dodaj_zeljo(x):
-
     trenutni_uporabnik = uporabnik()
-    
+
     if trenutni_uporabnik[1] is None:
         return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
                         sporocilo='To add books to your wishlist, you need to sign in.')
@@ -507,7 +510,6 @@ def dodaj_zeljo(x):
         zeljena_knjiga['serija'].add((vrstica[10], vrstica[11], vrstica[12]))
         zeljena_knjiga['kljucna_beseda'].add(vrstica[13])
         zeljena_knjiga['zanri'].add(vrstica[14])
-
 
     cur.execute("""SELECT * FROM wishlist WHERE id_uporabnika = %s AND id_knjige = %s;""", (trenutni_uporabnik[0], x))
     zelja = len(cur.fetchall()) > 0
@@ -698,14 +700,15 @@ def ne_prebral(x):
         cur.execute("""DELETE FROM prebrana_knjiga WHERE id_uporabnika = %s AND id_knjige = %s;
                                UPDATE knjiga SET vsota_ocen = %s, stevilo_ocen= %s WHERE id = %s;""",
                     (trenutni_uporabnik[0], x,
-                     prebrana_knjiga['vsota_ocen']-ocena, prebrana_knjiga['stevilo_ocen']-1, x))
+                     prebrana_knjiga['vsota_ocen'] - ocena, prebrana_knjiga['stevilo_ocen'] - 1, x))
         prebrana_knjiga['stevilo_ocen'] -= 1
-        prebrana_knjiga['povprecna_ocena'] = round((prebrana_knjiga['vsota_ocen']-ocena)
+        prebrana_knjiga['povprecna_ocena'] = round((prebrana_knjiga['vsota_ocen'] - ocena)
                                                    / prebrana_knjiga['stevilo_ocen'], 2)
     conn.commit()
 
     return template('knjiga.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
                     knjiga=prebrana_knjiga, ocena=None, prebrano=False, zelja=False)
+
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~UPORABNIKI~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -728,6 +731,7 @@ def odjava():
         response.delete_cookie('vzdevek', path='/')
     redirect('/')
 
+
 @get("/sign_in")
 def fakeprijava():
     trenutni_uporabnik = uporabnik()
@@ -736,13 +740,14 @@ def fakeprijava():
         return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=trenutni_uporabnik,
                         sporocilo=None)
     else:
+
         response.delete_cookie('vzdevek', path='/')
         return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik= [0, None, None],
                         sporocilo="You have been signed out, so you can sign in with a different account.")
 
+
 @post("/sign_in")
 def prijava_uporabnika():
-
     vzdevek = request.forms.vzdevek
     geslo = zakodiraj_geslo(request.forms.geslo)
     # Preverimo če je bila pravilna prijava
@@ -774,8 +779,9 @@ def odpri_registracijo():
                         sporocilo="You have been signed out, so you can now create a new account.",
                         email='', username='', house='Gryffindor', sex='Witch')
     else:
-        return template('registracija.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(), sporocilo=None,
-                    email='', username='', house='Gryffindor', sex='Witch')
+        return template('registracija.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        sporocilo=None,
+                        email='', username='', house='Gryffindor', sex='Witch')
 
 
 @post('/sign_up')
@@ -825,8 +831,8 @@ def registriraj_uporabnika():
 @get('/profile/:x')
 @post('/profile/:x')
 def profil(x):
-    id= str(uporabnik()[0])
-    if id == "0" :
+    id = str(uporabnik()[0])
+    if id == "0":
         return template("prijava.html", vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                         sporocilo='To see your profile, you need to sign in.')
     elif id == x:
@@ -862,9 +868,9 @@ def spremeni():
         return template('spremeni_profil.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
                         spol=spol, sporocilo=None)
 
+
 @post('/change_profile')
 def spremeni():
-
     (id_uporabnika, vzdevek, dom) = uporabnik()
 
     if vzdevek is None:
@@ -906,7 +912,8 @@ def spremeni():
                     (uporabnik()[0],))
         zelje = cur.fetchall()
 
-        return template('profile.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(), prebrane=prebrane,
+        return template('profile.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
+                        prebrane=prebrane,
                         zelje=zelje)
 
 
@@ -914,9 +921,12 @@ def spremeni():
 def error404(err):
     return template('404.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik())
 
+
 @error(405)
 def error405(err):
     return template('405.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik())
+
+
 ######################################################################
 # Glavni program
 

@@ -5,3 +5,4 @@ Večina ljudi se počuti izgubljene, ko prebere zadnjo knjigo Harry Potter-ja. K
 ![ERdiagram](ERdiagram.jpg)
 
 Iz seznama ključnih besed izbereš o katerih pojmih želiš prebrat več, kako dolgo knjigo si pripravljen brati, ali želiš da je del zbirke ipd. ter tako izveš katera knjiga je najbolj primerna za tvoje trenutno postharryevsko razpoloženje.
+Če tudi sam želiš obiskovati Bradavičarko, se lahko registriraš in tako urejaš svoj seznam knjig.
