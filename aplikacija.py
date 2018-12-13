@@ -866,7 +866,7 @@ def spremeni():
         else:
             spol = 'Wizard'
         return template('spremeni_profil.html', vseKljucne=vse_kljucne, zanri=vsi_zanri, uporabnik=uporabnik(),
-                        spol=spol, sporocilo=None)
+                        spol=spol, sporocilo="To change your profile, enter your current password and change what you want.")
 
 
 @post('/change_profile')
